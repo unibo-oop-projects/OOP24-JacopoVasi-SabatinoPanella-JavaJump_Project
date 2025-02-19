@@ -14,11 +14,15 @@ public class Platform extends GameObject
 	@Override
 	public void update(float deltaTime)
 	{
+
+
 	}
 
 	@Override
 	public void onCollision(GameObject other)
 	{
+
+
 
 	}
 }

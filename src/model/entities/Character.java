@@ -21,21 +21,29 @@ public class Character extends GameObject
 	@Override
 	public void update(float deltaTime)
 	{
+
 		y += velocityY * deltaTime;
+
 		velocityY += 300 * deltaTime;
 	}
 
 	@Override
 	public void onCollision(GameObject other)
 	{
+
 		if (other instanceof Platform)
 		{
 			velocityY = -jumpForce;
 		}
 		if (other instanceof Coin)
 		{
+
+
+
+
 		}
 	}
+
 
 	public void moveLeft(float deltaTime)
 	{

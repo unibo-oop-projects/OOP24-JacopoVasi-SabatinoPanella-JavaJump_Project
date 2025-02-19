@@ -7,11 +7,14 @@ import model.GameModel;
 
 import java.util.List;
 
+
 public class CollisionManager
 {
+
 	public void checkCollisions(GameModel model)
 	{
 		List<GameObject> objects = model.getGameObjects();
+
 
 		for (int i = 0; i < objects.size(); i++)
 		{
@@ -22,19 +25,22 @@ public class CollisionManager
 
 				if (isColliding(a, b))
 				{
+
 					a.onCollision(b);
 					b.onCollision(a);
+
 
 					if (a instanceof Character && b instanceof Coin)
 					{
 						objects.remove(b);
-						model.increaseScore(50);
+						model.addPointsToScore(50);
+
 						break;
 					}
 					else if (b instanceof Character && a instanceof Coin)
 					{
 						objects.remove(a);
-						model.increaseScore(50);
+						model.addPointsToScore(50);
 						break;
 					}
 				}

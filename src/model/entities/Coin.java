@@ -14,6 +14,7 @@ public class Coin extends GameObject
 	@Override
 	public void update(float deltaTime)
 	{
+
 	}
 
 	@Override

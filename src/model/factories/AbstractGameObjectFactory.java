@@ -17,4 +17,5 @@ public abstract class AbstractGameObjectFactory
 
 	public abstract Coin createCoin(float x, float y);
 
+
 }

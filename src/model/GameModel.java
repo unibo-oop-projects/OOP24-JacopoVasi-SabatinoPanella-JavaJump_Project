@@ -1,5 +1,6 @@
 package model;
 
+import model.camera.CameraManager;
 import model.collision.CollisionManager;
 import model.entities.GameObject;
 import model.entities.Character;
@@ -7,6 +8,8 @@ import model.entities.Platform;
 import model.entities.Coin;
 import model.factories.AbstractGameObjectFactory;
 import model.collision.CollisionManager;
+import model.level.SpawnManager;
+import model.score.ScoreManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,30 +19,36 @@ public class GameModel
 	private List<GameObject> gameObjects;
 	private Character player;
 	private GameState currentState;
-	private int score;
 
 	private int screenWidth;
 	private int screenHeight;
 
-	// OBSERVER
 	private final List<GameModelObserver> observers;
-
-	// FACTORY
 	private final AbstractGameObjectFactory factory;
-
 	private final CollisionManager collisionManager;
+	private final SpawnManager spawnManager;
+	private final ScoreManager scoreManager;
+	private final CameraManager cameraManager;
 
-	public GameModel(int screenWidth, int screenHeight, AbstractGameObjectFactory factory, CollisionManager collisionManager)
+
+	public GameModel(int screenWidth, int screenHeight,
+					 AbstractGameObjectFactory factory,
+					 CollisionManager collisionManager,
+					 SpawnManager spawnManager,
+					 ScoreManager scoreManager,
+					 CameraManager cameraManager)
 	{
 		this.screenWidth = screenWidth;
 		this.screenHeight = screenHeight;
 		this.collisionManager = collisionManager;
 		this.factory = factory;
+		this.spawnManager = spawnManager;
+		this.scoreManager = scoreManager;
+		this.cameraManager = cameraManager;
 
 		this.gameObjects = new ArrayList<>();
 		this.observers = new ArrayList<>();
 		this.currentState = GameState.MENU;
-		this.score = 0;
 	}
 
 
@@ -47,6 +56,7 @@ public class GameModel
 	{
 		observers.add(obs);
 	}
+
 
 	public void removeObserver(GameModelObserver obs)
 	{
@@ -61,12 +71,11 @@ public class GameModel
 		}
 	}
 
-
 	public void startGame()
 	{
 		this.gameObjects.clear();
-		this.score = 0;
 		this.currentState = GameState.IN_GAME;
+		scoreManager.reset();
 
 		this.player = factory.createCharacter
 		(
@@ -75,15 +84,10 @@ public class GameModel
 		);
 		gameObjects.add(player);
 
-		gameObjects.add(factory.createStandardPlatform(screenWidth / 2f - 50, screenHeight - 50));
-		gameObjects.add(factory.createRandomPlatform(screenWidth / 2f - 50, screenHeight - 150));
-		gameObjects.add(factory.createRandomPlatform(screenWidth / 2f - 50, screenHeight - 250));
-
-		gameObjects.add(factory.createCoin(screenWidth / 2f, screenHeight - 300));
+		spawnManager.generateInitialLevel(this);
 
 		notifyObservers();
 	}
-
 
 	public void update(float deltaTime)
 	{
@@ -99,48 +103,61 @@ public class GameModel
 
 		collisionManager.checkCollisions(this);
 
+		cameraManager.update(this, deltaTime);
+
+		spawnManager.generateOnTheFly(this);
+
 		checkGameOverCondition();
 
 		notifyObservers();
 	}
 
-	private void checkGameOverCondition() {
-		if (player.getY() > screenHeight) {
+	private void checkGameOverCondition()
+	{
+		if (player.getY() > screenHeight)
+		{
 			this.currentState = GameState.GAME_OVER;
 		}
 	}
 
-	public void increaseScore(int amount) {
-		this.score += amount;
+	public void addPointsToScore(int amount)
+	{
+		scoreManager.addPoints(amount);
 	}
 
-
-	public int getScore() {
-		return this.score;
+	public int getScore()
+	{
+		return scoreManager.getCurrentScore();
 	}
 
-	public GameState getState() {
+	public GameState getState()
+	{
 		return this.currentState;
 	}
 
-	public void setState(GameState newState) {
+	public void setState(GameState newState)
+	{
 		this.currentState = newState;
 		notifyObservers();
 	}
 
-	public List<GameObject> getGameObjects() {
+	public List<GameObject> getGameObjects()
+	{
 		return this.gameObjects;
 	}
 
-	public Character getPlayer() {
+	public Character getPlayer()
+	{
 		return this.player;
 	}
 
-	public int getScreenWidth() {
+	public int getScreenWidth()
+	{
 		return screenWidth;
 	}
 
-	public int getScreenHeight() {
+	public int getScreenHeight()
+	{
 		return screenHeight;
 	}
 }
