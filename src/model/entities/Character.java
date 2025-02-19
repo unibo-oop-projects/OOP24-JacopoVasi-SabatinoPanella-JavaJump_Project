@@ -36,6 +36,7 @@ public class Character extends GameObject
 		{
 		}
 	}
+
 	public void moveLeft(float deltaTime)
 	{
 		this.x -= moveSpeed * deltaTime;

@@ -1,10 +1,12 @@
 package model;
 
+import model.collision.CollisionManager;
 import model.entities.GameObject;
 import model.entities.Character;
 import model.entities.Platform;
 import model.entities.Coin;
 import model.factories.AbstractGameObjectFactory;
+import model.collision.CollisionManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +18,6 @@ public class GameModel
 	private GameState currentState;
 	private int score;
 
-
 	private int screenWidth;
 	private int screenHeight;
 
@@ -24,18 +25,21 @@ public class GameModel
 	private final List<GameModelObserver> observers;
 
 	// FACTORY
-	private AbstractGameObjectFactory factory;
+	private final AbstractGameObjectFactory factory;
 
+	private final CollisionManager collisionManager;
 
-	public GameModel(int screenWidth, int screenHeight, AbstractGameObjectFactory factory)
+	public GameModel(int screenWidth, int screenHeight, AbstractGameObjectFactory factory, CollisionManager collisionManager)
 	{
 		this.screenWidth = screenWidth;
 		this.screenHeight = screenHeight;
+		this.collisionManager = collisionManager;
+		this.factory = factory;
+
 		this.gameObjects = new ArrayList<>();
 		this.observers = new ArrayList<>();
-		this.currentState = GameState.MENU;  // stato iniziale
+		this.currentState = GameState.MENU;
 		this.score = 0;
-		this.factory = factory;
 	}
 
 
@@ -44,12 +48,10 @@ public class GameModel
 		observers.add(obs);
 	}
 
-
 	public void removeObserver(GameModelObserver obs)
 	{
 		observers.remove(obs);
 	}
-
 
 	private void notifyObservers()
 	{
@@ -62,7 +64,6 @@ public class GameModel
 
 	public void startGame()
 	{
-
 		this.gameObjects.clear();
 		this.score = 0;
 		this.currentState = GameState.IN_GAME;
@@ -74,16 +75,11 @@ public class GameModel
 		);
 		gameObjects.add(player);
 
-		Platform p1 = factory.createStandardPlatform(screenWidth / 2f - 50, screenHeight - 50);
-		Platform p2 = factory.createRandomPlatform(screenWidth / 2f - 50, screenHeight - 150);
-		Platform p3 = factory.createRandomPlatform(screenWidth / 2f - 50, screenHeight - 250);
-		gameObjects.add(p1);
-		gameObjects.add(p2);
-		gameObjects.add(p3);
+		gameObjects.add(factory.createStandardPlatform(screenWidth / 2f - 50, screenHeight - 50));
+		gameObjects.add(factory.createRandomPlatform(screenWidth / 2f - 50, screenHeight - 150));
+		gameObjects.add(factory.createRandomPlatform(screenWidth / 2f - 50, screenHeight - 250));
 
-
-		Coin c1 = factory.createCoin(screenWidth / 2f, screenHeight - 300);
-		gameObjects.add(c1);
+		gameObjects.add(factory.createCoin(screenWidth / 2f, screenHeight - 300));
 
 		notifyObservers();
 	}
@@ -91,7 +87,6 @@ public class GameModel
 
 	public void update(float deltaTime)
 	{
-		// Se non siamo in IN_GAME, non aggiornare la logica
 		if (this.currentState != GameState.IN_GAME)
 		{
 			return;
@@ -102,53 +97,14 @@ public class GameModel
 			go.update(deltaTime);
 		}
 
-		checkCollisions();
-
+		collisionManager.checkCollisions(this);
 
 		checkGameOverCondition();
-
 
 		notifyObservers();
 	}
 
-
-	private void checkCollisions() {
-		for (int i = 0; i < gameObjects.size(); i++) {
-			GameObject a = gameObjects.get(i);
-			for (int j = i + 1; j < gameObjects.size(); j++) {
-				GameObject b = gameObjects.get(j);
-
-				if (isColliding(a, b)) {
-					a.onCollision(b);
-					b.onCollision(a);
-
-					if (a instanceof Character && b instanceof Coin) {
-
-						gameObjects.remove(b);
-
-						increaseScore(50);
-
-						break;
-					} else if (b instanceof Character && a instanceof Coin) {
-						gameObjects.remove(a);
-						increaseScore(50);
-						break;
-					}
-				}
-			}
-		}
-	}
-
-
-	private boolean isColliding(GameObject a, GameObject b) {
-		return a.getX() < b.getX() + b.getWidth() &&
-				a.getX() + a.getWidth() > b.getX() &&
-				a.getY() < b.getY() + b.getHeight() &&
-				a.getY() + a.getHeight() > b.getY();
-	}
-
 	private void checkGameOverCondition() {
-
 		if (player.getY() > screenHeight) {
 			this.currentState = GameState.GAME_OVER;
 		}
