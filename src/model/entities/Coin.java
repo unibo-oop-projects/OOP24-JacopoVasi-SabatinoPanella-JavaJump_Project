@@ -2,7 +2,6 @@ package model.entities;
 
 public class Coin extends GameObject
 {
-
 	public Coin(float x, float y, float width, float height)
 	{
 		this.x = x;
@@ -20,5 +19,7 @@ public class Coin extends GameObject
 	@Override
 	public void onCollision(GameObject other)
 	{
+
+
 	}
 }

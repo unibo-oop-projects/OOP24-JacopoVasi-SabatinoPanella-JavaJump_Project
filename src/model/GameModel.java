@@ -20,6 +20,7 @@ public class GameModel
 	private Character player;
 	private GameState currentState;
 
+
 	private int screenWidth;
 	private int screenHeight;
 
@@ -29,7 +30,6 @@ public class GameModel
 	private final SpawnManager spawnManager;
 	private final ScoreManager scoreManager;
 	private final CameraManager cameraManager;
-
 
 	public GameModel(int screenWidth, int screenHeight,
 					 AbstractGameObjectFactory factory,
@@ -63,6 +63,7 @@ public class GameModel
 		observers.remove(obs);
 	}
 
+
 	private void notifyObservers()
 	{
 		for (GameModelObserver obs : observers)
@@ -71,11 +72,14 @@ public class GameModel
 		}
 	}
 
+
 	public void startGame()
 	{
+
 		this.gameObjects.clear();
 		this.currentState = GameState.IN_GAME;
 		scoreManager.reset();
+
 
 		this.player = factory.createCharacter
 		(
@@ -84,36 +88,46 @@ public class GameModel
 		);
 		gameObjects.add(player);
 
+
 		spawnManager.generateInitialLevel(this);
 
 		notifyObservers();
 	}
 
+
 	public void update(float deltaTime)
 	{
+
 		if (this.currentState != GameState.IN_GAME)
 		{
 			return;
 		}
+
 
 		for (GameObject go : gameObjects)
 		{
 			go.update(deltaTime);
 		}
 
+
 		collisionManager.checkCollisions(this);
+
 
 		cameraManager.update(this, deltaTime);
 
+
 		spawnManager.generateOnTheFly(this);
 
+
 		checkGameOverCondition();
+
 
 		notifyObservers();
 	}
 
 	private void checkGameOverCondition()
 	{
+
 		if (player.getY() > screenHeight)
 		{
 			this.currentState = GameState.GAME_OVER;

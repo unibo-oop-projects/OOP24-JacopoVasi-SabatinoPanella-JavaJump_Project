@@ -2,7 +2,6 @@ package model.entities;
 
 public class Character extends GameObject
 {
-
 	private float velocityY;
 	private float jumpForce;
 	private float moveSpeed;
@@ -21,7 +20,6 @@ public class Character extends GameObject
 	@Override
 	public void update(float deltaTime)
 	{
-
 		y += velocityY * deltaTime;
 
 		velocityY += 300 * deltaTime;
@@ -33,15 +31,14 @@ public class Character extends GameObject
 
 		if (other instanceof Platform)
 		{
+
+
 			velocityY = -jumpForce;
 		}
-		if (other instanceof Coin)
-		{
 
 
 
 
-		}
 	}
 
 

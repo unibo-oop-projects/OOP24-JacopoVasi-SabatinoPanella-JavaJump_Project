@@ -14,6 +14,7 @@ public class CameraManager
 	private final ScoreManager scoreManager;
 	private final float scoreFactor;
 
+
 	public CameraManager(ScoreManager scoreManager, float scoreFactor)
 	{
 		this.scoreManager = scoreManager;
@@ -21,6 +22,7 @@ public class CameraManager
 		this.currentOffset = 0;
 		this.previousOffset = 0;
 	}
+
 
 	public void update(GameModel model, float deltaTime)
 	{
@@ -33,9 +35,12 @@ public class CameraManager
 		float screenHeight = model.getScreenHeight();
 		float halfScreen = screenHeight / 2f;
 
+
 		float desiredOffset = 0;
 		if (player.getY() < halfScreen - currentOffset)
 		{
+
+
 			desiredOffset = player.getY() - (halfScreen);
 		}
 

@@ -7,9 +7,12 @@ public abstract class GameObject
 	protected float width;
 	protected float height;
 
+
 	public abstract void update(float deltaTime);
 
+
 	public abstract void onCollision(GameObject other);
+
 
 	public float getX()
 	{

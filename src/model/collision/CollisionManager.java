@@ -15,7 +15,6 @@ public class CollisionManager
 	{
 		List<GameObject> objects = model.getGameObjects();
 
-
 		for (int i = 0; i < objects.size(); i++)
 		{
 			GameObject a = objects.get(i);
