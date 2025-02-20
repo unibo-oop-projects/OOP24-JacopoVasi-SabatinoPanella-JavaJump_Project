@@ -9,7 +9,7 @@ public class PhysicsManager
 	private final float MAX_SPEED;
 	private final float DECELERATION;
 
-	
+
 	public PhysicsManager(float acceleration, float maxSpeed, float deceleration)
 	{
 		this.ACCELERATION = acceleration;
@@ -17,7 +17,7 @@ public class PhysicsManager
 		this.DECELERATION = deceleration;
 	}
 
-	
+
 	public void updateCharacterMovement(Character character, float deltaTime, MovementDirection direction)
 	{
 		final float ACCELERATION = 500f;
@@ -43,21 +43,21 @@ public class PhysicsManager
 		character.setVelocityX(vx);
 	}
 
-	
+
 	private float accelerateToRight(float vx, float deltaTime)
 	{
 		vx += ACCELERATION * deltaTime;
 		return Math.min(vx, MAX_SPEED);
 	}
 
-	
+
 	private float accelerateToLeft(float vx, float deltaTime)
 	{
 		vx -= ACCELERATION * deltaTime;
 		return Math.max(vx, -MAX_SPEED);
 	}
 
-	
+
 	private float decelerate(float vx, float deltaTime)
 	{
 		if (vx > 0)

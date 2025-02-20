@@ -29,7 +29,6 @@ public class CollisionManager
 					a.onCollision(b);
 					b.onCollision(a);
 
-
 					if (a instanceof Character && b instanceof Coin)
 					{
 						objects.remove(b);

@@ -88,4 +88,10 @@ public class Character extends GameObject
 	{
 		this.jumpForce = jumpForce;
 	}
+
+	@Override
+	public float getY()
+	{
+		return super.getY();
+	}
 }

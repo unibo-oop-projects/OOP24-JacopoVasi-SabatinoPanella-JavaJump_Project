@@ -2,6 +2,8 @@ package model.states;
 
 import controller.GameAction;
 import model.GameModel;
+import model.entities.GameObject;
+import model.entities.Character;
 
 public class InGameState implements GameStateHandler
 {
@@ -10,6 +12,7 @@ public class InGameState implements GameStateHandler
 
 	@Override
 	public void onEnter(GameModel model) {
+
 
 	}
 
@@ -35,13 +38,15 @@ public class InGameState implements GameStateHandler
 	}
 
 	@Override
-	public void update(GameModel model, float deltaTime) {
+	public void update(GameModel model, float deltaTime)
+	{
 
 		Character player = model.getPlayer();
 		model.getPhysicsManager().updateCharacterMovement(player, deltaTime, horizontalDirection);
 
 
-		for (GameObject go : model.getGameObjects()) {
+		for (GameObject go : model.getGameObjects())
+		{
 			go.update(deltaTime);
 		}
 
@@ -55,7 +60,8 @@ public class InGameState implements GameStateHandler
 		model.getSpawnManager().generateOnTheFly(model);
 
 
-		if (player.getY() > model.getScreenHeight()) {
+		if (player.getY() > model.getScreenHeight())
+		{
 			model.setState(new GameOverState());
 		}
 
@@ -63,4 +69,4 @@ public class InGameState implements GameStateHandler
 		model.notifyObservers();
 	}
 }
-}
+

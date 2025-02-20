@@ -15,5 +15,6 @@ public class GameOverState implements GameStateHandler
 	public void update(GameModel model, float deltaTime)
 	{
 
+
 	}
 }
