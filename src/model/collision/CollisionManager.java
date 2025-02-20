@@ -10,10 +10,11 @@ import java.util.List;
 
 public class CollisionManager
 {
-
+	
 	public void checkCollisions(GameModel model)
 	{
 		List<GameObject> objects = model.getGameObjects();
+
 
 		for (int i = 0; i < objects.size(); i++)
 		{
@@ -47,7 +48,7 @@ public class CollisionManager
 		}
 	}
 
-
+	
 	private boolean isColliding(GameObject a, GameObject b) {
 		return a.getX() < b.getX() + b.getWidth()
 				&& a.getX() + a.getWidth() > b.getX()

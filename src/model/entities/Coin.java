@@ -20,6 +20,5 @@ public class Coin extends GameObject
 	public void onCollision(GameObject other)
 	{
 
-
 	}
 }

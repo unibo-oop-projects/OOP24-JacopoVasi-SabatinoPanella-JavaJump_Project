@@ -23,7 +23,6 @@ public class CameraManager
 		this.previousOffset = 0;
 	}
 
-
 	public void update(GameModel model, float deltaTime)
 	{
 		if (model.getState() != GameState.IN_GAME)
@@ -44,15 +43,21 @@ public class CameraManager
 			desiredOffset = player.getY() - (halfScreen);
 		}
 
+
 		currentOffset = desiredOffset;
 
 		if (currentOffset < previousOffset)
 		{
 
 			float deltaOffset = previousOffset - currentOffset;
+
+
+
 			int points = (int) (deltaOffset * scoreFactor);
 			scoreManager.addPoints(points);
 		}
+
+
 		previousOffset = currentOffset;
 	}
 

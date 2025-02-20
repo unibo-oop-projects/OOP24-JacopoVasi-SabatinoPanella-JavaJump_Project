@@ -1,0 +1,16 @@
+package controller;
+
+
+public enum GameAction
+{
+	MOVE_LEFT,
+	MOVE_RIGHT,
+	STOP_HORIZONTAL,
+	START_GAME,
+	PAUSE_GAME,
+	RESUME_GAME,
+	CONFIRM_SELECTION,
+	MOVE_MENU_UP,
+	MOVE_MENU_DOWN,
+	GO_TO_MENU
+}

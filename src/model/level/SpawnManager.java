@@ -26,10 +26,10 @@ public class SpawnManager
 		this.numberOfPlatforms = 10;
 		this.minPlatformYSpacing = 80;
 		this.maxPlatformYSpacing = 140;
-		this.coinSpawnChance = 0.3f;  // 30%
+		this.coinSpawnChance = 0.3f;
 	}
 
-
+	
 	public void generateInitialLevel(GameModel model) {
 		float currentY = model.getScreenHeight() - 50;
 
@@ -55,7 +55,7 @@ public class SpawnManager
 		}
 	}
 
-
+	
 	public void generateOnTheFly(GameModel model) {
 
 		float playerY = model.getPlayer().getY();

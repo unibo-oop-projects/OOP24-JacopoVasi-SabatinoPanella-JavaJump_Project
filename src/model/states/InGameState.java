@@ -1,0 +1,66 @@
+package model.states;
+
+import controller.GameAction;
+import model.GameModel;
+
+public class InGameState implements GameStateHandler
+{
+
+	private int horizontalDirection = 0;
+
+	@Override
+	public void onEnter(GameModel model) {
+
+	}
+
+	@Override
+	public void handleAction(GameModel model, GameAction action) {
+		switch(action) {
+			case MOVE_LEFT:
+				horizontalDirection = -1;
+				break;
+			case MOVE_RIGHT:
+				horizontalDirection = +1;
+				break;
+			case STOP_HORIZONTAL:
+				horizontalDirection = 0;
+				break;
+			case PAUSE_GAME:
+				model.setState(new PauseState());
+				break;
+			default:
+
+				break;
+		}
+	}
+
+	@Override
+	public void update(GameModel model, float deltaTime) {
+
+		Character player = model.getPlayer();
+		model.getPhysicsManager().updateCharacterMovement(player, deltaTime, horizontalDirection);
+
+
+		for (GameObject go : model.getGameObjects()) {
+			go.update(deltaTime);
+		}
+
+
+		model.getCollisionManager().checkCollisions(model);
+
+
+		model.getCameraManager().update(model, deltaTime);
+
+
+		model.getSpawnManager().generateOnTheFly(model);
+
+
+		if (player.getY() > model.getScreenHeight()) {
+			model.setState(new GameOverState());
+		}
+
+
+		model.notifyObservers();
+	}
+}
+}
