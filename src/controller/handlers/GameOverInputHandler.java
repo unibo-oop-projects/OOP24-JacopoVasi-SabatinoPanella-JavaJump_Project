@@ -3,9 +3,6 @@ package controller.handlers;
 import model.GameModel;
 import model.GameState;
 import java.awt.event.KeyEvent;
-
-
-
 public class GameOverInputHandler implements InputHandler
 {
 	private final GameModel model;
@@ -19,6 +16,7 @@ public class GameOverInputHandler implements InputHandler
 	public void handleInput(KeyEvent e)
 	{
 		int code = e.getKeyCode();
+
 		model.setState(GameState.MENU);
 	}
 }

@@ -10,22 +10,22 @@ import model.physics.MovementDirection;
 import model.physics.PhysicsManager;
 import view.GameView;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class GameController implements KeyListener
 {
 	private final GameModel model;
+	private final GameView view;
 	private volatile boolean running;
 
-	public GameController(GameModel model)
+	public GameController(GameModel model, GameView view)
 	{
 		this.model = model;
+		this.view= view;
 		this.running = false;
-	}
-
-	
-	public void startGameLoop()
+	}	public void startGameLoop()
 	{
 		running = true;
 		Thread loopThread = new Thread(() ->
@@ -41,12 +41,7 @@ public class GameController implements KeyListener
 
 				if (elapsedNs >= nsPerFrame)
 				{
-					float deltaTime = (float) (elapsedNs / 1_000_000_000.0);
-
-
-					model.update(deltaTime);
-
-					previousTime = currentTime;
+					float deltaTime = (float) (elapsedNs / 1_000_000_000.0);					model.update(deltaTime);					previousTime = currentTime;
 				}
 
 				try { Thread.sleep(1); }
@@ -56,10 +51,7 @@ public class GameController implements KeyListener
 			}
 		});
 		loopThread.start();
-	}
-
-	
-	public void stopGameLoop()
+	}	public void stopGameLoop()
 	{
 		running = false;
 	}
@@ -88,10 +80,7 @@ public class GameController implements KeyListener
 	public void keyTyped(KeyEvent e)
 	{
 
-	}
-
-	
-	private GameAction mapKeyToAction(KeyEvent e, boolean pressed)
+	}	private GameAction mapKeyToAction(KeyEvent e, boolean pressed)
 	{
 		int code = e.getKeyCode();
 		switch (code)
@@ -100,57 +89,12 @@ public class GameController implements KeyListener
 				return pressed ? GameAction.MOVE_LEFT : GameAction.STOP_HORIZONTAL;
 			case KeyEvent.VK_RIGHT:
 				return pressed ? GameAction.MOVE_RIGHT : GameAction.STOP_HORIZONTAL;
-			case KeyEvent.VK_ENTER:
-
-
-				return pressed ? GameAction.CONFIRM_SELECTION : null;
+			case KeyEvent.VK_ENTER:				return pressed ? GameAction.CONFIRM_SELECTION : null;
 			case KeyEvent.VK_ESCAPE:
 				return pressed ? GameAction.PAUSE_GAME : null;
-
-
-
 			default:
 				return null;
 		}
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

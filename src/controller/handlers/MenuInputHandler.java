@@ -1,10 +1,7 @@
 package controller.handlers;
 
 import model.GameModel;
-import java.awt.event.KeyEvent;
-
-
-public class MenuInputHandler implements InputHandler
+import java.awt.event.KeyEvent;public class MenuInputHandler implements InputHandler
 {
 	private final GameModel model;
 

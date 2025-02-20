@@ -35,7 +35,4 @@ public class ScoreManager
 	{
 		this.currentScore = 0;
 	}
-
-
-
 }

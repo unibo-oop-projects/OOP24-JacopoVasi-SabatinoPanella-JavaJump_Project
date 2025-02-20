@@ -6,7 +6,6 @@ import model.physics.MovementDirection;
 
 import java.awt.event.KeyEvent;
 
-
 public class InGameInputHandler implements InputHandler
 {
 	private final GameModel model;

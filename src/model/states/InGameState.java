@@ -11,10 +11,7 @@ public class InGameState implements GameStateHandler
 	private int horizontalDirection = 0;
 
 	@Override
-	public void onEnter(GameModel model) {
-
-
-	}
+	public void onEnter(GameModel model) {	}
 
 	@Override
 	public void handleAction(GameModel model, GameAction action) {
@@ -42,31 +39,13 @@ public class InGameState implements GameStateHandler
 	{
 
 		Character player = model.getPlayer();
-		model.getPhysicsManager().updateCharacterMovement(player, deltaTime, horizontalDirection);
-
-
-		for (GameObject go : model.getGameObjects())
+		model.getPhysicsManager().updateCharacterMovement(player, deltaTime, horizontalDirection);		for (GameObject go : model.getGameObjects())
 		{
 			go.update(deltaTime);
-		}
-
-
-		model.getCollisionManager().checkCollisions(model);
-
-
-		model.getCameraManager().update(model, deltaTime);
-
-
-		model.getSpawnManager().generateOnTheFly(model);
-
-
-		if (player.getY() > model.getScreenHeight())
+		}		model.getCollisionManager().checkCollisions(model);		model.getCameraManager().update(model, deltaTime);		model.getSpawnManager().generateOnTheFly(model);		if (player.getY() > model.getScreenHeight())
 		{
 			model.setState(new GameOverState());
-		}
-
-
-		model.notifyObservers();
+		}		model.notifyObservers();
 	}
 }
 

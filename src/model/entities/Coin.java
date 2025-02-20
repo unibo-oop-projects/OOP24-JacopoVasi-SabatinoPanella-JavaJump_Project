@@ -19,8 +19,5 @@ public class Coin extends GameObject
 	@Override
 	public void onCollision(GameObject other)
 	{
-
-
-
 	}
 }
