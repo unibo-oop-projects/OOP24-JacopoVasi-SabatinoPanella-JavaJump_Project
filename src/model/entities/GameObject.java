@@ -11,7 +11,10 @@ public abstract class GameObject
 	public abstract void update(float deltaTime);
 
 	
-	public abstract void onCollision(GameObject other);	public float getX()
+	public abstract void onCollision(GameObject other);
+
+
+	public float getX()
 	{
 		return x;
 	}

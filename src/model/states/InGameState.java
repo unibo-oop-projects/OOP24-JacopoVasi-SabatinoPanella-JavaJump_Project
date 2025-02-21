@@ -4,26 +4,33 @@ import controller.GameAction;
 import model.GameModel;
 import model.entities.GameObject;
 import model.entities.Character;
+import model.physics.MovementDirection;
 
 public class InGameState implements GameStateHandler
 {
 
-	private int horizontalDirection = 0;
+	private MovementDirection currentDirection = MovementDirection.NONE;
 
 	@Override
-	public void onEnter(GameModel model) {	}
+	public void onEnter(GameModel model)
+	{
+
+
+	}
 
 	@Override
-	public void handleAction(GameModel model, GameAction action) {
-		switch(action) {
+	public void handleAction(GameModel model, GameAction action)
+	{
+		switch(action)
+		{
 			case MOVE_LEFT:
-				horizontalDirection = -1;
+				currentDirection = MovementDirection.LEFT;
 				break;
 			case MOVE_RIGHT:
-				horizontalDirection = +1;
+				currentDirection = MovementDirection.RIGHT;
 				break;
 			case STOP_HORIZONTAL:
-				horizontalDirection = 0;
+				currentDirection = MovementDirection.NONE;
 				break;
 			case PAUSE_GAME:
 				model.setState(new PauseState());
@@ -38,14 +45,39 @@ public class InGameState implements GameStateHandler
 	public void update(GameModel model, float deltaTime)
 	{
 
+
 		Character player = model.getPlayer();
-		model.getPhysicsManager().updateCharacterMovement(player, deltaTime, horizontalDirection);		for (GameObject go : model.getGameObjects())
+		model.getPhysicsManager().updateCharacterMovement
+		(
+				model.getPlayer(),
+				deltaTime,
+				currentDirection
+		);
+
+
+		for (GameObject go : model.getGameObjects())
 		{
 			go.update(deltaTime);
-		}		model.getCollisionManager().checkCollisions(model);		model.getCameraManager().update(model, deltaTime);		model.getSpawnManager().generateOnTheFly(model);		if (player.getY() > model.getScreenHeight())
+		}
+
+
+		model.getCollisionManager().checkCollisions(model);
+
+
+		model.getCameraManager().update(model, deltaTime);
+
+
+		model.getSpawnManager().generateOnTheFly(model);
+
+
+		if (player.getY() > model.getScreenHeight())
 		{
 			model.setState(new GameOverState());
-		}		model.notifyObservers();
+		}
+
+
+		model.notifyObservers();
 	}
+
 }
 

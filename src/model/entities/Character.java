@@ -26,7 +26,22 @@ public class Character extends GameObject
 	public void update(float deltaTime)
 	{
 
-		this.x += velocityX * deltaTime;		this.y += velocityY * deltaTime;		this.velocityY += GRAVITY * deltaTime;
+		this.x += velocityX * deltaTime;
+
+
+		this.y += velocityY * deltaTime;
+
+
+		this.velocityY += GRAVITY * deltaTime;
+
+
+
+
+
+
+
+
+
 
 	}
 
@@ -35,10 +50,16 @@ public class Character extends GameObject
 	{
 
 		if (other instanceof Platform)
-		{			this.velocityY = -jumpForce;
+		{
+
+
+			this.velocityY = -jumpForce;
 		}
 
-	}	public float getVelocityX()
+	}
+
+
+	public float getVelocityX()
 	{
 		return velocityX;
 	}

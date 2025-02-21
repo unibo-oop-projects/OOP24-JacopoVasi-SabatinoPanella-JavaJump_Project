@@ -18,6 +18,8 @@ import model.states.MenuState;
 
 import java.util.ArrayList;
 import java.util.List;
+
+
 public class GameModel
 {
 	private GameStateHandler currentState;
@@ -42,8 +44,8 @@ public class GameModel
 			CollisionManager collisionManager,
 			SpawnManager spawnManager,
 			CameraManager cameraManager,
-			ScoreManager scoreManager
-	) {
+			ScoreManager scoreManager)
+	{
 		this.screenWidth = screenWidth;
 		this.screenHeight = screenHeight;
 
@@ -54,9 +56,15 @@ public class GameModel
 		this.scoreManager = scoreManager;
 
 		this.gameObjects = new ArrayList<>();
-		this.observers = new ArrayList<>();		this.currentState = new MenuState();
+		this.observers = new ArrayList<>();
+
+
+		this.currentState = new MenuState();
 		this.currentState.onEnter(this);
-	}	public void setState(GameStateHandler newState)
+	}
+
+
+	public void setState(GameStateHandler newState)
 	{
 		this.currentState.onExit(this);
 		this.currentState = newState;
@@ -76,11 +84,20 @@ public class GameModel
 	public void startGame()
 	{
 		gameObjects.clear();
-		scoreManager.reset();		this.player = spawnManager.getFactory()
+		scoreManager.reset();
+
+
+		this.player = spawnManager.getFactory()
 				.createCharacter(screenWidth / 2f, screenHeight - 100);
 
-		gameObjects.add(this.player);		spawnManager.generateInitialLevel(this);
-	}	public void addObserver(GameModelObserver obs) { observers.add(obs); }
+		gameObjects.add(this.player);
+
+
+		spawnManager.generateInitialLevel(this);
+	}
+
+
+	public void addObserver(GameModelObserver obs) { observers.add(obs); }
 	public void removeObserver(GameModelObserver obs) { observers.remove(obs); }
 	public void notifyObservers()
 	{
@@ -88,7 +105,10 @@ public class GameModel
 		{
 			obs.onModelUpdate(this);
 		}
-	}	public PhysicsManager getPhysicsManager() { return physicsManager; }
+	}
+
+
+	public PhysicsManager getPhysicsManager() { return physicsManager; }
 	public CollisionManager getCollisionManager() { return collisionManager; }
 	public SpawnManager getSpawnManager() { return spawnManager; }
 	public CameraManager getCameraManager() { return cameraManager; }

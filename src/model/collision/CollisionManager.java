@@ -5,12 +5,18 @@ import model.entities.Character;
 import model.entities.Coin;
 import model.GameModel;
 
-import java.util.List;public class CollisionManager
+import java.util.List;
+
+
+public class CollisionManager
 {
 	
 	public void checkCollisions(GameModel model)
 	{
-		List<GameObject> objects = model.getGameObjects();		for (int i = 0; i < objects.size(); i++)
+		List<GameObject> objects = model.getGameObjects();
+
+
+		for (int i = 0; i < objects.size(); i++)
 		{
 			GameObject a = objects.get(i);
 			for (int j = i + 1; j < objects.size(); j++)
@@ -21,7 +27,10 @@ import java.util.List;public class CollisionManager
 				{
 
 					a.onCollision(b);
-					b.onCollision(a);					if (a instanceof Character && b instanceof Coin)
+					b.onCollision(a);
+
+
+					if (a instanceof Character && b instanceof Coin)
 					{
 						objects.remove(b);
 						model.addPointsToScore(50);
