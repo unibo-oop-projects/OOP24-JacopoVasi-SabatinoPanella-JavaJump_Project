@@ -15,13 +15,17 @@ import model.physics.PhysicsManager;
 import model.score.ScoreManager;
 import model.states.GameStateHandler;
 import model.states.MenuState;
+import view.GameFrame;
+import view.GameView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class GameModel
 {
+	private final GameFrame gameFrame;
+	private final GameView gameView;
+	private final AbstractGameObjectFactory gameFactory;
 	private GameStateHandler currentState;
 
 	private final PhysicsManager physicsManager;
@@ -44,21 +48,25 @@ public class GameModel
 			CollisionManager collisionManager,
 			SpawnManager spawnManager,
 			CameraManager cameraManager,
-			ScoreManager scoreManager)
+			ScoreManager scoreManager,
+			GameView view,
+			GameFrame frame,
+			AbstractGameObjectFactory factory
+	)
+
 	{
 		this.screenWidth = screenWidth;
 		this.screenHeight = screenHeight;
-
+		this.gameFactory= factory;
 		this.physicsManager = physicsManager;
 		this.collisionManager = collisionManager;
 		this.spawnManager = spawnManager;
 		this.cameraManager = cameraManager;
 		this.scoreManager = scoreManager;
-
+		this.gameFrame = frame;
 		this.gameObjects = new ArrayList<>();
 		this.observers = new ArrayList<>();
-
-
+		this.gameView = view;this.gameFrame.add(gameView);
 		this.currentState = new MenuState();
 		this.currentState.onEnter(this);
 	}
@@ -87,13 +95,10 @@ public class GameModel
 		scoreManager.reset();
 
 
-		this.player = spawnManager.getFactory()
-				.createCharacter(screenWidth / 2f, screenHeight - 100);
 
-		gameObjects.add(this.player);
-
-
-		spawnManager.generateInitialLevel(this);
+this.player = spawnManager.getFactory()
+				.createCharacter(screenWidth / 2f, screenHeight - 100);gameObjects.add(this.player);
+spawnManager.generateInitialLevel(this);
 	}
 
 
@@ -106,8 +111,6 @@ public class GameModel
 			obs.onModelUpdate(this);
 		}
 	}
-
-
 	public PhysicsManager getPhysicsManager() { return physicsManager; }
 	public CollisionManager getCollisionManager() { return collisionManager; }
 	public SpawnManager getSpawnManager() { return spawnManager; }

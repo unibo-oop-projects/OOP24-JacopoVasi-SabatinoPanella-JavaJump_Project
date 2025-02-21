@@ -22,12 +22,8 @@ public class MenuInputHandler implements InputHandler
 			model.startGame();
 		}
 		else if (code == KeyEvent.VK_UP)
-		{
-
-		}
+		{}
 		else if (code == KeyEvent.VK_DOWN)
-		{
-
-		}
+		{}
 	}
 }

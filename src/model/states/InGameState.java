@@ -35,48 +35,32 @@ public class InGameState implements GameStateHandler
 			case PAUSE_GAME:
 				model.setState(new PauseState());
 				break;
-			default:
-
-				break;
+			default:		break;
 		}
 	}
 
 	@Override
 	public void update(GameModel model, float deltaTime)
 	{
-
-
-		Character player = model.getPlayer();
+Character player = model.getPlayer();
 		model.getPhysicsManager().updateCharacterMovement
 		(
 				model.getPlayer(),
 				deltaTime,
 				currentDirection
 		);
-
-
-		for (GameObject go : model.getGameObjects())
+for (GameObject go : model.getGameObjects())
 		{
 			go.update(deltaTime);
 		}
-
-
-		model.getCollisionManager().checkCollisions(model);
-
-
-		model.getCameraManager().update(model, deltaTime);
-
-
-		model.getSpawnManager().generateOnTheFly(model);
-
-
-		if (player.getY() > model.getScreenHeight())
+model.getCollisionManager().checkCollisions(model);
+model.getCameraManager().update(model, deltaTime);
+model.getSpawnManager().generateOnTheFly(model);
+if (player.getY() > model.getScreenHeight())
 		{
 			model.setState(new GameOverState());
 		}
-
-
-		model.notifyObservers();
+model.notifyObservers();
 	}
 
 }

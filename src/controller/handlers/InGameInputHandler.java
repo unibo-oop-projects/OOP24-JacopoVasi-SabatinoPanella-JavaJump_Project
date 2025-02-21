@@ -21,16 +21,10 @@ public class InGameInputHandler implements InputHandler
 	{
 		switch(e.getKeyCode())
 		{
-			case KeyEvent.VK_LEFT:
-
-				break;
-			case KeyEvent.VK_RIGHT:
-
-				break;
+			case KeyEvent.VK_LEFT:		break;
+			case KeyEvent.VK_RIGHT:		break;
 			case KeyEvent.VK_ESCAPE:
-
-				model.setState(GameState.PAUSE);
-				break;
+		break;
 			default:
 				break;
 		}

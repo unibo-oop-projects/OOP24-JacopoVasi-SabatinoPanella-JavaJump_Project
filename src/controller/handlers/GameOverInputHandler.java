@@ -19,6 +19,10 @@ public class GameOverInputHandler implements InputHandler
 	public void handleInput(KeyEvent e)
 	{
 		int code = e.getKeyCode();
-		model.setState(GameState.MENU);
+
+
+
+
+
 	}
 }

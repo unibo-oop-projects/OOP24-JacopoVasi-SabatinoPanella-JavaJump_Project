@@ -26,36 +26,38 @@ public class CameraManager
 	
 	public void update(GameModel model, float deltaTime)
 	{
-		if (model.getState() != GameState.IN_GAME)
-		{
-			return;
-		}
-
+		
 		Character player = model.getPlayer();
 		float screenHeight = model.getScreenHeight();
 		float halfScreen = screenHeight / 2f;
 
-		float desiredOffset = 0;
+
+
+
+
+
+float desiredOffset = 0;
 		if (player.getY() < halfScreen - currentOffset)
 		{
-
-
-			desiredOffset = player.getY() - (halfScreen);
+	desiredOffset = player.getY() - (halfScreen);
 		}
 
-		currentOffset = desiredOffset;
 
-		if (currentOffset < previousOffset)
-		{
 
-			float deltaOffset = previousOffset - currentOffset;
 
-			int points = (int) (deltaOffset * scoreFactor);
+
+currentOffset = desiredOffset;
+
+
+
+
+if (currentOffset < previousOffset)
+		{	float deltaOffset = previousOffset - currentOffset;
+
+	int points = (int) (deltaOffset * scoreFactor);
 			scoreManager.addPoints(points);
 		}
-
-
-		previousOffset = currentOffset;
+previousOffset = currentOffset;
 	}
 
 	public float getCurrentOffset()

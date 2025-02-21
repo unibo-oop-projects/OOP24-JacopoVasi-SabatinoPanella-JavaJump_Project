@@ -22,11 +22,7 @@ public class PhysicsManager
 	{
 		final float ACCELERATION = 500f;
 		final float MAX_SPEED = 250f;
-		final float DECELERATION = 400f;
-
-		float vx = character.getVelocityX();
-
-		switch (direction)
+		final float DECELERATION = 400f;float vx = character.getVelocityX();switch (direction)
 		{
 			case RIGHT:
 				vx = accelerateToRight(vx, deltaTime);
@@ -38,9 +34,7 @@ public class PhysicsManager
 			default:
 				vx = decelerate(vx, deltaTime);
 				break;
-		}
-
-		character.setVelocityX(vx);
+		}character.setVelocityX(vx);
 	}
 
 	
