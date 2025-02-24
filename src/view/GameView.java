@@ -1,26 +1,39 @@
 package view;
+import model.GameModel;
+import model.GameModelObserver;
 import model.entities.Character;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class GameView extends JPanel {
+public class GameView extends JPanel implements GameModelObserver
+{
+    private final GameModel model;
 
-    public GameView() {
+    public GameView(GameModel model)
+    {
+        this.model = model;
         this.setLayout(null);
-        this.setBackground(Color.blue);
+        this.setBackground(Color.white);
         this.setDoubleBuffered(true);
         this.setFocusable(true);
-        this.setVisible(true);
-        this.setSize(800, 600);
     }
+
     @Override
-    public void update(Graphics g) {
+    public void update(Graphics g)
+    {
                 super.update(g);
                 Graphics2D g2d = (Graphics2D) g;
                 g2d.setColor(Color.black);
                 g2d.drawRect(getX(),getY(), getWidth(), getHeight());
 
+    }
+
+
+    @Override
+    public void onModelUpdate(GameModel model)
+    {
+        repaint();
     }
 
 }

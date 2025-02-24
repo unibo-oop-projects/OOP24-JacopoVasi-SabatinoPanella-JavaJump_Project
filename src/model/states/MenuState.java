@@ -16,12 +16,20 @@ public class MenuState implements GameStateHandler
 	{
 		switch(action)
 		{
-			case CONFIRM_SELECTION:		model.startGame();
+			case CONFIRM_SELECTION:
+
+				model.startGame();
 				model.setState(new InGameState());
 				break;
-			case MOVE_MENU_UP:		break;
-			case MOVE_MENU_DOWN:		break;
-			default:		break;
+			case MOVE_MENU_UP:
+
+				break;
+			case MOVE_MENU_DOWN:
+
+				break;
+			default:
+
+				break;
 		}
 	}
 

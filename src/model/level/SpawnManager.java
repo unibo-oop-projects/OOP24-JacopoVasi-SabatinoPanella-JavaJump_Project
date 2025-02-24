@@ -22,24 +22,33 @@ public class SpawnManager
 	{
 		this.factory = factory;
 		this.random = new Random();
-this.numberOfPlatforms = 10;
+
+
+		this.numberOfPlatforms = 10;
 		this.minPlatformYSpacing = 80;
 		this.maxPlatformYSpacing = 140;
 		this.coinSpawnChance = 0.3f;
 	}
 
-	
 	public void generateInitialLevel(GameModel model)
 	{
-		float currentY = model.getScreenHeight() - 50;for (int i = 0; i < numberOfPlatforms; i++)
+		float currentY = model.getScreenHeight() - 50;
+
+		for (int i = 0; i < numberOfPlatforms; i++)
 		{
 			float gap = randomInRange(minPlatformYSpacing, maxPlatformYSpacing);
 			currentY -= gap;
-	float platformWidth = 100;
+
+
+			float platformWidth = 100;
 			float x = random.nextFloat() * (model.getScreenWidth() - platformWidth);
-	Platform p = factory.createRandomPlatform(x, currentY);
+
+
+			Platform p = factory.createRandomPlatform(x, currentY);
 			model.getGameObjects().add(p);
-	if (random.nextFloat() < coinSpawnChance)
+
+
+			if (random.nextFloat() < coinSpawnChance)
 			{
 				float coinX = x + platformWidth / 2f - 10;
 				float coinY = currentY - 30;
@@ -50,18 +59,13 @@ this.numberOfPlatforms = 10;
 	}
 
 	
-	public void generateOnTheFly(GameModel model) {
-
-
-
-
-float playerY = model.getPlayer().getY();
-
-
-
+	public void generateOnTheFly(GameModel model)
+	{
+		float playerY = model.getPlayer().getY();
 	}
 
-	private float randomInRange(float min, float max) {
+	private float randomInRange(float min, float max)
+	{
 		return min + random.nextFloat() * (max - min);
 	}
 

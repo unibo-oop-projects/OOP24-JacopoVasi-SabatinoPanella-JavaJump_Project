@@ -9,7 +9,7 @@ import model.physics.MovementDirection;
 public class InGameState implements GameStateHandler
 {
 
-	private MovementDirection currentDirection = MovementDirection.NONE;
+	private int horizontalDirection = 0;
 
 	@Override
 	public void onEnter(GameModel model)
@@ -21,46 +21,69 @@ public class InGameState implements GameStateHandler
 	@Override
 	public void handleAction(GameModel model, GameAction action)
 	{
-		switch(action)
+		switch (action)
 		{
 			case MOVE_LEFT:
-				currentDirection = MovementDirection.LEFT;
+				horizontalDirection = -1;
 				break;
 			case MOVE_RIGHT:
-				currentDirection = MovementDirection.RIGHT;
+				horizontalDirection = +1;
 				break;
 			case STOP_HORIZONTAL:
-				currentDirection = MovementDirection.NONE;
+				horizontalDirection = 0;
 				break;
 			case PAUSE_GAME:
 				model.setState(new PauseState());
 				break;
-			default:		break;
+			default:
+				break;
 		}
 	}
 
 	@Override
 	public void update(GameModel model, float deltaTime)
 	{
-Character player = model.getPlayer();
+
+
+		Character player = model.getPlayer();
 		model.getPhysicsManager().updateCharacterMovement
 		(
 				model.getPlayer(),
 				deltaTime,
-				currentDirection
+				convertIntToMovementDirection(horizontalDirection)
 		);
-for (GameObject go : model.getGameObjects())
+
+
+		for (GameObject go : model.getGameObjects())
 		{
 			go.update(deltaTime);
 		}
-model.getCollisionManager().checkCollisions(model);
-model.getCameraManager().update(model, deltaTime);
-model.getSpawnManager().generateOnTheFly(model);
-if (player.getY() > model.getScreenHeight())
+
+
+		model.getCollisionManager().checkCollisions(model);
+
+
+		model.getCameraManager().update(model, deltaTime);
+
+
+		model.getSpawnManager().generateOnTheFly(model);
+
+
+		if (player.getY() > model.getScreenHeight())
 		{
 			model.setState(new GameOverState());
 		}
-model.notifyObservers();
+
+
+		model.notifyObservers();
+	}
+
+
+	private MovementDirection convertIntToMovementDirection(int dir)
+	{
+		if (dir < 0) return MovementDirection.LEFT;
+		if (dir > 0) return MovementDirection.RIGHT;
+		return MovementDirection.NONE;
 	}
 
 }

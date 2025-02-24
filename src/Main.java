@@ -1,3 +1,4 @@
+import controller.GameController;
 import model.GameModel;
 import model.collision.CollisionManager;
 import model.factories.AbstractGameObjectFactory;
@@ -20,21 +21,27 @@ public class Main
 		int screenHeight = 600;
 
 		AbstractGameObjectFactory factory = new GameObjectFactory();
-CollisionManager collisionManager = new CollisionManager();
-SpawnManager spawnManager = new SpawnManager(factory);
-ScoreManager scoreManager = new ScoreManager();
-CameraManager cameraManager = new CameraManager(scoreManager, 0.5f);
-PhysicsManager physicsManager = new PhysicsManager(0.5f, 5.0f, 0.5f);
-GameView view = new GameView();GameFrame frame = new GameFrame();
+		CollisionManager collisionManager = new CollisionManager();
+		SpawnManager spawnManager = new SpawnManager(factory);
+		ScoreManager scoreManager = new ScoreManager();
+		CameraManager cameraManager = new CameraManager(scoreManager, 0.5f);
+		PhysicsManager physicsManager = new PhysicsManager(0.5f, 5.0f, 0.5f);
 
-GameModel model = new GameModel(screenWidth, screenHeight, physicsManager,
-										collisionManager, spawnManager,cameraManager,
-										scoreManager, view,frame,factory);
+		GameModel model = new GameModel(screenWidth,
+										screenHeight,
+										physicsManager,
+										collisionManager,
+										spawnManager,
+										cameraManager,
+										scoreManager);
 
+		GameView view = new GameView(model);
+		model.addObserver(view);
 
+		GameController controller = new GameController(model);
 
-model.startGame();
-
-
+		GameFrame frame = new GameFrame();
+		frame.addKeyListener(controller);
+		controller.startGameLoop();
 	}
 }

@@ -23,9 +23,6 @@ import java.util.List;
 
 public class GameModel
 {
-	private final GameFrame gameFrame;
-	private final GameView gameView;
-	private final AbstractGameObjectFactory gameFactory;
 	private GameStateHandler currentState;
 
 	private final PhysicsManager physicsManager;
@@ -48,25 +45,20 @@ public class GameModel
 			CollisionManager collisionManager,
 			SpawnManager spawnManager,
 			CameraManager cameraManager,
-			ScoreManager scoreManager,
-			GameView view,
-			GameFrame frame,
-			AbstractGameObjectFactory factory
-	)
-
+			ScoreManager scoreManager)
 	{
 		this.screenWidth = screenWidth;
 		this.screenHeight = screenHeight;
-		this.gameFactory= factory;
+
 		this.physicsManager = physicsManager;
 		this.collisionManager = collisionManager;
 		this.spawnManager = spawnManager;
 		this.cameraManager = cameraManager;
 		this.scoreManager = scoreManager;
-		this.gameFrame = frame;
+
 		this.gameObjects = new ArrayList<>();
 		this.observers = new ArrayList<>();
-		this.gameView = view;this.gameFrame.add(gameView);
+
 		this.currentState = new MenuState();
 		this.currentState.onEnter(this);
 	}
@@ -94,11 +86,13 @@ public class GameModel
 		gameObjects.clear();
 		scoreManager.reset();
 
+		this.player = spawnManager.getFactory()
+				.createCharacter(screenWidth / 2f, screenHeight - 100);
+
+		gameObjects.add(this.player);
 
 
-this.player = spawnManager.getFactory()
-				.createCharacter(screenWidth / 2f, screenHeight - 100);gameObjects.add(this.player);
-spawnManager.generateInitialLevel(this);
+		spawnManager.generateInitialLevel(this);
 	}
 
 
@@ -110,6 +104,15 @@ spawnManager.generateInitialLevel(this);
 		{
 			obs.onModelUpdate(this);
 		}
+	}
+
+	public int getScore()
+	{
+		return scoreManager.getCurrentScore();
+	}
+	public void addPointsToScore(int amount)
+	{
+		scoreManager.addPoints(amount);
 	}
 	public PhysicsManager getPhysicsManager() { return physicsManager; }
 	public CollisionManager getCollisionManager() { return collisionManager; }

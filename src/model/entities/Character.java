@@ -16,36 +16,30 @@ public class Character extends GameObject
 		this.y = y;
 		this.width = width;
 		this.height = height;
-		this.jumpForce = jumpForce;this.velocityX = 0;
+		this.jumpForce = jumpForce;
+
+		this.velocityX = 0;
 		this.velocityY = 0;
 	}
 
 	@Override
 	public void update(float deltaTime)
-	{this.x += velocityX * deltaTime;
-this.y += velocityY * deltaTime;
-this.velocityY += GRAVITY * deltaTime;
-
-
-
-
-
-
-
-
-
-
+	{
+		this.x += velocityX * deltaTime;
+		this.y += velocityY * deltaTime;
+		this.velocityY += GRAVITY * deltaTime;
 	}
 
 	@Override
 	public void onCollision(GameObject other)
-	{if (other instanceof Platform)
+	{
+
+		if (other instanceof Platform)
 		{
-	this.velocityY = -jumpForce;
+			this.velocityY = -jumpForce;
 		}
 
 	}
-
 
 	public float getVelocityX()
 	{

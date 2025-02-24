@@ -13,7 +13,9 @@ public class ScoreManager
 
 	public void addPoints(int amount)
 	{
-		this.currentScore += amount;if (this.currentScore > this.bestScore)
+		this.currentScore += amount;
+
+		if (this.currentScore > this.bestScore)
 		{
 			this.bestScore = this.currentScore;
 		}

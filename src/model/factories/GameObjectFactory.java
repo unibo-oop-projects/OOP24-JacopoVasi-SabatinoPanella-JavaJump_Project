@@ -10,15 +10,23 @@ public class GameObjectFactory extends AbstractGameObjectFactory
 {
 	@Override
 	public Character createCharacter(float x, float y)
-	{float width = 30;
+	{
+
+		float width = 30;
 		float height = 40;
-		float jumpForce = 250;return new Character(x, y, width, height, jumpForce);
+		float jumpForce = 250;
+
+		return new Character(x, y, width, height, jumpForce);
 	}
 
 	@Override
 	public Platform createStandardPlatform(float x, float y)
-	{float width = 100;
-		float height = 10;return new Platform(x, y, width, height);
+	{
+
+		float width = 100;
+		float height = 10;
+
+		return new Platform(x, y, width, height);
 	}
 
 	@Override
@@ -26,12 +34,18 @@ public class GameObjectFactory extends AbstractGameObjectFactory
 	{
 		Random rand = new Random();
 		float width = 80 + rand.nextInt(41);
-		float height = 10;return new Platform(x, y, width, height);
+		float height = 10;
+
+		return new Platform(x, y, width, height);
 	}
 
 	@Override
 	public Coin createCoin(float x, float y)
-	{float width = 20;
-		float height = 20;return new Coin(x, y, width, height);
+	{
+
+		float width = 20;
+		float height = 20;
+
+		return new Coin(x, y, width, height);
 	}
 }
