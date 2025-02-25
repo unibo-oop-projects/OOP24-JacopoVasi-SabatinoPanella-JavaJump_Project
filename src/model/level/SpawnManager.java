@@ -1,18 +1,13 @@
 package model.level;
-
 import model.GameModel;
 import model.factories.AbstractGameObjectFactory;
 import model.entities.Coin;
 import model.entities.Platform;
-
 import java.util.Random;
-
 public class SpawnManager
 {
 	private final AbstractGameObjectFactory factory;
 	private final Random random;
-
-
 	private final int numberOfPlatforms;
 	private final float minPlatformYSpacing;
 	private final float maxPlatformYSpacing;
@@ -34,6 +29,7 @@ public class SpawnManager
 		this.lastSpawnCameraOffset = 0;
 	}
 
+	
 	public void generateInitialLevel(GameModel model)
 	{
 		float currentY = model.getScreenHeight() - 50;
@@ -41,8 +37,12 @@ public class SpawnManager
 		spawnerCycle(model, currentY);
 	}
 
+	
 	public void generateOnTheFly(GameModel model)
 	{
+
+
+
 		float playerY = model.getPlayer().getY();
 		float cameraOffset = model.getCameraManager().getCurrentOffset();
 
@@ -51,6 +51,9 @@ public class SpawnManager
 			spawnPlatformsAndCoins(model);
 			this.lastSpawnCameraOffset -= 300f;
 		}
+
+
+
 	}
 
 	private void spawnPlatformsAndCoins(GameModel model)

@@ -11,9 +11,12 @@ import java.util.List;
 
 public class CollisionManager
 {
+	
 	public void checkCollisions(GameModel model)
 	{
 		List<GameObject> objects = model.getGameObjects();
+
+
 		for (int i = 0; i < objects.size(); i++)
 		{
 			GameObject a = objects.get(i);
@@ -23,8 +26,11 @@ public class CollisionManager
 
 				if (isColliding(a, b))
 				{
+
 					a.onCollision(b);
 					b.onCollision(a);
+
+
 					if (a instanceof Character && b instanceof Coin)
 					{
 						handleCharacterCoinCollision((Character) a, (Coin) b, model);
@@ -35,6 +41,8 @@ public class CollisionManager
 						handleCharacterCoinCollision((Character) b, (Coin) a, model);
 						break;
 					}
+
+
 					if (a instanceof Character && b instanceof Platform)
 					{
 						handleCharacterPlatformCollision((Character) a, (Platform) b, model);

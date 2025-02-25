@@ -1,5 +1,4 @@
 package model;
-
 import controller.GameAction;
 import model.camera.CameraManager;
 import model.collision.CollisionManager;
@@ -21,8 +20,10 @@ import view.GameView;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class GameModel
 {
+
 	private GameStateHandler currentState;
 
 	private final PhysicsManager physicsManager;
@@ -46,6 +47,7 @@ public class GameModel
 			SpawnManager spawnManager,
 			CameraManager cameraManager,
 			ScoreManager scoreManager)
+
 	{
 		this.screenWidth = screenWidth;
 		this.screenHeight = screenHeight;
@@ -58,6 +60,7 @@ public class GameModel
 
 		this.gameObjects = new ArrayList<>();
 		this.observers = new ArrayList<>();
+
 
 		this.currentState = new MenuState();
 		this.currentState.onEnter(this);
@@ -76,15 +79,13 @@ public class GameModel
 		this.currentState.handleAction(this, action);
 	}
 
-	public void update(float deltaTime)
-	{
-		this.currentState.update(this, deltaTime);
-	}
+	public void update(float deltaTime) {this.currentState.update(this, deltaTime); }
 
 	public void startGame()
 	{
 		gameObjects.clear();
 		scoreManager.reset();
+
 
 		this.player = spawnManager.getFactory()
 				.createCharacter(screenWidth / 2f, screenHeight - 100);
@@ -106,14 +107,19 @@ public class GameModel
 		}
 	}
 
+
+
 	public int getScore()
 	{
 		return scoreManager.getCurrentScore();
 	}
+
 	public void addPointsToScore(int amount)
 	{
 		scoreManager.addPoints(amount);
 	}
+
+
 	public PhysicsManager getPhysicsManager() { return physicsManager; }
 	public CollisionManager getCollisionManager() { return collisionManager; }
 	public SpawnManager getSpawnManager() { return spawnManager; }

@@ -9,10 +9,8 @@ import model.score.ScoreManager;
 import model.camera.CameraManager;
 import view.GameFrame;
 import view.GameView;
-
 import javax.swing.*;
 import java.awt.*;
-
 public class Main
 {
 	public static void main(String[] args)
@@ -21,11 +19,22 @@ public class Main
 		int screenHeight = 600;
 
 		AbstractGameObjectFactory factory = new GameObjectFactory();
+
+
 		CollisionManager collisionManager = new CollisionManager();
+
+
 		SpawnManager spawnManager = new SpawnManager(factory);
+
+
 		ScoreManager scoreManager = new ScoreManager();
+
+
 		CameraManager cameraManager = new CameraManager(scoreManager, 0.5f);
+
+
 		PhysicsManager physicsManager = new PhysicsManager(0.5f, 5.0f, 0.5f);
+
 
 		GameModel model = new GameModel(screenWidth,
 										screenHeight,
@@ -33,14 +42,28 @@ public class Main
 										collisionManager,
 										spawnManager,
 										cameraManager,
-										scoreManager);
-		GameView view = new GameView(model);
-		model.addObserver(view);
+										scoreManager
 
-		GameController controller = new GameController(model);
+
+		);
+
 
 		GameFrame frame = new GameFrame();
+
+
+		GameView view = new GameView(model);
+		model.addObserver(view);
+		frame.addComponents(view);
+		GameController controller = new GameController(model,
+				view
+		);
+
 		frame.addKeyListener(controller);
+
+
 		controller.startGameLoop();
+
 	}
 }
+
+

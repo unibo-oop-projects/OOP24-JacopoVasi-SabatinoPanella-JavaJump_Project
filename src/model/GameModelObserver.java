@@ -1,6 +1,5 @@
 package model;
-
 public interface GameModelObserver
 {
-	void onModelUpdate(GameModel model);
+		void onModelUpdate(GameModel model);
 }

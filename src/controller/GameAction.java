@@ -1,5 +1,6 @@
 package controller;
 
+
 public enum GameAction
 {
 	MOVE_LEFT,

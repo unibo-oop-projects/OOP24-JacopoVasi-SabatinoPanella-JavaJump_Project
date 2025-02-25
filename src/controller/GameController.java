@@ -9,14 +9,19 @@ import java.awt.event.KeyListener;
 public class GameController implements KeyListener
 {
 	private final GameModel model;
-
+	private  GameView view;
 	private volatile boolean running;
 
-	public GameController(GameModel model)
+	public GameController(GameModel model,
+						  GameView view
+							)
 	{
 		this.model = model;
+		this.view= view;
 		this.running = false;
 	}
+
+	
 	public void startGameLoop()
 	{
 		running = true;
@@ -34,7 +39,11 @@ public class GameController implements KeyListener
 				if (elapsedNs >= nsPerFrame)
 				{
 					float deltaTime = (float) (elapsedNs / 1_000_000_000.0);
+
+
 					model.update(deltaTime);
+					view.updateG();
+					view.repaint();
 					previousTime = currentTime;
 				}
 
@@ -78,6 +87,8 @@ public class GameController implements KeyListener
 	{
 
 	}
+
+	
 	private GameAction mapKeyToAction(KeyEvent e, boolean pressed)
 	{
 		int code = e.getKeyCode();
@@ -88,11 +99,20 @@ public class GameController implements KeyListener
 			case KeyEvent.VK_RIGHT:
 				return pressed ? GameAction.MOVE_RIGHT : GameAction.STOP_HORIZONTAL;
 			case KeyEvent.VK_ENTER:
+
+
 				return pressed ? GameAction.CONFIRM_SELECTION : null;
 			case KeyEvent.VK_ESCAPE:
 				return pressed ? GameAction.PAUSE_GAME : null;
+
+
+
 			default:
 				return null;
 		}
 	}
+
+
+
+
 }
