@@ -18,6 +18,8 @@ public class SpawnManager
 	private final float maxPlatformYSpacing;
 	private final float coinSpawnChance;
 
+	private float lastSpawnCameraOffset;
+
 	public SpawnManager(AbstractGameObjectFactory factory)
 	{
 		this.factory = factory;
@@ -28,12 +30,40 @@ public class SpawnManager
 		this.minPlatformYSpacing = 80;
 		this.maxPlatformYSpacing = 140;
 		this.coinSpawnChance = 0.3f;
+
+		this.lastSpawnCameraOffset = 0;
 	}
 
 	public void generateInitialLevel(GameModel model)
 	{
 		float currentY = model.getScreenHeight() - 50;
 
+		spawnerCycle(model, currentY);
+	}
+
+	public void generateOnTheFly(GameModel model)
+	{
+		float playerY = model.getPlayer().getY();
+		float cameraOffset = model.getCameraManager().getCurrentOffset();
+
+		if (cameraOffset < lastSpawnCameraOffset)
+		{
+			spawnPlatformsAndCoins(model);
+			this.lastSpawnCameraOffset -= 300f;
+		}
+	}
+
+	private void spawnPlatformsAndCoins(GameModel model)
+	{
+		float baseY = (model.getScreenHeight() - 50) - this.lastSpawnCameraOffset;
+
+		float currentY = baseY;
+
+		spawnerCycle(model, currentY);
+	}
+
+	private void spawnerCycle(GameModel model, float currentY)
+	{
 		for (int i = 0; i < numberOfPlatforms; i++)
 		{
 			float gap = randomInRange(minPlatformYSpacing, maxPlatformYSpacing);
@@ -56,12 +86,6 @@ public class SpawnManager
 				model.getGameObjects().add(c);
 			}
 		}
-	}
-
-	
-	public void generateOnTheFly(GameModel model)
-	{
-		float playerY = model.getPlayer().getY();
 	}
 
 	private float randomInRange(float min, float max)

@@ -34,7 +34,6 @@ public class Main
 										spawnManager,
 										cameraManager,
 										scoreManager);
-
 		GameView view = new GameView(model);
 		model.addObserver(view);
 

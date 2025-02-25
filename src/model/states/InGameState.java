@@ -44,8 +44,8 @@ public class InGameState implements GameStateHandler
 	public void update(GameModel model, float deltaTime)
 	{
 
-
 		Character player = model.getPlayer();
+
 		model.getPhysicsManager().updateCharacterMovement
 		(
 				model.getPlayer(),
@@ -57,6 +57,10 @@ public class InGameState implements GameStateHandler
 		for (GameObject go : model.getGameObjects())
 		{
 			go.update(deltaTime);
+			if (go instanceof Character)
+			{
+				applyPacManEffect((Character)go, model);
+			}
 		}
 
 
@@ -86,5 +90,18 @@ public class InGameState implements GameStateHandler
 		return MovementDirection.NONE;
 	}
 
+	private void applyPacManEffect(Character player, GameModel model)
+	{
+		int screenWidth = model.getScreenWidth();
+
+		if (player.getX() + player.getWidth() < 0)
+		{
+			player.setX(screenWidth);
+		}
+		else if (player.getX() > screenWidth)
+		{
+			player.setX(-player.getWidth());
+		}
+	}
 }
 

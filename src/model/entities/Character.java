@@ -10,6 +10,9 @@ public class Character extends GameObject
 
 	private static final float GRAVITY = 300.0f;
 
+	private float oldX;
+	private float oldY;
+
 	public Character(float x, float y, float width, float height, float jumpForce)
 	{
 		this.x = x;
@@ -20,26 +23,33 @@ public class Character extends GameObject
 
 		this.velocityX = 0;
 		this.velocityY = 0;
+
+		this.oldX = x;
+		this.oldY = y;
 	}
 
 	@Override
 	public void update(float deltaTime)
 	{
+		oldX = x;
+		oldY = y;
+
 		this.x += velocityX * deltaTime;
+
 		this.y += velocityY * deltaTime;
+
 		this.velocityY += GRAVITY * deltaTime;
 	}
 
 	@Override
 	public void onCollision(GameObject other)
 	{
-
 		if (other instanceof Platform)
 		{
-			this.velocityY = -jumpForce;
 		}
 
 	}
+
 
 	public float getVelocityX()
 	{
@@ -71,9 +81,13 @@ public class Character extends GameObject
 		this.jumpForce = jumpForce;
 	}
 
-	@Override
-	public float getY()
+	public float getOldX()
 	{
-		return super.getY();
+		return oldX;
+	}
+
+	public float getOldY()
+	{
+		return oldY;
 	}
 }
