@@ -1,13 +1,18 @@
 package model.level;
+
 import model.GameModel;
 import model.factories.AbstractGameObjectFactory;
 import model.entities.Coin;
 import model.entities.Platform;
+
 import java.util.Random;
+
 public class SpawnManager
 {
 	private final AbstractGameObjectFactory factory;
 	private final Random random;
+
+
 	private final int numberOfPlatforms;
 	private final float minPlatformYSpacing;
 	private final float maxPlatformYSpacing;

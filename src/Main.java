@@ -9,14 +9,17 @@ import model.score.ScoreManager;
 import model.camera.CameraManager;
 import view.GameFrame;
 import view.GameView;
+
 import javax.swing.*;
 import java.awt.*;
+
 public class Main
 {
 	public static void main(String[] args)
 	{
 		int screenWidth = 800;
 		int screenHeight = 600;
+
 
 		AbstractGameObjectFactory factory = new GameObjectFactory();
 
@@ -34,6 +37,7 @@ public class Main
 
 
 		PhysicsManager physicsManager = new PhysicsManager(0.5f, 5.0f, 0.5f);
+
 
 
 		GameModel model = new GameModel(screenWidth,
@@ -63,7 +67,6 @@ public class Main
 
 		controller.startGameLoop();
 
+
 	}
 }
-
-

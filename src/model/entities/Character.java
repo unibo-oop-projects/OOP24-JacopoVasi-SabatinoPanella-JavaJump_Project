@@ -52,6 +52,8 @@ public class Character extends GameObject
 		if (other instanceof Platform)
 		{
 
+
+
 		}
 
 	}

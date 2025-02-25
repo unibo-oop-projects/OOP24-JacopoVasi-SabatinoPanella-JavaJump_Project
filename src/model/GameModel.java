@@ -1,4 +1,5 @@
 package model;
+
 import controller.GameAction;
 import model.camera.CameraManager;
 import model.collision.CollisionManager;

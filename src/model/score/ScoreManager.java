@@ -1,8 +1,10 @@
 package model.score;
+
 public class ScoreManager
 {
 	private int currentScore;
 	private int bestScore;
+
 	public ScoreManager()
 	{
 		this.currentScore = 0;
@@ -33,7 +35,5 @@ public class ScoreManager
 	{
 		this.currentScore = 0;
 	}
-
-
 
 }

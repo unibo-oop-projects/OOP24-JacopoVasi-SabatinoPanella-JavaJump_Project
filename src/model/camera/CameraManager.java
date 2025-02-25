@@ -1,7 +1,10 @@
 package model.camera;
+
 import model.GameModel;
 import model.entities.Character;
 import model.score.ScoreManager;
+
+
 public class CameraManager
 {
 	private float currentOffset;
