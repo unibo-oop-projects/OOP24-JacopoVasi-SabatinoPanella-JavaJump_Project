@@ -24,7 +24,6 @@ import java.util.List;
 
 public class GameModel
 {
-
 	private GameStateHandler currentState;
 
 	private final PhysicsManager physicsManager;
