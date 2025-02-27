@@ -1,7 +1,7 @@
 package controller;
 
 import model.GameModel;
-import view.GameView;
+import view.*;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -9,16 +9,28 @@ import java.awt.event.KeyListener;
 public class GameController implements KeyListener
 {
 	private final GameModel model;
-	private  GameView view;
+	private final GameFrame frame;
 	private volatile boolean running;
+	private final GameView view;
+	private final MenuView menuView;
+	private final ViewManager viewManager;
+	private final UI ui;
 
 	public GameController(GameModel model,
-						  GameView view
+						  GameFrame frame
 							)
 	{
 		this.model = model;
-		this.view= view;
+		this.frame= frame;
 		this.running = false;
+		this.view = new GameView(model);
+		this.ui = new UI();
+		this.menuView=new MenuView();
+		this.viewManager=new ViewManager(view,menuView,ui);
+		frame.add(view);
+		frame.add(ui);
+		frame.add(menuView);
+
 	}
 
 	
@@ -111,8 +123,6 @@ public class GameController implements KeyListener
 				return null;
 		}
 	}
-
-
 
 
 }

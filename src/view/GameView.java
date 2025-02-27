@@ -16,11 +16,7 @@ public class GameView extends JPanel implements AbstractView
     public GameView(GameModel model)
     {
         this.model = model;
-        this.setLayout(null);
 
-        this.setDoubleBuffered(true);
-        this.setFocusable(true);
-        this.setVisible(true);
 
     }
 
@@ -64,9 +60,15 @@ public class GameView extends JPanel implements AbstractView
     }
 
     @Override
-    public void paint(Graphics g) {
-        super.paint(g);
+    public void toggleVisibility() {
+        if (this.isVisible()){
+            this.setVisible(false);
+        }else {
+            this.setVisible(true);
+        }
     }
+
+
 
 
     public void onModelUpdate(GameModel model)

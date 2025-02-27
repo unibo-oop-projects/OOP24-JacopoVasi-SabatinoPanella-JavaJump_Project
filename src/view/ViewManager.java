@@ -17,10 +17,14 @@ public class ViewManager implements GameModelObserver {
 
 
     public void setCvMenu(){
+        currentView.toggleVisibility();
         currentView=menuView;
+        currentView.toggleVisibility();
     }
     public void setCvGame(){
+        currentView.toggleVisibility();
         currentView=gameView;
+        currentView.toggleVisibility();
     }
     public void draw(){
         currentView.repaint();

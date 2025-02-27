@@ -9,5 +9,5 @@ public interface AbstractView{
      void paint(Graphics g);
      void paintComponent(Graphics g);
      void repaint();
-
+     void toggleVisibility();
 }

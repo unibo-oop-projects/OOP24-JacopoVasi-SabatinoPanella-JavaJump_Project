@@ -53,28 +53,18 @@ public class Main
 
 		GameFrame frame = new GameFrame();
 
-
-
-
-		GameView view = new GameView(model);
-
-		frame.addComponents(view);
 		GameController controller = new GameController(model,
-				view
+				frame
 		);
 
 		frame.addKeyListener(controller);
 
 
 
-
 		controller.startGameLoop();
 		model.startGame();
 
-
-
 	}
 }
-
 
 
