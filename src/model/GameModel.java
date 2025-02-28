@@ -52,13 +52,17 @@ public class GameModel
 	{
 		this.screenWidth = screenWidth;
 		this.screenHeight = screenHeight;
+
 		this.physicsManager = physicsManager;
 		this.collisionManager = collisionManager;
 		this.spawnManager = spawnManager;
 		this.cameraManager = cameraManager;
 		this.scoreManager = scoreManager;
+
 		this.gameObjects = new ArrayList<>();
 		this.observers = new ArrayList<>();
+
+
 		this.currentState = new MenuState();
 		this.currentState.onEnter(this);
 	}

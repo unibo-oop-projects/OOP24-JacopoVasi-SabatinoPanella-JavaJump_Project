@@ -9,27 +9,17 @@ import java.awt.event.KeyListener;
 public class GameController implements KeyListener
 {
 	private final GameModel model;
-	private final GameFrame frame;
 	private volatile boolean running;
-	private final GameView view;
-	private final MenuView menuView;
 	private final ViewManager viewManager;
-	private final UI ui;
 
-	public GameController(GameModel model,
-						  GameFrame frame
+
+	public GameController(GameModel model
 							)
 	{
 		this.model = model;
-		this.frame= frame;
 		this.running = false;
-		this.view = new GameView(model);
-		this.ui = new UI();
-		this.menuView=new MenuView();
-		this.viewManager=new ViewManager(view,menuView,ui);
-		frame.add(view);
-		frame.add(ui);
-		frame.add(menuView);
+		this.viewManager=new ViewManager(this.model);
+		viewManager.setCvGame();
 
 	}
 
@@ -54,8 +44,7 @@ public class GameController implements KeyListener
 
 
 					model.update(deltaTime);
-					view.updateG();
-					view.repaint();
+					viewManager.draw();
 					previousTime = currentTime;
 				}
 
@@ -116,8 +105,6 @@ public class GameController implements KeyListener
 				return pressed ? GameAction.CONFIRM_SELECTION : null;
 			case KeyEvent.VK_ESCAPE:
 				return pressed ? GameAction.PAUSE_GAME : null;
-
-
 
 			default:
 				return null;

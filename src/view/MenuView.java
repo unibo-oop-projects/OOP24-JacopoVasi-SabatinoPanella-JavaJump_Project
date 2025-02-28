@@ -1,19 +1,16 @@
 package view;
-
 import javax.swing.*;
 import javax.swing.text.View;
 import java.awt.*;
-
 public class MenuView extends JPanel implements AbstractView {
     private final MenuBar menuBar;
     private final int centerX, centerY, offset;
     public MenuView() {
         this.setBackground(Color.BLACK);
-        this.setLayout(null);
-
+        this.setSize(800, 800);
         this.setDoubleBuffered(true);
         this.setFocusable(true);
-        this.setVisible(true);
+        this.setVisible(false);
         this.menuBar = new MenuBar();
         this.centerX = this.getWidth() / 2;
         this.centerY = this.getHeight() / 2;
@@ -24,6 +21,8 @@ public class MenuView extends JPanel implements AbstractView {
     public void updateG() {
     this.repaint();
     }
+
+
 
     @Override
     public void paintComponent(Graphics g) {

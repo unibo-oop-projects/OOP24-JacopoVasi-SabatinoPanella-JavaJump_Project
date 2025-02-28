@@ -9,10 +9,8 @@ import model.score.ScoreManager;
 import model.camera.CameraManager;
 import view.GameFrame;
 import view.GameView;
-
 import javax.swing.*;
 import java.awt.*;
-
 public class Main
 {
 	public static void main(String[] args)
@@ -50,21 +48,11 @@ public class Main
 
 		);
 
-
-		GameFrame frame = new GameFrame();
-
-		GameController controller = new GameController(model,
-				frame
+		GameController controller = new GameController(model
 		);
-
-		frame.addKeyListener(controller);
-
-
 
 		controller.startGameLoop();
 		model.startGame();
 
 	}
 }
-
-

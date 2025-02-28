@@ -30,6 +30,8 @@ public class CameraManager
 		float halfScreen = screenHeight / 2f;
 
 
+
+
 		float desiredOffset = 0;
 		if (player.getY() < halfScreen - currentOffset)
 		{
@@ -38,12 +40,19 @@ public class CameraManager
 			desiredOffset = player.getY() - (halfScreen);
 		}
 
+
+
 		currentOffset = desiredOffset;
+
+
 
 		if (currentOffset < previousOffset)
 		{
 
 			float deltaOffset = previousOffset - currentOffset;
+
+
+
 			int points = (int) (deltaOffset * scoreFactor);
 			scoreManager.addPoints(points);
 		}

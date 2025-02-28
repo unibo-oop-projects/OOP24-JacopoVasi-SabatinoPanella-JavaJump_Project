@@ -1,18 +1,26 @@
 package view;
-
 import model.GameModel;
 import model.GameModelObserver;
-
+import java.awt.*;
 public class ViewManager implements GameModelObserver {
     AbstractView currentView;
-    AbstractView gameView;
-    AbstractView menuView;
-    AbstractView UI;
-    public ViewManager(AbstractView gameView,AbstractView menuView, AbstractView UI) {
-        this.gameView = gameView;
-        this.menuView = menuView;
+    GameView gameView;
+    MenuView menuView;
+    UI UI;
+    GameModel model;
+    GameFrame frame;
+    public ViewManager(GameModel gameModel) {
+        this.model = gameModel;
+        this.gameView = new GameView(this.model);
+        this.UI = new UI(this.model);
+        this.menuView=new MenuView();
+        this.frame = new GameFrame();
+        frame.add(gameView);
+        frame.add(UI);
+        frame.add(menuView);
         this.currentView = this.menuView;
-        this.UI = UI;
+        currentView.toggleVisibility();
+
     }
 
 
@@ -27,7 +35,8 @@ public class ViewManager implements GameModelObserver {
         currentView.toggleVisibility();
     }
     public void draw(){
-        currentView.repaint();
+        currentView.updateG();
+
     }
 
     @Override
