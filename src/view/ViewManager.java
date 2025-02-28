@@ -1,7 +1,10 @@
 package view;
+
 import model.GameModel;
 import model.GameModelObserver;
+
 import java.awt.*;
+
 public class ViewManager implements GameModelObserver {
     AbstractView currentView;
     GameView gameView;
@@ -13,7 +16,7 @@ public class ViewManager implements GameModelObserver {
         this.model = gameModel;
         this.gameView = new GameView(this.model);
         this.UI = new UI(this.model);
-        this.menuView=new MenuView();
+        this.menuView=new MenuView(this.model);
         this.frame = new GameFrame();
         frame.add(gameView);
         frame.add(UI);

@@ -5,6 +5,7 @@ import model.GameModel;
 
 public class PauseState implements GameStateHandler
 {
+	private final GameState gameState= GameState.PAUSE;
 	@Override
 	public void handleAction(GameModel model, GameAction action)
 	{
@@ -20,4 +21,9 @@ public class PauseState implements GameStateHandler
 
 	@Override
 	public void update(GameModel model, float deltaTime) {}
+
+	@Override
+	public GameState getGameState() {
+		return gameState;
+	}
 }

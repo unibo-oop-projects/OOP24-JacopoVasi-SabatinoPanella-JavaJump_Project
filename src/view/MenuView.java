@@ -1,16 +1,25 @@
 package view;
+
+import model.GameModel;
+import model.states.GameStateHandler;
+import model.states.MenuState;
+
 import javax.swing.*;
 import javax.swing.text.View;
 import java.awt.*;
+
 public class MenuView extends JPanel implements AbstractView {
     private final MenuBar menuBar;
     private final int centerX, centerY, offset;
-    public MenuView() {
+    private final GameModel model;
+    private GameStateHandler menuState;
+    public MenuView(GameModel model) {
         this.setBackground(Color.BLACK);
         this.setSize(800, 800);
         this.setDoubleBuffered(true);
         this.setFocusable(true);
         this.setVisible(false);
+        this.model = model;
         this.menuBar = new MenuBar();
         this.centerX = this.getWidth() / 2;
         this.centerY = this.getHeight() / 2;
@@ -19,6 +28,7 @@ public class MenuView extends JPanel implements AbstractView {
 
     @Override
     public void updateG() {
+    this.menuState=model.getCurrentState();
     this.repaint();
     }
 
@@ -31,10 +41,10 @@ public class MenuView extends JPanel implements AbstractView {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.red);
         g2d.setFont(new Font("Arial", Font.PLAIN, 40));
-        g2d.drawString("Welcome to Java Jump Uni", centerX, centerY);
+        g2d.drawString("Welcome to Java Jump Uni", 0, centerY);
         g2d.setColor(Color.green);
-        g2d.drawString("Start", centerX, centerY+offset);
-
+        g2d.drawString("Start", 0, centerY+offset);
+        g2d.drawString("Start", 0, centerY+offset*2);
 
     }
 

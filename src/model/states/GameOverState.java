@@ -5,6 +5,7 @@ import model.GameModel;
 
 public class GameOverState implements GameStateHandler
 {
+	private final GameState gameState= GameState.GAME_OVER;
 	@Override
 	public void handleAction(GameModel model, GameAction action)
 	{
@@ -18,5 +19,10 @@ public class GameOverState implements GameStateHandler
 	{
 
 
+	}
+
+	@Override
+	public GameState getGameState() {
+		return gameState;
 	}
 }

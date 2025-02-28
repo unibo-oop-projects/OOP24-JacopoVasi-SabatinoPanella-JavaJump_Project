@@ -8,12 +8,14 @@ import model.physics.MovementDirection;
 
 public class InGameState implements GameStateHandler
 {
+	private final GameState gameState= GameState.IN_GAME;
 
 	private int horizontalDirection = 0;
 
 	@Override
 	public void onEnter(GameModel model)
 	{
+
 
 
 	}
@@ -80,6 +82,11 @@ public class InGameState implements GameStateHandler
 
 
 		model.notifyObservers();
+	}
+
+	@Override
+	public GameState getGameState() {
+		return gameState;
 	}
 
 

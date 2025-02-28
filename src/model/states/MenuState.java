@@ -5,9 +5,12 @@ import model.GameModel;
 
 public class MenuState implements GameStateHandler
 {
+	private final GameState gameState= GameState.MENU;
 	@Override
 	public void onEnter(GameModel model)
 	{
+
+
 
 	}
 
@@ -36,5 +39,10 @@ public class MenuState implements GameStateHandler
 	@Override
 	public void update(GameModel model, float deltaTime) {
 
+	}
+
+	@Override
+	public GameState getGameState() {
+		return gameState;
 	}
 }

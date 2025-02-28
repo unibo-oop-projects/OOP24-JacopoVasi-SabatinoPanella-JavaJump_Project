@@ -3,13 +3,16 @@ import model.GameModel;
 import model.GameModelObserver;
 import model.entities.Character;
 import model.entities.GameObject;
+
 import javax.swing.*;
 import java.awt.*;
+
 public class GameView extends JPanel implements AbstractView
 {
     private final GameModel model;
     private GameObject gameObject;
     private Character player;
+
     public GameView(GameModel model)
     {
         this.model = model;

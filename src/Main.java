@@ -9,8 +9,10 @@ import model.score.ScoreManager;
 import model.camera.CameraManager;
 import view.GameFrame;
 import view.GameView;
+
 import javax.swing.*;
 import java.awt.*;
+
 public class Main
 {
 	public static void main(String[] args)
@@ -44,8 +46,6 @@ public class Main
 										spawnManager,
 										cameraManager,
 										scoreManager
-
-
 		);
 
 		GameController controller = new GameController(model

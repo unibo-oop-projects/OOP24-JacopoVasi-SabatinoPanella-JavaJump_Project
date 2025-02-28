@@ -90,9 +90,7 @@ public class GameModel
 
 		this.player = spawnManager.getFactory()
 				.createCharacter(screenWidth / 2f, screenHeight - 100);
-
 		gameObjects.add(this.player);
-
 
 		spawnManager.generateInitialLevel(this);
 	}
@@ -126,10 +124,9 @@ public class GameModel
 	public SpawnManager getSpawnManager() { return spawnManager; }
 	public CameraManager getCameraManager() { return cameraManager; }
 	public ScoreManager getScoreManager() { return scoreManager; }
-
+	public GameStateHandler getCurrentState() {return currentState;}
 	public List<GameObject> getGameObjects() { return this.gameObjects; }
 	public Character getPlayer() { return player; }
-
 	public int getScreenWidth() { return screenWidth; }
 	public int getScreenHeight() { return screenHeight; }
 }
