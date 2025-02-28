@@ -13,10 +13,12 @@ import model.level.SpawnManager;
 import model.physics.MovementDirection;
 import model.physics.PhysicsManager;
 import model.score.ScoreManager;
+import model.states.GameState;
 import model.states.GameStateHandler;
 import model.states.MenuState;
 import view.GameFrame;
 import view.GameView;
+import view.ViewManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +28,7 @@ public class GameModel
 {
 
 	private GameStateHandler currentState;
-
+	private final ViewManager viewManager;
 	private final PhysicsManager physicsManager;
 	private final CollisionManager collisionManager;
 	private final SpawnManager spawnManager;
@@ -52,7 +54,7 @@ public class GameModel
 	{
 		this.screenWidth = screenWidth;
 		this.screenHeight = screenHeight;
-
+		this.viewManager=new ViewManager(this);
 		this.physicsManager = physicsManager;
 		this.collisionManager = collisionManager;
 		this.spawnManager = spawnManager;
@@ -65,6 +67,7 @@ public class GameModel
 
 		this.currentState = new MenuState();
 		this.currentState.onEnter(this);
+
 	}
 
 
@@ -78,9 +81,18 @@ public class GameModel
 	public void handleAction(GameAction action)
 	{
 		this.currentState.handleAction(this, action);
+		System.out.println("handleAction");
 	}
 
-	public void update(float deltaTime) {this.currentState.update(this, deltaTime); }
+	public void update(float deltaTime) {
+		this.currentState.update(this, deltaTime);
+		this.viewManager.draw();
+		if (this.currentState.getGameState()== GameState.IN_GAME) {
+			this.player.update(deltaTime);
+			this.cameraManager.update(this, deltaTime);
+			this.gameObjects.getFirst().update(deltaTime);
+		}
+	}
 
 	public void startGame()
 	{
@@ -129,4 +141,5 @@ public class GameModel
 	public Character getPlayer() { return player; }
 	public int getScreenWidth() { return screenWidth; }
 	public int getScreenHeight() { return screenHeight; }
+	public ViewManager getViewManager() {return viewManager;}
 }

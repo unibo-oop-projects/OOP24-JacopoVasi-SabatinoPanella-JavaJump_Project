@@ -6,29 +6,47 @@ import model.GameModel;
 public class MenuState implements GameStateHandler
 {
 	private final GameState gameState= GameState.MENU;
+	private int selection;
+	private final int maxSelection=2;
+	private final int minSelection=0;
 	@Override
 	public void onEnter(GameModel model)
 	{
+	selection=0;
 
-
-
+		model.getViewManager().setCvMenu();
 	}
 
 	@Override
 	public void handleAction(GameModel model, GameAction action)
 	{
+		System.out.println("YOU ARE AT THE MENU");
 		switch(action)
 		{
 			case CONFIRM_SELECTION:
 
-				model.startGame();
-				model.setState(new InGameState());
+				if (selection==1){
+					model.startGame();
+					model.setState(new InGameState());
+				}else if (selection==maxSelection){
+					System.exit(0);
+				}
+
 				break;
 			case MOVE_MENU_UP:
+				selection++;
+				if(selection>maxSelection){
+					selection=1;
+				}
+
 
 				break;
 			case MOVE_MENU_DOWN:
-
+				System.out.println("Menu DOWN");
+				selection--;
+				if(selection==0){
+					selection=3;
+				}
 				break;
 			default:
 
@@ -44,5 +62,14 @@ public class MenuState implements GameStateHandler
 	@Override
 	public GameState getGameState() {
 		return gameState;
+	}
+
+	@Override
+	public int getValue() {
+		return selection;
+	}
+
+	public int getSelection() {
+		return selection;
 	}
 }

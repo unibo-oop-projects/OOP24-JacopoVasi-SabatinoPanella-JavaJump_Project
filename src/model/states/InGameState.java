@@ -15,7 +15,7 @@ public class InGameState implements GameStateHandler
 	@Override
 	public void onEnter(GameModel model)
 	{
-
+		model.getViewManager().setCvGame();
 
 
 	}
@@ -87,6 +87,11 @@ public class InGameState implements GameStateHandler
 	@Override
 	public GameState getGameState() {
 		return gameState;
+	}
+
+	@Override
+	public int getValue() {
+		return 0;
 	}
 
 

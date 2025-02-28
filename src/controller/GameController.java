@@ -10,16 +10,13 @@ public class GameController implements KeyListener
 {
 	private final GameModel model;
 	private volatile boolean running;
-	private final ViewManager viewManager;
-
 
 	public GameController(GameModel model
 							)
 	{
 		this.model = model;
 		this.running = false;
-		this.viewManager=new ViewManager(this.model);
-		viewManager.setCvGame();
+
 
 	}
 
@@ -44,7 +41,7 @@ public class GameController implements KeyListener
 
 
 					model.update(deltaTime);
-					viewManager.draw();
+
 					previousTime = currentTime;
 				}
 
@@ -66,6 +63,7 @@ public class GameController implements KeyListener
 	@Override
 	public void keyPressed(KeyEvent e)
 	{
+		System.out.println("Key pressed: " );
 		GameAction action = mapKeyToAction(e, true);
 		if (action != null)
 		{
@@ -105,13 +103,18 @@ public class GameController implements KeyListener
 				return pressed ? GameAction.CONFIRM_SELECTION : null;
 			case KeyEvent.VK_ESCAPE:
 				return pressed ? GameAction.PAUSE_GAME : null;
-
+			case KeyEvent.VK_DOWN:
+				return pressed ? GameAction.MOVE_MENU_DOWN : null;
+			case KeyEvent.VK_UP:
+				return pressed ? GameAction.MOVE_MENU_UP : null;
 
 
 			default:
 				return null;
 		}
 	}
+
+
 
 
 }

@@ -48,11 +48,17 @@ public class Main
 										scoreManager
 		);
 
+
+
 		GameController controller = new GameController(model
 		);
 
+
+
 		controller.startGameLoop();
 		model.startGame();
+
+
 
 	}
 }
