@@ -1,9 +1,12 @@
 package controller.managers;
 
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class CharacterMovementManager
 {
+
+
 	private boolean pressingLeft = false;
 	private boolean pressingRight = false;
 
@@ -37,4 +40,6 @@ public class CharacterMovementManager
 		if (pressingRight && !pressingLeft) return 1;
 		return 0;
 	}
+
+
 }

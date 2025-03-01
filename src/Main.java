@@ -51,20 +51,14 @@ public class Main
 										frame
 		);
 
-
-
 		GameController controller = new GameController(model
 		);
 
 
 		frame.addKeyListener(controller);
 
-
-
 		controller.startGameLoop();
 		model.startGame();
-
-
 
 	}
 }

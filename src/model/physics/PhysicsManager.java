@@ -28,13 +28,13 @@ public class PhysicsManager
 
 		switch (direction)
 		{
-			case RIGHT:
+			case MovementDirection.RIGHT:
 				vx = accelerateToRight(vx, deltaTime);
 				break;
-			case LEFT:
+			case MovementDirection.LEFT:
 				vx = accelerateToLeft(vx, deltaTime);
 				break;
-			case NONE:
+			case MovementDirection.NONE:
 			default:
 				vx = decelerate(vx, deltaTime);
 				break;

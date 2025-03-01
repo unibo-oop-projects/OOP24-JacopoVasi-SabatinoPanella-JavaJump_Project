@@ -1,6 +1,7 @@
 package model;
 
 import controller.GameAction;
+import controller.managers.CharacterMovementManager;
 import model.camera.CameraManager;
 import model.collision.CollisionManager;
 import model.entities.GameObject;
@@ -25,12 +26,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
-
 public class GameModel
 {
-
-
 
 	private GameStateHandler currentState;
 	private final ViewManager viewManager;
@@ -42,7 +39,7 @@ public class GameModel
     private final GameFrame gameFrame;
 	private final List<GameObject> gameObjects;
 	private Character player;
-
+    private final CharacterMovementManager movementManager;
 	private final List<GameModelObserver> observers;
 	private int screenWidth;
 	private int screenHeight;
@@ -70,7 +67,7 @@ public class GameModel
 		this.observers = new ArrayList<>();
         this.viewManager=new ViewManager(this);
 
-
+        this.movementManager=new CharacterMovementManager();
 
 
 		this.currentState = new MenuState();
@@ -94,12 +91,13 @@ public class GameModel
 
 	public void update(float deltaTime) {
 		this.currentState.update(this, deltaTime);
-		this.viewManager.draw();
+
 		if (this.currentState.getGameState()== GameState.IN_GAME) {
 			this.player.update(deltaTime);
 			this.cameraManager.update(this, deltaTime);
 			this.gameObjects.getFirst().update(deltaTime);
 		}
+		this.viewManager.draw();
 	}
 
 	public void startGame()
@@ -126,8 +124,6 @@ public class GameModel
 		}
 	}
 
-
-
 	public int getScore()
 	{
 		return scoreManager.getCurrentScore();
@@ -151,4 +147,5 @@ public class GameModel
 	public int getScreenHeight() { return screenHeight; }
 	public ViewManager getViewManager() {return viewManager;}
     public GameFrame getGameFrame() { return gameFrame; }
+    public CharacterMovementManager getMovementManager() {return movementManager;}
 }

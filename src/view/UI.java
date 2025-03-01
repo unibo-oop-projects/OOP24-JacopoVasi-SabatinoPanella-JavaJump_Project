@@ -50,8 +50,6 @@ public class UI extends JPanel implements AbstractView {
         g2d.drawString("Score: "+String.valueOf(model.getScore()), 80,80);
     }
 
-
-
     @Override
     public void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;

@@ -46,8 +46,6 @@ public class SpawnManager
 	public void generateOnTheFly(GameModel model)
 	{
 
-
-
 		float playerY = model.getPlayer().getY();
 		float cameraOffset = model.getCameraManager().getCurrentOffset();
 
@@ -56,8 +54,6 @@ public class SpawnManager
 			spawnPlatformsAndCoins(model);
 			this.lastSpawnCameraOffset -= 300f;
 		}
-
-
 
 	}
 

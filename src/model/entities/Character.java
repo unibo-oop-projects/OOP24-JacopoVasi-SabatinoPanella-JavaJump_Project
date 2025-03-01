@@ -12,8 +12,6 @@ public class Character extends GameObject
 
 	private float oldX;
 	private float oldY;
-
-
 	public Character(float x, float y, float width, float height, float jumpForce)
 	{
 		this.x = x;
@@ -21,10 +19,8 @@ public class Character extends GameObject
 		this.width = width;
 		this.height = height;
 		this.jumpForce = jumpForce*2;
-
 		this.velocityX = 0;
 		this.velocityY = 0;
-
 		this.oldX = x;
 		this.oldY = y;
 	}
@@ -48,6 +44,7 @@ public class Character extends GameObject
 	@Override
 	public void onCollision(GameObject other)
 	{
+
 
 		if (other instanceof Platform)
 		{
