@@ -17,7 +17,7 @@ public class ViewManager implements GameModelObserver {
         this.gameView = new GameView(this.model);
         this.UI = new UI(this.model);
         this.menuView=new MenuView(this.model);
-        this.frame = new GameFrame();
+        this.frame = model.getGameFrame();
         frame.add(gameView);
         frame.add(UI);
         frame.add(menuView);

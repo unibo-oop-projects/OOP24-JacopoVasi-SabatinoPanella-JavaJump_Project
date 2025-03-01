@@ -61,7 +61,6 @@ public class MenuView extends JPanel implements AbstractView {
         g2d.drawString(text, x, y+offset*3);
         text="- ";
         x =  (this.getWidth() - metrics.stringWidth(text)) / 2;
-        g2d.drawString(text, x-offset, y+offset*2);
         switch (selection) {
             case 0:
                 break;

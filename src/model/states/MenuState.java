@@ -20,7 +20,6 @@ public class MenuState implements GameStateHandler
 	@Override
 	public void handleAction(GameModel model, GameAction action)
 	{
-		System.out.println("YOU ARE AT THE MENU");
 		switch(action)
 		{
 			case CONFIRM_SELECTION:
@@ -33,7 +32,7 @@ public class MenuState implements GameStateHandler
 				}
 
 				break;
-			case MOVE_MENU_UP:
+			case MOVE_MENU_DOWN:
 				selection++;
 				if(selection>maxSelection){
 					selection=1;
@@ -41,7 +40,7 @@ public class MenuState implements GameStateHandler
 
 
 				break;
-			case MOVE_MENU_DOWN:
+			case MOVE_MENU_UP:
 				System.out.println("Menu DOWN");
 				selection--;
 				if(selection==0){

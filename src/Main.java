@@ -38,6 +38,8 @@ public class Main
 
 		PhysicsManager physicsManager = new PhysicsManager(0.5f, 5.0f, 0.5f);
 
+		GameFrame frame = new GameFrame();
+
 
 		GameModel model = new GameModel(screenWidth,
 										screenHeight,
@@ -45,13 +47,17 @@ public class Main
 										collisionManager,
 										spawnManager,
 										cameraManager,
-										scoreManager
+										scoreManager,
+										frame
 		);
 
 
 
 		GameController controller = new GameController(model
 		);
+
+
+		frame.addKeyListener(controller);
 
 
 

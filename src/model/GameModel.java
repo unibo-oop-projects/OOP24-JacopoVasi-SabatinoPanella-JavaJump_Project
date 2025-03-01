@@ -20,6 +20,7 @@ import view.GameFrame;
 import view.GameView;
 import view.ViewManager;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class GameModel
 	private final SpawnManager spawnManager;
 	private final CameraManager cameraManager;
 	private final ScoreManager scoreManager;
-
+    private final GameFrame gameFrame;
 	private final List<GameObject> gameObjects;
 	private Character player;
 
@@ -49,20 +50,21 @@ public class GameModel
 			CollisionManager collisionManager,
 			SpawnManager spawnManager,
 			CameraManager cameraManager,
-			ScoreManager scoreManager)
+			ScoreManager scoreManager,
+            GameFrame frame)
 
 	{
 		this.screenWidth = screenWidth;
 		this.screenHeight = screenHeight;
-		this.viewManager=new ViewManager(this);
 		this.physicsManager = physicsManager;
 		this.collisionManager = collisionManager;
 		this.spawnManager = spawnManager;
 		this.cameraManager = cameraManager;
 		this.scoreManager = scoreManager;
-
+		this.gameFrame = frame;
 		this.gameObjects = new ArrayList<>();
 		this.observers = new ArrayList<>();
+        this.viewManager=new ViewManager(this);
 
 
 		this.currentState = new MenuState();
@@ -81,7 +83,7 @@ public class GameModel
 	public void handleAction(GameAction action)
 	{
 		this.currentState.handleAction(this, action);
-		System.out.println("handleAction");
+
 	}
 
 	public void update(float deltaTime) {
@@ -142,4 +144,5 @@ public class GameModel
 	public int getScreenWidth() { return screenWidth; }
 	public int getScreenHeight() { return screenHeight; }
 	public ViewManager getViewManager() {return viewManager;}
+    public GameFrame getGameFrame() { return gameFrame; }
 }

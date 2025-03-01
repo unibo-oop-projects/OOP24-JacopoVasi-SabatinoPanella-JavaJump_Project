@@ -1,8 +1,6 @@
 package controller;
 
 import model.GameModel;
-import view.*;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -63,7 +61,7 @@ public class GameController implements KeyListener
 	@Override
 	public void keyPressed(KeyEvent e)
 	{
-		System.out.println("Key pressed: " );
+
 		GameAction action = mapKeyToAction(e, true);
 		if (action != null)
 		{
@@ -113,8 +111,6 @@ public class GameController implements KeyListener
 				return null;
 		}
 	}
-
-
 
 
 }

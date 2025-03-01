@@ -46,9 +46,6 @@ public class CameraManager
 
 
 
-
-
-
 		if (currentOffset < previousOffset)
 		{
 

@@ -11,6 +11,7 @@ public class GameFrame extends JFrame {
         this.setResizable(false);
         this.setVisible(true);
         this.setLayout(null);
+        this.setFocusable(true);
 
     }
 
