@@ -72,13 +72,17 @@ public class SpawnManager
 
 	private void spawnerCycle(GameModel model, float currentY)
 	{
+		float platformWidth = 100;
+		float xx = random.nextFloat() * (model.getScreenWidth() - platformWidth);
+		Platform pp = factory.createStandardPlatform(model.getPlayer().getX(), model.getPlayer().getY()+60);
+		model.getGameObjects().add(pp);
 		for (int i = 0; i < numberOfPlatforms; i++)
 		{
 			float gap = randomInRange(minPlatformYSpacing, maxPlatformYSpacing);
 			currentY -= gap;
 
 
-			float platformWidth = 100;
+
 			float x = random.nextFloat() * (model.getScreenWidth() - platformWidth);
 
 

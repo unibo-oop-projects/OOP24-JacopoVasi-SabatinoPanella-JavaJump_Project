@@ -20,7 +20,7 @@ public class Character extends GameObject
 		this.y = y;
 		this.width = width;
 		this.height = height;
-		this.jumpForce = jumpForce;
+		this.jumpForce = jumpForce*2;
 
 		this.velocityX = 0;
 		this.velocityY = 0;

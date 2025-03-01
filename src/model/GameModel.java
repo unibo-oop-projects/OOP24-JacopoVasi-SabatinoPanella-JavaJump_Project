@@ -25,8 +25,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
+
 public class GameModel
 {
+
+
 
 	private GameStateHandler currentState;
 	private final ViewManager viewManager;
@@ -65,6 +69,8 @@ public class GameModel
 		this.gameObjects = new ArrayList<>();
 		this.observers = new ArrayList<>();
         this.viewManager=new ViewManager(this);
+
+
 
 
 		this.currentState = new MenuState();

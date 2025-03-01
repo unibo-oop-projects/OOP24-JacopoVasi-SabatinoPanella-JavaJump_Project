@@ -56,6 +56,8 @@ public class GameView extends JPanel implements AbstractView
                     g2d.drawRect(Math.round(player.getX()), Math.round(player.getY()), Math.round(player.getWidth()), Math.round(player.getHeight()));
                 }
 
+
+
                     g2d.dispose();
 
     }
@@ -69,6 +71,8 @@ public class GameView extends JPanel implements AbstractView
         }
         System.out.println(this.isVisible());
     }
+
+
 
 
     public void onModelUpdate(GameModel model)

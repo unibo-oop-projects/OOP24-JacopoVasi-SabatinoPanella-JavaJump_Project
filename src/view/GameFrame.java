@@ -1,6 +1,7 @@
 package view;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class GameFrame extends JFrame {
     public GameFrame() {
@@ -12,7 +13,7 @@ public class GameFrame extends JFrame {
         this.setVisible(true);
         this.setLayout(null);
         this.setFocusable(true);
-
+        this.setBackground(Color.black);
     }
 
 

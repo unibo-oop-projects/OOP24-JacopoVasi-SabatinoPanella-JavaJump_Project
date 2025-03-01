@@ -32,6 +32,8 @@ public class MenuView extends JPanel implements AbstractView {
     this.repaint();
     }
 
+
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);

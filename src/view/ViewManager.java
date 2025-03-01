@@ -39,7 +39,7 @@ public class ViewManager implements GameModelObserver {
     }
     public void draw(){
         currentView.updateG();
-
+        UI.updateG();
     }
 
     @Override
