@@ -51,8 +51,7 @@ public class Main
 										frame
 		);
 
-		GameController controller = new GameController(model
-		);
+		GameController controller = new GameController(model);
 
 
 		frame.addKeyListener(controller);

@@ -18,7 +18,7 @@ public interface GameStateHandler
 	
 	void update(GameModel model, float deltaTime);
 
-	public GameState getGameState();
+	GameState getGameState();
 
-	public int getValue();
+	int getValue();
 }

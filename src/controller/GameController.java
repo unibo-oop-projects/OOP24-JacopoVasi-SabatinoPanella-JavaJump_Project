@@ -1,6 +1,5 @@
 package controller;
 
-import controller.managers.CharacterMovementManager;
 import model.GameModel;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -53,31 +52,23 @@ public class GameController implements KeyListener
 		loopThread.start();
 	}
 
-	
 	public void stopGameLoop()
 	{
 		running = false;
 	}
 
 	@Override
-	public void keyPressed(KeyEvent e)
-	{
-		this.model.getMovementManager().onKeyPressed(e);
+	public void keyPressed(KeyEvent e) {
 		GameAction action = mapKeyToAction(e, true);
-		if (action != null)
-		{
+		if (action != null) {
 			model.handleAction(action);
 		}
-
 	}
 
 	@Override
-	public void keyReleased(KeyEvent e)
-	{
-		this.model.getMovementManager().onKeyReleased(e);
+	public void keyReleased(KeyEvent e) {
 		GameAction action = mapKeyToAction(e, false);
-		if (action != null)
-		{
+		if (action != null) {
 			model.handleAction(action);
 		}
 	}

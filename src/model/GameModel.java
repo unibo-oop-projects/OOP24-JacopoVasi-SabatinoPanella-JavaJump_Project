@@ -1,7 +1,6 @@
 package model;
 
 import controller.GameAction;
-import controller.managers.CharacterMovementManager;
 import model.camera.CameraManager;
 import model.collision.CollisionManager;
 import model.entities.GameObject;
@@ -25,25 +24,23 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class GameModel
 {
 
 	private GameStateHandler currentState;
-	private final ViewManager viewManager;
 	private final PhysicsManager physicsManager;
 	private final CollisionManager collisionManager;
 	private final SpawnManager spawnManager;
 	private final CameraManager cameraManager;
 	private final ScoreManager scoreManager;
-    private final GameFrame gameFrame;
 	private final List<GameObject> gameObjects;
 	private Character player;
-    private final CharacterMovementManager movementManager;
-	private final List<GameModelObserver> observers;
 	private int screenWidth;
 	private int screenHeight;
 
+	private final List<GameModelObserver> observers;
+	private final ViewManager viewManager;
+	private final GameFrame gameFrame;
 	public GameModel(
 			int screenWidth,
 			int screenHeight,
@@ -63,16 +60,13 @@ public class GameModel
 		this.cameraManager = cameraManager;
 		this.scoreManager = scoreManager;
 		this.gameFrame = frame;
+		this.viewManager=new ViewManager(this);
 		this.gameObjects = new ArrayList<>();
 		this.observers = new ArrayList<>();
-        this.viewManager=new ViewManager(this);
-
-        this.movementManager=new CharacterMovementManager();
 
 
 		this.currentState = new MenuState();
 		this.currentState.onEnter(this);
-
 	}
 
 
@@ -86,7 +80,6 @@ public class GameModel
 	public void handleAction(GameAction action)
 	{
 		this.currentState.handleAction(this, action);
-
 	}
 
 	public void update(float deltaTime) {
@@ -147,5 +140,4 @@ public class GameModel
 	public int getScreenHeight() { return screenHeight; }
 	public ViewManager getViewManager() {return viewManager;}
     public GameFrame getGameFrame() { return gameFrame; }
-    public CharacterMovementManager getMovementManager() {return movementManager;}
 }
