@@ -7,8 +7,7 @@ public class Character extends GameObject
 	private float velocityX;
 	private float velocityY;
 	private float jumpForce;
-
-	private static final float GRAVITY = 800.0f;
+	private static final float GRAVITY = 1350.0f;
 
 
 	private boolean onPlatform;

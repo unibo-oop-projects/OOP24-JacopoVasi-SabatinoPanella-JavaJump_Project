@@ -92,8 +92,8 @@ public class SpawnManager
 
 
 			if (random.nextFloat() < coinSpawnChance) {
-				float coinX = x + (platformWidth / 2f) - 10;
-				float coinY = currentY - 30;
+				float coinX = x + (platformWidth / 2f) - platformWidth*0.2f;
+				float coinY = currentY - 50;
 				Coin c = factory.createCoin(coinX, coinY);
 				model.getGameObjects().add(c);
 			}

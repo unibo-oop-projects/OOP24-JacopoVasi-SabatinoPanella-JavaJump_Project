@@ -9,6 +9,7 @@ import model.entities.Platform;
 import model.entities.Coin;
 import model.factories.AbstractGameObjectFactory;
 import model.collision.CollisionManager;
+import model.level.CleanupManager;
 import model.level.SpawnManager;
 import model.physics.MovementDirection;
 import model.physics.PhysicsManager;
@@ -24,16 +25,23 @@ import java.util.List;
 public class GameModel
 {
 
+
 	private GameStateHandler currentState;
 	private final PhysicsManager physicsManager;
 	private final CollisionManager collisionManager;
 	private final SpawnManager spawnManager;
 	private final CameraManager cameraManager;
 	private final ScoreManager scoreManager;
+	private final CleanupManager cleanupManager;
+
+
 	private final List<GameObject> gameObjects;
 	private Character player;
+
+
 	private int screenWidth;
 	private int screenHeight;
+
 
 	private final List<GameModelObserver> observers;
 
@@ -44,11 +52,14 @@ public class GameModel
 			CollisionManager collisionManager,
 			SpawnManager spawnManager,
 			CameraManager cameraManager,
-			ScoreManager scoreManager)
+			ScoreManager scoreManager,
+			CleanupManager cleanupManager
+	)
 
 	{
 		this.screenWidth = screenWidth;
 		this.screenHeight = screenHeight;
+
 		this.physicsManager = physicsManager;
 		this.collisionManager = collisionManager;
 		this.spawnManager = spawnManager;
@@ -57,6 +68,8 @@ public class GameModel
 
 		this.gameObjects = new ArrayList<>();
 		this.observers = new ArrayList<>();
+
+		this.cleanupManager = cleanupManager;
 
 
 		this.currentState = new MenuState();
@@ -89,7 +102,7 @@ public class GameModel
 
 
 		this.player = spawnManager.getFactory()
-								  .createCharacter(screenWidth / 2f, screenHeight - 100);
+								  .createCharacter(screenWidth / 2f, screenHeight - 70);
 		gameObjects.add(player);
 		spawnManager.generateInitialLevel(this);
 	}
@@ -119,6 +132,7 @@ public class GameModel
 	public SpawnManager getSpawnManager() { return spawnManager; }
 	public CameraManager getCameraManager() { return cameraManager; }
 	public ScoreManager getScoreManager() { return scoreManager; }
+	public CleanupManager getCleanupManager() { return cleanupManager; }
 	public GameStateHandler getCurrentState() {return currentState;}
 	public List<GameObject> getGameObjects() { return this.gameObjects; }
 	public Character getPlayer() { return player; }

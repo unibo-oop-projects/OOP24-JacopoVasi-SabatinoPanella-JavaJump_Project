@@ -71,6 +71,7 @@ public class InGameState implements GameStateHandler
 
 		model.getSpawnManager().generateOnTheFly(model);
 
+		model.getCleanupManager().cleanupObjects(model);
 
 		float offset = model.getCameraManager().getCurrentOffset();
 		float drawY = player.getY() - offset;

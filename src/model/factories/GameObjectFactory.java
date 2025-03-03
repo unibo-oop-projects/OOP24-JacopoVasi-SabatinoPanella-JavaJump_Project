@@ -14,8 +14,7 @@ public class GameObjectFactory extends AbstractGameObjectFactory
 
 		float width = 48;
 		float height = 50;
-		float jumpForce = 800;
-
+		float jumpForce = 1000;
 		return new Character(x, y, width, height, jumpForce);
 	}
 
@@ -42,10 +41,8 @@ public class GameObjectFactory extends AbstractGameObjectFactory
 	@Override
 	public Coin createCoin(float x, float y)
 	{
-
-		float width = 20;
-		float height = 20;
-
+		float width = 44;
+		float height = 52;
 		return new Coin(x, y, width, height);
 	}
 }

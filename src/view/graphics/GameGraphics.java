@@ -16,7 +16,7 @@ public class GameGraphics {
     private static BufferedImage background;
     private static BufferedImage scoreContainer;
     private static BufferedImage platform;
-    private static BufferedImage coin;
+    private static BufferedImage coinSheet;
     private static BufferedImage obstacle;
     private static BufferedImage life;
     private static BufferedImage gameOver;
@@ -31,8 +31,9 @@ public class GameGraphics {
             title = ImageIO.read(new File("src/view/resources/JJ_Title.png"));
             gameOver = ImageIO.read(new File("src/view/resources/GameOver.png"));
             playerSheet = ImageIO.read(new File("src/view/resources/Coffee-SheetBIG.png"));
+            coinSheet = ImageIO.read(new File("src/view/resources/Coin-Sheet.png"));
             background = ImageIO.read(new File("src/view/resources/Background3.png"));
-            scoreContainer = ImageIO.read(new File("src/view/resources/Score_Underlay.png"));
+            scoreContainer = ImageIO.read(new File("src/view/resources/Score_Underlay_small.png"));
             AudioManager.loadBackgroundMusic("src/view/resources/GameMusic.wav");
             gameFont1 = FontLoader.loadFont("src/view/resources/Daydream.ttf", 20);
             gameFont2 = FontLoader.loadFont("src/view/resources/Daydream.ttf", 15);
@@ -63,8 +64,8 @@ public class GameGraphics {
         return background;
     }
 
-    public static BufferedImage getCoin(){
-        return coin;
+    public static BufferedImage getCoinSheet(){
+        return coinSheet;
     }
 
     public static BufferedImage getLife(){

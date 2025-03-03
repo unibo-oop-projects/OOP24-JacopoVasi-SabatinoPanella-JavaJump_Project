@@ -3,6 +3,7 @@ import model.GameModel;
 import model.collision.CollisionManager;
 import model.factories.AbstractGameObjectFactory;
 import model.factories.GameObjectFactory;
+import model.level.CleanupManager;
 import model.level.SpawnManager;
 import model.physics.PhysicsManager;
 import model.score.ScoreManager;
@@ -36,7 +37,9 @@ public class Main
 		CameraManager cameraManager = new CameraManager(scoreManager, 0.5f);
 
 
-		PhysicsManager physicsManager = new PhysicsManager(500f, 350f, 1900f);
+		PhysicsManager physicsManager = new PhysicsManager(3000f, 400f, 15000f);
+
+		CleanupManager cleanupManager = new CleanupManager();
 
 
 
@@ -46,7 +49,8 @@ public class Main
 										collisionManager,
 										spawnManager,
 										cameraManager,
-										scoreManager);
+										scoreManager,
+										cleanupManager);
 
 		MainGameView view = new MainGameView(model);
 		model.addObserver(view);

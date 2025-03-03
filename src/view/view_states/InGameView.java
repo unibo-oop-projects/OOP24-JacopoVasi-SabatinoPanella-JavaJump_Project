@@ -1,7 +1,7 @@
 package view.view_states;
 
 import model.GameModel;
-import model.entities.GameObject;
+import model.entities.*;
 import model.entities.Character;
 import view.graphics.GameGraphics;
 
@@ -11,32 +11,47 @@ import java.awt.image.BufferedImage;
 
 public class InGameView implements GameViewState {
 
+	private boolean debugMode = false;
+
 	private static final float PARALLAX_FACTOR = 0.2f;
-	private boolean debugMode = true;
 	private boolean isNewHighScore = false;
 	private boolean showHighScoreMessage = true;
 	private long lastToggleTime = System.currentTimeMillis();
 
 	@Override
 	public void draw(Graphics g, GameModel model) {
-
 		drawParallaxBackground(g, model);
-
-
 		float cameraOffsetY = model.getCameraManager().getCurrentOffset();
-
 
 		g.setColor(Color.RED);
 		for (GameObject obj : model.getGameObjects()) {
 			if(debugMode) {
-				if (obj instanceof Character) {
-					continue;
-				}
 				int drawX = (int)obj.getX();
 				int drawY = (int)(obj.getY() - cameraOffsetY);
 
 				g.drawRect(drawX, drawY, (int)obj.getWidth(), (int)obj.getHeight());
 			}
+			if (obj instanceof Coin) {
+				Coin c = (Coin) obj;
+				int row = (c.getState() == CoinState.IDLE) ? 0 : 1;
+				int col = c.getFrameIndex();
+
+				int sx = col * 44;
+				int sy = row * 52;
+
+				BufferedImage coinSheet = GameGraphics.getCoinSheet();
+				BufferedImage frame = coinSheet.getSubimage(sx, sy, 44, 52);
+
+				float drawY = c.getY() - cameraOffsetY;
+				g.drawImage(frame, (int)c.getX(), (int)drawY, null);
+			}
+			if (obj instanceof Platform) {
+				int drawX = (int)obj.getX();
+				int drawY = (int)(obj.getY() - cameraOffsetY);
+
+				g.fillRoundRect(drawX, drawY, (int)obj.getWidth(), (int)obj.getHeight(), 10, 10);
+			}
+
 		}
 
 
@@ -45,7 +60,7 @@ public class InGameView implements GameViewState {
 		float drawY = player.getY() - cameraOffsetY;
 
 		int frameIndex = player.getFrameIndex();
-		System.out.println("frameIndex = " + frameIndex);
+
 		BufferedImage sheet = GameGraphics.getPlayerSheet();
 
 		int frameWidth = 48;
@@ -61,8 +76,6 @@ public class InGameView implements GameViewState {
 
 		boolean facingRight = player.isFacingRight();
 		if (!facingRight) {
-
-
 
 			g2.translate(drawX + frameWidth, drawY);
 			g2.scale(-1, 1);
@@ -133,24 +146,12 @@ public class InGameView implements GameViewState {
 		int tileW = bgTile.getWidth();
 		int tileH = bgTile.getHeight();
 
-
-
-
 		Graphics2D g2 = (Graphics2D) g;
-
-
 
 		int shiftY = (int)(bgOffsetY) % tileH;
 		if (shiftY < 0) {
 			shiftY += tileH;
 		}
-
-
-
-
-
-
-
 
 		int verticalTiles = (screenH / tileH) + 2;
 
