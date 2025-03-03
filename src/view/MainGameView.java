@@ -66,25 +66,16 @@ public class MainGameView extends JPanel implements GameModelObserver
 
 			switch (currentGS) {
 				case IN_GAME:
-
-					System.out.println("entering in game => starting music");
-					AudioManager.startMusic();
 					break;
 				case PAUSE:
-
-					System.out.println("Entering PAUSE => pauseMusic");
-					AudioManager.pauseMusic();
 					break;
 				case GAME_OVER:
-
 					System.out.println("Entering GAME_OVER => fadeOut");
-					AudioManager.fadeOut(1.0f);
+					AudioManager.fadeOut(2f);
 					gameOverView.startFade();
 					break;
 				case MENU:
 
-					System.out.println("Entering MENU => stopMusic");
-					AudioManager.stopMusic();
 					break;
 			}
 		}
@@ -106,12 +97,15 @@ public class MainGameView extends JPanel implements GameModelObserver
 		switch (currentState) {
 			case MENU:
 				menuView.draw(g, model);
+				AudioManager.stopMusic();
 				break;
 			case IN_GAME:
 				inGameView.draw(g, model);
+				AudioManager.startMusic();
 				break;
 			case PAUSE:
 				pauseView.draw(g, model);
+				AudioManager.pauseMusic();
 				break;
 			case GAME_OVER:
 

@@ -36,7 +36,7 @@ public class Main
 		CameraManager cameraManager = new CameraManager(scoreManager, 0.5f);
 
 
-		PhysicsManager physicsManager = new PhysicsManager(400f, 500f, 4700f);
+		PhysicsManager physicsManager = new PhysicsManager(500f, 350f, 1900f);
 
 
 

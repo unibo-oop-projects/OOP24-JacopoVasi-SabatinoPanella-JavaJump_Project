@@ -13,7 +13,9 @@ public class InGameView implements GameViewState {
 
 	private static final float PARALLAX_FACTOR = 0.2f;
 	private boolean debugMode = true;
-
+	private boolean isNewHighScore = false;
+	private boolean showHighScoreMessage = true;
+	private long lastToggleTime = System.currentTimeMillis();
 
 	@Override
 	public void draw(Graphics g, GameModel model) {
@@ -43,6 +45,7 @@ public class InGameView implements GameViewState {
 		float drawY = player.getY() - cameraOffsetY;
 
 		int frameIndex = player.getFrameIndex();
+		System.out.println("frameIndex = " + frameIndex);
 		BufferedImage sheet = GameGraphics.getPlayerSheet();
 
 		int frameWidth = 48;
@@ -75,10 +78,37 @@ public class InGameView implements GameViewState {
 
 
 
-		g.setColor(Color.WHITE);
-		g.setFont(new Font("Arial", Font.BOLD, 20));
-		String scoreStr = "Score: " + model.getScore();
-		g.drawString(scoreStr, 10, 20);
+		BufferedImage scoreContainer = GameGraphics.getScoreContainer();
+		g.drawImage(scoreContainer, 0, 0, null);
+
+		if (model.getScore() <  model.getScoreManager().getBestScore()) {
+			g.setColor(Color.WHITE);
+			g.setFont(GameGraphics.getGameFont2());
+			String scoreStr = "Score:    " + model.getScore();
+			g.drawString(scoreStr, 10, 20);
+			isNewHighScore = false;
+		} else {
+			g.setColor(Color.decode("#eac10c"));
+			g.setFont(GameGraphics.getGameFont2());
+			String scoreStr = "Score:    " + model.getScore();
+			g.drawString(scoreStr, 10, 20);
+			isNewHighScore = true;
+		}
+
+
+		long currentTime = System.currentTimeMillis();
+		if (currentTime - lastToggleTime > 1700) {
+			showHighScoreMessage = !showHighScoreMessage;
+			lastToggleTime = currentTime;
+		}
+
+		if (isNewHighScore && showHighScoreMessage) {
+			g.setColor(Color.decode("#D83426"));
+			g.setFont(GameGraphics.getGameFont3());
+			String message = "New High Score !!";
+			g.drawString(message, 10, 43);
+		}
+
 	}
 
 
@@ -151,4 +181,5 @@ public class InGameView implements GameViewState {
 	{
 
 	}
+
 }

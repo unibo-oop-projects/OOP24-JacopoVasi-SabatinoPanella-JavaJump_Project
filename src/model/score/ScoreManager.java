@@ -4,11 +4,13 @@ public class ScoreManager
 {
 	private int currentScore;
 	private int bestScore;
+	private boolean bestScoreReached;
 
 	public ScoreManager()
 	{
 		this.currentScore = 0;
 		this.bestScore = 0;
+		this.bestScoreReached = false;
 	}
 
 	public void addPoints(int amount)
@@ -18,6 +20,7 @@ public class ScoreManager
 		if (this.currentScore > this.bestScore)
 		{
 			this.bestScore = this.currentScore;
+			this.bestScoreReached = true;
 		}
 	}
 
@@ -31,9 +34,15 @@ public class ScoreManager
 		return bestScore;
 	}
 
+	public boolean isBestScoreReached()
+	{
+		return bestScoreReached;
+	}
+
 	public void reset()
 	{
 		this.currentScore = 0;
+		this.bestScoreReached = false;
 	}
 
 }

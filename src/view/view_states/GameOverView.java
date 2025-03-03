@@ -1,13 +1,15 @@
 package view.view_states;
 
 import model.GameModel;
+import view.graphics.GameGraphics;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class GameOverView implements GameViewState {
 
 	private float fadeAlpha = 0f;
-	private float fadeDuration = 1f;
+	private final float fadeDuration = 1f;
 	private float elapsedTime = 0f;
 	private boolean fading = false;
 
@@ -47,25 +49,40 @@ public class GameOverView implements GameViewState {
 		int w = model.getScreenWidth();
 		int h = model.getScreenHeight();
 
+		int centerX = w / 2;
+		int centerY = h / 2;
+
 
 		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, fadeAlpha));
-		g2.setColor(Color.BLACK);
+		g2.setColor(Color.decode("#05051C"));
 		g2.fillRect(0, 0, w, h);
 
 
 		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
-		g2.setColor(Color.RED);
-		g2.setFont(new Font("Arial", Font.BOLD, 40));
-		String text = "GAME OVER";
-		int strWidth = g2.getFontMetrics().stringWidth(text);
-		g2.drawString(text, (w - strWidth)/2, h/2);
+		BufferedImage img = GameGraphics.getGameOver();
+		g2.drawImage(img, (int)(centerX - img.getWidth()/1.72), (int)(centerY - h*0.15), (int)(img.getWidth() * 1.1), (int)(img.getHeight() * 1.1),null);
 
 
 		if (fadeAlpha >= 1f) {
-			g2.setFont(new Font("Arial", Font.PLAIN, 20));
-			String pressKey = "Press ENTER to continue...";
-			int pkWidth = g2.getFontMetrics().stringWidth(pressKey);
-			g2.drawString(pressKey, (w - pkWidth)/2, h/2 + 40);
+			if (model.getScoreManager().isBestScoreReached()) {
+				g.setColor(Color.decode("#eac10c"));
+				g.setFont(GameGraphics.getGameFont2());
+				g.drawString("New Best Score:   " + model.getScoreManager().getBestScore() + " !!", (int)(centerX*0.65), centerY + 50);
+			}
+			else {
+				g.setColor(Color.WHITE);
+				g.setFont(GameGraphics.getGameFont2());
+				g.drawString("Your Score:   " + model.getScore(), (int)(centerX*0.65), centerY + 50);
+
+				g.setColor(Color.decode("#F84534"));
+				g.setFont(GameGraphics.getGameFont2());
+				g.drawString("Best Score:   " + model.getScoreManager().getBestScore(), (int)(centerX*0.65), centerY + 80);
+			}
+
+			g2.setColor(Color.decode("#F84534"));
+			g2.setFont(GameGraphics.getGameFont3());
+			g2.drawString("Press ENTER to continue...", (int)(centerX*0.65), centerY + 150);
+
 		}
 
 

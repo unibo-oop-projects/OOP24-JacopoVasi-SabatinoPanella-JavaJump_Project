@@ -9,6 +9,7 @@ public class AudioManager {
 	private static Clip backgroundClip;
 	private static FloatControl volumeControl;
 	private static Thread fadeThread;
+	private static final float VOLUME = 0.7f;
 
 
 	public static void loadBackgroundMusic(String filePath) {
@@ -32,24 +33,22 @@ public class AudioManager {
 
 	public static void startMusic() {
 		if (backgroundClip == null) return;
-		if (backgroundClip.isRunning()) {
+		if(backgroundClip.isRunning()) return;
 
-			return;
-		}
-		backgroundClip.setFramePosition(0);
+		int totalFrames = backgroundClip.getFrameLength();
+		int loopStart = 0;
+		int loopEnd = (int) (totalFrames * 0.8817f);
+		backgroundClip.setLoopPoints(loopStart, loopEnd );
 		backgroundClip.loop(Clip.LOOP_CONTINUOUSLY);
-
 		backgroundClip.start();
-		setVolume(1.0f);
-
-		System.out.println("Starting music called");
+		setVolume(VOLUME);
 	}
 
 
 	public static void stopMusic() {
 		if (backgroundClip != null && backgroundClip.isRunning()) {
 			backgroundClip.stop();
-			System.out.println("Stopping music called");
+			backgroundClip.setFramePosition(0);
 		}
 	}
 
@@ -57,14 +56,6 @@ public class AudioManager {
 	public static void pauseMusic() {
 		if (backgroundClip != null && backgroundClip.isRunning()) {
 			backgroundClip.stop();
-			System.out.println("Pausing music called");
-		}
-	}
-
-
-	public static void resumeMusic() {
-		if (backgroundClip != null && !backgroundClip.isRunning()) {
-			backgroundClip.start();
 		}
 	}
 
@@ -108,7 +99,7 @@ public class AudioManager {
 
 				stopMusic();
 
-				setVolume(1.0f);
+				setVolume(VOLUME);
 			} catch (InterruptedException e) {
 
 			}

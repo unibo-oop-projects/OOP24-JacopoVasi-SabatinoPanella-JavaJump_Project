@@ -8,7 +8,7 @@ public class Character extends GameObject
 	private float velocityY;
 	private float jumpForce;
 
-	private static final float GRAVITY = 300.0f;
+	private static final float GRAVITY = 800.0f;
 
 
 	private boolean onPlatform;
@@ -26,7 +26,7 @@ public class Character extends GameObject
 		this.y = y;
 		this.width = width;
 		this.height = height;
-		this.jumpForce = jumpForce*2;
+		this.jumpForce = jumpForce;
 		this.velocityX = 0;
 		this.velocityY = 0;
 		this.oldX = x;
@@ -98,14 +98,14 @@ public class Character extends GameObject
 	public void landOnPlatform() {
 		this.onPlatform = true;
 		this.animTime = 0;
-		System.out.println("Land on platform called");
 	}
 
 	
 	public void goInAir() {
-		this.onPlatform = false;
-		this.animTime = 0;
-		System.out.println("Go in air called");
+		if (this.onPlatform) {
+			this.onPlatform = false;
+			this.animTime = 0;
+		}
 	}
 
 
