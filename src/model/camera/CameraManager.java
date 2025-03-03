@@ -12,7 +12,6 @@ public class CameraManager
 
 	private final ScoreManager scoreManager;
 	private final float scoreFactor;
-	private Character player;
 
 	public CameraManager(ScoreManager scoreManager, float scoreFactor)
 	{
@@ -26,51 +25,37 @@ public class CameraManager
 	
 	public void update(GameModel model, float deltaTime)
 	{
-		player = model.getPlayer();
+		Character player = model.getPlayer();
 		float screenHeight = model.getScreenHeight();
 		float halfScreen = screenHeight / 2f;
 
+		float desiredOffset = currentOffset;
 
-		float desiredOffset = 0;
-		if (player.getY() < halfScreen - currentOffset)
-		{
-
-
-			desiredOffset = player.getY() - (halfScreen);
+		if (player.getY() < halfScreen - currentOffset) {
+			desiredOffset = player.getY() - halfScreen;
 		}
 
-		currentOffset = desiredOffset;
+		if (desiredOffset > currentOffset) {
+			desiredOffset = currentOffset;
+		}
 
-
-
-		if (currentOffset < previousOffset)
-		{
-
+		if (currentOffset < previousOffset) {
 			float deltaOffset = previousOffset - currentOffset;
 
-
-
-			int points = (int) (deltaOffset * scoreFactor);
+			int points = (int)(deltaOffset * scoreFactor);
 			scoreManager.addPoints(points);
-
-			moveScreen(model, deltaOffset);
 		}
-
 
 		previousOffset = currentOffset;
+		currentOffset = desiredOffset;
 	}
 
-	public void moveScreen(GameModel model, float offset){
-		player = model.getPlayer();
-		for (int i=0; i<model.getGameObjects().size(); i++){
-			model.getGameObjects().get(i).setY(model.getGameObjects().get(i).getY()+offset);
-		}
-		player.setY(player.getY()+offset);
-		System.out.println(offset);
+	public void reset(){
+		this.currentOffset = 0;
+		this.previousOffset = 0;
 	}
 
-	public float getCurrentOffset()
-	{
+	public float getCurrentOffset() {
 		return currentOffset;
 	}
 }

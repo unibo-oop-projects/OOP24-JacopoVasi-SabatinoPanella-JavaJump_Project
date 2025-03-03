@@ -9,9 +9,14 @@ public class GameOverState implements GameStateHandler
 	@Override
 	public void handleAction(GameModel model, GameAction action)
 	{
+		switch (action) {
+			case CONFIRM_SELECTION:
 
-
-		model.setState(new MenuState());
+				model.setState(new MenuState());
+				break;
+			default:
+				break;
+		}
 	}
 
 	@Override

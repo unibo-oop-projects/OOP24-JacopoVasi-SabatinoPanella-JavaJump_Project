@@ -16,9 +16,6 @@ import model.score.ScoreManager;
 import model.states.GameState;
 import model.states.GameStateHandler;
 import model.states.MenuState;
-import view.GameFrame;
-import view.GameView;
-import view.ViewManager;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -39,8 +36,7 @@ public class GameModel
 	private int screenHeight;
 
 	private final List<GameModelObserver> observers;
-	private final ViewManager viewManager;
-	private final GameFrame gameFrame;
+
 	public GameModel(
 			int screenWidth,
 			int screenHeight,
@@ -48,8 +44,7 @@ public class GameModel
 			CollisionManager collisionManager,
 			SpawnManager spawnManager,
 			CameraManager cameraManager,
-			ScoreManager scoreManager,
-            GameFrame frame)
+			ScoreManager scoreManager)
 
 	{
 		this.screenWidth = screenWidth;
@@ -59,8 +54,7 @@ public class GameModel
 		this.spawnManager = spawnManager;
 		this.cameraManager = cameraManager;
 		this.scoreManager = scoreManager;
-		this.gameFrame = frame;
-		this.viewManager=new ViewManager(this);
+
 		this.gameObjects = new ArrayList<>();
 		this.observers = new ArrayList<>();
 
@@ -84,25 +78,19 @@ public class GameModel
 
 	public void update(float deltaTime) {
 		this.currentState.update(this, deltaTime);
-
-		if (this.currentState.getGameState()== GameState.IN_GAME) {
-			this.player.update(deltaTime);
-			this.cameraManager.update(this, deltaTime);
-			this.gameObjects.getFirst().update(deltaTime);
-		}
-		this.viewManager.draw();
 	}
 
 	public void startGame()
 	{
 		gameObjects.clear();
 		scoreManager.reset();
+		cameraManager.reset();
+		spawnManager.reset();
 
 
 		this.player = spawnManager.getFactory()
-				.createCharacter(screenWidth / 2f, screenHeight - 100);
-		gameObjects.add(this.player);
-
+								  .createCharacter(screenWidth / 2f, screenHeight - 100);
+		gameObjects.add(player);
 		spawnManager.generateInitialLevel(this);
 	}
 
@@ -121,12 +109,10 @@ public class GameModel
 	{
 		return scoreManager.getCurrentScore();
 	}
-
 	public void addPointsToScore(int amount)
 	{
 		scoreManager.addPoints(amount);
 	}
-
 
 	public PhysicsManager getPhysicsManager() { return physicsManager; }
 	public CollisionManager getCollisionManager() { return collisionManager; }
@@ -138,6 +124,4 @@ public class GameModel
 	public Character getPlayer() { return player; }
 	public int getScreenWidth() { return screenWidth; }
 	public int getScreenHeight() { return screenHeight; }
-	public ViewManager getViewManager() {return viewManager;}
-    public GameFrame getGameFrame() { return gameFrame; }
 }

@@ -7,8 +7,8 @@ import model.level.SpawnManager;
 import model.physics.PhysicsManager;
 import model.score.ScoreManager;
 import model.camera.CameraManager;
-import view.GameFrame;
-import view.GameView;
+
+import view.MainGameView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -36,9 +36,8 @@ public class Main
 		CameraManager cameraManager = new CameraManager(scoreManager, 0.5f);
 
 
-		PhysicsManager physicsManager = new PhysicsManager(0.5f, 5.0f, 0.5f);
+		PhysicsManager physicsManager = new PhysicsManager(400f, 500f, 4700f);
 
-		GameFrame frame = new GameFrame();
 
 
 		GameModel model = new GameModel(screenWidth,
@@ -47,17 +46,29 @@ public class Main
 										collisionManager,
 										spawnManager,
 										cameraManager,
-										scoreManager,
-										frame
-		);
+										scoreManager);
 
-		GameController controller = new GameController(model);
+		MainGameView view = new MainGameView(model);
+		model.addObserver(view);
 
+
+		GameController controller = new GameController(model, view);
+
+
+		JFrame frame = new JFrame("JAVA JUMP");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(screenWidth, screenHeight);
+		frame.setResizable(false);
 
 		frame.addKeyListener(controller);
+		frame.add(view);
+
+		frame.setVisible(true);
+
 
 		controller.startGameLoop();
-		model.startGame();
+
+
 
 	}
 }

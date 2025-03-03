@@ -12,8 +12,8 @@ public class GameObjectFactory extends AbstractGameObjectFactory
 	public Character createCharacter(float x, float y)
 	{
 
-		float width = 30;
-		float height = 40;
+		float width = 48;
+		float height = 50;
 		float jumpForce = 250;
 
 		return new Character(x, y, width, height, jumpForce);

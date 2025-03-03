@@ -20,21 +20,16 @@ public class PhysicsManager
 	
 	public void updateCharacterMovement(Character character, float deltaTime, MovementDirection direction)
 	{
-		final float ACCELERATION = 500f;
-		final float MAX_SPEED = 250f;
-		final float DECELERATION = 400f;
-
 		float vx = character.getVelocityX();
 
-		switch (direction)
-		{
-			case MovementDirection.RIGHT:
+		switch (direction) {
+			case RIGHT:
 				vx = accelerateToRight(vx, deltaTime);
 				break;
-			case MovementDirection.LEFT:
+			case LEFT:
 				vx = accelerateToLeft(vx, deltaTime);
 				break;
-			case MovementDirection.NONE:
+			case NONE:
 			default:
 				vx = decelerate(vx, deltaTime);
 				break;

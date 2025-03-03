@@ -13,42 +13,21 @@ public class MenuState implements GameStateHandler
 	public void onEnter(GameModel model)
 	{
 	selection=0;
-
-		model.getViewManager().setCvMenu();
 	}
 
 	@Override
-	public void handleAction(GameModel model, GameAction action)
-	{
-		switch(action)
-		{
+	public void handleAction(GameModel model, GameAction action) {
+		switch (action) {
 			case CONFIRM_SELECTION:
 
-				if (selection==1){
-					model.startGame();
-					model.setState(new InGameState());
-				}else if (selection==maxSelection){
-					System.exit(0);
-				}
-
+				model.startGame();
+				model.setState(new InGameState());
 				break;
-			case MOVE_MENU_DOWN:
-				selection++;
-				if(selection>maxSelection){
-					selection=1;
-				}
+			case PAUSE_GAME:
 
-
-				break;
-			case MOVE_MENU_UP:
-				System.out.println("Menu DOWN");
-				selection--;
-				if(selection==0){
-					selection=3;
-				}
+				System.exit(0);
 				break;
 			default:
-
 				break;
 		}
 	}
@@ -56,6 +35,7 @@ public class MenuState implements GameStateHandler
 	@Override
 	public void update(GameModel model, float deltaTime) {
 
+		model.notifyObservers();
 	}
 
 	@Override

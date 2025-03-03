@@ -15,9 +15,6 @@ public class InGameState implements GameStateHandler
 	@Override
 	public void onEnter(GameModel model)
 	{
-		model.getViewManager().setCvGame();
-
-
 	}
 
 	@Override
@@ -47,12 +44,12 @@ public class InGameState implements GameStateHandler
 	{
 
 		Character player = model.getPlayer();
-
+		MovementDirection md = convertIntToMovementDirection(horizontalDirection);
 		model.getPhysicsManager().updateCharacterMovement
 		(
 				model.getPlayer(),
 				deltaTime,
-				convertIntToMovementDirection(horizontalDirection)
+				md
 		);
 
 
@@ -75,7 +72,9 @@ public class InGameState implements GameStateHandler
 		model.getSpawnManager().generateOnTheFly(model);
 
 
-		if (player.getY() > model.getScreenHeight())
+		float offset = model.getCameraManager().getCurrentOffset();
+		float drawY = player.getY() - offset;
+		if (drawY > model.getScreenHeight())
 		{
 			model.setState(new GameOverState());
 		}

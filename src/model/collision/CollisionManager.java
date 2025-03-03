@@ -14,6 +14,9 @@ public class CollisionManager
 	
 	public void checkCollisions(GameModel model)
 	{
+		Character player = model.getPlayer();
+		player.goInAir();
+
 		List<GameObject> objects = model.getGameObjects();
 
 
@@ -82,6 +85,7 @@ public class CollisionManager
 			{
 				player.setVelocityY(-player.getJumpForce());
 				player.setY(platformTop - player.getHeight());
+				player.landOnPlatform();
 			}
 		}
 	}
