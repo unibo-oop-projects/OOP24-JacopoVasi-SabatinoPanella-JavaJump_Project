@@ -15,6 +15,10 @@ public abstract class AbstractGameObjectFactory
 
 	public abstract Platform createRandomPlatform(float x, float y);
 
+	public abstract Platform createMovingPlatform(float x, float y);
+
+	public abstract Platform createBreakablePlatform(float x, float y);
+
 	
 	public abstract Coin createCoin(float x, float y);
 

@@ -11,8 +11,6 @@ public class SpawnManager
 {
 	private final AbstractGameObjectFactory factory;
 	private final Random random;
-
-
 	private final int numberOfPlatforms;
 	private final float minPlatformYSpacing;
 	private final float maxPlatformYSpacing;
@@ -36,24 +34,13 @@ public class SpawnManager
 		this.topPlatformY = 0;
 	}
 
-	
 	public void generateInitialLevel(GameModel model) {
 
 		Platform p = factory.createStandardPlatform(model.getPlayer().getX(), model.getPlayer().getY() + 60);
 		model.getGameObjects().add(p);
-
-
-
 		float startY = model.getScreenHeight() - 50;
-
 		topPlatformY = startY;
-
-
 		spawnBatch(model, startY);
-
-
-
-
 		this.lastSpawnCameraOffset = 0;
 	}
 
@@ -83,13 +70,10 @@ public class SpawnManager
 
 			currentY -= gap;
 
-
 			float x = random.nextFloat() * (model.getScreenWidth() - platformWidth);
 
-
-			Platform p = factory.createRandomPlatform(x, currentY);
+			Platform p = spawnAPlatform(x, currentY);
 			model.getGameObjects().add(p);
-
 
 			if (random.nextFloat() < coinSpawnChance) {
 				float coinX = x + (platformWidth / 2f) - platformWidth*0.2f;
@@ -108,6 +92,20 @@ public class SpawnManager
 	private float randomInRange(float min, float max)
 	{
 		return min + random.nextFloat() * (max - min);
+	}
+
+	private Platform spawnAPlatform(float x, float y) {
+		float chance = new Random().nextFloat();
+		if (chance < 0.05f) {
+
+			return factory.createBreakablePlatform(x, y);
+		} else if (chance < 0.2f) {
+
+			return factory.createMovingPlatform(x, y);
+		} else {
+
+			return factory.createRandomPlatform(x, y);
+		}
 	}
 
 	public void reset() {

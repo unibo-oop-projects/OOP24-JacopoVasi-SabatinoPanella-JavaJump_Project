@@ -1,10 +1,8 @@
 package model.collision;
 
-import model.entities.GameObject;
-import model.entities.Character;
-import model.entities.Coin;
+import model.entities.*;
 import model.GameModel;
-import model.entities.Platform;
+import model.entities.Character;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,10 +34,8 @@ public class CollisionManager
 
 					if (a instanceof Character && b instanceof Coin) {
 						handleCharacterCoinCollision((Character) a, (Coin) b, model);
-
 					} else if (b instanceof Character && a instanceof Coin) {
 						handleCharacterCoinCollision((Character) b, (Coin) a, model);
-
 					}
 
 
@@ -84,6 +80,11 @@ public class CollisionManager
 				player.setY(platformTop - player.getHeight());
 				player.landOnPlatform();
 			}
+
+			if (platform instanceof BreakablePlatform) {
+				((BreakablePlatform)platform).breakPlatform();
+			}
+			return true;
 		}
 		return false;
 	}

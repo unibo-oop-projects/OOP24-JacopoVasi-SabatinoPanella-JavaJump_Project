@@ -37,7 +37,7 @@ public class AudioManager {
 
 		int totalFrames = backgroundClip.getFrameLength();
 		int loopStart = 0;
-		int loopEnd = (int) (totalFrames * 0.8817f);
+		int loopEnd = (int) (totalFrames * 0.885f);
 		backgroundClip.setLoopPoints(loopStart, loopEnd );
 		backgroundClip.loop(Clip.LOOP_CONTINUOUSLY);
 		backgroundClip.start();

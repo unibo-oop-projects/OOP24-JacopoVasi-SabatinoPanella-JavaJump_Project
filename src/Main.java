@@ -12,7 +12,6 @@ import model.camera.CameraManager;
 import view.MainGameView;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class Main
 {
