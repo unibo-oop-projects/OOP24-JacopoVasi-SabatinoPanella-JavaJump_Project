@@ -12,6 +12,8 @@ import model.camera.CameraManager;
 import view.MainGameView;
 
 import javax.swing.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public class Main
 {
@@ -19,7 +21,6 @@ public class Main
 	{
 		int screenWidth = 800;
 		int screenHeight = 600;
-
 
 		AbstractGameObjectFactory factory = new GameObjectFactory();
 
@@ -40,6 +41,7 @@ public class Main
 
 		CleanupManager cleanupManager = new CleanupManager();
 
+		JFrame frame = new JFrame("JAVA JUMP");
 
 
 		GameModel model = new GameModel(screenWidth,
@@ -57,21 +59,25 @@ public class Main
 
 		GameController controller = new GameController(model, view);
 
-
-		JFrame frame = new JFrame("JAVA JUMP");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(screenWidth, screenHeight);
-		frame.setResizable(false);
+
 
 		frame.addKeyListener(controller);
+		frame.addComponentListener(new ComponentAdapter() {
+			public void componentResized(ComponentEvent e) {
+				frame.setPreferredSize(e.getComponent().getSize());
+				frame.pack();
+				view.setNewSize(frame.getContentPane().getWidth(), frame.getContentPane().getHeight());
+			}
+		});
+
 		frame.add(view);
 
 		frame.setVisible(true);
 
 
 		controller.startGameLoop();
-
-
 
 	}
 }

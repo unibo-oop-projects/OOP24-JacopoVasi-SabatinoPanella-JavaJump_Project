@@ -103,7 +103,10 @@ public class GameModel
 
 		this.player = spawnManager.getFactory()
 								  .createCharacter(screenWidth / 2f, screenHeight - 70);
+
 		gameObjects.add(player);
+
+
 		spawnManager.generateInitialLevel(this);
 	}
 
@@ -118,6 +121,7 @@ public class GameModel
 		}
 	}
 
+
 	public int getScore()
 	{
 		return scoreManager.getCurrentScore();
@@ -126,6 +130,7 @@ public class GameModel
 	{
 		scoreManager.addPoints(amount);
 	}
+
 
 	public PhysicsManager getPhysicsManager() { return physicsManager; }
 	public CollisionManager getCollisionManager() { return collisionManager; }

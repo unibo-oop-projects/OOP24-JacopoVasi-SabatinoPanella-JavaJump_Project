@@ -17,6 +17,16 @@ public class BreakablePlatform extends Platform {
 	@Override
 	public void update(float deltaTime) {
 		super.update(deltaTime);
+
+
+
+
+		if (broken) {
+
+
+
+
+		}
 	}
 
 	public boolean isBroken() {

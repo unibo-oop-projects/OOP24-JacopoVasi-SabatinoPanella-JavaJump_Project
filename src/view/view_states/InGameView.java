@@ -64,6 +64,12 @@ public class InGameView implements GameViewState {
 		drawPlayer(g, model, cameraOffsetY);
 
 		drawScoreAndUI(g, model);
+
+
+
+
+
+
 	}
 
 
@@ -79,18 +85,30 @@ public class InGameView implements GameViewState {
 		int screenW = model.getScreenWidth();
 		int screenH = model.getScreenHeight();
 
+
 		float cameraOffset = model.getCameraManager().getCurrentOffset();
 
 		float bgOffsetY = cameraOffset * PARALLAX_FACTOR;
 
+
 		int tileW = bgTile.getWidth();
 		int tileH = bgTile.getHeight();
+
+
+
+
 		Graphics2D g2 = (Graphics2D) g;
+
+
 
 		int shiftY = (int)(bgOffsetY) % tileH;
 		if (shiftY < 0) {
 			shiftY += tileH;
 		}
+
+
+
+
 		int verticalTiles = (screenH / tileH) + 2;
 
 
@@ -122,6 +140,8 @@ public class InGameView implements GameViewState {
 		int drawX = (int) platform.getX();
 		int drawY = (int) (platform.getY() - cameraOffsetY);
 
+
+
 		g.setColor(Color.GRAY);
 		g.fillRoundRect(drawX, drawY, (int)platform.getWidth(), (int)platform.getHeight(), 10, 10);
 	}
@@ -131,6 +151,8 @@ public class InGameView implements GameViewState {
 		int drawX = (int) platform.getX();
 		int drawY = (int) (platform.getY() - cameraOffsetY);
 
+
+
 		g.setColor(Color.BLUE);
 		g.fillRoundRect(drawX, drawY, (int)platform.getWidth(), (int)platform.getHeight(), 10, 10);
 	}
@@ -139,6 +161,8 @@ public class InGameView implements GameViewState {
 
 		int drawX = (int) platform.getX();
 		int drawY = (int) (platform.getY() - cameraOffsetY);
+
+
 
 		g.setColor(Color.RED);
 		g.fillRoundRect(drawX, drawY, (int)platform.getWidth(), (int)platform.getHeight(), 10, 10);

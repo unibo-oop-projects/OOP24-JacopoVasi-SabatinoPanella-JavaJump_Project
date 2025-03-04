@@ -7,6 +7,7 @@ public class Character extends GameObject
 	private float velocityX;
 	private float velocityY;
 	private float jumpForce;
+
 	private static final float GRAVITY = 1350.0f;
 
 
@@ -58,6 +59,8 @@ public class Character extends GameObject
 		this.velocityY += GRAVITY * deltaTime;
 		
 		updateAnimation(deltaTime);
+
+
 	}
 
 	private void updateAnimation(float deltaTime)
@@ -97,6 +100,7 @@ public class Character extends GameObject
 	public void landOnPlatform() {
 		this.onPlatform = true;
 		this.animTime = 0;
+
 	}
 
 	

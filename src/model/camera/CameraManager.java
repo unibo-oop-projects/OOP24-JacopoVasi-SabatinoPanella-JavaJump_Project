@@ -13,13 +13,14 @@ public class CameraManager
 	private final ScoreManager scoreManager;
 	private final float scoreFactor;
 
+
 	public CameraManager(ScoreManager scoreManager, float scoreFactor)
 	{
 		this.scoreManager = scoreManager;
 		this.scoreFactor = scoreFactor;
+
 		this.currentOffset = 0;
 		this.previousOffset = 0;
-
 	}
 
 	
@@ -31,13 +32,17 @@ public class CameraManager
 
 		float desiredOffset = currentOffset;
 
+
 		if (player.getY() < halfScreen - currentOffset) {
 			desiredOffset = player.getY() - halfScreen;
 		}
 
+
 		if (desiredOffset > currentOffset) {
 			desiredOffset = currentOffset;
 		}
+
+
 
 		if (currentOffset < previousOffset) {
 			float deltaOffset = previousOffset - currentOffset;

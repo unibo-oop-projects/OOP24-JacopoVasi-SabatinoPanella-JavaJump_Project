@@ -45,4 +45,6 @@ public class ScoreManager
 		this.bestScoreReached = false;
 	}
 
+
+
 }

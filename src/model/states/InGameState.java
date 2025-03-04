@@ -22,16 +22,16 @@ public class InGameState implements GameStateHandler
 	{
 		switch (action)
 		{
-			case MOVE_LEFT:
+			case GameAction.MOVE_LEFT:
 				horizontalDirection = -1;
 				break;
-			case MOVE_RIGHT:
+			case GameAction.MOVE_RIGHT:
 				horizontalDirection = +1;
 				break;
-			case STOP_HORIZONTAL:
+			case GameAction.STOP_HORIZONTAL:
 				horizontalDirection = 0;
 				break;
-			case PAUSE_GAME:
+			case GameAction.PAUSE_GAME:
 				model.setState(new PauseState());
 				break;
 			default:
@@ -72,6 +72,7 @@ public class InGameState implements GameStateHandler
 		model.getSpawnManager().generateOnTheFly(model);
 
 		model.getCleanupManager().cleanupObjects(model);
+
 
 		float offset = model.getCameraManager().getCurrentOffset();
 		float drawY = player.getY() - offset;

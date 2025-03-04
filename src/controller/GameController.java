@@ -1,5 +1,7 @@
 package controller;
 
+
+import com.sun.tools.javac.Main;
 import model.GameModel;
 import view.MainGameView;
 
@@ -42,7 +44,6 @@ public class GameController implements KeyListener
 				{
 					float deltaTime = (float) (elapsedNs / 1_000_000_000.0);
 
-
 					updateModel(deltaTime);
 					view.updateView(deltaTime);
 
@@ -65,6 +66,7 @@ public class GameController implements KeyListener
 		model.update(deltaTime);
 	}
 
+	
 	private void updateHorizontalDirectionInModel() {
 		int direction = 0;
 		if (pressingLeft && !pressingRight) {
