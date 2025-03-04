@@ -87,7 +87,7 @@ public class SpawnManager
 			float x = random.nextFloat() * (model.getScreenWidth() - platformWidth);
 
 
-			Platform p = spawnAPlatform(x, currentY);
+			Platform p = spawnAPlatform(x, currentY, model);
 			model.getGameObjects().add(p);
 
 
@@ -110,14 +110,14 @@ public class SpawnManager
 		return min + random.nextFloat() * (max - min);
 	}
 
-	private Platform spawnAPlatform(float x, float y) {
+	private Platform spawnAPlatform(float x, float y, GameModel model) {
 		float chance = new Random().nextFloat();
 		if (chance < 0.05f) {
 
 			return factory.createBreakablePlatform(x, y);
 		} else if (chance < 0.2f) {
 
-			return factory.createMovingPlatform(x, y);
+			return factory.createMovingPlatform(x, y, model.getScreenWidth());
 		} else {
 
 			return factory.createRandomPlatform(x, y);

@@ -15,7 +15,7 @@ public abstract class AbstractGameObjectFactory
 
 	public abstract Platform createRandomPlatform(float x, float y);
 
-	public abstract Platform createMovingPlatform(float x, float y);
+	public abstract Platform createMovingPlatform(float x, float y, int screenWidth);
 
 	public abstract Platform createBreakablePlatform(float x, float y);
 

@@ -39,16 +39,12 @@ public class GameObjectFactory extends AbstractGameObjectFactory
 	}
 
 	@Override
-	public Platform createMovingPlatform(float x, float y)
+	public Platform createMovingPlatform(float x, float y, int screenWidth)
 	{
 		float width = 70 + new Random().nextInt(45);
 		float height = 10;
-
 		float range = 50 + new Random().nextFloat()* 100;
-
 		float speed = 30f + new Random().nextInt(40);
-
-		int screenWidth = 800;
 
 		return new MovingPlatform(x, y, width, height, range, screenWidth, speed);
 	}

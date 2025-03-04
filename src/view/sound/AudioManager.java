@@ -83,7 +83,7 @@ public class AudioManager {
 			try {
 
 				float min = volumeControl.getMinimum();
-				float max = volumeControl.getMaximum();
+
 				float currentVol = volumeControl.getValue();
 
 				int steps = 50;

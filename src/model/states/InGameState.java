@@ -22,16 +22,16 @@ public class InGameState implements GameStateHandler
 	{
 		switch (action)
 		{
-			case GameAction.MOVE_LEFT:
+			case MOVE_LEFT:
 				horizontalDirection = -1;
 				break;
-			case GameAction.MOVE_RIGHT:
+			case MOVE_RIGHT:
 				horizontalDirection = +1;
 				break;
-			case GameAction.STOP_HORIZONTAL:
+			case STOP_HORIZONTAL:
 				horizontalDirection = 0;
 				break;
-			case GameAction.PAUSE_GAME:
+			case PAUSE_GAME:
 				model.setState(new PauseState());
 				break;
 			default:

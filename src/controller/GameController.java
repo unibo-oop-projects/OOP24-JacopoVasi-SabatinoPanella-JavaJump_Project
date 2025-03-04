@@ -127,32 +127,4 @@ public class GameController implements KeyListener
 
 	}
 
-	
-	private GameAction mapKeyToAction(KeyEvent e, boolean pressed)
-	{
-		int code = e.getKeyCode();
-		switch (code)
-		{
-			case KeyEvent.VK_LEFT:
-				return pressed ? GameAction.MOVE_LEFT : GameAction.STOP_HORIZONTAL;
-			case KeyEvent.VK_RIGHT:
-				return pressed ? GameAction.MOVE_RIGHT : GameAction.STOP_HORIZONTAL;
-			case KeyEvent.VK_ENTER:
-
-
-				return pressed ? GameAction.CONFIRM_SELECTION : null;
-			case KeyEvent.VK_ESCAPE:
-				return pressed ? GameAction.PAUSE_GAME : null;
-			case KeyEvent.VK_DOWN:
-				return pressed ? GameAction.MOVE_MENU_DOWN : null;
-			case KeyEvent.VK_UP:
-				return pressed ? GameAction.MOVE_MENU_UP : null;
-
-
-			default:
-				return null;
-		}
-	}
-
-
 }
