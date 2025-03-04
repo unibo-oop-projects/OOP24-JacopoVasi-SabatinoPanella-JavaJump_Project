@@ -61,6 +61,9 @@ public class Character extends GameObject
 		updateAnimation(deltaTime);
 
 
+
+
+
 	}
 
 	private void updateAnimation(float deltaTime)

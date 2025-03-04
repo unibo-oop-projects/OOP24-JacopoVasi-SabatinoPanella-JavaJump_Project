@@ -13,7 +13,7 @@ public class SpawnManager
 	private final Random random;
 
 
-	private final int numberOfPlatforms;
+	private  int numberOfPlatforms;
 	private final float minPlatformYSpacing;
 	private final float maxPlatformYSpacing;
 	private final float coinSpawnChance;
@@ -27,7 +27,7 @@ public class SpawnManager
 		this.random = new Random();
 
 
-		this.numberOfPlatforms = 10;
+		this.numberOfPlatforms = 1;
 		this.minPlatformYSpacing = 80;
 		this.maxPlatformYSpacing = 140;
 		this.coinSpawnChance = 0.3f;
@@ -49,8 +49,9 @@ public class SpawnManager
 		topPlatformY = startY;
 
 
+		numberOfPlatforms=10;
 		spawnBatch(model, startY);
-
+		numberOfPlatforms=3;
 
 
 

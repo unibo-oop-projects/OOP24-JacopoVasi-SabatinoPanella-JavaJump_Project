@@ -11,16 +11,17 @@ import java.util.List;
 
 public class CleanupManager
 {
+	GameModel gameModel;
 
 	public void cleanupObjects(GameModel model) {
-		List<GameObject> objects = model.getGameObjects();
+		this.gameModel = model;
 		List<GameObject> toRemove = new ArrayList<>();
 
 		float cameraOffset = model.getCameraManager().getCurrentOffset();
 		float screenH = model.getScreenHeight();
 		float margin = 50f;
 
-		for (GameObject go : objects) {
+		for (GameObject go : gameModel.getGameObjects()) {
 
 			if (go instanceof Coin c) {
 				if (c.getIsDone()) {
@@ -45,6 +46,6 @@ public class CleanupManager
 
 		}
 
-		objects.removeAll(toRemove);
+		gameModel.getGameObjects().removeAll(toRemove);
 	}
 }

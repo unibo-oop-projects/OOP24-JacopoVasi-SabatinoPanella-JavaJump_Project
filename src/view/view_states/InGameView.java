@@ -28,6 +28,7 @@ public class InGameView implements GameViewState {
 		ArrayList<GameObject> snapshot;
 		synchronized(model.getGameObjects()) {
 			snapshot = new ArrayList<>(model.getGameObjects());
+			System.out.println(snapshot.size());
 		}
 
 		Graphics2D g2 = (Graphics2D) g;
@@ -59,8 +60,11 @@ public class InGameView implements GameViewState {
 
 		}
 
+
 		Character player = model.getPlayer();
 		renderer.drawPlayer(g2, player, cameraOffsetY);
+
+
 
 		long now = System.currentTimeMillis();
 		if (now - lastToggleTime > 1700) {

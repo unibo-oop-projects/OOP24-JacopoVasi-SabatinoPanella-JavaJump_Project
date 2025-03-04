@@ -25,10 +25,15 @@ public class BackgroundRenderer {
 		int tileW = bgTile.getWidth();
 		int tileH = bgTile.getHeight();
 
+
+
+
 		int shiftY = (int)(bgOffsetY) % tileH;
 		if (shiftY < 0) {
 			shiftY += tileH;
 		}
+
+
 
 
 		int verticalTiles = (screenH / tileH) + 2;

@@ -34,15 +34,26 @@ public class GameController implements KeyListener
 			long previousTime = System.nanoTime();
 			final double fps = 60.0;
 			final double nsPerFrame = 1_000_000_000 / fps;
-
+			int count=0;
+			long countTime = System.currentTimeMillis();
 			while (running)
 			{
+
 				long currentTime = System.nanoTime();
 				double elapsedNs = currentTime - previousTime;
+				long countElapsed = System.currentTimeMillis() - countTime;
+				if(countElapsed>=1000){
+					countTime=System.currentTimeMillis();
+					System.out.println("FPS: "+count);
+					count=0;
 
+				}
 				if (elapsedNs >= nsPerFrame)
 				{
+					count=count+1;
 					float deltaTime = (float) (elapsedNs / 1_000_000_000.0);
+
+
 
 					updateModel(deltaTime);
 					view.updateView(deltaTime);
@@ -126,5 +137,7 @@ public class GameController implements KeyListener
 	{
 
 	}
+
+
 
 }
