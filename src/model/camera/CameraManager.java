@@ -1,7 +1,7 @@
 package model.camera;
 
 import model.GameModel;
-import model.entities.Character;
+import model.entities.character.Character;
 import model.score.ScoreManager;
 
 
@@ -28,27 +28,7 @@ public class CameraManager
 	{
 		Character player = model.getPlayer();
 		float screenHeight = model.getScreenHeight();
-		float halfScreen = screenHeight / 2f;
-
-		float desiredOffset = currentOffset;
-
-
-
-
-
-		if (player.getY() < halfScreen - currentOffset) {
-			desiredOffset = player.getY() - halfScreen;
-		}
-
-
-
-
-
-		if (desiredOffset > currentOffset) {
-			desiredOffset = currentOffset;
-		}
-
-
+		float desiredOffset = getDesiredOffset(screenHeight, player);
 
 		if (currentOffset < previousOffset) {
 			float deltaOffset = previousOffset - currentOffset;
@@ -59,6 +39,21 @@ public class CameraManager
 
 		previousOffset = currentOffset;
 		currentOffset = desiredOffset;
+	}
+
+	private float getDesiredOffset(float screenHeight, Character player)
+	{
+		float halfScreen = screenHeight / 2f - screenHeight *0.05f;
+		float desiredOffset = currentOffset;
+
+		if (player.getY() < halfScreen - currentOffset) {
+			desiredOffset = player.getY() - halfScreen;
+		}
+
+		if (desiredOffset > currentOffset) {
+			desiredOffset = currentOffset;
+		}
+		return desiredOffset;
 	}
 
 	public void reset(){

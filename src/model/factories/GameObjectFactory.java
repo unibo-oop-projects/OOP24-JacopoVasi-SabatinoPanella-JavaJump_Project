@@ -1,8 +1,10 @@
 package model.factories;
 
-import model.GameModel;
-import model.entities.*;
-import model.entities.Character;
+import model.entities.character.Character;
+import model.entities.collectibles.Coin;
+import model.entities.platforms.BreakablePlatform;
+import model.entities.platforms.MovingPlatform;
+import model.entities.platforms.Platform;
 
 import java.util.Random;
 
@@ -14,7 +16,7 @@ public class GameObjectFactory extends AbstractGameObjectFactory
 
 		float width = 48;
 		float height = 50;
-		float jumpForce = 1000;
+		float jumpForce = 700;
 
 		return new Character(x, y, width, height, jumpForce);
 	}

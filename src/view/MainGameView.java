@@ -14,9 +14,7 @@ import java.awt.image.BufferedImage;
 
 public class MainGameView extends JPanel implements GameModelObserver
 {
-
 	private final GameModel model;
-
 
 	private final GameViewState menuView;
 	private final GameViewState inGameView;
@@ -31,7 +29,6 @@ public class MainGameView extends JPanel implements GameModelObserver
 		this.model = model;
 		RendererManager rendererManager = new RendererManager();
 		this.setBackground(Color.BLACK);
-
 
 		this.menuView = new MenuView();
 		this.inGameView = new InGameView(rendererManager);
@@ -64,24 +61,18 @@ public class MainGameView extends JPanel implements GameModelObserver
 	}
 
 
-
 	@Override
 	public void onModelUpdate(GameModel model) {
 		GameStateHandler handler = model.getCurrentState();
 		GameState currentGS = handler.getGameState();
-
 
 		if (currentGS != this.lastState) {
 
 			switch (currentGS) {
 				case IN_GAME:
 
-
-
 					break;
 				case PAUSE:
-
-
 
 					break;
 				case GAME_OVER:
@@ -91,8 +82,6 @@ public class MainGameView extends JPanel implements GameModelObserver
 					gameOverView.startFade();
 					break;
 				case MENU:
-
-
 
 					break;
 			}

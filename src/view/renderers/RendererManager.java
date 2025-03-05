@@ -1,9 +1,9 @@
 package view.renderers;
 
 import model.GameModel;
-import model.entities.Coin;
-import model.entities.Platform;
-import model.entities.Character;
+import model.entities.collectibles.Coin;
+import model.entities.platforms.Platform;
+import model.entities.character.Character;
 import view.graphics.GameGraphics;
 import view.renderers.sub.*;
 
@@ -24,7 +24,6 @@ public class RendererManager {
 		this.scoreUIRenderer = new ScoreUIRenderer(GameGraphics.getScoreContainer());
 	}
 
-	
 	public void drawBackground(Graphics2D g2, GameModel model) {
 		backgroundRenderer.drawBackground(g2, model);
 	}
@@ -34,21 +33,17 @@ public class RendererManager {
 		playerRenderer.drawPlayer(g2, player, offsetY);
 	}
 
-	
 	public void drawCoin(Graphics2D g2, Coin coin, float offsetY) {
 		coinRenderer.drawCoin(g2, coin, offsetY);
 	}
 
-	
 	public void drawPlatform(Graphics2D g2, Platform platform, float offsetY) {
 		platformRenderer.drawPlatform(g2, platform, offsetY);
 	}
 
-	
 	public void drawScoreUI(Graphics2D g2, GameModel model,
 							boolean isNewHighScore,
 							boolean showHighScoreMessage) {
 		scoreUIRenderer.drawScoreAndUI(g2, model, isNewHighScore, showHighScoreMessage);
 	}
-
 }

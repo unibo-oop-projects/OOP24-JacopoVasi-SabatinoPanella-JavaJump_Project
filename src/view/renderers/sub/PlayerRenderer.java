@@ -1,6 +1,6 @@
 package view.renderers.sub;
 
-import model.entities.Character;
+import model.entities.character.Character;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;

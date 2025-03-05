@@ -1,8 +1,8 @@
 package view.renderers.sub;
 
-import model.entities.BreakablePlatform;
-import model.entities.MovingPlatform;
-import model.entities.Platform;
+import model.entities.platforms.BreakablePlatform;
+import model.entities.platforms.MovingPlatform;
+import model.entities.platforms.Platform;
 
 import java.awt.*;
 

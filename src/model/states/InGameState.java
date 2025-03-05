@@ -3,7 +3,7 @@ package model.states;
 import controller.GameAction;
 import model.GameModel;
 import model.entities.GameObject;
-import model.entities.Character;
+import model.entities.character.Character;
 import model.physics.MovementDirection;
 
 public class InGameState implements GameStateHandler
@@ -42,7 +42,6 @@ public class InGameState implements GameStateHandler
 	@Override
 	public void update(GameModel model, float deltaTime)
 	{
-
 		Character player = model.getPlayer();
 		MovementDirection md = convertIntToMovementDirection(horizontalDirection);
 		model.getPhysicsManager().updateCharacterMovement
@@ -51,7 +50,6 @@ public class InGameState implements GameStateHandler
 				deltaTime,
 				md
 		);
-
 
 		for (GameObject go : model.getGameObjects())
 		{
@@ -62,17 +60,13 @@ public class InGameState implements GameStateHandler
 			}
 		}
 
-
 		model.getCollisionManager().checkCollisions(model);
 
-
 		model.getCameraManager().update(model, deltaTime);
-
 
 		model.getSpawnManager().generateOnTheFly(model);
 
 		model.getCleanupManager().cleanupObjects(model);
-
 
 		float offset = model.getCameraManager().getCurrentOffset();
 		float drawY = player.getY() - offset;
@@ -80,8 +74,6 @@ public class InGameState implements GameStateHandler
 		{
 			model.setState(new GameOverState());
 		}
-
-
 		model.notifyObservers();
 	}
 

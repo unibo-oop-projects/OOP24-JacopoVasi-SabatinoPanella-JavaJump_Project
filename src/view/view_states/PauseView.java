@@ -7,8 +7,6 @@ import java.awt.*;
 public class PauseView implements GameViewState {
 	@Override
 	public void draw(Graphics g, GameModel model) {
-
-
 		g.setColor(new Color(0,0,0,200));
 		g.fillRect(0,0, model.getScreenWidth(), model.getScreenHeight());
 

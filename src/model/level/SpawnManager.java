@@ -2,136 +2,67 @@ package model.level;
 
 import model.GameModel;
 import model.factories.AbstractGameObjectFactory;
-import model.entities.Coin;
-import model.entities.Platform;
+import model.level.spawn.RandomSpawnStrategy;
+import model.level.spawn.SpawnStrategy;
 
-import java.util.Random;
+import static model.level.spawn.utilities.SpawnUtils.spawnPlatformBelowPlayer;
 
-public class SpawnManager
-{
-	private final AbstractGameObjectFactory factory;
-	private final Random random;
+public class SpawnManager {
 
-
-	private  int numberOfPlatforms;
-	private final float minPlatformYSpacing;
-	private final float maxPlatformYSpacing;
-	private final float coinSpawnChance;
-
-	private float lastSpawnCameraOffset;
+	private final SpawnStrategy spawnStrategy;
 	private float topPlatformY;
 
-	public SpawnManager(AbstractGameObjectFactory factory)
-	{
-		this.factory = factory;
-		this.random = new Random();
+
+	private final int INITIAL_PLATFORMS_NUMBER = 10;
+	private final int PROCEDURAL_PLATFORMS_NUMBER = 10;
 
 
-		this.numberOfPlatforms = 1;
-		this.minPlatformYSpacing = 80;
-		this.maxPlatformYSpacing = 140;
-		this.coinSpawnChance = 0.3f;
+	private final float SPAWN_THRESHOLD = 400f;
 
-		this.lastSpawnCameraOffset = 0;
+	public SpawnManager(SpawnStrategy spawnStrategy) {
+		this.spawnStrategy = spawnStrategy;
 		this.topPlatformY = 0;
 	}
 
 	
 	public void generateInitialLevel(GameModel model) {
-
-		Platform p = factory.createStandardPlatform(model.getPlayer().getX(), model.getPlayer().getY() + 60);
-		model.getGameObjects().add(p);
-
-
-
+		spawnPlatformBelowPlayer(model, getFactory());
 		float startY = model.getScreenHeight() - 50;
-
-		topPlatformY = startY;
-
-
-		numberOfPlatforms=10;
-		spawnBatch(model, startY);
-		numberOfPlatforms=3;
-
-
-
-		this.lastSpawnCameraOffset = 0;
+		spawnStrategy.spawnBatch(model, startY, INITIAL_PLATFORMS_NUMBER);
+		this.topPlatformY = spawnStrategy.returnCurrentY();
 	}
 
 	
 	public void generateOnTheFly(GameModel model) {
 
-		float cameraOffset = model.getCameraManager().getCurrentOffset();
+		float playerY = model.getPlayer().getY();
+		float gap = playerY - topPlatformY;
 
+		if (gap < SPAWN_THRESHOLD) {
 
-		if (cameraOffset < (lastSpawnCameraOffset - 300f)) {
+			spawnStrategy.spawnBatch(model, topPlatformY, PROCEDURAL_PLATFORMS_NUMBER);
 
-			spawnBatch(model, topPlatformY);
-
-
-			this.lastSpawnCameraOffset -= 300f;
-		}
-	}
-
-	
-	private void spawnBatch(GameModel model, float startY) {
-		float currentY = startY;
-		float platformWidth = 100;
-
-		for (int i = 0; i < numberOfPlatforms; i++) {
-
-			float gap = randomInRange(minPlatformYSpacing, maxPlatformYSpacing);
-
-			currentY -= gap;
-
-
-			float x = random.nextFloat() * (model.getScreenWidth() - platformWidth);
-
-
-			Platform p = spawnAPlatform(x, currentY, model);
-			model.getGameObjects().add(p);
-
-
-			if (random.nextFloat() < coinSpawnChance) {
-				float coinX = x + (platformWidth / 2f) - platformWidth*0.2f;
-				float coinY = currentY - 50;
-				Coin c = factory.createCoin(coinX, coinY);
-				model.getGameObjects().add(c);
+			float newTop = spawnStrategy.returnCurrentY();
+			if (newTop < topPlatformY) {
+				topPlatformY = newTop;
 			}
-		}
-
-
-		if(currentY < topPlatformY){
-			this.topPlatformY = currentY;
-		}
-	}
-
-	private float randomInRange(float min, float max)
-	{
-		return min + random.nextFloat() * (max - min);
-	}
-
-	private Platform spawnAPlatform(float x, float y, GameModel model) {
-		float chance = new Random().nextFloat();
-		if (chance < 0.05f) {
-
-			return factory.createBreakablePlatform(x, y);
-		} else if (chance < 0.2f) {
-
-			return factory.createMovingPlatform(x, y, model.getScreenWidth());
-		} else {
-
-			return factory.createRandomPlatform(x, y);
 		}
 	}
 
 	public void reset() {
-		this.lastSpawnCameraOffset = 0;
 		this.topPlatformY = 0;
 	}
 
-	public AbstractGameObjectFactory getFactory()
-	{
-		return this.factory;
+	public SpawnStrategy getSpawnStrategy() {
+		return this.spawnStrategy;
+	}
+
+	public AbstractGameObjectFactory getFactory() {
+
+		if (spawnStrategy instanceof RandomSpawnStrategy) {
+			return spawnStrategy.getFactory();
+		}
+
+		return null;
 	}
 }

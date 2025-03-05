@@ -1,4 +1,6 @@
-package model.entities;
+package model.entities.platforms;
+
+import model.entities.GameObject;
 
 public class BreakablePlatform extends Platform {
 
@@ -17,16 +19,6 @@ public class BreakablePlatform extends Platform {
 	@Override
 	public void update(float deltaTime) {
 		super.update(deltaTime);
-
-
-
-
-		if (broken) {
-
-
-
-
-		}
 	}
 
 	public boolean isBroken() {

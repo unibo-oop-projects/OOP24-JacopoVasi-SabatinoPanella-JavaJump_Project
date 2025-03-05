@@ -4,28 +4,19 @@ import controller.GameAction;
 import model.camera.CameraManager;
 import model.collision.CollisionManager;
 import model.entities.GameObject;
-import model.entities.Character;
-import model.entities.Platform;
-import model.entities.Coin;
-import model.factories.AbstractGameObjectFactory;
-import model.collision.CollisionManager;
+import model.entities.character.Character;
 import model.level.CleanupManager;
 import model.level.SpawnManager;
-import model.physics.MovementDirection;
 import model.physics.PhysicsManager;
 import model.score.ScoreManager;
-import model.states.GameState;
 import model.states.GameStateHandler;
 import model.states.MenuState;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameModel
 {
-
-
 	private GameStateHandler currentState;
 	private final PhysicsManager physicsManager;
 	private final CollisionManager collisionManager;
@@ -34,14 +25,11 @@ public class GameModel
 	private final ScoreManager scoreManager;
 	private final CleanupManager cleanupManager;
 
-
 	private final List<GameObject> gameObjects;
 	private Character player;
 
-
-	private int screenWidth;
-	private int screenHeight;
-
+	private final int screenWidth;
+	private final int screenHeight;
 
 	private final List<GameModelObserver> observers;
 
@@ -55,7 +43,6 @@ public class GameModel
 			ScoreManager scoreManager,
 			CleanupManager cleanupManager
 	)
-
 	{
 		this.screenWidth = screenWidth;
 		this.screenHeight = screenHeight;
@@ -71,11 +58,9 @@ public class GameModel
 
 		this.cleanupManager = cleanupManager;
 
-
 		this.currentState = new MenuState();
 		this.currentState.onEnter(this);
 	}
-
 
 	public void setState(GameStateHandler newState)
 	{
@@ -100,19 +85,11 @@ public class GameModel
 		cameraManager.reset();
 		spawnManager.reset();
 
-
-
-
-
 		this.player = spawnManager.getFactory()
-								  .createCharacter(screenWidth / 2f, screenHeight - 70);
-
+								  .createCharacter(screenWidth / 2f, screenHeight*0.8f);
 		gameObjects.add(player);
-
-
 		spawnManager.generateInitialLevel(this);
 	}
-
 
 	public void addObserver(GameModelObserver obs) { observers.add(obs); }
 	public void removeObserver(GameModelObserver obs) { observers.remove(obs); }
@@ -124,7 +101,6 @@ public class GameModel
 		}
 	}
 
-
 	public int getScore()
 	{
 		return scoreManager.getCurrentScore();
@@ -133,7 +109,6 @@ public class GameModel
 	{
 		scoreManager.addPoints(amount);
 	}
-
 
 	public PhysicsManager getPhysicsManager() { return physicsManager; }
 	public CollisionManager getCollisionManager() { return collisionManager; }

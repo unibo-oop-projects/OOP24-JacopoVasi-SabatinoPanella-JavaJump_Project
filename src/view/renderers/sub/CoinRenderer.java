@@ -1,7 +1,7 @@
 package view.renderers.sub;
 
-import model.entities.Coin;
-import model.entities.CoinState;
+import model.entities.collectibles.Coin;
+import model.entities.collectibles.CoinState;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

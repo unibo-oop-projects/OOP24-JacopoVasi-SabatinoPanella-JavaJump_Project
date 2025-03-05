@@ -1,10 +1,9 @@
 package model.level;
 
 import model.GameModel;
-import model.entities.BreakablePlatform;
-import model.entities.Coin;
+import model.entities.platforms.BreakablePlatform;
+import model.entities.collectibles.Coin;
 import model.entities.GameObject;
-import model.entities.Platform;
 
 import java.util.ArrayList;
 import java.util.List;

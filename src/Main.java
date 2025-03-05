@@ -8,6 +8,7 @@ import model.level.SpawnManager;
 import model.physics.PhysicsManager;
 import model.score.ScoreManager;
 import model.camera.CameraManager;
+import model.level.spawn.RandomSpawnStrategy;
 
 import view.MainGameView;
 
@@ -22,21 +23,17 @@ public class Main
 		int screenWidth = 800;
 		int screenHeight = 600;
 
-
 		AbstractGameObjectFactory factory = new GameObjectFactory();
 
+		RandomSpawnStrategy strategy = new RandomSpawnStrategy(factory, 60, 90, 0.3f);
 
 		CollisionManager collisionManager = new CollisionManager();
 
-
-		SpawnManager spawnManager = new SpawnManager(factory);
-
+		SpawnManager spawnManager = new SpawnManager(strategy);
 
 		ScoreManager scoreManager = new ScoreManager();
 
-
 		CameraManager cameraManager = new CameraManager(scoreManager, 0.5f);
-
 
 		PhysicsManager physicsManager = new PhysicsManager(3000f, 400f, 15000f);
 
@@ -57,10 +54,7 @@ public class Main
 		MainGameView view = new MainGameView(model);
 		model.addObserver(view);
 
-
 		GameController controller = new GameController(model, view);
-
-
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(screenWidth, screenHeight);
@@ -78,9 +72,6 @@ public class Main
 
 		frame.setVisible(true);
 
-
 		controller.startGameLoop();
-
-
 	}
 }

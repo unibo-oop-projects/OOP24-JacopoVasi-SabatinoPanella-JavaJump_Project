@@ -1,4 +1,4 @@
-package model.entities;
+package model.entities.platforms;
 
 public class MovingPlatform extends Platform{
 	private final float minX;
@@ -30,7 +30,6 @@ public class MovingPlatform extends Platform{
 	@Override
 	public void update(float deltaTime) {
 		super.update(deltaTime);
-
 
 		if (goingRight) {
 			x += speed * deltaTime;

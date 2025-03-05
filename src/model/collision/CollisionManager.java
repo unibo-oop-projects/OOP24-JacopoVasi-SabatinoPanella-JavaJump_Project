@@ -2,7 +2,10 @@ package model.collision;
 
 import model.entities.*;
 import model.GameModel;
-import model.entities.Character;
+import model.entities.character.Character;
+import model.entities.collectibles.Coin;
+import model.entities.platforms.BreakablePlatform;
+import model.entities.platforms.Platform;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,10 +82,10 @@ public class CollisionManager
 				player.setVelocityY(-player.getJumpForce());
 				player.setY(platformTop - player.getHeight());
 				player.landOnPlatform();
-			}
 
-			if (platform instanceof BreakablePlatform) {
-				((BreakablePlatform)platform).breakPlatform();
+				if (platform instanceof BreakablePlatform) {
+					((BreakablePlatform)platform).breakPlatform();
+				}
 			}
 			return true;
 		}

@@ -1,6 +1,6 @@
 package model.physics;
 
-import model.entities.Character;
+import model.entities.character.Character;
 
 
 public class PhysicsManager

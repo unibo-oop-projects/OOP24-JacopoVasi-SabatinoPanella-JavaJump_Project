@@ -2,7 +2,9 @@ package view.view_states;
 
 import model.GameModel;
 import model.entities.*;
-import model.entities.Character;
+import model.entities.character.Character;
+import model.entities.collectibles.Coin;
+import model.entities.platforms.Platform;
 import view.renderers.RendererManager;
 
 import java.awt.*;

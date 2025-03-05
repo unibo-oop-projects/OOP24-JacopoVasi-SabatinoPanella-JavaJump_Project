@@ -19,7 +19,6 @@ public class AudioManager {
 			backgroundClip = AudioSystem.getClip();
 			backgroundClip.open(audioIn);
 
-
 			if (backgroundClip.isControlSupported(FloatControl.Type.MASTER_GAIN)) {
 				volumeControl = (FloatControl) backgroundClip.getControl(FloatControl.Type.MASTER_GAIN);
 			} else {
@@ -62,7 +61,6 @@ public class AudioManager {
 
 	public static void setVolume(float vol) {
 		if (volumeControl == null) return;
-
 
 		float min = volumeControl.getMinimum();
 		float max = volumeControl.getMaximum();

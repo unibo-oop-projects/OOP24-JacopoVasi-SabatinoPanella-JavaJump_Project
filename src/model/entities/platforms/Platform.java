@@ -1,4 +1,6 @@
-package model.entities;
+package model.entities.platforms;
+
+import model.entities.GameObject;
 
 public class Platform extends GameObject
 {
@@ -15,14 +17,11 @@ public class Platform extends GameObject
 	public void update(float deltaTime)
 	{
 
-
 	}
 
 	@Override
 	public void onCollision(GameObject other)
 	{
-
-
 
 	}
 

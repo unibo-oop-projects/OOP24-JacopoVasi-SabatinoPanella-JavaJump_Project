@@ -21,23 +21,15 @@ public class BackgroundRenderer {
 		float cameraOffset = model.getCameraManager().getCurrentOffset();
 		float bgOffsetY = cameraOffset * parallaxFactor;
 
-
 		int tileW = bgTile.getWidth();
 		int tileH = bgTile.getHeight();
-
-
-
 
 		int shiftY = (int)(bgOffsetY) % tileH;
 		if (shiftY < 0) {
 			shiftY += tileH;
 		}
 
-
-
-
 		int verticalTiles = (screenH / tileH) + 2;
-
 
 		for (int i=0; i<verticalTiles; i++) {
 			int drawY = -shiftY + i * tileH;

@@ -1,6 +1,6 @@
-package model.entities;
+package model.entities.character;
 
-import model.GameModel;
+import model.entities.GameObject;
 
 public class Character extends GameObject
 {
@@ -9,7 +9,6 @@ public class Character extends GameObject
 	private float jumpForce;
 
 	private static final float GRAVITY = 1350.0f;
-
 
 	private boolean onPlatform;
 	private int frameIndex;
@@ -43,7 +42,6 @@ public class Character extends GameObject
 		oldX = x;
 		oldY = y;
 
-
 		this.x += velocityX * deltaTime;
 
 		if (velocityX > 0) {
@@ -52,15 +50,9 @@ public class Character extends GameObject
 			facingRight = false;
 		}
 
-
 		this.y += velocityY * deltaTime;
-
-
 		this.velocityY += GRAVITY * deltaTime;
-		
 		updateAnimation(deltaTime);
-
-
 	}
 
 	private void updateAnimation(float deltaTime)
@@ -68,8 +60,6 @@ public class Character extends GameObject
 		animTime += deltaTime;
 
 		if (onPlatform) {
-
-
 			float cycle = FRAME_DURATION * 2;
 			float t = animTime % cycle;
 			if (t < FRAME_DURATION) {
@@ -78,9 +68,6 @@ public class Character extends GameObject
 				frameIndex = 1;
 			}
 		} else {
-
-
-
 			if (animTime < FRAME_DURATION) {
 				frameIndex = 2;
 			} else {
@@ -93,17 +80,15 @@ public class Character extends GameObject
 	public void onCollision(GameObject other)
 	{
 
-
 	}
 
-	
+
 	public void landOnPlatform() {
 		this.onPlatform = true;
 		this.animTime = 0;
-
 	}
 
-	
+
 	public void goInAir() {
 		if (this.onPlatform) {
 			this.onPlatform = false;

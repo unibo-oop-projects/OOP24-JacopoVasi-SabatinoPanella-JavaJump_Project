@@ -37,9 +37,6 @@ public class MenuView implements GameViewState {
         g2d.drawRoundRect((centerX / 3)-20, height - 120, 400, 40, 10, 10);
         g.setFont(GameGraphics.getGameFont2());
         g.drawString("Best Score:   " + bestScore, centerX / 3, height - 95);
-
-
-
     }
 
     @Override

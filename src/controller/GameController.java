@@ -39,20 +39,14 @@ public class GameController implements KeyListener
 				long countElapsed = System.currentTimeMillis() - countTime;
 				if(countElapsed>=1000){
 					countTime=System.currentTimeMillis();
-					System.out.println("FPS: "+count);
 					count=0;
-
 				}
 				if (elapsedNs >= nsPerFrame)
 				{
 					count=count+1;
 					float deltaTime = (float) (elapsedNs / 1_000_000_000.0);
-
-
-
 					updateModel(deltaTime);
 					view.updateView(deltaTime);
-
 					previousTime = currentTime;
 				}
 
