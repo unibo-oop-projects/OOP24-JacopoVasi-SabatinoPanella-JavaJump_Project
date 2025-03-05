@@ -101,6 +101,9 @@ public class GameModel
 		spawnManager.reset();
 
 
+
+
+
 		this.player = spawnManager.getFactory()
 								  .createCharacter(screenWidth / 2f, screenHeight - 70);
 

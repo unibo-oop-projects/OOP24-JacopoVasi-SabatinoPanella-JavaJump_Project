@@ -43,7 +43,6 @@ public class MainGameView extends JPanel implements GameModelObserver
 		this.screenHeight = model.getScreenHeight();
 		this.tempScreen = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_ARGB);
 		this.g2 = (Graphics2D) tempScreen.getGraphics();
-
 	}
 
 	
@@ -145,10 +144,4 @@ public class MainGameView extends JPanel implements GameModelObserver
 		this.screenHeight = screenHeight;
 	}
 
-	@Override
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-
-
-	}
 }

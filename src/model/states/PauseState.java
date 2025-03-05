@@ -27,8 +27,4 @@ public class PauseState implements GameStateHandler
 		return gameState;
 	}
 
-	@Override
-	public int getValue() {
-		return 0;
-	}
 }

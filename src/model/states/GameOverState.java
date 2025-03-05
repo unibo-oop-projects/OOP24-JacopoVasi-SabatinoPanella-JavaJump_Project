@@ -31,8 +31,4 @@ public class GameOverState implements GameStateHandler
 		return gameState;
 	}
 
-	@Override
-	public int getValue() {
-		return 0;
-	}
 }

@@ -20,5 +20,5 @@ public interface GameStateHandler
 
 	GameState getGameState();
 
-	int getValue();
+
 }

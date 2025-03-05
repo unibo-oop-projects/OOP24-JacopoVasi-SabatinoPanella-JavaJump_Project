@@ -65,7 +65,6 @@ public class Main
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(screenWidth, screenHeight);
 
-
 		frame.addKeyListener(controller);
 		frame.addComponentListener(new ComponentAdapter() {
 			public void componentResized(ComponentEvent e) {
@@ -81,7 +80,6 @@ public class Main
 
 
 		controller.startGameLoop();
-
 
 
 	}

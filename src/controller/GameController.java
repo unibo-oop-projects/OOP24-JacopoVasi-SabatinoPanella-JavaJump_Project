@@ -1,7 +1,4 @@
 package controller;
-
-
-import com.sun.tools.javac.Main;
 import model.GameModel;
 import view.MainGameView;
 
@@ -13,8 +10,6 @@ public class GameController implements KeyListener
 	private final GameModel model;
 	private final MainGameView view;
 	private volatile boolean running;
-
-
 	private boolean pressingLeft = false;
 	private boolean pressingRight = false;
 
@@ -137,7 +132,4 @@ public class GameController implements KeyListener
 	{
 
 	}
-
-
-
 }

@@ -33,9 +33,15 @@ public class CameraManager
 		float desiredOffset = currentOffset;
 
 
+
+
+
 		if (player.getY() < halfScreen - currentOffset) {
 			desiredOffset = player.getY() - halfScreen;
 		}
+
+
+
 
 
 		if (desiredOffset > currentOffset) {

@@ -6,13 +6,9 @@ import model.GameModel;
 public class MenuState implements GameStateHandler
 {
 	private final GameState gameState= GameState.MENU;
-	private int selection;
-	private final int maxSelection=2;
-	private final int minSelection=0;
 	@Override
 	public void onEnter(GameModel model)
 	{
-	selection=0;
 	}
 
 	@Override
@@ -43,12 +39,6 @@ public class MenuState implements GameStateHandler
 		return gameState;
 	}
 
-	@Override
-	public int getValue() {
-		return selection;
-	}
 
-	public int getSelection() {
-		return selection;
-	}
+
 }

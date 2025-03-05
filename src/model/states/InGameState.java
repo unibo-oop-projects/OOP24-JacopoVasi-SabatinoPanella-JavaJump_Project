@@ -90,12 +90,6 @@ public class InGameState implements GameStateHandler
 		return gameState;
 	}
 
-	@Override
-	public int getValue() {
-		return 0;
-	}
-
-
 	private MovementDirection convertIntToMovementDirection(int dir)
 	{
 		if (dir < 0) return MovementDirection.LEFT;
