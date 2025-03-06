@@ -34,8 +34,13 @@ public class Coin extends GameObject
 	@Override
 	public void update(float deltaTime)
 	{
+
+
 		if (isDone) return;
+
+
 		animTime += deltaTime;
+
 
 		switch (state) {
 			case IDLE:
@@ -51,13 +56,15 @@ public class Coin extends GameObject
 		}
 	}
 
-
+	
 	public void attachToPlatform(Platform platform) {
 		this.attachedPlatform = platform;
 		this.offsetX = this.x - platform.getX();
 	}
 
 	private void updateIdleAnimation() {
+
+
 		float cycle = FRAME_DURATION * 6;
 		float t = animTime % cycle;
 
@@ -65,16 +72,22 @@ public class Coin extends GameObject
 	}
 
 	private void updateCollectAnimation() {
+
+
 		int idx = (int)(animTime / FRAME_DURATION);
 		if (idx >= 7) {
+
+
+
 			this.frameIndex = 6;
+
 			this.isDone = true;
 		} else {
 			this.frameIndex = idx;
 		}
 	}
 
-
+	
 	public void collect() {
 		if (this.state == CoinState.IDLE) {
 			this.state = CoinState.COLLECTING;

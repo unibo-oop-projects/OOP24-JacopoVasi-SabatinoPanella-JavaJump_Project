@@ -1,4 +1,4 @@
-package model.level.spawn.platforms;
+package model.level.spawn.platformspawn;
 
 import model.entities.platforms.Platform;
 import model.factories.AbstractGameObjectFactory;
@@ -15,7 +15,7 @@ public class PlatformSpawner {
 		this.rand = new Random();
 	}
 
-	
+
 	public Platform spawnPlatform(float x, float y, int screenWidth) {
 		float chance = rand.nextFloat();
 		if (chance < 0.05f) {

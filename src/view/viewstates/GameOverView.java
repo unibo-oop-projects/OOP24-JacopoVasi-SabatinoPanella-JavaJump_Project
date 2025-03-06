@@ -1,4 +1,4 @@
-package view.view_states;
+package view.viewstates;
 
 import model.GameModel;
 import view.graphics.GameGraphics;
@@ -14,21 +14,21 @@ public class GameOverView implements GameViewState {
 	private boolean fading = false;
 
 
-	
+
 	public void startFade() {
 		this.fadeAlpha = 0f;
 		this.elapsedTime = 0f;
 		this.fading = true;
 	}
 
-	
+
 	public void stopFade() {
 		this.fadeAlpha = 1f;
 		this.fading = false;
 	}
 
 
-	
+
 	public void update(float deltaTime) {
 		if (fading) {
 			elapsedTime += deltaTime;
@@ -40,7 +40,7 @@ public class GameOverView implements GameViewState {
 	}
 
 
-	
+
 	@Override
 	public void draw(Graphics g, GameModel model) {
 		Graphics2D g2 = (Graphics2D) g;

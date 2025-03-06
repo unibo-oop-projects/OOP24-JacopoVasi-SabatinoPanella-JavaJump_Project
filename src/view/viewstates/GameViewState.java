@@ -1,14 +1,12 @@
-package view.view_states;
+package view.viewstates;
 
 import model.GameModel;
 
 import java.awt.Graphics;
 
 
-
-
 public interface GameViewState {
-	
+
 	void draw(Graphics g, GameModel model);
 
 	void startFade();

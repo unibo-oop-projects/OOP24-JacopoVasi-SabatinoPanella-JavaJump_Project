@@ -11,14 +11,11 @@ public class Character extends GameObject
 	private static final float GRAVITY = 1350.0f;
 
 	private boolean onPlatform;
-	private int frameIndex;
-	private float animTime;
-	private static final float FRAME_DURATION = 0.2f;
-
 	private boolean facingRight;
 
 	private float oldX;
 	private float oldY;
+
 	public Character(float x, float y, float width, float height, float jumpForce)
 	{
 		this.x = x;
@@ -32,8 +29,6 @@ public class Character extends GameObject
 		this.oldY = y;
 
 		this.onPlatform = false;
-		this.frameIndex = 0;
-		this.animTime = 0;
 	}
 
 	@Override
@@ -52,47 +47,24 @@ public class Character extends GameObject
 
 		this.y += velocityY * deltaTime;
 		this.velocityY += GRAVITY * deltaTime;
-		updateAnimation(deltaTime);
 	}
 
-	private void updateAnimation(float deltaTime)
-	{
-		animTime += deltaTime;
-
-		if (onPlatform) {
-			float cycle = FRAME_DURATION * 2;
-			float t = animTime % cycle;
-			if (t < FRAME_DURATION) {
-				frameIndex = 0;
-			} else {
-				frameIndex = 1;
-			}
-		} else {
-			if (animTime < FRAME_DURATION) {
-				frameIndex = 2;
-			} else {
-				frameIndex = 3;
-			}
-		}
-	}
 
 	@Override
-	public void onCollision(GameObject other)
-	{
+	public void onCollision(GameObject other) {
+
 
 	}
 
-
+	
 	public void landOnPlatform() {
 		this.onPlatform = true;
-		this.animTime = 0;
 	}
 
-
+	
 	public void goInAir() {
 		if (this.onPlatform) {
 			this.onPlatform = false;
-			this.animTime = 0;
 		}
 	}
 
@@ -137,14 +109,8 @@ public class Character extends GameObject
 		return oldY;
 	}
 
-	public boolean isOnPlatform()
-	{
+	public boolean isOnPlatform() {
 		return onPlatform;
-	}
-
-	public int getFrameIndex()
-	{
-		return frameIndex;
 	}
 
 	public boolean isFacingRight()

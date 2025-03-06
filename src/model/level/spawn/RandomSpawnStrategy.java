@@ -1,12 +1,11 @@
 package model.level.spawn;
 
 import model.GameModel;
-import model.entities.collectibles.Coin;
 import model.entities.platforms.Platform;
 import model.factories.AbstractGameObjectFactory;
-import model.level.spawn.collectibles.CollectiblesSpawner;
-import model.level.spawn.platforms.PlatformSpawner;
-import model.level.spawn.utilities.SpawnUtils;
+import model.level.spawn.collectiblespawn.CollectiblesSpawner;
+import model.level.spawn.platformspawn.PlatformSpawner;
+import model.level.spawn.spawnutilities.SpawnUtils;
 
 import java.util.Random;
 

@@ -1,10 +1,11 @@
 package model.entities.platforms;
 
-public class MovingPlatform extends Platform{
-	private final float minX;
-	private final float maxX;
-	private float speed;
-	private boolean goingRight;
+import model.entities.objectstrategies.HorizontalOscillationMovement;
+import model.entities.objectstrategies.MovementBehaviour;
+
+public class MovingPlatform extends Platform {
+
+	private final MovementBehaviour movementBehaviour;
 
 	public MovingPlatform(float x, float y, float width, float height,
 						  float range, float screenWidth, float speed) {
@@ -20,29 +21,13 @@ public class MovingPlatform extends Platform{
 		if (potentialMin < 0) potentialMin = 0;
 		if (potentialMax > screenWidth - width) potentialMax = screenWidth - width;
 
-		this.minX = potentialMin;
-		this.maxX = potentialMax;
-
-		this.speed = speed;
-		this.goingRight = true;
+		this.movementBehaviour = new HorizontalOscillationMovement(potentialMin, potentialMax, speed);
 	}
 
 	@Override
 	public void update(float deltaTime) {
 		super.update(deltaTime);
 
-		if (goingRight) {
-			x += speed * deltaTime;
-			if (x > maxX) {
-				x = maxX;
-				goingRight = false;
-			}
-		} else {
-			x -= speed * deltaTime;
-			if (x < minX) {
-				x = minX;
-				goingRight = true;
-			}
-		}
+		movementBehaviour.update(this, deltaTime);
 	}
 }

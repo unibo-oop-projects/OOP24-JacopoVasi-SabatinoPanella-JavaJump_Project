@@ -5,6 +5,7 @@ import model.GameModel;
 import model.entities.GameObject;
 import model.entities.character.Character;
 import model.physics.MovementDirection;
+import model.states.gameutilities.InGameUtilities;
 
 public class InGameState implements GameStateHandler
 {
@@ -43,7 +44,7 @@ public class InGameState implements GameStateHandler
 	public void update(GameModel model, float deltaTime)
 	{
 		Character player = model.getPlayer();
-		MovementDirection md = convertIntToMovementDirection(horizontalDirection);
+		MovementDirection md = InGameUtilities.convertIntToMovementDirection(horizontalDirection);
 		model.getPhysicsManager().updateCharacterMovement
 		(
 				model.getPlayer(),
@@ -56,7 +57,7 @@ public class InGameState implements GameStateHandler
 			go.update(deltaTime);
 			if (go instanceof Character)
 			{
-				applyPacManEffect((Character)go, model);
+				InGameUtilities.applyPacManEffect((Character)go, model.getScreenWidth());
 			}
 		}
 
@@ -68,38 +69,13 @@ public class InGameState implements GameStateHandler
 
 		model.getCleanupManager().cleanupObjects(model);
 
-		float offset = model.getCameraManager().getCurrentOffset();
-		float drawY = player.getY() - offset;
-		if (drawY > model.getScreenHeight())
-		{
-			model.setState(new GameOverState());
-		}
+		InGameUtilities.checkGameOver(model, player);
+
 		model.notifyObservers();
 	}
 
 	@Override
 	public GameState getGameState() {
 		return gameState;
-	}
-
-	private MovementDirection convertIntToMovementDirection(int dir)
-	{
-		if (dir < 0) return MovementDirection.LEFT;
-		if (dir > 0) return MovementDirection.RIGHT;
-		return MovementDirection.NONE;
-	}
-
-	private void applyPacManEffect(Character player, GameModel model)
-	{
-		int screenWidth = model.getScreenWidth();
-
-		if (player.getX() + player.getWidth() < 0)
-		{
-			player.setX(screenWidth);
-		}
-		else if (player.getX() > screenWidth)
-		{
-			player.setX(-player.getWidth());
-		}
 	}
 }

@@ -1,4 +1,4 @@
-package model.level.spawn.collectibles;
+package model.level.spawn.collectiblespawn;
 
 import model.GameModel;
 import model.entities.collectibles.Coin;
@@ -20,7 +20,7 @@ public class CollectiblesSpawner
 		this.coinSpawnChance = coinSpawnChance;
 	}
 
-	
+
 	public void spawnCollectible(GameModel model, float platformX, float platformY, float platformWidth, Platform platform) {
 		if (rand.nextFloat() < coinSpawnChance) {
 			float coinX = platformX + (platformWidth / 2f) - (platformWidth * 0.2f);

@@ -1,4 +1,4 @@
-package view.view_states;
+package view.viewstates;
 
 import model.GameModel;
 

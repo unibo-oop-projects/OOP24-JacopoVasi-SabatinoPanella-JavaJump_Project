@@ -6,7 +6,7 @@ import model.states.GameState;
 import model.states.GameStateHandler;
 import view.renderers.RendererManager;
 import view.sound.AudioManager;
-import view.view_states.*;
+import view.viewstates.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,6 +24,8 @@ public class MainGameView extends JPanel implements GameModelObserver
 	BufferedImage tempScreen;
 	Graphics2D g2;
 	private GameState lastState;
+
+	private static float currentDeltaTime = 0;
 
 	public MainGameView(GameModel model) {
 		this.model = model;
@@ -44,6 +46,7 @@ public class MainGameView extends JPanel implements GameModelObserver
 
 	
 	public void updateView(float deltaTime) {
+		currentDeltaTime = deltaTime;
 
 		GameStateHandler currentHandler = model.getCurrentState();
 		GameState gs = currentHandler.getGameState();
@@ -133,4 +136,7 @@ public class MainGameView extends JPanel implements GameModelObserver
 		this.screenHeight = screenHeight;
 	}
 
+	public static float getCurrentDeltaTime() {
+		return currentDeltaTime;
+	}
 }

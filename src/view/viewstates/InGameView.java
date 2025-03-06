@@ -1,10 +1,10 @@
-package view.view_states;
+package view.viewstates;
 
 import model.GameModel;
 import model.entities.*;
-import model.entities.character.Character;
 import model.entities.collectibles.Coin;
 import model.entities.platforms.Platform;
+import view.MainGameView;
 import view.renderers.RendererManager;
 
 import java.awt.*;
@@ -19,6 +19,7 @@ public class InGameView implements GameViewState {
 	private boolean isNewHighScore = false;
 	private boolean showHighScoreMessage = true;
 	private long lastToggleTime = System.currentTimeMillis();
+	private float deltaTime;
 
 	public InGameView(RendererManager renderer) {
 		this.renderer = renderer;
@@ -34,7 +35,6 @@ public class InGameView implements GameViewState {
 		}
 
 		Graphics2D g2 = (Graphics2D) g;
-
 
 		renderer.drawBackground(g2, model);
 
@@ -62,11 +62,9 @@ public class InGameView implements GameViewState {
 
 		}
 
-
-		Character player = model.getPlayer();
-		renderer.drawPlayer(g2, player, cameraOffsetY);
-
-
+		float deltaTime = MainGameView.getCurrentDeltaTime();
+		System.out.println("deltaTime: " + deltaTime);
+		renderer.drawPlayer(g2, model.getPlayer(), cameraOffsetY, deltaTime);
 
 		long now = System.currentTimeMillis();
 		if (now - lastToggleTime > 1700) {
@@ -79,7 +77,8 @@ public class InGameView implements GameViewState {
 	@Override
 	public void startFade() { }
 	@Override
-	public void update(float deltaTime) { }
+	public void update(float deltaTime) {
+	}
 	@Override
 	public void stopFade() { }
 }

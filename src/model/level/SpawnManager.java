@@ -5,7 +5,7 @@ import model.factories.AbstractGameObjectFactory;
 import model.level.spawn.RandomSpawnStrategy;
 import model.level.spawn.SpawnStrategy;
 
-import static model.level.spawn.utilities.SpawnUtils.spawnPlatformBelowPlayer;
+import static model.level.spawn.spawnutilities.SpawnUtils.spawnPlatformBelowPlayer;
 
 public class SpawnManager {
 

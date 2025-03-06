@@ -29,8 +29,8 @@ public class RendererManager {
 	}
 
 	
-	public void drawPlayer(Graphics2D g2, Character player, float offsetY) {
-		playerRenderer.drawPlayer(g2, player, offsetY);
+	public void drawPlayer(Graphics2D g2, Character player, float offsetY, float deltaTime) {
+		playerRenderer.drawPlayer(g2, player, offsetY, deltaTime);
 	}
 
 	public void drawCoin(Graphics2D g2, Coin coin, float offsetY) {
