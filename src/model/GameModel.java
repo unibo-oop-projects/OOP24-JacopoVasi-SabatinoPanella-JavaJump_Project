@@ -94,6 +94,7 @@ public class GameModel
 		scoreManager.reset();
 		cameraManager.reset();
 		spawnManager.reset();
+		difficultyManager.reset();
 
 		this.player = spawnManager.getFactory()
 								  .createCharacter(screenWidth / 2f, screenHeight*0.8f);

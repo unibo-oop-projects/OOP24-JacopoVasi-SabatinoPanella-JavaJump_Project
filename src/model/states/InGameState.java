@@ -4,7 +4,6 @@ import controller.GameAction;
 import model.GameModel;
 import model.entities.GameObject;
 import model.entities.character.Character;
-import model.level.spawn.difficulty.DifficultyManager;
 import model.physics.MovementDirection;
 import model.states.gameutilities.InGameUtilities;
 
@@ -70,7 +69,7 @@ public class InGameState implements GameStateHandler
 
 		model.getCleanupManager().cleanupObjects(model);
 
-		model.getDifficultyManager().updateScore(model.getScore());
+		model.getDifficultyManager().updateDifficulty(model.getScore());
 
 		InGameUtilities.checkGameOver(model, player);
 

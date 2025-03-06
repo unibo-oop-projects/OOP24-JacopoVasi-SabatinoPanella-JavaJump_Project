@@ -25,11 +25,15 @@ public class PlatformSpawner {
 		float movingChance = difficulty.getMovingChance();
 		float bounceChance = difficulty.getBounceChance();
 
-		if (chance < bounceChance) {
-			return factory.createBouncePlatform(x, y, randomInRange(new Random(), 1.5f, 2.2f));
-		} else if (chance < breakableChance) {
+		float thresholdBounce = bounceChance;
+		float thresholdBreakable = thresholdBounce + breakableChance;
+		float thresholdMoving = thresholdBreakable + movingChance;
+
+		if (chance < thresholdBounce) {
+			return factory.createBouncePlatform(x, y, randomInRange(rand, 1.5f, 2.2f));
+		} else if (chance < thresholdBreakable) {
 			return factory.createBreakablePlatform(x, y);
-		} else if (chance < breakableChance + movingChance) {
+		} else if (chance < thresholdMoving) {
 			return factory.createMovingPlatform(x, y, screenWidth);
 		} else {
 

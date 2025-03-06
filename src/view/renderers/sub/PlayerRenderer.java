@@ -9,17 +9,18 @@ public class PlayerRenderer {
 	private final BufferedImage playerSheet;
 	private final int frameWidth;
 	private final int frameHeight;
-	private final float FRAME_DURATION = 0.4f;
+	private final float FRAME_DURATION;
 
 	private float animTimer;
 	private boolean prevOnPlatform;
 
-	public PlayerRenderer(BufferedImage sheet, int frameWidth, int frameHeight) {
+	public PlayerRenderer(BufferedImage sheet, int frameWidth, int frameHeight, float FRAME_DURATION) {
 		this.playerSheet = sheet;
 		this.frameWidth = frameWidth;
 		this.frameHeight = frameHeight;
 		this.prevOnPlatform = false;
 		this.animTimer = 0;
+		this.FRAME_DURATION = FRAME_DURATION;
 	}
 
 	public void drawPlayer(Graphics2D g2, Character player, float offsetY, float deltaTime) {

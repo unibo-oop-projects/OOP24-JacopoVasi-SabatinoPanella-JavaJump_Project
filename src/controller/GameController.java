@@ -45,6 +45,7 @@ public class GameController implements KeyListener
 				{
 					count=count+1;
 					float deltaTime = (float) (elapsedNs / 1_000_000_000.0);
+					System.out.println("Running " + deltaTime + " seconds");
 					updateModel(deltaTime);
 					view.updateView(deltaTime);
 					previousTime = currentTime;

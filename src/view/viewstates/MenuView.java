@@ -23,12 +23,12 @@ public class MenuView implements GameViewState {
         g.fillRect(0, 0, width, height);
 
         BufferedImage title = GameGraphics.getTitle();
-        g.drawImage(title, (int) (width*0.03), (int) height/5, (int) (title.getWidth() * 1.3), (int) (title.getHeight() * 1.3),null);
+        g.drawImage(title, (int) (width*0.03), (int) height/5, (int) (title.getWidth() * 1), (int) (title.getHeight() * 1),null);
 
         g.setColor(Color.WHITE);
         g.setFont(GameGraphics.getGameFont1());
-        g.drawString("- Start Game (ENTER)", centerX/4, centerY + 50);
-        g.drawString("- Quit (ESC)", centerX/4, centerY + 100);
+        g.drawString("- Start Game (ENTER)", centerX/4, centerY + 30);
+        g.drawString("- Quit (ESC)", centerX/4, centerY + 70);
 
         g.setColor(Color.decode("#eac10c"));
         Stroke dashed = new BasicStroke(2.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{9}, 0);

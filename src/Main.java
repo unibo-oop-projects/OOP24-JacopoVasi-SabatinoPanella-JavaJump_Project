@@ -21,14 +21,14 @@ public class Main
 {
 	public static void main(String[] args)
 	{
-		int screenWidth = 800;
-		int screenHeight = 600;
+		int screenWidth = 600;
+		int screenHeight = 800;
 
 		AbstractGameObjectFactory factory = new GameObjectFactory();
 
 		DifficultyManager difficultyManager = new DifficultyManager();
 
-		RandomSpawnStrategy strategy = new RandomSpawnStrategy(factory, 60, 90, 0.3f, difficultyManager);
+		RandomSpawnStrategy strategy = new RandomSpawnStrategy(factory, 50, 150, 0.3f, difficultyManager);
 
 		CollisionManager collisionManager = new CollisionManager();
 

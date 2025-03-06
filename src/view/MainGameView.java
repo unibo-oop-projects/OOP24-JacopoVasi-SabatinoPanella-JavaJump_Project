@@ -10,27 +10,39 @@ import view.viewstates.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.image.BufferedImage;
 
-public class MainGameView extends JPanel implements GameModelObserver
-{
+public class MainGameView extends JPanel implements GameModelObserver {
+
 	private final GameModel model;
 
 	private final GameViewState menuView;
 	private final GameViewState inGameView;
 	private final GameViewState pauseView;
 	private final GameViewState gameOverView;
-	private int screenWidth, screenHeight;
-	BufferedImage tempScreen;
-	Graphics2D g2;
+
+	private final int virtualWidth;
+	private final int virtualHeight;
+
+	private final BufferedImage tempScreen;
+
+	private final RendererManager rendererManager;
 	private GameState lastState;
+
 
 	private static float currentDeltaTime = 0;
 
 	public MainGameView(GameModel model) {
 		this.model = model;
-		RendererManager rendererManager = new RendererManager();
-		this.setBackground(Color.BLACK);
+		setDoubleBuffered(true);
+
+		this.virtualWidth = model.getScreenWidth();
+		this.virtualHeight = model.getScreenHeight();
+
+		this.rendererManager = new RendererManager();
+		setBackground(Color.decode("#05051C"));
 
 		this.menuView = new MenuView();
 		this.inGameView = new InGameView(rendererManager);
@@ -38,40 +50,108 @@ public class MainGameView extends JPanel implements GameModelObserver
 		this.gameOverView = new GameOverView();
 
 		this.lastState = model.getCurrentState().getGameState();
-		this.screenWidth = model.getScreenWidth();
-		this.screenHeight = model.getScreenHeight();
-		this.tempScreen = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_ARGB);
-		this.g2 = (Graphics2D) tempScreen.getGraphics();
+
+		tempScreen = new BufferedImage(virtualWidth, virtualHeight, BufferedImage.TYPE_INT_ARGB);
+
+		addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentResized(ComponentEvent e) {
+
+				repaint();
+			}
+		});
 	}
 
 	
 	public void updateView(float deltaTime) {
-		currentDeltaTime = deltaTime;
+		this.currentDeltaTime = deltaTime;
 
 		GameStateHandler currentHandler = model.getCurrentState();
 		GameState gs = currentHandler.getGameState();
-
 		if (gs == GameState.GAME_OVER) {
-
 			gameOverView.update(deltaTime);
 		} else {
-
 			gameOverView.stopFade();
 		}
-
-		drawToTempScreen();
-		drawToScreen();
+		repaint();
 	}
 
 
 	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+
+		drawToTempScreen();
+
+		int panelWidth = getWidth();
+		int panelHeight = getHeight();
+
+		float targetAspect = (float) virtualWidth / virtualHeight;
+		float panelAspect = (float) panelWidth / panelHeight;
+
+		int drawWidth, drawHeight, drawX, drawY;
+		if (panelAspect > targetAspect) {
+
+			drawHeight = panelHeight;
+			drawWidth = Math.round(drawHeight * targetAspect);
+			drawX = (panelWidth - drawWidth) / 2;
+			drawY = 0;
+		} else {
+
+			drawWidth = panelWidth;
+			drawHeight = Math.round(drawWidth / targetAspect);
+			drawX = 0;
+			drawY = (panelHeight - drawHeight) / 2;
+		}
+
+		g.setColor(Color.decode("#05051C"));
+		g.fillRect(0, 0, panelWidth, panelHeight);
+
+		g.drawImage(tempScreen, drawX, drawY, drawWidth, drawHeight, null);
+	}
+
+	
+	private void drawToTempScreen() {
+		Graphics2D g2 = tempScreen.createGraphics();
+
+		g2.setColor(Color.BLACK);
+		g2.fillRect(0, 0, virtualWidth, virtualHeight);
+
+		GameStateHandler stateHandler = model.getCurrentState();
+		GameState currentState = stateHandler.getGameState();
+
+		switch (currentState) {
+			case MENU:
+				AudioManager.stopMusic();
+				menuView.draw(g2, model);
+				break;
+			case IN_GAME:
+				AudioManager.startMusic();
+				inGameView.draw(g2, model);
+				break;
+			case PAUSE:
+				AudioManager.pauseMusic();
+				pauseView.draw(g2, model);
+				break;
+			case GAME_OVER:
+
+				inGameView.draw(g2, model);
+				gameOverView.draw(g2, model);
+				break;
+			default:
+				break;
+		}
+
+		g2.dispose();
+	}
+
+	@Override
 	public void onModelUpdate(GameModel model) {
-		GameStateHandler handler = model.getCurrentState();
-		GameState currentGS = handler.getGameState();
+		GameStateHandler stateHandler = model.getCurrentState();
+		GameState currentState = stateHandler.getGameState();
 
-		if (currentGS != this.lastState) {
-
-			switch (currentGS) {
+		if (currentState != lastState) {
+			switch (currentState) {
 				case IN_GAME:
 
 					break;
@@ -79,61 +159,24 @@ public class MainGameView extends JPanel implements GameModelObserver
 
 					break;
 				case GAME_OVER:
-
 					System.out.println("Entering GAME_OVER => fadeOut");
-					AudioManager.fadeOut(2f);
+					AudioManager.fadeOut(1.2f);
 					gameOverView.startFade();
 					break;
 				case MENU:
 
 					break;
+				default:
+					break;
 			}
 		}
+		lastState = currentState;
 
-
-		this.lastState = currentGS;
-
-		drawToTempScreen();
-		drawToScreen();
-	}
-
-	public void drawToTempScreen() {
-		GameStateHandler stateHandler = model.getCurrentState();
-		GameState currentState = stateHandler.getGameState();
-
-		switch (currentState) {
-			case MENU:
-				menuView.draw(g2, model);
-				AudioManager.stopMusic();
-				break;
-			case IN_GAME:
-				inGameView.draw(g2, model);
-				AudioManager.startMusic();
-				break;
-			case PAUSE:
-				pauseView.draw(g2, model);
-				AudioManager.pauseMusic();
-				break;
-			case GAME_OVER:
-
-				inGameView.draw(g2, model);
-
-				gameOverView.draw(g2, model);
-				break;
-			default:
-				break;
-		}
-	}
-
-	public void drawToScreen() {
-		Graphics g = getGraphics();
-		g.drawImage(tempScreen, 0, 0, screenWidth, screenHeight, null);
-		g.dispose();
+		repaint();
 	}
 
 	public void setNewSize(int screenWidth, int screenHeight) {
-		this.screenWidth = screenWidth;
-		this.screenHeight = screenHeight;
+
 	}
 
 	public static float getCurrentDeltaTime() {

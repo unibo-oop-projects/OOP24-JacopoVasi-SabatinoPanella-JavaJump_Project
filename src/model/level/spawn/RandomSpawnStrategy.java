@@ -14,8 +14,8 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 
 	private final AbstractGameObjectFactory factory;
 	private final Random rand;
-	private final float minPlatformYSpacing;
-	private final float maxPlatformYSpacing;
+	private float minPlatformYSpacing;
+	private float maxPlatformYSpacing;
 	private final float coinSpawnChance;
 	private float currentY;
 	private final CollectiblesSpawner collectiblesSpawner;
@@ -47,12 +47,10 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 
 		for (int i = 0; i < numberOfPlatforms; i++) {
 
-			float gap = SpawnUtils.randomInRange(rand, minPlatformYSpacing, maxPlatformYSpacing);
+			float gap = setSpawnGap(diff);
 			currentY -= gap;
 
-
 			float x = rand.nextFloat() * (model.getScreenWidth() - maxPlatformWidth);
-
 
 			Platform p = platformSpawner.spawnPlatform(x, currentY, model.getScreenWidth(), diff);
 			model.getGameObjects().add(p);
@@ -61,6 +59,18 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 
 			collectiblesSpawner.spawnCollectible(model, x, currentY, platformWidth, p);
 		}
+	}
+
+	private float setSpawnGap(DifficultyManager.Difficulty diff) {
+		float gap = 0;
+		if (diff == DifficultyManager.Difficulty.EASY || diff == DifficultyManager.Difficulty.MEDIUM){
+			gap = SpawnUtils.randomInRange(rand, minPlatformYSpacing - 10, maxPlatformYSpacing - 30);
+		} else if (diff == DifficultyManager.Difficulty.HARD || diff == DifficultyManager.Difficulty.VERY_HARD){
+			gap = SpawnUtils.randomInRange(rand, minPlatformYSpacing, maxPlatformYSpacing - 10);
+		} else if (diff == DifficultyManager.Difficulty.HELL){
+			gap = SpawnUtils.randomInRange(rand, minPlatformYSpacing + 10, maxPlatformYSpacing);
+		}
+		return gap;
 	}
 
 	@Override

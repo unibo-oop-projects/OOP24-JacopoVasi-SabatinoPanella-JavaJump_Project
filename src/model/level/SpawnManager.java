@@ -27,7 +27,7 @@ public class SpawnManager {
 	
 	public void generateInitialLevel(GameModel model) {
 		spawnPlatformBelowPlayer(model, getFactory());
-		float startY = model.getScreenHeight() - 50;
+		float startY = model.getScreenHeight() - 150;
 		spawnStrategy.spawnBatch(model, startY, INITIAL_PLATFORMS_NUMBER);
 		this.topPlatformY = spawnStrategy.returnCurrentY();
 	}

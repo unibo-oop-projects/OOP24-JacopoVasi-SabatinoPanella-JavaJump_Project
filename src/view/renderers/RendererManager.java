@@ -19,8 +19,8 @@ public class RendererManager {
 
 	public RendererManager() {
 		this.platformRenderer = new PlatformRenderer(2f, 10, 10);
-		this.coinRenderer = new CoinRenderer(GameGraphics.getCoinSheet(), 44, 52, 0.1f);
-		this.playerRenderer = new PlayerRenderer(GameGraphics.getPlayerSheet(), 48, 50);
+		this.coinRenderer = new CoinRenderer(GameGraphics.getCoinSheet(), 44, 52, 0.05f);
+		this.playerRenderer = new PlayerRenderer(GameGraphics.getPlayerSheet(), 48, 50, 0.2f);
 		this.backgroundRenderer1 = new BackgroundRenderer(GameGraphics.getBackground1(), 0.2f, 0);
 		this.backgroundRenderer2 = new BackgroundRenderer(GameGraphics.getBackground2(), 0.4f, 20f);
 		this.scoreUIRenderer = new ScoreUIRenderer(GameGraphics.getScoreContainer());
