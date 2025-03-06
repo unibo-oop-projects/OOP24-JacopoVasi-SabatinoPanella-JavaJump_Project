@@ -9,33 +9,67 @@ public class BackgroundRenderer {
 	private final BufferedImage bgTile;
 	private final float parallaxFactor;
 
-	public BackgroundRenderer(BufferedImage bgTile, float factor) {
+	private final float horizontalSpeed;
+	private float horizontalOffset;
+
+	
+	public BackgroundRenderer(BufferedImage bgTile, float parallaxFactor, float horizontalSpeed) {
 		this.bgTile = bgTile;
-		this.parallaxFactor = factor;
+		this.parallaxFactor = parallaxFactor;
+		this.horizontalSpeed = horizontalSpeed;
+		this.horizontalOffset = 0;
 	}
 
-	public void drawBackground(Graphics2D g2, GameModel model) {
+	
+	public void updateBackground(float deltaTime) {
+
+
+		if (horizontalSpeed != 0) {
+			horizontalOffset += horizontalSpeed * deltaTime;
+
+			int tileW = bgTile.getWidth();
+
+			if (horizontalOffset >= tileW) {
+				horizontalOffset -= tileW;
+			} else if (horizontalOffset < 0) {
+				horizontalOffset += tileW;
+			}
+		}
+	}
+
+	
+	public void drawBackground(Graphics2D g2, GameModel model, float deltaTime) {
 		int screenW = model.getScreenWidth();
 		int screenH = model.getScreenHeight();
 
+
 		float cameraOffset = model.getCameraManager().getCurrentOffset();
-		float bgOffsetY = cameraOffset * parallaxFactor;
+		float verticalOffset = cameraOffset * parallaxFactor;
 
 		int tileW = bgTile.getWidth();
 		int tileH = bgTile.getHeight();
 
-		int shiftY = (int)(bgOffsetY) % tileH;
+		updateBackground(deltaTime);
+
+
+		int shiftY = (int) (verticalOffset) % tileH;
 		if (shiftY < 0) {
 			shiftY += tileH;
 		}
 
+
+		int shiftX = (int) horizontalOffset;
+
+
 		int verticalTiles = (screenH / tileH) + 2;
+		int horizontalTiles = (screenW / tileW) + 2;
 
-		for (int i=0; i<verticalTiles; i++) {
+
+		for (int i = 0; i < verticalTiles; i++) {
 			int drawY = -shiftY + i * tileH;
-
-			for (int x=0; x<screenW; x+= tileW) {
-				g2.drawImage(bgTile, x, drawY, null);
+			for (int j = 0; j < horizontalTiles; j++) {
+				int drawX = -shiftX + j * tileW;
+				g2.drawImage(bgTile, drawX, drawY, null);
 			}
 		}
 	}

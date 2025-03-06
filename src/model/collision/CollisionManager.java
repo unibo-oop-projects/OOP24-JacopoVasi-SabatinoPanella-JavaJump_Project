@@ -4,6 +4,8 @@ import model.entities.*;
 import model.GameModel;
 import model.entities.character.Character;
 import model.entities.collectibles.Coin;
+import model.entities.collectibles.CoinState;
+import model.entities.platforms.BouncePlatform;
 import model.entities.platforms.BreakablePlatform;
 import model.entities.platforms.Platform;
 
@@ -69,8 +71,10 @@ public class CollisionManager
 	}
 
 	private void handleCharacterCoinCollision(Character character, Coin coin, GameModel model) {
-		coin.collect();
-		model.addPointsToScore(50);
+		if(coin.getState() == CoinState.IDLE) {
+			coin.collect();
+			model.addPointsToScore(50);
+		}
 	}
 
 	private boolean handleCharacterPlatformCollision(Character player, Platform platform, GameModel model) {
@@ -79,7 +83,13 @@ public class CollisionManager
 			float platformTop = platform.getY();
 
 			if (playerOldBottom <= platformTop) {
-				player.setVelocityY(-player.getJumpForce());
+				float jumpForce = player.getJumpForce();
+
+				if (platform instanceof BouncePlatform bp) {
+					jumpForce *= bp.getBounceFactor();
+				}
+
+				player.setVelocityY(-jumpForce);
 				player.setY(platformTop - player.getHeight());
 				player.landOnPlatform();
 
@@ -91,5 +101,4 @@ public class CollisionManager
 		}
 		return false;
 	}
-
 }

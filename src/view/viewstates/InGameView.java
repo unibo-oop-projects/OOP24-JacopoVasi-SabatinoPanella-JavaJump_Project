@@ -36,7 +36,10 @@ public class InGameView implements GameViewState {
 
 		Graphics2D g2 = (Graphics2D) g;
 
-		renderer.drawBackground(g2, model);
+		float deltaTime = MainGameView.getCurrentDeltaTime();
+
+		renderer.drawBackground1(g2, model, deltaTime);
+		renderer.drawBackground2(g2, model, deltaTime);
 
 		float cameraOffsetY = model.getCameraManager().getCurrentOffset();
 
@@ -55,15 +58,13 @@ public class InGameView implements GameViewState {
 
 		for (GameObject obj : snapshot) {
 			if (obj instanceof Coin c) {
-				renderer.drawCoin(g2, c, cameraOffsetY);
+				renderer.drawCoin(g2, c, cameraOffsetY, deltaTime);
 			} else if (obj instanceof Platform p) {
 				renderer.drawPlatform(g2, p, cameraOffsetY);
 			}
 
 		}
 
-		float deltaTime = MainGameView.getCurrentDeltaTime();
-		System.out.println("deltaTime: " + deltaTime);
 		renderer.drawPlayer(g2, model.getPlayer(), cameraOffsetY, deltaTime);
 
 		long now = System.currentTimeMillis();

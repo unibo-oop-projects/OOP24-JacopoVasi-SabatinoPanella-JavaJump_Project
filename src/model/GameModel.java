@@ -7,6 +7,7 @@ import model.entities.GameObject;
 import model.entities.character.Character;
 import model.level.CleanupManager;
 import model.level.SpawnManager;
+import model.level.spawn.difficulty.DifficultyManager;
 import model.physics.PhysicsManager;
 import model.score.ScoreManager;
 import model.states.GameStateHandler;
@@ -17,6 +18,8 @@ import java.util.List;
 
 public class GameModel
 {
+
+
 	private GameStateHandler currentState;
 	private final PhysicsManager physicsManager;
 	private final CollisionManager collisionManager;
@@ -24,12 +27,16 @@ public class GameModel
 	private final CameraManager cameraManager;
 	private final ScoreManager scoreManager;
 	private final CleanupManager cleanupManager;
+	private final DifficultyManager difficultyManager;
+
 
 	private final List<GameObject> gameObjects;
 	private Character player;
 
+
 	private final int screenWidth;
 	private final int screenHeight;
+
 
 	private final List<GameModelObserver> observers;
 
@@ -41,9 +48,9 @@ public class GameModel
 			SpawnManager spawnManager,
 			CameraManager cameraManager,
 			ScoreManager scoreManager,
-			CleanupManager cleanupManager
-	)
-	{
+			CleanupManager cleanupManager,
+			DifficultyManager difficultyManager
+	) {
 		this.screenWidth = screenWidth;
 		this.screenHeight = screenHeight;
 
@@ -52,15 +59,18 @@ public class GameModel
 		this.spawnManager = spawnManager;
 		this.cameraManager = cameraManager;
 		this.scoreManager = scoreManager;
+		this.difficultyManager = difficultyManager;
 
 		this.gameObjects = new ArrayList<>();
 		this.observers = new ArrayList<>();
 
 		this.cleanupManager = cleanupManager;
 
+
 		this.currentState = new MenuState();
 		this.currentState.onEnter(this);
 	}
+
 
 	public void setState(GameStateHandler newState)
 	{
@@ -108,6 +118,7 @@ public class GameModel
 	public void addPointsToScore(int amount)
 	{
 		scoreManager.addPoints(amount);
+		System.out.println("Amount: "+amount);
 	}
 
 	public PhysicsManager getPhysicsManager() { return physicsManager; }
@@ -116,6 +127,7 @@ public class GameModel
 	public CameraManager getCameraManager() { return cameraManager; }
 	public ScoreManager getScoreManager() { return scoreManager; }
 	public CleanupManager getCleanupManager() { return cleanupManager; }
+	public DifficultyManager getDifficultyManager() { return difficultyManager; }
 	public GameStateHandler getCurrentState() {return currentState;}
 	public List<GameObject> getGameObjects() { return this.gameObjects; }
 	public Character getPlayer() { return player; }

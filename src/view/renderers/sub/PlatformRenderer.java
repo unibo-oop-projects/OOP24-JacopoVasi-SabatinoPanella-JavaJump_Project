@@ -1,5 +1,6 @@
 package view.renderers.sub;
 
+import model.entities.platforms.BouncePlatform;
 import model.entities.platforms.BreakablePlatform;
 import model.entities.platforms.MovingPlatform;
 import model.entities.platforms.Platform;
@@ -28,7 +29,10 @@ public class PlatformRenderer {
 		float h = platform.getHeight();
 
 
-		if (platform instanceof BreakablePlatform) {
+		if (platform instanceof BouncePlatform) {
+			drawPlatformCommon(g2, drawX, drawY, w, h,
+					Color.decode("#d15484"), Color.decode("#d4c340"));
+		} else if(platform instanceof BreakablePlatform) {
 			drawPlatformCommon(g2, drawX, drawY, w, h,
 					Color.decode("#ea4b1e"), Color.decode("#d4c340"));
 		} else if (platform instanceof MovingPlatform) {

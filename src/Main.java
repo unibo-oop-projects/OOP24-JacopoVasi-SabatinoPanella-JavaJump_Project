@@ -5,6 +5,7 @@ import model.factories.AbstractGameObjectFactory;
 import model.factories.GameObjectFactory;
 import model.level.CleanupManager;
 import model.level.SpawnManager;
+import model.level.spawn.difficulty.DifficultyManager;
 import model.physics.PhysicsManager;
 import model.score.ScoreManager;
 import model.camera.CameraManager;
@@ -25,7 +26,9 @@ public class Main
 
 		AbstractGameObjectFactory factory = new GameObjectFactory();
 
-		RandomSpawnStrategy strategy = new RandomSpawnStrategy(factory, 60, 90, 0.3f);
+		DifficultyManager difficultyManager = new DifficultyManager();
+
+		RandomSpawnStrategy strategy = new RandomSpawnStrategy(factory, 60, 90, 0.3f, difficultyManager);
 
 		CollisionManager collisionManager = new CollisionManager();
 
@@ -49,7 +52,8 @@ public class Main
 										spawnManager,
 										cameraManager,
 										scoreManager,
-										cleanupManager);
+										cleanupManager,
+										difficultyManager);
 
 		MainGameView view = new MainGameView(model);
 		model.addObserver(view);

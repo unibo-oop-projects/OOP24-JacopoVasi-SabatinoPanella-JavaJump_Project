@@ -13,7 +13,8 @@ public class GameGraphics {
     private static Font gameFont2;
     private static Font gameFont3;
     private static BufferedImage playerSheet;
-    private static BufferedImage background;
+    private static BufferedImage background1;
+    private static BufferedImage background2;
     private static BufferedImage scoreContainer;
     private static BufferedImage platform;
     private static BufferedImage coinSheet;
@@ -32,7 +33,8 @@ public class GameGraphics {
             gameOver = ImageIO.read(new File("src/view/resources/GameOver.png"));
             playerSheet = ImageIO.read(new File("src/view/resources/Coffee-SheetBIG.png"));
             coinSheet = ImageIO.read(new File("src/view/resources/Coin-Sheet.png"));
-            background = ImageIO.read(new File("src/view/resources/Background3.png"));
+            background1 = ImageIO.read(new File("src/view/resources/Background4.png"));
+            background2 = ImageIO.read(new File("src/view/resources/Clouds2.png"));
             scoreContainer = ImageIO.read(new File("src/view/resources/Score_Underlay_small.png"));
             AudioManager.loadBackgroundMusic("src/view/resources/GameMusic.wav");
             gameFont1 = FontLoader.loadFont("src/view/resources/Daydream.ttf", 20);
@@ -60,8 +62,12 @@ public class GameGraphics {
         return playerSheet;
     }
 
-    public static BufferedImage getBackground(){
-        return background;
+    public static BufferedImage getBackground1(){
+        return background1;
+    }
+
+    public static BufferedImage getBackground2(){
+        return background2;
     }
 
     public static BufferedImage getCoinSheet(){

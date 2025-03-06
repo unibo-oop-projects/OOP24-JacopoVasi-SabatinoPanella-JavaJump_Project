@@ -4,6 +4,7 @@ import model.GameModel;
 import model.entities.platforms.Platform;
 import model.factories.AbstractGameObjectFactory;
 import model.level.spawn.collectiblespawn.CollectiblesSpawner;
+import model.level.spawn.difficulty.DifficultyManager;
 import model.level.spawn.platformspawn.PlatformSpawner;
 import model.level.spawn.spawnutilities.SpawnUtils;
 
@@ -19,11 +20,13 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 	private float currentY;
 	private final CollectiblesSpawner collectiblesSpawner;
 	private final PlatformSpawner platformSpawner;
+	private final DifficultyManager difficultyManager;
 
 	public RandomSpawnStrategy(AbstractGameObjectFactory factory,
 							   float minSpacing,
 							   float maxSpacing,
-							   float coinChance) {
+							   float coinChance,
+							   DifficultyManager difficultyManager) {
 		this.factory = factory;
 		this.rand = new Random();
 		this.minPlatformYSpacing = minSpacing;
@@ -32,10 +35,13 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 		this.currentY = 0;
 		this.collectiblesSpawner = new CollectiblesSpawner(factory, coinChance);
 		this.platformSpawner = new PlatformSpawner(factory);
+		this.difficultyManager = difficultyManager;
 	}
 
 	@Override
 	public void spawnBatch(GameModel model, float startY, int numberOfPlatforms) {
+		DifficultyManager.Difficulty diff = difficultyManager.getCurrentDifficulty();
+		System.out.println("Difficulty: " + diff);
 		currentY = startY;
 		float maxPlatformWidth = 120;
 
@@ -48,7 +54,7 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 			float x = rand.nextFloat() * (model.getScreenWidth() - maxPlatformWidth);
 
 
-			Platform p = platformSpawner.spawnPlatform(x, currentY, model.getScreenWidth());
+			Platform p = platformSpawner.spawnPlatform(x, currentY, model.getScreenWidth(), diff);
 			model.getGameObjects().add(p);
 
 			float platformWidth = p.getWidth();
@@ -62,6 +68,7 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 		return this.currentY;
 	}
 
+	@Override
 	public AbstractGameObjectFactory getFactory() {
 		return this.factory;
 	}

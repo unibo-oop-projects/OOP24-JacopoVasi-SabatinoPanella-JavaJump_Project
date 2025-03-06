@@ -6,7 +6,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
 public class PlayerRenderer {
-	private final BufferedImage sheet;
+	private final BufferedImage playerSheet;
 	private final int frameWidth;
 	private final int frameHeight;
 	private final float FRAME_DURATION = 0.4f;
@@ -15,7 +15,7 @@ public class PlayerRenderer {
 	private boolean prevOnPlatform;
 
 	public PlayerRenderer(BufferedImage sheet, int frameWidth, int frameHeight) {
-		this.sheet = sheet;
+		this.playerSheet = sheet;
 		this.frameWidth = frameWidth;
 		this.frameHeight = frameHeight;
 		this.prevOnPlatform = false;
@@ -44,7 +44,7 @@ public class PlayerRenderer {
 
 		int sx = frameIndex * frameWidth;
 		int sy = 0;
-		BufferedImage frame = sheet.getSubimage(sx, sy, frameWidth, frameHeight);
+		BufferedImage frame = playerSheet.getSubimage(sx, sy, frameWidth, frameHeight);
 
 		float drawX = player.getX();
 		float drawY = player.getY() - offsetY;

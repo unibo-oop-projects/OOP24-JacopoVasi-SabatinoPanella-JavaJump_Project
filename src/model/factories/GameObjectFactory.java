@@ -2,6 +2,7 @@ package model.factories;
 
 import model.entities.character.Character;
 import model.entities.collectibles.Coin;
+import model.entities.platforms.BouncePlatform;
 import model.entities.platforms.BreakablePlatform;
 import model.entities.platforms.MovingPlatform;
 import model.entities.platforms.Platform;
@@ -58,6 +59,15 @@ public class GameObjectFactory extends AbstractGameObjectFactory
 		float height = 10;
 
 		return new BreakablePlatform(x, y, width, height);
+	}
+
+	@Override
+	public Platform createBouncePlatform(float x, float y, float bounceFactor)
+	{
+		float width = 80 + new Random().nextInt(25);
+		float height = 10;
+
+		return new BouncePlatform(x, y, width, height, bounceFactor);
 	}
 
 	@Override
