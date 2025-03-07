@@ -1,5 +1,7 @@
 package model.score;
 
+import static Utility.Constants.*;
+
 public class ScoreManager
 {
 	private int currentScore;
@@ -8,8 +10,8 @@ public class ScoreManager
 
 	public ScoreManager()
 	{
-		this.currentScore = 0;
-		this.bestScore = 0;
+		this.currentScore = ZERO;
+		this.bestScore = ZERO;
 		this.bestScoreReached = false;
 	}
 
@@ -41,7 +43,7 @@ public class ScoreManager
 
 	public void reset()
 	{
-		this.currentScore = 0;
+		this.currentScore = ZERO;
 		this.bestScoreReached = false;
 	}
 

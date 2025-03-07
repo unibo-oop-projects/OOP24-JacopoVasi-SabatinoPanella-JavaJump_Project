@@ -5,6 +5,8 @@ import model.physics.MovementDirection;
 import model.entities.character.Character;
 import model.states.GameOverState;
 
+import static Utility.Constants.*;
+
 
 public final class InGameUtilities {
 	
@@ -14,9 +16,9 @@ public final class InGameUtilities {
 
 	
 	public static MovementDirection convertIntToMovementDirection(int dir) {
-		if (dir < 0) {
+		if (dir < NULLDIRECTION) {
 			return MovementDirection.LEFT;
-		} else if (dir > 0) {
+		} else if (dir > NULLDIRECTION) {
 			return MovementDirection.RIGHT;
 		} else {
 			return MovementDirection.NONE;
@@ -25,7 +27,7 @@ public final class InGameUtilities {
 
 	
 	public static void applyPacManEffect(Character player, int screenWidth) {
-		if (player.getX() + player.getWidth() < 0) {
+		if (player.getX() + player.getWidth() < ZERO) {
 			player.setX(screenWidth);
 		} else if (player.getX() > screenWidth) {
 			player.setX(-player.getWidth());

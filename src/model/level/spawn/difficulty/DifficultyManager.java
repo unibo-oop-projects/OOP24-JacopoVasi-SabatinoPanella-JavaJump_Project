@@ -2,6 +2,7 @@ package model.level.spawn.difficulty;
 
 import java.util.Random;
 
+import static Utility.Constants.*;
 import static model.level.spawn.spawnutilities.SpawnUtils.randomInRange;
 
 public class DifficultyManager {
@@ -10,7 +11,7 @@ public class DifficultyManager {
 	private final Random rand;
 
 	public DifficultyManager() {
-		this.currentScore = 0;
+		this.currentScore = SCOREINIT;
 		this.currentDifficulty = DifficultyState.EASY;
 		this.rand = new Random();
 	}
@@ -18,15 +19,15 @@ public class DifficultyManager {
 	
 	public void updateDifficulty(int score) {
 		this.currentScore = score;
-		System.out.println("Score: " + currentScore);
+		System.out.println(SCORETEXT + currentScore);
 
-		if (currentScore >= randomInRange(rand, 16000, 25000)) {
+		if (currentScore >= randomInRange(rand, HELLMIN, HELLMAX)) {
 			currentDifficulty = DifficultyState.HELL;
-		} else if (currentScore >= randomInRange(rand, 8000, 10000)) {
+		} else if (currentScore >= randomInRange(rand, VERYHARDMIN, VERYHARDMAX)) {
 			currentDifficulty = DifficultyState.VERY_HARD;
-		} else if (currentScore >= randomInRange(rand, 4000, 6000)) {
+		} else if (currentScore >= randomInRange(rand, HARDMIN, HARDMAX)) {
 			currentDifficulty = DifficultyState.HARD;
-		} else if (currentScore >= randomInRange(rand, 1500, 3000)) {
+		} else if (currentScore >= randomInRange(rand, MEDIUMMIN, MEDIUMMAX)) {
 			currentDifficulty = DifficultyState.MEDIUM;
 		} else {
 			currentDifficulty = DifficultyState.EASY;

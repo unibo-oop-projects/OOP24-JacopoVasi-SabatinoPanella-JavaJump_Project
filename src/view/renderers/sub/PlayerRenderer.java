@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
+import static Utility.Constants.*;
+
 public class PlayerRenderer {
 	private final BufferedImage playerSheet;
 	private final int frameWidth;
@@ -19,14 +21,14 @@ public class PlayerRenderer {
 		this.frameWidth = frameWidth;
 		this.frameHeight = frameHeight;
 		this.prevOnPlatform = false;
-		this.animTimer = 0;
+		this.animTimer = ZERO;
 		this.FRAME_DURATION = FRAME_DURATION;
 	}
 
 	public void drawPlayer(Graphics2D g2, Character player, float offsetY, float deltaTime) {
 
 		if (player.isOnPlatform() != prevOnPlatform) {
-			animTimer = 0;
+			animTimer = ZERO;
 			prevOnPlatform = player.isOnPlatform();
 		} else {
 			animTimer += deltaTime;
@@ -35,16 +37,16 @@ public class PlayerRenderer {
 		int frameIndex;
 		if (player.isOnPlatform()) {
 
-			float cycle = FRAME_DURATION * 2;
+			float cycle = FRAME_DURATION * PLAYERCYCLEDURATION;
 			float t = animTimer % cycle;
-			frameIndex = (t < FRAME_DURATION) ? 0 : 1;
+			frameIndex = (t < FRAME_DURATION) ? PLAYERFIRSTFRAME : PLAYERSECONDFRAME;
 		} else {
 
-			frameIndex = (animTimer < FRAME_DURATION) ? 2 : 3;
+			frameIndex = (animTimer < FRAME_DURATION) ? PLAYERTHIRDFRAME : PLAYERFOURTHFRAME;
 		}
 
 		int sx = frameIndex * frameWidth;
-		int sy = 0;
+		int sy = ZERO;
 		BufferedImage frame = playerSheet.getSubimage(sx, sy, frameWidth, frameHeight);
 
 		float drawX = player.getX();
@@ -54,8 +56,8 @@ public class PlayerRenderer {
 		if (!player.isFacingRight()) {
 
 			g2.translate(drawX + frameWidth, drawY);
-			g2.scale(-1, 1);
-			g2.drawImage(frame, 0, 0, null);
+			g2.scale(MINUSONE, ONE);
+			g2.drawImage(frame, ZERO, ZERO, null);
 		} else {
 			g2.drawImage(frame, (int) drawX, (int) drawY, null);
 		}

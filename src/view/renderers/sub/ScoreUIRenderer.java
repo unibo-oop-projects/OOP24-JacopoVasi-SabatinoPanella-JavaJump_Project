@@ -6,6 +6,8 @@ import view.graphics.GameGraphics;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+import static Utility.Constants.*;
+
 public class ScoreUIRenderer {
 	private final BufferedImage scoreContainer;
 
@@ -19,7 +21,7 @@ public class ScoreUIRenderer {
 							   boolean showHighScoreMessage) {
 
 
-		g2.drawImage(scoreContainer, 0, 0, null);
+		g2.drawImage(scoreContainer, ZERO, ZERO, null);
 
 
 		int score = model.getScore();
@@ -29,12 +31,12 @@ public class ScoreUIRenderer {
 		if (score < bestScore) {
 			g2.setColor(Color.WHITE);
 			g2.setFont(GameGraphics.getGameFont2());
-			g2.drawString("Score:   " + score, 10, 20);
+			g2.drawString(SCORERENDERTEXT + score, SCORERENDERX, SCORERENDERY);
 			isNewHighScore = false;
 		} else {
 			g2.setColor(Color.decode("#eac10c"));
 			g2.setFont(GameGraphics.getGameFont2());
-			g2.drawString("Score:   " + score, 10, 20);
+			g2.drawString(SCORERENDERTEXT + score, SCORERENDERX, SCORERENDERY);
 			isNewHighScore = true;
 		}
 
@@ -42,7 +44,7 @@ public class ScoreUIRenderer {
 		if (isNewHighScore && showHighScoreMessage) {
 			g2.setColor(Color.decode("#D83426"));
 			g2.setFont(GameGraphics.getGameFont3());
-			g2.drawString("New High Score !!", 10, 45);
+			g2.drawString(HIGHSCORERENDERTEXT, HIGHSCORERENDERX, HIGHSCORERENDERY);
 		}
 	}
 }

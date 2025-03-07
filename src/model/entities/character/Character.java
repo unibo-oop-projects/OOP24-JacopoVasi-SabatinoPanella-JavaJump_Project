@@ -4,6 +4,8 @@ import model.entities.GameObject;
 import model.entities.character.states.InAirState;
 import model.entities.character.states.OnPlatformState;
 
+import static Utility.Constants.*;
+
 public class Character extends GameObject {
 	private float velocityX;
 	private float velocityY;
@@ -20,8 +22,8 @@ public class Character extends GameObject {
 		this.width = width;
 		this.height = height;
 		this.jumpForce = jumpForce;
-		this.velocityX = 0;
-		this.velocityY = 0;
+		this.velocityX = VELOCITYINIT;
+		this.velocityY = VELOCITYINIT;
 		this.oldX = x;
 		this.oldY = y;
 		this.currentState = new InAirState();

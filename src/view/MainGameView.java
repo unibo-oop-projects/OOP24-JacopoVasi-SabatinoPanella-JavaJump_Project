@@ -14,6 +14,8 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.image.BufferedImage;
 
+import static Utility.Constants.*;
+
 public class MainGameView extends JPanel implements GameModelObserver {
 
 	private final GameModel model;
@@ -32,7 +34,7 @@ public class MainGameView extends JPanel implements GameModelObserver {
 	private GameState lastState;
 
 
-	private static float currentDeltaTime = 0;
+	private static float currentDeltaTime = MAINVIEWDELTAINIT;
 
 	public MainGameView(GameModel model) {
 		this.model = model;
@@ -94,18 +96,18 @@ public class MainGameView extends JPanel implements GameModelObserver {
 
 			drawHeight = panelHeight;
 			drawWidth = Math.round(drawHeight * targetAspect);
-			drawX = (panelWidth - drawWidth) / 2;
-			drawY = 0;
+			drawX = (panelWidth - drawWidth) / MAINVIEWCENTERDIV;
+			drawY = MAINVIEWDRAWYINIT;
 		} else {
 
 			drawWidth = panelWidth;
 			drawHeight = Math.round(drawWidth / targetAspect);
-			drawX = 0;
-			drawY = (panelHeight - drawHeight) / 2;
+			drawX = MAINVIEWDRAWYINIT;
+			drawY = (panelHeight - drawHeight) / MAINVIEWCENTERDIV;
 		}
 
 		g.setColor(Color.decode("#05051C"));
-		g.fillRect(0, 0, panelWidth, panelHeight);
+		g.fillRect(MAINVIEWRECTX, MAINVIEWRECTY, panelWidth, panelHeight);
 
 		g.drawImage(tempScreen, drawX, drawY, drawWidth, drawHeight, null);
 	}
@@ -115,7 +117,7 @@ public class MainGameView extends JPanel implements GameModelObserver {
 		Graphics2D g2 = tempScreen.createGraphics();
 
 		g2.setColor(Color.BLACK);
-		g2.fillRect(0, 0, virtualWidth, virtualHeight);
+		g2.fillRect(MAINVIEWRECTX, MAINVIEWRECTY, virtualWidth, virtualHeight);
 
 		GameStateHandler stateHandler = model.getCurrentState();
 		GameState currentState = stateHandler.getGameState();
@@ -141,7 +143,6 @@ public class MainGameView extends JPanel implements GameModelObserver {
 			default:
 				break;
 		}
-
 		g2.dispose();
 	}
 
@@ -159,8 +160,7 @@ public class MainGameView extends JPanel implements GameModelObserver {
 
 					break;
 				case GAME_OVER:
-					System.out.println("Entering GAME_OVER => fadeOut");
-					AudioManager.fadeOut(1.2f);
+					AudioManager.fadeOut(MAINVIEWAUDIOFADE);
 					gameOverView.startFade();
 					break;
 				case MENU:
@@ -176,7 +176,6 @@ public class MainGameView extends JPanel implements GameModelObserver {
 	}
 
 	public void setNewSize(int screenWidth, int screenHeight) {
-
 	}
 
 	public static float getCurrentDeltaTime() {

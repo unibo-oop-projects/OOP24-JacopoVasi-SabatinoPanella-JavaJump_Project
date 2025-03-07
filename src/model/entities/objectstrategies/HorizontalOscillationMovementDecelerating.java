@@ -4,6 +4,8 @@ import model.entities.GameObject;
 import model.entities.platforms.Platform;
 import model.physics.PhysicsUtils;
 
+import static Utility.Constants.*;
+
 public class HorizontalOscillationMovementDecelerating implements MovementBehaviour {
 	private final float minX;
 	private final float maxX;
@@ -24,8 +26,8 @@ public class HorizontalOscillationMovementDecelerating implements MovementBehavi
 		this.deceleration = deceleration;
 		this.currentSpeed = baseSpeed;
 		this.goingRight = true;
-		this.threshold = 5f;
-		this.epsilon = 1f;
+		this.threshold = THRESHOLD;
+		this.epsilon = EPSILON;
 	}
 
 	@Override
@@ -41,7 +43,7 @@ public class HorizontalOscillationMovementDecelerating implements MovementBehavi
 				currentSpeed = PhysicsUtils.decelerate(currentSpeed, deltaTime, deceleration);
 
 				if (currentSpeed < epsilon) {
-					currentSpeed = 0;
+					currentSpeed = NULLDIRECTION;
 
 					obj.setX(maxX - objWidth);
 					goingRight = false;
@@ -55,7 +57,7 @@ public class HorizontalOscillationMovementDecelerating implements MovementBehavi
 			if (distanceToLeft < threshold) {
 				currentSpeed = PhysicsUtils.decelerate(currentSpeed, deltaTime, deceleration);
 				if (Math.abs(currentSpeed) < epsilon) {
-					currentSpeed = 0;
+					currentSpeed = NULLDIRECTION;
 					obj.setX(minX);
 					goingRight = true;
 				}

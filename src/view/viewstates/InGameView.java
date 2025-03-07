@@ -10,6 +10,8 @@ import view.renderers.RendererManager;
 import java.awt.*;
 import java.util.ArrayList;
 
+import static Utility.Constants.*;
+
 public class InGameView implements GameViewState {
 
 	private final RendererManager renderer;
@@ -68,7 +70,7 @@ public class InGameView implements GameViewState {
 		renderer.drawPlayer(g2, model.getPlayer(), cameraOffsetY, deltaTime);
 
 		long now = System.currentTimeMillis();
-		if (now - lastToggleTime > 1700) {
+		if (now - lastToggleTime > INGAMETIMETOGGLE) {
 			showHighScoreMessage = !showHighScoreMessage;
 			lastToggleTime = now;
 		}

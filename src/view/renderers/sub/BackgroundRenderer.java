@@ -5,6 +5,8 @@ import model.GameModel;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+import static Utility.Constants.*;
+
 public class BackgroundRenderer {
 	private final BufferedImage bgTile;
 	private final float parallaxFactor;
@@ -17,21 +19,21 @@ public class BackgroundRenderer {
 		this.bgTile = bgTile;
 		this.parallaxFactor = parallaxFactor;
 		this.horizontalSpeed = horizontalSpeed;
-		this.horizontalOffset = 0;
+		this.horizontalOffset = ZERO;
 	}
 
 	
 	public void updateBackground(float deltaTime) {
 
 
-		if (horizontalSpeed != 0) {
+		if (horizontalSpeed != ZERO) {
 			horizontalOffset += horizontalSpeed * deltaTime;
 
 			int tileW = bgTile.getWidth();
 
 			if (horizontalOffset >= tileW) {
 				horizontalOffset -= tileW;
-			} else if (horizontalOffset < 0) {
+			} else if (horizontalOffset < ZERO) {
 				horizontalOffset += tileW;
 			}
 		}
@@ -53,7 +55,7 @@ public class BackgroundRenderer {
 
 
 		int shiftY = (int) (verticalOffset) % tileH;
-		if (shiftY < 0) {
+		if (shiftY < ZERO) {
 			shiftY += tileH;
 		}
 
@@ -61,8 +63,8 @@ public class BackgroundRenderer {
 		int shiftX = (int) horizontalOffset;
 
 
-		int verticalTiles = (screenH / tileH) + 2;
-		int horizontalTiles = (screenW / tileW) + 2;
+		int verticalTiles = (screenH / tileH) + EXTRATILES;
+		int horizontalTiles = (screenW / tileW) + EXTRATILES;
 
 
 		for (int i = 0; i < verticalTiles; i++) {

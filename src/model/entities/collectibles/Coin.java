@@ -3,6 +3,8 @@ package model.entities.collectibles;
 import model.entities.GameObject;
 import model.entities.platforms.Platform;
 
+import static Utility.Constants.*;
+
 public class Coin extends GameObject {
 	private CoinState state;
 	private Platform attachedPlatform;
@@ -15,7 +17,7 @@ public class Coin extends GameObject {
 		this.height = height;
 		this.state = CoinState.IDLE;
 		this.attachedPlatform = null;
-		this.offsetX = 0;
+		this.offsetX = OFFSETINIT;
 	}
 
 	@Override
@@ -36,6 +38,7 @@ public class Coin extends GameObject {
 		this.state = CoinState.FINISHED;
 	}
 
+	
 	public void attachToPlatform(Platform platform) {
 		this.attachedPlatform = platform;
 		this.offsetX = this.x - platform.getX();

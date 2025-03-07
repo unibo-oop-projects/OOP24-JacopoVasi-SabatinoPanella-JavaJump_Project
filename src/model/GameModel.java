@@ -16,6 +16,8 @@ import model.states.MenuState;
 import java.util.ArrayList;
 import java.util.List;
 
+import static Utility.Constants.*;
+
 public class GameModel
 {
 
@@ -97,7 +99,7 @@ public class GameModel
 		difficultyManager.reset();
 
 		this.player = spawnManager.getFactory()
-								  .createCharacter(screenWidth / 2f, screenHeight*0.8f);
+								  .createCharacter(screenWidth / CHARACTERCREATIONWIDTHDIV, screenHeight*CHARACTERCREATIONHEIGHTMUL);
 		gameObjects.add(player);
 		spawnManager.generateInitialLevel(this);
 	}
@@ -119,7 +121,6 @@ public class GameModel
 	public void addPointsToScore(int amount)
 	{
 		scoreManager.addPoints(amount);
-		System.out.println("Amount: "+amount);
 	}
 
 	public PhysicsManager getPhysicsManager() { return physicsManager; }

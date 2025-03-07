@@ -11,6 +11,8 @@ import model.level.spawn.spawnutilities.SpawnUtils;
 
 import java.util.Random;
 
+import static Utility.Constants.*;
+
 public class RandomSpawnStrategy implements SpawnStrategy {
 
 	private final AbstractGameObjectFactory factory;
@@ -33,7 +35,7 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 		this.minPlatformYSpacing = minSpacing;
 		this.maxPlatformYSpacing = maxSpacing;
 		this.coinSpawnChance = coinChance;
-		this.currentY = 0;
+		this.currentY = ZERO;
 		this.collectiblesSpawner = new CollectiblesSpawner(factory, coinChance);
 		this.platformSpawner = new PlatformSpawner(factory);
 		this.difficultyManager = difficultyManager;
@@ -42,9 +44,9 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 	@Override
 	public void spawnBatch(GameModel model, float startY, int numberOfPlatforms) {
 		DifficultyState diff = model.getDifficultyManager().getCurrentDifficulty();
-		System.out.println("Difficulty: " + diff);
+		System.out.println(DIFFICULTYTEXT + diff);
 		currentY = startY;
-		float maxPlatformWidth = 120;
+		float maxPlatformWidth = MAXPLATFORMWIDTH;
 
 		for (int i = 0; i < numberOfPlatforms; i++) {
 
@@ -63,13 +65,13 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 	}
 
 	private float setSpawnGap(DifficultyState diff) {
-		float gap = 0;
+		float gap = GAPINIT;
 		if (diff == DifficultyState.EASY || diff == DifficultyState.MEDIUM){
-			gap = SpawnUtils.randomInRange(rand, minPlatformYSpacing - 10, maxPlatformYSpacing - 30);
+			gap = SpawnUtils.randomInRange(rand, minPlatformYSpacing - GAPOFFSETTEN, maxPlatformYSpacing - GAPOFFSETTHIRTY);
 		} else if (diff == DifficultyState.HARD || diff == DifficultyState.VERY_HARD){
-			gap = SpawnUtils.randomInRange(rand, minPlatformYSpacing, maxPlatformYSpacing - 10);
+			gap = SpawnUtils.randomInRange(rand, minPlatformYSpacing, maxPlatformYSpacing - GAPOFFSETTEN);
 		} else if (diff == DifficultyState.HELL){
-			gap = SpawnUtils.randomInRange(rand, minPlatformYSpacing + 10, maxPlatformYSpacing);
+			gap = SpawnUtils.randomInRange(rand, minPlatformYSpacing + GAPOFFSETTEN, maxPlatformYSpacing);
 		}
 		return gap;
 	}

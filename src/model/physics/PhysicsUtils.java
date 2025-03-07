@@ -1,5 +1,7 @@
 package model.physics;
 
+import static Utility.Constants.*;
+
 public class PhysicsUtils {
 	
 	public static float accelerateToRight(float vx, float deltaTime, float acceleration, float maxSpeed) {
@@ -15,15 +17,15 @@ public class PhysicsUtils {
 
 	
 	public static float decelerate(float vx, float deltaTime, float deceleration) {
-		if (vx > 0) {
+		if (vx > ZERO) {
 			vx -= deceleration * deltaTime;
-			if (vx < 0) {
-				vx = 0;
+			if (vx < ZERO) {
+				vx = ZERO;
 			}
-		} else if (vx < 0) {
+		} else if (vx < ZERO) {
 			vx += deceleration * deltaTime;
-			if (vx > 0) {
-				vx = 0;
+			if (vx > ZERO) {
+				vx = ZERO;
 			}
 		}
 		return vx;

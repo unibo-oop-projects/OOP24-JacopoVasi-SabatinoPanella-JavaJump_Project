@@ -11,6 +11,8 @@ import model.entities.platforms.Platform;
 
 import java.util.List;
 
+import static Utility.Constants.*;
+
 
 public class CollisionManagerImpl implements CollisionManager {
 	
@@ -64,13 +66,13 @@ public class CollisionManagerImpl implements CollisionManager {
 	private void handleCharacterCoinCollision(Character character, Coin coin, GameModel model) {
 		if(coin.getState() == CoinState.IDLE) {
 			coin.collect();
-			model.addPointsToScore(50);
+			model.addPointsToScore(COINSCOREVALUE);
 		}
 	}
 
 	
 	private boolean handleCharacterPlatformCollision(Character player, Platform platform, GameModel model) {
-		if (player.getVelocityY() > 0) {
+		if (player.getVelocityY() > NULLDIRECTION) {
 			float playerOldBottom = player.getOldY() + player.getHeight();
 			float platformTop = platform.getY();
 

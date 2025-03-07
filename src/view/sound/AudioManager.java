@@ -4,12 +4,14 @@ import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 
+import static Utility.Constants.*;
+
 public class AudioManager {
 
 	private static Clip backgroundClip;
 	private static FloatControl volumeControl;
 	private static Thread fadeThread;
-	private static final float VOLUME = 0.7f;
+	private static final float VOLUME = AUDIOVOLUME;
 
 
 	public static void loadBackgroundMusic(String filePath) {
@@ -35,8 +37,8 @@ public class AudioManager {
 		if(backgroundClip.isRunning()) return;
 
 		int totalFrames = backgroundClip.getFrameLength();
-		int loopStart = 0;
-		int loopEnd = (int) (totalFrames * 0.885f);
+		int loopStart = AUDIOLOOPSTART;
+		int loopEnd = (int) (totalFrames * AUDIOLOOPEND);
 		backgroundClip.setLoopPoints(loopStart, loopEnd );
 		backgroundClip.loop(Clip.LOOP_CONTINUOUSLY);
 		backgroundClip.start();
@@ -47,7 +49,7 @@ public class AudioManager {
 	public static void stopMusic() {
 		if (backgroundClip != null && backgroundClip.isRunning()) {
 			backgroundClip.stop();
-			backgroundClip.setFramePosition(0);
+			backgroundClip.setFramePosition(AUDIOFRAMEINIT);
 		}
 	}
 
@@ -84,15 +86,15 @@ public class AudioManager {
 
 				float currentVol = volumeControl.getValue();
 
-				int steps = 50;
+				int steps = AUDIOSTEPS;
 				float stepTime = durationSeconds / steps;
 
 				for (int i = 0; i < steps; i++) {
 
-					float alpha = (float)i/(steps-1);
+					float alpha = (float)i/(steps-AUDIOSTEPSDECREASE);
 					float newVol = currentVol + alpha*(min - currentVol);
 					volumeControl.setValue(newVol);
-					Thread.sleep((long)(stepTime*1000));
+					Thread.sleep((long)(stepTime*AUDIOSLEEP));
 				}
 
 				stopMusic();

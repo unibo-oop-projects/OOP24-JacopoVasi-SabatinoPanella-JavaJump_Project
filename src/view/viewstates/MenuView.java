@@ -6,6 +6,8 @@ import view.graphics.GameGraphics;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+import static Utility.Constants.*;
+
 public class MenuView implements GameViewState {
 
     @Override
@@ -14,29 +16,29 @@ public class MenuView implements GameViewState {
         int width = model.getScreenWidth();
         int height = model.getScreenHeight();
 
-        int centerX = width / 2;
-        int centerY = height / 2;
+        int centerX = width / MENUVIEWCENTERDIV;
+        int centerY = height / MENUVIEWCENTERDIV;
 
         int bestScore = model.getScoreManager().getBestScore();
 
         g.setColor(Color.decode("#05051C"));
-        g.fillRect(0, 0, width, height);
+        g.fillRect(MENUVIEWRECTX, MENUVIEWRECTY, width, height);
 
         BufferedImage title = GameGraphics.getTitle();
-        g.drawImage(title, (int) (width*0.03), (int) height/5, (int) (title.getWidth() * 1), (int) (title.getHeight() * 1),null);
+        g.drawImage(title, (int) (width*MENUVIEWIMGWIDTHSCALAR), (int) height/MENUVIEWIMGHEIGHTSCALAR, (int) (title.getWidth() * MENUVIEWTILEWSCALAR), (int) (title.getHeight() * MENUVIEWTILEHSCALAR),null);
 
         g.setColor(Color.WHITE);
         g.setFont(GameGraphics.getGameFont1());
-        g.drawString("- Start Game (ENTER)", centerX/4, centerY + 30);
-        g.drawString("- Quit (ESC)", centerX/4, centerY + 70);
+        g.drawString(MENUVIEWSTARTTEXT, centerX/MENUVIEWXCENTER, centerY + MENUVIEWSTARTYOFFSET);
+        g.drawString(MENUVIEWQUITTEXT, centerX/MENUVIEWXCENTER, centerY + MENUVIEWQUITYOFFSET);
 
         g.setColor(Color.decode("#eac10c"));
-        Stroke dashed = new BasicStroke(2.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{9}, 0);
+        Stroke dashed = new BasicStroke(MENUVIEWSTOKEWIDTH, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, MENUVIEWSTROKEMITERLIMIT, new float[]{MENUVIEWSTROKEARRAY}, MENUVIEWSTROKEDASH);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setStroke(dashed);
-        g2d.drawRoundRect((centerX / 3)-20, height - 120, 400, 40, 10, 10);
+        g2d.drawRoundRect((centerX / MENUVIEWROUNDRECTXDIV)-MENUVIEWROUNDRECTXOFF, height - MENUVIEWROUNDRECTYOFF, MENUVIEWROUNDRECTWIDTH, MENUVIEWROUNDRECTHEIGHT, MENUVIEWROUNDRECTARCW, MENUVIEWROUNDRECTARCH);
         g.setFont(GameGraphics.getGameFont2());
-        g.drawString("Best Score:   " + bestScore, centerX / 3, height - 95);
+        g.drawString(MENUVIEWBESTSCORETEXT + bestScore, centerX / MENUVIEWBESTSCOREXDIV, height - MENUVIEWBESTSCOREYOFF);
     }
 
     @Override

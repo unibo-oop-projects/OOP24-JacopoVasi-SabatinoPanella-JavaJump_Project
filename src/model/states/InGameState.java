@@ -6,6 +6,7 @@ import model.entities.GameObject;
 import model.entities.character.Character;
 import model.physics.MovementDirection;
 
+import static Utility.Constants.*;
 import static model.states.gameutilities.InGameUtilities.applyPacManEffect;
 import static model.states.gameutilities.InGameUtilities.convertIntToMovementDirection;
 import static model.states.gameutilities.InGameUtilities.checkGameOver;
@@ -13,7 +14,7 @@ import static model.states.gameutilities.InGameUtilities.checkGameOver;
 public class InGameState implements GameStateHandler {
 	private final GameState gameState= GameState.IN_GAME;
 
-	private int horizontalDirection = 0;
+	private int horizontalDirection = NULLDIRECTION;
 
 	@Override
 	public void onEnter(GameModel model) {
@@ -23,13 +24,13 @@ public class InGameState implements GameStateHandler {
 	public void handleAction(GameModel model, GameAction action) {
 		switch (action) {
 			case MOVE_LEFT:
-				horizontalDirection = -1;
+				horizontalDirection = LEFTDIRECTION;
 				break;
 			case MOVE_RIGHT:
-				horizontalDirection = 1;
+				horizontalDirection = RIGHTDIRECTION;
 				break;
 			case STOP_HORIZONTAL:
-				horizontalDirection = 0;
+				horizontalDirection = NULLDIRECTION;
 				break;
 			case PAUSE_GAME:
 				model.setState(new PauseState());

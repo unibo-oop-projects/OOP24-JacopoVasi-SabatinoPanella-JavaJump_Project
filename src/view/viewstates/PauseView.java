@@ -4,6 +4,8 @@ import model.GameModel;
 
 import java.awt.*;
 
+import static Utility.Constants.*;
+
 public class PauseView implements GameViewState {
 	@Override
 	public void draw(Graphics g, GameModel model) {
@@ -11,8 +13,8 @@ public class PauseView implements GameViewState {
 		g.fillRect(0,0, model.getScreenWidth(), model.getScreenHeight());
 
 		g.setColor(Color.WHITE);
-		g.setFont(new Font("Arial", Font.BOLD, 30));
-		g.drawString("PAUSE", model.getScreenWidth()/2 - 50, model.getScreenHeight()/2);
+		g.setFont(PAUSEFONT);
+		g.drawString(PAUSETEXT, model.getScreenWidth()/PAUSECENTERDIV - PAUSEWIDTHOFF, model.getScreenHeight()/PAUSECENTERDIV);
 	}
 
 	@Override

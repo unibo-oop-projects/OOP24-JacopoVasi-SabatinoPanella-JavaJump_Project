@@ -8,12 +8,14 @@ import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map;
 
+import static Utility.Constants.*;
+
+
 public class CoinRenderer {
 	private final BufferedImage coinSheet;
 	private final int frameWidth;
 	private final int frameHeight;
 	private final float frameDuration;
-
 
 	private final Map<Coin, Float> coinAnimTimers = new HashMap<>();
 	private final Map<Coin, CoinState> coinLastStates = new HashMap<>();
@@ -32,7 +34,7 @@ public class CoinRenderer {
 
 		CoinState prevState = coinLastStates.get(coin);
 		if (prevState == null || !prevState.equals(coin.getState())) {
-			coinAnimTimers.put(coin, 0f);
+			coinAnimTimers.put(coin, COINANIMTIMERS);
 			coinLastStates.put(coin, coin.getState());
 		}
 
@@ -43,14 +45,14 @@ public class CoinRenderer {
 		int frameIndex;
 		int row;
 		if (coin.getState() == CoinState.IDLE) {
-			float cycle = frameDuration * 6;
+			float cycle = frameDuration * COINCYCLEDURATION;
 			float t = timer % cycle;
 			frameIndex = (int)(t / frameDuration);
-			row = 0;
+			row = ZERO;
 		} else {
 			int idx = (int)(timer / frameDuration);
-			if (idx >= 7) {
-				frameIndex = 6;
+			if (idx >= COINIDXMAX) {
+				frameIndex = COINCYCLEDURATION;
 				coin.markAsDone();
 				removeCoin(coin);
 			} else {

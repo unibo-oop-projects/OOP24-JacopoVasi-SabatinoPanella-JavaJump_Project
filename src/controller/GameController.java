@@ -4,7 +4,7 @@ import view.MainGameView;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
+import static Utility.Constants.*;
 public class GameController implements KeyListener
 {
 	private final GameModel model;
@@ -20,38 +20,30 @@ public class GameController implements KeyListener
 		this.running = false;
 	}
 
-	
+
 	public void startGameLoop()
 	{
 		running = true;
 		Thread loopThread = new Thread(() ->
 		{
 			long previousTime = System.nanoTime();
-			final double fps = 60.0;
-			final double nsPerFrame = 1_000_000_000 / fps;
-			int count=0;
-			long countTime = System.currentTimeMillis();
+			final double nsPerFrame = NANOSECONDS_PER_SECOND / FPS;
 			while (running)
 			{
 
 				long currentTime = System.nanoTime();
 				double elapsedNs = currentTime - previousTime;
-				long countElapsed = System.currentTimeMillis() - countTime;
-				if(countElapsed>=1000){
-					countTime=System.currentTimeMillis();
-					count=0;
-				}
+
 				if (elapsedNs >= nsPerFrame)
 				{
-					count=count+1;
-					float deltaTime = (float) (elapsedNs / 1_000_000_000.0);
-					System.out.println("Running " + deltaTime + " seconds");
+
+					float deltaTime = (float) (elapsedNs / NANOSECONDS_PER_SECOND);
+
 					updateModel(deltaTime);
 					view.updateView(deltaTime);
 					previousTime = currentTime;
 				}
-
-				try { Thread.sleep(1); }
+				try { Thread.sleep(SLEEPTHREAD); }
 				catch (InterruptedException e) {
 					Thread.currentThread().interrupt();
 				}
@@ -67,19 +59,19 @@ public class GameController implements KeyListener
 		model.update(deltaTime);
 	}
 
-	
+
 	private void updateHorizontalDirectionInModel() {
-		int direction = 0;
+		int direction = NULLDIRECTION;
 		if (pressingLeft && !pressingRight) {
-			direction = -1;
+			direction = LEFTDIRECTION;
 		} else if (pressingRight && !pressingLeft) {
-			direction = +1;
+			direction = RIGHTDIRECTION;
 		}
 
 
-		if (direction < 0) {
+		if (direction < NULLDIRECTION) {
 			model.handleAction(GameAction.MOVE_LEFT);
-		} else if (direction > 0) {
+		} else if (direction > NULLDIRECTION) {
 			model.handleAction(GameAction.MOVE_RIGHT);
 		} else {
 			model.handleAction(GameAction.STOP_HORIZONTAL);

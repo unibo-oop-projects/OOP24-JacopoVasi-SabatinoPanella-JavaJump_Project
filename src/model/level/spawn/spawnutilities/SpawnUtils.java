@@ -6,6 +6,8 @@ import model.factories.AbstractGameObjectFactory;
 
 import java.util.Random;
 
+import static Utility.Constants.*;
+
 public class SpawnUtils
 {
 	public static float randomInRange(Random rand, float min, float max) {
@@ -13,8 +15,8 @@ public class SpawnUtils
 	}
 
 	public static void spawnPlatformBelowPlayer(GameModel model, AbstractGameObjectFactory factory) {
-		float px = model.getPlayer().getX() - 40;
-		float py = model.getPlayer().getY() + 60;
+		float px = model.getPlayer().getX() - XOFFSET;
+		float py = model.getPlayer().getY() + YOFFSET;
 		Platform p = factory.createStandardPlatform(px, py);
 		model.getGameObjects().add(p);
 	}

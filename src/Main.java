@@ -1,3 +1,4 @@
+import Utility.Constants;
 import controller.GameController;
 import model.GameModel;
 import model.camera.CameraManagerImpl;
@@ -18,22 +19,24 @@ import javax.swing.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
+import static Utility.Constants.*;
+
 public class Main {
 
 	public static void main(String[] args) {
-		int screenWidth = 600;
-		int screenHeight = 800;
+		int screenWidth = SCREENWIDTH;
+		int screenHeight = SCREENHEIGHT;
 
 		AbstractGameObjectFactory factory = new GameObjectFactory();
 		DifficultyManager difficultyManager = new DifficultyManager();
-		RandomSpawnStrategy strategy = new RandomSpawnStrategy(factory, 50, 150, 0.3f, difficultyManager);
+		RandomSpawnStrategy strategy = new RandomSpawnStrategy(factory, MINSPACING, MAXSPACING, COINCHANCE, difficultyManager);
 		CollisionManager collisionManager = new CollisionManagerImpl();
 		SpawnManager spawnManager = new SpawnManager(strategy);
 		ScoreManager scoreManager = new ScoreManager();
-		CameraManager cameraManager = new CameraManagerImpl(scoreManager, 0.5f);
-		PhysicsManager physicsManager = new PhysicsManager(1350f, 3000f, 400f, 15000f);
+		CameraManager cameraManager = new CameraManagerImpl(scoreManager, SCOREFACTOR);
+		PhysicsManager physicsManager = new PhysicsManager(GRAVITY, ACCELERATION, MAXSPEED, DECELERATION);
 		CleanupManager cleanupManager = new CleanupManager();
-		JFrame frame = new JFrame("JAVA JUMP");
+		JFrame frame = new JFrame(GAMETITLE);
 
 		GameModel model = new GameModel(screenWidth,
 										screenHeight,

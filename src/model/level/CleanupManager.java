@@ -9,6 +9,8 @@ import model.entities.GameObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import static Utility.Constants.*;
+
 public class CleanupManager {
 	GameModel gameModel;
 
@@ -18,7 +20,7 @@ public class CleanupManager {
 
 		float cameraOffset = model.getCameraManager().getCurrentOffset();
 		float screenH = model.getScreenHeight();
-		float margin = 50f;
+		float margin = MARGIN;
 
 		for (GameObject go : gameModel.getGameObjects()) {
 
