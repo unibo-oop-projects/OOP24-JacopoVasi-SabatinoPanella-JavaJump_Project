@@ -2,7 +2,7 @@ package model.level.spawn.platformspawn;
 
 import model.entities.platforms.Platform;
 import model.factories.AbstractGameObjectFactory;
-import model.level.spawn.difficulty.DifficultyManager;
+import model.level.spawn.difficulty.DifficultyState;
 
 import java.util.Random;
 
@@ -19,7 +19,7 @@ public class PlatformSpawner {
 	}
 
 	
-	public Platform spawnPlatform(float x, float y, int screenWidth, DifficultyManager.Difficulty difficulty) {
+	public Platform spawnPlatform(float x, float y, int screenWidth, DifficultyState difficulty) {
 		float chance = rand.nextFloat();
 		float breakableChance = difficulty.getBreakableChance();
 		float movingChance = difficulty.getMovingChance();

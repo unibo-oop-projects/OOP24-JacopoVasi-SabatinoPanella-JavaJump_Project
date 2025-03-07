@@ -19,25 +19,22 @@ public class CoinRenderer {
 	private final Map<Coin, CoinState> coinLastStates = new HashMap<>();
 
 	public CoinRenderer(BufferedImage sheet, int frameWidth, int frameHeight, float frameDuration) {
-		this.frameDuration = frameDuration;
+		this.coinSheet = sheet;
 		this.frameWidth = frameWidth;
 		this.frameHeight = frameHeight;
-		this.coinSheet = sheet;
+		this.frameDuration = frameDuration;
 	}
 
 	public void drawCoin(Graphics2D g2, Coin coin, float offsetY, float deltaTime) {
-
-		if (coin.getIsDone()) {
+		if (coin.getState() == CoinState.FINISHED) {
 			return;
 		}
 
 		CoinState prevState = coinLastStates.get(coin);
-
 		if (prevState == null || !prevState.equals(coin.getState())) {
 			coinAnimTimers.put(coin, 0f);
 			coinLastStates.put(coin, coin.getState());
 		}
-
 
 		float timer = coinAnimTimers.get(coin);
 		timer += deltaTime;
@@ -46,13 +43,11 @@ public class CoinRenderer {
 		int frameIndex;
 		int row;
 		if (coin.getState() == CoinState.IDLE) {
-
 			float cycle = frameDuration * 6;
 			float t = timer % cycle;
 			frameIndex = (int)(t / frameDuration);
 			row = 0;
 		} else {
-
 			int idx = (int)(timer / frameDuration);
 			if (idx >= 7) {
 				frameIndex = 6;

@@ -21,7 +21,6 @@ public class CollisionManager
 		Character player = model.getPlayer();
 		boolean foundPlatformCollision = false;
 
-		List<GameObject> toRemove = new ArrayList<>();
 		List<GameObject> objects = model.getGameObjects();
 
 

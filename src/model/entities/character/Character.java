@@ -1,23 +1,20 @@
 package model.entities.character;
 
 import model.entities.GameObject;
+import model.entities.character.states.InAirState;
+import model.entities.character.states.OnPlatformState;
 
-public class Character extends GameObject
-{
+public class Character extends GameObject {
 	private float velocityX;
 	private float velocityY;
 	private float jumpForce;
-
-	private static final float GRAVITY = 1350.0f;
-
-	private boolean onPlatform;
-	private boolean facingRight;
-
 	private float oldX;
 	private float oldY;
+	private boolean facingRight;
 
-	public Character(float x, float y, float width, float height, float jumpForce)
-	{
+	private CharacterState currentState;
+
+	public Character(float x, float y, float width, float height, float jumpForce) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -27,94 +24,83 @@ public class Character extends GameObject
 		this.velocityY = 0;
 		this.oldX = x;
 		this.oldY = y;
-
-		this.onPlatform = false;
+		this.currentState = new InAirState();
 	}
 
 	@Override
-	public void update(float deltaTime)
-	{
-		oldX = x;
-		oldY = y;
-
-		this.x += velocityX * deltaTime;
-
-		if (velocityX > 0) {
-			facingRight = true;
-		} else if (velocityX < 0) {
-			facingRight = false;
-		}
-
-		this.y += velocityY * deltaTime;
-		this.velocityY += GRAVITY * deltaTime;
+	public void update(float deltaTime) {
+		currentState.updateCharacter(this, deltaTime);
 	}
-
 
 	@Override
 	public void onCollision(GameObject other) {
+	}
 
-
+	public void changeState(CharacterState newState) {
+		currentState.onExit(this);
+		this.currentState = newState;
+		currentState.onEnter(this);
 	}
 
 	
 	public void landOnPlatform() {
-		this.onPlatform = true;
+		changeState(new OnPlatformState());
 	}
 
 	
 	public void goInAir() {
-		if (this.onPlatform) {
-			this.onPlatform = false;
-		}
+		changeState(new InAirState());
 	}
 
 
-	public float getVelocityX()
-	{
+	public float getVelocityX() {
 		return velocityX;
 	}
 
-	public void setVelocityX(float velocityX)
-	{
+	public void setVelocityX(float velocityX) {
 		this.velocityX = velocityX;
 	}
 
-	public float getVelocityY()
-	{
+	public float getVelocityY() {
 		return velocityY;
 	}
 
-	public void setVelocityY(float velocityY)
-	{
+	public void setVelocityY(float velocityY) {
 		this.velocityY = velocityY;
 	}
 
-	public float getJumpForce()
-	{
+	public float getJumpForce() {
 		return jumpForce;
 	}
 
-	public void setJumpForce(float jumpForce)
-	{
+	public void setJumpForce(float jumpForce) {
 		this.jumpForce = jumpForce;
 	}
 
-	public float getOldX()
-	{
+	public float getOldX() {
 		return oldX;
 	}
 
-	public float getOldY()
-	{
+	public void setOldX(float oldX) {
+		this.oldX = oldX;
+	}
+
+	public float getOldY() {
 		return oldY;
 	}
 
+	public void setOldY(float oldY) {
+		this.oldY = oldY;
+	}
 	public boolean isOnPlatform() {
-		return onPlatform;
+		return currentState.isOnPlatform();
 	}
 
-	public boolean isFacingRight()
-	{
+	public boolean isFacingRight() {
 		return facingRight;
+	}
+
+	public void setFacingRight(boolean facingRight) {
+		this.facingRight = facingRight;
 	}
 }

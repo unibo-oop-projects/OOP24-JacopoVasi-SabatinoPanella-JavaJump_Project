@@ -3,74 +3,53 @@ package model.physics;
 import model.entities.character.Character;
 
 
-public class PhysicsManager
-{
+public class PhysicsManager {
 	private final float ACCELERATION;
 	private final float MAX_SPEED;
 	private final float DECELERATION;
+	private final float GRAVITY;
 
 	
-	public PhysicsManager(float acceleration, float maxSpeed, float deceleration)
-	{
+	public PhysicsManager(float gravity,float acceleration, float maxSpeed, float deceleration) {
+		this.GRAVITY = gravity;
 		this.ACCELERATION = acceleration;
 		this.MAX_SPEED = maxSpeed;
 		this.DECELERATION = deceleration;
 	}
 
 	
-	public void updateCharacterMovement(Character character, float deltaTime, MovementDirection direction)
-	{
+	public void updateCharacterMovement(Character character, float deltaTime, MovementDirection direction) {
 		float vx = character.getVelocityX();
 
 		switch (direction) {
 			case RIGHT:
-				vx = accelerateToRight(vx, deltaTime);
+				vx = PhysicsUtils.accelerateToRight(vx, deltaTime, ACCELERATION, MAX_SPEED);
+				character.setFacingRight(true);
 				break;
 			case LEFT:
-				vx = accelerateToLeft(vx, deltaTime);
+				vx = PhysicsUtils.accelerateToLeft(vx, deltaTime, ACCELERATION, MAX_SPEED);
+				character.setFacingRight(false);
 				break;
 			case NONE:
 			default:
-				vx = decelerate(vx, deltaTime);
+				vx = PhysicsUtils.decelerate(vx, deltaTime, DECELERATION);
 				break;
 		}
-
 		character.setVelocityX(vx);
+		updateCharacterPosition(character, deltaTime);
 	}
 
 	
-	private float accelerateToRight(float vx, float deltaTime)
-	{
-		vx += ACCELERATION * deltaTime;
-		return Math.min(vx, MAX_SPEED);
-	}
+	private void updateCharacterPosition(Character character, float deltaTime) {
+		character.setOldX(character.getX());
+		character.setOldY(character.getY());
 
-	
-	private float accelerateToLeft(float vx, float deltaTime)
-	{
-		vx -= ACCELERATION * deltaTime;
-		return Math.max(vx, -MAX_SPEED);
-	}
+		float newX = character.getX() + character.getVelocityX() * deltaTime;
+		float newY = character.getY() + character.getVelocityY() * deltaTime;
+		float newVy = character.getVelocityY() + GRAVITY * deltaTime;
 
-	
-	private float decelerate(float vx, float deltaTime)
-	{
-		if (vx > 0)
-		{
-			vx -= DECELERATION * deltaTime;
-			if (vx < 0)
-			{
-				vx = 0;
-			}
-		}
-		else if (vx < 0)
-		{
-			vx += DECELERATION * deltaTime;
-			if (vx > 0)
-			{
-				vx = 0;
-			}
-		}
-		return vx;
+		character.setX(newX);
+		character.setY(newY);
+		character.setVelocityY(newVy);
 	}
 }

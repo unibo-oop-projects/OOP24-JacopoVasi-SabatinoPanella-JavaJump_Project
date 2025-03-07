@@ -1,7 +1,7 @@
 package model.entities.collectibles;
 
-public enum CoinState
-{
+public enum CoinState {
 	IDLE,
-	COLLECTING
+	COLLECTING,
+	FINISHED
 }

@@ -1,6 +1,7 @@
 package model.level;
 
 import model.GameModel;
+import model.entities.collectibles.CoinState;
 import model.entities.platforms.BreakablePlatform;
 import model.entities.collectibles.Coin;
 import model.entities.GameObject;
@@ -8,8 +9,7 @@ import model.entities.GameObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CleanupManager
-{
+public class CleanupManager {
 	GameModel gameModel;
 
 	public void cleanupObjects(GameModel model) {
@@ -23,7 +23,7 @@ public class CleanupManager
 		for (GameObject go : gameModel.getGameObjects()) {
 
 			if (go instanceof Coin c) {
-				if (c.getIsDone()) {
+				if (c.getState() == CoinState.FINISHED) {
 					toRemove.add(c);
 					continue;
 				}
@@ -39,7 +39,6 @@ public class CleanupManager
 
 			float drawY = go.getY() - cameraOffset;
 			if (drawY > screenH + margin) {
-
 				toRemove.add(go);
 			}
 

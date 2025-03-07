@@ -47,9 +47,11 @@ public class GameObjectFactory extends AbstractGameObjectFactory
 		float width = 70 + new Random().nextInt(45);
 		float height = 10;
 		float range = 50 + new Random().nextFloat()* 100;
-		float speed = 30f + new Random().nextInt(40);
+		float speed = 30f + new Random().nextInt(50);
+		float deceleration = 2f;
+		float acceleration = 2f;
 
-		return new MovingPlatform(x, y, width, height, range, screenWidth, speed);
+		return new MovingPlatform(x, y, width, height, range, screenWidth, speed, acceleration, deceleration);
 	}
 
 	@Override

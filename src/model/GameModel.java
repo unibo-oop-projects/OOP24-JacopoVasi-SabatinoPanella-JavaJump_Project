@@ -92,7 +92,7 @@ public class GameModel
 	{
 		gameObjects.clear();
 		scoreManager.reset();
-		cameraManager.reset();
+		cameraManager.cameraReset();
 		spawnManager.reset();
 		difficultyManager.reset();
 

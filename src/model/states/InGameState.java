@@ -7,32 +7,28 @@ import model.entities.character.Character;
 import model.physics.MovementDirection;
 import model.states.gameutilities.InGameUtilities;
 
-public class InGameState implements GameStateHandler
-{
+public class InGameState implements GameStateHandler {
 	private final GameState gameState= GameState.IN_GAME;
 
 	private int horizontalDirection = 0;
 
 	@Override
-	public void onEnter(GameModel model)
-	{
+	public void onEnter(GameModel model) {
 	}
 
 	@Override
-	public void handleAction(GameModel model, GameAction action)
-	{
-		switch (action)
-		{
-			case GameAction.MOVE_LEFT:
+	public void handleAction(GameModel model, GameAction action) {
+		switch (action) {
+			case MOVE_LEFT:
 				horizontalDirection = -1;
 				break;
-			case GameAction.MOVE_RIGHT:
-				horizontalDirection = +1;
+			case MOVE_RIGHT:
+				horizontalDirection = 1;
 				break;
-			case GameAction.STOP_HORIZONTAL:
+			case STOP_HORIZONTAL:
 				horizontalDirection = 0;
 				break;
-			case GameAction.PAUSE_GAME:
+			case PAUSE_GAME:
 				model.setState(new PauseState());
 				break;
 			default:
@@ -41,29 +37,21 @@ public class InGameState implements GameStateHandler
 	}
 
 	@Override
-	public void update(GameModel model, float deltaTime)
-	{
+	public void update(GameModel model, float deltaTime) {
 		Character player = model.getPlayer();
 		MovementDirection md = InGameUtilities.convertIntToMovementDirection(horizontalDirection);
-		model.getPhysicsManager().updateCharacterMovement
-		(
-				model.getPlayer(),
-				deltaTime,
-				md
-		);
+		model.getPhysicsManager().updateCharacterMovement(player, deltaTime, md);
 
-		for (GameObject go : model.getGameObjects())
-		{
+		for (GameObject go : model.getGameObjects()) {
 			go.update(deltaTime);
-			if (go instanceof Character)
-			{
+			if (go instanceof Character) {
 				InGameUtilities.applyPacManEffect((Character)go, model.getScreenWidth());
 			}
 		}
 
 		model.getCollisionManager().checkCollisions(model);
 
-		model.getCameraManager().update(model, deltaTime);
+		model.getCameraManager().cameraUpdate(model, deltaTime);
 
 		model.getSpawnManager().generateOnTheFly(model);
 

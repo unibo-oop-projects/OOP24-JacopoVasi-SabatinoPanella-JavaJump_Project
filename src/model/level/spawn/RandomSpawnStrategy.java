@@ -5,6 +5,7 @@ import model.entities.platforms.Platform;
 import model.factories.AbstractGameObjectFactory;
 import model.level.spawn.collectiblespawn.CollectiblesSpawner;
 import model.level.spawn.difficulty.DifficultyManager;
+import model.level.spawn.difficulty.DifficultyState;
 import model.level.spawn.platformspawn.PlatformSpawner;
 import model.level.spawn.spawnutilities.SpawnUtils;
 
@@ -40,7 +41,7 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 
 	@Override
 	public void spawnBatch(GameModel model, float startY, int numberOfPlatforms) {
-		DifficultyManager.Difficulty diff = difficultyManager.getCurrentDifficulty();
+		DifficultyState diff = difficultyManager.getCurrentDifficulty();
 		System.out.println("Difficulty: " + diff);
 		currentY = startY;
 		float maxPlatformWidth = 120;
@@ -61,13 +62,13 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 		}
 	}
 
-	private float setSpawnGap(DifficultyManager.Difficulty diff) {
+	private float setSpawnGap(DifficultyState diff) {
 		float gap = 0;
-		if (diff == DifficultyManager.Difficulty.EASY || diff == DifficultyManager.Difficulty.MEDIUM){
+		if (diff == DifficultyState.EASY || diff == DifficultyState.MEDIUM){
 			gap = SpawnUtils.randomInRange(rand, minPlatformYSpacing - 10, maxPlatformYSpacing - 30);
-		} else if (diff == DifficultyManager.Difficulty.HARD || diff == DifficultyManager.Difficulty.VERY_HARD){
+		} else if (diff == DifficultyState.HARD || diff == DifficultyState.VERY_HARD){
 			gap = SpawnUtils.randomInRange(rand, minPlatformYSpacing, maxPlatformYSpacing - 10);
-		} else if (diff == DifficultyManager.Difficulty.HELL){
+		} else if (diff == DifficultyState.HELL){
 			gap = SpawnUtils.randomInRange(rand, minPlatformYSpacing + 10, maxPlatformYSpacing);
 		}
 		return gap;
