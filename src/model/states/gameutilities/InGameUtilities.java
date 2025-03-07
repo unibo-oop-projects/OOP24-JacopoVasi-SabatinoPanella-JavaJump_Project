@@ -5,7 +5,13 @@ import model.physics.MovementDirection;
 import model.entities.character.Character;
 import model.states.GameOverState;
 
-public class InGameUtilities {
+
+public final class InGameUtilities {
+	
+	private InGameUtilities() {
+		throw new AssertionError("This is a utility class, it should not be instantiated!");
+	}
+
 	
 	public static MovementDirection convertIntToMovementDirection(int dir) {
 		if (dir < 0) {

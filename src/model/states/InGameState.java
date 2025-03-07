@@ -5,7 +5,10 @@ import model.GameModel;
 import model.entities.GameObject;
 import model.entities.character.Character;
 import model.physics.MovementDirection;
-import model.states.gameutilities.InGameUtilities;
+
+import static model.states.gameutilities.InGameUtilities.applyPacManEffect;
+import static model.states.gameutilities.InGameUtilities.convertIntToMovementDirection;
+import static model.states.gameutilities.InGameUtilities.checkGameOver;
 
 public class InGameState implements GameStateHandler {
 	private final GameState gameState= GameState.IN_GAME;
@@ -39,19 +42,19 @@ public class InGameState implements GameStateHandler {
 	@Override
 	public void update(GameModel model, float deltaTime) {
 		Character player = model.getPlayer();
-		MovementDirection md = InGameUtilities.convertIntToMovementDirection(horizontalDirection);
+		MovementDirection md = convertIntToMovementDirection(horizontalDirection);
 		model.getPhysicsManager().updateCharacterMovement(player, deltaTime, md);
 
 		for (GameObject go : model.getGameObjects()) {
 			go.update(deltaTime);
 			if (go instanceof Character) {
-				InGameUtilities.applyPacManEffect((Character)go, model.getScreenWidth());
+				applyPacManEffect((Character)go, model.getScreenWidth());
 			}
 		}
 
 		model.getCollisionManager().checkCollisions(model);
 
-		model.getCameraManager().cameraUpdate(model, deltaTime);
+		model.getCameraManager().updateCamera(model, deltaTime);
 
 		model.getSpawnManager().generateOnTheFly(model);
 
@@ -59,7 +62,7 @@ public class InGameState implements GameStateHandler {
 
 		model.getDifficultyManager().updateDifficulty(model.getScore());
 
-		InGameUtilities.checkGameOver(model, player);
+		checkGameOver(model, player);
 
 		model.notifyObservers();
 	}

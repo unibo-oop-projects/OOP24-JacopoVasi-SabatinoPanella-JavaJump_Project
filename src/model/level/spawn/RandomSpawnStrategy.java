@@ -41,7 +41,7 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 
 	@Override
 	public void spawnBatch(GameModel model, float startY, int numberOfPlatforms) {
-		DifficultyState diff = difficultyManager.getCurrentDifficulty();
+		DifficultyState diff = model.getDifficultyManager().getCurrentDifficulty();
 		System.out.println("Difficulty: " + diff);
 		currentY = startY;
 		float maxPlatformWidth = 120;

@@ -1,6 +1,8 @@
 import controller.GameController;
 import model.GameModel;
+import model.camera.CameraManagerImpl;
 import model.collision.CollisionManager;
+import model.collision.CollisionManagerImpl;
 import model.factories.AbstractGameObjectFactory;
 import model.factories.GameObjectFactory;
 import model.level.CleanupManager;
@@ -25,10 +27,10 @@ public class Main {
 		AbstractGameObjectFactory factory = new GameObjectFactory();
 		DifficultyManager difficultyManager = new DifficultyManager();
 		RandomSpawnStrategy strategy = new RandomSpawnStrategy(factory, 50, 150, 0.3f, difficultyManager);
-		CollisionManager collisionManager = new CollisionManager();
+		CollisionManager collisionManager = new CollisionManagerImpl();
 		SpawnManager spawnManager = new SpawnManager(strategy);
 		ScoreManager scoreManager = new ScoreManager();
-		CameraManager cameraManager = new CameraManager(scoreManager, 0.5f);
+		CameraManager cameraManager = new CameraManagerImpl(scoreManager, 0.5f);
 		PhysicsManager physicsManager = new PhysicsManager(1350f, 3000f, 400f, 15000f);
 		CleanupManager cleanupManager = new CleanupManager();
 		JFrame frame = new JFrame("JAVA JUMP");
