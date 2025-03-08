@@ -4,9 +4,10 @@ import model.entities.GameObject;
 import model.entities.character.states.InAirState;
 import model.entities.character.states.OnPlatformState;
 
-import static Utility.Constants.*;
+import static utility.Constants.*;
 
 public class Character extends GameObject {
+
 	private float velocityX;
 	private float velocityY;
 	private float jumpForce;
@@ -38,18 +39,19 @@ public class Character extends GameObject {
 	public void onCollision(GameObject other) {
 	}
 
+
 	public void changeState(CharacterState newState) {
 		currentState.onExit(this);
 		this.currentState = newState;
 		currentState.onEnter(this);
 	}
 
-	
+
 	public void landOnPlatform() {
 		changeState(new OnPlatformState());
 	}
 
-	
+
 	public void goInAir() {
 		changeState(new InAirState());
 	}
@@ -94,6 +96,8 @@ public class Character extends GameObject {
 	public void setOldY(float oldY) {
 		this.oldY = oldY;
 	}
+
+
 	public boolean isOnPlatform() {
 		return currentState.isOnPlatform();
 	}

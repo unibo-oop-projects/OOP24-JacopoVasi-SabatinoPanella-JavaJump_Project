@@ -5,7 +5,7 @@ import model.factories.AbstractGameObjectFactory;
 import model.level.spawn.RandomSpawnStrategy;
 import model.level.spawn.SpawnStrategy;
 
-import static Utility.Constants.*;
+import static utility.Constants.*;
 import static model.level.spawn.spawnutilities.SpawnUtils.spawnPlatformBelowPlayer;
 
 public class SpawnManager {
@@ -14,14 +14,12 @@ public class SpawnManager {
 	private float topPlatformY;
 
 
-
-
 	public SpawnManager(SpawnStrategy spawnStrategy) {
 		this.spawnStrategy = spawnStrategy;
 		this.topPlatformY = ZERO;
 	}
 
-	
+
 	public void generateInitialLevel(GameModel model) {
 		spawnPlatformBelowPlayer(model, getFactory());
 		float startY = model.getScreenHeight() - INITIALYOFFSET;
@@ -29,7 +27,7 @@ public class SpawnManager {
 		this.topPlatformY = spawnStrategy.returnCurrentY();
 	}
 
-	
+
 	public void generateOnTheFly(GameModel model) {
 
 		float playerY = model.getPlayer().getY();

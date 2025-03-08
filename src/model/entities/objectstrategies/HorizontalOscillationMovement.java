@@ -3,9 +3,10 @@ package model.entities.objectstrategies;
 import model.entities.GameObject;
 
 public class HorizontalOscillationMovement implements MovementBehaviour {
+
 	private final float minX;
 	private final float maxX;
-	private float speed;
+	private final float speed;
 	private boolean goingRight;
 
 	public HorizontalOscillationMovement(float minX, float maxX, float speed) {

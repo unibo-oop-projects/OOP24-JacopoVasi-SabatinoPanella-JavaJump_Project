@@ -9,15 +9,15 @@ public class PhysicsManager {
 	private final float DECELERATION;
 	private final float GRAVITY;
 
-	
-	public PhysicsManager(float gravity,float acceleration, float maxSpeed, float deceleration) {
+
+	public PhysicsManager(float gravity, float acceleration, float maxSpeed, float deceleration) {
 		this.GRAVITY = gravity;
 		this.ACCELERATION = acceleration;
 		this.MAX_SPEED = maxSpeed;
 		this.DECELERATION = deceleration;
 	}
 
-	
+
 	public void updateCharacterMovement(Character character, float deltaTime, MovementDirection direction) {
 		float vx = character.getVelocityX();
 
@@ -39,7 +39,7 @@ public class PhysicsManager {
 		updateCharacterPosition(character, deltaTime);
 	}
 
-	
+
 	private void updateCharacterPosition(Character character, float deltaTime) {
 		character.setOldX(character.getX());
 		character.setOldY(character.getY());

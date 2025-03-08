@@ -3,12 +3,11 @@ package model.states;
 import controller.GameAction;
 import model.GameModel;
 
-public class MenuState implements GameStateHandler
-{
-	private final GameState gameState= GameState.MENU;
+public class MenuState implements GameStateHandler {
+	private final GameState gameState = GameState.MENU;
+
 	@Override
-	public void onEnter(GameModel model)
-	{
+	public void onEnter(GameModel model) {
 	}
 
 	@Override
@@ -38,7 +37,6 @@ public class MenuState implements GameStateHandler
 	public GameState getGameState() {
 		return gameState;
 	}
-
 
 
 }

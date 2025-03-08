@@ -9,9 +9,10 @@ import view.renderers.sub.*;
 
 import java.awt.*;
 
-import static Utility.Constants.*;
+import static utility.Constants.*;
 
 public class RendererManager {
+
 	private final PlatformRenderer platformRenderer;
 	private final CoinRenderer coinRenderer;
 	private final PlayerRenderer playerRenderer;

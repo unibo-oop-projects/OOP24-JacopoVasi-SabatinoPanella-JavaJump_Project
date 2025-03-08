@@ -11,11 +11,10 @@ import model.entities.platforms.Platform;
 
 import java.util.List;
 
-import static Utility.Constants.*;
+import static utility.Constants.*;
 
 
 public class CollisionManagerImpl implements CollisionManager {
-	
 	@Override
 	public void checkCollisions(GameModel model) {
 		Character player = model.getPlayer();
@@ -38,39 +37,38 @@ public class CollisionManagerImpl implements CollisionManager {
 					}
 
 					if (a instanceof Character && b instanceof Platform) {
-						if(handleCharacterPlatformCollision((Character) a, (Platform) b, model)) {
+						if (handleCharacterPlatformCollision((Character) a, (Platform) b, model)) {
 							foundPlatformCollision = true;
 						}
 					} else if (b instanceof Character && a instanceof Platform) {
-						if(handleCharacterPlatformCollision((Character) b, (Platform) a, model)) {
+						if (handleCharacterPlatformCollision((Character) b, (Platform) a, model)) {
 							foundPlatformCollision = true;
 						}
 					}
 				}
 			}
 		}
-		if(!foundPlatformCollision){
+		if (!foundPlatformCollision) {
 			player.goInAir();
 		}
 	}
 
-	
 	private boolean isColliding(GameObject a, GameObject b) {
 		return a.getX() < b.getX() + b.getWidth()
-			&& a.getX() + a.getWidth() > b.getX()
-			&& a.getY() < b.getY() + b.getHeight()
-			&& a.getY() + a.getHeight() > b.getY();
+				&& a.getX() + a.getWidth() > b.getX()
+				&& a.getY() < b.getY() + b.getHeight()
+				&& a.getY() + a.getHeight() > b.getY();
 	}
 
-	
+
 	private void handleCharacterCoinCollision(Character character, Coin coin, GameModel model) {
-		if(coin.getState() == CoinState.IDLE) {
+		if (coin.getState() == CoinState.IDLE) {
 			coin.collect();
 			model.addPointsToScore(COINSCOREVALUE);
 		}
 	}
 
-	
+
 	private boolean handleCharacterPlatformCollision(Character player, Platform platform, GameModel model) {
 		if (player.getVelocityY() > NULLDIRECTION) {
 			float playerOldBottom = player.getOldY() + player.getHeight();
@@ -87,8 +85,8 @@ public class CollisionManagerImpl implements CollisionManager {
 				player.setY(platformTop - player.getHeight());
 				player.landOnPlatform();
 
-				if (platform instanceof BreakablePlatform) {
-					((BreakablePlatform)platform).breakPlatform();
+				if (platform instanceof BreakablePlatform breakablePlatform) {
+					breakablePlatform.breakPlatform();
 				}
 			}
 			return true;

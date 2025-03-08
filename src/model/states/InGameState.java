@@ -6,13 +6,13 @@ import model.entities.GameObject;
 import model.entities.character.Character;
 import model.physics.MovementDirection;
 
-import static Utility.Constants.*;
+import static utility.Constants.*;
 import static model.states.gameutilities.InGameUtilities.applyPacManEffect;
 import static model.states.gameutilities.InGameUtilities.convertIntToMovementDirection;
 import static model.states.gameutilities.InGameUtilities.checkGameOver;
 
 public class InGameState implements GameStateHandler {
-	private final GameState gameState= GameState.IN_GAME;
+	private final GameState gameState = GameState.IN_GAME;
 
 	private int horizontalDirection = NULLDIRECTION;
 
@@ -23,20 +23,12 @@ public class InGameState implements GameStateHandler {
 	@Override
 	public void handleAction(GameModel model, GameAction action) {
 		switch (action) {
-			case MOVE_LEFT:
-				horizontalDirection = LEFTDIRECTION;
-				break;
-			case MOVE_RIGHT:
-				horizontalDirection = RIGHTDIRECTION;
-				break;
-			case STOP_HORIZONTAL:
-				horizontalDirection = NULLDIRECTION;
-				break;
-			case PAUSE_GAME:
-				model.setState(new PauseState());
-				break;
-			default:
-				break;
+			case MOVE_LEFT -> horizontalDirection = LEFTDIRECTION;
+			case MOVE_RIGHT -> horizontalDirection = RIGHTDIRECTION;
+			case STOP_HORIZONTAL -> horizontalDirection = NULLDIRECTION;
+			case PAUSE_GAME -> model.setState(new PauseState());
+			default -> {
+			}
 		}
 	}
 
@@ -48,8 +40,8 @@ public class InGameState implements GameStateHandler {
 
 		for (GameObject go : model.getGameObjects()) {
 			go.update(deltaTime);
-			if (go instanceof Character) {
-				applyPacManEffect((Character)go, model.getScreenWidth());
+			if (go instanceof Character character) {
+				applyPacManEffect(character, model.getScreenWidth());
 			}
 		}
 

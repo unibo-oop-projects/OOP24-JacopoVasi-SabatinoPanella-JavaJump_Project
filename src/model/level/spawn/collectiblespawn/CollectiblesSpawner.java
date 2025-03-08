@@ -8,10 +8,9 @@ import model.factories.AbstractGameObjectFactory;
 
 import java.util.Random;
 
-import static Utility.Constants.*;
+import static utility.Constants.*;
 
-public class CollectiblesSpawner
-{
+public class CollectiblesSpawner {
 	private final AbstractGameObjectFactory factory;
 	private final Random rand;
 	private final float coinSpawnChance;

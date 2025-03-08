@@ -8,10 +8,11 @@ import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map;
 
-import static Utility.Constants.*;
+import static utility.Constants.*;
 
 
 public class CoinRenderer {
+
 	private final BufferedImage coinSheet;
 	private final int frameWidth;
 	private final int frameHeight;
@@ -26,6 +27,7 @@ public class CoinRenderer {
 		this.frameHeight = frameHeight;
 		this.frameDuration = frameDuration;
 	}
+
 
 	public void drawCoin(Graphics2D g2, Coin coin, float offsetY, float deltaTime) {
 		if (coin.getState() == CoinState.FINISHED) {
@@ -47,10 +49,10 @@ public class CoinRenderer {
 		if (coin.getState() == CoinState.IDLE) {
 			float cycle = frameDuration * COINCYCLEDURATION;
 			float t = timer % cycle;
-			frameIndex = (int)(t / frameDuration);
+			frameIndex = (int) (t / frameDuration);
 			row = ZERO;
 		} else {
-			int idx = (int)(timer / frameDuration);
+			int idx = (int) (timer / frameDuration);
 			if (idx >= COINIDXMAX) {
 				frameIndex = COINCYCLEDURATION;
 				coin.markAsDone();
@@ -70,7 +72,7 @@ public class CoinRenderer {
 		g2.drawImage(frame, (int) drawX, (int) drawY, null);
 	}
 
-	
+
 	public void removeCoin(Coin coin) {
 		coinAnimTimers.remove(coin);
 		coinLastStates.remove(coin);

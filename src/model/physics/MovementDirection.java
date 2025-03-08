@@ -1,8 +1,7 @@
 package model.physics;
 
 
-public enum MovementDirection
-{
+public enum MovementDirection {
 	LEFT,
 	NONE,
 	RIGHT

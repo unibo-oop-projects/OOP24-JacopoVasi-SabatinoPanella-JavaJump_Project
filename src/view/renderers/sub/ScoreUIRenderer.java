@@ -6,9 +6,10 @@ import view.graphics.GameGraphics;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import static Utility.Constants.*;
+import static utility.Constants.*;
 
 public class ScoreUIRenderer {
+
 	private final BufferedImage scoreContainer;
 
 	public ScoreUIRenderer(BufferedImage container) {

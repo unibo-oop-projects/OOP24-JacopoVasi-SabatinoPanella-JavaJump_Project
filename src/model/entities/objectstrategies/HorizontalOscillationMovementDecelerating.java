@@ -1,10 +1,9 @@
 package model.entities.objectstrategies;
 
 import model.entities.GameObject;
-import model.entities.platforms.Platform;
 import model.physics.PhysicsUtils;
 
-import static Utility.Constants.*;
+import static utility.Constants.*;
 
 public class HorizontalOscillationMovementDecelerating implements MovementBehaviour {
 	private final float minX;
@@ -17,7 +16,6 @@ public class HorizontalOscillationMovementDecelerating implements MovementBehavi
 	private final float threshold;
 	private final float epsilon;
 
-	
 	public HorizontalOscillationMovementDecelerating(float minX, float maxX, float baseSpeed, float acceleration, float deceleration) {
 		this.minX = minX;
 		this.maxX = maxX;

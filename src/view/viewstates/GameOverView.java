@@ -6,7 +6,7 @@ import view.graphics.GameGraphics;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import static Utility.Constants.*;
+import static utility.Constants.*;
 
 public class GameOverView implements GameViewState {
 
@@ -14,7 +14,6 @@ public class GameOverView implements GameViewState {
 	private final float fadeDuration = GAMEOVERDURATIONINIT;
 	private float elapsedTime = GAMEOVERTIMEINIT;
 	private boolean fading = false;
-
 
 
 	public void startFade() {
@@ -30,7 +29,6 @@ public class GameOverView implements GameViewState {
 	}
 
 
-
 	public void update(float deltaTime) {
 		if (fading) {
 			elapsedTime += deltaTime;
@@ -40,7 +38,6 @@ public class GameOverView implements GameViewState {
 			}
 		}
 	}
-
 
 
 	@Override
@@ -62,28 +59,27 @@ public class GameOverView implements GameViewState {
 
 		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, GAMEOVERALPHA));
 		BufferedImage img = GameGraphics.getGameOver();
-		g2.drawImage(img, (int)(centerX - img.getWidth()/GAMEOVERIMGWOFF), (int)(centerY - h*GAMEOVERIMGHOFF), (int)(img.getWidth() * GAMEOVERIMGSCALEOFF), (int)(img.getHeight() * GAMEOVERIMGSCALEOFF),null);
+		g2.drawImage(img, (int) (centerX - img.getWidth() / GAMEOVERIMGWOFF), (int) (centerY - h * GAMEOVERIMGHOFF), (int) (img.getWidth() * GAMEOVERIMGSCALEOFF), (int) (img.getHeight() * GAMEOVERIMGSCALEOFF), null);
 
 
 		if (fadeAlpha >= GAMEOVERALPHA) {
 			if (model.getScoreManager().isBestScoreReached()) {
 				g.setColor(Color.decode("#eac10c"));
 				g.setFont(GameGraphics.getGameFont2());
-				g.drawString(GAMEOVERNEWTEXT + model.getScoreManager().getBestScore() + GAMEOVERNEWTEXTESC, (int)(centerX*GAMEOVERTEXTXOFF), centerY + GAMEOVERTEXTNEWYOFF);
-			}
-			else {
+				g.drawString(GAMEOVERNEWTEXT + model.getScoreManager().getBestScore() + GAMEOVERNEWTEXTESC, (int) (centerX * GAMEOVERTEXTXOFF), centerY + GAMEOVERTEXTNEWYOFF);
+			} else {
 				g.setColor(Color.WHITE);
 				g.setFont(GameGraphics.getGameFont2());
-				g.drawString(GAMEOVERSCORETEXT + model.getScore(), (int)(centerX*GAMEOVERTEXTXOFF), centerY + GAMEOVERTEXTSCOREYOFF);
+				g.drawString(GAMEOVERSCORETEXT + model.getScore(), (int) (centerX * GAMEOVERTEXTXOFF), centerY + GAMEOVERTEXTSCOREYOFF);
 
 				g.setColor(Color.decode("#F84534"));
 				g.setFont(GameGraphics.getGameFont2());
-				g.drawString(GAMEOVERBESTTEXT + model.getScoreManager().getBestScore(), (int)(centerX*GAMEOVERTEXTXOFF), centerY + GAMEOVERTEXTBESTYOFF);
+				g.drawString(GAMEOVERBESTTEXT + model.getScoreManager().getBestScore(), (int) (centerX * GAMEOVERTEXTXOFF), centerY + GAMEOVERTEXTBESTYOFF);
 			}
 
 			g2.setColor(Color.decode("#F84534"));
 			g2.setFont(GameGraphics.getGameFont3());
-			g2.drawString(GAMEOVERCONTINUETEXT, (int)(centerX*GAMEOVERTEXTXOFF), centerY + GAMEOVERTEXTCONTINUEYOFF);
+			g2.drawString(GAMEOVERCONTINUETEXT, (int) (centerX * GAMEOVERTEXTXOFF), centerY + GAMEOVERTEXTCONTINUEYOFF);
 
 		}
 

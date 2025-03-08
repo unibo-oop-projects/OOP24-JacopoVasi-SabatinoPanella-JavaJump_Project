@@ -5,7 +5,7 @@ import model.physics.MovementDirection;
 import model.entities.character.Character;
 import model.states.GameOverState;
 
-import static Utility.Constants.*;
+import static utility.Constants.*;
 
 
 public final class InGameUtilities {

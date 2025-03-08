@@ -1,4 +1,3 @@
-import Utility.Constants;
 import controller.GameController;
 import model.GameModel;
 import model.camera.CameraManagerImpl;
@@ -19,14 +18,13 @@ import javax.swing.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-import static Utility.Constants.*;
+import static utility.Constants.*;
 
 public class Main {
 
 	public static void main(String[] args) {
 		int screenWidth = SCREENWIDTH;
 		int screenHeight = SCREENHEIGHT;
-
 		AbstractGameObjectFactory factory = new GameObjectFactory();
 		DifficultyManager difficultyManager = new DifficultyManager();
 		RandomSpawnStrategy strategy = new RandomSpawnStrategy(factory, MINSPACING, MAXSPACING, COINCHANCE, difficultyManager);
@@ -39,14 +37,14 @@ public class Main {
 		JFrame frame = new JFrame(GAMETITLE);
 
 		GameModel model = new GameModel(screenWidth,
-										screenHeight,
-										physicsManager,
-										collisionManager,
-										spawnManager,
-										cameraManager,
-										scoreManager,
-										cleanupManager,
-										difficultyManager);
+				screenHeight,
+				physicsManager,
+				collisionManager,
+				spawnManager,
+				cameraManager,
+				scoreManager,
+				cleanupManager,
+				difficultyManager);
 
 		MainGameView view = new MainGameView(model);
 		model.addObserver(view);
@@ -56,6 +54,7 @@ public class Main {
 		frame.setSize(screenWidth, screenHeight);
 		frame.addKeyListener(controller);
 		frame.addComponentListener(new ComponentAdapter() {
+			@Override
 			public void componentResized(ComponentEvent e) {
 				frame.setPreferredSize(e.getComponent().getSize());
 				frame.pack();

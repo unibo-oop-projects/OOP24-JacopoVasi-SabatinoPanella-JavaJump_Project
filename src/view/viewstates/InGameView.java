@@ -10,7 +10,7 @@ import view.renderers.RendererManager;
 import java.awt.*;
 import java.util.ArrayList;
 
-import static Utility.Constants.*;
+import static utility.Constants.*;
 
 public class InGameView implements GameViewState {
 
@@ -31,12 +31,13 @@ public class InGameView implements GameViewState {
 	public void draw(Graphics g, GameModel model) {
 
 		ArrayList<GameObject> snapshot;
-		synchronized(model.getGameObjects()) {
+		synchronized (model.getGameObjects()) {
 			snapshot = new ArrayList<>(model.getGameObjects());
 			System.out.println(snapshot.size());
 		}
 
 		Graphics2D g2 = (Graphics2D) g;
+
 
 		float deltaTime = MainGameView.getCurrentDeltaTime();
 
@@ -51,9 +52,9 @@ public class InGameView implements GameViewState {
 			for (GameObject obj : snapshot) {
 				float dx = obj.getX();
 				float dy = obj.getY() - cameraOffsetY;
-				g2.drawRect((int)dx, (int)dy,
-						(int)obj.getWidth(),
-						(int)obj.getHeight());
+				g2.drawRect((int) dx, (int) dy,
+						(int) obj.getWidth(),
+						(int) obj.getHeight());
 			}
 		}
 
@@ -67,7 +68,9 @@ public class InGameView implements GameViewState {
 
 		}
 
+
 		renderer.drawPlayer(g2, model.getPlayer(), cameraOffsetY, deltaTime);
+
 
 		long now = System.currentTimeMillis();
 		if (now - lastToggleTime > INGAMETIMETOGGLE) {
@@ -78,10 +81,14 @@ public class InGameView implements GameViewState {
 	}
 
 	@Override
-	public void startFade() { }
+	public void startFade() {
+	}
+
 	@Override
 	public void update(float deltaTime) {
 	}
+
 	@Override
-	public void stopFade() { }
+	public void stopFade() {
+	}
 }

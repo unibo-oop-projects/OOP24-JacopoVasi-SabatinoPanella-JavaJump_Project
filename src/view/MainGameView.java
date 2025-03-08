@@ -14,7 +14,7 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.image.BufferedImage;
 
-import static Utility.Constants.*;
+import static utility.Constants.*;
 
 public class MainGameView extends JPanel implements GameModelObserver {
 

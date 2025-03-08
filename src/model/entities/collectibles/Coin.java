@@ -3,9 +3,10 @@ package model.entities.collectibles;
 import model.entities.GameObject;
 import model.entities.platforms.Platform;
 
-import static Utility.Constants.*;
+import static utility.Constants.*;
 
 public class Coin extends GameObject {
+
 	private CoinState state;
 	private Platform attachedPlatform;
 	private float offsetX;
@@ -27,7 +28,7 @@ public class Coin extends GameObject {
 		}
 	}
 
-	
+
 	public void collect() {
 		if (this.state == CoinState.IDLE) {
 			this.state = CoinState.COLLECTING;
@@ -38,7 +39,7 @@ public class Coin extends GameObject {
 		this.state = CoinState.FINISHED;
 	}
 
-	
+
 	public void attachToPlatform(Platform platform) {
 		this.attachedPlatform = platform;
 		this.offsetX = this.x - platform.getX();

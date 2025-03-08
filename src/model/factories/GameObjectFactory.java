@@ -9,13 +9,12 @@ import model.entities.platforms.Platform;
 
 import java.util.Random;
 
-import static Utility.Constants.*;
+import static utility.Constants.*;
 
-public class GameObjectFactory extends AbstractGameObjectFactory
-{
+public class GameObjectFactory extends AbstractGameObjectFactory {
+
 	@Override
-	public Character createCharacter(float x, float y)
-	{
+	public Character createCharacter(float x, float y) {
 
 		float width = CHARACTERWIDTH;
 		float height = CHARACTERHEIGHT;
@@ -25,8 +24,7 @@ public class GameObjectFactory extends AbstractGameObjectFactory
 	}
 
 	@Override
-	public Platform createStandardPlatform(float x, float y)
-	{
+	public Platform createStandardPlatform(float x, float y) {
 
 		float width = STANDARDPLATFORMWIDTH;
 		float height = PLATFORMHEIGHT;
@@ -35,8 +33,7 @@ public class GameObjectFactory extends AbstractGameObjectFactory
 	}
 
 	@Override
-	public Platform createRandomPlatform(float x, float y)
-	{
+	public Platform createRandomPlatform(float x, float y) {
 		float width = RANDOMPLATFORMWIDTH + new Random().nextInt(RANDOMPLATFORMRNGFACTOR);
 		float height = PLATFORMHEIGHT;
 
@@ -44,11 +41,10 @@ public class GameObjectFactory extends AbstractGameObjectFactory
 	}
 
 	@Override
-	public Platform createMovingPlatform(float x, float y, int screenWidth)
-	{
+	public Platform createMovingPlatform(float x, float y, int screenWidth) {
 		float width = MOVINGPLATFORMWIDTH + new Random().nextInt(MOVINGPLATFORMWIDTHRNGFACTOR);
 		float height = PLATFORMHEIGHT;
-		float range = MOVINGPLATFORMRANGE + new Random().nextFloat()* MOVINGPLATFORMRANGERNGFACTOR;
+		float range = MOVINGPLATFORMRANGE + new Random().nextFloat() * MOVINGPLATFORMRANGERNGFACTOR;
 		float speed = MOVINGPLATFORMSPEED + new Random().nextInt(MOVINGPLATFORMSPEEDRNGFACTOR);
 		float deceleration = MOVINGPLATFORMSPEEDCHANGE;
 		float acceleration = MOVINGPLATFORMSPEEDCHANGE;
@@ -57,8 +53,7 @@ public class GameObjectFactory extends AbstractGameObjectFactory
 	}
 
 	@Override
-	public Platform createBreakablePlatform(float x, float y)
-	{
+	public Platform createBreakablePlatform(float x, float y) {
 		float width = BREAKABLEPLATFORMWIDTH + new Random().nextInt(BREAKABLEPLATFORMRNGFACTOR);
 		float height = PLATFORMHEIGHT;
 
@@ -66,8 +61,7 @@ public class GameObjectFactory extends AbstractGameObjectFactory
 	}
 
 	@Override
-	public Platform createBouncePlatform(float x, float y, float bounceFactor)
-	{
+	public Platform createBouncePlatform(float x, float y, float bounceFactor) {
 		float width = BOUNCEPLATFORMWIDTH + new Random().nextInt(BOUNCEPLATFORMRNGFACTOR);
 		float height = PLATFORMHEIGHT;
 
@@ -75,8 +69,7 @@ public class GameObjectFactory extends AbstractGameObjectFactory
 	}
 
 	@Override
-	public Coin createCoin(float x, float y)
-	{
+	public Coin createCoin(float x, float y) {
 
 		float width = COINWIDTH;
 		float height = COINHEIGHT;

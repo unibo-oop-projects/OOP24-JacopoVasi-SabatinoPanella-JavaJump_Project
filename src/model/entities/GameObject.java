@@ -1,9 +1,7 @@
 package model.entities;
 
-import model.GameModel;
+public abstract class GameObject {
 
-public abstract class GameObject
-{
 	protected float x;
 	protected float y;
 	protected float width;
@@ -14,33 +12,27 @@ public abstract class GameObject
 	public abstract void onCollision(GameObject other);
 
 
-	public float getX()
-	{
+	public float getX() {
 		return x;
 	}
 
-	public void setX(float x)
-	{
+	public void setX(float x) {
 		this.x = x;
 	}
 
-	public float getY()
-	{
+	public float getY() {
 		return y;
 	}
 
-	public void setY(float y)
-	{
+	public void setY(float y) {
 		this.y = y;
 	}
 
-	public float getWidth()
-	{
+	public float getWidth() {
 		return width;
 	}
 
-	public float getHeight()
-	{
+	public float getHeight() {
 		return height;
 	}
 }

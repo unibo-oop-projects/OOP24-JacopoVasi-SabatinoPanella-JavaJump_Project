@@ -19,7 +19,7 @@ public class PlatformRenderer {
 		this.roundArcH = arcH;
 	}
 
-	
+
 	public void drawPlatform(Graphics2D g2, Platform platform,
 							 float cameraOffsetY) {
 
@@ -32,7 +32,7 @@ public class PlatformRenderer {
 		if (platform instanceof BouncePlatform) {
 			drawPlatformCommon(g2, drawX, drawY, w, h,
 					Color.decode("#d15484"), Color.decode("#d4c340"));
-		} else if(platform instanceof BreakablePlatform) {
+		} else if (platform instanceof BreakablePlatform) {
 			drawPlatformCommon(g2, drawX, drawY, w, h,
 					Color.decode("#ea4b1e"), Color.decode("#d4c340"));
 		} else if (platform instanceof MovingPlatform) {
@@ -41,11 +41,11 @@ public class PlatformRenderer {
 		} else {
 
 			drawPlatformCommon(g2, drawX, drawY, w, h,
-					Color.decode("#4d9f50"),  Color.decode("#d4c340"));
+					Color.decode("#4d9f50"), Color.decode("#d4c340"));
 		}
 	}
 
-	
+
 	private void drawPlatformCommon(Graphics2D g2,
 									float x, float y,
 									float w, float h,
@@ -63,13 +63,13 @@ public class PlatformRenderer {
 		g2.setPaint(gp);
 
 
-		g2.fillRoundRect((int)x, (int)y, (int)w, (int)h,
+		g2.fillRoundRect((int) x, (int) y, (int) w, (int) h,
 				roundArcW, roundArcH);
 
 
 		g2.setStroke(new BasicStroke(outlineStrokeWidth));
 		g2.setColor(Color.decode("#0e081e"));
-		g2.drawRoundRect((int)x, (int)y, (int)w, (int)h,
+		g2.drawRoundRect((int) x, (int) y, (int) w, (int) h,
 				roundArcW, roundArcH);
 
 		g2.setStroke(oldStroke);

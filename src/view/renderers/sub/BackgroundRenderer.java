@@ -5,16 +5,17 @@ import model.GameModel;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import static Utility.Constants.*;
+import static utility.Constants.*;
 
 public class BackgroundRenderer {
+
 	private final BufferedImage bgTile;
 	private final float parallaxFactor;
 
 	private final float horizontalSpeed;
 	private float horizontalOffset;
 
-	
+
 	public BackgroundRenderer(BufferedImage bgTile, float parallaxFactor, float horizontalSpeed) {
 		this.bgTile = bgTile;
 		this.parallaxFactor = parallaxFactor;
@@ -22,7 +23,7 @@ public class BackgroundRenderer {
 		this.horizontalOffset = ZERO;
 	}
 
-	
+
 	public void updateBackground(float deltaTime) {
 
 
@@ -39,7 +40,7 @@ public class BackgroundRenderer {
 		}
 	}
 
-	
+
 	public void drawBackground(Graphics2D g2, GameModel model, float deltaTime) {
 		int screenW = model.getScreenWidth();
 		int screenH = model.getScreenHeight();

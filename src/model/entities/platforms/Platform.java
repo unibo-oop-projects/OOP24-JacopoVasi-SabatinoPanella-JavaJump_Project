@@ -2,11 +2,9 @@ package model.entities.platforms;
 
 import model.entities.GameObject;
 
-public class Platform extends GameObject
-{
+public class Platform extends GameObject {
 
-	public Platform(float x, float y, float width, float height)
-	{
+	public Platform(float x, float y, float width, float height) {
 		this.x = x;
 		this.y = y;
 		this.width = width;

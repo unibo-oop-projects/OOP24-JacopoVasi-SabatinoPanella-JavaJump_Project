@@ -16,10 +16,9 @@ import model.states.MenuState;
 import java.util.ArrayList;
 import java.util.List;
 
-import static Utility.Constants.*;
+import static utility.Constants.*;
 
-public class GameModel
-{
+public class GameModel {
 
 
 	private GameStateHandler currentState;
@@ -74,15 +73,13 @@ public class GameModel
 	}
 
 
-	public void setState(GameStateHandler newState)
-	{
+	public void setState(GameStateHandler newState) {
 		this.currentState.onExit(this);
 		this.currentState = newState;
 		this.currentState.onEnter(this);
 	}
 
-	public void handleAction(GameAction action)
-	{
+	public void handleAction(GameAction action) {
 		this.currentState.handleAction(this, action);
 	}
 
@@ -90,8 +87,7 @@ public class GameModel
 		this.currentState.update(this, deltaTime);
 	}
 
-	public void startGame()
-	{
+	public void startGame() {
 		gameObjects.clear();
 		scoreManager.reset();
 		cameraManager.resetCamera();
@@ -99,40 +95,79 @@ public class GameModel
 		difficultyManager.reset();
 
 		this.player = spawnManager.getFactory()
-								  .createCharacter(screenWidth / CHARACTERCREATIONWIDTHDIV, screenHeight*CHARACTERCREATIONHEIGHTMUL);
+				.createCharacter(screenWidth / CHARACTERCREATIONWIDTHDIV, screenHeight * CHARACTERCREATIONHEIGHTMUL);
 		gameObjects.add(player);
 		spawnManager.generateInitialLevel(this);
 	}
 
-	public void addObserver(GameModelObserver obs) { observers.add(obs); }
-	public void removeObserver(GameModelObserver obs) { observers.remove(obs); }
-	public void notifyObservers()
-	{
-		for (GameModelObserver obs : observers)
-		{
+	public void addObserver(GameModelObserver obs) {
+		observers.add(obs);
+	}
+
+	public void removeObserver(GameModelObserver obs) {
+		observers.remove(obs);
+	}
+
+	public void notifyObservers() {
+		for (GameModelObserver obs : observers) {
 			obs.onModelUpdate(this);
 		}
 	}
 
-	public int getScore()
-	{
+
+	public int getScore() {
 		return scoreManager.getCurrentScore();
 	}
-	public void addPointsToScore(int amount)
-	{
+
+	public void addPointsToScore(int amount) {
 		scoreManager.addPoints(amount);
 	}
 
-	public PhysicsManager getPhysicsManager() { return physicsManager; }
-	public CollisionManager getCollisionManager() { return collisionManager; }
-	public SpawnManager getSpawnManager() { return spawnManager; }
-	public CameraManager getCameraManager() { return cameraManager; }
-	public ScoreManager getScoreManager() { return scoreManager; }
-	public CleanupManager getCleanupManager() { return cleanupManager; }
-	public DifficultyManager getDifficultyManager() { return difficultyManager; }
-	public GameStateHandler getCurrentState() {return currentState;}
-	public List<GameObject> getGameObjects() { return this.gameObjects; }
-	public Character getPlayer() { return player; }
-	public int getScreenWidth() { return screenWidth; }
-	public int getScreenHeight() { return screenHeight; }
+	public PhysicsManager getPhysicsManager() {
+		return physicsManager;
+	}
+
+	public CollisionManager getCollisionManager() {
+		return collisionManager;
+	}
+
+	public SpawnManager getSpawnManager() {
+		return spawnManager;
+	}
+
+	public CameraManager getCameraManager() {
+		return cameraManager;
+	}
+
+	public ScoreManager getScoreManager() {
+		return scoreManager;
+	}
+
+	public CleanupManager getCleanupManager() {
+		return cleanupManager;
+	}
+
+	public DifficultyManager getDifficultyManager() {
+		return difficultyManager;
+	}
+
+	public GameStateHandler getCurrentState() {
+		return currentState;
+	}
+
+	public List<GameObject> getGameObjects() {
+		return this.gameObjects;
+	}
+
+	public Character getPlayer() {
+		return player;
+	}
+
+	public int getScreenWidth() {
+		return screenWidth;
+	}
+
+	public int getScreenHeight() {
+		return screenHeight;
+	}
 }

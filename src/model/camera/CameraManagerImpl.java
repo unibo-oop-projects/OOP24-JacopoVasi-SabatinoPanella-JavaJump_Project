@@ -4,7 +4,8 @@ import model.GameModel;
 import model.entities.character.Character;
 import model.score.ScoreManager;
 
-import static Utility.Constants.*;
+import static utility.Constants.*;
+
 
 public class CameraManagerImpl implements CameraManager {
 	private float currentOffset;
@@ -12,7 +13,6 @@ public class CameraManagerImpl implements CameraManager {
 	private final ScoreManager scoreManager;
 	private final float scoreFactor;
 
-	
 	public CameraManagerImpl(ScoreManager scoreManager, float scoreFactor) {
 		this.scoreManager = scoreManager;
 		this.scoreFactor = scoreFactor;
@@ -20,7 +20,6 @@ public class CameraManagerImpl implements CameraManager {
 		this.previousOffset = OFFSETINIT;
 	}
 
-	
 	@Override
 	public void updateCamera(GameModel model, float deltaTime) {
 		Character player = model.getPlayer();
@@ -29,14 +28,13 @@ public class CameraManagerImpl implements CameraManager {
 
 		if (currentOffset < previousOffset) {
 			float deltaOffset = previousOffset - currentOffset;
-			int points = (int)(deltaOffset * scoreFactor);
+			int points = (int) (deltaOffset * scoreFactor);
 			scoreManager.addPoints(points);
 		}
 		previousOffset = currentOffset;
 		currentOffset = desiredOffset;
 	}
 
-	
 	private float getDesiredOffset(float screenHeight, Character player) {
 		float progressionScreenPoint = screenHeight / HEIGHTDIV - screenHeight * WIDTHDIV;
 		float desiredOffset = currentOffset;
@@ -51,14 +49,12 @@ public class CameraManagerImpl implements CameraManager {
 		return desiredOffset;
 	}
 
-	
 	@Override
 	public void resetCamera() {
 		this.currentOffset = OFFSETINIT;
 		this.previousOffset = OFFSETINIT;
 	}
 
-	
 	@Override
 	public float getCurrentOffset() {
 		return currentOffset;

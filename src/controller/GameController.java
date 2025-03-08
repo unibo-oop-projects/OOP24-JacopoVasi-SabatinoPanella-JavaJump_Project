@@ -1,41 +1,40 @@
 package controller;
+
 import model.GameModel;
 import view.MainGameView;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import static Utility.Constants.*;
-public class GameController implements KeyListener
-{
+
+import static utility.Constants.*;
+
+public class GameController implements KeyListener {
 	private final GameModel model;
 	private final MainGameView view;
 	private volatile boolean running;
+
 	private boolean pressingLeft = false;
 	private boolean pressingRight = false;
 
-	public GameController(GameModel model, MainGameView view)
-	{
+	public GameController(GameModel model, MainGameView view) {
 		this.model = model;
 		this.view = view;
 		this.running = false;
 	}
 
-
-	public void startGameLoop()
-	{
+	public void startGameLoop() {
 		running = true;
-		Thread loopThread = new Thread(() ->
-		{
+		Thread loopThread = new Thread(() -> {
 			long previousTime = System.nanoTime();
+
 			final double nsPerFrame = NANOSECONDS_PER_SECOND / FPS;
-			while (running)
-			{
+
+			while (running) {
 
 				long currentTime = System.nanoTime();
 				double elapsedNs = currentTime - previousTime;
 
-				if (elapsedNs >= nsPerFrame)
-				{
+				if (elapsedNs >= nsPerFrame) {
 
 					float deltaTime = (float) (elapsedNs / NANOSECONDS_PER_SECOND);
 
@@ -43,15 +42,16 @@ public class GameController implements KeyListener
 					view.updateView(deltaTime);
 					previousTime = currentTime;
 				}
-				try { Thread.sleep(SLEEPTHREAD); }
-				catch (InterruptedException e) {
+
+				try {
+					Thread.sleep(SLEEPTHREAD);
+				} catch (InterruptedException e) {
 					Thread.currentThread().interrupt();
 				}
 			}
 		});
 		loopThread.start();
 	}
-
 
 	private void updateModel(float deltaTime) {
 
@@ -78,9 +78,8 @@ public class GameController implements KeyListener
 		}
 	}
 
-	
-	public void stopGameLoop()
-	{
+
+	public void stopGameLoop() {
 		running = false;
 	}
 
@@ -115,8 +114,7 @@ public class GameController implements KeyListener
 	}
 
 	@Override
-	public void keyTyped(KeyEvent e)
-	{
+	public void keyTyped(KeyEvent e) {
 
 	}
 }

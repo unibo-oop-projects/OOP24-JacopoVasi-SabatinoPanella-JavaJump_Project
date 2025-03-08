@@ -2,7 +2,7 @@ package model.level.spawn.difficulty;
 
 import java.util.Random;
 
-import static Utility.Constants.*;
+import static utility.Constants.*;
 import static model.level.spawn.spawnutilities.SpawnUtils.randomInRange;
 
 public class DifficultyManager {

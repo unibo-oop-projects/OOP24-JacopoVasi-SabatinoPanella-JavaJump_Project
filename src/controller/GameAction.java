@@ -1,8 +1,7 @@
 package controller;
 
 
-public enum GameAction
-{
+public enum GameAction {
 	MOVE_LEFT,
 	MOVE_RIGHT,
 	STOP_HORIZONTAL,

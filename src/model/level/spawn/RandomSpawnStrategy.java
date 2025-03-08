@@ -11,19 +11,17 @@ import model.level.spawn.spawnutilities.SpawnUtils;
 
 import java.util.Random;
 
-import static Utility.Constants.*;
+import static utility.Constants.*;
 
 public class RandomSpawnStrategy implements SpawnStrategy {
 
 	private final AbstractGameObjectFactory factory;
 	private final Random rand;
-	private float minPlatformYSpacing;
-	private float maxPlatformYSpacing;
-	private final float coinSpawnChance;
+	private final float minPlatformYSpacing;
+	private final float maxPlatformYSpacing;
 	private float currentY;
 	private final CollectiblesSpawner collectiblesSpawner;
 	private final PlatformSpawner platformSpawner;
-	private final DifficultyManager difficultyManager;
 
 	public RandomSpawnStrategy(AbstractGameObjectFactory factory,
 							   float minSpacing,
@@ -34,11 +32,9 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 		this.rand = new Random();
 		this.minPlatformYSpacing = minSpacing;
 		this.maxPlatformYSpacing = maxSpacing;
-		this.coinSpawnChance = coinChance;
 		this.currentY = ZERO;
 		this.collectiblesSpawner = new CollectiblesSpawner(factory, coinChance);
 		this.platformSpawner = new PlatformSpawner(factory);
-		this.difficultyManager = difficultyManager;
 	}
 
 	@Override
@@ -66,12 +62,17 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 
 	private float setSpawnGap(DifficultyState diff) {
 		float gap = GAPINIT;
-		if (diff == DifficultyState.EASY || diff == DifficultyState.MEDIUM){
-			gap = SpawnUtils.randomInRange(rand, minPlatformYSpacing - GAPOFFSETTEN, maxPlatformYSpacing - GAPOFFSETTHIRTY);
-		} else if (diff == DifficultyState.HARD || diff == DifficultyState.VERY_HARD){
-			gap = SpawnUtils.randomInRange(rand, minPlatformYSpacing, maxPlatformYSpacing - GAPOFFSETTEN);
-		} else if (diff == DifficultyState.HELL){
-			gap = SpawnUtils.randomInRange(rand, minPlatformYSpacing + GAPOFFSETTEN, maxPlatformYSpacing);
+		if (null != diff) {
+			switch (diff) {
+				case EASY, MEDIUM ->
+						gap = SpawnUtils.randomInRange(rand, minPlatformYSpacing - GAPOFFSETTEN, maxPlatformYSpacing - GAPOFFSETTHIRTY);
+				case HARD, VERY_HARD ->
+						gap = SpawnUtils.randomInRange(rand, minPlatformYSpacing, maxPlatformYSpacing - GAPOFFSETTEN);
+				case HELL ->
+						gap = SpawnUtils.randomInRange(rand, minPlatformYSpacing + GAPOFFSETTEN, maxPlatformYSpacing);
+				default -> {
+				}
+			}
 		}
 		return gap;
 	}

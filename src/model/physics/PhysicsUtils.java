@@ -1,6 +1,6 @@
 package model.physics;
 
-import static Utility.Constants.*;
+import static utility.Constants.*;
 
 public class PhysicsUtils {
 	

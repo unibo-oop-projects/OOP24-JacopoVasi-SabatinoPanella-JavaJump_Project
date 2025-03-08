@@ -9,10 +9,12 @@ import model.entities.GameObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import static Utility.Constants.*;
+import static utility.Constants.*;
 
 public class CleanupManager {
+
 	GameModel gameModel;
+
 
 	public void cleanupObjects(GameModel model) {
 		this.gameModel = model;

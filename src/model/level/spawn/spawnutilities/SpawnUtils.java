@@ -6,10 +6,9 @@ import model.factories.AbstractGameObjectFactory;
 
 import java.util.Random;
 
-import static Utility.Constants.*;
+import static utility.Constants.*;
 
-public class SpawnUtils
-{
+public class SpawnUtils {
 	public static float randomInRange(Random rand, float min, float max) {
 		return min + rand.nextFloat() * (max - min);
 	}
