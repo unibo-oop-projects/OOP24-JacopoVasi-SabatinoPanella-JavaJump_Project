@@ -1,3 +1,20 @@
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build/
+bin/
+
+# Ignore Idea customizations
+.idea
+
+*.iml
+
+# Ignore Eclipse settings
+.project
+.settings/
+.classpath
+
 ### IntelliJ IDEA ###
 out/
 !**/src/main/**/out/
@@ -6,13 +23,10 @@ out/
 
 ### Eclipse ###
 .apt_generated
-.classpath
 .factorypath
-.project
 .settings
 .springBeans
 .sts4-cache
-bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
