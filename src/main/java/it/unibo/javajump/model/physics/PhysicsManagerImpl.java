@@ -3,7 +3,7 @@ package it.unibo.javajump.model.physics;
 import it.unibo.javajump.model.entities.character.CharacterImpl;
 
 
-public class PhysicsManagerImpl {
+public class PhysicsManagerImpl implements PhysicsManager {
 	private final float ACCELERATION;
 	private final float MAX_SPEED;
 	private final float DECELERATION;
@@ -18,38 +18,38 @@ public class PhysicsManagerImpl {
 	}
 
 
-	public void updateCharacterMovement(CharacterImpl character, float deltaTime, MovementDirection direction) {
-		float vx = character.getVelocityX();
+	public void updateCharacterMovement(CharacterImpl characterImpl, float deltaTime, MovementDirection direction) {
+		float vx = characterImpl.getVelocityX();
 
 		switch (direction) {
 			case RIGHT:
 				vx = PhysicsUtilsImpl.accelerateToRight(vx, deltaTime, ACCELERATION, MAX_SPEED);
-				character.setFacingRight(true);
+				characterImpl.setFacingRight(true);
 				break;
 			case LEFT:
 				vx = PhysicsUtilsImpl.accelerateToLeft(vx, deltaTime, ACCELERATION, MAX_SPEED);
-				character.setFacingRight(false);
+				characterImpl.setFacingRight(false);
 				break;
 			case NONE:
 			default:
 				vx = PhysicsUtilsImpl.decelerate(vx, deltaTime, DECELERATION);
 				break;
 		}
-		character.setVelocityX(vx);
-		updateCharacterPosition(character, deltaTime);
+		characterImpl.setVelocityX(vx);
+		updateCharacterPosition(characterImpl, deltaTime);
 	}
 
 
-	private void updateCharacterPosition(CharacterImpl character, float deltaTime) {
-		character.setOldX(character.getX());
-		character.setOldY(character.getY());
+	private void updateCharacterPosition(CharacterImpl characterImpl, float deltaTime) {
+		characterImpl.setOldX(characterImpl.getX());
+		characterImpl.setOldY(characterImpl.getY());
 
-		float newX = character.getX() + character.getVelocityX() * deltaTime;
-		float newY = character.getY() + character.getVelocityY() * deltaTime;
-		float newVy = character.getVelocityY() + GRAVITY * deltaTime;
+		float newX = characterImpl.getX() + characterImpl.getVelocityX() * deltaTime;
+		float newY = characterImpl.getY() + characterImpl.getVelocityY() * deltaTime;
+		float newVy = characterImpl.getVelocityY() + GRAVITY * deltaTime;
 
-		character.setX(newX);
-		character.setY(newY);
-		character.setVelocityY(newVy);
+		characterImpl.setX(newX);
+		characterImpl.setY(newY);
+		characterImpl.setVelocityY(newVy);
 	}
 }

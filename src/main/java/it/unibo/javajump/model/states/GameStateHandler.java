@@ -21,5 +21,5 @@ public interface GameStateHandler {
 
 	GameState getGameState();
 
-
+	int getState();
 }

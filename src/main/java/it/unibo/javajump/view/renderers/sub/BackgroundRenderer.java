@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class BackgroundRenderer {
+public class BackgroundRenderer implements Renderer {
 
 	private final BufferedImage bgTile;
 	private final float parallaxFactor;

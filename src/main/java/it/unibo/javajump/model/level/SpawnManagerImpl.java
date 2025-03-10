@@ -8,7 +8,7 @@ import it.unibo.javajump.model.level.spawn.SpawnStrategy;
 import static it.unibo.javajump.utility.Constants.*;
 import static it.unibo.javajump.model.level.spawn.spawnutilities.SpawnUtilsImpl.spawnPlatformBelowPlayer;
 
-public class SpawnManagerImpl {
+public class SpawnManagerImpl implements SpawnManager {
 
 	private final SpawnStrategy spawnStrategy;
 	private float topPlatformY;

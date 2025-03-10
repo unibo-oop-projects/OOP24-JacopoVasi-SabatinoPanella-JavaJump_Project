@@ -2,7 +2,7 @@ package it.unibo.javajump.model.entities.platforms;
 
 import it.unibo.javajump.model.entities.GameObjectImpl;
 
-public class BreakablePlatformImpl extends PlatformImpl {
+public class BreakablePlatformImpl extends PlatformImpl implements Platform {
 
 	private boolean broken;
 

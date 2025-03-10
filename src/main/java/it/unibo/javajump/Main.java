@@ -27,26 +27,27 @@ public class Main {
 	public static void main(String[] args) {
 		int screenWidth = SCREENWIDTH;
 		int screenHeight = SCREENHEIGHT;
+
 		AbstractGameObjectFactoryImpl factory = new GameObjectFactoryImpl();
-		DifficultyManagerImpl difficultyManager = new DifficultyManagerImpl();
-		RandomSpawnStrategy strategy = new RandomSpawnStrategy(factory, MINSPACING, MAXSPACING, COINCHANCE, difficultyManager);
+		DifficultyManagerImpl difficultyManagerImpl = new DifficultyManagerImpl();
+		RandomSpawnStrategy strategy = new RandomSpawnStrategy(factory, MINSPACING, MAXSPACING, COINCHANCE, difficultyManagerImpl);
 		CollisionManager collisionManager = new CollisionManagerImpl();
-		SpawnManagerImpl spawnManager = new SpawnManagerImpl(strategy);
-		ScoreManagerImpl scoreManager = new ScoreManagerImpl();
-		CameraManager cameraManager = new CameraManagerImpl(scoreManager, SCOREFACTOR);
-		PhysicsManagerImpl physicsManager = new PhysicsManagerImpl(GRAVITY, ACCELERATION, MAXSPEED, DECELERATION);
-		CleanupManagerImpl cleanupManager = new CleanupManagerImpl();
+		SpawnManagerImpl spawnManagerImpl = new SpawnManagerImpl(strategy);
+		ScoreManagerImpl scoreManagerImpl = new ScoreManagerImpl();
+		CameraManager cameraManager = new CameraManagerImpl(scoreManagerImpl, SCOREFACTOR);
+		PhysicsManagerImpl physicsManagerImpl = new PhysicsManagerImpl(GRAVITY, ACCELERATION, MAXSPEED, DECELERATION);
+		CleanupManagerImpl cleanupManagerImpl = new CleanupManagerImpl();
 		JFrame frame = new JFrame(GAMETITLE);
 
 		GameModelImpl model = new GameModelImpl(screenWidth,
 				screenHeight,
-				physicsManager,
+				physicsManagerImpl,
 				collisionManager,
-				spawnManager,
+				spawnManagerImpl,
 				cameraManager,
-				scoreManager,
-				cleanupManager,
-				difficultyManager);
+				scoreManagerImpl,
+				cleanupManagerImpl,
+				difficultyManagerImpl);
 
 		MainGameViewImpl view = new MainGameViewImpl(model);
 		model.addObserver(view);

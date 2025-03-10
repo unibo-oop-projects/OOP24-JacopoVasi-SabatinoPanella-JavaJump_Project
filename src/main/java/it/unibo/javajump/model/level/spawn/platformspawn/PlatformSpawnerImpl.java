@@ -8,7 +8,7 @@ import java.util.Random;
 
 import static it.unibo.javajump.model.level.spawn.spawnutilities.SpawnUtilsImpl.randomInRange;
 
-public class PlatformSpawnerImpl {
+public class PlatformSpawnerImpl implements PlatformSpawner {
 
 	private final AbstractGameObjectFactoryImpl factory;
 	private final Random rand;
@@ -18,7 +18,7 @@ public class PlatformSpawnerImpl {
 		this.rand = new Random();
 	}
 
-	
+
 	public PlatformImpl spawnPlatform(float x, float y, int screenWidth, DifficultyState difficulty) {
 		float chance = rand.nextFloat();
 		float breakableChance = difficulty.getBreakableChance();

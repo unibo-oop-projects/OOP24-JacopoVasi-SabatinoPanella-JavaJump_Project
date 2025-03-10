@@ -5,7 +5,7 @@ import java.util.Random;
 import static it.unibo.javajump.utility.Constants.*;
 import static it.unibo.javajump.model.level.spawn.spawnutilities.SpawnUtilsImpl.randomInRange;
 
-public class DifficultyManagerImpl {
+public class DifficultyManagerImpl implements DifficultyManager {
 
 	private int currentScore;
 	private DifficultyState currentDifficulty;

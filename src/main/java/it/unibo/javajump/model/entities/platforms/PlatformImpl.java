@@ -2,7 +2,7 @@ package it.unibo.javajump.model.entities.platforms;
 
 import it.unibo.javajump.model.entities.GameObjectImpl;
 
-public class PlatformImpl extends GameObjectImpl {
+public class PlatformImpl extends GameObjectImpl implements Platform {
 
 	public PlatformImpl(float x, float y, float width, float height) {
 		this.x = x;

@@ -2,7 +2,7 @@ package it.unibo.javajump.model.score;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class ScoreManagerImpl {
+public class ScoreManagerImpl implements ScoreManager {
 
 	private int currentScore;
 	private int bestScore;

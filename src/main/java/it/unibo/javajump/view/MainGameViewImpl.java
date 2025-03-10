@@ -16,7 +16,7 @@ import java.awt.image.BufferedImage;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class MainGameViewImpl extends JPanel implements GameModelObserver {
+public class MainGameViewImpl extends JPanel implements GameModelObserver, MainGameView {
 
 	private final GameModelImpl model;
 
@@ -30,7 +30,7 @@ public class MainGameViewImpl extends JPanel implements GameModelObserver {
 
 	private final BufferedImage tempScreen;
 
-	private final RendererManagerImpl rendererManager;
+	private final RendererManagerImpl rendererManagerImpl;
 	private GameState lastState;
 
 
@@ -43,11 +43,11 @@ public class MainGameViewImpl extends JPanel implements GameModelObserver {
 		this.virtualWidth = model.getScreenWidth();
 		this.virtualHeight = model.getScreenHeight();
 
-		this.rendererManager = new RendererManagerImpl();
+		this.rendererManagerImpl = new RendererManagerImpl();
 		setBackground(Color.decode("#05051C"));
 
 		this.menuView = new MenuView();
-		this.inGameView = new InGameView(rendererManager);
+		this.inGameView = new InGameView(rendererManagerImpl);
 		this.pauseView = new PauseView();
 		this.gameOverView = new GameOverView();
 

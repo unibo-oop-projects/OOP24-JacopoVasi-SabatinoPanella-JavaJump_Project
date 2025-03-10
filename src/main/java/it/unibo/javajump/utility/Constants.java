@@ -230,7 +230,19 @@ public final class Constants {
 
 
 	public static final Font PAUSEFONT = new Font("Arial", Font.BOLD, 30);
+	public static final Font PAUSEMENUFONT = new Font("Arial", Font.BOLD, 20);
+	public static final int PAUSEMENUCONTINUE = 0;
+	public static final int PAUSEMENUMAINMENU = 1;
+	public static final int PAUSEMENUQUIT = 2;
+	public static final int PAUSECONTINUEY = 70;
+	public static final int PAUSEMAINMENUY = 100;
+	public static final int PAUSEQUITY = 130;
+	public static final int PAUSESELECTIONX = 20;
 	public static final String PAUSETEXT = "PAUSE";
+	public static final String PAUSECONTINUETEXT = "Continue";
+	public static final String PAUSEMAINMENUTEXT = "Main Menu";
+	public static final String PAUSEQUITTEXT = "Quit";
+	public static final String PAUSESELECTIONTEXT = "- ";
 	public static final int PAUSECENTERDIV = 2;
 	public static final int PAUSEWIDTHOFF = 50;
 
@@ -241,6 +253,24 @@ public final class Constants {
 	public static final int MAINVIEWDRAWYINIT = 0;
 	public static final int MAINVIEWRECTX = 0;
 	public static final int MAINVIEWRECTY = 0;
+
+
+	public static final String RESOURCESWINDOWSPATH = "src/main/java/it/unibo/javajump/view/resources/";
+	public static final String RESOURCESTITLE = "JJ_Title.png";
+	public static final String RESOURCESGAMEOVER = "GameOver.png";
+	public static final String RESOURCESPLAYER = "Coffee-SheetBIG.png";
+	public static final String RESOURCESCOIN = "Coin-Sheet.png";
+	public static final String RESOURCESBACKGROUNDONE = "Background4.png";
+	public static final String RESOURCESBACKGROUNDTWO = "Clouds2.png";
+	public static final String RESOURCESSCORECONTAINER = "Score_Underlay_small.png";
+	public static final String RESOURCESMUSIC = "GameMusic.wav";
+	public static final String RESOURCESGAMEFONTONE = "Daydream.ttf";
+	public static final String RESOURCESGAMEFONTTWO = "Daydream.ttf";
+	public static final String RESOURCESGAMEFONTTHREE = "Daydream.ttf";
+	public static final int SIZEGAMEFONTONE = 20;
+	public static final int SIZEGAMEFONTTWO = 15;
+	public static final int SIZEGAMEFONTTHREE = 10;
+
 
 	private Constants() {
 	}

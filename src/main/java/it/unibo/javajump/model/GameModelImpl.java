@@ -18,20 +18,20 @@ import java.util.List;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class GameModelImpl {
+public class GameModelImpl implements GameModel {
 
 
 	private GameStateHandler currentState;
-	private final PhysicsManagerImpl physicsManager;
+	private final PhysicsManagerImpl physicsManagerImpl;
 	private final CollisionManager collisionManager;
-	private final SpawnManagerImpl spawnManager;
+	private final SpawnManagerImpl spawnManagerImpl;
 	private final CameraManager cameraManager;
-	private final ScoreManagerImpl scoreManager;
-	private final CleanupManagerImpl cleanupManager;
-	private final DifficultyManagerImpl difficultyManager;
+	private final ScoreManagerImpl scoreManagerImpl;
+	private final CleanupManagerImpl cleanupManagerImpl;
+	private final DifficultyManagerImpl difficultyManagerImpl;
 
 
-	private final List<GameObjectImpl> gameObjects;
+	private final List<GameObjectImpl> gameObjectImpls;
 	private CharacterImpl player;
 
 
@@ -44,28 +44,28 @@ public class GameModelImpl {
 	public GameModelImpl(
 			int screenWidth,
 			int screenHeight,
-			PhysicsManagerImpl physicsManager,
+			PhysicsManagerImpl physicsManagerImpl,
 			CollisionManager collisionManager,
-			SpawnManagerImpl spawnManager,
+			SpawnManagerImpl spawnManagerImpl,
 			CameraManager cameraManager,
-			ScoreManagerImpl scoreManager,
-			CleanupManagerImpl cleanupManager,
-			DifficultyManagerImpl difficultyManager
+			ScoreManagerImpl scoreManagerImpl,
+			CleanupManagerImpl cleanupManagerImpl,
+			DifficultyManagerImpl difficultyManagerImpl
 	) {
 		this.screenWidth = screenWidth;
 		this.screenHeight = screenHeight;
 
-		this.physicsManager = physicsManager;
+		this.physicsManagerImpl = physicsManagerImpl;
 		this.collisionManager = collisionManager;
-		this.spawnManager = spawnManager;
+		this.spawnManagerImpl = spawnManagerImpl;
 		this.cameraManager = cameraManager;
-		this.scoreManager = scoreManager;
-		this.difficultyManager = difficultyManager;
+		this.scoreManagerImpl = scoreManagerImpl;
+		this.difficultyManagerImpl = difficultyManagerImpl;
 
-		this.gameObjects = new ArrayList<>();
+		this.gameObjectImpls = new ArrayList<>();
 		this.observers = new ArrayList<>();
 
-		this.cleanupManager = cleanupManager;
+		this.cleanupManagerImpl = cleanupManagerImpl;
 
 
 		this.currentState = new MenuState();
@@ -88,16 +88,16 @@ public class GameModelImpl {
 	}
 
 	public void startGame() {
-		gameObjects.clear();
-		scoreManager.reset();
+		gameObjectImpls.clear();
+		scoreManagerImpl.reset();
 		cameraManager.resetCamera();
-		spawnManager.reset();
-		difficultyManager.reset();
+		spawnManagerImpl.reset();
+		difficultyManagerImpl.reset();
 
-		this.player = spawnManager.getFactory()
+		this.player = spawnManagerImpl.getFactory()
 				.createCharacter(screenWidth / CHARACTERCREATIONWIDTHDIV, screenHeight * CHARACTERCREATIONHEIGHTMUL);
-		gameObjects.add(player);
-		spawnManager.generateInitialLevel(this);
+		gameObjectImpls.add(player);
+		spawnManagerImpl.generateInitialLevel(this);
 	}
 
 	public void addObserver(GameModelObserver obs) {
@@ -116,15 +116,15 @@ public class GameModelImpl {
 
 
 	public int getScore() {
-		return scoreManager.getCurrentScore();
+		return scoreManagerImpl.getCurrentScore();
 	}
 
 	public void addPointsToScore(int amount) {
-		scoreManager.addPoints(amount);
+		scoreManagerImpl.addPoints(amount);
 	}
 
 	public PhysicsManagerImpl getPhysicsManager() {
-		return physicsManager;
+		return physicsManagerImpl;
 	}
 
 	public CollisionManager getCollisionManager() {
@@ -132,7 +132,7 @@ public class GameModelImpl {
 	}
 
 	public SpawnManagerImpl getSpawnManager() {
-		return spawnManager;
+		return spawnManagerImpl;
 	}
 
 	public CameraManager getCameraManager() {
@@ -140,15 +140,15 @@ public class GameModelImpl {
 	}
 
 	public ScoreManagerImpl getScoreManager() {
-		return scoreManager;
+		return scoreManagerImpl;
 	}
 
 	public CleanupManagerImpl getCleanupManager() {
-		return cleanupManager;
+		return cleanupManagerImpl;
 	}
 
 	public DifficultyManagerImpl getDifficultyManager() {
-		return difficultyManager;
+		return difficultyManagerImpl;
 	}
 
 	public GameStateHandler getCurrentState() {
@@ -156,7 +156,7 @@ public class GameModelImpl {
 	}
 
 	public List<GameObjectImpl> getGameObjects() {
-		return this.gameObjects;
+		return this.gameObjectImpls;
 	}
 
 	public CharacterImpl getPlayer() {

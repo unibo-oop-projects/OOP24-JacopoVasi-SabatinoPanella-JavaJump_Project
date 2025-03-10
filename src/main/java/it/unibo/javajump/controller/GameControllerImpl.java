@@ -8,7 +8,7 @@ import java.awt.event.KeyListener;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class GameControllerImpl implements KeyListener {
+public class GameControllerImpl implements KeyListener, GameController {
 
 	private final GameModelImpl model;
 	private final MainGameViewImpl view;
@@ -96,6 +96,12 @@ public class GameControllerImpl implements KeyListener {
 				break;
 			case KeyEvent.VK_ENTER:
 				model.handleAction(GameAction.CONFIRM_SELECTION);
+				break;
+			case KeyEvent.VK_UP:
+				model.handleAction(GameAction.MOVE_MENU_UP);
+				break;
+			case KeyEvent.VK_DOWN:
+				model.handleAction(GameAction.MOVE_MENU_DOWN);
 				break;
 			case KeyEvent.VK_ESCAPE:
 				model.handleAction(GameAction.PAUSE_GAME);

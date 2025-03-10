@@ -7,8 +7,9 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-public class GameGraphicsImpl {
-	private final String path = "";
+import static it.unibo.javajump.utility.Constants.*;
+
+public class GameGraphicsImpl implements GameGraphics {
 	private static Font gameFont1;
 	private static Font gameFont2;
 	private static Font gameFont3;
@@ -19,9 +20,7 @@ public class GameGraphicsImpl {
 	private static BufferedImage platform;
 	private static BufferedImage coinSheet;
 	private static BufferedImage obstacle;
-	private static BufferedImage life;
 	private static BufferedImage gameOver;
-	private static BufferedImage pause;
 	private static BufferedImage title;
 
 	public void LoadGraphics() {
@@ -30,17 +29,17 @@ public class GameGraphicsImpl {
 
 	static {
 		try {
-			title = ImageIO.read(new File("src/main/java/it/unibo/javajump/view/resources/JJ_Title.png"));
-			gameOver = ImageIO.read(new File("src/main/java/it/unibo/javajump/view/resources/GameOver.png"));
-			playerSheet = ImageIO.read(new File("src/main/java/it/unibo/javajump/view/resources/Coffee-SheetBIG.png"));
-			coinSheet = ImageIO.read(new File("src/main/java/it/unibo/javajump/view/resources/Coin-Sheet.png"));
-			background1 = ImageIO.read(new File("src/main/java/it/unibo/javajump/view/resources/Background4.png"));
-			background2 = ImageIO.read(new File("src/main/java/it/unibo/javajump/view/resources/Clouds2.png"));
-			scoreContainer = ImageIO.read(new File("src/main/java/it/unibo/javajump/view/resources/Score_Underlay_small.png"));
-			AudioManagerImpl.loadBackgroundMusic("src/main/java/it/unibo/javajump/view/resources/GameMusic.wav");
-			gameFont1 = FontLoaderImpl.loadFont("src/main/java/it/unibo/javajump/view/resources/Daydream.ttf", 20);
-			gameFont2 = FontLoaderImpl.loadFont("src/main/java/it/unibo/javajump/view/resources/Daydream.ttf", 15);
-			gameFont3 = FontLoaderImpl.loadFont("src/main/java/it/unibo/javajump/view/resources/Daydream.ttf", 10);
+			title = ImageIO.read(new File(RESOURCESWINDOWSPATH + RESOURCESTITLE));
+			gameOver = ImageIO.read(new File(RESOURCESWINDOWSPATH + RESOURCESGAMEOVER));
+			playerSheet = ImageIO.read(new File(RESOURCESWINDOWSPATH + RESOURCESPLAYER));
+			coinSheet = ImageIO.read(new File(RESOURCESWINDOWSPATH + RESOURCESCOIN));
+			background1 = ImageIO.read(new File(RESOURCESWINDOWSPATH + RESOURCESBACKGROUNDONE));
+			background2 = ImageIO.read(new File(RESOURCESWINDOWSPATH + RESOURCESBACKGROUNDTWO));
+			scoreContainer = ImageIO.read(new File(RESOURCESWINDOWSPATH + RESOURCESSCORECONTAINER));
+			AudioManagerImpl.loadBackgroundMusic(RESOURCESWINDOWSPATH + RESOURCESMUSIC);
+			gameFont1 = FontLoaderImpl.loadFont(RESOURCESWINDOWSPATH + RESOURCESGAMEFONTONE, SIZEGAMEFONTONE);
+			gameFont2 = FontLoaderImpl.loadFont(RESOURCESWINDOWSPATH + RESOURCESGAMEFONTTWO, SIZEGAMEFONTTWO);
+			gameFont3 = FontLoaderImpl.loadFont(RESOURCESWINDOWSPATH + RESOURCESGAMEFONTTHREE, SIZEGAMEFONTTHREE);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -74,16 +73,8 @@ public class GameGraphicsImpl {
 		return coinSheet;
 	}
 
-	public static BufferedImage getLife() {
-		return life;
-	}
-
 	public static BufferedImage getGameOver() {
 		return gameOver;
-	}
-
-	public static BufferedImage getPause() {
-		return pause;
 	}
 
 	public static BufferedImage getTitle() {
@@ -103,7 +94,4 @@ public class GameGraphicsImpl {
 		return platform;
 	}
 
-	public void resizeGraphics() {
-
-	}
 }

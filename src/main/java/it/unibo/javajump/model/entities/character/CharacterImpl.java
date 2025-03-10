@@ -6,7 +6,7 @@ import it.unibo.javajump.model.entities.character.states.OnPlatformState;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class CharacterImpl extends GameObjectImpl {
+public class CharacterImpl extends GameObjectImpl implements Character {
 
 	private float velocityX;
 	private float velocityY;

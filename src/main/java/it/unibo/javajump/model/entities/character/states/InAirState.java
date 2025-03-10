@@ -5,15 +5,15 @@ import it.unibo.javajump.model.entities.character.CharacterState;
 
 public class InAirState implements CharacterState {
 	@Override
-	public void updateCharacter(CharacterImpl character, float deltaTime) {
+	public void updateCharacter(CharacterImpl characterImpl, float deltaTime) {
 	}
 
 	@Override
-	public void onEnter(CharacterImpl character) {
+	public void onEnter(CharacterImpl characterImpl) {
 	}
 
 	@Override
-	public void onExit(CharacterImpl character) {
+	public void onExit(CharacterImpl characterImpl) {
 	}
 
 	@Override

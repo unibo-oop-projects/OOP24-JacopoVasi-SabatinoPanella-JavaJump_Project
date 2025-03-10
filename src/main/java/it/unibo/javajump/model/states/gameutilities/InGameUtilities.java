@@ -25,7 +25,7 @@ public final class InGameUtilities {
 		}
 	}
 
-	
+
 	public static void applyPacManEffect(CharacterImpl player, int screenWidth) {
 		if (player.getX() + player.getWidth() < ZERO) {
 			player.setX(screenWidth);
@@ -34,7 +34,7 @@ public final class InGameUtilities {
 		}
 	}
 
-	
+
 	public static void checkGameOver(GameModelImpl model, CharacterImpl player) {
 		float offset = model.getCameraManager().getCurrentOffset();
 		float drawY = player.getY() - offset;

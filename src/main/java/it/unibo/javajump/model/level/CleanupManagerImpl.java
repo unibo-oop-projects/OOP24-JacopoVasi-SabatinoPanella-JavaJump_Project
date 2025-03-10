@@ -11,20 +11,20 @@ import java.util.List;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class CleanupManagerImpl {
+public class CleanupManagerImpl implements CleanupManager {
 
-	GameModelImpl gameModel;
+	GameModelImpl gameModelImpl;
 
 
 	public void cleanupObjects(GameModelImpl model) {
-		this.gameModel = model;
+		this.gameModelImpl = model;
 		List<GameObjectImpl> toRemove = new ArrayList<>();
 
 		float cameraOffset = model.getCameraManager().getCurrentOffset();
 		float screenH = model.getScreenHeight();
 		float margin = MARGIN;
 
-		for (GameObjectImpl go : gameModel.getGameObjects()) {
+		for (GameObjectImpl go : gameModelImpl.getGameObjects()) {
 
 			if (go instanceof CoinImpl c) {
 				if (c.getState() == CoinState.FINISHED) {
@@ -48,6 +48,6 @@ public class CleanupManagerImpl {
 
 		}
 
-		gameModel.getGameObjects().removeAll(toRemove);
+		gameModelImpl.getGameObjects().removeAll(toRemove);
 	}
 }

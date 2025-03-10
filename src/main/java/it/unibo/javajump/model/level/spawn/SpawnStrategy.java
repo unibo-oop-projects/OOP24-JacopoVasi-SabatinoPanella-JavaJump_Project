@@ -4,7 +4,7 @@ import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.model.factories.AbstractGameObjectFactoryImpl;
 
 public interface SpawnStrategy {
-	
+
 	void spawnBatch(GameModelImpl model, float startY, int numberOfPlatforms);
 
 	float returnCurrentY();

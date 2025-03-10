@@ -1,6 +1,6 @@
 package it.unibo.javajump.model.entities;
 
-public abstract class GameObjectImpl {
+public abstract class GameObjectImpl implements GameObject {
 
 	protected float x;
 	protected float y;

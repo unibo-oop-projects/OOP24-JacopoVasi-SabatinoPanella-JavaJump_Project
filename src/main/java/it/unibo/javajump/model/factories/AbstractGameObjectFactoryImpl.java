@@ -1,11 +1,11 @@
 package it.unibo.javajump.model.factories;
 
 import it.unibo.javajump.model.entities.character.CharacterImpl;
-import it.unibo.javajump.model.entities.platforms.PlatformImpl;
 import it.unibo.javajump.model.entities.collectibles.CoinImpl;
+import it.unibo.javajump.model.entities.platforms.PlatformImpl;
 
 
-public abstract class AbstractGameObjectFactoryImpl {
+public abstract class AbstractGameObjectFactoryImpl implements AbstractGameObjectFactory {
 
 	public abstract CharacterImpl createCharacter(float x, float y);
 

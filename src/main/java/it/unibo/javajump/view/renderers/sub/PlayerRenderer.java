@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class PlayerRenderer {
+public class PlayerRenderer implements Renderer {
 
 	private final BufferedImage playerSheet;
 	private final int frameWidth;

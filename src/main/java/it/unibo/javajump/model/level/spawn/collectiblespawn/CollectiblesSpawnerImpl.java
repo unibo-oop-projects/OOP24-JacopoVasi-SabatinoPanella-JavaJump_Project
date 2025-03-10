@@ -10,7 +10,7 @@ import java.util.Random;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class CollectiblesSpawnerImpl {
+public class CollectiblesSpawnerImpl implements CollectiblesSpawner {
 
 	private final AbstractGameObjectFactoryImpl factory;
 	private final Random rand;
@@ -23,16 +23,16 @@ public class CollectiblesSpawnerImpl {
 	}
 
 
-	public void spawnCollectible(GameModelImpl model, float platformX, float platformY, float platformWidth, PlatformImpl platform) {
+	public void spawnCollectible(GameModelImpl model, float platformX, float platformY, float platformWidth, PlatformImpl platformImpl) {
 		if (rand.nextFloat() < coinSpawnChance) {
 			float coinX = platformX + (platformWidth / COINXDIV) - (platformWidth * COINXMUL);
 			float coinY = platformY - COINOFFSET;
-			CoinImpl coin = factory.createCoin(coinX, coinY);
+			CoinImpl coinImpl = factory.createCoin(coinX, coinY);
 
-			if (platform instanceof MovingPlatformImpl) {
-				coin.attachToPlatform(platform);
+			if (platformImpl instanceof MovingPlatformImpl) {
+				coinImpl.attachToPlatform(platformImpl);
 			}
-			model.getGameObjects().add(coin);
+			model.getGameObjects().add(coinImpl);
 		}
 	}
 }

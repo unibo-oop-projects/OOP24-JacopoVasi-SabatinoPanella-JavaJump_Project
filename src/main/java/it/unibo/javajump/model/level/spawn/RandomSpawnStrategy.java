@@ -22,21 +22,21 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 	@SuppressWarnings("FieldMayBeFinal")
 	private float maxPlatformYSpacing;
 	private float currentY;
-	private final CollectiblesSpawnerImpl collectiblesSpawner;
-	private final PlatformSpawnerImpl platformSpawner;
+	private final CollectiblesSpawnerImpl collectiblesSpawnerImpl;
+	private final PlatformSpawnerImpl platformSpawnerImpl;
 
 	public RandomSpawnStrategy(AbstractGameObjectFactoryImpl factory,
 							   float minSpacing,
 							   float maxSpacing,
 							   float coinChance,
-							   DifficultyManagerImpl difficultyManager) {
+							   DifficultyManagerImpl difficultyManagerImpl) {
 		this.factory = factory;
 		this.rand = new Random();
 		this.minPlatformYSpacing = minSpacing;
 		this.maxPlatformYSpacing = maxSpacing;
 		this.currentY = ZERO;
-		this.collectiblesSpawner = new CollectiblesSpawnerImpl(factory, coinChance);
-		this.platformSpawner = new PlatformSpawnerImpl(factory);
+		this.collectiblesSpawnerImpl = new CollectiblesSpawnerImpl(factory, coinChance);
+		this.platformSpawnerImpl = new PlatformSpawnerImpl(factory);
 	}
 
 	@Override
@@ -53,12 +53,12 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 
 			float x = rand.nextFloat() * (model.getScreenWidth() - maxPlatformWidth);
 
-			PlatformImpl p = platformSpawner.spawnPlatform(x, currentY, model.getScreenWidth(), diff);
+			PlatformImpl p = platformSpawnerImpl.spawnPlatform(x, currentY, model.getScreenWidth(), diff);
 			model.getGameObjects().add(p);
 
 			float platformWidth = p.getWidth();
 
-			collectiblesSpawner.spawnCollectible(model, x, currentY, platformWidth, p);
+			collectiblesSpawnerImpl.spawnCollectible(model, x, currentY, platformWidth, p);
 		}
 	}
 

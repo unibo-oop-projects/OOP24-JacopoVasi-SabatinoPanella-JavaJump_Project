@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class ScoreUIRenderer {
+public class ScoreUIRenderer implements Renderer {
 
 	private final BufferedImage scoreContainer;
 

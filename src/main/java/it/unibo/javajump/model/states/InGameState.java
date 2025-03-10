@@ -12,13 +12,11 @@ import static it.unibo.javajump.model.states.gameutilities.InGameUtilities.conve
 import static it.unibo.javajump.model.states.gameutilities.InGameUtilities.checkGameOver;
 
 public class InGameState implements GameStateHandler {
+
 	private final GameState gameState = GameState.IN_GAME;
 
 	private int horizontalDirection = NULLDIRECTION;
 
-	@Override
-	public void onEnter(GameModelImpl model) {
-	}
 
 	@Override
 	public void handleAction(GameModelImpl model, GameAction action) {
@@ -34,14 +32,15 @@ public class InGameState implements GameStateHandler {
 
 	@Override
 	public void update(GameModelImpl model, float deltaTime) {
+
 		CharacterImpl player = model.getPlayer();
 		MovementDirection md = convertIntToMovementDirection(horizontalDirection);
 		model.getPhysicsManager().updateCharacterMovement(player, deltaTime, md);
 
 		for (GameObjectImpl go : model.getGameObjects()) {
 			go.update(deltaTime);
-			if (go instanceof CharacterImpl character) {
-				applyPacManEffect(character, model.getScreenWidth());
+			if (go instanceof CharacterImpl characterImpl) {
+				applyPacManEffect(characterImpl, model.getScreenWidth());
 			}
 		}
 
@@ -63,5 +62,10 @@ public class InGameState implements GameStateHandler {
 	@Override
 	public GameState getGameState() {
 		return gameState;
+	}
+
+	@Override
+	public int getState() {
+		return 0;
 	}
 }

@@ -1,7 +1,7 @@
 package it.unibo.javajump.model.collision;
 
-import it.unibo.javajump.model.entities.*;
 import it.unibo.javajump.model.GameModelImpl;
+import it.unibo.javajump.model.entities.*;
 import it.unibo.javajump.model.entities.character.CharacterImpl;
 import it.unibo.javajump.model.entities.collectibles.CoinImpl;
 import it.unibo.javajump.model.entities.collectibles.CoinState;
@@ -61,23 +61,23 @@ public class CollisionManagerImpl implements CollisionManager {
 	}
 
 
-	private void handleCharacterCoinCollision(CharacterImpl character, CoinImpl coin, GameModelImpl model) {
-		if (coin.getState() == CoinState.IDLE) {
-			coin.collect();
+	private void handleCharacterCoinCollision(CharacterImpl characterImpl, CoinImpl coinImpl, GameModelImpl model) {
+		if (coinImpl.getState() == CoinState.IDLE) {
+			coinImpl.collect();
 			model.addPointsToScore(COINSCOREVALUE);
 		}
 	}
 
 
-	private boolean handleCharacterPlatformCollision(CharacterImpl player, PlatformImpl platform, GameModelImpl model) {
+	private boolean handleCharacterPlatformCollision(CharacterImpl player, PlatformImpl platformImpl, GameModelImpl model) {
 		if (player.getVelocityY() > NULLDIRECTION) {
 			float playerOldBottom = player.getOldY() + player.getHeight();
-			float platformTop = platform.getY();
+			float platformTop = platformImpl.getY();
 
 			if (playerOldBottom <= platformTop) {
 				float jumpForce = player.getJumpForce();
 
-				if (platform instanceof BouncePlatformImpl bp) {
+				if (platformImpl instanceof BouncePlatformImpl bp) {
 					jumpForce *= bp.getBounceFactor();
 				}
 
@@ -85,7 +85,7 @@ public class CollisionManagerImpl implements CollisionManager {
 				player.setY(platformTop - player.getHeight());
 				player.landOnPlatform();
 
-				if (platform instanceof BreakablePlatformImpl breakablePlatform) {
+				if (platformImpl instanceof BreakablePlatformImpl breakablePlatform) {
 					breakablePlatform.breakPlatform();
 				}
 			}

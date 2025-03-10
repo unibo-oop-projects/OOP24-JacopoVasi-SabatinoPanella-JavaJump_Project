@@ -25,7 +25,7 @@ public class MenuView implements GameViewState {
 		g.fillRect(MENUVIEWRECTX, MENUVIEWRECTY, width, height);
 
 		BufferedImage title = GameGraphicsImpl.getTitle();
-		g.drawImage(title, (int) (width * MENUVIEWIMGWIDTHSCALAR), (int) height / MENUVIEWIMGHEIGHTSCALAR, (int) (title.getWidth() * MENUVIEWTILEWSCALAR), (int) (title.getHeight() * MENUVIEWTILEHSCALAR), null);
+		g.drawImage(title, (int) (width * MENUVIEWIMGWIDTHSCALAR), height / MENUVIEWIMGHEIGHTSCALAR, (title.getWidth() * MENUVIEWTILEWSCALAR), (title.getHeight() * MENUVIEWTILEHSCALAR), null);
 
 		g.setColor(Color.WHITE);
 		g.setFont(GameGraphicsImpl.getGameFont1());

@@ -11,7 +11,6 @@ import static it.unibo.javajump.utility.Constants.*;
 public class GameOverView implements GameViewState {
 
 	private float fadeAlpha = GAMEOVERALPHAINIT;
-	private final float fadeDuration = GAMEOVERDURATIONINIT;
 	private float elapsedTime = GAMEOVERTIMEINIT;
 	private boolean fading = false;
 
@@ -32,7 +31,7 @@ public class GameOverView implements GameViewState {
 	public void update(float deltaTime) {
 		if (fading) {
 			elapsedTime += deltaTime;
-			fadeAlpha = Math.min(GAMEOVERALPHA, elapsedTime / fadeDuration);
+			fadeAlpha = Math.min(GAMEOVERALPHA, elapsedTime / GAMEOVERDURATIONINIT);
 			if (fadeAlpha >= GAMEOVERALPHA) {
 				fading = false;
 			}

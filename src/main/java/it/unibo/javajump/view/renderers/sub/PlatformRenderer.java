@@ -1,13 +1,12 @@
 package it.unibo.javajump.view.renderers.sub;
 
+import it.unibo.javajump.model.entities.platforms.*;
 import it.unibo.javajump.model.entities.platforms.BouncePlatformImpl;
-import it.unibo.javajump.model.entities.platforms.BreakablePlatformImpl;
-import it.unibo.javajump.model.entities.platforms.MovingPlatformImpl;
 import it.unibo.javajump.model.entities.platforms.PlatformImpl;
 
 import java.awt.*;
 
-public class PlatformRenderer {
+public class PlatformRenderer implements Renderer {
 
 	private final float outlineStrokeWidth;
 	private final int roundArcW;
@@ -20,22 +19,22 @@ public class PlatformRenderer {
 	}
 
 
-	public void drawPlatform(Graphics2D g2, PlatformImpl platform,
+	public void drawPlatform(Graphics2D g2, PlatformImpl platformImpl,
 							 float cameraOffsetY) {
 
-		float drawX = platform.getX();
-		float drawY = platform.getY() - cameraOffsetY;
-		float w = platform.getWidth();
-		float h = platform.getHeight();
+		float drawX = platformImpl.getX();
+		float drawY = platformImpl.getY() - cameraOffsetY;
+		float w = platformImpl.getWidth();
+		float h = platformImpl.getHeight();
 
 
-		if (platform instanceof BouncePlatformImpl) {
+		if (platformImpl instanceof BouncePlatformImpl) {
 			drawPlatformCommon(g2, drawX, drawY, w, h,
 					Color.decode("#d15484"), Color.decode("#d4c340"));
-		} else if (platform instanceof BreakablePlatformImpl) {
+		} else if (platformImpl instanceof BreakablePlatformImpl) {
 			drawPlatformCommon(g2, drawX, drawY, w, h,
 					Color.decode("#ea4b1e"), Color.decode("#d4c340"));
-		} else if (platform instanceof MovingPlatformImpl) {
+		} else if (platformImpl instanceof MovingPlatformImpl) {
 			drawPlatformCommon(g2, drawX, drawY, w, h,
 					Color.decode("#276b91"), Color.decode("#d4c340"));
 		} else {

@@ -6,9 +6,6 @@ import it.unibo.javajump.model.GameModelImpl;
 public class MenuState implements GameStateHandler {
 	private final GameState gameState = GameState.MENU;
 
-	@Override
-	public void onEnter(GameModelImpl model) {
-	}
 
 	@Override
 	public void handleAction(GameModelImpl model, GameAction action) {
@@ -38,5 +35,9 @@ public class MenuState implements GameStateHandler {
 		return gameState;
 	}
 
+	@Override
+	public int getState() {
+		return 0;
+	}
 
 }

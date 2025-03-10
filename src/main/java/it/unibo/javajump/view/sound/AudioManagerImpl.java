@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class AudioManagerImpl {
+public class AudioManagerImpl implements AudioManager {
 
 	private static Clip backgroundClip;
 	private static FloatControl volumeControl;
@@ -41,9 +41,8 @@ public class AudioManagerImpl {
 		}
 
 		int totalFrames = backgroundClip.getFrameLength();
-		int loopStart = AUDIOLOOPSTART;
 		int loopEnd = (int) (totalFrames * AUDIOLOOPEND);
-		backgroundClip.setLoopPoints(loopStart, loopEnd);
+		backgroundClip.setLoopPoints(AUDIOLOOPSTART, loopEnd);
 		backgroundClip.loop(Clip.LOOP_CONTINUOUSLY);
 		backgroundClip.start();
 		setVolume(VOLUME);

@@ -2,7 +2,7 @@ package it.unibo.javajump.model.entities.platforms;
 
 import it.unibo.javajump.model.entities.GameObjectImpl;
 
-public class BouncePlatformImpl extends PlatformImpl {
+public class BouncePlatformImpl extends PlatformImpl implements Platform {
 	private final float bounceFactor;
 
 	public BouncePlatformImpl(float x, float y, float width, float height, float bounceFactor) {

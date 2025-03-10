@@ -5,7 +5,7 @@ import it.unibo.javajump.model.entities.objectstrategies.MovementBehaviour;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class MovingPlatformImpl extends PlatformImpl {
+public class MovingPlatformImpl extends PlatformImpl implements Platform {
 
 	private final MovementBehaviour movementBehaviour;
 

@@ -11,11 +11,11 @@ public class CameraManagerImpl implements CameraManager {
 
 	private float currentOffset;
 	private float previousOffset;
-	private final ScoreManagerImpl scoreManager;
+	private final ScoreManagerImpl scoreManagerImpl;
 	private final float scoreFactor;
 
-	public CameraManagerImpl(ScoreManagerImpl scoreManager, float scoreFactor) {
-		this.scoreManager = scoreManager;
+	public CameraManagerImpl(ScoreManagerImpl scoreManagerImpl, float scoreFactor) {
+		this.scoreManagerImpl = scoreManagerImpl;
 		this.scoreFactor = scoreFactor;
 		this.currentOffset = OFFSETINIT;
 		this.previousOffset = OFFSETINIT;
@@ -30,7 +30,7 @@ public class CameraManagerImpl implements CameraManager {
 		if (currentOffset < previousOffset) {
 			float deltaOffset = previousOffset - currentOffset;
 			int points = (int) (deltaOffset * scoreFactor);
-			scoreManager.addPoints(points);
+			scoreManagerImpl.addPoints(points);
 		}
 		previousOffset = currentOffset;
 		currentOffset = desiredOffset;

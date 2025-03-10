@@ -5,10 +5,10 @@ import it.unibo.javajump.model.entities.platforms.PlatformImpl;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class CoinImpl extends GameObjectImpl {
+public class CoinImpl extends GameObjectImpl implements Coin {
 
 	private CoinState state;
-	private PlatformImpl attachedPlatform;
+	private PlatformImpl attachedPlatformImpl;
 	private float offsetX;
 
 	public CoinImpl(float x, float y, float width, float height) {
@@ -17,14 +17,14 @@ public class CoinImpl extends GameObjectImpl {
 		this.width = width;
 		this.height = height;
 		this.state = CoinState.IDLE;
-		this.attachedPlatform = null;
+		this.attachedPlatformImpl = null;
 		this.offsetX = OFFSETINIT;
 	}
 
 	@Override
 	public void update(float deltaTime) {
-		if (attachedPlatform != null) {
-			this.x = attachedPlatform.getX() + offsetX;
+		if (attachedPlatformImpl != null) {
+			this.x = attachedPlatformImpl.getX() + offsetX;
 		}
 	}
 
@@ -40,9 +40,9 @@ public class CoinImpl extends GameObjectImpl {
 	}
 
 
-	public void attachToPlatform(PlatformImpl platform) {
-		this.attachedPlatform = platform;
-		this.offsetX = this.x - platform.getX();
+	public void attachToPlatform(PlatformImpl platformImpl) {
+		this.attachedPlatformImpl = platformImpl;
+		this.offsetX = this.x - platformImpl.getX();
 	}
 
 	public CoinState getState() {
@@ -50,7 +50,7 @@ public class CoinImpl extends GameObjectImpl {
 	}
 
 	public PlatformImpl getAttachedPlatform() {
-		return attachedPlatform;
+		return attachedPlatformImpl;
 	}
 
 	@Override
