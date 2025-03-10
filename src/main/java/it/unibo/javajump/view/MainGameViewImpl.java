@@ -4,8 +4,8 @@ import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.model.GameModelObserver;
 import it.unibo.javajump.model.states.GameState;
 import it.unibo.javajump.model.states.GameStateHandler;
-import it.unibo.javajump.view.renderers.RendererManager;
-import it.unibo.javajump.view.sound.AudioManager;
+import it.unibo.javajump.view.renderers.RendererManagerImpl;
+import it.unibo.javajump.view.sound.AudioManagerImpl;
 import it.unibo.javajump.view.viewstates.*;
 
 import javax.swing.*;
@@ -16,7 +16,7 @@ import java.awt.image.BufferedImage;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class MainGameView extends JPanel implements GameModelObserver {
+public class MainGameViewImpl extends JPanel implements GameModelObserver {
 
 	private final GameModelImpl model;
 
@@ -30,20 +30,20 @@ public class MainGameView extends JPanel implements GameModelObserver {
 
 	private final BufferedImage tempScreen;
 
-	private final RendererManager rendererManager;
+	private final RendererManagerImpl rendererManager;
 	private GameState lastState;
 
 
 	private static float currentDeltaTime = MAINVIEWDELTAINIT;
 
-	public MainGameView(GameModelImpl model) {
+	public MainGameViewImpl(GameModelImpl model) {
 		this.model = model;
 		setDoubleBuffered(true);
 
 		this.virtualWidth = model.getScreenWidth();
 		this.virtualHeight = model.getScreenHeight();
 
-		this.rendererManager = new RendererManager();
+		this.rendererManager = new RendererManagerImpl();
 		setBackground(Color.decode("#05051C"));
 
 		this.menuView = new MenuView();
@@ -124,15 +124,15 @@ public class MainGameView extends JPanel implements GameModelObserver {
 
 		switch (currentState) {
 			case MENU:
-				AudioManager.stopMusic();
+				AudioManagerImpl.stopMusic();
 				menuView.draw(g2, model);
 				break;
 			case IN_GAME:
-				AudioManager.startMusic();
+				AudioManagerImpl.startMusic();
 				inGameView.draw(g2, model);
 				break;
 			case PAUSE:
-				AudioManager.pauseMusic();
+				AudioManagerImpl.pauseMusic();
 				pauseView.draw(g2, model);
 				break;
 			case GAME_OVER:
@@ -160,7 +160,7 @@ public class MainGameView extends JPanel implements GameModelObserver {
 
 					break;
 				case GAME_OVER:
-					AudioManager.fadeOut(MAINVIEWAUDIOFADE);
+					AudioManagerImpl.fadeOut(MAINVIEWAUDIOFADE);
 					gameOverView.startFade();
 					break;
 				case MENU:

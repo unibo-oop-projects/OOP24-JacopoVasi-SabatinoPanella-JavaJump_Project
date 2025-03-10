@@ -4,14 +4,14 @@ import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.model.entities.collectibles.CoinImpl;
 import it.unibo.javajump.model.entities.platforms.PlatformImpl;
 import it.unibo.javajump.model.entities.character.CharacterImpl;
-import it.unibo.javajump.view.graphics.GameGraphics;
+import it.unibo.javajump.view.graphics.GameGraphicsImpl;
 import it.unibo.javajump.view.renderers.sub.*;
 
 import java.awt.*;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class RendererManager {
+public class RendererManagerImpl {
 
 	private final PlatformRenderer platformRenderer;
 	private final CoinRenderer coinRenderer;
@@ -20,13 +20,13 @@ public class RendererManager {
 	private final BackgroundRenderer backgroundRenderer2;
 	private final ScoreUIRenderer scoreUIRenderer;
 
-	public RendererManager() {
+	public RendererManagerImpl() {
 		this.platformRenderer = new PlatformRenderer(RENDERMANAGERPLATFORMOUTLINE, RENDERMANAGERPLATFORMARCW, RENDERMANAGERPLATFORMARCH);
-		this.coinRenderer = new CoinRenderer(GameGraphics.getCoinSheet(), RENDERMANAGERCOINWIDTH, RENDERMANAGERCOINHEIGHT, RENDERMANAGERCOINFRAMEDURATION);
-		this.playerRenderer = new PlayerRenderer(GameGraphics.getPlayerSheet(), RENDERMANAGERPLAYERWIDTH, RENDERMANAGERPLAYERHEIGHT, RENDERMANAGERPLAYERFRAMEDURATION);
-		this.backgroundRenderer1 = new BackgroundRenderer(GameGraphics.getBackground1(), RENDERMANAGERBACKGROUNDPARALLAXONE, RENDERMANAGERBACKGROUNDSPEEDXONE);
-		this.backgroundRenderer2 = new BackgroundRenderer(GameGraphics.getBackground2(), RENDERMANAGERBACKGROUNDPARALLAXTWO, RENDERMANAGERBACKGROUNDSPEEDTWO);
-		this.scoreUIRenderer = new ScoreUIRenderer(GameGraphics.getScoreContainer());
+		this.coinRenderer = new CoinRenderer(GameGraphicsImpl.getCoinSheet(), RENDERMANAGERCOINWIDTH, RENDERMANAGERCOINHEIGHT, RENDERMANAGERCOINFRAMEDURATION);
+		this.playerRenderer = new PlayerRenderer(GameGraphicsImpl.getPlayerSheet(), RENDERMANAGERPLAYERWIDTH, RENDERMANAGERPLAYERHEIGHT, RENDERMANAGERPLAYERFRAMEDURATION);
+		this.backgroundRenderer1 = new BackgroundRenderer(GameGraphicsImpl.getBackground1(), RENDERMANAGERBACKGROUNDPARALLAXONE, RENDERMANAGERBACKGROUNDSPEEDXONE);
+		this.backgroundRenderer2 = new BackgroundRenderer(GameGraphicsImpl.getBackground2(), RENDERMANAGERBACKGROUNDPARALLAXTWO, RENDERMANAGERBACKGROUNDSPEEDTWO);
+		this.scoreUIRenderer = new ScoreUIRenderer(GameGraphicsImpl.getScoreContainer());
 	}
 
 

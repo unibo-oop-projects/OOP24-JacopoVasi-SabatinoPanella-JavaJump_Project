@@ -1,7 +1,7 @@
 package it.unibo.javajump.view.renderers.sub;
 
 import it.unibo.javajump.model.GameModelImpl;
-import it.unibo.javajump.view.graphics.GameGraphics;
+import it.unibo.javajump.view.graphics.GameGraphicsImpl;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -31,12 +31,12 @@ public class ScoreUIRenderer {
 
 		if (score < bestScore) {
 			g2.setColor(Color.WHITE);
-			g2.setFont(GameGraphics.getGameFont2());
+			g2.setFont(GameGraphicsImpl.getGameFont2());
 			g2.drawString(SCORERENDERTEXT + score, SCORERENDERX, SCORERENDERY);
 			isNewHighScore = false;
 		} else {
 			g2.setColor(Color.decode("#eac10c"));
-			g2.setFont(GameGraphics.getGameFont2());
+			g2.setFont(GameGraphicsImpl.getGameFont2());
 			g2.drawString(SCORERENDERTEXT + score, SCORERENDERX, SCORERENDERY);
 			isNewHighScore = true;
 		}
@@ -44,7 +44,7 @@ public class ScoreUIRenderer {
 
 		if (isNewHighScore && showHighScoreMessage) {
 			g2.setColor(Color.decode("#D83426"));
-			g2.setFont(GameGraphics.getGameFont3());
+			g2.setFont(GameGraphicsImpl.getGameFont3());
 			g2.drawString(HIGHSCORERENDERTEXT, HIGHSCORERENDERX, HIGHSCORERENDERY);
 		}
 	}

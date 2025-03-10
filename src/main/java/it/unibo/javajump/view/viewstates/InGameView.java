@@ -4,8 +4,8 @@ import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.model.entities.*;
 import it.unibo.javajump.model.entities.collectibles.CoinImpl;
 import it.unibo.javajump.model.entities.platforms.PlatformImpl;
-import it.unibo.javajump.view.MainGameView;
-import it.unibo.javajump.view.renderers.RendererManager;
+import it.unibo.javajump.view.MainGameViewImpl;
+import it.unibo.javajump.view.renderers.RendererManagerImpl;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import static it.unibo.javajump.utility.Constants.*;
 
 public class InGameView implements GameViewState {
 
-	private final RendererManager renderer;
+	private final RendererManagerImpl renderer;
 
 	private boolean debugMode = false;
 
@@ -23,7 +23,7 @@ public class InGameView implements GameViewState {
 	private long lastToggleTime = System.currentTimeMillis();
 	private float deltaTime;
 
-	public InGameView(RendererManager renderer) {
+	public InGameView(RendererManagerImpl renderer) {
 		this.renderer = renderer;
 	}
 
@@ -39,7 +39,7 @@ public class InGameView implements GameViewState {
 		Graphics2D g2 = (Graphics2D) g;
 
 
-		float deltaTime = MainGameView.getCurrentDeltaTime();
+		float deltaTime = MainGameViewImpl.getCurrentDeltaTime();
 
 		renderer.drawBackground1(g2, model, deltaTime);
 		renderer.drawBackground2(g2, model, deltaTime);

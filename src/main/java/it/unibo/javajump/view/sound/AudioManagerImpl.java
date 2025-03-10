@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class AudioManager {
+public class AudioManagerImpl {
 
 	private static Clip backgroundClip;
 	private static FloatControl volumeControl;

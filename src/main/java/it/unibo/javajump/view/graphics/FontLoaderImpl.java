@@ -4,7 +4,7 @@ import java.awt.*;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
-public class FontLoader {
+public class FontLoaderImpl {
 	public static Font loadFont(String path, float size) {
 		try {
 			InputStream is = new FileInputStream(path);

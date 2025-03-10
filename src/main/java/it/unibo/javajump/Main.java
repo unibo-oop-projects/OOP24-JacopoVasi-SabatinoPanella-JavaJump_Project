@@ -14,7 +14,7 @@ import it.unibo.javajump.model.physics.PhysicsManagerImpl;
 import it.unibo.javajump.model.score.ScoreManagerImpl;
 import it.unibo.javajump.model.camera.CameraManager;
 import it.unibo.javajump.model.level.spawn.RandomSpawnStrategy;
-import it.unibo.javajump.view.MainGameView;
+import it.unibo.javajump.view.MainGameViewImpl;
 
 import javax.swing.*;
 import java.awt.event.ComponentAdapter;
@@ -48,7 +48,7 @@ public class Main {
 				cleanupManager,
 				difficultyManager);
 
-		MainGameView view = new MainGameView(model);
+		MainGameViewImpl view = new MainGameViewImpl(model);
 		model.addObserver(view);
 		GameControllerImpl controller = new GameControllerImpl(model, view);
 

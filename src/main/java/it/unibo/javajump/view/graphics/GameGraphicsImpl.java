@@ -1,13 +1,13 @@
 package it.unibo.javajump.view.graphics;
 
-import it.unibo.javajump.view.sound.AudioManager;
+import it.unibo.javajump.view.sound.AudioManagerImpl;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-public class GameGraphics {
+public class GameGraphicsImpl {
 	private final String path = "";
 	private static Font gameFont1;
 	private static Font gameFont2;
@@ -37,10 +37,10 @@ public class GameGraphics {
 			background1 = ImageIO.read(new File("src/main/java/it/unibo/javajump/view/resources/Background4.png"));
 			background2 = ImageIO.read(new File("src/main/java/it/unibo/javajump/view/resources/Clouds2.png"));
 			scoreContainer = ImageIO.read(new File("src/main/java/it/unibo/javajump/view/resources/Score_Underlay_small.png"));
-			AudioManager.loadBackgroundMusic("src/main/java/it/unibo/javajump/view/resources/GameMusic.wav");
-			gameFont1 = FontLoader.loadFont("src/main/java/it/unibo/javajump/view/resources/Daydream.ttf", 20);
-			gameFont2 = FontLoader.loadFont("src/main/java/it/unibo/javajump/view/resources/Daydream.ttf", 15);
-			gameFont3 = FontLoader.loadFont("src/main/java/it/unibo/javajump/view/resources/Daydream.ttf", 10);
+			AudioManagerImpl.loadBackgroundMusic("src/main/java/it/unibo/javajump/view/resources/GameMusic.wav");
+			gameFont1 = FontLoaderImpl.loadFont("src/main/java/it/unibo/javajump/view/resources/Daydream.ttf", 20);
+			gameFont2 = FontLoaderImpl.loadFont("src/main/java/it/unibo/javajump/view/resources/Daydream.ttf", 15);
+			gameFont3 = FontLoaderImpl.loadFont("src/main/java/it/unibo/javajump/view/resources/Daydream.ttf", 10);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
