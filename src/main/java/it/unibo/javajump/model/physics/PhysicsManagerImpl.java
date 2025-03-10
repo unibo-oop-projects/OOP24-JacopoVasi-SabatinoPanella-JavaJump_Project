@@ -3,14 +3,14 @@ package it.unibo.javajump.model.physics;
 import it.unibo.javajump.model.entities.character.CharacterImpl;
 
 
-public class PhysicsManager {
+public class PhysicsManagerImpl {
 	private final float ACCELERATION;
 	private final float MAX_SPEED;
 	private final float DECELERATION;
 	private final float GRAVITY;
 
 
-	public PhysicsManager(float gravity, float acceleration, float maxSpeed, float deceleration) {
+	public PhysicsManagerImpl(float gravity, float acceleration, float maxSpeed, float deceleration) {
 		this.GRAVITY = gravity;
 		this.ACCELERATION = acceleration;
 		this.MAX_SPEED = maxSpeed;
@@ -23,16 +23,16 @@ public class PhysicsManager {
 
 		switch (direction) {
 			case RIGHT:
-				vx = PhysicsUtils.accelerateToRight(vx, deltaTime, ACCELERATION, MAX_SPEED);
+				vx = PhysicsUtilsImpl.accelerateToRight(vx, deltaTime, ACCELERATION, MAX_SPEED);
 				character.setFacingRight(true);
 				break;
 			case LEFT:
-				vx = PhysicsUtils.accelerateToLeft(vx, deltaTime, ACCELERATION, MAX_SPEED);
+				vx = PhysicsUtilsImpl.accelerateToLeft(vx, deltaTime, ACCELERATION, MAX_SPEED);
 				character.setFacingRight(false);
 				break;
 			case NONE:
 			default:
-				vx = PhysicsUtils.decelerate(vx, deltaTime, DECELERATION);
+				vx = PhysicsUtilsImpl.decelerate(vx, deltaTime, DECELERATION);
 				break;
 		}
 		character.setVelocityX(vx);

@@ -1,7 +1,7 @@
 package it.unibo.javajump.model.collision;
 
 import it.unibo.javajump.model.entities.*;
-import it.unibo.javajump.model.GameModel;
+import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.model.entities.character.CharacterImpl;
 import it.unibo.javajump.model.entities.collectibles.CoinImpl;
 import it.unibo.javajump.model.entities.collectibles.CoinState;
@@ -16,7 +16,7 @@ import static it.unibo.javajump.utility.Constants.*;
 
 public class CollisionManagerImpl implements CollisionManager {
 	@Override
-	public void checkCollisions(GameModel model) {
+	public void checkCollisions(GameModelImpl model) {
 		CharacterImpl player = model.getPlayer();
 		boolean foundPlatformCollision = false;
 		List<GameObjectImpl> objects = model.getGameObjects();
@@ -61,7 +61,7 @@ public class CollisionManagerImpl implements CollisionManager {
 	}
 
 
-	private void handleCharacterCoinCollision(CharacterImpl character, CoinImpl coin, GameModel model) {
+	private void handleCharacterCoinCollision(CharacterImpl character, CoinImpl coin, GameModelImpl model) {
 		if (coin.getState() == CoinState.IDLE) {
 			coin.collect();
 			model.addPointsToScore(COINSCOREVALUE);
@@ -69,7 +69,7 @@ public class CollisionManagerImpl implements CollisionManager {
 	}
 
 
-	private boolean handleCharacterPlatformCollision(CharacterImpl player, PlatformImpl platform, GameModel model) {
+	private boolean handleCharacterPlatformCollision(CharacterImpl player, PlatformImpl platform, GameModelImpl model) {
 		if (player.getVelocityY() > NULLDIRECTION) {
 			float playerOldBottom = player.getOldY() + player.getHeight();
 			float platformTop = platform.getY();

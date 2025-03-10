@@ -1,6 +1,6 @@
 package it.unibo.javajump.view.renderers;
 
-import it.unibo.javajump.model.GameModel;
+import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.model.entities.collectibles.CoinImpl;
 import it.unibo.javajump.model.entities.platforms.PlatformImpl;
 import it.unibo.javajump.model.entities.character.CharacterImpl;
@@ -30,12 +30,12 @@ public class RendererManager {
 	}
 
 
-	public void drawBackground1(Graphics2D g2, GameModel model, float deltaTime) {
+	public void drawBackground1(Graphics2D g2, GameModelImpl model, float deltaTime) {
 		backgroundRenderer1.drawBackground(g2, model, deltaTime);
 	}
 
 
-	public void drawBackground2(Graphics2D g2, GameModel model, float deltaTime) {
+	public void drawBackground2(Graphics2D g2, GameModelImpl model, float deltaTime) {
 		backgroundRenderer2.drawBackground(g2, model, deltaTime);
 	}
 
@@ -55,7 +55,7 @@ public class RendererManager {
 	}
 
 
-	public void drawScoreUI(Graphics2D g2, GameModel model,
+	public void drawScoreUI(Graphics2D g2, GameModelImpl model,
 							boolean isNewHighScore,
 							boolean showHighScoreMessage) {
 		scoreUIRenderer.drawScoreAndUI(g2, model, isNewHighScore, showHighScoreMessage);

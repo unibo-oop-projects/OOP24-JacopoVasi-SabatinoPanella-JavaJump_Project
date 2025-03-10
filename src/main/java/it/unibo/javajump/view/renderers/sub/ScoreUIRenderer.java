@@ -1,6 +1,6 @@
 package it.unibo.javajump.view.renderers.sub;
 
-import it.unibo.javajump.model.GameModel;
+import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.view.graphics.GameGraphics;
 
 import java.awt.*;
@@ -17,7 +17,7 @@ public class ScoreUIRenderer {
 	}
 
 	public void drawScoreAndUI(Graphics2D g2,
-							   GameModel model,
+							   GameModelImpl model,
 							   boolean isNewHighScore,
 							   boolean showHighScoreMessage) {
 

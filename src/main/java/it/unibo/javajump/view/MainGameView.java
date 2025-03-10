@@ -1,6 +1,6 @@
 package it.unibo.javajump.view;
 
-import it.unibo.javajump.model.GameModel;
+import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.model.GameModelObserver;
 import it.unibo.javajump.model.states.GameState;
 import it.unibo.javajump.model.states.GameStateHandler;
@@ -18,7 +18,7 @@ import static it.unibo.javajump.utility.Constants.*;
 
 public class MainGameView extends JPanel implements GameModelObserver {
 
-	private final GameModel model;
+	private final GameModelImpl model;
 
 	private final GameViewState menuView;
 	private final GameViewState inGameView;
@@ -36,7 +36,7 @@ public class MainGameView extends JPanel implements GameModelObserver {
 
 	private static float currentDeltaTime = MAINVIEWDELTAINIT;
 
-	public MainGameView(GameModel model) {
+	public MainGameView(GameModelImpl model) {
 		this.model = model;
 		setDoubleBuffered(true);
 
@@ -147,7 +147,7 @@ public class MainGameView extends JPanel implements GameModelObserver {
 	}
 
 	@Override
-	public void onModelUpdate(GameModel model) {
+	public void onModelUpdate(GameModelImpl model) {
 		GameStateHandler stateHandler = model.getCurrentState();
 		GameState currentState = stateHandler.getGameState();
 

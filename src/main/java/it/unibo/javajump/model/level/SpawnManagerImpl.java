@@ -1,6 +1,6 @@
 package it.unibo.javajump.model.level;
 
-import it.unibo.javajump.model.GameModel;
+import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.model.factories.AbstractGameObjectFactoryImpl;
 import it.unibo.javajump.model.level.spawn.RandomSpawnStrategy;
 import it.unibo.javajump.model.level.spawn.SpawnStrategy;
@@ -20,7 +20,7 @@ public class SpawnManagerImpl {
 	}
 
 
-	public void generateInitialLevel(GameModel model) {
+	public void generateInitialLevel(GameModelImpl model) {
 		spawnPlatformBelowPlayer(model, getFactory());
 		float startY = model.getScreenHeight() - INITIALYOFFSET;
 		spawnStrategy.spawnBatch(model, startY, INITIAL_PLATFORMS_NUMBER);
@@ -28,7 +28,7 @@ public class SpawnManagerImpl {
 	}
 
 
-	public void generateOnTheFly(GameModel model) {
+	public void generateOnTheFly(GameModelImpl model) {
 
 		float playerY = model.getPlayer().getY();
 		float gap = playerY - topPlatformY;

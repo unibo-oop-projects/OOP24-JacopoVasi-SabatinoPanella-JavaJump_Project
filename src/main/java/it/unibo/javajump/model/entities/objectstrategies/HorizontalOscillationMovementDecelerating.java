@@ -1,7 +1,7 @@
 package it.unibo.javajump.model.entities.objectstrategies;
 
 import it.unibo.javajump.model.entities.GameObjectImpl;
-import it.unibo.javajump.model.physics.PhysicsUtils;
+import it.unibo.javajump.model.physics.PhysicsUtilsImpl;
 
 import static it.unibo.javajump.utility.Constants.*;
 
@@ -39,7 +39,7 @@ public class HorizontalOscillationMovementDecelerating implements MovementBehavi
 			float distanceToRight = maxX - (currentX + objWidth);
 			if (distanceToRight < threshold) {
 
-				currentSpeed = PhysicsUtils.decelerate(currentSpeed, deltaTime, deceleration);
+				currentSpeed = PhysicsUtilsImpl.decelerate(currentSpeed, deltaTime, deceleration);
 
 				if (currentSpeed < epsilon) {
 					currentSpeed = NULLDIRECTION;
@@ -49,19 +49,19 @@ public class HorizontalOscillationMovementDecelerating implements MovementBehavi
 				}
 			} else {
 
-				currentSpeed = PhysicsUtils.accelerateToRight(currentSpeed, deltaTime, acceleration, baseSpeed);
+				currentSpeed = PhysicsUtilsImpl.accelerateToRight(currentSpeed, deltaTime, acceleration, baseSpeed);
 			}
 		} else {
 			float distanceToLeft = currentX - minX;
 			if (distanceToLeft < threshold) {
-				currentSpeed = PhysicsUtils.decelerate(currentSpeed, deltaTime, deceleration);
+				currentSpeed = PhysicsUtilsImpl.decelerate(currentSpeed, deltaTime, deceleration);
 				if (Math.abs(currentSpeed) < epsilon) {
 					currentSpeed = NULLDIRECTION;
 					obj.setX(minX);
 					goingRight = true;
 				}
 			} else {
-				currentSpeed = PhysicsUtils.accelerateToLeft(currentSpeed, deltaTime, acceleration, baseSpeed);
+				currentSpeed = PhysicsUtilsImpl.accelerateToLeft(currentSpeed, deltaTime, acceleration, baseSpeed);
 			}
 		}
 

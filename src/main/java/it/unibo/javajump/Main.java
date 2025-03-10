@@ -1,7 +1,7 @@
 package it.unibo.javajump;
 
 import it.unibo.javajump.controller.GameControllerImpl;
-import it.unibo.javajump.model.GameModel;
+import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.model.camera.CameraManagerImpl;
 import it.unibo.javajump.model.collision.CollisionManager;
 import it.unibo.javajump.model.collision.CollisionManagerImpl;
@@ -10,8 +10,8 @@ import it.unibo.javajump.model.factories.GameObjectFactoryImpl;
 import it.unibo.javajump.model.level.CleanupManagerImpl;
 import it.unibo.javajump.model.level.SpawnManagerImpl;
 import it.unibo.javajump.model.level.spawn.difficulty.DifficultyManagerImpl;
-import it.unibo.javajump.model.physics.PhysicsManager;
-import it.unibo.javajump.model.score.ScoreManager;
+import it.unibo.javajump.model.physics.PhysicsManagerImpl;
+import it.unibo.javajump.model.score.ScoreManagerImpl;
 import it.unibo.javajump.model.camera.CameraManager;
 import it.unibo.javajump.model.level.spawn.RandomSpawnStrategy;
 import it.unibo.javajump.view.MainGameView;
@@ -32,13 +32,13 @@ public class Main {
 		RandomSpawnStrategy strategy = new RandomSpawnStrategy(factory, MINSPACING, MAXSPACING, COINCHANCE, difficultyManager);
 		CollisionManager collisionManager = new CollisionManagerImpl();
 		SpawnManagerImpl spawnManager = new SpawnManagerImpl(strategy);
-		ScoreManager scoreManager = new ScoreManager();
+		ScoreManagerImpl scoreManager = new ScoreManagerImpl();
 		CameraManager cameraManager = new CameraManagerImpl(scoreManager, SCOREFACTOR);
-		PhysicsManager physicsManager = new PhysicsManager(GRAVITY, ACCELERATION, MAXSPEED, DECELERATION);
+		PhysicsManagerImpl physicsManager = new PhysicsManagerImpl(GRAVITY, ACCELERATION, MAXSPEED, DECELERATION);
 		CleanupManagerImpl cleanupManager = new CleanupManagerImpl();
 		JFrame frame = new JFrame(GAMETITLE);
 
-		GameModel model = new GameModel(screenWidth,
+		GameModelImpl model = new GameModelImpl(screenWidth,
 				screenHeight,
 				physicsManager,
 				collisionManager,

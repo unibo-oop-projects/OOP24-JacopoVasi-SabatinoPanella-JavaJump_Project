@@ -1,9 +1,9 @@
 package it.unibo.javajump.model.collision;
 
-import it.unibo.javajump.model.GameModel;
+import it.unibo.javajump.model.GameModelImpl;
 
 
 public interface CollisionManager {
 	
-	void checkCollisions(GameModel model);
+	void checkCollisions(GameModelImpl model);
 }

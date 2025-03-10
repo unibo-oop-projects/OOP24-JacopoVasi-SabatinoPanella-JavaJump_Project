@@ -1,6 +1,6 @@
 package it.unibo.javajump.controller;
 
-import it.unibo.javajump.model.GameModel;
+import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.view.MainGameView;
 
 import java.awt.event.KeyEvent;
@@ -10,14 +10,14 @@ import static it.unibo.javajump.utility.Constants.*;
 
 public class GameControllerImpl implements KeyListener {
 
-	private final GameModel model;
+	private final GameModelImpl model;
 	private final MainGameView view;
 	private volatile boolean running;
 
 	private boolean pressingLeft = false;
 	private boolean pressingRight = false;
 
-	public GameControllerImpl(GameModel model, MainGameView view) {
+	public GameControllerImpl(GameModelImpl model, MainGameView view) {
 		this.model = model;
 		this.view = view;
 		this.running = false;

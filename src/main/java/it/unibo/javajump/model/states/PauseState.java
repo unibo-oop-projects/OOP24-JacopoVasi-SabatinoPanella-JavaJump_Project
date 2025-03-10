@@ -1,13 +1,13 @@
 package it.unibo.javajump.model.states;
 
 import it.unibo.javajump.controller.GameAction;
-import it.unibo.javajump.model.GameModel;
+import it.unibo.javajump.model.GameModelImpl;
 
 public class PauseState implements GameStateHandler {
 	private final GameState gameState = GameState.PAUSE;
 
 	@Override
-	public void handleAction(GameModel model, GameAction action) {
+	public void handleAction(GameModelImpl model, GameAction action) {
 		if (action == GameAction.PAUSE_GAME) {
 			model.setState(new InGameState());
 		} else if (action == GameAction.GO_TO_MENU) {
@@ -16,7 +16,7 @@ public class PauseState implements GameStateHandler {
 	}
 
 	@Override
-	public void update(GameModel model, float deltaTime) {
+	public void update(GameModelImpl model, float deltaTime) {
 	}
 
 	@Override

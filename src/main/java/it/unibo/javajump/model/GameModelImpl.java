@@ -8,8 +8,8 @@ import it.unibo.javajump.model.entities.character.CharacterImpl;
 import it.unibo.javajump.model.level.CleanupManagerImpl;
 import it.unibo.javajump.model.level.SpawnManagerImpl;
 import it.unibo.javajump.model.level.spawn.difficulty.DifficultyManagerImpl;
-import it.unibo.javajump.model.physics.PhysicsManager;
-import it.unibo.javajump.model.score.ScoreManager;
+import it.unibo.javajump.model.physics.PhysicsManagerImpl;
+import it.unibo.javajump.model.score.ScoreManagerImpl;
 import it.unibo.javajump.model.states.GameStateHandler;
 import it.unibo.javajump.model.states.MenuState;
 
@@ -18,15 +18,15 @@ import java.util.List;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class GameModel {
+public class GameModelImpl {
 
 
 	private GameStateHandler currentState;
-	private final PhysicsManager physicsManager;
+	private final PhysicsManagerImpl physicsManager;
 	private final CollisionManager collisionManager;
 	private final SpawnManagerImpl spawnManager;
 	private final CameraManager cameraManager;
-	private final ScoreManager scoreManager;
+	private final ScoreManagerImpl scoreManager;
 	private final CleanupManagerImpl cleanupManager;
 	private final DifficultyManagerImpl difficultyManager;
 
@@ -41,14 +41,14 @@ public class GameModel {
 
 	private final List<GameModelObserver> observers;
 
-	public GameModel(
+	public GameModelImpl(
 			int screenWidth,
 			int screenHeight,
-			PhysicsManager physicsManager,
+			PhysicsManagerImpl physicsManager,
 			CollisionManager collisionManager,
 			SpawnManagerImpl spawnManager,
 			CameraManager cameraManager,
-			ScoreManager scoreManager,
+			ScoreManagerImpl scoreManager,
 			CleanupManagerImpl cleanupManager,
 			DifficultyManagerImpl difficultyManager
 	) {
@@ -123,7 +123,7 @@ public class GameModel {
 		scoreManager.addPoints(amount);
 	}
 
-	public PhysicsManager getPhysicsManager() {
+	public PhysicsManagerImpl getPhysicsManager() {
 		return physicsManager;
 	}
 
@@ -139,7 +139,7 @@ public class GameModel {
 		return cameraManager;
 	}
 
-	public ScoreManager getScoreManager() {
+	public ScoreManagerImpl getScoreManager() {
 		return scoreManager;
 	}
 

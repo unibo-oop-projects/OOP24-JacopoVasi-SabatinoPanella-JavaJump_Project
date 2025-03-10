@@ -2,7 +2,7 @@ package it.unibo.javajump.model.physics;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class PhysicsUtils {
+public class PhysicsUtilsImpl {
 	
 	public static float accelerateToRight(float vx, float deltaTime, float acceleration, float maxSpeed) {
 		vx += acceleration * deltaTime;

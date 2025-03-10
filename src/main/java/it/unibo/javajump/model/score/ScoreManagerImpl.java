@@ -2,13 +2,13 @@ package it.unibo.javajump.model.score;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class ScoreManager {
+public class ScoreManagerImpl {
 
 	private int currentScore;
 	private int bestScore;
 	private boolean bestScoreReached;
 
-	public ScoreManager() {
+	public ScoreManagerImpl() {
 		this.currentScore = ZERO;
 		this.bestScore = ZERO;
 		this.bestScoreReached = false;

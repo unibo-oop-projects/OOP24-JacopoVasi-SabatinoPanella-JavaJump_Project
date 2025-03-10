@@ -1,6 +1,6 @@
 package it.unibo.javajump.view.viewstates;
 
-import it.unibo.javajump.model.GameModel;
+import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.view.graphics.GameGraphics;
 
 import java.awt.*;
@@ -41,7 +41,7 @@ public class GameOverView implements GameViewState {
 
 
 	@Override
-	public void draw(Graphics g, GameModel model) {
+	public void draw(Graphics g, GameModelImpl model) {
 		Graphics2D g2 = (Graphics2D) g;
 		Composite oldComposite = g2.getComposite();
 

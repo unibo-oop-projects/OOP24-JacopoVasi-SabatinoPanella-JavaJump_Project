@@ -1,11 +1,11 @@
 package it.unibo.javajump.model.camera;
 
-import it.unibo.javajump.model.GameModel;
+import it.unibo.javajump.model.GameModelImpl;
 
 
 public interface CameraManager {
 
-	void updateCamera(GameModel model, float deltaTime);
+	void updateCamera(GameModelImpl model, float deltaTime);
 
 	void resetCamera();
 

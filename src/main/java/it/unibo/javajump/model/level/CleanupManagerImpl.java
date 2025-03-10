@@ -1,6 +1,6 @@
 package it.unibo.javajump.model.level;
 
-import it.unibo.javajump.model.GameModel;
+import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.model.entities.collectibles.CoinState;
 import it.unibo.javajump.model.entities.platforms.BreakablePlatformImpl;
 import it.unibo.javajump.model.entities.collectibles.CoinImpl;
@@ -13,10 +13,10 @@ import static it.unibo.javajump.utility.Constants.*;
 
 public class CleanupManagerImpl {
 
-	GameModel gameModel;
+	GameModelImpl gameModel;
 
 
-	public void cleanupObjects(GameModel model) {
+	public void cleanupObjects(GameModelImpl model) {
 		this.gameModel = model;
 		List<GameObjectImpl> toRemove = new ArrayList<>();
 

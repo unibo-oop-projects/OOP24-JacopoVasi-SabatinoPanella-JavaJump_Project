@@ -1,6 +1,6 @@
 package it.unibo.javajump.model.level.spawn.collectiblespawn;
 
-import it.unibo.javajump.model.GameModel;
+import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.model.entities.collectibles.CoinImpl;
 import it.unibo.javajump.model.entities.platforms.MovingPlatformImpl;
 import it.unibo.javajump.model.entities.platforms.PlatformImpl;
@@ -23,7 +23,7 @@ public class CollectiblesSpawnerImpl {
 	}
 
 
-	public void spawnCollectible(GameModel model, float platformX, float platformY, float platformWidth, PlatformImpl platform) {
+	public void spawnCollectible(GameModelImpl model, float platformX, float platformY, float platformWidth, PlatformImpl platform) {
 		if (rand.nextFloat() < coinSpawnChance) {
 			float coinX = platformX + (platformWidth / COINXDIV) - (platformWidth * COINXMUL);
 			float coinY = platformY - COINOFFSET;

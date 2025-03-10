@@ -1,6 +1,6 @@
 package it.unibo.javajump.view.viewstates;
 
-import it.unibo.javajump.model.GameModel;
+import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.model.entities.*;
 import it.unibo.javajump.model.entities.collectibles.CoinImpl;
 import it.unibo.javajump.model.entities.platforms.PlatformImpl;
@@ -28,7 +28,7 @@ public class InGameView implements GameViewState {
 	}
 
 	@Override
-	public void draw(Graphics g, GameModel model) {
+	public void draw(Graphics g, GameModelImpl model) {
 
 		ArrayList<GameObjectImpl> snapshot;
 		synchronized (model.getGameObjects()) {

@@ -1,6 +1,6 @@
 package it.unibo.javajump.model.level.spawn;
 
-import it.unibo.javajump.model.GameModel;
+import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.model.entities.platforms.PlatformImpl;
 import it.unibo.javajump.model.factories.AbstractGameObjectFactoryImpl;
 import it.unibo.javajump.model.level.spawn.collectiblespawn.CollectiblesSpawnerImpl;
@@ -40,7 +40,7 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 	}
 
 	@Override
-	public void spawnBatch(GameModel model, float startY, int numberOfPlatforms) {
+	public void spawnBatch(GameModelImpl model, float startY, int numberOfPlatforms) {
 		DifficultyState diff = model.getDifficultyManager().getCurrentDifficulty();
 		System.out.println(DIFFICULTYTEXT + diff);
 		currentY = startY;

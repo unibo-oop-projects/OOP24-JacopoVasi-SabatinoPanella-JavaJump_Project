@@ -1,8 +1,8 @@
 package it.unibo.javajump.model.camera;
 
-import it.unibo.javajump.model.GameModel;
+import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.model.entities.character.CharacterImpl;
-import it.unibo.javajump.model.score.ScoreManager;
+import it.unibo.javajump.model.score.ScoreManagerImpl;
 
 import static it.unibo.javajump.utility.Constants.*;
 
@@ -11,10 +11,10 @@ public class CameraManagerImpl implements CameraManager {
 
 	private float currentOffset;
 	private float previousOffset;
-	private final ScoreManager scoreManager;
+	private final ScoreManagerImpl scoreManager;
 	private final float scoreFactor;
 
-	public CameraManagerImpl(ScoreManager scoreManager, float scoreFactor) {
+	public CameraManagerImpl(ScoreManagerImpl scoreManager, float scoreFactor) {
 		this.scoreManager = scoreManager;
 		this.scoreFactor = scoreFactor;
 		this.currentOffset = OFFSETINIT;
@@ -22,7 +22,7 @@ public class CameraManagerImpl implements CameraManager {
 	}
 
 	@Override
-	public void updateCamera(GameModel model, float deltaTime) {
+	public void updateCamera(GameModelImpl model, float deltaTime) {
 		CharacterImpl player = model.getPlayer();
 		float screenHeight = model.getScreenHeight();
 		float desiredOffset = getDesiredOffset(screenHeight, player);

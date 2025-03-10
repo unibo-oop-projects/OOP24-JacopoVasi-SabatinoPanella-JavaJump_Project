@@ -1,6 +1,6 @@
 package it.unibo.javajump.view.renderers.sub;
 
-import it.unibo.javajump.model.GameModel;
+import it.unibo.javajump.model.GameModelImpl;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -41,7 +41,7 @@ public class BackgroundRenderer {
 	}
 
 
-	public void drawBackground(Graphics2D g2, GameModel model, float deltaTime) {
+	public void drawBackground(Graphics2D g2, GameModelImpl model, float deltaTime) {
 		int screenW = model.getScreenWidth();
 		int screenH = model.getScreenHeight();
 

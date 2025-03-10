@@ -1,7 +1,7 @@
 package it.unibo.javajump.model.states;
 
 import it.unibo.javajump.controller.GameAction;
-import it.unibo.javajump.model.GameModel;
+import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.model.entities.GameObjectImpl;
 import it.unibo.javajump.model.entities.character.CharacterImpl;
 import it.unibo.javajump.model.physics.MovementDirection;
@@ -17,11 +17,11 @@ public class InGameState implements GameStateHandler {
 	private int horizontalDirection = NULLDIRECTION;
 
 	@Override
-	public void onEnter(GameModel model) {
+	public void onEnter(GameModelImpl model) {
 	}
 
 	@Override
-	public void handleAction(GameModel model, GameAction action) {
+	public void handleAction(GameModelImpl model, GameAction action) {
 		switch (action) {
 			case MOVE_LEFT -> horizontalDirection = LEFTDIRECTION;
 			case MOVE_RIGHT -> horizontalDirection = RIGHTDIRECTION;
@@ -33,7 +33,7 @@ public class InGameState implements GameStateHandler {
 	}
 
 	@Override
-	public void update(GameModel model, float deltaTime) {
+	public void update(GameModelImpl model, float deltaTime) {
 		CharacterImpl player = model.getPlayer();
 		MovementDirection md = convertIntToMovementDirection(horizontalDirection);
 		model.getPhysicsManager().updateCharacterMovement(player, deltaTime, md);

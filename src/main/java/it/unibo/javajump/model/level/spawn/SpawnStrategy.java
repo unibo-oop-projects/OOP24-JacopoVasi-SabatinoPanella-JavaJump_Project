@@ -1,11 +1,11 @@
 package it.unibo.javajump.model.level.spawn;
 
-import it.unibo.javajump.model.GameModel;
+import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.model.factories.AbstractGameObjectFactoryImpl;
 
 public interface SpawnStrategy {
 	
-	void spawnBatch(GameModel model, float startY, int numberOfPlatforms);
+	void spawnBatch(GameModelImpl model, float startY, int numberOfPlatforms);
 
 	float returnCurrentY();
 
