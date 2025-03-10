@@ -122,6 +122,7 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
 
 		switch (currentState) {
 			case MENU:
+				System.out.println("Returned to MENU!");
 				AudioManagerImpl.stopMusic();
 				menuView.draw(g2, model);
 				break;
@@ -151,21 +152,18 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
 
 		if (currentState != lastState) {
 			switch (currentState) {
-				case IN_GAME:
-
-					break;
-				case PAUSE:
-
-					break;
-				case GAME_OVER:
+				case IN_GAME -> {
+				}
+				case PAUSE -> {
+				}
+				case GAME_OVER -> {
 					AudioManagerImpl.fadeOut(MAINVIEWAUDIOFADE);
 					gameOverView.startFade();
-					break;
-				case MENU:
-
-					break;
-				default:
-					break;
+				}
+				case MENU -> {
+				}
+				default -> {
+				}
 			}
 		}
 		lastState = currentState;

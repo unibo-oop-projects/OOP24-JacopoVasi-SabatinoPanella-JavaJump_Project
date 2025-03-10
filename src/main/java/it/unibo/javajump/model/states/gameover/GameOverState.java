@@ -1,7 +1,10 @@
-package it.unibo.javajump.model.states;
+package it.unibo.javajump.model.states.gameover;
 
 import it.unibo.javajump.controller.input.GameAction;
 import it.unibo.javajump.model.GameModel;
+import it.unibo.javajump.model.states.GameState;
+import it.unibo.javajump.model.states.GameStateHandler;
+import it.unibo.javajump.model.states.menu.MenuState;
 
 
 import java.util.Objects;
@@ -12,7 +15,7 @@ public class GameOverState implements GameStateHandler {
 
 	@Override
 	public void handleAction(GameModel model, GameAction action) {
-		// Return to menu
+
 		if (Objects.requireNonNull(action) == GameAction.CONFIRM_SELECTION) {
 			model.setState(new MenuState());
 		}
@@ -20,6 +23,7 @@ public class GameOverState implements GameStateHandler {
 
 	@Override
 	public void update(GameModel model, float deltaTime) {
+		this.deltaTime = deltaTime;
 	}
 
 	@Override
@@ -27,7 +31,6 @@ public class GameOverState implements GameStateHandler {
 		return gameState;
 	}
 
-	@Override
 	public int getState() {
 		return 0;
 	}

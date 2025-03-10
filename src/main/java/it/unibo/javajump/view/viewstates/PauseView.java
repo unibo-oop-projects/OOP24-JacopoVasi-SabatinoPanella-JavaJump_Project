@@ -1,6 +1,9 @@
 package it.unibo.javajump.view.viewstates;
 
 import it.unibo.javajump.model.GameModel;
+import it.unibo.javajump.model.states.pause.PauseOption;
+import it.unibo.javajump.model.states.pause.PauseState;
+import it.unibo.javajump.view.graphics.GameGraphicsImpl;
 
 
 import java.awt.*;
@@ -8,29 +11,27 @@ import java.awt.*;
 import static it.unibo.javajump.utility.Constants.*;
 
 public class PauseView implements GameViewState {
-	private int selectionYcor = PAUSECONTINUEY;
-
 	@Override
 	public void draw(Graphics g, GameModel model) {
-		switch (model.getCurrentState().getState()) {
-			case PAUSEMENUCONTINUE ->
-					selectionYcor = PAUSECONTINUEY;
-			case PAUSEMENUMAINMENU ->
-					selectionYcor = PAUSEMAINMENUY;
-			case PAUSEMENUQUIT ->
-					selectionYcor = PAUSEQUITY;
-			default -> {
-			}
+		PauseState pauseState = (PauseState) model.getCurrentState();
+		PauseOption selection = pauseState.getSelection();
+
+		int selectionYcor;
+		switch (selection) {
+			case CONTINUE -> selectionYcor = PAUSECONTINUEY;
+			case MAIN_MENU -> selectionYcor = PAUSEMAINMENUY;
+			case QUIT -> selectionYcor = PAUSEQUITY;
+			default -> selectionYcor = PAUSECONTINUEY;
 		}
 
-		g.setColor(new Color(Color.black.getRGB()));
+		g.setColor(Color.decode(BACKGROUND_DEFAULT_COLOR));
 		g.fillRect(0, 0, model.getScreenWidth(), model.getScreenHeight());
 
-		g.setColor(Color.WHITE);
-		g.setFont(PAUSEFONT);
+		g.setColor(Color.decode(GOLD_TEXT_COLOR));
+		g.setFont(GameGraphicsImpl.getGameFont1());
 		g.drawString(PAUSETEXT, model.getScreenWidth() / PAUSECENTERDIV - PAUSEWIDTHOFF, model.getScreenHeight() / PAUSECENTERDIV);
-		g.setFont(PAUSEMENUFONT);
 		g.setColor(Color.WHITE);
+		g.setFont(GameGraphicsImpl.getGameFont2());
 		g.drawString(PAUSECONTINUETEXT, model.getScreenWidth() / PAUSECENTERDIV - PAUSEWIDTHOFF, model.getScreenHeight() / PAUSECENTERDIV + PAUSECONTINUEY);
 		g.drawString(PAUSEMAINMENUTEXT, model.getScreenWidth() / PAUSECENTERDIV - PAUSEWIDTHOFF, model.getScreenHeight() / PAUSECENTERDIV + PAUSEMAINMENUY);
 		g.drawString(PAUSEQUITTEXT, model.getScreenWidth() / PAUSECENTERDIV - PAUSEWIDTHOFF, model.getScreenHeight() / PAUSECENTERDIV + PAUSEQUITY);

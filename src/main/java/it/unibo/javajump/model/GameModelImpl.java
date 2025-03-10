@@ -11,7 +11,7 @@ import it.unibo.javajump.model.level.spawn.difficulty.DifficultyManager;
 import it.unibo.javajump.model.physics.PhysicsManager;
 import it.unibo.javajump.model.score.ScoreManager;
 import it.unibo.javajump.model.states.GameStateHandler;
-import it.unibo.javajump.model.states.MenuState;
+import it.unibo.javajump.model.states.menu.MenuState;
 
 import java.util.ArrayList;
 import java.util.List;

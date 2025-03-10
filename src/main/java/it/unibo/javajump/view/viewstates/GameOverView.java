@@ -55,7 +55,7 @@ public class GameOverView implements GameViewState {
 
 
 		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, fadeAlpha));
-		g2.setColor(Color.decode("#05051C"));
+		g2.setColor(Color.decode(BACKGROUND_DEFAULT_COLOR));
 		g2.fillRect(GAMEOVERRECTX, GAMEOVERRECTY, w, h);
 
 
@@ -66,7 +66,7 @@ public class GameOverView implements GameViewState {
 
 		if (fadeAlpha >= GAMEOVERALPHA) {
 			if (model.getScoreManager().isBestScoreReached()) {
-				g.setColor(Color.decode("#eac10c"));
+				g.setColor(Color.decode(GOLD_TEXT_COLOR));
 				g.setFont(GameGraphicsImpl.getGameFont2());
 				g.drawString(GAMEOVERNEWTEXT + model.getScoreManager().getBestScore() + GAMEOVERNEWTEXTESC, (int) (centerX * GAMEOVERTEXTXOFF), centerY + GAMEOVERTEXTNEWYOFF);
 			} else {
@@ -74,12 +74,12 @@ public class GameOverView implements GameViewState {
 				g.setFont(GameGraphicsImpl.getGameFont2());
 				g.drawString(GAMEOVERSCORETEXT + model.getScore(), (int) (centerX * GAMEOVERTEXTXOFF), centerY + GAMEOVERTEXTSCOREYOFF);
 
-				g.setColor(Color.decode("#F84534"));
+				g.setColor(Color.decode(RED_TEXT_COLOR));
 				g.setFont(GameGraphicsImpl.getGameFont2());
 				g.drawString(GAMEOVERBESTTEXT + model.getScoreManager().getBestScore(), (int) (centerX * GAMEOVERTEXTXOFF), centerY + GAMEOVERTEXTBESTYOFF);
 			}
 
-			g2.setColor(Color.decode("#F84534"));
+			g2.setColor(Color.decode(RED_TEXT_COLOR));
 			g2.setFont(GameGraphicsImpl.getGameFont3());
 			g2.drawString(GAMEOVERCONTINUETEXT, (int) (centerX * GAMEOVERTEXTXOFF), centerY + GAMEOVERTEXTCONTINUEYOFF);
 

@@ -1,7 +1,10 @@
-package it.unibo.javajump.model.states;
+package it.unibo.javajump.model.states.menu;
 
 import it.unibo.javajump.controller.input.GameAction;
 import it.unibo.javajump.model.GameModel;
+import it.unibo.javajump.model.states.GameState;
+import it.unibo.javajump.model.states.GameStateHandler;
+import it.unibo.javajump.model.states.ingame.InGameState;
 
 
 public class MenuState implements GameStateHandler {
@@ -36,7 +39,6 @@ public class MenuState implements GameStateHandler {
 		return gameState;
 	}
 
-	@Override
 	public int getState() {
 		return 0;
 	}

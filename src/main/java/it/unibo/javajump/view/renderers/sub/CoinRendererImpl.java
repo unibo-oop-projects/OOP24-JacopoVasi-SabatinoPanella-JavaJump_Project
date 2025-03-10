@@ -1,7 +1,6 @@
 package it.unibo.javajump.view.renderers.sub;
 
 import it.unibo.javajump.model.entities.collectibles.Coin;
-import it.unibo.javajump.model.entities.collectibles.CoinImpl;
 import it.unibo.javajump.model.entities.collectibles.CoinState;
 
 import java.awt.*;
@@ -11,17 +10,44 @@ import java.util.Map;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-
+/**
+ * Class that implements the CoinRenderer interface, used for graphical rendering of the coins (animated).
+ */
 public class CoinRendererImpl implements CoinRenderer {
-
+	/**
+	 * The coin sprite sheet, contains all the animation frames.
+	 */
 	private final BufferedImage coinSheet;
+	/**
+	 * The width of each frame.
+	 */
 	private final int frameWidth;
+	/**
+	 * The height of each frame.
+	 */
 	private final int frameHeight;
+	/**
+	 * The standard duration of a frame of animation.
+	 */
 	private final float frameDuration;
-
+	/**
+	 * A map that stores the animation timers for each coin.
+	 */
 	private final Map<Coin, Float> coinAnimTimers = new HashMap<>();
+
+	/**
+	 * A map that stores the last state of each coin.
+	 */
 	private final Map<Coin, CoinState> coinLastStates = new HashMap<>();
 
+	/**
+	 * Constructor for the CoinRendererImpl class.
+	 *
+	 * @param sheet         the coin sprite sheet
+	 * @param frameWidth    the width of each frame
+	 * @param frameHeight   the height of each frame
+	 * @param frameDuration the standard duration of a frame of animation
+	 */
 	public CoinRendererImpl(BufferedImage sheet, int frameWidth, int frameHeight, float frameDuration) {
 		this.coinSheet = sheet;
 		this.frameWidth = frameWidth;
@@ -29,7 +55,17 @@ public class CoinRendererImpl implements CoinRenderer {
 		this.frameDuration = frameDuration;
 	}
 
-
+	/**
+	 * {@inheritDoc}
+	 * The implementation checks the state of the Coin (in model) and updates the animation timer
+	 * accordingly.
+	 * The animation frames are then extracted from the sprite sheet and drawn on the screen.
+	 * The sprite sheet contains two rows of frames,
+	 * one for idle animation and one for collected animation.
+	 * This method also handles the removal of coins when they are collected,
+	 * by updating the coinLastStates and coinAnimTimers maps,
+	 * all while setting the coin's state to FINISHED.
+	 */
 	@Override
 	public void drawCoin(Graphics2D g2, Coin coin, float offsetY, float deltaTime) {
 		if (coin.getState() == CoinState.FINISHED) {
@@ -74,9 +110,13 @@ public class CoinRendererImpl implements CoinRenderer {
 		g2.drawImage(frame, (int) drawX, (int) drawY, null);
 	}
 
-
-	@Override
-	public void removeCoin(Coin coin) {
+	/**
+	 * Removes the data related to a coin in a Map, for example, when the
+	 * Coin(GameObject) is removed.
+	 *
+	 * @param coin the Coin to remove
+	 */
+	private void removeCoin(Coin coin) {
 		coinAnimTimers.remove(coin);
 		coinLastStates.remove(coin);
 	}

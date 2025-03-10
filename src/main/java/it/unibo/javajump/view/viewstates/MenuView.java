@@ -22,7 +22,7 @@ public class MenuView implements GameViewState {
 
 		int bestScore = model.getScoreManager().getBestScore();
 
-		g.setColor(Color.decode("#05051C"));
+		g.setColor(Color.decode(BACKGROUND_DEFAULT_COLOR));
 		g.fillRect(MENUVIEWRECTX, MENUVIEWRECTY, width, height);
 
 		BufferedImage title = GameGraphicsImpl.getTitle();
@@ -33,7 +33,7 @@ public class MenuView implements GameViewState {
 		g.drawString(MENUVIEWSTARTTEXT, centerX / MENUVIEWXCENTER, centerY + MENUVIEWSTARTYOFFSET);
 		g.drawString(MENUVIEWQUITTEXT, centerX / MENUVIEWXCENTER, centerY + MENUVIEWQUITYOFFSET);
 
-		g.setColor(Color.decode("#eac10c"));
+		g.setColor(Color.decode(GOLD_TEXT_COLOR));
 		Stroke dashed = new BasicStroke(MENUVIEWSTOKEWIDTH, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, MENUVIEWSTROKEMITERLIMIT, new float[]{MENUVIEWSTROKEARRAY}, MENUVIEWSTROKEDASH);
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setStroke(dashed);

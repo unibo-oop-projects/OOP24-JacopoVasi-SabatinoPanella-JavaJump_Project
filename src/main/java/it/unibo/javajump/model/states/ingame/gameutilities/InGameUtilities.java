@@ -1,10 +1,9 @@
-package it.unibo.javajump.model.states.gameutilities;
+package it.unibo.javajump.model.states.ingame.gameutilities;
 
 import it.unibo.javajump.model.GameModel;
-import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.model.physics.MovementDirection;
 import it.unibo.javajump.model.entities.character.Character;
-import it.unibo.javajump.model.states.GameOverState;
+import it.unibo.javajump.model.states.gameover.GameOverState;
 
 import static it.unibo.javajump.utility.Constants.*;
 

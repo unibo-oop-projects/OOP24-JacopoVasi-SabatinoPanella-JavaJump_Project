@@ -53,11 +53,6 @@ public final class Constants {
 	//CharacterImpl
 	public static final int VELOCITYINIT = 0;
 
-	//Horizontal Movement Deceleration
-	public static final float THRESHOLD = 5;
-
-	public static final float EPSILON = 1;
-
 	//Generic Numbers
 	public static final int ZERO = 0;
 	public static final int ONE = 1;
@@ -77,7 +72,6 @@ public final class Constants {
 	public static final int MOVINGPLATFORMWIDTHRNGFACTOR = 45;
 	public static final float MOVINGPLATFORMRANGERNGFACTOR = 100;
 	public static final int MOVINGPLATFORMSPEEDRNGFACTOR = 50;
-	public static final float MOVINGPLATFORMSPEEDCHANGE = 2;
 	public static final float BREAKABLEPLATFORMWIDTH = 80;
 	public static final int BREAKABLEPLATFORMRNGFACTOR = 25;
 	public static final float BOUNCEPLATFORMWIDTH = 80;
@@ -229,11 +223,6 @@ public final class Constants {
 	public static final String GAMEOVERNEWTEXTESC = " !!";
 
 	// PAUSEVIEW
-	public static final Font PAUSEFONT = new Font("Arial", Font.BOLD, 30);
-	public static final Font PAUSEMENUFONT = new Font("Arial", Font.BOLD, 20);
-	public static final int PAUSEMENUCONTINUE = 0;
-	public static final int PAUSEMENUMAINMENU = 1;
-	public static final int PAUSEMENUQUIT = 2;
 	public static final int PAUSECONTINUEY = 70;
 	public static final int PAUSEMAINMENUY = 100;
 	public static final int PAUSEQUITY = 130;
@@ -253,6 +242,22 @@ public final class Constants {
 	public static final int MAINVIEWDRAWYINIT = 0;
 	public static final int MAINVIEWRECTX = 0;
 	public static final int MAINVIEWRECTY = 0;
+
+	//COLOR CODING
+	// 1- General colours
+	public static final String BACKGROUND_DEFAULT_COLOR = "#05051C";
+	public static final String GOLD_TEXT_COLOR = "#EAC10C";
+	public static final String RED_TEXT_COLOR = "#F84534";
+
+	// 2- GameObject colours
+	public static final String PLATFORM_HIGHLIGHT_COLOR = "#D4C340";
+	public static final String STANDARD_PLATFORM_COLOR = "#4D9F50";
+	public static final String MOVING_PLATFORM_COLOR = "#276B91";
+	public static final String BREAKABLE_PLATFORM_COLOR = "#EA4B1E";
+	public static final String BOUNCE_PLATFORM_COLOR = "#D15484";
+
+	public static final String OUTLINE_COLOR = "#0E081E";
+
 
 	// Resources Path
 	public static final String RESOURCESWINDOWSPATH = "src/main/java/it/unibo/javajump/view/resources/";
