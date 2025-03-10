@@ -7,9 +7,9 @@ import it.unibo.javajump.model.collision.CollisionManager;
 import it.unibo.javajump.model.collision.CollisionManagerImpl;
 import it.unibo.javajump.model.factories.AbstractGameObjectFactoryImpl;
 import it.unibo.javajump.model.factories.GameObjectFactoryImpl;
-import it.unibo.javajump.model.level.CleanupManager;
-import it.unibo.javajump.model.level.SpawnManager;
-import it.unibo.javajump.model.level.spawn.difficulty.DifficultyManager;
+import it.unibo.javajump.model.level.CleanupManagerImpl;
+import it.unibo.javajump.model.level.SpawnManagerImpl;
+import it.unibo.javajump.model.level.spawn.difficulty.DifficultyManagerImpl;
 import it.unibo.javajump.model.physics.PhysicsManager;
 import it.unibo.javajump.model.score.ScoreManager;
 import it.unibo.javajump.model.camera.CameraManager;
@@ -28,14 +28,14 @@ public class Main {
 		int screenWidth = SCREENWIDTH;
 		int screenHeight = SCREENHEIGHT;
 		AbstractGameObjectFactoryImpl factory = new GameObjectFactoryImpl();
-		DifficultyManager difficultyManager = new DifficultyManager();
+		DifficultyManagerImpl difficultyManager = new DifficultyManagerImpl();
 		RandomSpawnStrategy strategy = new RandomSpawnStrategy(factory, MINSPACING, MAXSPACING, COINCHANCE, difficultyManager);
 		CollisionManager collisionManager = new CollisionManagerImpl();
-		SpawnManager spawnManager = new SpawnManager(strategy);
+		SpawnManagerImpl spawnManager = new SpawnManagerImpl(strategy);
 		ScoreManager scoreManager = new ScoreManager();
 		CameraManager cameraManager = new CameraManagerImpl(scoreManager, SCOREFACTOR);
 		PhysicsManager physicsManager = new PhysicsManager(GRAVITY, ACCELERATION, MAXSPEED, DECELERATION);
-		CleanupManager cleanupManager = new CleanupManager();
+		CleanupManagerImpl cleanupManager = new CleanupManagerImpl();
 		JFrame frame = new JFrame(GAMETITLE);
 
 		GameModel model = new GameModel(screenWidth,

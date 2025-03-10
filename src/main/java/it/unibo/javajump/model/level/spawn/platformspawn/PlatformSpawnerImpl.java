@@ -6,14 +6,14 @@ import it.unibo.javajump.model.level.spawn.difficulty.DifficultyState;
 
 import java.util.Random;
 
-import static it.unibo.javajump.model.level.spawn.spawnutilities.SpawnUtils.randomInRange;
+import static it.unibo.javajump.model.level.spawn.spawnutilities.SpawnUtilsImpl.randomInRange;
 
-public class PlatformSpawner {
+public class PlatformSpawnerImpl {
 
 	private final AbstractGameObjectFactoryImpl factory;
 	private final Random rand;
 
-	public PlatformSpawner(AbstractGameObjectFactoryImpl factory) {
+	public PlatformSpawnerImpl(AbstractGameObjectFactoryImpl factory) {
 		this.factory = factory;
 		this.rand = new Random();
 	}

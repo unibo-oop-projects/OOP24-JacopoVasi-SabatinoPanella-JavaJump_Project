@@ -10,13 +10,13 @@ import java.util.Random;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class CollectiblesSpawner {
+public class CollectiblesSpawnerImpl {
 
 	private final AbstractGameObjectFactoryImpl factory;
 	private final Random rand;
 	private final float coinSpawnChance;
 
-	public CollectiblesSpawner(AbstractGameObjectFactoryImpl factory, float coinSpawnChance) {
+	public CollectiblesSpawnerImpl(AbstractGameObjectFactoryImpl factory, float coinSpawnChance) {
 		this.factory = factory;
 		this.rand = new Random();
 		this.coinSpawnChance = coinSpawnChance;

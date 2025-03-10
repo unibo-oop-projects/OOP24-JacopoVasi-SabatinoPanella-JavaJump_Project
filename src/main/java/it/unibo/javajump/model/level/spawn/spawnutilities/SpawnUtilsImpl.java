@@ -8,7 +8,7 @@ import java.util.Random;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class SpawnUtils {
+public class SpawnUtilsImpl {
 	public static float randomInRange(Random rand, float min, float max) {
 		return min + rand.nextFloat() * (max - min);
 	}

@@ -11,7 +11,7 @@ import java.util.List;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class CleanupManager {
+public class CleanupManagerImpl {
 
 	GameModel gameModel;
 

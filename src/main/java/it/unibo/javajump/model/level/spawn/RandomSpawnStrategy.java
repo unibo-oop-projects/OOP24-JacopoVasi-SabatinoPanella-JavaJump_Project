@@ -3,11 +3,11 @@ package it.unibo.javajump.model.level.spawn;
 import it.unibo.javajump.model.GameModel;
 import it.unibo.javajump.model.entities.platforms.PlatformImpl;
 import it.unibo.javajump.model.factories.AbstractGameObjectFactoryImpl;
-import it.unibo.javajump.model.level.spawn.collectiblespawn.CollectiblesSpawner;
-import it.unibo.javajump.model.level.spawn.difficulty.DifficultyManager;
+import it.unibo.javajump.model.level.spawn.collectiblespawn.CollectiblesSpawnerImpl;
+import it.unibo.javajump.model.level.spawn.difficulty.DifficultyManagerImpl;
 import it.unibo.javajump.model.level.spawn.difficulty.DifficultyState;
-import it.unibo.javajump.model.level.spawn.platformspawn.PlatformSpawner;
-import it.unibo.javajump.model.level.spawn.spawnutilities.SpawnUtils;
+import it.unibo.javajump.model.level.spawn.platformspawn.PlatformSpawnerImpl;
+import it.unibo.javajump.model.level.spawn.spawnutilities.SpawnUtilsImpl;
 
 import java.util.Random;
 
@@ -22,21 +22,21 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 	@SuppressWarnings("FieldMayBeFinal")
 	private float maxPlatformYSpacing;
 	private float currentY;
-	private final CollectiblesSpawner collectiblesSpawner;
-	private final PlatformSpawner platformSpawner;
+	private final CollectiblesSpawnerImpl collectiblesSpawner;
+	private final PlatformSpawnerImpl platformSpawner;
 
 	public RandomSpawnStrategy(AbstractGameObjectFactoryImpl factory,
 							   float minSpacing,
 							   float maxSpacing,
 							   float coinChance,
-							   DifficultyManager difficultyManager) {
+							   DifficultyManagerImpl difficultyManager) {
 		this.factory = factory;
 		this.rand = new Random();
 		this.minPlatformYSpacing = minSpacing;
 		this.maxPlatformYSpacing = maxSpacing;
 		this.currentY = ZERO;
-		this.collectiblesSpawner = new CollectiblesSpawner(factory, coinChance);
-		this.platformSpawner = new PlatformSpawner(factory);
+		this.collectiblesSpawner = new CollectiblesSpawnerImpl(factory, coinChance);
+		this.platformSpawner = new PlatformSpawnerImpl(factory);
 	}
 
 	@Override
@@ -67,11 +67,11 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 		if (null != diff) {
 			switch (diff) {
 				case EASY, MEDIUM ->
-						gap = SpawnUtils.randomInRange(rand, minPlatformYSpacing - GAPOFFSETTEN, maxPlatformYSpacing - GAPOFFSETTHIRTY);
+						gap = SpawnUtilsImpl.randomInRange(rand, minPlatformYSpacing - GAPOFFSETTEN, maxPlatformYSpacing - GAPOFFSETTHIRTY);
 				case HARD, VERY_HARD ->
-						gap = SpawnUtils.randomInRange(rand, minPlatformYSpacing, maxPlatformYSpacing - GAPOFFSETTEN);
+						gap = SpawnUtilsImpl.randomInRange(rand, minPlatformYSpacing, maxPlatformYSpacing - GAPOFFSETTEN);
 				case HELL ->
-						gap = SpawnUtils.randomInRange(rand, minPlatformYSpacing + GAPOFFSETTEN, maxPlatformYSpacing);
+						gap = SpawnUtilsImpl.randomInRange(rand, minPlatformYSpacing + GAPOFFSETTEN, maxPlatformYSpacing);
 				default -> {
 				}
 			}

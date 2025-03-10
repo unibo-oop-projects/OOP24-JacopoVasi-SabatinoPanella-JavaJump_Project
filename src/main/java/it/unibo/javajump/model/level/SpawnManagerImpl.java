@@ -6,15 +6,15 @@ import it.unibo.javajump.model.level.spawn.RandomSpawnStrategy;
 import it.unibo.javajump.model.level.spawn.SpawnStrategy;
 
 import static it.unibo.javajump.utility.Constants.*;
-import static it.unibo.javajump.model.level.spawn.spawnutilities.SpawnUtils.spawnPlatformBelowPlayer;
+import static it.unibo.javajump.model.level.spawn.spawnutilities.SpawnUtilsImpl.spawnPlatformBelowPlayer;
 
-public class SpawnManager {
+public class SpawnManagerImpl {
 
 	private final SpawnStrategy spawnStrategy;
 	private float topPlatformY;
 
 
-	public SpawnManager(SpawnStrategy spawnStrategy) {
+	public SpawnManagerImpl(SpawnStrategy spawnStrategy) {
 		this.spawnStrategy = spawnStrategy;
 		this.topPlatformY = ZERO;
 	}

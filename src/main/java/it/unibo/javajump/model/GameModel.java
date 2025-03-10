@@ -5,9 +5,9 @@ import it.unibo.javajump.model.camera.CameraManager;
 import it.unibo.javajump.model.collision.CollisionManager;
 import it.unibo.javajump.model.entities.GameObjectImpl;
 import it.unibo.javajump.model.entities.character.CharacterImpl;
-import it.unibo.javajump.model.level.CleanupManager;
-import it.unibo.javajump.model.level.SpawnManager;
-import it.unibo.javajump.model.level.spawn.difficulty.DifficultyManager;
+import it.unibo.javajump.model.level.CleanupManagerImpl;
+import it.unibo.javajump.model.level.SpawnManagerImpl;
+import it.unibo.javajump.model.level.spawn.difficulty.DifficultyManagerImpl;
 import it.unibo.javajump.model.physics.PhysicsManager;
 import it.unibo.javajump.model.score.ScoreManager;
 import it.unibo.javajump.model.states.GameStateHandler;
@@ -24,11 +24,11 @@ public class GameModel {
 	private GameStateHandler currentState;
 	private final PhysicsManager physicsManager;
 	private final CollisionManager collisionManager;
-	private final SpawnManager spawnManager;
+	private final SpawnManagerImpl spawnManager;
 	private final CameraManager cameraManager;
 	private final ScoreManager scoreManager;
-	private final CleanupManager cleanupManager;
-	private final DifficultyManager difficultyManager;
+	private final CleanupManagerImpl cleanupManager;
+	private final DifficultyManagerImpl difficultyManager;
 
 
 	private final List<GameObjectImpl> gameObjects;
@@ -46,11 +46,11 @@ public class GameModel {
 			int screenHeight,
 			PhysicsManager physicsManager,
 			CollisionManager collisionManager,
-			SpawnManager spawnManager,
+			SpawnManagerImpl spawnManager,
 			CameraManager cameraManager,
 			ScoreManager scoreManager,
-			CleanupManager cleanupManager,
-			DifficultyManager difficultyManager
+			CleanupManagerImpl cleanupManager,
+			DifficultyManagerImpl difficultyManager
 	) {
 		this.screenWidth = screenWidth;
 		this.screenHeight = screenHeight;
@@ -131,7 +131,7 @@ public class GameModel {
 		return collisionManager;
 	}
 
-	public SpawnManager getSpawnManager() {
+	public SpawnManagerImpl getSpawnManager() {
 		return spawnManager;
 	}
 
@@ -143,11 +143,11 @@ public class GameModel {
 		return scoreManager;
 	}
 
-	public CleanupManager getCleanupManager() {
+	public CleanupManagerImpl getCleanupManager() {
 		return cleanupManager;
 	}
 
-	public DifficultyManager getDifficultyManager() {
+	public DifficultyManagerImpl getDifficultyManager() {
 		return difficultyManager;
 	}
 

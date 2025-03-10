@@ -3,15 +3,15 @@ package it.unibo.javajump.model.level.spawn.difficulty;
 import java.util.Random;
 
 import static it.unibo.javajump.utility.Constants.*;
-import static it.unibo.javajump.model.level.spawn.spawnutilities.SpawnUtils.randomInRange;
+import static it.unibo.javajump.model.level.spawn.spawnutilities.SpawnUtilsImpl.randomInRange;
 
-public class DifficultyManager {
+public class DifficultyManagerImpl {
 
 	private int currentScore;
 	private DifficultyState currentDifficulty;
 	private final Random rand;
 
-	public DifficultyManager() {
+	public DifficultyManagerImpl() {
 		this.currentScore = SCOREINIT;
 		this.currentDifficulty = DifficultyState.EASY;
 		this.rand = new Random();
