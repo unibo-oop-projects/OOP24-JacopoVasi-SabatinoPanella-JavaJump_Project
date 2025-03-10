@@ -6,10 +6,10 @@ import it.unibo.javajump.controller.input.InputManager;
 import it.unibo.javajump.controller.input.InputManagerImpl;
 import it.unibo.javajump.model.GameModel;
 import it.unibo.javajump.model.GameModelImpl;
+import it.unibo.javajump.model.GameModelObserver;
 import it.unibo.javajump.model.camera.CameraManagerImpl;
 import it.unibo.javajump.model.collision.CollisionManager;
 import it.unibo.javajump.model.collision.CollisionManagerImpl;
-import it.unibo.javajump.model.factories.AbstractGameObjectFactory;
 import it.unibo.javajump.model.factories.GameObjectFactory;
 import it.unibo.javajump.model.factories.GameObjectFactoryImpl;
 import it.unibo.javajump.model.level.CleanupManager;
@@ -28,6 +28,7 @@ import it.unibo.javajump.view.MainGameView;
 import it.unibo.javajump.view.MainGameViewImpl;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
@@ -61,7 +62,7 @@ public class Main {
 				difficultyManager);
 
 		MainGameView view = new MainGameViewImpl(model);
-		model.addObserver(view);
+		model.addObserver((GameModelObserver) view);
 
 		InputManager inputManager = new InputManagerImpl();
 		frame.addKeyListener(inputManager);
@@ -75,10 +76,10 @@ public class Main {
 			public void componentResized(ComponentEvent e) {
 				frame.setPreferredSize(e.getComponent().getSize());
 				frame.pack();
-				view.setNewSize(frame.getContentPane().getWidth(), frame.getContentPane().getHeight());
+
 			}
 		});
-		frame.add(view);
+		frame.add((Component) view);
 		frame.setVisible(true);
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 

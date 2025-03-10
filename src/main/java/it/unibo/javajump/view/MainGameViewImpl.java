@@ -1,7 +1,6 @@
 package it.unibo.javajump.view;
 
 import it.unibo.javajump.model.GameModel;
-import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.model.GameModelObserver;
 import it.unibo.javajump.model.states.GameState;
 import it.unibo.javajump.model.states.GameStateHandler;
@@ -32,11 +31,8 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
 
 	private final BufferedImage tempScreen;
 
-	private final RenderManager rendererManager;
 	private GameState lastState;
 
-
-	private static float currentDeltaTime = MAINVIEWDELTAINIT;
 
 	public MainGameViewImpl(GameModel model) {
 		this.model = model;
@@ -45,7 +41,7 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
 		this.virtualWidth = model.getScreenWidth();
 		this.virtualHeight = model.getScreenHeight();
 
-		this.rendererManager = new RendererManagerImpl();
+		RenderManager rendererManager = new RendererManagerImpl();
 		setBackground(Color.decode("#05051C"));
 
 		this.menuView = new MenuView();
@@ -68,13 +64,12 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
 
 	
 	@Override
-	public void updateView(float deltaTime) {
-		this.currentDeltaTime = deltaTime;
+	public void updateView() {
 
 		GameStateHandler currentHandler = model.getCurrentState();
 		GameState gs = currentHandler.getGameState();
 		if (gs == GameState.GAME_OVER) {
-			gameOverView.update(deltaTime);
+			gameOverView.update();
 		} else {
 			gameOverView.stopFade();
 		}
@@ -176,12 +171,5 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
 		lastState = currentState;
 
 		repaint();
-	}
-
-	public void setNewSize(int screenWidth, int screenHeight) {
-	}
-
-	public static float getCurrentDeltaTime() {
-		return currentDeltaTime;
 	}
 }

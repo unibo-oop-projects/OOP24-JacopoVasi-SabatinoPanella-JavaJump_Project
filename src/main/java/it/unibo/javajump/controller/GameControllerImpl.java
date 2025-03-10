@@ -3,9 +3,9 @@ package it.unibo.javajump.controller;
 import it.unibo.javajump.controller.input.GameAction;
 import it.unibo.javajump.controller.input.InputManager;
 import it.unibo.javajump.model.GameModel;
-import it.unibo.javajump.model.GameModelImpl;
+
 import it.unibo.javajump.view.MainGameView;
-import it.unibo.javajump.view.MainGameViewImpl;
+
 
 import static it.unibo.javajump.utility.Constants.*;
 
@@ -61,7 +61,7 @@ public class GameControllerImpl implements GameController {
 					float deltaTime = (float) (elapsedNs / NANOSECONDS_PER_SECOND);
 					processDiscreteInput();
 					updateModel(deltaTime);
-					view.updateView(deltaTime);
+					view.updateView();
 					previousTime = currentTime;
 				}
 

@@ -4,7 +4,7 @@ import java.awt.*;
 
 public final class Constants {
 
-
+	//MAIN
 	public static final int SCREENWIDTH = 600;
 
 	public static final int SCREENHEIGHT = 800;
@@ -27,7 +27,7 @@ public final class Constants {
 
 	public static final String GAMETITLE = "JAVA JUMP";
 
-
+	//Controller
 	public static final double FPS = 60;
 
 	public static final double NANOSECONDS_PER_SECOND = 1000000000;
@@ -40,29 +40,29 @@ public final class Constants {
 
 	public static final int SLEEPTHREAD = 1;
 
-
+	//Camera
 	public static final int OFFSETINIT = 0;
 
 	public static final float HEIGHTDIV = 2;
 
 	public static final float WIDTHDIV = 0.05f;
 
-
+	//Collision Manager
 	public static final int COINSCOREVALUE = 50;
 
-
+	//CharacterImpl
 	public static final int VELOCITYINIT = 0;
 
-
+	//Horizontal Movement Deceleration
 	public static final float THRESHOLD = 5;
 
 	public static final float EPSILON = 1;
 
-
+	//Generic Numbers
 	public static final int ZERO = 0;
 	public static final int ONE = 1;
 	public static final int MINUSONE = -1;
-
+	//Object Factory
 
 	public static final float CHARACTERWIDTH = 48;
 	public static final float CHARACTERHEIGHT = 50;
@@ -85,12 +85,12 @@ public final class Constants {
 	public static final float COINWIDTH = 44;
 	public static final float COINHEIGHT = 52;
 
-
+	// Collectibles Spawner
 	public static final float COINXDIV = 2;
 	public static final float COINXMUL = 0.2f;
 	public static final float COINOFFSET = 50;
 
-
+	//Difficulty
 	public static final int SCOREINIT = 0;
 	public static final String SCORETEXT = "Score: ";
 	public static final int HELLMIN = 16000;
@@ -102,46 +102,46 @@ public final class Constants {
 	public static final int MEDIUMMIN = 1500;
 	public static final int MEDIUMMAX = 3000;
 
-
+	//Spawn Utils
 	public static final int XOFFSET = 40;
 	public static final int YOFFSET = 60;
 
-
+	// Random Spaen Strategy
 	public static final int MAXPLATFORMWIDTH = 120;
 	public static final int GAPOFFSETTEN = 10;
 	public static final int GAPOFFSETTHIRTY = 30;
 	public static final int GAPINIT = 0;
 	public static final String DIFFICULTYTEXT = "Difficulty: ";
 
-
+	// CLean up manager
 	public static final float MARGIN = 50;
 
-
+	// Spawn Manager
 	public static final int INITIALYOFFSET = 150;
 	public static final int INITIAL_PLATFORMS_NUMBER = 10;
 	public static final int PROCEDURAL_PLATFORMS_NUMBER = 10;
 	public static final float SPAWN_THRESHOLD = 400f;
 
-
+	// Game Model
 	public static final float CHARACTERCREATIONWIDTHDIV = 2;
 	public static final float CHARACTERCREATIONHEIGHTMUL = 0.8f;
 
-
+	// Background
 	public static final int EXTRATILES = 2;
 
-
+	// CoinImpl Render
 	public static final float COINANIMTIMERS = 0;
 	public static final int COINCYCLEDURATION = 6;
 	public static final int COINIDXMAX = 7;
 
-
+	// Player Render
 	public static final int PLAYERCYCLEDURATION = 2;
 	public static final int PLAYERFIRSTFRAME = 0;
 	public static final int PLAYERSECONDFRAME = 1;
 	public static final int PLAYERTHIRDFRAME = 2;
 	public static final int PLAYERFOURTHFRAME = 3;
 
-
+	// Score Render
 	public static final int SCORERENDERX = 10;
 	public static final int SCORERENDERY = 20;
 	public static final int HIGHSCORERENDERY = 45;
@@ -149,7 +149,7 @@ public final class Constants {
 	public static final String SCORERENDERTEXT = "Score:   ";
 	public static final String HIGHSCORERENDERTEXT = "New High Score !!";
 
-
+	// Render Manager
 	public static final float RENDERMANAGERPLATFORMOUTLINE = 2;
 	public static final int RENDERMANAGERPLATFORMARCW = 10;
 	public static final int RENDERMANAGERPLATFORMARCH = 10;
@@ -164,7 +164,7 @@ public final class Constants {
 	public static final float RENDERMANAGERBACKGROUNDSPEEDXONE = 0;
 	public static final float RENDERMANAGERBACKGROUNDSPEEDTWO = 20;
 
-
+	// Audio Manager
 	public static final float AUDIOVOLUME = 0.7f;
 	public static final float AUDIOLOOPEND = 0.885f;
 	public static final int AUDIOLOOPSTART = 0;
@@ -173,10 +173,10 @@ public final class Constants {
 	public static final int AUDIOSTEPSDECREASE = 1;
 	public static final int AUDIOSLEEP = 1000;
 
-
+	// In game view
 	public static final int INGAMETIMETOGGLE = 1700;
 
-
+	// menu view
 	public static final int MENUVIEWCENTERDIV = 2;
 	public static final int MENUVIEWRECTX = 0;
 	public static final int MENUVIEWRECTY = 0;
@@ -206,7 +206,7 @@ public final class Constants {
 	public static final int MENUVIEWBESTSCOREXDIV = 3;
 	public static final int MENUVIEWBESTSCOREYOFF = 95;
 
-
+	//GAMEOVERVIEW
 	public static final float GAMEOVERALPHAINIT = 0;
 	public static final float GAMEOVERDURATIONINIT = 1;
 	public static final float GAMEOVERTIMEINIT = 0;
@@ -228,7 +228,7 @@ public final class Constants {
 	public static final int GAMEOVERTEXTCONTINUEYOFF = 150;
 	public static final String GAMEOVERNEWTEXTESC = " !!";
 
-
+	// PAUSEVIEW
 	public static final Font PAUSEFONT = new Font("Arial", Font.BOLD, 30);
 	public static final Font PAUSEMENUFONT = new Font("Arial", Font.BOLD, 20);
 	public static final int PAUSEMENUCONTINUE = 0;
@@ -246,7 +246,7 @@ public final class Constants {
 	public static final int PAUSECENTERDIV = 2;
 	public static final int PAUSEWIDTHOFF = 50;
 
-
+	//MAIN VIEW
 	public static final int MAINVIEWCENTERDIV = 2;
 	public static final float MAINVIEWAUDIOFADE = 1.2f;
 	public static final int MAINVIEWDELTAINIT = 0;
@@ -254,7 +254,7 @@ public final class Constants {
 	public static final int MAINVIEWRECTX = 0;
 	public static final int MAINVIEWRECTY = 0;
 
-
+	// Resources Path
 	public static final String RESOURCESWINDOWSPATH = "src/main/java/it/unibo/javajump/view/resources/";
 	public static final String RESOURCESTITLE = "JJ_Title.png";
 	public static final String RESOURCESGAMEOVER = "GameOver.png";

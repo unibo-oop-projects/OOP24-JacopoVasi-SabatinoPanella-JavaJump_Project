@@ -2,12 +2,12 @@ package it.unibo.javajump.model.states;
 
 import it.unibo.javajump.controller.input.GameAction;
 import it.unibo.javajump.model.GameModel;
-import it.unibo.javajump.model.GameModelImpl;
+
 
 import java.util.Objects;
 
 public class GameOverState implements GameStateHandler {
-
+	private float deltaTime = 0;
 	private final GameState gameState = GameState.GAME_OVER;
 
 	@Override
@@ -30,5 +30,9 @@ public class GameOverState implements GameStateHandler {
 	@Override
 	public int getState() {
 		return 0;
+	}
+
+	public float getDeltaTime() {
+		return deltaTime;
 	}
 }

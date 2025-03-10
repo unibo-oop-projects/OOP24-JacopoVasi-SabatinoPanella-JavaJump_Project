@@ -1,15 +1,14 @@
 package it.unibo.javajump.view.viewstates;
 
 import it.unibo.javajump.model.GameModel;
-import it.unibo.javajump.model.GameModelImpl;
+
 import it.unibo.javajump.model.entities.*;
 import it.unibo.javajump.model.entities.collectibles.Coin;
-import it.unibo.javajump.model.entities.collectibles.CoinImpl;
+
 import it.unibo.javajump.model.entities.platforms.Platform;
-import it.unibo.javajump.model.entities.platforms.PlatformImpl;
-import it.unibo.javajump.view.MainGameViewImpl;
+
 import it.unibo.javajump.view.renderers.RenderManager;
-import it.unibo.javajump.view.renderers.RendererManagerImpl;
+
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -25,7 +24,6 @@ public class InGameView implements GameViewState {
 	private boolean isNewHighScore = false;
 	private boolean showHighScoreMessage = true;
 	private long lastToggleTime = System.currentTimeMillis();
-	private float deltaTime;
 
 	public InGameView(RenderManager renderer) {
 		this.renderer = renderer;
@@ -43,7 +41,7 @@ public class InGameView implements GameViewState {
 		Graphics2D g2 = (Graphics2D) g;
 
 
-		float deltaTime = MainGameViewImpl.getCurrentDeltaTime();
+		float deltaTime = model.getDeltaTime();
 
 		renderer.drawBackground1(g2, model, deltaTime);
 		renderer.drawBackground2(g2, model, deltaTime);
@@ -89,7 +87,7 @@ public class InGameView implements GameViewState {
 	}
 
 	@Override
-	public void update(float deltaTime) {
+	public void update() {
 	}
 
 	@Override

@@ -2,9 +2,9 @@ package it.unibo.javajump.model.states;
 
 import it.unibo.javajump.controller.input.GameAction;
 import it.unibo.javajump.model.GameModel;
-import it.unibo.javajump.model.GameModelImpl;
+
 import it.unibo.javajump.model.entities.GameObject;
-import it.unibo.javajump.model.entities.GameObjectImpl;
+
 import it.unibo.javajump.model.entities.character.Character;
 import it.unibo.javajump.model.entities.character.CharacterImpl;
 import it.unibo.javajump.model.physics.MovementDirection;
@@ -19,6 +19,7 @@ public class InGameState implements GameStateHandler {
 	private final GameState gameState = GameState.IN_GAME;
 
 	private int horizontalDirection = NULLDIRECTION;
+	private float deltaTime = 0;
 
 
 	@Override
@@ -35,6 +36,7 @@ public class InGameState implements GameStateHandler {
 
 	@Override
 	public void update(GameModel model, float deltaTime) {
+		this.deltaTime = deltaTime;
 		Character player = model.getPlayer();
 		MovementDirection md = convertIntToMovementDirection(horizontalDirection);
 		model.getPhysicsManager().updateCharacterMovement(player, deltaTime, md);
@@ -69,5 +71,9 @@ public class InGameState implements GameStateHandler {
 	@Override
 	public int getState() {
 		return 0;
+	}
+
+	public float getDeltaTime() {
+		return deltaTime;
 	}
 }

@@ -2,11 +2,12 @@ package it.unibo.javajump.model.states;
 
 import it.unibo.javajump.controller.input.GameAction;
 import it.unibo.javajump.model.GameModel;
-import it.unibo.javajump.model.GameModelImpl;
+
 
 import static it.unibo.javajump.utility.Constants.*;
 
 public class PauseState implements GameStateHandler {
+	private float deltaTime = 0;
 	private int state = PAUSEMENUCONTINUE;
 	private final GameState gameState = GameState.PAUSE;
 
@@ -41,10 +42,12 @@ public class PauseState implements GameStateHandler {
 			default -> {
 			}
 		}
+
 	}
 
 	@Override
 	public void update(GameModel model, float deltaTime) {
+		this.deltaTime += deltaTime;
 	}
 
 	@Override
@@ -55,5 +58,9 @@ public class PauseState implements GameStateHandler {
 	@Override
 	public int getState() {
 		return state;
+	}
+
+	public float getDeltaTime() {
+		return deltaTime;
 	}
 }

@@ -1,7 +1,7 @@
 package it.unibo.javajump.view.viewstates;
 
 import it.unibo.javajump.model.GameModel;
-import it.unibo.javajump.model.GameModelImpl;
+
 
 import java.awt.*;
 
@@ -43,7 +43,7 @@ public class PauseView implements GameViewState {
 	}
 
 	@Override
-	public void update(float deltaTime) {
+	public void update() {
 
 	}
 

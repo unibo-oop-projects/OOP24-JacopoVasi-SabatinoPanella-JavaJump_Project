@@ -6,21 +6,14 @@ import it.unibo.javajump.model.collision.CollisionManager;
 import it.unibo.javajump.model.entities.GameObject;
 import it.unibo.javajump.model.entities.character.Character;
 import it.unibo.javajump.model.level.CleanupManager;
-import it.unibo.javajump.model.level.CleanupManagerImpl;
 import it.unibo.javajump.model.level.SpawnManager;
-import it.unibo.javajump.model.level.SpawnManagerImpl;
 import it.unibo.javajump.model.level.spawn.difficulty.DifficultyManager;
-import it.unibo.javajump.model.level.spawn.difficulty.DifficultyManagerImpl;
 import it.unibo.javajump.model.physics.PhysicsManager;
-import it.unibo.javajump.model.physics.PhysicsManagerImpl;
 import it.unibo.javajump.model.score.ScoreManager;
-import it.unibo.javajump.model.score.ScoreManagerImpl;
 import it.unibo.javajump.model.states.GameStateHandler;
 
 import java.util.List;
 
-import static it.unibo.javajump.utility.Constants.CHARACTERCREATIONHEIGHTMUL;
-import static it.unibo.javajump.utility.Constants.CHARACTERCREATIONWIDTHDIV;
 
 public interface GameModel {
 
@@ -65,4 +58,6 @@ public interface GameModel {
 	int getScreenWidth();
 
 	int getScreenHeight();
+
+	float getDeltaTime();
 }

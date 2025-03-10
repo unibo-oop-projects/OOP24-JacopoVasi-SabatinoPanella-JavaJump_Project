@@ -3,7 +3,7 @@ package it.unibo.javajump.model.states;
 import it.unibo.javajump.controller.input.GameAction;
 
 import it.unibo.javajump.model.GameModel;
-import it.unibo.javajump.model.GameModelImpl;
+
 
 public interface GameStateHandler {
 	default void onEnter(GameModel model) {
@@ -22,4 +22,6 @@ public interface GameStateHandler {
 	GameState getGameState();
 
 	int getState();
+
+	float getDeltaTime();
 }

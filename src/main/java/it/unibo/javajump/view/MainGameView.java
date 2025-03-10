@@ -2,5 +2,5 @@ package it.unibo.javajump.view;
 
 public interface MainGameView {
 
-	void updateView(float deltaTime);
+	void updateView();
 }

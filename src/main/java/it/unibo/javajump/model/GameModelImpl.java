@@ -4,19 +4,12 @@ import it.unibo.javajump.controller.input.GameAction;
 import it.unibo.javajump.model.camera.CameraManager;
 import it.unibo.javajump.model.collision.CollisionManager;
 import it.unibo.javajump.model.entities.GameObject;
-import it.unibo.javajump.model.entities.GameObjectImpl;
 import it.unibo.javajump.model.entities.character.Character;
-import it.unibo.javajump.model.entities.character.CharacterImpl;
 import it.unibo.javajump.model.level.CleanupManager;
-import it.unibo.javajump.model.level.CleanupManagerImpl;
 import it.unibo.javajump.model.level.SpawnManager;
-import it.unibo.javajump.model.level.SpawnManagerImpl;
 import it.unibo.javajump.model.level.spawn.difficulty.DifficultyManager;
-import it.unibo.javajump.model.level.spawn.difficulty.DifficultyManagerImpl;
 import it.unibo.javajump.model.physics.PhysicsManager;
-import it.unibo.javajump.model.physics.PhysicsManagerImpl;
 import it.unibo.javajump.model.score.ScoreManager;
-import it.unibo.javajump.model.score.ScoreManagerImpl;
 import it.unibo.javajump.model.states.GameStateHandler;
 import it.unibo.javajump.model.states.MenuState;
 
@@ -36,7 +29,7 @@ public class GameModelImpl implements GameModel {
 	private final ScoreManager scoreManager;
 	private final CleanupManager cleanupManager;
 	private final DifficultyManager difficultyManager;
-
+	private float deltaTime = 0;
 	private final List<GameObject> gameObject;
 	private Character player;
 
@@ -91,6 +84,7 @@ public class GameModelImpl implements GameModel {
 
 	@Override
 	public void update(float deltaTime) {
+		this.deltaTime = deltaTime;
 		this.currentState.update(this, deltaTime);
 	}
 
@@ -193,5 +187,9 @@ public class GameModelImpl implements GameModel {
 	@Override
 	public int getScreenHeight() {
 		return screenHeight;
+	}
+
+	public float getDeltaTime() {
+		return deltaTime;
 	}
 }

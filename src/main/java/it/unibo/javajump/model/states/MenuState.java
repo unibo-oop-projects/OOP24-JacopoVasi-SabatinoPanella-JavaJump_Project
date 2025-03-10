@@ -2,11 +2,11 @@ package it.unibo.javajump.model.states;
 
 import it.unibo.javajump.controller.input.GameAction;
 import it.unibo.javajump.model.GameModel;
-import it.unibo.javajump.model.GameModelImpl;
+
 
 public class MenuState implements GameStateHandler {
 	private final GameState gameState = GameState.MENU;
-
+	private float deltaTime = 0;
 
 	@Override
 	public void handleAction(GameModel model, GameAction action) {
@@ -27,7 +27,7 @@ public class MenuState implements GameStateHandler {
 
 	@Override
 	public void update(GameModel model, float deltaTime) {
-
+		this.deltaTime = deltaTime;
 		model.notifyObservers();
 	}
 
@@ -41,5 +41,8 @@ public class MenuState implements GameStateHandler {
 		return 0;
 	}
 
+	public float getDeltaTime() {
+		return deltaTime;
+	}
 
 }

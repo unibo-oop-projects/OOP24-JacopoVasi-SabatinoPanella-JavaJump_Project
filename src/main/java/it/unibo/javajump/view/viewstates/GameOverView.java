@@ -1,7 +1,7 @@
 package it.unibo.javajump.view.viewstates;
 
 import it.unibo.javajump.model.GameModel;
-import it.unibo.javajump.model.GameModelImpl;
+
 import it.unibo.javajump.view.graphics.GameGraphicsImpl;
 
 import java.awt.*;
@@ -14,6 +14,7 @@ public class GameOverView implements GameViewState {
 	private float fadeAlpha = GAMEOVERALPHAINIT;
 	private float elapsedTime = GAMEOVERTIMEINIT;
 	private boolean fading = false;
+	private float deltaTime = 0;
 
 
 	public void startFade() {
@@ -29,7 +30,7 @@ public class GameOverView implements GameViewState {
 	}
 
 
-	public void update(float deltaTime) {
+	public void update() {
 		if (fading) {
 			elapsedTime += deltaTime;
 			fadeAlpha = Math.min(GAMEOVERALPHA, elapsedTime / GAMEOVERDURATIONINIT);
@@ -42,6 +43,7 @@ public class GameOverView implements GameViewState {
 
 	@Override
 	public void draw(Graphics g, GameModel model) {
+		this.deltaTime = model.getDeltaTime();
 		Graphics2D g2 = (Graphics2D) g;
 		Composite oldComposite = g2.getComposite();
 
