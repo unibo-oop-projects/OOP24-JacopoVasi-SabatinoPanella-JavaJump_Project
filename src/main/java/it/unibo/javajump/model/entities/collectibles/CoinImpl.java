@@ -1,6 +1,8 @@
 package it.unibo.javajump.model.entities.collectibles;
 
+import it.unibo.javajump.model.entities.GameObject;
 import it.unibo.javajump.model.entities.GameObjectImpl;
+import it.unibo.javajump.model.entities.platforms.Platform;
 import it.unibo.javajump.model.entities.platforms.PlatformImpl;
 
 import static it.unibo.javajump.utility.Constants.*;
@@ -8,7 +10,7 @@ import static it.unibo.javajump.utility.Constants.*;
 public class CoinImpl extends GameObjectImpl implements Coin {
 
 	private CoinState state;
-	private PlatformImpl attachedPlatformImpl;
+	private Platform attachedPlatform;
 	private float offsetX;
 
 	public CoinImpl(float x, float y, float width, float height) {
@@ -17,43 +19,50 @@ public class CoinImpl extends GameObjectImpl implements Coin {
 		this.width = width;
 		this.height = height;
 		this.state = CoinState.IDLE;
-		this.attachedPlatformImpl = null;
+		this.attachedPlatform = null;
 		this.offsetX = OFFSETINIT;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * In this case, if the Coin is attached to a platform, the coin moves with the platform during gameplay.
+	 */
 	@Override
 	public void update(float deltaTime) {
-		if (attachedPlatformImpl != null) {
-			this.x = attachedPlatformImpl.getX() + offsetX;
+		if (attachedPlatform != null) {
+			this.x = attachedPlatform.getX() + offsetX;
 		}
 	}
 
+	@Override
+	public void onCollision(GameObject other) {
+	}
 
+	@Override
+	public CoinState getState() {
+		return this.state;
+	}
+
+	@Override
 	public void collect() {
 		if (this.state == CoinState.IDLE) {
 			this.state = CoinState.COLLECTING;
 		}
 	}
 
+	@Override
 	public void markAsDone() {
 		this.state = CoinState.FINISHED;
 	}
 
-
-	public void attachToPlatform(PlatformImpl platformImpl) {
-		this.attachedPlatformImpl = platformImpl;
-		this.offsetX = this.x - platformImpl.getX();
-	}
-
-	public CoinState getState() {
-		return this.state;
-	}
-
-	public PlatformImpl getAttachedPlatform() {
-		return attachedPlatformImpl;
+	@Override
+	public Platform getAttachedPlatform() {
+		return attachedPlatform;
 	}
 
 	@Override
-	public void onCollision(GameObjectImpl other) {
+	public void attachToPlatform(Platform platform) {
+		this.attachedPlatform = platform;
+		this.offsetX = this.x - platform.getX();
 	}
 }

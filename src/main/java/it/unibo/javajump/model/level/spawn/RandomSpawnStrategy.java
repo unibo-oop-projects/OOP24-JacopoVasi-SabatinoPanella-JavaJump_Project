@@ -1,11 +1,17 @@
 package it.unibo.javajump.model.level.spawn;
 
+import it.unibo.javajump.model.GameModel;
 import it.unibo.javajump.model.GameModelImpl;
+import it.unibo.javajump.model.entities.platforms.Platform;
 import it.unibo.javajump.model.entities.platforms.PlatformImpl;
-import it.unibo.javajump.model.factories.AbstractGameObjectFactoryImpl;
+import it.unibo.javajump.model.factories.AbstractGameObjectFactory;
+import it.unibo.javajump.model.factories.GameObjectFactory;
+import it.unibo.javajump.model.level.spawn.collectiblespawn.CollectiblesSpawner;
 import it.unibo.javajump.model.level.spawn.collectiblespawn.CollectiblesSpawnerImpl;
+import it.unibo.javajump.model.level.spawn.difficulty.DifficultyManager;
 import it.unibo.javajump.model.level.spawn.difficulty.DifficultyManagerImpl;
 import it.unibo.javajump.model.level.spawn.difficulty.DifficultyState;
+import it.unibo.javajump.model.level.spawn.platformspawn.PlatformSpawner;
 import it.unibo.javajump.model.level.spawn.platformspawn.PlatformSpawnerImpl;
 import it.unibo.javajump.model.level.spawn.spawnutilities.SpawnUtilsImpl;
 
@@ -15,32 +21,32 @@ import static it.unibo.javajump.utility.Constants.*;
 
 public class RandomSpawnStrategy implements SpawnStrategy {
 
-	private final AbstractGameObjectFactoryImpl factory;
+	private final GameObjectFactory factory;
 	private final Random rand;
 	@SuppressWarnings("FieldMayBeFinal")
 	private float minPlatformYSpacing;
 	@SuppressWarnings("FieldMayBeFinal")
 	private float maxPlatformYSpacing;
 	private float currentY;
-	private final CollectiblesSpawnerImpl collectiblesSpawnerImpl;
-	private final PlatformSpawnerImpl platformSpawnerImpl;
+	private final CollectiblesSpawner collectiblesSpawner;
+	private final PlatformSpawner platformSpawner;
 
-	public RandomSpawnStrategy(AbstractGameObjectFactoryImpl factory,
+	public RandomSpawnStrategy(GameObjectFactory factory,
 							   float minSpacing,
 							   float maxSpacing,
 							   float coinChance,
-							   DifficultyManagerImpl difficultyManagerImpl) {
+							   DifficultyManager difficultyManager) {
 		this.factory = factory;
 		this.rand = new Random();
 		this.minPlatformYSpacing = minSpacing;
 		this.maxPlatformYSpacing = maxSpacing;
 		this.currentY = ZERO;
-		this.collectiblesSpawnerImpl = new CollectiblesSpawnerImpl(factory, coinChance);
-		this.platformSpawnerImpl = new PlatformSpawnerImpl(factory);
+		this.collectiblesSpawner = new CollectiblesSpawnerImpl(factory, coinChance);
+		this.platformSpawner = new PlatformSpawnerImpl(factory);
 	}
 
 	@Override
-	public void spawnBatch(GameModelImpl model, float startY, int numberOfPlatforms) {
+	public void spawnBatch(GameModel model, float startY, int numberOfPlatforms) {
 		DifficultyState diff = model.getDifficultyManager().getCurrentDifficulty();
 		System.out.println(DIFFICULTYTEXT + diff);
 		currentY = startY;
@@ -53,12 +59,12 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 
 			float x = rand.nextFloat() * (model.getScreenWidth() - maxPlatformWidth);
 
-			PlatformImpl p = platformSpawnerImpl.spawnPlatform(x, currentY, model.getScreenWidth(), diff);
+			Platform p = platformSpawner.spawnPlatform(x, currentY, model.getScreenWidth(), diff);
 			model.getGameObjects().add(p);
 
 			float platformWidth = p.getWidth();
 
-			collectiblesSpawnerImpl.spawnCollectible(model, x, currentY, platformWidth, p);
+			collectiblesSpawner.spawnCollectible(model, x, currentY, platformWidth, p);
 		}
 	}
 
@@ -85,7 +91,7 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 	}
 
 	@Override
-	public AbstractGameObjectFactoryImpl getFactory() {
+	public GameObjectFactory getFactory() {
 		return this.factory;
 	}
 }

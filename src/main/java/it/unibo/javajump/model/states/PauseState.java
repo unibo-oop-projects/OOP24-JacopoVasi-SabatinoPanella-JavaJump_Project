@@ -1,6 +1,7 @@
 package it.unibo.javajump.model.states;
 
-import it.unibo.javajump.controller.GameAction;
+import it.unibo.javajump.controller.input.GameAction;
+import it.unibo.javajump.model.GameModel;
 import it.unibo.javajump.model.GameModelImpl;
 
 import static it.unibo.javajump.utility.Constants.*;
@@ -10,7 +11,7 @@ public class PauseState implements GameStateHandler {
 	private final GameState gameState = GameState.PAUSE;
 
 	@Override
-	public void handleAction(GameModelImpl model, GameAction action) {
+	public void handleAction(GameModel model, GameAction action) {
 		switch (action) {
 			case CONFIRM_SELECTION -> {
 				switch (state) {
@@ -43,7 +44,7 @@ public class PauseState implements GameStateHandler {
 	}
 
 	@Override
-	public void update(GameModelImpl model, float deltaTime) {
+	public void update(GameModel model, float deltaTime) {
 	}
 
 	@Override

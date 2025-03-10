@@ -5,12 +5,12 @@ import it.unibo.javajump.model.entities.objectstrategies.MovementBehaviour;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class MovingPlatformImpl extends PlatformImpl implements Platform {
+public class MovingPlatformImpl extends PlatformImpl implements MovingPlatform {
 
 	private final MovementBehaviour movementBehaviour;
 
 	public MovingPlatformImpl(float x, float y, float width, float height,
-							  float range, float screenWidth, float speed, float acceleration, float deceleration) {
+							  float range, float screenWidth, float speed) {
 		super(x, y, width, height);
 
 		if (x < ZERO) {
@@ -30,7 +30,6 @@ public class MovingPlatformImpl extends PlatformImpl implements Platform {
 		if (potentialMax > screenWidth - width) {
 			potentialMax = screenWidth - width;
 		}
-
 
 		this.movementBehaviour = new HorizontalOscillationMovement(potentialMin, potentialMax, speed);
 	}

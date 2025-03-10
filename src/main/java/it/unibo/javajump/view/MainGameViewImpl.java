@@ -1,9 +1,11 @@
 package it.unibo.javajump.view;
 
+import it.unibo.javajump.model.GameModel;
 import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.model.GameModelObserver;
 import it.unibo.javajump.model.states.GameState;
 import it.unibo.javajump.model.states.GameStateHandler;
+import it.unibo.javajump.view.renderers.RenderManager;
 import it.unibo.javajump.view.renderers.RendererManagerImpl;
 import it.unibo.javajump.view.sound.AudioManagerImpl;
 import it.unibo.javajump.view.viewstates.*;
@@ -16,9 +18,9 @@ import java.awt.image.BufferedImage;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class MainGameViewImpl extends JPanel implements GameModelObserver, MainGameView {
+public class MainGameViewImpl extends JPanel implements MainGameView, GameModelObserver {
 
-	private final GameModelImpl model;
+	private final GameModel model;
 
 	private final GameViewState menuView;
 	private final GameViewState inGameView;
@@ -30,24 +32,24 @@ public class MainGameViewImpl extends JPanel implements GameModelObserver, MainG
 
 	private final BufferedImage tempScreen;
 
-	private final RendererManagerImpl rendererManagerImpl;
+	private final RenderManager rendererManager;
 	private GameState lastState;
 
 
 	private static float currentDeltaTime = MAINVIEWDELTAINIT;
 
-	public MainGameViewImpl(GameModelImpl model) {
+	public MainGameViewImpl(GameModel model) {
 		this.model = model;
 		setDoubleBuffered(true);
 
 		this.virtualWidth = model.getScreenWidth();
 		this.virtualHeight = model.getScreenHeight();
 
-		this.rendererManagerImpl = new RendererManagerImpl();
+		this.rendererManager = new RendererManagerImpl();
 		setBackground(Color.decode("#05051C"));
 
 		this.menuView = new MenuView();
-		this.inGameView = new InGameView(rendererManagerImpl);
+		this.inGameView = new InGameView(rendererManager);
 		this.pauseView = new PauseView();
 		this.gameOverView = new GameOverView();
 
@@ -65,6 +67,7 @@ public class MainGameViewImpl extends JPanel implements GameModelObserver, MainG
 	}
 
 	
+	@Override
 	public void updateView(float deltaTime) {
 		this.currentDeltaTime = deltaTime;
 
@@ -147,7 +150,7 @@ public class MainGameViewImpl extends JPanel implements GameModelObserver, MainG
 	}
 
 	@Override
-	public void onModelUpdate(GameModelImpl model) {
+	public void onModelUpdate(GameModel model) {
 		GameStateHandler stateHandler = model.getCurrentState();
 		GameState currentState = stateHandler.getGameState();
 

@@ -1,13 +1,13 @@
 package it.unibo.javajump.model.entities.objectstrategies;
 
+import it.unibo.javajump.model.entities.GameObject;
 import it.unibo.javajump.model.entities.GameObjectImpl;
 
 public class HorizontalOscillationMovement implements MovementBehaviour {
 
 	private final float minX;
 	private final float maxX;
-	@SuppressWarnings("FieldMayBeFinal")
-	private float speed;
+	private final float speed;
 	private boolean goingRight;
 
 	public HorizontalOscillationMovement(float minX, float maxX, float speed) {
@@ -18,7 +18,7 @@ public class HorizontalOscillationMovement implements MovementBehaviour {
 	}
 
 	@Override
-	public void update(GameObjectImpl obj, float deltaTime) {
+	public void update(GameObject obj, float deltaTime) {
 		float currentX = obj.getX();
 		if (goingRight) {
 			currentX += speed * deltaTime;

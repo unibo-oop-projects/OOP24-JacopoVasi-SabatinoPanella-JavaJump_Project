@@ -1,10 +1,13 @@
 package it.unibo.javajump.model.level;
 
+import it.unibo.javajump.model.GameModel;
 import it.unibo.javajump.model.GameModelImpl;
+import it.unibo.javajump.model.entities.GameObject;
+import it.unibo.javajump.model.entities.collectibles.Coin;
 import it.unibo.javajump.model.entities.collectibles.CoinState;
+import it.unibo.javajump.model.entities.platforms.BreakablePlatform;
 import it.unibo.javajump.model.entities.platforms.BreakablePlatformImpl;
 import it.unibo.javajump.model.entities.collectibles.CoinImpl;
-import it.unibo.javajump.model.entities.GameObjectImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,27 +16,26 @@ import static it.unibo.javajump.utility.Constants.*;
 
 public class CleanupManagerImpl implements CleanupManager {
 
-	GameModelImpl gameModelImpl;
+	GameModel gameModel;
 
-
-	public void cleanupObjects(GameModelImpl model) {
-		this.gameModelImpl = model;
-		List<GameObjectImpl> toRemove = new ArrayList<>();
+	@Override
+	public void cleanupObjects(GameModel model) {
+		this.gameModel = model;
+		List<GameObject> toRemove = new ArrayList<>();
 
 		float cameraOffset = model.getCameraManager().getCurrentOffset();
 		float screenH = model.getScreenHeight();
 		float margin = MARGIN;
 
-		for (GameObjectImpl go : gameModelImpl.getGameObjects()) {
-
-			if (go instanceof CoinImpl c) {
+		for (GameObject go : gameModel.getGameObjects()) {
+			if (go instanceof Coin c) {
 				if (c.getState() == CoinState.FINISHED) {
 					toRemove.add(c);
 					continue;
 				}
 			}
 
-			if (go instanceof BreakablePlatformImpl bp) {
+			if (go instanceof BreakablePlatform bp) {
 				if (bp.isBroken()) {
 					toRemove.add(bp);
 					continue;
@@ -48,6 +50,6 @@ public class CleanupManagerImpl implements CleanupManager {
 
 		}
 
-		gameModelImpl.getGameObjects().removeAll(toRemove);
+		gameModel.getGameObjects().removeAll(toRemove);
 	}
 }

@@ -1,6 +1,7 @@
 package it.unibo.javajump.model.states;
 
-import it.unibo.javajump.controller.GameAction;
+import it.unibo.javajump.controller.input.GameAction;
+import it.unibo.javajump.model.GameModel;
 import it.unibo.javajump.model.GameModelImpl;
 
 public class MenuState implements GameStateHandler {
@@ -8,7 +9,7 @@ public class MenuState implements GameStateHandler {
 
 
 	@Override
-	public void handleAction(GameModelImpl model, GameAction action) {
+	public void handleAction(GameModel model, GameAction action) {
 		switch (action) {
 			case CONFIRM_SELECTION:
 
@@ -25,7 +26,7 @@ public class MenuState implements GameStateHandler {
 	}
 
 	@Override
-	public void update(GameModelImpl model, float deltaTime) {
+	public void update(GameModel model, float deltaTime) {
 
 		model.notifyObservers();
 	}
@@ -39,5 +40,6 @@ public class MenuState implements GameStateHandler {
 	public int getState() {
 		return 0;
 	}
+
 
 }

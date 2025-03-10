@@ -64,7 +64,7 @@ public final class Constants {
 	public static final int MINUSONE = -1;
 
 
-	public static final float CHARACTERWIDTH = 40;
+	public static final float CHARACTERWIDTH = 48;
 	public static final float CHARACTERHEIGHT = 50;
 	public static final float CHARACTERJUMPFORCE = 700;
 	public static final float STANDARDPLATFORMWIDTH = 100;

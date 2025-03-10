@@ -1,5 +1,6 @@
 package it.unibo.javajump.model.entities.platforms;
 
+import it.unibo.javajump.model.entities.GameObject;
 import it.unibo.javajump.model.entities.GameObjectImpl;
 
 public class PlatformImpl extends GameObjectImpl implements Platform {
@@ -16,7 +17,7 @@ public class PlatformImpl extends GameObjectImpl implements Platform {
 	}
 
 	@Override
-	public void onCollision(GameObjectImpl other) {
+	public void onCollision(GameObject other) {
 	}
 
 }

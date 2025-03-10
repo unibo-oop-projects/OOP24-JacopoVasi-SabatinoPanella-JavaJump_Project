@@ -1,7 +1,9 @@
 package it.unibo.javajump.model.level;
 
+import it.unibo.javajump.model.GameModel;
 import it.unibo.javajump.model.GameModelImpl;
-import it.unibo.javajump.model.factories.AbstractGameObjectFactoryImpl;
+import it.unibo.javajump.model.factories.AbstractGameObjectFactory;
+import it.unibo.javajump.model.factories.GameObjectFactory;
 import it.unibo.javajump.model.level.spawn.RandomSpawnStrategy;
 import it.unibo.javajump.model.level.spawn.SpawnStrategy;
 
@@ -20,7 +22,8 @@ public class SpawnManagerImpl implements SpawnManager {
 	}
 
 
-	public void generateInitialLevel(GameModelImpl model) {
+	@Override
+	public void generateInitialLevel(GameModel model) {
 		spawnPlatformBelowPlayer(model, getFactory());
 		float startY = model.getScreenHeight() - INITIALYOFFSET;
 		spawnStrategy.spawnBatch(model, startY, INITIAL_PLATFORMS_NUMBER);
@@ -28,8 +31,8 @@ public class SpawnManagerImpl implements SpawnManager {
 	}
 
 
-	public void generateOnTheFly(GameModelImpl model) {
-
+	@Override
+	public void generateOnTheFly(GameModel model) {
 		float playerY = model.getPlayer().getY();
 		float gap = playerY - topPlatformY;
 
@@ -44,15 +47,18 @@ public class SpawnManagerImpl implements SpawnManager {
 		}
 	}
 
+	@Override
 	public void reset() {
 		this.topPlatformY = ZERO;
 	}
 
+	@Override
 	public SpawnStrategy getSpawnStrategy() {
 		return this.spawnStrategy;
 	}
 
-	public AbstractGameObjectFactoryImpl getFactory() {
+	@Override
+	public GameObjectFactory getFactory() {
 
 		if (spawnStrategy instanceof RandomSpawnStrategy) {
 			return spawnStrategy.getFactory();

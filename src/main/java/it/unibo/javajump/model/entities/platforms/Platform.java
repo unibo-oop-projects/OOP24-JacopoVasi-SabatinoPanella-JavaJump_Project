@@ -1,4 +1,6 @@
 package it.unibo.javajump.model.entities.platforms;
 
-public interface Platform {
+import it.unibo.javajump.model.entities.GameObject;
+
+public interface Platform extends GameObject {
 }

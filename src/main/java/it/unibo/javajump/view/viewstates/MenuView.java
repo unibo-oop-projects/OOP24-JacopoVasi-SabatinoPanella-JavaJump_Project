@@ -1,5 +1,6 @@
 package it.unibo.javajump.view.viewstates;
 
+import it.unibo.javajump.model.GameModel;
 import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.view.graphics.GameGraphicsImpl;
 
@@ -11,7 +12,7 @@ import static it.unibo.javajump.utility.Constants.*;
 public class MenuView implements GameViewState {
 
 	@Override
-	public void draw(Graphics g, GameModelImpl model) {
+	public void draw(Graphics g, GameModel model) {
 
 		int width = model.getScreenWidth();
 		int height = model.getScreenHeight();

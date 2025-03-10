@@ -1,19 +1,30 @@
 package it.unibo.javajump;
 
+import it.unibo.javajump.controller.GameController;
 import it.unibo.javajump.controller.GameControllerImpl;
+import it.unibo.javajump.controller.input.InputManager;
+import it.unibo.javajump.controller.input.InputManagerImpl;
+import it.unibo.javajump.model.GameModel;
 import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.model.camera.CameraManagerImpl;
 import it.unibo.javajump.model.collision.CollisionManager;
 import it.unibo.javajump.model.collision.CollisionManagerImpl;
-import it.unibo.javajump.model.factories.AbstractGameObjectFactoryImpl;
+import it.unibo.javajump.model.factories.AbstractGameObjectFactory;
+import it.unibo.javajump.model.factories.GameObjectFactory;
 import it.unibo.javajump.model.factories.GameObjectFactoryImpl;
+import it.unibo.javajump.model.level.CleanupManager;
 import it.unibo.javajump.model.level.CleanupManagerImpl;
+import it.unibo.javajump.model.level.SpawnManager;
 import it.unibo.javajump.model.level.SpawnManagerImpl;
+import it.unibo.javajump.model.level.spawn.difficulty.DifficultyManager;
 import it.unibo.javajump.model.level.spawn.difficulty.DifficultyManagerImpl;
+import it.unibo.javajump.model.physics.PhysicsManager;
 import it.unibo.javajump.model.physics.PhysicsManagerImpl;
+import it.unibo.javajump.model.score.ScoreManager;
 import it.unibo.javajump.model.score.ScoreManagerImpl;
 import it.unibo.javajump.model.camera.CameraManager;
 import it.unibo.javajump.model.level.spawn.RandomSpawnStrategy;
+import it.unibo.javajump.view.MainGameView;
 import it.unibo.javajump.view.MainGameViewImpl;
 
 import javax.swing.*;
@@ -28,34 +39,37 @@ public class Main {
 		int screenWidth = SCREENWIDTH;
 		int screenHeight = SCREENHEIGHT;
 
-		AbstractGameObjectFactoryImpl factory = new GameObjectFactoryImpl();
-		DifficultyManagerImpl difficultyManagerImpl = new DifficultyManagerImpl();
-		RandomSpawnStrategy strategy = new RandomSpawnStrategy(factory, MINSPACING, MAXSPACING, COINCHANCE, difficultyManagerImpl);
+		GameObjectFactory factory = new GameObjectFactoryImpl();
+		DifficultyManager difficultyManager = new DifficultyManagerImpl();
+		RandomSpawnStrategy strategy = new RandomSpawnStrategy(factory, MINSPACING, MAXSPACING, COINCHANCE, difficultyManager);
 		CollisionManager collisionManager = new CollisionManagerImpl();
-		SpawnManagerImpl spawnManagerImpl = new SpawnManagerImpl(strategy);
-		ScoreManagerImpl scoreManagerImpl = new ScoreManagerImpl();
-		CameraManager cameraManager = new CameraManagerImpl(scoreManagerImpl, SCOREFACTOR);
-		PhysicsManagerImpl physicsManagerImpl = new PhysicsManagerImpl(GRAVITY, ACCELERATION, MAXSPEED, DECELERATION);
-		CleanupManagerImpl cleanupManagerImpl = new CleanupManagerImpl();
+		SpawnManager spawnManager = new SpawnManagerImpl(strategy);
+		ScoreManager scoreManager = new ScoreManagerImpl();
+		CameraManager cameraManager = new CameraManagerImpl(scoreManager, SCOREFACTOR);
+		PhysicsManager physicsManager = new PhysicsManagerImpl(GRAVITY, ACCELERATION, MAXSPEED, DECELERATION);
+		CleanupManager cleanupManager = new CleanupManagerImpl();
 		JFrame frame = new JFrame(GAMETITLE);
 
-		GameModelImpl model = new GameModelImpl(screenWidth,
+		GameModel model = new GameModelImpl(screenWidth,
 				screenHeight,
-				physicsManagerImpl,
+				physicsManager,
 				collisionManager,
-				spawnManagerImpl,
+				spawnManager,
 				cameraManager,
-				scoreManagerImpl,
-				cleanupManagerImpl,
-				difficultyManagerImpl);
+				scoreManager,
+				cleanupManager,
+				difficultyManager);
 
-		MainGameViewImpl view = new MainGameViewImpl(model);
+		MainGameView view = new MainGameViewImpl(model);
 		model.addObserver(view);
-		GameControllerImpl controller = new GameControllerImpl(model, view);
+
+		InputManager inputManager = new InputManagerImpl();
+		frame.addKeyListener(inputManager);
+
+		GameController controller = new GameControllerImpl(model, view, inputManager);
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(screenWidth, screenHeight);
-		frame.addKeyListener(controller);
 		frame.addComponentListener(new ComponentAdapter() {
 			@Override
 			public void componentResized(ComponentEvent e) {
@@ -66,6 +80,7 @@ public class Main {
 		});
 		frame.add(view);
 		frame.setVisible(true);
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
 		controller.startGameLoop();
 	}

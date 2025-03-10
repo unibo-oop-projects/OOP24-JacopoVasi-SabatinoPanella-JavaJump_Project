@@ -1,22 +1,33 @@
 package it.unibo.javajump.model.level.spawn.spawnutilities;
 
+import it.unibo.javajump.model.GameModel;
 import it.unibo.javajump.model.GameModelImpl;
+import it.unibo.javajump.model.entities.GameObjectImpl;
+import it.unibo.javajump.model.entities.platforms.Platform;
 import it.unibo.javajump.model.entities.platforms.PlatformImpl;
-import it.unibo.javajump.model.factories.AbstractGameObjectFactoryImpl;
+import it.unibo.javajump.model.factories.AbstractGameObjectFactory;
+import it.unibo.javajump.model.factories.GameObjectFactory;
 
 import java.util.Random;
 
 import static it.unibo.javajump.utility.Constants.*;
 
 public class SpawnUtilsImpl implements SpawnUtils {
+
+	/**
+	 * Returns a random value between min and max
+	 */
 	public static float randomInRange(Random rand, float min, float max) {
 		return min + rand.nextFloat() * (max - min);
 	}
 
-	public static void spawnPlatformBelowPlayer(GameModelImpl model, AbstractGameObjectFactoryImpl factory) {
+	/**
+	 * Creates and adds to the model a standard platform below the player.
+	 */
+	public static void spawnPlatformBelowPlayer(GameModel model, GameObjectFactory factory) {
 		float px = model.getPlayer().getX() - XOFFSET;
 		float py = model.getPlayer().getY() + YOFFSET;
-		PlatformImpl p = factory.createStandardPlatform(px, py);
+		Platform p = factory.createStandardPlatform(px, py);
 		model.getGameObjects().add(p);
 	}
 }

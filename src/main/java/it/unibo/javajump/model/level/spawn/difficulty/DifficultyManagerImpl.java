@@ -17,7 +17,8 @@ public class DifficultyManagerImpl implements DifficultyManager {
 		this.rand = new Random();
 	}
 
-	
+
+	@Override
 	public void updateDifficulty(int score) {
 		this.currentScore = score;
 		System.out.println(SCORETEXT + currentScore);
@@ -35,10 +36,12 @@ public class DifficultyManagerImpl implements DifficultyManager {
 		}
 	}
 
+	@Override
 	public DifficultyState getCurrentDifficulty() {
 		return currentDifficulty;
 	}
 
+	@Override
 	public void reset() {
 		this.currentDifficulty = DifficultyState.EASY;
 	}

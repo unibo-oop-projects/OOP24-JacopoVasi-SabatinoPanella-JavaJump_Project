@@ -1,8 +1,8 @@
 package it.unibo.javajump.model.entities.platforms;
 
-import it.unibo.javajump.model.entities.GameObjectImpl;
+import it.unibo.javajump.model.entities.GameObject;
 
-public class BouncePlatformImpl extends PlatformImpl implements Platform {
+public class BouncePlatformImpl extends PlatformImpl implements BouncePlatform {
 	private final float bounceFactor;
 
 	public BouncePlatformImpl(float x, float y, float width, float height, float bounceFactor) {
@@ -10,12 +10,13 @@ public class BouncePlatformImpl extends PlatformImpl implements Platform {
 		this.bounceFactor = bounceFactor;
 	}
 
+	@Override
 	public float getBounceFactor() {
 		return bounceFactor;
 	}
 
 	@Override
-	public void onCollision(GameObjectImpl other) {
+	public void onCollision(GameObject other) {
 		super.onCollision(other);
 	}
 

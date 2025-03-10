@@ -1,10 +1,14 @@
 package it.unibo.javajump.view.viewstates;
 
+import it.unibo.javajump.model.GameModel;
 import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.model.entities.*;
+import it.unibo.javajump.model.entities.collectibles.Coin;
 import it.unibo.javajump.model.entities.collectibles.CoinImpl;
+import it.unibo.javajump.model.entities.platforms.Platform;
 import it.unibo.javajump.model.entities.platforms.PlatformImpl;
 import it.unibo.javajump.view.MainGameViewImpl;
+import it.unibo.javajump.view.renderers.RenderManager;
 import it.unibo.javajump.view.renderers.RendererManagerImpl;
 
 import java.awt.*;
@@ -14,7 +18,7 @@ import static it.unibo.javajump.utility.Constants.*;
 
 public class InGameView implements GameViewState {
 
-	private final RendererManagerImpl renderer;
+	private final RenderManager renderer;
 
 	private boolean debugMode = false;
 
@@ -23,14 +27,14 @@ public class InGameView implements GameViewState {
 	private long lastToggleTime = System.currentTimeMillis();
 	private float deltaTime;
 
-	public InGameView(RendererManagerImpl renderer) {
+	public InGameView(RenderManager renderer) {
 		this.renderer = renderer;
 	}
 
 	@Override
-	public void draw(Graphics g, GameModelImpl model) {
+	public void draw(Graphics g, GameModel model) {
 
-		ArrayList<GameObjectImpl> snapshot;
+		ArrayList<GameObject> snapshot;
 		synchronized (model.getGameObjects()) {
 			snapshot = new ArrayList<>(model.getGameObjects());
 			System.out.println(snapshot.size());
@@ -49,7 +53,7 @@ public class InGameView implements GameViewState {
 
 		if (debugMode) {
 			g2.setColor(Color.RED);
-			for (GameObjectImpl obj : snapshot) {
+			for (GameObject obj : snapshot) {
 				float dx = obj.getX();
 				float dy = obj.getY() - cameraOffsetY;
 				g2.drawRect((int) dx, (int) dy,
@@ -59,10 +63,10 @@ public class InGameView implements GameViewState {
 		}
 
 
-		for (GameObjectImpl obj : snapshot) {
-			if (obj instanceof CoinImpl c) {
+		for (GameObject obj : snapshot) {
+			if (obj instanceof Coin c) {
 				renderer.drawCoin(g2, c, cameraOffsetY, deltaTime);
-			} else if (obj instanceof PlatformImpl p) {
+			} else if (obj instanceof Platform p) {
 				renderer.drawPlatform(g2, p, cameraOffsetY);
 			}
 

@@ -1,5 +1,6 @@
 package it.unibo.javajump.view.viewstates;
 
+import it.unibo.javajump.model.GameModel;
 import it.unibo.javajump.model.GameModelImpl;
 
 import java.awt.*;
@@ -10,11 +11,14 @@ public class PauseView implements GameViewState {
 	private int selectionYcor = PAUSECONTINUEY;
 
 	@Override
-	public void draw(Graphics g, GameModelImpl model) {
+	public void draw(Graphics g, GameModel model) {
 		switch (model.getCurrentState().getState()) {
-			case PAUSEMENUCONTINUE -> selectionYcor = PAUSECONTINUEY;
-			case PAUSEMENUMAINMENU -> selectionYcor = PAUSEMAINMENUY;
-			case PAUSEMENUQUIT -> selectionYcor = PAUSEQUITY;
+			case PAUSEMENUCONTINUE ->
+					selectionYcor = PAUSECONTINUEY;
+			case PAUSEMENUMAINMENU ->
+					selectionYcor = PAUSEMAINMENUY;
+			case PAUSEMENUQUIT ->
+					selectionYcor = PAUSEQUITY;
 			default -> {
 			}
 		}

@@ -1,8 +1,8 @@
 package it.unibo.javajump.model.entities.platforms;
 
-import it.unibo.javajump.model.entities.GameObjectImpl;
+import it.unibo.javajump.model.entities.GameObject;
 
-public class BreakablePlatformImpl extends PlatformImpl implements Platform {
+public class BreakablePlatformImpl extends PlatformImpl implements BreakablePlatform {
 
 	private boolean broken;
 
@@ -12,7 +12,7 @@ public class BreakablePlatformImpl extends PlatformImpl implements Platform {
 	}
 
 	@Override
-	public void onCollision(GameObjectImpl other) {
+	public void onCollision(GameObject other) {
 		super.onCollision(other);
 	}
 
@@ -21,10 +21,12 @@ public class BreakablePlatformImpl extends PlatformImpl implements Platform {
 		super.update(deltaTime);
 	}
 
+	@Override
 	public boolean isBroken() {
 		return broken;
 	}
 
+	@Override
 	public void breakPlatform() {
 		if (!broken) {
 			broken = true;

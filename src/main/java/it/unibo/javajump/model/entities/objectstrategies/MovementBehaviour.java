@@ -1,8 +1,14 @@
 package it.unibo.javajump.model.entities.objectstrategies;
 
+import it.unibo.javajump.model.entities.GameObject;
 import it.unibo.javajump.model.entities.GameObjectImpl;
 
 public interface MovementBehaviour {
-	
-	void update(GameObjectImpl obj, float deltaTime);
+	/**
+	 * Updates the position of a GameObjectImpl based on deltaTime.
+	 *
+	 * @param obj       the GameObject to update
+	 * @param deltaTime the time passed from the last update
+	 */
+	void update(GameObject obj, float deltaTime);
 }
