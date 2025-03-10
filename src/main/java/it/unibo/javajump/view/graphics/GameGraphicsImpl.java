@@ -1,6 +1,6 @@
 package it.unibo.javajump.view.graphics;
 
-import it.unibo.javajump.view.sound.AudioManagerImpl;
+import it.unibo.javajump.view.sound.music.MusicManagerImpl;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -36,7 +36,7 @@ public class GameGraphicsImpl implements GameGraphics {
 			background1 = ImageIO.read(new File(RESOURCESWINDOWSPATH + RESOURCESBACKGROUNDONE));
 			background2 = ImageIO.read(new File(RESOURCESWINDOWSPATH + RESOURCESBACKGROUNDTWO));
 			scoreContainer = ImageIO.read(new File(RESOURCESWINDOWSPATH + RESOURCESSCORECONTAINER));
-			AudioManagerImpl.loadBackgroundMusic(RESOURCESWINDOWSPATH + RESOURCESMUSIC);
+			MusicManagerImpl.loadBackgroundMusic(RESOURCESWINDOWSPATH + RESOURCESMUSIC);
 			gameFont1 = FontLoaderImpl.loadFont(RESOURCESWINDOWSPATH + RESOURCESGAMEFONTONE, SIZEGAMEFONTONE);
 			gameFont2 = FontLoaderImpl.loadFont(RESOURCESWINDOWSPATH + RESOURCESGAMEFONTTWO, SIZEGAMEFONTTWO);
 			gameFont3 = FontLoaderImpl.loadFont(RESOURCESWINDOWSPATH + RESOURCESGAMEFONTTHREE, SIZEGAMEFONTTHREE);

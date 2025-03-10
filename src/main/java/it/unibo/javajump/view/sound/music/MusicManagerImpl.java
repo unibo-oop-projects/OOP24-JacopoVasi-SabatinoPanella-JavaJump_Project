@@ -1,4 +1,4 @@
-package it.unibo.javajump.view.sound;
+package it.unibo.javajump.view.sound.music;
 
 import javax.sound.sampled.*;
 import java.io.File;
@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class AudioManagerImpl implements AudioManager {
+public class MusicManagerImpl implements MusicManager {
 
 	private static Clip backgroundClip;
 	private static FloatControl volumeControl;

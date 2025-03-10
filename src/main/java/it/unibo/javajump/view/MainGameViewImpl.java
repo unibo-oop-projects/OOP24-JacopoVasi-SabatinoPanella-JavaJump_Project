@@ -6,7 +6,7 @@ import it.unibo.javajump.model.states.GameState;
 import it.unibo.javajump.model.states.GameStateHandler;
 import it.unibo.javajump.view.renderers.RenderManager;
 import it.unibo.javajump.view.renderers.RendererManagerImpl;
-import it.unibo.javajump.view.sound.AudioManagerImpl;
+import it.unibo.javajump.view.sound.music.MusicManagerImpl;
 import it.unibo.javajump.view.viewstates.*;
 
 import javax.swing.*;
@@ -123,15 +123,15 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
 		switch (currentState) {
 			case MENU:
 				System.out.println("Returned to MENU!");
-				AudioManagerImpl.stopMusic();
+				MusicManagerImpl.stopMusic();
 				menuView.draw(g2, model);
 				break;
 			case IN_GAME:
-				AudioManagerImpl.startMusic();
+				MusicManagerImpl.startMusic();
 				inGameView.draw(g2, model);
 				break;
 			case PAUSE:
-				AudioManagerImpl.pauseMusic();
+				MusicManagerImpl.pauseMusic();
 				pauseView.draw(g2, model);
 				break;
 			case GAME_OVER:
@@ -157,7 +157,7 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
 				case PAUSE -> {
 				}
 				case GAME_OVER -> {
-					AudioManagerImpl.fadeOut(MAINVIEWAUDIOFADE);
+					MusicManagerImpl.fadeOut(MAINVIEWAUDIOFADE);
 					gameOverView.startFade();
 				}
 				case MENU -> {
