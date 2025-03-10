@@ -1,6 +1,6 @@
 package it.unibo.javajump.model.entities;
 
-public abstract class GameObject {
+public abstract class GameObjectImpl {
 
 	protected float x;
 	protected float y;
@@ -9,7 +9,7 @@ public abstract class GameObject {
 
 	public abstract void update(float deltaTime);
 
-	public abstract void onCollision(GameObject other);
+	public abstract void onCollision(GameObjectImpl other);
 
 
 	public float getX() {

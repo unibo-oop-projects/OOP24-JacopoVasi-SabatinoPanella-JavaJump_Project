@@ -3,8 +3,8 @@ package it.unibo.javajump.model;
 import it.unibo.javajump.controller.GameAction;
 import it.unibo.javajump.model.camera.CameraManager;
 import it.unibo.javajump.model.collision.CollisionManager;
-import it.unibo.javajump.model.entities.GameObject;
-import it.unibo.javajump.model.entities.character.Character;
+import it.unibo.javajump.model.entities.GameObjectImpl;
+import it.unibo.javajump.model.entities.character.CharacterImpl;
 import it.unibo.javajump.model.level.CleanupManager;
 import it.unibo.javajump.model.level.SpawnManager;
 import it.unibo.javajump.model.level.spawn.difficulty.DifficultyManager;
@@ -31,8 +31,8 @@ public class GameModel {
 	private final DifficultyManager difficultyManager;
 
 
-	private final List<GameObject> gameObjects;
-	private Character player;
+	private final List<GameObjectImpl> gameObjects;
+	private CharacterImpl player;
 
 
 	private final int screenWidth;
@@ -155,11 +155,11 @@ public class GameModel {
 		return currentState;
 	}
 
-	public List<GameObject> getGameObjects() {
+	public List<GameObjectImpl> getGameObjects() {
 		return this.gameObjects;
 	}
 
-	public Character getPlayer() {
+	public CharacterImpl getPlayer() {
 		return player;
 	}
 

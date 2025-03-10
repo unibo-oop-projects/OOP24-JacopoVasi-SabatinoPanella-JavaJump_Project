@@ -1,9 +1,9 @@
 package it.unibo.javajump.view.renderers;
 
 import it.unibo.javajump.model.GameModel;
-import it.unibo.javajump.model.entities.collectibles.Coin;
-import it.unibo.javajump.model.entities.platforms.Platform;
-import it.unibo.javajump.model.entities.character.Character;
+import it.unibo.javajump.model.entities.collectibles.CoinImpl;
+import it.unibo.javajump.model.entities.platforms.PlatformImpl;
+import it.unibo.javajump.model.entities.character.CharacterImpl;
 import it.unibo.javajump.view.graphics.GameGraphics;
 import it.unibo.javajump.view.renderers.sub.*;
 
@@ -40,17 +40,17 @@ public class RendererManager {
 	}
 
 
-	public void drawPlayer(Graphics2D g2, Character player, float offsetY, float deltaTime) {
+	public void drawPlayer(Graphics2D g2, CharacterImpl player, float offsetY, float deltaTime) {
 		playerRenderer.drawPlayer(g2, player, offsetY, deltaTime);
 	}
 
 
-	public void drawCoin(Graphics2D g2, Coin coin, float offsetY, float deltaTime) {
+	public void drawCoin(Graphics2D g2, CoinImpl coin, float offsetY, float deltaTime) {
 		coinRenderer.drawCoin(g2, coin, offsetY, deltaTime);
 	}
 
 
-	public void drawPlatform(Graphics2D g2, Platform platform, float offsetY) {
+	public void drawPlatform(Graphics2D g2, PlatformImpl platform, float offsetY) {
 		platformRenderer.drawPlatform(g2, platform, offsetY);
 	}
 

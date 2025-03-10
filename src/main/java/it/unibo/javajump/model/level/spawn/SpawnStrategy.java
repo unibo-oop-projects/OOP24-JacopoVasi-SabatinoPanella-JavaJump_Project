@@ -1,7 +1,7 @@
 package it.unibo.javajump.model.level.spawn;
 
 import it.unibo.javajump.model.GameModel;
-import it.unibo.javajump.model.factories.AbstractGameObjectFactory;
+import it.unibo.javajump.model.factories.AbstractGameObjectFactoryImpl;
 
 public interface SpawnStrategy {
 	
@@ -9,5 +9,5 @@ public interface SpawnStrategy {
 
 	float returnCurrentY();
 
-	AbstractGameObjectFactory getFactory();
+	AbstractGameObjectFactoryImpl getFactory();
 }

@@ -1,19 +1,19 @@
 package it.unibo.javajump.model.entities.character.states;
 
-import it.unibo.javajump.model.entities.character.Character;
+import it.unibo.javajump.model.entities.character.CharacterImpl;
 import it.unibo.javajump.model.entities.character.CharacterState;
 
 public class InAirState implements CharacterState {
 	@Override
-	public void updateCharacter(Character character, float deltaTime) {
+	public void updateCharacter(CharacterImpl character, float deltaTime) {
 	}
 
 	@Override
-	public void onEnter(Character character) {
+	public void onEnter(CharacterImpl character) {
 	}
 
 	@Override
-	public void onExit(Character character) {
+	public void onExit(CharacterImpl character) {
 	}
 
 	@Override

@@ -2,7 +2,7 @@ package it.unibo.javajump.model.states.gameutilities;
 
 import it.unibo.javajump.model.GameModel;
 import it.unibo.javajump.model.physics.MovementDirection;
-import it.unibo.javajump.model.entities.character.Character;
+import it.unibo.javajump.model.entities.character.CharacterImpl;
 import it.unibo.javajump.model.states.GameOverState;
 
 import static it.unibo.javajump.utility.Constants.*;
@@ -26,7 +26,7 @@ public final class InGameUtilities {
 	}
 
 	
-	public static void applyPacManEffect(Character player, int screenWidth) {
+	public static void applyPacManEffect(CharacterImpl player, int screenWidth) {
 		if (player.getX() + player.getWidth() < ZERO) {
 			player.setX(screenWidth);
 		} else if (player.getX() > screenWidth) {
@@ -35,7 +35,7 @@ public final class InGameUtilities {
 	}
 
 	
-	public static void checkGameOver(GameModel model, Character player) {
+	public static void checkGameOver(GameModel model, CharacterImpl player) {
 		float offset = model.getCameraManager().getCurrentOffset();
 		float drawY = player.getY() - offset;
 		if (drawY > model.getScreenHeight()) {

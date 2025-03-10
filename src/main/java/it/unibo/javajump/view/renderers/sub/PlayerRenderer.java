@@ -1,6 +1,6 @@
 package it.unibo.javajump.view.renderers.sub;
 
-import it.unibo.javajump.model.entities.character.Character;
+import it.unibo.javajump.model.entities.character.CharacterImpl;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
@@ -27,7 +27,7 @@ public class PlayerRenderer {
 		this.FRAME_DURATION = FRAME_DURATION;
 	}
 
-	public void drawPlayer(Graphics2D g2, Character player, float offsetY, float deltaTime) {
+	public void drawPlayer(Graphics2D g2, CharacterImpl player, float offsetY, float deltaTime) {
 
 		if (player.isOnPlatform() != prevOnPlatform) {
 			animTimer = ZERO;

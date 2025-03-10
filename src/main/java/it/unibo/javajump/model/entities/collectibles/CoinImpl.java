@@ -1,17 +1,17 @@
 package it.unibo.javajump.model.entities.collectibles;
 
-import it.unibo.javajump.model.entities.GameObject;
-import it.unibo.javajump.model.entities.platforms.Platform;
+import it.unibo.javajump.model.entities.GameObjectImpl;
+import it.unibo.javajump.model.entities.platforms.PlatformImpl;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class Coin extends GameObject {
+public class CoinImpl extends GameObjectImpl {
 
 	private CoinState state;
-	private Platform attachedPlatform;
+	private PlatformImpl attachedPlatform;
 	private float offsetX;
 
-	public Coin(float x, float y, float width, float height) {
+	public CoinImpl(float x, float y, float width, float height) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -40,7 +40,7 @@ public class Coin extends GameObject {
 	}
 
 
-	public void attachToPlatform(Platform platform) {
+	public void attachToPlatform(PlatformImpl platform) {
 		this.attachedPlatform = platform;
 		this.offsetX = this.x - platform.getX();
 	}
@@ -49,11 +49,11 @@ public class Coin extends GameObject {
 		return this.state;
 	}
 
-	public Platform getAttachedPlatform() {
+	public PlatformImpl getAttachedPlatform() {
 		return attachedPlatform;
 	}
 
 	@Override
-	public void onCollision(GameObject other) {
+	public void onCollision(GameObjectImpl other) {
 	}
 }

@@ -1,6 +1,6 @@
 package it.unibo.javajump.model.entities.objectstrategies;
 
-import it.unibo.javajump.model.entities.GameObject;
+import it.unibo.javajump.model.entities.GameObjectImpl;
 import it.unibo.javajump.model.physics.PhysicsUtils;
 
 import static it.unibo.javajump.utility.Constants.*;
@@ -30,7 +30,7 @@ public class HorizontalOscillationMovementDecelerating implements MovementBehavi
 	}
 
 	@Override
-	public void update(GameObject obj, float deltaTime) {
+	public void update(GameObjectImpl obj, float deltaTime) {
 		float currentX = obj.getX();
 		float objWidth = obj.getWidth();
 

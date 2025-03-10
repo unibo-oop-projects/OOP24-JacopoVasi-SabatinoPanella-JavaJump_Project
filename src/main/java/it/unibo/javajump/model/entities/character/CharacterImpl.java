@@ -1,12 +1,12 @@
 package it.unibo.javajump.model.entities.character;
 
-import it.unibo.javajump.model.entities.GameObject;
+import it.unibo.javajump.model.entities.GameObjectImpl;
 import it.unibo.javajump.model.entities.character.states.InAirState;
 import it.unibo.javajump.model.entities.character.states.OnPlatformState;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class Character extends GameObject {
+public class CharacterImpl extends GameObjectImpl {
 
 	private float velocityX;
 	private float velocityY;
@@ -17,7 +17,7 @@ public class Character extends GameObject {
 
 	private CharacterState currentState;
 
-	public Character(float x, float y, float width, float height, float jumpForce) {
+	public CharacterImpl(float x, float y, float width, float height, float jumpForce) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -36,7 +36,7 @@ public class Character extends GameObject {
 	}
 
 	@Override
-	public void onCollision(GameObject other) {
+	public void onCollision(GameObjectImpl other) {
 	}
 
 

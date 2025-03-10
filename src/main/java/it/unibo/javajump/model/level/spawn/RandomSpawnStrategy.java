@@ -1,8 +1,8 @@
 package it.unibo.javajump.model.level.spawn;
 
 import it.unibo.javajump.model.GameModel;
-import it.unibo.javajump.model.entities.platforms.Platform;
-import it.unibo.javajump.model.factories.AbstractGameObjectFactory;
+import it.unibo.javajump.model.entities.platforms.PlatformImpl;
+import it.unibo.javajump.model.factories.AbstractGameObjectFactoryImpl;
 import it.unibo.javajump.model.level.spawn.collectiblespawn.CollectiblesSpawner;
 import it.unibo.javajump.model.level.spawn.difficulty.DifficultyManager;
 import it.unibo.javajump.model.level.spawn.difficulty.DifficultyState;
@@ -15,7 +15,7 @@ import static it.unibo.javajump.utility.Constants.*;
 
 public class RandomSpawnStrategy implements SpawnStrategy {
 
-	private final AbstractGameObjectFactory factory;
+	private final AbstractGameObjectFactoryImpl factory;
 	private final Random rand;
 	@SuppressWarnings("FieldMayBeFinal")
 	private float minPlatformYSpacing;
@@ -25,7 +25,7 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 	private final CollectiblesSpawner collectiblesSpawner;
 	private final PlatformSpawner platformSpawner;
 
-	public RandomSpawnStrategy(AbstractGameObjectFactory factory,
+	public RandomSpawnStrategy(AbstractGameObjectFactoryImpl factory,
 							   float minSpacing,
 							   float maxSpacing,
 							   float coinChance,
@@ -53,7 +53,7 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 
 			float x = rand.nextFloat() * (model.getScreenWidth() - maxPlatformWidth);
 
-			Platform p = platformSpawner.spawnPlatform(x, currentY, model.getScreenWidth(), diff);
+			PlatformImpl p = platformSpawner.spawnPlatform(x, currentY, model.getScreenWidth(), diff);
 			model.getGameObjects().add(p);
 
 			float platformWidth = p.getWidth();
@@ -85,7 +85,7 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 	}
 
 	@Override
-	public AbstractGameObjectFactory getFactory() {
+	public AbstractGameObjectFactoryImpl getFactory() {
 		return this.factory;
 	}
 }

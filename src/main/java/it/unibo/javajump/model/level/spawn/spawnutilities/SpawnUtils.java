@@ -1,8 +1,8 @@
 package it.unibo.javajump.model.level.spawn.spawnutilities;
 
 import it.unibo.javajump.model.GameModel;
-import it.unibo.javajump.model.entities.platforms.Platform;
-import it.unibo.javajump.model.factories.AbstractGameObjectFactory;
+import it.unibo.javajump.model.entities.platforms.PlatformImpl;
+import it.unibo.javajump.model.factories.AbstractGameObjectFactoryImpl;
 
 import java.util.Random;
 
@@ -13,10 +13,10 @@ public class SpawnUtils {
 		return min + rand.nextFloat() * (max - min);
 	}
 
-	public static void spawnPlatformBelowPlayer(GameModel model, AbstractGameObjectFactory factory) {
+	public static void spawnPlatformBelowPlayer(GameModel model, AbstractGameObjectFactoryImpl factory) {
 		float px = model.getPlayer().getX() - XOFFSET;
 		float py = model.getPlayer().getY() + YOFFSET;
-		Platform p = factory.createStandardPlatform(px, py);
+		PlatformImpl p = factory.createStandardPlatform(px, py);
 		model.getGameObjects().add(p);
 	}
 }

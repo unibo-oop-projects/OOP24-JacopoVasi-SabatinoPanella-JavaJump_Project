@@ -8,7 +8,7 @@ import java.awt.event.KeyListener;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class GameController implements KeyListener {
+public class GameControllerImpl implements KeyListener {
 
 	private final GameModel model;
 	private final MainGameView view;
@@ -17,7 +17,7 @@ public class GameController implements KeyListener {
 	private boolean pressingLeft = false;
 	private boolean pressingRight = false;
 
-	public GameController(GameModel model, MainGameView view) {
+	public GameControllerImpl(GameModel model, MainGameView view) {
 		this.model = model;
 		this.view = view;
 		this.running = false;

@@ -2,8 +2,8 @@ package it.unibo.javajump.view.viewstates;
 
 import it.unibo.javajump.model.GameModel;
 import it.unibo.javajump.model.entities.*;
-import it.unibo.javajump.model.entities.collectibles.Coin;
-import it.unibo.javajump.model.entities.platforms.Platform;
+import it.unibo.javajump.model.entities.collectibles.CoinImpl;
+import it.unibo.javajump.model.entities.platforms.PlatformImpl;
 import it.unibo.javajump.view.MainGameView;
 import it.unibo.javajump.view.renderers.RendererManager;
 
@@ -30,7 +30,7 @@ public class InGameView implements GameViewState {
 	@Override
 	public void draw(Graphics g, GameModel model) {
 
-		ArrayList<GameObject> snapshot;
+		ArrayList<GameObjectImpl> snapshot;
 		synchronized (model.getGameObjects()) {
 			snapshot = new ArrayList<>(model.getGameObjects());
 			System.out.println(snapshot.size());
@@ -49,7 +49,7 @@ public class InGameView implements GameViewState {
 
 		if (debugMode) {
 			g2.setColor(Color.RED);
-			for (GameObject obj : snapshot) {
+			for (GameObjectImpl obj : snapshot) {
 				float dx = obj.getX();
 				float dy = obj.getY() - cameraOffsetY;
 				g2.drawRect((int) dx, (int) dy,
@@ -59,10 +59,10 @@ public class InGameView implements GameViewState {
 		}
 
 
-		for (GameObject obj : snapshot) {
-			if (obj instanceof Coin c) {
+		for (GameObjectImpl obj : snapshot) {
+			if (obj instanceof CoinImpl c) {
 				renderer.drawCoin(g2, c, cameraOffsetY, deltaTime);
-			} else if (obj instanceof Platform p) {
+			} else if (obj instanceof PlatformImpl p) {
 				renderer.drawPlatform(g2, p, cameraOffsetY);
 			}
 

@@ -1,7 +1,7 @@
 package it.unibo.javajump.model.level;
 
 import it.unibo.javajump.model.GameModel;
-import it.unibo.javajump.model.factories.AbstractGameObjectFactory;
+import it.unibo.javajump.model.factories.AbstractGameObjectFactoryImpl;
 import it.unibo.javajump.model.level.spawn.RandomSpawnStrategy;
 import it.unibo.javajump.model.level.spawn.SpawnStrategy;
 
@@ -52,7 +52,7 @@ public class SpawnManager {
 		return this.spawnStrategy;
 	}
 
-	public AbstractGameObjectFactory getFactory() {
+	public AbstractGameObjectFactoryImpl getFactory() {
 
 		if (spawnStrategy instanceof RandomSpawnStrategy) {
 			return spawnStrategy.getFactory();

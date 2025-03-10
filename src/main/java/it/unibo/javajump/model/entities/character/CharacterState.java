@@ -3,13 +3,13 @@ package it.unibo.javajump.model.entities.character;
 
 public interface CharacterState {
 	
-	void updateCharacter(Character character, float deltaTime);
+	void updateCharacter(CharacterImpl character, float deltaTime);
 
 	
-	void onEnter(Character character);
+	void onEnter(CharacterImpl character);
 
 	
-	void onExit(Character character);
+	void onExit(CharacterImpl character);
 
 	
 	boolean isOnPlatform();

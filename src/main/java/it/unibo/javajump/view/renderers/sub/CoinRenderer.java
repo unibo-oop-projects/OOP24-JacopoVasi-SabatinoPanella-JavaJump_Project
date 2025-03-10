@@ -1,6 +1,6 @@
 package it.unibo.javajump.view.renderers.sub;
 
-import it.unibo.javajump.model.entities.collectibles.Coin;
+import it.unibo.javajump.model.entities.collectibles.CoinImpl;
 import it.unibo.javajump.model.entities.collectibles.CoinState;
 
 import java.awt.*;
@@ -18,8 +18,8 @@ public class CoinRenderer {
 	private final int frameHeight;
 	private final float frameDuration;
 
-	private final Map<Coin, Float> coinAnimTimers = new HashMap<>();
-	private final Map<Coin, CoinState> coinLastStates = new HashMap<>();
+	private final Map<CoinImpl, Float> coinAnimTimers = new HashMap<>();
+	private final Map<CoinImpl, CoinState> coinLastStates = new HashMap<>();
 
 	public CoinRenderer(BufferedImage sheet, int frameWidth, int frameHeight, float frameDuration) {
 		this.coinSheet = sheet;
@@ -29,7 +29,7 @@ public class CoinRenderer {
 	}
 
 
-	public void drawCoin(Graphics2D g2, Coin coin, float offsetY, float deltaTime) {
+	public void drawCoin(Graphics2D g2, CoinImpl coin, float offsetY, float deltaTime) {
 		if (coin.getState() == CoinState.FINISHED) {
 			return;
 		}
@@ -73,7 +73,7 @@ public class CoinRenderer {
 	}
 
 
-	public void removeCoin(Coin coin) {
+	public void removeCoin(CoinImpl coin) {
 		coinAnimTimers.remove(coin);
 		coinLastStates.remove(coin);
 	}

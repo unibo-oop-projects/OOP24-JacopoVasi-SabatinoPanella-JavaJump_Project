@@ -1,7 +1,7 @@
 package it.unibo.javajump.model.level.spawn.platformspawn;
 
-import it.unibo.javajump.model.entities.platforms.Platform;
-import it.unibo.javajump.model.factories.AbstractGameObjectFactory;
+import it.unibo.javajump.model.entities.platforms.PlatformImpl;
+import it.unibo.javajump.model.factories.AbstractGameObjectFactoryImpl;
 import it.unibo.javajump.model.level.spawn.difficulty.DifficultyState;
 
 import java.util.Random;
@@ -10,16 +10,16 @@ import static it.unibo.javajump.model.level.spawn.spawnutilities.SpawnUtils.rand
 
 public class PlatformSpawner {
 
-	private final AbstractGameObjectFactory factory;
+	private final AbstractGameObjectFactoryImpl factory;
 	private final Random rand;
 
-	public PlatformSpawner(AbstractGameObjectFactory factory) {
+	public PlatformSpawner(AbstractGameObjectFactoryImpl factory) {
 		this.factory = factory;
 		this.rand = new Random();
 	}
 
 	
-	public Platform spawnPlatform(float x, float y, int screenWidth, DifficultyState difficulty) {
+	public PlatformImpl spawnPlatform(float x, float y, int screenWidth, DifficultyState difficulty) {
 		float chance = rand.nextFloat();
 		float breakableChance = difficulty.getBreakableChance();
 		float movingChance = difficulty.getMovingChance();

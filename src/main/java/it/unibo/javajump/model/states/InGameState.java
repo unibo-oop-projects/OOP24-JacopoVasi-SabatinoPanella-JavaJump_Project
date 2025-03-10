@@ -2,8 +2,8 @@ package it.unibo.javajump.model.states;
 
 import it.unibo.javajump.controller.GameAction;
 import it.unibo.javajump.model.GameModel;
-import it.unibo.javajump.model.entities.GameObject;
-import it.unibo.javajump.model.entities.character.Character;
+import it.unibo.javajump.model.entities.GameObjectImpl;
+import it.unibo.javajump.model.entities.character.CharacterImpl;
 import it.unibo.javajump.model.physics.MovementDirection;
 
 import static it.unibo.javajump.utility.Constants.*;
@@ -34,13 +34,13 @@ public class InGameState implements GameStateHandler {
 
 	@Override
 	public void update(GameModel model, float deltaTime) {
-		Character player = model.getPlayer();
+		CharacterImpl player = model.getPlayer();
 		MovementDirection md = convertIntToMovementDirection(horizontalDirection);
 		model.getPhysicsManager().updateCharacterMovement(player, deltaTime, md);
 
-		for (GameObject go : model.getGameObjects()) {
+		for (GameObjectImpl go : model.getGameObjects()) {
 			go.update(deltaTime);
-			if (go instanceof Character character) {
+			if (go instanceof CharacterImpl character) {
 				applyPacManEffect(character, model.getScreenWidth());
 			}
 		}

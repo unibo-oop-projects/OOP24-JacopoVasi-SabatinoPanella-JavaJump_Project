@@ -1,9 +1,9 @@
 package it.unibo.javajump.view.renderers.sub;
 
-import it.unibo.javajump.model.entities.platforms.BouncePlatform;
-import it.unibo.javajump.model.entities.platforms.BreakablePlatform;
-import it.unibo.javajump.model.entities.platforms.MovingPlatform;
-import it.unibo.javajump.model.entities.platforms.Platform;
+import it.unibo.javajump.model.entities.platforms.BouncePlatformImpl;
+import it.unibo.javajump.model.entities.platforms.BreakablePlatformImpl;
+import it.unibo.javajump.model.entities.platforms.MovingPlatformImpl;
+import it.unibo.javajump.model.entities.platforms.PlatformImpl;
 
 import java.awt.*;
 
@@ -20,7 +20,7 @@ public class PlatformRenderer {
 	}
 
 
-	public void drawPlatform(Graphics2D g2, Platform platform,
+	public void drawPlatform(Graphics2D g2, PlatformImpl platform,
 							 float cameraOffsetY) {
 
 		float drawX = platform.getX();
@@ -29,13 +29,13 @@ public class PlatformRenderer {
 		float h = platform.getHeight();
 
 
-		if (platform instanceof BouncePlatform) {
+		if (platform instanceof BouncePlatformImpl) {
 			drawPlatformCommon(g2, drawX, drawY, w, h,
 					Color.decode("#d15484"), Color.decode("#d4c340"));
-		} else if (platform instanceof BreakablePlatform) {
+		} else if (platform instanceof BreakablePlatformImpl) {
 			drawPlatformCommon(g2, drawX, drawY, w, h,
 					Color.decode("#ea4b1e"), Color.decode("#d4c340"));
-		} else if (platform instanceof MovingPlatform) {
+		} else if (platform instanceof MovingPlatformImpl) {
 			drawPlatformCommon(g2, drawX, drawY, w, h,
 					Color.decode("#276b91"), Color.decode("#d4c340"));
 		} else {

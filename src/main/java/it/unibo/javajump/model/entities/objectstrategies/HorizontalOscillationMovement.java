@@ -1,6 +1,6 @@
 package it.unibo.javajump.model.entities.objectstrategies;
 
-import it.unibo.javajump.model.entities.GameObject;
+import it.unibo.javajump.model.entities.GameObjectImpl;
 
 public class HorizontalOscillationMovement implements MovementBehaviour {
 
@@ -18,7 +18,7 @@ public class HorizontalOscillationMovement implements MovementBehaviour {
 	}
 
 	@Override
-	public void update(GameObject obj, float deltaTime) {
+	public void update(GameObjectImpl obj, float deltaTime) {
 		float currentX = obj.getX();
 		if (goingRight) {
 			currentX += speed * deltaTime;

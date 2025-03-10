@@ -5,12 +5,12 @@ import it.unibo.javajump.model.entities.objectstrategies.MovementBehaviour;
 
 import static it.unibo.javajump.utility.Constants.*;
 
-public class MovingPlatform extends Platform {
+public class MovingPlatformImpl extends PlatformImpl {
 
 	private final MovementBehaviour movementBehaviour;
 
-	public MovingPlatform(float x, float y, float width, float height,
-						  float range, float screenWidth, float speed, float acceleration, float deceleration) {
+	public MovingPlatformImpl(float x, float y, float width, float height,
+							  float range, float screenWidth, float speed, float acceleration, float deceleration) {
 		super(x, y, width, height);
 
 		if (x < ZERO) {

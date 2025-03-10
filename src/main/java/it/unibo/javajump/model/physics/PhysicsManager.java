@@ -1,6 +1,6 @@
 package it.unibo.javajump.model.physics;
 
-import it.unibo.javajump.model.entities.character.Character;
+import it.unibo.javajump.model.entities.character.CharacterImpl;
 
 
 public class PhysicsManager {
@@ -18,7 +18,7 @@ public class PhysicsManager {
 	}
 
 
-	public void updateCharacterMovement(Character character, float deltaTime, MovementDirection direction) {
+	public void updateCharacterMovement(CharacterImpl character, float deltaTime, MovementDirection direction) {
 		float vx = character.getVelocityX();
 
 		switch (direction) {
@@ -40,7 +40,7 @@ public class PhysicsManager {
 	}
 
 
-	private void updateCharacterPosition(Character character, float deltaTime) {
+	private void updateCharacterPosition(CharacterImpl character, float deltaTime) {
 		character.setOldX(character.getX());
 		character.setOldY(character.getY());
 
