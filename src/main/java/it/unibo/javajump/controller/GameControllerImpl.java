@@ -55,13 +55,13 @@ public class GameControllerImpl implements GameController {
     @Override
     public void startGameLoop() {
         running = true;
-        Thread loopThread = new Thread(() -> {
+        final Thread loopThread = new Thread(() -> {
             long previousTime = System.nanoTime();
             final double nsPerFrame = NANOSECONDS_PER_SECOND / FPS;
 
             while (running) {
-                long currentTime = System.nanoTime();
-                double elapsedNs = currentTime - previousTime;
+                final long currentTime = System.nanoTime();
+                final double elapsedNs = currentTime - previousTime;
                 if (elapsedNs >= nsPerFrame) {
                     float deltaTime = (float) (elapsedNs / NANOSECONDS_PER_SECOND);
                     processDiscreteInput();
