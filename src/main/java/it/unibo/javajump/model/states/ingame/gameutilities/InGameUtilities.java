@@ -9,16 +9,17 @@ import static it.unibo.javajump.utility.Constants.NULL_DIRECTION;
 import static it.unibo.javajump.utility.Constants.SCREEN_LEFT_MARGIN;
 
 /**
- * utility class for the InGameState, specifies some useful static methods
+ * utility class for the InGameState, specifies some useful static methods.
  */
 public final class InGameUtilities {
     /**
-     * Private constructor, to avoid instantiating this class
+     * Private constructor, to avoid instantiating this class.
      *
      * @throws AssertionError if the constructor is called
      */
     private InGameUtilities() {
-        throw new AssertionError("This is a utility class, it should not be instantiated!");
+        throw new AssertionError
+                ("This is a utility class, it should not be instantiated!");
     }
 
     /**
@@ -39,7 +40,7 @@ public final class InGameUtilities {
 
     /**
      * Applies the PacMan effect to the character, so that if the character
-     * trespasses the screen border, it will appear on the other side
+     * trespasses the screen border, it will appear on the other side.
      *
      * @param player      the character to apply the effect
      * @param screenWidth the width of the screen
@@ -54,9 +55,9 @@ public final class InGameUtilities {
 
     /**
      * Verifies if the game has to be set to GameOverState, with the condition
-     * for losing being that the character goes below the bottom of the screen
+     * for losing being that the character goes below the bottom of the screen.
      *
-     * @param model  the game model, used to get the current offset and the               screen height
+     * @param model  the game model, used to get the current offset and the screen height
      * @param player the character to check
      */
     public static void checkGameOver(final GameModel model, final Character player) {

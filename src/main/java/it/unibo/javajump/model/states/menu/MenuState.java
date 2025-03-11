@@ -10,7 +10,7 @@ import it.unibo.javajump.model.states.ingame.InGameState;
 /**
  * The type Menu state.
  */
-public class MenuState implements GameStateHandler {
+public final class MenuState implements GameStateHandler {
     /**
      * The Game state.
      */
@@ -56,5 +56,4 @@ public class MenuState implements GameStateHandler {
     public float getDeltaTime() {
         return deltaTime;
     }
-
 }

@@ -11,7 +11,7 @@ import it.unibo.javajump.model.states.menu.MenuState;
 /**
  * The type Pause state.
  */
-public class PauseState implements GameStateHandler {
+public final class PauseState implements GameStateHandler {
     private float deltaTime;
     private PauseOption selection = PauseOption.CONTINUE;
     /**
@@ -47,8 +47,7 @@ public class PauseState implements GameStateHandler {
                     selection = PauseOption.CONTINUE;
                 }
             }
-            default -> {
-            }
+            default -> { }
         }
     }
 

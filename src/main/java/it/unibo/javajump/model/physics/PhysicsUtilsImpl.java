@@ -5,7 +5,7 @@ import static it.unibo.javajump.utility.Constants.NULL_VELOCITY;
 /**
  * The type Physics utils.
  */
-public class PhysicsUtilsImpl implements PhysicsUtils {
+public final class PhysicsUtilsImpl implements PhysicsUtils {
 
     /**
      * Accelerate to right float.
@@ -59,5 +59,14 @@ public class PhysicsUtilsImpl implements PhysicsUtils {
             }
         }
         return vx;
+    }
+
+    /**
+     * Private constructor, this class should not be instantiated.
+     *
+     * @throws AssertionError the assertion error thrown if instantiated
+     */
+    private PhysicsUtilsImpl() {
+        throw new AssertionError("This is a utility class, it should not be instantiated!");
     }
 }

@@ -5,7 +5,7 @@ import static it.unibo.javajump.utility.Constants.SCORE_INIT;
 /**
  * The type Score manager.
  */
-public class ScoreManagerImpl implements ScoreManager {
+public final class ScoreManagerImpl implements ScoreManager {
 
     private int currentScore;
     private int bestScore;

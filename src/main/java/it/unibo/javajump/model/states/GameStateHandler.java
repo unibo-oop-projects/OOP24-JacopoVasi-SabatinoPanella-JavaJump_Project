@@ -3,7 +3,6 @@ package it.unibo.javajump.model.states;
 import it.unibo.javajump.controller.input.GameAction;
 import it.unibo.javajump.model.GameModel;
 
-
 /**
  * The interface Game state handler.
  */
