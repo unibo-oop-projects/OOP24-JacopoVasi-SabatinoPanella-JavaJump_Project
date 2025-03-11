@@ -41,7 +41,7 @@ public class GameControllerImpl implements GameController {
      * @param view         The game view
      * @param inputManager The input manager
      */
-    public GameControllerImpl(GameModel model, MainGameView view, InputManager inputManager, GameFrame frame) {
+    public GameControllerImpl(final GameModel model, final MainGameView view, final InputManager inputManager, final GameFrame frame) {
         this.model = model;
         this.view = view;
         this.running = false;

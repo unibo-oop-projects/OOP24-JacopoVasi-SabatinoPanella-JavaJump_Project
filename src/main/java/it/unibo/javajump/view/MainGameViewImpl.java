@@ -36,7 +36,7 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
 
     private final GameModel model;
 
-    private final GameViewState menuView;
+    private final  GameViewState menuView;
     private final GameViewState inGameView;
     private final GameViewState pauseView;
     private final GameViewState gameOverView;
@@ -51,7 +51,7 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
     private final MusicManager musicManager;
 
     public MainGameViewImpl(GameModel model) {
-        GameGraphics gameGraphics = new GameGraphicsImpl();
+        GameGraphics gameGraphics = new  GameGraphicsImpl();
         this.model = model;
         this.musicManager = new MusicManagerImpl(RESOURCES_PATH + RESOURCES_MUSIC_1, MUSIC_VOLUME);
         SoundEffectsManager soundEffectsManager = new SoundEffectsManager(SOUND_EFFECTS_VOLUME);
