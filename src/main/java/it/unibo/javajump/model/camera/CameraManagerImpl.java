@@ -50,14 +50,14 @@ public class CameraManagerImpl implements CameraManager {
      * @param deltaTime the time passed from the last update (in seconds)
      */
     @Override
-    public void updateCamera(final GameModel model, float deltaTime) {
-        final Character player = model.getPlayer();
-        final float screenHeight = model.getScreenHeight();
-        final float desiredOffset = getDesiredOffset(screenHeight, player);
+    public void updateCamera(final GameModel model, final float deltaTime) {
+        Character player = model.getPlayer();
+        float screenHeight = model.getScreenHeight();
+        float desiredOffset = getDesiredOffset(screenHeight, player);
 
         if (currentOffset < previousOffset) {
-            final float deltaOffset = previousOffset - currentOffset;
-            final int points = (int) (deltaOffset * scoreFactor);
+            float deltaOffset = previousOffset - currentOffset;
+            int points = (int) (deltaOffset * scoreFactor);
             scoreManager.addPoints(points);
         }
         previousOffset = currentOffset;
@@ -75,7 +75,7 @@ public class CameraManagerImpl implements CameraManager {
      * @return the desired offset
      */
     private float getDesiredOffset(final float screenHeight, final Character player) {
-        final float progressionScreenPoint = screenHeight / HEIGHT_DIV - screenHeight * WIDTH_DIV;
+        float progressionScreenPoint = screenHeight / HEIGHT_DIV - screenHeight * WIDTH_DIV;
         float desiredOffset = currentOffset;
 
         if (player.getY() < progressionScreenPoint - currentOffset) {

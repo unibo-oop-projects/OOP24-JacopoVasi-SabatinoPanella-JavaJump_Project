@@ -73,7 +73,7 @@ public class CharacterImpl extends GameObjectImpl implements Character {
     }
 
     @Override
-    public void onCollision(GameObject other) {
+    public void onCollision(final GameObject other) {
     }
 
     @Override

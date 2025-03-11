@@ -36,7 +36,7 @@ public class BackgroundRendererImpl implements BackgroundRenderer {
      */
     private float horizontalOffset;
 
-    private DifficultyState currentDifficulty;
+    private final DifficultyState currentDifficulty;
 
     private BufferedImage currentBg;
     private BufferedImage targetBg;
