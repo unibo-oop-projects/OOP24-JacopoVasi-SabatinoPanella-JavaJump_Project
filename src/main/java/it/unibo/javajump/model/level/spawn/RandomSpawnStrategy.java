@@ -1,15 +1,11 @@
 package it.unibo.javajump.model.level.spawn;
 
 import it.unibo.javajump.model.GameModel;
-import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.model.entities.platforms.Platform;
-import it.unibo.javajump.model.entities.platforms.PlatformImpl;
-import it.unibo.javajump.model.factories.AbstractGameObjectFactory;
 import it.unibo.javajump.model.factories.GameObjectFactory;
 import it.unibo.javajump.model.level.spawn.collectiblespawn.CollectiblesSpawner;
 import it.unibo.javajump.model.level.spawn.collectiblespawn.CollectiblesSpawnerImpl;
 import it.unibo.javajump.model.level.spawn.difficulty.DifficultyManager;
-import it.unibo.javajump.model.level.spawn.difficulty.DifficultyManagerImpl;
 import it.unibo.javajump.model.level.spawn.difficulty.DifficultyState;
 import it.unibo.javajump.model.level.spawn.platformspawn.PlatformSpawner;
 import it.unibo.javajump.model.level.spawn.platformspawn.PlatformSpawnerImpl;
@@ -23,10 +19,8 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 
 	private final GameObjectFactory factory;
 	private final Random rand;
-	@SuppressWarnings("FieldMayBeFinal")
-	private float minPlatformYSpacing;
-	@SuppressWarnings("FieldMayBeFinal")
-	private float maxPlatformYSpacing;
+	private final float minPlatformYSpacing;
+	private final float maxPlatformYSpacing;
 	private float currentY;
 	private final CollectiblesSpawner collectiblesSpawner;
 	private final PlatformSpawner platformSpawner;
@@ -48,16 +42,14 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 	@Override
 	public void spawnBatch(GameModel model, float startY, int numberOfPlatforms) {
 		DifficultyState diff = model.getDifficultyManager().getCurrentDifficulty();
-		System.out.println(DIFFICULTYTEXT + diff);
 		currentY = startY;
-		float maxPlatformWidth = MAXPLATFORMWIDTH;
 
 		for (int i = 0; i < numberOfPlatforms; i++) {
 
 			float gap = setSpawnGap(diff);
 			currentY -= gap;
 
-			float x = rand.nextFloat() * (model.getScreenWidth() - maxPlatformWidth);
+			float x = rand.nextFloat() * (model.getScreenWidth() - (float) MAXPLATFORMWIDTH);
 
 			Platform p = platformSpawner.spawnPlatform(x, currentY, model.getScreenWidth(), diff);
 			model.getGameObjects().add(p);

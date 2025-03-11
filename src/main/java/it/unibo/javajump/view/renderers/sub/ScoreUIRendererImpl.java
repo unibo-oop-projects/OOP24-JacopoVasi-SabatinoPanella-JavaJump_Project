@@ -38,7 +38,7 @@ public class ScoreUIRendererImpl implements ScoreUIRenderer {
 		int score = model.getScore();
 		int bestScore = model.getScoreManager().getBestScore();
 
-		if (score < bestScore) {
+		if (score < bestScore || score == 0) {
 			g2.setColor(Color.WHITE);
 			g2.setFont(GameGraphicsImpl.getGameFont2());
 			g2.drawString(SCORERENDERTEXT + score, SCORERENDERX, SCORERENDERY);
