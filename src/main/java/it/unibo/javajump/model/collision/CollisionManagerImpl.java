@@ -43,14 +43,15 @@ public class CollisionManagerImpl implements CollisionManager {
                     if (a instanceof Character && b instanceof Coin) {
                         handleCharacterCoinCollision((Coin) b, model);
                     } else if (b instanceof Character && a instanceof Coin) {
-                        handleCharacterCoinCollision( (Coin) a, model);
+                        handleCharacterCoinCollision((Coin) a, model);
                     }
 
                     if (a instanceof Character && b instanceof Platform) {
                         if (handleCharacterPlatformCollision((Character) a, (Platform) b)) {
                             foundPlatformCollision = true;
                         }
-                    } else if (b instanceof Character && a instanceof Platform && handleCharacterPlatformCollision((Character) b, (Platform) a)) {
+                    } else if (b instanceof Character && a instanceof Platform
+                            && handleCharacterPlatformCollision((Character) b, (Platform) a)) {
 
                             foundPlatformCollision = true;
 
