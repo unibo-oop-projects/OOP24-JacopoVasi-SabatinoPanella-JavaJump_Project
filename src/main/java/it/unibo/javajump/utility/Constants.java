@@ -1,6 +1,5 @@
 package it.unibo.javajump.utility;
 
-import java.awt.*;
 
 public final class Constants {
 
@@ -160,11 +159,11 @@ public final class Constants {
 
 	// Audio Manager
 	public static final float AUDIOVOLUME = 0.7f;
+	public static final float AUDIOVOLUMESFX = 0.65f;
 	public static final float AUDIOLOOPEND = 0.885f;
 	public static final int AUDIOLOOPSTART = 0;
 	public static final int AUDIOFRAMEINIT = 0;
 	public static final int AUDIOSTEPS = 50;
-	public static final int AUDIOSTEPSDECREASE = 1;
 	public static final int AUDIOSLEEP = 1000;
 
 	// In game view
@@ -238,7 +237,6 @@ public final class Constants {
 	//MAIN VIEW
 	public static final int MAINVIEWCENTERDIV = 2;
 	public static final float MAINVIEWAUDIOFADE = 2f;
-	public static final int MAINVIEWDELTAINIT = 0;
 	public static final int MAINVIEWDRAWXINIT = 0;
 	public static final int MAINVIEWDRAWYINIT = 0;
 	public static final int MAINVIEWRECTX = 0;

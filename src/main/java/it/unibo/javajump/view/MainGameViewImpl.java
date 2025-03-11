@@ -36,12 +36,11 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
 	private GameState lastState;
 
 	private final MusicManager musicManager;
-	private final SoundEffectsManager soundEffectsManager;
 
 	public MainGameViewImpl(GameModel model) {
 		this.model = model;
 		this.musicManager = new MusicManagerImpl(RESOURCESWINDOWSPATH + RESOURCESMUSIC, AUDIOVOLUME);
-		this.soundEffectsManager = new SoundEffectsManager(AUDIOVOLUME);
+		SoundEffectsManager soundEffectsManager = new SoundEffectsManager(AUDIOVOLUMESFX);
 		setDoubleBuffered(true);
 
 		this.virtualWidth = model.getScreenWidth();
