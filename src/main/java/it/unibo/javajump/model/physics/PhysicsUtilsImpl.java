@@ -17,8 +17,8 @@ public class PhysicsUtilsImpl implements PhysicsUtils {
      * @return the float
      */
     public static float accelerateToRight(final float vx, final float deltaTime, final float acceleration, final float maxSpeed) {
-        final float new_vx = vx + acceleration * deltaTime;
-        return Math.min(new_vx, maxSpeed);
+        final float vxx = vx + acceleration * deltaTime;
+        return Math.min(vxx, maxSpeed);
     }
 
 
@@ -32,8 +32,8 @@ public class PhysicsUtilsImpl implements PhysicsUtils {
      * @return the float
      */
     public static float accelerateToLeft(final float vx, final float deltaTime, final float acceleration, final float maxSpeed) {
-        final float new_vx = vx - acceleration * deltaTime;
-        return Math.max(new_vx, -maxSpeed);
+        final float vxx = vx - acceleration * deltaTime;
+        return Math.max(vxx, -maxSpeed);
     }
 
 

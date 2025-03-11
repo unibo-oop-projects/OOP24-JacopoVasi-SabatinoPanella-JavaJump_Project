@@ -14,8 +14,8 @@ public class MenuState implements GameStateHandler {
     /**
      * The Game state.
      */
-    static final GameState gameState = GameState.MENU;
-    private float deltaTime = 0;
+    static final GameState GAME_STATE = GameState.MENU;
+    private float deltaTime;
 
     @Override
     public void handleAction(final GameModel model, final GameAction action) {
@@ -40,7 +40,7 @@ public class MenuState implements GameStateHandler {
 
     @Override
     public GameState getGameState() {
-        return gameState;
+        return GAME_STATE;
     }
 
     /**

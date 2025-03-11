@@ -33,7 +33,7 @@ public class InGameView implements GameViewState {
     @Override
     public void draw(final Graphics g, final GameModel model) {
 
-        ArrayList<GameObject> snapshot;
+        final ArrayList<GameObject> snapshot;
         synchronized (model.getGameObjects()) {
             snapshot = new ArrayList<>(model.getGameObjects());
 
@@ -66,7 +66,7 @@ public class InGameView implements GameViewState {
                 showHighScoreMessage = !showHighScoreMessage;
                 lastToggleTime = now;
             }
-            boolean isNewHighScore = false;
+            final boolean isNewHighScore = false;
             renderer.drawScoreUI(g2, model, isNewHighScore, showHighScoreMessage);
         }
     }

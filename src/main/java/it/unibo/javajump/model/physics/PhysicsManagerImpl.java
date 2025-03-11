@@ -7,10 +7,10 @@ import it.unibo.javajump.model.entities.character.Character;
  * The type Physics manager.
  */
 public class PhysicsManagerImpl implements PhysicsManager {
-    private final float ACCELERATION;
-    private final float MAX_SPEED;
-    private final float DECELERATION;
-    private final float GRAVITY;
+    private final float acceleration;
+    private final float maxSpeed;
+    private final float deceleration;
+    private final float gravity;
 
 
     /**
@@ -22,10 +22,10 @@ public class PhysicsManagerImpl implements PhysicsManager {
      * @param deceleration the deceleration
      */
     public PhysicsManagerImpl(final float gravity, final float acceleration, final float maxSpeed, final float deceleration) {
-        this.GRAVITY = gravity;
-        this.ACCELERATION = acceleration;
-        this.MAX_SPEED = maxSpeed;
-        this.DECELERATION = deceleration;
+        this.gravity = gravity;
+        this.acceleration = acceleration;
+        this.maxSpeed = maxSpeed;
+        this.deceleration = deceleration;
     }
 
 
@@ -35,17 +35,15 @@ public class PhysicsManagerImpl implements PhysicsManager {
 
         switch (direction) {
             case RIGHT:
-                vx = PhysicsUtilsImpl.accelerateToRight(vx, deltaTime, ACCELERATION, MAX_SPEED);
+                vx = PhysicsUtilsImpl.accelerateToRight(vx, deltaTime, acceleration, maxSpeed);
                 character.setFacingRight(true);
                 break;
             case LEFT:
-                vx = PhysicsUtilsImpl.accelerateToLeft(vx, deltaTime, ACCELERATION, MAX_SPEED);
+                vx = PhysicsUtilsImpl.accelerateToLeft(vx, deltaTime, acceleration, maxSpeed);
                 character.setFacingRight(false);
                 break;
             case NONE:
 
-            default: vx = PhysicsUtilsImpl.decelerate(vx, deltaTime, DECELERATION);
-                break;
 
         }
         character.setVelocityX(vx);
@@ -59,7 +57,7 @@ public class PhysicsManagerImpl implements PhysicsManager {
 
         final float newX = character.getX() + character.getVelocityX() * deltaTime;
         final float newY = character.getY() + character.getVelocityY() * deltaTime;
-        final float newVy = character.getVelocityY() + GRAVITY * deltaTime;
+        final float newVy = character.getVelocityY() + gravity * deltaTime;
 
         character.setX(newX);
         character.setY(newY);

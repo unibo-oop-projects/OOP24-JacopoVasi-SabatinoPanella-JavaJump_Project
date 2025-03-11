@@ -39,11 +39,11 @@ public class PauseView implements GameViewState {
     }
 
     @Override
-    public void draw(Graphics g, GameModel model) {
-        PauseState pauseState = (PauseState) model.getCurrentState();
-        PauseOption selection = pauseState.getSelection();
+    public void draw(final Graphics g, final GameModel model) {
+        final PauseState pauseState = (PauseState) model.getCurrentState();
+        final PauseOption selection = pauseState.getSelection();
 
-        int selectionYcor;
+        final int selectionYcor;
         switch (selection) {
             case CONTINUE -> selectionYcor = PAUSE_CONTINUE_Y;
             case MAIN_MENU -> selectionYcor = PAUSE_MAIN_MENU_Y;
