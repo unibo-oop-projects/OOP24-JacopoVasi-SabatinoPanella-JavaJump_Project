@@ -25,10 +25,10 @@ public class InGameState implements GameStateHandler {
     /**
      * The Game state.
      */
-    static final GameState gameState = GameState.IN_GAME;
+    static final GameState GAME_STATE = GameState.IN_GAME;
 
     private int horizontalDirection = NULL_DIRECTION;
-    private float deltaTime = 0;
+    private float deltaTime;
 
 
     @Override
@@ -74,7 +74,7 @@ public class InGameState implements GameStateHandler {
 
     @Override
     public GameState getGameState() {
-        return gameState;
+        return GAME_STATE;
     }
 
     /**

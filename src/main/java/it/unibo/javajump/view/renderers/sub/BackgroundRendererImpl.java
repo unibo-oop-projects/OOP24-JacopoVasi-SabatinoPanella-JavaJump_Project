@@ -60,7 +60,6 @@ public class BackgroundRendererImpl implements BackgroundRenderer {
         this.parallaxFactor = parallaxFactor;
         this.horizontalSpeed = horizontalSpeed;
         this.horizontalOffset = BG_HORIZONTAL_OFFSET_INIT;
-        final DifficultyState currentDifficulty = DifficultyState.EASY;
         this.transitionDuration = transitionDuration;
         this.currentBg = bgTileEasy;
         this.targetBg = bgTileEasy;

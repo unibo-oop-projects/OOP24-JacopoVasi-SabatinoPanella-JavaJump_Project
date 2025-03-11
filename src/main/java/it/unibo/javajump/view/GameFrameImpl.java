@@ -23,6 +23,16 @@ public class GameFrameImpl extends JFrame implements GameFrame {
      */
     public GameFrameImpl(final String title) {
         this.setTitle(title);
+
+    }
+
+    @Override
+    public void setUp(final InputManager inputManager, int height, int width, final MainGameView view) {
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+        this.addKeyListener(inputManager);
+        this.setExtendedState(MAXIMIZED_BOTH);
+        this.add((Component) view);
         this.addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(final ComponentEvent e) {
@@ -30,15 +40,6 @@ public class GameFrameImpl extends JFrame implements GameFrame {
                 GameFrameImpl.this.pack();
             }
         });
-    }
-
-    @Override
-    public void setUp(final InputManager inputManager, int height, int width, final MainGameView view) {
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-        this.addKeyListener(inputManager);
-        this.setExtendedState(MAXIMIZED_BOTH);
-        this.add((Component) view);
         this.setVisible(true);
     }
 

@@ -12,11 +12,11 @@ import java.util.Objects;
  * The type Game over state.
  */
 public class GameOverState implements GameStateHandler {
-    private float deltaTime = 0;
+    private float deltaTime;
     /**
      * The Game state.
      */
-    static final GameState gameState = GameState.GAME_OVER;
+    static final GameState GAME_STATE = GameState.GAME_OVER;
 
     @Override
     public void handleAction(final GameModel model, final GameAction action) {
@@ -34,7 +34,7 @@ public class GameOverState implements GameStateHandler {
 
     @Override
     public GameState getGameState() {
-        return gameState;
+        return GAME_STATE;
     }
 
     /**
