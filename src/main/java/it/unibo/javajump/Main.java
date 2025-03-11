@@ -49,7 +49,6 @@ public class Main {
 		CameraManager cameraManager = new CameraManagerImpl(scoreManager, SCOREFACTOR);
 		PhysicsManager physicsManager = new PhysicsManagerImpl(GRAVITY, ACCELERATION, MAXSPEED, DECELERATION);
 		CleanupManager cleanupManager = new CleanupManagerImpl();
-		JFrame frame = new JFrame(GAMETITLE);
 
 		GameModel model = new GameModelImpl(screenWidth,
 				screenHeight,
@@ -60,6 +59,8 @@ public class Main {
 				scoreManager,
 				cleanupManager,
 				difficultyManager);
+
+		JFrame frame = new JFrame(GAMETITLE);
 
 		MainGameView view = new MainGameViewImpl(model);
 		model.addObserver((GameModelObserver) view);

@@ -237,8 +237,9 @@ public final class Constants {
 
 	//MAIN VIEW
 	public static final int MAINVIEWCENTERDIV = 2;
-	public static final float MAINVIEWAUDIOFADE = 1.2f;
+	public static final float MAINVIEWAUDIOFADE = 2f;
 	public static final int MAINVIEWDELTAINIT = 0;
+	public static final int MAINVIEWDRAWXINIT = 0;
 	public static final int MAINVIEWDRAWYINIT = 0;
 	public static final int MAINVIEWRECTX = 0;
 	public static final int MAINVIEWRECTY = 0;
@@ -272,6 +273,10 @@ public final class Constants {
 	public static final String RESOURCESGAMEFONTONE = "Daydream.ttf";
 	public static final String RESOURCESGAMEFONTTWO = "Daydream.ttf";
 	public static final String RESOURCESGAMEFONTTHREE = "Daydream.ttf";
+	public static final String RESOURCE_BOUNCE_SFX = "Bounce.wav";
+	public static final String RESOURCE_BREAK_SFX = "Break.wav";
+	public static final String RESOURCE_DEFAULT_SFX = "Jump.wav";
+	public static final String RESOURCE_COIN_SFX = "Coin.wav";
 	public static final int SIZEGAMEFONTONE = 20;
 	public static final int SIZEGAMEFONTTWO = 15;
 	public static final int SIZEGAMEFONTTHREE = 10;

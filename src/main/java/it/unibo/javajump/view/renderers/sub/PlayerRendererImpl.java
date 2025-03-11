@@ -56,7 +56,7 @@ public class PlayerRendererImpl implements PlayerRenderer {
 
 	/**
 	 * {@inheritDoc}
-	 * The method checks the state of the Player (in model) and updates the animation timer accordingly.
+	 * The method checks the state of the Character (in model) and updates the animation timer accordingly.
 	 * The draw logic also uses the private methods to draw the correct frame and to flip the sheet.
 	 *
 	 * @param g2        the Graphics2D context
@@ -83,7 +83,8 @@ public class PlayerRendererImpl implements PlayerRenderer {
 	}
 
 	/**
-	 * The animation frames are then extracted from the sprite sheet and drawn on the screen.
+	 * Private method that returns the index of the frame to draw.
+	 * The animation frames are extracted from the sprite sheet.
 	 * The sheet contains a single row of frames,
 	 * with the first 2 frames for jumping and the last 2 for falling.
 	 * The animation logic for the character is:
@@ -107,7 +108,7 @@ public class PlayerRendererImpl implements PlayerRenderer {
 	}
 
 	/**
-	 * The sprite sheet is flipped horizontally if the player is facing left.
+	 * Private method that flips the sprite sheet horizontally if the player is facing left.
 	 *
 	 * @param g2     the Graphics2D context
 	 * @param player the player to check

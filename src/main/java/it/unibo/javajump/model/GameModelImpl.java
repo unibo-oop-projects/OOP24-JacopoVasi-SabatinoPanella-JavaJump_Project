@@ -24,7 +24,7 @@ public class GameModelImpl implements GameModel {
 	private GameStateHandler currentState;
 	private final PhysicsManager physicsManager;
 	private final CollisionManager collisionManager;
-	private final SpawnManager spawnManager;   // ha dentro la factory
+	private final SpawnManager spawnManager;
 	private final CameraManager cameraManager;
 	private final ScoreManager scoreManager;
 	private final CleanupManager cleanupManager;

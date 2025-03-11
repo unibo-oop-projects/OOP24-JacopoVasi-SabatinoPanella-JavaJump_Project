@@ -16,18 +16,16 @@ import static it.unibo.javajump.utility.Constants.*;
 
 public class CleanupManagerImpl implements CleanupManager {
 
-	GameModel gameModel;
-
 	@Override
 	public void cleanupObjects(GameModel model) {
-		this.gameModel = model;
 		List<GameObject> toRemove = new ArrayList<>();
 
 		float cameraOffset = model.getCameraManager().getCurrentOffset();
 		float screenH = model.getScreenHeight();
 		float margin = MARGIN;
 
-		for (GameObject go : gameModel.getGameObjects()) {
+		for (GameObject go : model.getGameObjects()) {
+
 			if (go instanceof Coin c) {
 				if (c.getState() == CoinState.FINISHED) {
 					toRemove.add(c);
@@ -36,7 +34,7 @@ public class CleanupManagerImpl implements CleanupManager {
 			}
 
 			if (go instanceof BreakablePlatform bp) {
-				if (bp.isBroken()) {
+				if (bp.isBroken() && bp.readyForRemoval()) {
 					toRemove.add(bp);
 					continue;
 				}
@@ -50,6 +48,6 @@ public class CleanupManagerImpl implements CleanupManager {
 
 		}
 
-		gameModel.getGameObjects().removeAll(toRemove);
+		model.getGameObjects().removeAll(toRemove);
 	}
 }

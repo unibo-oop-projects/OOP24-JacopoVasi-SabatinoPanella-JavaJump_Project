@@ -1,12 +1,9 @@
 package it.unibo.javajump.model.collision;
 
 import it.unibo.javajump.model.GameModel;
-import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.model.entities.*;
 import it.unibo.javajump.model.entities.character.Character;
-import it.unibo.javajump.model.entities.character.CharacterImpl;
 import it.unibo.javajump.model.entities.collectibles.Coin;
-import it.unibo.javajump.model.entities.collectibles.CoinImpl;
 import it.unibo.javajump.model.entities.collectibles.CoinState;
 import it.unibo.javajump.model.entities.platforms.*;
 
@@ -24,7 +21,7 @@ public class CollisionManagerImpl implements CollisionManager {
 	 * respective onCollision methods. cycles through all the game objects and
 	 * checks if they collide, then calls their respective handler methods.
 	 *
-	 * @param model the GameModelImpl
+	 * @param model the GameModel
 	 */
 	@Override
 	public void checkCollisions(GameModel model) {
@@ -68,8 +65,8 @@ public class CollisionManagerImpl implements CollisionManager {
 	 * Basic Bounding-Box check (AABB), that checks if two GameObjects are
 	 * colliding.
 	 *
-	 * @param a the first GameObjectImpl
-	 * @param b the second GameObjectImpl
+	 * @param a the first GameObject
+	 * @param b the second GameObject
 	 * @return true if the two GameObjects are colliding, false otherwise
 	 */
 	private boolean isColliding(GameObject a, GameObject b) {
@@ -119,6 +116,7 @@ public class CollisionManagerImpl implements CollisionManager {
 				player.setVelocityY(-jumpForce);
 				player.setY(platformTop - player.getHeight());
 				player.landOnPlatform();
+				platform.triggerTouched();
 
 				if (platform instanceof BreakablePlatform breakablePlatform) {
 					breakablePlatform.breakPlatform();

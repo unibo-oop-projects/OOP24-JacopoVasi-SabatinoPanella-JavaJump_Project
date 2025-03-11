@@ -1,6 +1,7 @@
 package it.unibo.javajump.view.renderers.sub;
 
 import it.unibo.javajump.model.entities.platforms.*;
+import it.unibo.javajump.view.sound.sfx.*;
 
 import java.awt.*;
 
@@ -23,6 +24,8 @@ public class PlatformRendererImpl implements PlatformRenderer {
 	 */
 	private final int roundArcH;
 
+	private final SoundEffectsManager soundEffectsManager;
+
 	/**
 	 * Class constructor for the PlatformRendererImpl, that initializes the fields for Platform rendering.
 	 *
@@ -30,10 +33,11 @@ public class PlatformRendererImpl implements PlatformRenderer {
 	 * @param arcW               the width of the rounded corners
 	 * @param arcH               the height of the rounded corners
 	 */
-	public PlatformRendererImpl(float outlineStrokeWidth, int arcW, int arcH) {
+	public PlatformRendererImpl(float outlineStrokeWidth, int arcW, int arcH, SoundEffectsManager soundEffectsManager) {
 		this.outlineStrokeWidth = outlineStrokeWidth;
 		this.roundArcW = arcW;
 		this.roundArcH = arcH;
+		this.soundEffectsManager = soundEffectsManager;
 	}
 
 	/**
@@ -58,6 +62,19 @@ public class PlatformRendererImpl implements PlatformRenderer {
 					Color.decode(MOVING_PLATFORM_COLOR), Color.decode(PLATFORM_HIGHLIGHT_COLOR));
 			default -> drawPlatformCommon(g2, drawX, drawY, w, h,
 					Color.decode(STANDARD_PLATFORM_COLOR), Color.decode(PLATFORM_HIGHLIGHT_COLOR));
+		}
+
+		if (platform.consumeTouched()) {
+			if (platform instanceof BouncePlatform) {
+				soundEffectsManager.playSound(SFXType.BOUNCE);
+				System.out.println("bounce platform touched");
+			} else if (platform instanceof BreakablePlatform) {
+				soundEffectsManager.playSound(SFXType.BREAK);
+				System.out.println("breakable platform touched");
+			} else {
+				soundEffectsManager.playSound(SFXType.DEFAULT);
+				System.out.println("platform touched");
+			}
 		}
 	}
 

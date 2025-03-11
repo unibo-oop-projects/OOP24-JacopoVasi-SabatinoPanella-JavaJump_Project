@@ -6,65 +6,116 @@ import it.unibo.javajump.model.entities.collectibles.Coin;
 import it.unibo.javajump.model.entities.platforms.Platform;
 import it.unibo.javajump.view.graphics.GameGraphicsImpl;
 import it.unibo.javajump.view.renderers.sub.*;
+import it.unibo.javajump.view.sound.sfx.SoundEffectsManager;
 
 import java.awt.*;
 
 import static it.unibo.javajump.utility.Constants.*;
 
+/**
+ * Implementation of the RenderManager interface, used for graphical rendering of the elements of the gameplay.
+ */
 public class RendererManagerImpl implements RenderManager {
-
+	/**
+	 * Field to store the platform renderer.
+	 */
 	private final PlatformRenderer platformRenderer;
+	/**
+	 * Field to store the coin renderer.
+	 */
 	private final CoinRenderer coinRenderer;
+	/**
+	 * Field to store the character renderer.
+	 */
 	private final PlayerRenderer playerRenderer;
+	/**
+	 * Field to store the first background renderer.
+	 */
 	private final BackgroundRenderer backgroundRenderer1;
+	/**
+	 * Field to store the second background renderer.
+	 */
 	private final BackgroundRenderer backgroundRenderer2;
+	/**
+	 * Field to store the UI&score renderer.
+	 */
 	private final ScoreUIRenderer scoreUIRenderer;
 
-	public RendererManagerImpl() {
-		this.platformRenderer = new PlatformRendererImpl(RENDERMANAGERPLATFORMOUTLINE, RENDERMANAGERPLATFORMARCW, RENDERMANAGERPLATFORMARCH);
-		this.coinRenderer = new CoinRendererImpl(GameGraphicsImpl.getCoinSheet(), RENDERMANAGERCOINWIDTH, RENDERMANAGERCOINHEIGHT, RENDERMANAGERCOINFRAMEDURATION);
+	private final SoundEffectsManager soundEffectsManager;
+
+	/**
+	 * Constructor for the RendererManagerImpl class. Associates the different renderers implementations
+	 * with their respective fields.
+	 */
+	public RendererManagerImpl(SoundEffectsManager soundEffectsManager) {
+		this.soundEffectsManager = soundEffectsManager;
+		this.platformRenderer = new PlatformRendererImpl(RENDERMANAGERPLATFORMOUTLINE, RENDERMANAGERPLATFORMARCW,
+				RENDERMANAGERPLATFORMARCH, soundEffectsManager);
+		this.coinRenderer = new CoinRendererImpl(GameGraphicsImpl.getCoinSheet(), RENDERMANAGERCOINWIDTH,
+				RENDERMANAGERCOINHEIGHT, RENDERMANAGERCOINFRAMEDURATION);
 		this.playerRenderer = new PlayerRendererImpl(GameGraphicsImpl.getPlayerSheet(), RENDERMANAGERPLAYERWIDTH, RENDERMANAGERPLAYERHEIGHT, RENDERMANAGERPLAYERFRAMEDURATION);
 		this.backgroundRenderer1 = new BackgroundRendererImpl(GameGraphicsImpl.getBackground1(), RENDERMANAGERBACKGROUNDPARALLAXONE, RENDERMANAGERBACKGROUNDSPEEDXONE);
 		this.backgroundRenderer2 = new BackgroundRendererImpl(GameGraphicsImpl.getBackground2(), RENDERMANAGERBACKGROUNDPARALLAXTWO, RENDERMANAGERBACKGROUNDSPEEDTWO);
 		this.scoreUIRenderer = new ScoreUIRendererImpl(GameGraphicsImpl.getScoreContainer());
 	}
 
-
+	/**
+	 * {@inheritDoc}
+	 * The implemented method calls the drawBackground method of the backgroundRenderer1 field
+	 * to draw the first background.
+	 */
 	@Override
 	public void drawBackground1(Graphics2D g2, GameModel model, float deltaTime) {
 		backgroundRenderer1.drawBackground(g2, model, deltaTime);
 	}
 
-
+	/**
+	 * {@inheritDoc}
+	 * The implemented method calls the drawBackground method of the backgroundRenderer2 field
+	 * to draw the second background.
+	 */
 	@Override
 	public void drawBackground2(Graphics2D g2, GameModel model, float deltaTime) {
 		backgroundRenderer2.drawBackground(g2, model, deltaTime);
 	}
 
-
+	/**
+	 * {@inheritDoc}
+	 * The implemented method calls the drawPlayer method of the playerRenderer field
+	 * to draw the playable character.
+	 */
 	@Override
 	public void drawPlayer(Graphics2D g2, Character player, float offsetY, float deltaTime) {
 		playerRenderer.drawPlayer(g2, player, offsetY, deltaTime);
 	}
 
-
+	/**
+	 * {@inheritDoc}
+	 * The implemented method calls the drawCoin method of the coinRenderer field
+	 * to draw a coin.
+	 */
 	@Override
 	public void drawCoin(Graphics2D g2, Coin coinImpl, float offsetY, float deltaTime) {
 		coinRenderer.drawCoin(g2, coinImpl, offsetY, deltaTime);
 	}
 
-
+	/**
+	 * {@inheritDoc}
+	 * The implemented method calls the drawPlatform method of the platformRenderer field
+	 * to draw a platform.
+	 */
 	@Override
 	public void drawPlatform(Graphics2D g2, Platform platformImpl, float offsetY) {
 		platformRenderer.drawPlatform(g2, platformImpl, offsetY);
 	}
 
-
+	/**
+	 * {@inheritDoc}
+	 * The implemented method calls the drawScoreAndUI method of the scoreUIRenderer field
+	 * to draw the score and UI elements.
+	 */
 	@Override
-	public void drawScoreUI(Graphics2D g2, GameModel model,
-							boolean isNewHighScore,
-							boolean showHighScoreMessage) {
+	public void drawScoreUI(Graphics2D g2, GameModel model, boolean isNewHighScore, boolean showHighScoreMessage) {
 		scoreUIRenderer.drawScoreAndUI(g2, model, isNewHighScore, showHighScoreMessage);
 	}
-
 }

@@ -1,7 +1,5 @@
 package it.unibo.javajump.view.graphics;
 
-import it.unibo.javajump.view.sound.music.MusicManagerImpl;
-
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -17,15 +15,9 @@ public class GameGraphicsImpl implements GameGraphics {
 	private static BufferedImage background1;
 	private static BufferedImage background2;
 	private static BufferedImage scoreContainer;
-	private static BufferedImage platform;
 	private static BufferedImage coinSheet;
-	private static BufferedImage obstacle;
 	private static BufferedImage gameOver;
 	private static BufferedImage title;
-
-	public void LoadGraphics() {
-
-	}
 
 	static {
 		try {
@@ -36,7 +28,6 @@ public class GameGraphicsImpl implements GameGraphics {
 			background1 = ImageIO.read(new File(RESOURCESWINDOWSPATH + RESOURCESBACKGROUNDONE));
 			background2 = ImageIO.read(new File(RESOURCESWINDOWSPATH + RESOURCESBACKGROUNDTWO));
 			scoreContainer = ImageIO.read(new File(RESOURCESWINDOWSPATH + RESOURCESSCORECONTAINER));
-			MusicManagerImpl.loadBackgroundMusic(RESOURCESWINDOWSPATH + RESOURCESMUSIC);
 			gameFont1 = FontLoaderImpl.loadFont(RESOURCESWINDOWSPATH + RESOURCESGAMEFONTONE, SIZEGAMEFONTONE);
 			gameFont2 = FontLoaderImpl.loadFont(RESOURCESWINDOWSPATH + RESOURCESGAMEFONTTWO, SIZEGAMEFONTTWO);
 			gameFont3 = FontLoaderImpl.loadFont(RESOURCESWINDOWSPATH + RESOURCESGAMEFONTTHREE, SIZEGAMEFONTTHREE);
@@ -81,17 +72,8 @@ public class GameGraphicsImpl implements GameGraphics {
 		return title;
 	}
 
-	public static BufferedImage getGameOverImage() {
-		return gameOver;
-	}
-
 	public static BufferedImage getScoreContainer() {
 		return scoreContainer;
-	}
-
-
-	public BufferedImage getGraphics() {
-		return platform;
 	}
 
 }

@@ -6,7 +6,9 @@ import it.unibo.javajump.model.states.GameState;
 import it.unibo.javajump.model.states.GameStateHandler;
 import it.unibo.javajump.view.renderers.RenderManager;
 import it.unibo.javajump.view.renderers.RendererManagerImpl;
+import it.unibo.javajump.view.sound.music.MusicManager;
 import it.unibo.javajump.view.sound.music.MusicManagerImpl;
+import it.unibo.javajump.view.sound.sfx.SoundEffectsManager;
 import it.unibo.javajump.view.viewstates.*;
 
 import javax.swing.*;
@@ -33,16 +35,20 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
 
 	private GameState lastState;
 
+	private final MusicManager musicManager;
+	private final SoundEffectsManager soundEffectsManager;
 
 	public MainGameViewImpl(GameModel model) {
 		this.model = model;
+		this.musicManager = new MusicManagerImpl(RESOURCESWINDOWSPATH + RESOURCESMUSIC, AUDIOVOLUME);
+		this.soundEffectsManager = new SoundEffectsManager(AUDIOVOLUME);
 		setDoubleBuffered(true);
 
 		this.virtualWidth = model.getScreenWidth();
 		this.virtualHeight = model.getScreenHeight();
 
-		RenderManager rendererManager = new RendererManagerImpl();
-		setBackground(Color.decode("#05051C"));
+		RenderManager rendererManager = new RendererManagerImpl(soundEffectsManager);
+		setBackground(Color.decode(BACKGROUND_DEFAULT_COLOR));
 
 		this.menuView = new MenuView();
 		this.inGameView = new InGameView(rendererManager);
@@ -56,7 +62,6 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
 		addComponentListener(new ComponentAdapter() {
 			@Override
 			public void componentResized(ComponentEvent e) {
-
 				repaint();
 			}
 		});
@@ -65,7 +70,6 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
 	
 	@Override
 	public void updateView() {
-
 		GameStateHandler currentHandler = model.getCurrentState();
 		GameState gs = currentHandler.getGameState();
 		if (gs == GameState.GAME_OVER) {
@@ -80,94 +84,60 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-
 		drawToTempScreen();
 
-		int panelWidth = getWidth();
-		int panelHeight = getHeight();
-
-		float targetAspect = (float) virtualWidth / virtualHeight;
-		float panelAspect = (float) panelWidth / panelHeight;
-
-		int drawWidth, drawHeight, drawX, drawY;
-		if (panelAspect > targetAspect) {
-
-			drawHeight = panelHeight;
-			drawWidth = Math.round(drawHeight * targetAspect);
-			drawX = (panelWidth - drawWidth) / MAINVIEWCENTERDIV;
-			drawY = MAINVIEWDRAWYINIT;
-		} else {
-
-			drawWidth = panelWidth;
-			drawHeight = Math.round(drawWidth / targetAspect);
-			drawX = MAINVIEWDRAWYINIT;
-			drawY = (panelHeight - drawHeight) / MAINVIEWCENTERDIV;
-		}
-
-		g.setColor(Color.decode("#05051C"));
-		g.fillRect(MAINVIEWRECTX, MAINVIEWRECTY, panelWidth, panelHeight);
-
-		g.drawImage(tempScreen, drawX, drawY, drawWidth, drawHeight, null);
+		Rectangle scaledRect = ScaleUtils.computeScaledRectangle(virtualWidth, virtualHeight, getSize());
+		g.setColor(Color.decode(BACKGROUND_DEFAULT_COLOR));
+		g.fillRect(MAINVIEWRECTX, MAINVIEWRECTY, getWidth(), getHeight());
+		g.drawImage(tempScreen, scaledRect.x, scaledRect.y, scaledRect.width, scaledRect.height, null);
 	}
 
 	
 	private void drawToTempScreen() {
 		Graphics2D g2 = tempScreen.createGraphics();
-
 		g2.setColor(Color.BLACK);
 		g2.fillRect(MAINVIEWRECTX, MAINVIEWRECTY, virtualWidth, virtualHeight);
 
-		GameStateHandler stateHandler = model.getCurrentState();
-		GameState currentState = stateHandler.getGameState();
-
+		GameState currentState = model.getCurrentState().getGameState();
 		switch (currentState) {
-			case MENU:
-				System.out.println("Returned to MENU!");
-				MusicManagerImpl.stopMusic();
-				menuView.draw(g2, model);
-				break;
-			case IN_GAME:
-				MusicManagerImpl.startMusic();
-				inGameView.draw(g2, model);
-				break;
-			case PAUSE:
-				MusicManagerImpl.pauseMusic();
-				pauseView.draw(g2, model);
-				break;
-			case GAME_OVER:
-
+			case MENU -> menuView.draw(g2, model);
+			case IN_GAME -> inGameView.draw(g2, model);
+			case PAUSE -> pauseView.draw(g2, model);
+			case GAME_OVER -> {
 				inGameView.draw(g2, model);
 				gameOverView.draw(g2, model);
-				break;
-			default:
-				break;
+			}
+			default -> {
+			}
 		}
 		g2.dispose();
 	}
 
 	@Override
 	public void onModelUpdate(GameModel model) {
-		GameStateHandler stateHandler = model.getCurrentState();
-		GameState currentState = stateHandler.getGameState();
+		GameState currentState = model.getCurrentState().getGameState();
 
 		if (currentState != lastState) {
 			switch (currentState) {
+				case MENU -> musicManager.stopMusic();
 				case IN_GAME -> {
+					if (lastState == GameState.PAUSE) {
+						musicManager.resumeMusic();
+					} else {
+						musicManager.stopMusic();
+						musicManager.startMusic();
+					}
 				}
-				case PAUSE -> {
-				}
+				case PAUSE -> musicManager.pauseMusic();
 				case GAME_OVER -> {
-					MusicManagerImpl.fadeOut(MAINVIEWAUDIOFADE);
+					musicManager.fadeOut(MAINVIEWAUDIOFADE);
 					gameOverView.startFade();
-				}
-				case MENU -> {
 				}
 				default -> {
 				}
 			}
 		}
 		lastState = currentState;
-
 		repaint();
 	}
 }

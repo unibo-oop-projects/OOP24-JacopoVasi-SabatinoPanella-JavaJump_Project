@@ -24,6 +24,7 @@ public class GameOverState implements GameStateHandler {
 	@Override
 	public void update(GameModel model, float deltaTime) {
 		this.deltaTime = deltaTime;
+		model.notifyObservers();
 	}
 
 	@Override

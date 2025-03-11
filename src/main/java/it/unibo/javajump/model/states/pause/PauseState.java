@@ -50,7 +50,8 @@ public class PauseState implements GameStateHandler {
 
 	@Override
 	public void update(GameModel model, float deltaTime) {
-		this.deltaTime += deltaTime;
+		this.deltaTime = deltaTime;
+		model.notifyObservers();
 	}
 
 	@Override
