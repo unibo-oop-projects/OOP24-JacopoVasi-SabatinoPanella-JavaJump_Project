@@ -41,18 +41,15 @@ public class RendererManagerImpl implements RenderManager {
 	 */
 	private final ScoreUIRenderer scoreUIRenderer;
 
-	private final SoundEffectsManager soundEffectsManager;
-
 	/**
 	 * Constructor for the RendererManagerImpl class. Associates the different renderers implementations
 	 * with their respective fields.
 	 */
 	public RendererManagerImpl(SoundEffectsManager soundEffectsManager) {
-		this.soundEffectsManager = soundEffectsManager;
 		this.platformRenderer = new PlatformRendererImpl(RENDERMANAGERPLATFORMOUTLINE, RENDERMANAGERPLATFORMARCW,
 				RENDERMANAGERPLATFORMARCH, soundEffectsManager);
 		this.coinRenderer = new CoinRendererImpl(GameGraphicsImpl.getCoinSheet(), RENDERMANAGERCOINWIDTH,
-				RENDERMANAGERCOINHEIGHT, RENDERMANAGERCOINFRAMEDURATION);
+				RENDERMANAGERCOINHEIGHT, RENDERMANAGERCOINFRAMEDURATION, soundEffectsManager);
 		this.playerRenderer = new PlayerRendererImpl(GameGraphicsImpl.getPlayerSheet(), RENDERMANAGERPLAYERWIDTH, RENDERMANAGERPLAYERHEIGHT, RENDERMANAGERPLAYERFRAMEDURATION);
 		this.backgroundRenderer1 = new BackgroundRendererImpl(GameGraphicsImpl.getBackground1(), RENDERMANAGERBACKGROUNDPARALLAXONE, RENDERMANAGERBACKGROUNDSPEEDXONE);
 		this.backgroundRenderer2 = new BackgroundRendererImpl(GameGraphicsImpl.getBackground2(), RENDERMANAGERBACKGROUNDPARALLAXTWO, RENDERMANAGERBACKGROUNDSPEEDTWO);

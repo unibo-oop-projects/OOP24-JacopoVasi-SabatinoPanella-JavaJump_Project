@@ -2,6 +2,8 @@ package it.unibo.javajump.view.renderers.sub;
 
 import it.unibo.javajump.model.entities.collectibles.Coin;
 import it.unibo.javajump.model.entities.collectibles.CoinState;
+import it.unibo.javajump.view.sound.sfx.SFXType;
+import it.unibo.javajump.view.sound.sfx.SoundEffectsManager;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -40,6 +42,9 @@ public class CoinRendererImpl implements CoinRenderer {
 	 */
 	private final Map<Coin, CoinState> coinLastStates = new HashMap<>();
 
+
+	private final SoundEffectsManager soundEffectsManager;
+
 	/**
 	 * Constructor for the CoinRendererImpl class.
 	 *
@@ -48,11 +53,12 @@ public class CoinRendererImpl implements CoinRenderer {
 	 * @param frameHeight   the height of each frame
 	 * @param frameDuration the standard duration of a frame of animation
 	 */
-	public CoinRendererImpl(BufferedImage sheet, int frameWidth, int frameHeight, float frameDuration) {
+	public CoinRendererImpl(BufferedImage sheet, int frameWidth, int frameHeight, float frameDuration, SoundEffectsManager soundEffectsManager) {
 		this.coinSheet = sheet;
 		this.frameWidth = frameWidth;
 		this.frameHeight = frameHeight;
 		this.frameDuration = frameDuration;
+		this.soundEffectsManager = soundEffectsManager;
 	}
 
 	/**
@@ -76,6 +82,8 @@ public class CoinRendererImpl implements CoinRenderer {
 		if (prevState == null || !prevState.equals(coin.getState())) {
 			coinAnimTimers.put(coin, COINANIMTIMERS);
 			coinLastStates.put(coin, coin.getState());
+			soundEffectsManager.playSound(SFXType.COIN);
+			System.out.println("Coin collected");
 		}
 
 		float timer = coinAnimTimers.get(coin);

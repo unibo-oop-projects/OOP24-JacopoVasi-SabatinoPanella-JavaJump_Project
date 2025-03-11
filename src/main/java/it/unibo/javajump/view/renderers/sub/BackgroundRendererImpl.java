@@ -1,6 +1,7 @@
 package it.unibo.javajump.view.renderers.sub;
 
 import it.unibo.javajump.model.GameModel;
+import it.unibo.javajump.model.level.spawn.difficulty.DifficultyState;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -16,6 +17,13 @@ public class BackgroundRendererImpl implements BackgroundRenderer {
 	 * Image tile of the background
 	 */
 	private final BufferedImage bgTile;
+	private final BufferedImage bgTileEasy;
+	private final BufferedImage bgTileMedium;
+	private final BufferedImage bgTileHard;
+	private final BufferedImage bgTileVeryHard;
+	private final BufferedImage bgTileHell;
+	private boolean fadeSwitch;
+	private DifficultyState currentDifficulty;
 	/**
 	 * Factor for vertical parallax effect
 	 */
@@ -42,6 +50,13 @@ public class BackgroundRendererImpl implements BackgroundRenderer {
 		this.parallaxFactor = parallaxFactor;
 		this.horizontalSpeed = horizontalSpeed;
 		this.horizontalOffset = ZERO;
+		this.bgTileEasy = bgTile;
+		this.bgTileMedium = bgTile;
+		this.bgTileHard = bgTile;
+		this.bgTileVeryHard = bgTile;
+		this.bgTileHell = bgTile;
+		this.fadeSwitch = false;
+		this.currentDifficulty = DifficultyState.EASY;
 	}
 
 	/**
@@ -56,6 +71,40 @@ public class BackgroundRendererImpl implements BackgroundRenderer {
 		int screenW = model.getScreenWidth();
 		int screenH = model.getScreenHeight();
 
+		//Possible way to implement
+        /*
+        if(currentDifficulty != model.getDifficultyManager().getCurrentDifficulty()) {
+            currentDifficulty = model.getDifficultyManager().getCurrentDifficulty();
+            switch (currentDifficulty) {
+                case EASY:
+                    bgTile = bgTileEasy;
+                    break;
+                case MEDIUM:
+                    bgTile = bgTileMedium;
+                    break;
+                case HARD:
+                    bgTile = bgTileHard;
+                    break;
+                case VERY_HARD:
+                    bgTile = bgTileVeryHard;
+                    break;
+                case HELL:
+                    bgTile = bgTileHell;
+                    break;
+                default:
+                    bgTile = bgTileEasy;
+                    break;
+            }
+            fadeSwitch=true;
+
+        }
+
+        if (fadeSwitch) {
+            //Do the thing
+        }
+
+
+         */
 		float cameraOffset = model.getCameraManager().getCurrentOffset();
 		float verticalOffset = cameraOffset * parallaxFactor;
 
