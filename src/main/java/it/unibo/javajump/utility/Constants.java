@@ -708,265 +708,329 @@ public final class Constants {
      */
     public static final int GAMEPLAY_MESSAGE_TIME_TOGGLE = 1700;
 
+
+// MenuView -----------------------------------------------------------------------------------
+
     /**
-     * The constant MENUVIEWCENTERDIV.
+     * The constant MENU_VIEW_CENTER_DIV: specifies the center division in the menu view.
      */
-// menu view
     public static final int MENU_VIEW_CENTER_DIV = 2;
+
     /**
-     * The constant MENUVIEWRECTX.
+     * The constant MENU_VIEW_RECT_X: specifies the x position of the menu view background.
      */
     public static final int MENU_VIEW_RECT_X = 0;
+
     /**
-     * The constant MENUVIEWRECTY.
+     * The constant MENU_VIEW_RECT_Y: specifies the y position of the menu view background.
      */
     public static final int MENU_VIEW_RECT_Y = 0;
+
     /**
-     * The constant MENUVIEWIMGWIDTHSCALAR.
+     * The constant MENU_VIEW_TITLE_IMG_WIDTH_SCALAR: specifies the width scalar of the title image.
      */
     public static final float MENU_VIEW_TITLE_IMG_WIDTH_SCALAR = 0.03f;
+
     /**
-     * The constant MENUVIEWIMGHEIGHTSCALAR.
+     * The constant MENU_VIEW_TITLE_IMG_HEIGHT_SCALAR: specifies the height scalar of the title image.
      */
     public static final int MENU_VIEW_TITLE_IMG_HEIGHT_SCALAR = 5;
+
     /**
-     * The constant MENUVIEWTILEWSCALAR.
+     * The constant MENU_VIEW_TILE_W_SCALAR: specifies the width scalar of the menu view tiles.
      */
     public static final int MENU_VIEW_TILE_W_SCALAR = 1;
+
     /**
-     * The constant MENUVIEWTILEHSCALAR.
+     * The constant MENU_VIEW_TILE_H_SCALAR: specifies the height scalar of the menu view tiles.
      */
     public static final int MENU_VIEW_TILE_H_SCALAR = 1;
+
     /**
-     * The constant MENUVIEWSTARTTEXT.
+     * The constant MENU_VIEW_START_TEXT: specifies the start game text.
      */
     public static final String MENU_VIEW_START_TEXT = "- Start Game (ENTER)";
+
     /**
-     * The constant MENUVIEWQUITTEXT.
+     * The constant MENU_VIEW_QUIT_TEXT: specifies the quit game text.
      */
     public static final String MENU_VIEW_QUIT_TEXT = "- Quit (ESC)";
+
     /**
-     * The constant MENUVIEWXCENTER.
+     * The constant MENU_VIEW_TEXT_X_CENTER: specifies the x position of the menu view text.
      */
     public static final int MENU_VIEW_TEXT_X_CENTER = 4;
+
     /**
-     * The constant MENUVIEWSTARTYOFFSET.
+     * The constant MENU_VIEW_START_TEXT_Y_OFFSET: specifies the y offset of the start game text.
      */
     public static final int MENU_VIEW_START_TEXT_Y_OFFSET = 30;
+
     /**
-     * The constant MENUVIEWQUITYOFFSET.
+     * The constant MENU_VIEW_QUIT_TEXT_Y_OFFSET: specifies the y offset of the quit game text.
      */
     public static final int MENU_VIEW_QUIT_TEXT_Y_OFFSET = 70;
+
     /**
-     * The constant MENUVIEWSTOKEWIDTH.
+     * The constant MENU_VIEW_STOKE_WIDTH: specifies the width of the menu view stroke.
      */
     public static final float MENU_VIEW_STOKE_WIDTH = 2f;
+
     /**
-     * The constant MENUVIEWSTROKEMITERLIMIT.
+     * The constant MENU_VIEW_STROKE_MITER_LIMIT: specifies the miter limit of the menu view stroke.
      */
     public static final int MENU_VIEW_STROKE_MITER_LIMIT = 0;
+
     /**
-     * The constant MENUVIEWSTROKEARRAY.
+     * The constant MENU_VIEW_STROKE_ARRAY: specifies the array of the menu view stroke.
      */
     public static final int MENU_VIEW_STROKE_ARRAY = 9;
+
     /**
-     * The constant MENUVIEWSTROKEDASH.
+     * The constant MENU_VIEW_STROKE_DASH: specifies the dash of the menu view stroke.
      */
     public static final int MENU_VIEW_STROKE_DASH = 0;
 
     /**
-     * The constant MENUVIEWROUNDRECTXDIV.
+     * The constant MENU_VIEW_ROUND_RECT_X_DIV: specifies the x division of the menu view round rect.
      */
     public static final int MENU_VIEW_ROUND_RECT_X_DIV = 3;
+
     /**
-     * The constant MENUVIEWROUNDRECTXOFF.
+     * The constant MENU_VIEW_ROUND_RECT_X_OFF: specifies the x offset of the menu view round rect.
      */
     public static final int MENU_VIEW_ROUND_RECT_X_OFF = 20;
+
     /**
-     * The constant MENUVIEWROUNDRECTYOFF.
+     * The constant MENU_VIEW_ROUND_RECT_Y_OFF: specifies the y offset of the menu view round rect.
      */
     public static final int MENU_VIEW_ROUND_RECT_Y_OFF = 120;
+
     /**
-     * The constant MENUVIEWROUNDRECTWIDTH.
+     * The constant MENU_VIEW_ROUND_RECT_WIDTH: specifies the width of the menu view round rect.
      */
     public static final int MENU_VIEW_ROUND_RECT_WIDTH = 400;
+
     /**
-     * The constant MENUVIEWROUNDRECTHEIGHT.
+     * The constant MENU_VIEW_ROUND_RECT_HEIGHT: specifies the height of the menu view round rect.
      */
     public static final int MENU_VIEW_ROUND_RECT_HEIGHT = 40;
+
     /**
-     * The constant MENUVIEWROUNDRECTARCW.
+     * The constant MENU_VIEW_ROUND_RECT_ARC_W: specifies the arc width of the menu view round rect.
      */
     public static final int MENU_VIEW_ROUND_RECT_ARC_W = 10;
+
     /**
-     * The constant MENUVIEWROUNDRECTARCH.
+     * The constant MENU_VIEW_ROUND_RECT_ARC_H: specifies the arc height of the menu view round rect.
      */
     public static final int MENU_VIEW_ROUND_RECT_ARC_H = 10;
 
     /**
-     * The constant MENUVIEWBESTSCORETEXT.
+     * The constant MENU_VIEW_BEST_SCORE_TEXT: specifies the best score text.
      */
     public static final String MENU_VIEW_BEST_SCORE_TEXT = "Best Score:   ";
+
     /**
-     * The constant MENUVIEWBESTSCOREXDIV.
+     * The constant MENU_VIEW_BEST_SCORE_X_DIV: specifies the x division of the menu view best score.
      */
     public static final int MENU_VIEW_BEST_SCORE_X_DIV = 3;
+
     /**
-     * The constant MENUVIEWBESTSCOREYOFF.
+     * The constant MENU_VIEW_BEST_SCORE_Y_OFF: specifies the y offset of the menu view best score.
      */
     public static final int MENU_VIEW_BEST_SCORE_Y_OFF = 95;
 
+
+//GameOverView ------------------------------------------------------------------------------------------
+
     /**
-     * The constant GAMEOVERALPHAINIT.
+     * The constant GAME_OVER_ALPHA_INIT: specifies the initial alpha of the game over transition.
      */
-//GAMEOVERVIEW
     public static final float GAME_OVER_ALPHA_INIT = 0;
+
     /**
-     * The constant GAMEOVERDURATIONINIT.
+     * The constant GAME_OVER_DURATION_INIT: specifies the initial duration of the game over transition.
      */
     public static final float GAME_OVER_DURATION_INIT = 1;
+
     /**
-     * The constant GAMEOVERTIMEINIT.
+     * The constant GAME_OVER_TIME_INIT: specifies the initial time of the game over transition.
      */
     public static final float GAME_OVER_TIME_INIT = 0;
+
     /**
-     * The constant GAMEOVERALPHA.
+     * The constant GAME_OVER_ALPHA: specifies the target alpha of the game over transition.
      */
     public static final float GAME_OVER_ALPHA = 1;
+
     /**
-     * The constant GAMEOVERCENTERDIV.
+     * The constant GAME_OVER_CENTER_DIV: specifies the division of the game over center.
      */
     public static final int GAME_OVER_CENTER_DIV = 2;
+
     /**
-     * The constant GAMEOVERRECTX.
+     * The constant GAME_OVER_RECT_X: specifies the x position of the game over rectangle.
      */
     public static final int GAME_OVER_RECT_X = 0;
+
     /**
-     * The constant GAMEOVERRECTY.
+     * The constant GAME_OVER_RECT_Y: specifies the y position of the game over rectangle.
      */
     public static final int GAME_OVER_RECT_Y = 0;
+
     /**
-     * The constant GAMEOVERIMGWOFF.
+     * The constant GAME_OVER_IMG_W_OFF: specifies the width offset of the game over image.
      */
     public static final float GAME_OVER_IMG_W_OFF = 1.72f;
+
     /**
-     * The constant GAMEOVERIMGHOFF.
+     * The constant GAME_OVER_IMG_H_OFF: specifies the height offset of the game over image.
      */
     public static final float GAME_OVER_IMG_H_OFF = 0.15f;
+
     /**
-     * The constant GAMEOVERIMGSCALEOFF.
+     * The constant GAME_OVER_IMG_SCALE_OFF: specifies the scale of the game over image.
      */
     public static final float GAME_OVER_IMG_SCALE_OFF = 1.1f;
+
     /**
-     * The constant GAMEOVERNEWTEXT.
+     * The constant GAME_OVER_NEW_TEXT: specifies the new best score text.
      */
     public static final String GAME_OVER_NEW_TEXT = "New Best Score:   ";
+
     /**
-     * The constant GAMEOVERSCORETEXT.
+     * The constant GAME_OVER_SCORE_TEXT: specifies the game over score obtained by the player text.
      */
     public static final String GAME_OVER_SCORE_TEXT = "Your Score:   ";
+
     /**
-     * The constant GAMEOVERBESTTEXT.
+     * The constant GAME_OVER_BEST_TEXT: specifies the best score text.
      */
     public static final String GAME_OVER_BEST_TEXT = "Best Score:   ";
+
     /**
-     * The constant GAMEOVERCONTINUETEXT.
+     * The constant GAME_OVER_CONTINUE_TEXT: specifies the game over continue text.
      */
     public static final String GAME_OVER_CONTINUE_TEXT = "Press ENTER to continue...";
+
     /**
-     * The constant GAMEOVERTEXTXOFF.
+     * The constant GAME_OVER_TEXT_X_OFF: specifies the x offset of the game over text.
      */
     public static final float GAME_OVER_TEXT_X_OFF = 0.65f;
+
     /**
-     * The constant GAMEOVERTEXTNEWYOFF.
+     * The constant GAME_OVER_TEXT_NEW_Y_OFF: specifies the y offset of the game over new text.
      */
     public static final int GAME_OVER_TEXT_NEW_Y_OFF = 50;
+
     /**
-     * The constant GAMEOVERTEXTSCOREYOFF.
+     * The constant GAME_OVER_TEXT_SCORE_Y_OFF: specifies the y offset of the game over score text.
      */
     public static final int GAME_OVER_TEXT_SCORE_Y_OFF = 50;
+
     /**
-     * The constant GAMEOVERTEXTBESTYOFF.
+     * The constant GAME_OVER_TEXT_BEST_Y_OFF: specifies the y offset of the game over best text.
      */
     public static final int GAME_OVER_TEXT_BEST_Y_OFF = 80;
+
     /**
-     * The constant GAMEOVERTEXTCONTINUEYOFF.
+     * The constant GAME_OVER_TEXT_CONTINUE_Y_OFF: specifies the y offset of the game over continue text.
      */
     public static final int GAME_OVER_TEXT_CONTINUE_Y_OFF = 150;
+
     /**
-     * The constant GAMEOVERNEWTEXTESC.
+     * The constant GAME_OVER_NEW_TEXT_ESC: specifies the new best score escape text.
      */
     public static final String GAME_OVER_NEW_TEXT_ESC = " !!";
 
+
+
+// PauseView ------------------------------------------------------------------------------------------
     /**
-     * The constant PAUSECONTINUEY.
+     * The constant PAUSE_CONTINUE_Y: specifies the y position of the pause continue button.
      */
-// PAUSEVIEW
     public static final int PAUSE_CONTINUE_Y = 70;
+
     /**
-     * The constant PAUSEMAINMENUY.
+     * The constant PAUSE_MAIN_MENU_Y: specifies the y position of the pause main menu button.
      */
     public static final int PAUSE_MAIN_MENU_Y = 100;
+
     /**
-     * The constant PAUSEQUITY.
+     * The constant PAUSE_QUIT_Y: specifies the y position of the pause quit button.
      */
     public static final int PAUSE_QUIT_Y = 130;
+
     /**
-     * The constant PAUSESELECTIONX.
+     * The constant PAUSE_SELECTION_X: specifies the x position of the pause selection.
      */
     public static final int PAUSE_SELECTION_X = 20;
+
     /**
-     * The constant PAUSETEXT.
+     * The constant PAUSE_TEXT: specifies the pause text.
      */
     public static final String PAUSE_TEXT = "PAUSE";
+
     /**
-     * The constant PAUSECONTINUETEXT.
+     * The constant PAUSE_CONTINUE_TEXT: specifies the pause continue text.
      */
     public static final String PAUSE_CONTINUE_TEXT = "Continue";
+
     /**
-     * The constant PAUSEMAINMENUTEXT.
+     * The constant PAUSE_MAIN_MENU_TEXT: specifies the pause main menu text.
      */
     public static final String PAUSE_MAIN_MENU_TEXT = "Main Menu";
+
     /**
-     * The constant PAUSEQUITTEXT.
+     * The constant PAUSE_QUIT_TEXT: specifies the pause quit text.
      */
     public static final String PAUSE_QUIT_TEXT = "Quit";
+
     /**
-     * The constant PAUSESELECTIONTEXT.
+     * The constant PAUSE_SELECTION_TEXT: specifies the pause selection text.
      */
     public static final String PAUSE_SELECTION_TEXT = "- ";
+
     /**
-     * The constant PAUSECENTERDIV.
+     * The constant PAUSE_CENTER_DIV: specifies the pause center division.
      */
     public static final int PAUSE_CENTER_DIV = 2;
+
     /**
-     * The constant PAUSEWIDTHOFF.
+     * The constant PAUSE_WIDTH_OFF: specifies the pause width offset.
      */
     public static final int PAUSE_WIDTH_OFF = 50;
 
+
+//MainView -----------------------------------------------------------------------------------------
     /**
-     * The constant MAINVIEWCENTERDIV.
+     * The constant MAIN_VIEW_CENTER_DIV: specifies the main view center division.
      */
-//MAIN VIEW
     public static final int MAIN_VIEW_CENTER_DIV = 2;
+
     /**
-     * The constant MAINVIEWAUDIOFADE.
+     * The constant MAIN_VIEW_AUDIO_FADE: specifies the main view audio fade.
      */
     public static final float MAIN_VIEW_AUDIO_FADE = 2f;
+
     /**
-     * The constant MAINVIEWDRAWXINIT.
+     * The constant MAIN_VIEW_DRAW_X_INIT: specifies the main view background draw x init.
      */
     public static final int MAIN_VIEW_DRAW_X_INIT = 0;
+
     /**
-     * The constant MAINVIEWDRAWYINIT.
+     * The constant MAIN_VIEW_DRAW_Y_INIT: specifies the main view background draw y init.
      */
     public static final int MAIN_VIEW_DRAW_Y_INIT = 0;
+
     /**
-     * The constant MAINVIEWRECTX.
+     * The constant MAIN_VIEW_RECT_X: specifies the main view rect x.
      */
     public static final int MAIN_VIEW_RECT_X = 0;
+
     /**
-     * The constant MAINVIEWRECTY.
+     * The constant MAIN_VIEW_RECT_Y: specifies the main view rect y.
      */
     public static final int MAIN_VIEW_RECT_Y = 0;
 
