@@ -1,21 +1,23 @@
 package it.unibo.javajump.model.collision;
 
 import it.unibo.javajump.model.GameModel;
-import it.unibo.javajump.model.entities.*;
+import it.unibo.javajump.model.entities.GameObject;
 import it.unibo.javajump.model.entities.character.Character;
 import it.unibo.javajump.model.entities.collectibles.Coin;
 import it.unibo.javajump.model.entities.collectibles.CoinState;
-import it.unibo.javajump.model.entities.platforms.*;
+import it.unibo.javajump.model.entities.platforms.BouncePlatform;
+import it.unibo.javajump.model.entities.platforms.BreakablePlatform;
+import it.unibo.javajump.model.entities.platforms.Platform;
 
 import java.util.List;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.COINSCOREVALUE;
+import static it.unibo.javajump.utility.Constants.NULLDIRECTION;
 
 /**
  * Implementation of the CollisionManager interface.
  */
 public class CollisionManagerImpl implements CollisionManager {
-
 	/**
 	 * Method that checks for collisions between GameObjects and calls their
 	 * respective onCollision methods. cycles through all the game objects and
@@ -77,11 +79,11 @@ public class CollisionManagerImpl implements CollisionManager {
 	}
 
 	/**
-	 * Private method that specifies how to handle characterImpl-coinImpl collisions.
+	 * Private method that specifies how to handle character-coin collisions.
 	 *
-	 * @param character the characterImpl, GameObjectImpl controlled by the player
-	 * @param coin      the coinImpl, GameObjectImpl that the player can collect
-	 * @param model     the GameModelImpl which contains player & coinImpl
+	 * @param character the character, GameObject controlled by the player
+	 * @param coin      the coinImpl, GameObject that the player can collect
+	 * @param model     the GameModel which contains player & coinImpl
 	 */
 	private void handleCharacterCoinCollision(Character character, Coin coin, GameModel model) {
 		if (coin.getState() == CoinState.IDLE) {
@@ -91,15 +93,15 @@ public class CollisionManagerImpl implements CollisionManager {
 	}
 
 	/**
-	 * Private method that specifies how to handle character-platformImpl
-	 * collisions: - The player jumps on the platformImpl, and its velocity is
-	 * changed based on the platformImpl type; - The platformImpl is handled based on
+	 * Private method that specifies how to handle character-platform
+	 * collisions: - The player jumps on the platform, and its velocity is
+	 * changed based on the platform type; - The platform is handled based on
 	 * its type.
 	 *
-	 * @param player   the CharacterImpl, GameObjectImpl controlled by the player
-	 * @param platform the PlatformImpl, GameObjectImpl that the player can jump on
-	 * @param model    the GameModelImpl which contains player & platformImpl
-	 * @return true if the player jumps on the platformImpl, false otherwise.
+	 * @param player   the Character, GameObject controlled by the player
+	 * @param platform the Platform, GameObject that the player can jump on
+	 * @param model    the GameModel which contains player & platform
+	 * @return true if the player jumps on the platform, false otherwise.
 	 */
 	private boolean handleCharacterPlatformCollision(Character player, Platform platform, GameModel model) {
 		if (player.getVelocityY() > NULLDIRECTION) {

@@ -3,9 +3,7 @@ package it.unibo.javajump.controller;
 import it.unibo.javajump.controller.input.GameAction;
 import it.unibo.javajump.controller.input.InputManager;
 import it.unibo.javajump.model.GameModel;
-
 import it.unibo.javajump.view.MainGameView;
-
 
 import static it.unibo.javajump.utility.Constants.*;
 
@@ -33,9 +31,9 @@ public class GameControllerImpl implements GameController {
 	/**
 	 * Constructor for the GameControllerImpl class.
 	 *
-	 * @param model        The game model.
-	 * @param view         The game view.
-	 * @param inputManager The input manager.
+	 * @param model        The game model
+	 * @param view         The game view
+	 * @param inputManager The input manager
 	 */
 	public GameControllerImpl(GameModel model, MainGameView view, InputManager inputManager) {
 		this.model = model;
@@ -75,6 +73,19 @@ public class GameControllerImpl implements GameController {
 		loopThread.start();
 	}
 
+	/**
+	 * Stops the GameLoop thread
+	 */
+	@Override
+	public void stopGameLoop() {
+		running = false;
+	}
+
+	/**
+	 * Private method to update the model regarding the current pressed direction
+	 *
+	 * @param deltaTime time passed since last update (in seconds)
+	 */
 	private void updateModel(float deltaTime) {
 		int horizontalDirection = inputManager.getHorizontalDirection();
 		if (horizontalDirection < NULLDIRECTION) {
@@ -87,6 +98,9 @@ public class GameControllerImpl implements GameController {
 		model.update(deltaTime);
 	}
 
+	/**
+	 * Private method to process the GameAction(s) stored in the queue, it demands the model to process them accordingly
+	 */
 	private void processDiscreteInput() {
 		GameAction action;
 		while ((action = inputManager.getActionQueue().poll()) != null) {
@@ -94,11 +108,4 @@ public class GameControllerImpl implements GameController {
 		}
 	}
 
-	/**
-	 * Stops the GameLoop thread
-	 */
-	@Override
-	public void stopGameLoop() {
-		running = false;
-	}
 }

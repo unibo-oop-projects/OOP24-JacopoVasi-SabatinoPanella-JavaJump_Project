@@ -32,13 +32,34 @@ import java.awt.event.ComponentEvent;
 
 import static it.unibo.javajump.utility.Constants.*;
 
+/**
+ * Class implementation of the GameInitializer interface, for setting-up the managers and starting the game loop.
+ */
 public class GameInitializerImpl implements GameInitializer {
+    /**
+     * The model, which contains all data & logic related aspects of the game.
+     */
     private final GameModel model;
+    /**
+     * The game frame, to visualize the game within a window when run.
+     */
     private final JFrame frame;
+    /**
+     * The view, which contains all visual(UI, UX) aspects of the game.
+     */
     private final MainGameView view;
+    /**
+     * The responsible for inputs given to the game by the player.
+     */
     private final InputManager inputManager;
+    /**
+     * The controller, which mediates between player and model, and updates model & view accordingly.
+     */
     private final GameController controller;
 
+    /**
+     * Constructor for GameInitializerImpl, which associates all interfaces to actual implementations.
+     */
     public GameInitializerImpl() {
         GameObjectFactory factory = new GameObjectFactoryImpl();
         DifficultyManager difficultyManager = new DifficultyManagerImpl();
@@ -62,10 +83,11 @@ public class GameInitializerImpl implements GameInitializer {
         this.view = new MainGameViewImpl(model);
         this.inputManager = new InputManagerImpl();
         this.controller = new GameControllerImpl(model, view, inputManager);
-
-
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public void initialize() {
         model.addObserver((GameModelObserver) view);
         frame.addKeyListener(inputManager);

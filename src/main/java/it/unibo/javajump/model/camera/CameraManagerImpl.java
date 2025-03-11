@@ -10,18 +10,28 @@ import static it.unibo.javajump.utility.Constants.*;
  * Implementation of the CameraManager interface.
  */
 public class CameraManagerImpl implements CameraManager {
-
+	/**
+	 * Field used to store the current offset of the camera during gameplay.
+	 */
 	private float currentOffset;
+	/**
+	 * Field used to store the previous offset reached by the camera during gameplay.
+	 */
 	private float previousOffset;
+	/**
+	 * Field to inject the ScoreManager, used to update the score based on how much the camera has risen.
+	 */
 	private final ScoreManager scoreManager;
+	/**
+	 * Field to determine by how much should the points increase per pixel "scrolled".
+	 */
 	private final float scoreFactor;
 
 	/**
 	 * Constructor for the effective camera manager.
 	 *
 	 * @param scoreManager the current score manager
-	 * @param scoreFactor  a desired game design value to multiply the score, for
-	 *                     game feel
+	 * @param scoreFactor  a desired game design value to multiply the score, for better game feel
 	 */
 	public CameraManagerImpl(ScoreManager scoreManager, float scoreFactor) {
 		this.scoreManager = scoreManager;
@@ -77,7 +87,7 @@ public class CameraManagerImpl implements CameraManager {
 	}
 
 	/**
-	 * Resets the camera offset to 0.
+	 * Resets the camera offset to the initial value.
 	 */
 	@Override
 	public void resetCamera() {
