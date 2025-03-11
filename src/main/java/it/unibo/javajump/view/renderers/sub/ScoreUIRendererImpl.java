@@ -53,7 +53,8 @@ public class ScoreUIRendererImpl implements ScoreUIRenderer {
      * It also shows a message if the score is a new high score.
      */
     @Override
-    public void drawScoreAndUI(final Graphics2D g2, final GameModel model, final boolean isNewHighScore, final boolean showHighScoreMessage) {
+    public void drawScoreAndUI(final Graphics2D g2, final GameModel model,
+                               final boolean isNewHighScore, final boolean showHighScoreMessage) {
         g2.drawImage(scoreContainer, RENDER_UI_SCORE_CONTAINER_X, RENDER_UI_SCORE_CONTAINER_Y, null);
         final int score = model.getScore();
         final int bestScore = model.getScoreManager().getBestScore();

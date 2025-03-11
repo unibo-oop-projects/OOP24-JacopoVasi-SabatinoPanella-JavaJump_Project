@@ -10,7 +10,7 @@ import static it.unibo.javajump.utility.Constants.MAIN_VIEW_DRAW_Y_INIT;
 /**
  * The type Scale utils.
  */
-public class ScaleUtils {
+public final class ScaleUtils {
     /**
      * Compute scaled rectangle rectangle.
      *
@@ -36,5 +36,14 @@ public class ScaleUtils {
             drawY = (panelSize.height - drawHeight) / MAIN_VIEW_CENTER_DIV;
         }
         return new Rectangle(drawX, drawY, drawWidth, drawHeight);
+    }
+
+    /**
+     * Private constructor for utility class.
+     *
+     * @throws AssertionError the assertion error if the constructor is called
+     */
+    private ScaleUtils() {
+        throw new AssertionError("This is a utility class, it should not be instantiated!");
     }
 }

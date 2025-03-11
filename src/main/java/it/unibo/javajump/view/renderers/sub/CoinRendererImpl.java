@@ -58,7 +58,8 @@ public class CoinRendererImpl implements CoinRenderer {
      * @param frameDuration       the standard duration of a frame of animation
      * @param soundEffectsManager the sound effects manager
      */
-    public CoinRendererImpl(final BufferedImage sheet, final int frameWidth, final int frameHeight, final float frameDuration, final SoundEffectsManager soundEffectsManager) {
+    public CoinRendererImpl(final BufferedImage sheet, final int frameWidth, final int frameHeight,
+                            final float frameDuration, final SoundEffectsManager soundEffectsManager) {
         this.coinSheet = sheet;
         this.frameWidth = frameWidth;
         this.frameHeight = frameHeight;

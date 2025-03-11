@@ -55,7 +55,8 @@ public class PlayerRendererImpl implements PlayerRenderer {
      * @param frameHeight   the height of the player's animation frames
      * @param frameDuration the duration of each animation frame
      */
-    public PlayerRendererImpl(final BufferedImage sheet, final int frameWidth, final int frameHeight, final float frameDuration) {
+    public PlayerRendererImpl(final BufferedImage sheet, final int frameWidth,
+                              final int frameHeight, final float frameDuration) {
         this.playerSheet = new BufferedImage(sheet.getColorModel(),
                 sheet.copyData(null),
                 sheet.isAlphaPremultiplied(),
@@ -130,7 +131,8 @@ public class PlayerRendererImpl implements PlayerRenderer {
      * @param drawY  the y position to draw
      * @param frame  the frame to draw
      */
-    private void flipSheet(final Graphics2D g2, final Character player, final float drawX, final float drawY, final BufferedImage frame) {
+    private void flipSheet(final Graphics2D g2, final Character player, final float drawX,
+                           final float drawY, final BufferedImage frame) {
         final AffineTransform old = g2.getTransform();
         if (!player.isFacingRight()) {
             g2.translate(drawX + frameWidth, drawY);
