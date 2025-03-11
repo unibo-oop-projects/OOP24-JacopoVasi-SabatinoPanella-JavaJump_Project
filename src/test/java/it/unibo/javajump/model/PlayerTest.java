@@ -27,7 +27,7 @@ public class PlayerTest {
     void testJumping() {
         int counter = 0;
         final int maxcount = 200;
-        while(!model.getPlayer().isOnPlatform() && counter<maxcount){
+        while (!model.getPlayer().isOnPlatform() && counter < maxcount) {
             model.update(0.1f);
             counter++;
         }
@@ -42,12 +42,12 @@ public class PlayerTest {
         final int maxcount = 100;
         model.getPlayer().setX(0);
         model.getPlayer().changeState(new InAirState());
-        while(model.getPlayer().getX()<SCREENWIDTH && counter<maxcount){
+        while (model.getPlayer().getX() < SCREENWIDTH && counter < maxcount) {
             model.handleAction(GameAction.MOVE_LEFT);
             model.update(0.1f);
             counter++;
         }
-        assertTrue(model.getPlayer().getX()>=SCREENWIDTH, "The player is not looping");
+        assertTrue(model.getPlayer().getX() >= SCREENWIDTH, "The player is not looping");
     }
 
     @Test
@@ -55,7 +55,7 @@ public class PlayerTest {
         int counter = 0;
         final int maxcount = 6;
         model.getPlayer().changeState(new InAirState());
-        while( counter<maxcount){
+        while (counter < maxcount) {
             model.handleAction(GameAction.MOVE_LEFT);
             model.update(0.1f);
             counter++;
@@ -63,16 +63,15 @@ public class PlayerTest {
         final float tempx = model.getPlayer().getX();
         model.handleAction(GameAction.MOVE_RIGHT);
         model.update(0.1f);
-        assertTrue(model.getPlayer().getX()<tempx, "The player is not decelerating");
-        counter=0;
-        while( counter<maxcount){
+        assertTrue(model.getPlayer().getX() < tempx, "The player is not decelerating");
+        counter = 0;
+        while (counter < maxcount) {
             model.handleAction(GameAction.MOVE_RIGHT);
             model.update(0.1f);
             counter++;
         }
-        assertTrue(model.getPlayer().getX()>tempx, "The player is not accelerating  ");
+        assertTrue(model.getPlayer().getX() > tempx, "The player is not accelerating  ");
     }
-
 
 
 }

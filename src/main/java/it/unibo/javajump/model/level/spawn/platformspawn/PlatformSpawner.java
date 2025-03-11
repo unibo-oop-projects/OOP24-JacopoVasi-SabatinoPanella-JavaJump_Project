@@ -5,5 +5,5 @@ import it.unibo.javajump.model.level.spawn.difficulty.DifficultyState;
 
 public interface PlatformSpawner {
 
-	Platform spawnPlatform(float x, float y, int screenWidth, DifficultyState difficulty);
+    Platform spawnPlatform(float x, float y, int screenWidth, DifficultyState difficulty);
 }

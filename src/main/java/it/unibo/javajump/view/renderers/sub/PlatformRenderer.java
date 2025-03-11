@@ -9,13 +9,13 @@ import java.awt.*;
  */
 public interface PlatformRenderer {
 
-	/**
-	 * Draws a platform.
-	 *
-	 * @param g2            the Graphics2D context
-	 * @param platform      the Platform to draw
-	 * @param cameraOffsetY the vertical offset
-	 */
-	void drawPlatform(Graphics2D g2, Platform platform, float cameraOffsetY);
+    /**
+     * Draws a platform.
+     *
+     * @param g2            the Graphics2D context
+     * @param platform      the Platform to draw
+     * @param cameraOffsetY the vertical offset
+     */
+    void drawPlatform(Graphics2D g2, Platform platform, float cameraOffsetY);
 
 }

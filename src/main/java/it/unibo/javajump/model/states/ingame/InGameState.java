@@ -15,63 +15,63 @@ import static it.unibo.javajump.utility.Constants.*;
 
 public class InGameState implements GameStateHandler {
 
-	private final GameState gameState = GameState.IN_GAME;
+    private final GameState gameState = GameState.IN_GAME;
 
-	private int horizontalDirection = NULLDIRECTION;
-	private float deltaTime = 0;
+    private int horizontalDirection = NULLDIRECTION;
+    private float deltaTime = 0;
 
 
-	@Override
-	public void handleAction(GameModel model, GameAction action) {
-		switch (action) {
-			case MOVE_LEFT -> horizontalDirection = LEFTDIRECTION;
-			case MOVE_RIGHT -> horizontalDirection = RIGHTDIRECTION;
-			case STOP_HORIZONTAL -> horizontalDirection = NULLDIRECTION;
-			case PAUSE_GAME -> model.setState(new PauseState());
-			default -> {
-			}
-		}
-	}
+    @Override
+    public void handleAction(GameModel model, GameAction action) {
+        switch (action) {
+            case MOVE_LEFT -> horizontalDirection = LEFTDIRECTION;
+            case MOVE_RIGHT -> horizontalDirection = RIGHTDIRECTION;
+            case STOP_HORIZONTAL -> horizontalDirection = NULLDIRECTION;
+            case PAUSE_GAME -> model.setState(new PauseState());
+            default -> {
+            }
+        }
+    }
 
-	@Override
-	public void update(GameModel model, float deltaTime) {
-		this.deltaTime = deltaTime;
-		Character player = model.getPlayer();
-		MovementDirection md = convertIntToMovementDirection(horizontalDirection);
-		model.getPhysicsManager().updateCharacterMovement(player, deltaTime, md);
+    @Override
+    public void update(GameModel model, float deltaTime) {
+        this.deltaTime = deltaTime;
+        Character player = model.getPlayer();
+        MovementDirection md = convertIntToMovementDirection(horizontalDirection);
+        model.getPhysicsManager().updateCharacterMovement(player, deltaTime, md);
 
-		for (GameObject go : model.getGameObjects()) {
-			go.update(deltaTime);
-			if (go instanceof CharacterImpl characterImpl) {
-				applyPacManEffect(characterImpl, model.getScreenWidth());
-			}
-		}
+        for (GameObject go : model.getGameObjects()) {
+            go.update(deltaTime);
+            if (go instanceof CharacterImpl characterImpl) {
+                applyPacManEffect(characterImpl, model.getScreenWidth());
+            }
+        }
 
-		model.getCollisionManager().checkCollisions(model);
+        model.getCollisionManager().checkCollisions(model);
 
-		model.getCameraManager().updateCamera(model, deltaTime);
+        model.getCameraManager().updateCamera(model, deltaTime);
 
-		model.getSpawnManager().generateOnTheFly(model);
+        model.getSpawnManager().generateOnTheFly(model);
 
-		model.getCleanupManager().cleanupObjects(model);
+        model.getCleanupManager().cleanupObjects(model);
 
-		model.getDifficultyManager().updateDifficulty(model.getScore());
+        model.getDifficultyManager().updateDifficulty(model.getScore());
 
-		checkGameOver(model, player);
+        checkGameOver(model, player);
 
-		model.notifyObservers();
-	}
+        model.notifyObservers();
+    }
 
-	@Override
-	public GameState getGameState() {
-		return gameState;
-	}
+    @Override
+    public GameState getGameState() {
+        return gameState;
+    }
 
-	public int getState() {
-		return 0;
-	}
+    public int getState() {
+        return 0;
+    }
 
-	public float getDeltaTime() {
-		return deltaTime;
-	}
+    public float getDeltaTime() {
+        return deltaTime;
+    }
 }

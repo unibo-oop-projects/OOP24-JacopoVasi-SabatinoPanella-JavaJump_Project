@@ -23,123 +23,123 @@ import static it.unibo.javajump.utility.Constants.*;
 
 public class MainGameViewImpl extends JPanel implements MainGameView, GameModelObserver {
 
-	private final GameModel model;
+    private final GameModel model;
 
-	private final GameViewState menuView;
-	private final GameViewState inGameView;
-	private final GameViewState pauseView;
-	private final GameViewState gameOverView;
+    private final GameViewState menuView;
+    private final GameViewState inGameView;
+    private final GameViewState pauseView;
+    private final GameViewState gameOverView;
 
-	private final int virtualWidth;
-	private final int virtualHeight;
+    private final int virtualWidth;
+    private final int virtualHeight;
 
-	private final BufferedImage tempScreen;
+    private final BufferedImage tempScreen;
 
-	private GameState lastState;
+    private GameState lastState;
 
-	private final MusicManager musicManager;
+    private final MusicManager musicManager;
 
-	public MainGameViewImpl(GameModel model) {
-		GameGraphics gameGraphics = new GameGraphicsImpl();
-		this.model = model;
-		this.musicManager = new MusicManagerImpl(RESOURCES_PATH + RESOURCES_MUSIC_1, MUSIC_VOLUME);
-		SoundEffectsManager soundEffectsManager = new SoundEffectsManager(SOUND_EFFECTS_VOLUME);
-		setDoubleBuffered(true);
+    public MainGameViewImpl(GameModel model) {
+        GameGraphics gameGraphics = new GameGraphicsImpl();
+        this.model = model;
+        this.musicManager = new MusicManagerImpl(RESOURCES_PATH + RESOURCES_MUSIC_1, MUSIC_VOLUME);
+        SoundEffectsManager soundEffectsManager = new SoundEffectsManager(SOUND_EFFECTS_VOLUME);
+        setDoubleBuffered(true);
 
-		this.virtualWidth = model.getScreenWidth();
-		this.virtualHeight = model.getScreenHeight();
+        this.virtualWidth = model.getScreenWidth();
+        this.virtualHeight = model.getScreenHeight();
 
-		RenderManager rendererManager = new RendererManagerImpl(soundEffectsManager, gameGraphics);
-		setBackground(Color.decode(BACKGROUND_DEFAULT_COLOR));
+        RenderManager rendererManager = new RendererManagerImpl(soundEffectsManager, gameGraphics);
+        setBackground(Color.decode(BACKGROUND_DEFAULT_COLOR));
 
-		this.menuView = new MenuView(gameGraphics);
-		this.inGameView = new InGameView(rendererManager);
-		this.pauseView = new PauseView(gameGraphics);
-		this.gameOverView = new GameOverView(gameGraphics);
+        this.menuView = new MenuView(gameGraphics);
+        this.inGameView = new InGameView(rendererManager);
+        this.pauseView = new PauseView(gameGraphics);
+        this.gameOverView = new GameOverView(gameGraphics);
 
-		this.lastState = model.getCurrentState().getGameState();
+        this.lastState = model.getCurrentState().getGameState();
 
-		tempScreen = new BufferedImage(virtualWidth, virtualHeight, BufferedImage.TYPE_INT_ARGB);
+        tempScreen = new BufferedImage(virtualWidth, virtualHeight, BufferedImage.TYPE_INT_ARGB);
 
-		addComponentListener(new ComponentAdapter() {
-			@Override
-			public void componentResized(ComponentEvent e) {
-				repaint();
-			}
-		});
-	}
-
-
-	@Override
-	public void updateView() {
-		GameStateHandler currentHandler = model.getCurrentState();
-		GameState gs = currentHandler.getGameState();
-		if (gs == GameState.GAME_OVER) {
-			gameOverView.update();
-		} else {
-			gameOverView.stopFade();
-		}
-		repaint();
-	}
+        addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                repaint();
+            }
+        });
+    }
 
 
-	@Override
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		drawToTempScreen();
+    @Override
+    public void updateView() {
+        GameStateHandler currentHandler = model.getCurrentState();
+        GameState gs = currentHandler.getGameState();
+        if (gs == GameState.GAME_OVER) {
+            gameOverView.update();
+        } else {
+            gameOverView.stopFade();
+        }
+        repaint();
+    }
 
-		Rectangle scaledRect = ScaleUtils.computeScaledRectangle(virtualWidth, virtualHeight, getSize());
-		g.setColor(Color.decode(BACKGROUND_DEFAULT_COLOR));
-		g.fillRect(MAINVIEWRECTX, MAINVIEWRECTY, getWidth(), getHeight());
-		g.drawImage(tempScreen, scaledRect.x, scaledRect.y, scaledRect.width, scaledRect.height, null);
-	}
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        drawToTempScreen();
+
+        Rectangle scaledRect = ScaleUtils.computeScaledRectangle(virtualWidth, virtualHeight, getSize());
+        g.setColor(Color.decode(BACKGROUND_DEFAULT_COLOR));
+        g.fillRect(MAINVIEWRECTX, MAINVIEWRECTY, getWidth(), getHeight());
+        g.drawImage(tempScreen, scaledRect.x, scaledRect.y, scaledRect.width, scaledRect.height, null);
+    }
 
 
-	private void drawToTempScreen() {
-		Graphics2D g2 = tempScreen.createGraphics();
-		g2.setColor(Color.BLACK);
-		g2.fillRect(MAINVIEWRECTX, MAINVIEWRECTY, virtualWidth, virtualHeight);
+    private void drawToTempScreen() {
+        Graphics2D g2 = tempScreen.createGraphics();
+        g2.setColor(Color.BLACK);
+        g2.fillRect(MAINVIEWRECTX, MAINVIEWRECTY, virtualWidth, virtualHeight);
 
-		GameState currentState = model.getCurrentState().getGameState();
-		switch (currentState) {
-			case MENU -> menuView.draw(g2, model);
-			case IN_GAME -> inGameView.draw(g2, model);
-			case PAUSE -> pauseView.draw(g2, model);
-			case GAME_OVER -> {
-				inGameView.draw(g2, model);
-				gameOverView.draw(g2, model);
-			}
-			default -> {
-			}
-		}
-		g2.dispose();
-	}
+        GameState currentState = model.getCurrentState().getGameState();
+        switch (currentState) {
+            case MENU -> menuView.draw(g2, model);
+            case IN_GAME -> inGameView.draw(g2, model);
+            case PAUSE -> pauseView.draw(g2, model);
+            case GAME_OVER -> {
+                inGameView.draw(g2, model);
+                gameOverView.draw(g2, model);
+            }
+            default -> {
+            }
+        }
+        g2.dispose();
+    }
 
-	@Override
-	public void onModelUpdate(GameModel model) {
-		GameState currentState = model.getCurrentState().getGameState();
+    @Override
+    public void onModelUpdate(GameModel model) {
+        GameState currentState = model.getCurrentState().getGameState();
 
-		if (currentState != lastState) {
-			switch (currentState) {
-				case MENU -> musicManager.stopMusic();
-				case IN_GAME -> {
-					if (lastState == GameState.PAUSE) {
-						musicManager.resumeMusic();
-					} else {
-						musicManager.stopMusic();
-						musicManager.startMusic();
-					}
-				}
-				case PAUSE -> musicManager.pauseMusic();
-				case GAME_OVER -> {
-					musicManager.fadeOut(MAINVIEWAUDIOFADE);
-					gameOverView.startFade();
-				}
-				default -> {
-				}
-			}
-		}
-		lastState = currentState;
-		repaint();
-	}
+        if (currentState != lastState) {
+            switch (currentState) {
+                case MENU -> musicManager.stopMusic();
+                case IN_GAME -> {
+                    if (lastState == GameState.PAUSE) {
+                        musicManager.resumeMusic();
+                    } else {
+                        musicManager.stopMusic();
+                        musicManager.startMusic();
+                    }
+                }
+                case PAUSE -> musicManager.pauseMusic();
+                case GAME_OVER -> {
+                    musicManager.fadeOut(MAINVIEWAUDIOFADE);
+                    gameOverView.startFade();
+                }
+                default -> {
+                }
+            }
+        }
+        lastState = currentState;
+        repaint();
+    }
 }

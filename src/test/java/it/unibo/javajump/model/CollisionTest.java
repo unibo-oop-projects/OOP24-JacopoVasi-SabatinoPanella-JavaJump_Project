@@ -33,15 +33,16 @@ public class CollisionTest {
     @Test
     void testCoin() {
         float x = (float) SCREENWIDTH / 2;
-        float y = (float) SCREENHEIGHT / 2 ;
+        float y = (float) SCREENHEIGHT / 2;
         model.getPlayer().setY(y);
         model.getPlayer().setX(x);
-        Coin coin = model.getSpawnManager().getFactory().createCoin(x,y);
+        Coin coin = model.getSpawnManager().getFactory().createCoin(x, y);
         model.getGameObjects().add(coin);
         model.update(0);
 
         assertEquals(CoinState.COLLECTING, coin.getState(), "Coin State should be COLLECTING.");
     }
+
     @Test
     void testPlatform() {
         int counter = 0;
@@ -49,13 +50,13 @@ public class CollisionTest {
         List<GameObject> toRemove = new ArrayList<>();
         for (GameObject go : model.getGameObjects()) {
             if (go instanceof Platform c) {
-                    toRemove.add(c);
-                }
+                toRemove.add(c);
             }
+        }
         model.getGameObjects().removeAll(toRemove);
-        Platform platform = model.getSpawnManager().getFactory().createStandardPlatform(model.getPlayer().getX(),model.getPlayer().getY()+100);
+        Platform platform = model.getSpawnManager().getFactory().createStandardPlatform(model.getPlayer().getX(), model.getPlayer().getY() + 100);
         model.getGameObjects().add(platform);
-        while(!model.getPlayer().isOnPlatform() && counter<maxcount){
+        while (!model.getPlayer().isOnPlatform() && counter < maxcount) {
             model.update(0.1f);
             counter++;
         }

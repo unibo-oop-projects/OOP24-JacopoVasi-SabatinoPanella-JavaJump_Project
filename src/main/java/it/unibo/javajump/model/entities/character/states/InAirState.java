@@ -8,20 +8,20 @@ import it.unibo.javajump.model.entities.character.CharacterState;
  * Useful for future implementations and extensibility.
  */
 public class InAirState implements CharacterState {
-	@Override
-	public void updateCharacter(Character character, float deltaTime) {
-	}
+    @Override
+    public void updateCharacter(Character character, float deltaTime) {
+    }
 
-	@Override
-	public void onEnter(Character character) {
-	}
+    @Override
+    public void onEnter(Character character) {
+    }
 
-	@Override
-	public void onExit(Character character) {
-	}
+    @Override
+    public void onExit(Character character) {
+    }
 
-	@Override
-	public boolean isOnPlatform() {
-		return false;
-	}
+    @Override
+    public boolean isOnPlatform() {
+        return false;
+    }
 }

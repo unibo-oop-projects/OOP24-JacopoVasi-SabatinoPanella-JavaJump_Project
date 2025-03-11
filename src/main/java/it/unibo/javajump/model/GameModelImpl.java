@@ -31,180 +31,180 @@ import static it.unibo.javajump.utility.Constants.*;
 public class GameModelImpl implements GameModel {
 
 
-	private GameStateHandler currentState;
-	private final PhysicsManager physicsManager;
-	private final CollisionManager collisionManager;
-	private final SpawnManager spawnManager;
-	private final CameraManager cameraManager;
-	private final ScoreManager scoreManager;
-	private final CleanupManager cleanupManager;
-	private final DifficultyManager difficultyManager;
-	private float deltaTime = 0;
-	private final List<GameObject> gameObject;
-	private Character player;
+    private GameStateHandler currentState;
+    private final PhysicsManager physicsManager;
+    private final CollisionManager collisionManager;
+    private final SpawnManager spawnManager;
+    private final CameraManager cameraManager;
+    private final ScoreManager scoreManager;
+    private final CleanupManager cleanupManager;
+    private final DifficultyManager difficultyManager;
+    private float deltaTime = 0;
+    private final List<GameObject> gameObject;
+    private Character player;
 
-	private final int screenWidth;
-	private final int screenHeight;
+    private final int screenWidth;
+    private final int screenHeight;
 
-	private boolean isRunning;
+    private boolean isRunning;
 
-	private final List<GameModelObserver> observers;
+    private final List<GameModelObserver> observers;
 
-	public GameModelImpl(
-			int screenWidth,
-			int screenHeight
-	) {
-		this.screenWidth = screenWidth;
-		this.screenHeight = screenHeight;
-		this.difficultyManager = new DifficultyManagerImpl();
-		GameObjectFactory factory = new GameObjectFactoryImpl();
-		RandomSpawnStrategy strategy = new RandomSpawnStrategy(factory, MINSPACING, MAXSPACING, COINCHANCE, difficultyManager);
-		this.physicsManager = new PhysicsManagerImpl(GRAVITY, ACCELERATION, MAXSPEED, DECELERATION);
-		this.collisionManager = new CollisionManagerImpl();
-		this.spawnManager = new SpawnManagerImpl(strategy);
-		this.scoreManager = new ScoreManagerImpl();
-		this.cameraManager = new CameraManagerImpl(scoreManager, SCOREFACTOR);
+    public GameModelImpl(
+            int screenWidth,
+            int screenHeight
+    ) {
+        this.screenWidth = screenWidth;
+        this.screenHeight = screenHeight;
+        this.difficultyManager = new DifficultyManagerImpl();
+        GameObjectFactory factory = new GameObjectFactoryImpl();
+        RandomSpawnStrategy strategy = new RandomSpawnStrategy(factory, MINSPACING, MAXSPACING, COINCHANCE, difficultyManager);
+        this.physicsManager = new PhysicsManagerImpl(GRAVITY, ACCELERATION, MAXSPEED, DECELERATION);
+        this.collisionManager = new CollisionManagerImpl();
+        this.spawnManager = new SpawnManagerImpl(strategy);
+        this.scoreManager = new ScoreManagerImpl();
+        this.cameraManager = new CameraManagerImpl(scoreManager, SCOREFACTOR);
 
-		this.isRunning = true;
+        this.isRunning = true;
 
-		this.gameObject = new ArrayList<>();
-		this.observers = new ArrayList<>();
+        this.gameObject = new ArrayList<>();
+        this.observers = new ArrayList<>();
 
-		this.cleanupManager = new CleanupManagerImpl();
+        this.cleanupManager = new CleanupManagerImpl();
 
-		this.currentState = new MenuState();
-		this.currentState.onEnter(this);
-	}
+        this.currentState = new MenuState();
+        this.currentState.onEnter(this);
+    }
 
 
-	@Override
-	public void setState(GameStateHandler newState) {
-		this.currentState.onExit(this);
-		this.currentState = newState;
-		this.currentState.onEnter(this);
-	}
+    @Override
+    public void setState(GameStateHandler newState) {
+        this.currentState.onExit(this);
+        this.currentState = newState;
+        this.currentState.onEnter(this);
+    }
 
-	@Override
-	public void handleAction(GameAction action) {
-		this.currentState.handleAction(this, action);
-	}
+    @Override
+    public void handleAction(GameAction action) {
+        this.currentState.handleAction(this, action);
+    }
 
-	@Override
-	public void update(float deltaTime) {
-		this.deltaTime = deltaTime;
-		this.currentState.update(this, deltaTime);
-	}
+    @Override
+    public void update(float deltaTime) {
+        this.deltaTime = deltaTime;
+        this.currentState.update(this, deltaTime);
+    }
 
-	@Override
-	public void startGame() {
-		gameObject.clear();
-		scoreManager.reset();
-		cameraManager.resetCamera();
-		spawnManager.reset();
-		difficultyManager.reset();
+    @Override
+    public void startGame() {
+        gameObject.clear();
+        scoreManager.reset();
+        cameraManager.resetCamera();
+        spawnManager.reset();
+        difficultyManager.reset();
 
-		this.player = spawnManager.getFactory()
-				.createCharacter(screenWidth / CHARACTERCREATIONWIDTHDIV, screenHeight * CHARACTERCREATIONHEIGHTMUL);
-		gameObject.add(player);
-		spawnManager.generateInitialLevel(this);
-	}
+        this.player = spawnManager.getFactory()
+                .createCharacter(screenWidth / CHARACTERCREATIONWIDTHDIV, screenHeight * CHARACTERCREATIONHEIGHTMUL);
+        gameObject.add(player);
+        spawnManager.generateInitialLevel(this);
+    }
 
-	@Override
-	public void addObserver(GameModelObserver obs) {
-		observers.add(obs);
-	}
+    @Override
+    public void addObserver(GameModelObserver obs) {
+        observers.add(obs);
+    }
 
-	@Override
-	public void removeObserver(GameModelObserver obs) {
-		observers.remove(obs);
-	}
+    @Override
+    public void removeObserver(GameModelObserver obs) {
+        observers.remove(obs);
+    }
 
-	@Override
-	public void notifyObservers() {
-		for (GameModelObserver obs : observers) {
-			obs.onModelUpdate(this);
-		}
-	}
+    @Override
+    public void notifyObservers() {
+        for (GameModelObserver obs : observers) {
+            obs.onModelUpdate(this);
+        }
+    }
 
-	@Override
-	public int getScore() {
-		return scoreManager.getCurrentScore();
-	}
+    @Override
+    public int getScore() {
+        return scoreManager.getCurrentScore();
+    }
 
-	@Override
-	public void addPointsToScore(int amount) {
-		scoreManager.addPoints(amount);
-	}
+    @Override
+    public void addPointsToScore(int amount) {
+        scoreManager.addPoints(amount);
+    }
 
-	@Override
-	public PhysicsManager getPhysicsManager() {
-		return physicsManager;
-	}
+    @Override
+    public PhysicsManager getPhysicsManager() {
+        return physicsManager;
+    }
 
-	@Override
-	public CollisionManager getCollisionManager() {
-		return collisionManager;
-	}
+    @Override
+    public CollisionManager getCollisionManager() {
+        return collisionManager;
+    }
 
-	@Override
-	public SpawnManager getSpawnManager() {
-		return spawnManager;
-	}
+    @Override
+    public SpawnManager getSpawnManager() {
+        return spawnManager;
+    }
 
-	@Override
-	public CameraManager getCameraManager() {
-		return cameraManager;
-	}
+    @Override
+    public CameraManager getCameraManager() {
+        return cameraManager;
+    }
 
-	@Override
-	public ScoreManager getScoreManager() {
-		return scoreManager;
-	}
+    @Override
+    public ScoreManager getScoreManager() {
+        return scoreManager;
+    }
 
-	@Override
-	public CleanupManager getCleanupManager() {
-		return cleanupManager;
-	}
+    @Override
+    public CleanupManager getCleanupManager() {
+        return cleanupManager;
+    }
 
-	@Override
-	public DifficultyManager getDifficultyManager() {
-		return difficultyManager;
-	}
+    @Override
+    public DifficultyManager getDifficultyManager() {
+        return difficultyManager;
+    }
 
-	@Override
-	public GameStateHandler getCurrentState() {
-		return currentState;
-	}
+    @Override
+    public GameStateHandler getCurrentState() {
+        return currentState;
+    }
 
-	@Override
-	public List<GameObject> getGameObjects() {
-		return this.gameObject;
-	}
+    @Override
+    public List<GameObject> getGameObjects() {
+        return this.gameObject;
+    }
 
-	@Override
-	public Character getPlayer() {
-		return player;
-	}
+    @Override
+    public Character getPlayer() {
+        return player;
+    }
 
-	@Override
-	public int getScreenWidth() {
-		return screenWidth;
-	}
+    @Override
+    public int getScreenWidth() {
+        return screenWidth;
+    }
 
-	@Override
-	public int getScreenHeight() {
-		return screenHeight;
-	}
+    @Override
+    public int getScreenHeight() {
+        return screenHeight;
+    }
 
-	public float getDeltaTime() {
-		return deltaTime;
-	}
+    public float getDeltaTime() {
+        return deltaTime;
+    }
 
-	public boolean isRunning() {
-		return isRunning;
-	}
+    public boolean isRunning() {
+        return isRunning;
+    }
 
-	public void stopGame() {
-		isRunning = false;
-	}
+    public void stopGame() {
+        isRunning = false;
+    }
 }

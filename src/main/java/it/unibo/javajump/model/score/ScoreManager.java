@@ -1,13 +1,13 @@
 package it.unibo.javajump.model.score;
 
 public interface ScoreManager {
-	void addPoints(int amount);
+    void addPoints(int amount);
 
-	int getCurrentScore();
+    int getCurrentScore();
 
-	int getBestScore();
+    int getBestScore();
 
-	boolean isBestScoreReached();
+    boolean isBestScoreReached();
 
-	void reset();
+    void reset();
 }

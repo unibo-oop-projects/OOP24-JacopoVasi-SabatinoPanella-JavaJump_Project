@@ -27,23 +27,23 @@ public class GameStateTest {
     @Test
     void testStates() {
         model.setState(new MenuState());
-        assertEquals(MenuState.class, model.getCurrentState().getClass(),"State should be equal to MenuState.");
+        assertEquals(MenuState.class, model.getCurrentState().getClass(), "State should be equal to MenuState.");
 
         model.getCurrentState().handleAction(model, GameAction.CONFIRM_SELECTION);
-        assertEquals(InGameState.class, model.getCurrentState().getClass(),"State should be equal to InGameState.");
+        assertEquals(InGameState.class, model.getCurrentState().getClass(), "State should be equal to InGameState.");
 
         model.getCurrentState().handleAction(model, GameAction.PAUSE_GAME);
-        assertEquals(PauseState.class, model.getCurrentState().getClass(),"State should be equal to PauseState.");
+        assertEquals(PauseState.class, model.getCurrentState().getClass(), "State should be equal to PauseState.");
 
         model.getCurrentState().handleAction(model, GameAction.CONFIRM_SELECTION);
-        assertEquals(InGameState.class, model.getCurrentState().getClass(),"State should be equal to InGameState.");
+        assertEquals(InGameState.class, model.getCurrentState().getClass(), "State should be equal to InGameState.");
 
-        model.getPlayer().setY(SCREENHEIGHT*2);
+        model.getPlayer().setY(SCREENHEIGHT * 2);
         model.update(0);
-        assertEquals(GameOverState.class, model.getCurrentState().getClass(),"State should be equal to GameOverState.");
+        assertEquals(GameOverState.class, model.getCurrentState().getClass(), "State should be equal to GameOverState.");
 
         model.getCurrentState().handleAction(model, GameAction.CONFIRM_SELECTION);
-        assertEquals(MenuState.class, model.getCurrentState().getClass(),"State should be equal to MenuState.");
+        assertEquals(MenuState.class, model.getCurrentState().getClass(), "State should be equal to MenuState.");
 
     }
 

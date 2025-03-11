@@ -33,7 +33,7 @@ public class GameFrameImpl extends JFrame implements GameFrame {
         this.setVisible(true);
     }
 
-    public void closeGame(){
+    public void closeGame() {
         this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
     }
 }

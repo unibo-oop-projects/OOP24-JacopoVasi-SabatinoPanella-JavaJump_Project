@@ -2,11 +2,11 @@ package it.unibo.javajump.model.entities.platforms;
 
 public interface BreakablePlatform extends Platform {
 
-	boolean isBroken();
+    boolean isBroken();
 
-	void breakPlatform();
+    void breakPlatform();
 
-	void setFinished();
+    void setFinished();
 
-	boolean isFinished();
+    boolean isFinished();
 }

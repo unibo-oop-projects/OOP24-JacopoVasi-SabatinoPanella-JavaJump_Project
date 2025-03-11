@@ -4,7 +4,7 @@ import it.unibo.javajump.model.entities.GameObject;
 
 public interface Platform extends GameObject {
 
-	void triggerTouched();
+    void triggerTouched();
 
-	boolean consumeTouched();
+    boolean consumeTouched();
 }

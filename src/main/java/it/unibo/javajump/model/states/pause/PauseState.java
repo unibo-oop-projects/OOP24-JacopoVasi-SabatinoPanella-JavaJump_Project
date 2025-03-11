@@ -9,59 +9,59 @@ import it.unibo.javajump.model.states.menu.MenuState;
 
 
 public class PauseState implements GameStateHandler {
-	private float deltaTime = 0;
-	private PauseOption selection = PauseOption.CONTINUE;
-	private final GameState gameState = GameState.PAUSE;
+    private float deltaTime = 0;
+    private PauseOption selection = PauseOption.CONTINUE;
+    private final GameState gameState = GameState.PAUSE;
 
-	@Override
-	public void handleAction(GameModel model, GameAction action) {
-		switch (action) {
-			case CONFIRM_SELECTION -> {
-				switch (selection) {
-					case CONTINUE -> model.setState(new InGameState());
-					case MAIN_MENU -> model.setState(new MenuState());
-					case QUIT -> model.stopGame();
-				}
-			}
-			case MOVE_MENU_UP -> {
-				if (selection == PauseOption.CONTINUE) {
-					selection = PauseOption.QUIT;
-				} else if (selection == PauseOption.MAIN_MENU) {
-					selection = PauseOption.CONTINUE;
-				} else if (selection == PauseOption.QUIT) {
-					selection = PauseOption.MAIN_MENU;
-				}
-			}
-			case MOVE_MENU_DOWN -> {
-				if (selection == PauseOption.CONTINUE) {
-					selection = PauseOption.MAIN_MENU;
-				} else if (selection == PauseOption.MAIN_MENU) {
-					selection = PauseOption.QUIT;
-				} else if (selection == PauseOption.QUIT) {
-					selection = PauseOption.CONTINUE;
-				}
-			}
-			default -> {
-			}
-		}
-	}
+    @Override
+    public void handleAction(GameModel model, GameAction action) {
+        switch (action) {
+            case CONFIRM_SELECTION -> {
+                switch (selection) {
+                    case CONTINUE -> model.setState(new InGameState());
+                    case MAIN_MENU -> model.setState(new MenuState());
+                    case QUIT -> model.stopGame();
+                }
+            }
+            case MOVE_MENU_UP -> {
+                if (selection == PauseOption.CONTINUE) {
+                    selection = PauseOption.QUIT;
+                } else if (selection == PauseOption.MAIN_MENU) {
+                    selection = PauseOption.CONTINUE;
+                } else if (selection == PauseOption.QUIT) {
+                    selection = PauseOption.MAIN_MENU;
+                }
+            }
+            case MOVE_MENU_DOWN -> {
+                if (selection == PauseOption.CONTINUE) {
+                    selection = PauseOption.MAIN_MENU;
+                } else if (selection == PauseOption.MAIN_MENU) {
+                    selection = PauseOption.QUIT;
+                } else if (selection == PauseOption.QUIT) {
+                    selection = PauseOption.CONTINUE;
+                }
+            }
+            default -> {
+            }
+        }
+    }
 
-	@Override
-	public void update(GameModel model, float deltaTime) {
-		this.deltaTime = deltaTime;
-		model.notifyObservers();
-	}
+    @Override
+    public void update(GameModel model, float deltaTime) {
+        this.deltaTime = deltaTime;
+        model.notifyObservers();
+    }
 
-	@Override
-	public GameState getGameState() {
-		return gameState;
-	}
+    @Override
+    public GameState getGameState() {
+        return gameState;
+    }
 
-	public PauseOption getSelection() {
-		return selection;
-	}
+    public PauseOption getSelection() {
+        return selection;
+    }
 
-	public float getDeltaTime() {
-		return deltaTime;
-	}
+    public float getDeltaTime() {
+        return deltaTime;
+    }
 }

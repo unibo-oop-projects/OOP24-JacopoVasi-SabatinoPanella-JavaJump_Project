@@ -45,7 +45,7 @@ class CameraTest {
         float initialOffset = model.getCameraManager().getCurrentOffset();
 
         // Move the player down (should not affect the offset)
-        model.getPlayer().setY((float) SCREENHEIGHT /2 + 100);
+        model.getPlayer().setY((float) SCREENHEIGHT / 2 + 100);
         model.update(0);
         model.getCameraManager().updateCamera(model, 0);
 

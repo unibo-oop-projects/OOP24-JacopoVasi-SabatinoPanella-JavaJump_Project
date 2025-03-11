@@ -6,7 +6,7 @@ package it.unibo.javajump.model.entities.collectibles;
  * but the entity is pretty simple as of now, so we'll keep it simple with an enum.
  */
 public enum CoinState {
-	IDLE,
-	COLLECTING,
-	FINISHED
+    IDLE,
+    COLLECTING,
+    FINISHED
 }

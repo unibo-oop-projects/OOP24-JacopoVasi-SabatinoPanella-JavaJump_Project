@@ -5,13 +5,13 @@ import it.unibo.javajump.model.factories.GameObjectFactory;
 import it.unibo.javajump.model.level.spawn.SpawnStrategy;
 
 public interface SpawnManager {
-	void generateInitialLevel(GameModel model);
+    void generateInitialLevel(GameModel model);
 
-	void generateOnTheFly(GameModel model);
+    void generateOnTheFly(GameModel model);
 
-	void reset();
+    void reset();
 
-	SpawnStrategy getSpawnStrategy();
+    SpawnStrategy getSpawnStrategy();
 
-	GameObjectFactory getFactory();
+    GameObjectFactory getFactory();
 }

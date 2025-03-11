@@ -13,123 +13,123 @@ import java.util.logging.Logger;
 import static it.unibo.javajump.utility.Constants.*;
 
 public class MusicManagerImpl implements MusicManager {
-	private Clip backgroundClip;
-	private FloatControl volumeControl;
-	private ScheduledExecutorService fadeExecutor;
-	private ScheduledFuture<?> fadeFuture;
-	private final float defaultVolume;
+    private Clip backgroundClip;
+    private FloatControl volumeControl;
+    private ScheduledExecutorService fadeExecutor;
+    private ScheduledFuture<?> fadeFuture;
+    private final float defaultVolume;
 
-	public MusicManagerImpl(String filePath, float defaultVolume) {
-		this.defaultVolume = defaultVolume;
-		loadBackgroundMusic(filePath);
-		fadeExecutor = Executors.newSingleThreadScheduledExecutor();
-	}
+    public MusicManagerImpl(String filePath, float defaultVolume) {
+        this.defaultVolume = defaultVolume;
+        loadBackgroundMusic(filePath);
+        fadeExecutor = Executors.newSingleThreadScheduledExecutor();
+    }
 
-	@Override
-	public void loadBackgroundMusic(String filePath) {
-		try {
-			File audioFile = new File(filePath);
-			AudioInputStream audioIn = AudioSystem.getAudioInputStream(audioFile);
-			backgroundClip = AudioSystem.getClip();
-			backgroundClip.open(audioIn);
+    @Override
+    public void loadBackgroundMusic(String filePath) {
+        try {
+            File audioFile = new File(filePath);
+            AudioInputStream audioIn = AudioSystem.getAudioInputStream(audioFile);
+            backgroundClip = AudioSystem.getClip();
+            backgroundClip.open(audioIn);
 
-			if (backgroundClip.isControlSupported(FloatControl.Type.MASTER_GAIN)) {
-				volumeControl = (FloatControl) backgroundClip.getControl(FloatControl.Type.MASTER_GAIN);
-			} else {
-				volumeControl = null;
-			}
-		} catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
-			Logger.getLogger(MusicManagerImpl.class.getName()).log(Level.SEVERE, "Error loading the audio file", e);
-		}
-	}
+            if (backgroundClip.isControlSupported(FloatControl.Type.MASTER_GAIN)) {
+                volumeControl = (FloatControl) backgroundClip.getControl(FloatControl.Type.MASTER_GAIN);
+            } else {
+                volumeControl = null;
+            }
+        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
+            Logger.getLogger(MusicManagerImpl.class.getName()).log(Level.SEVERE, "Error loading the audio file", e);
+        }
+    }
 
-	@Override
-	public void startMusic() {
-		cancelFade();
-		if (backgroundClip == null) return;
-		if (backgroundClip.isRunning()) return;
+    @Override
+    public void startMusic() {
+        cancelFade();
+        if (backgroundClip == null) return;
+        if (backgroundClip.isRunning()) return;
 
-		int totalFrames = backgroundClip.getFrameLength();
-		int loopEnd = (int) (totalFrames * MUSIC_LOOP_END);
-		backgroundClip.setLoopPoints(MUSIC_LOOP_START, loopEnd);
-		backgroundClip.loop(Clip.LOOP_CONTINUOUSLY);
-		setVolume(defaultVolume);
-		backgroundClip.start();
-	}
+        int totalFrames = backgroundClip.getFrameLength();
+        int loopEnd = (int) (totalFrames * MUSIC_LOOP_END);
+        backgroundClip.setLoopPoints(MUSIC_LOOP_START, loopEnd);
+        backgroundClip.loop(Clip.LOOP_CONTINUOUSLY);
+        setVolume(defaultVolume);
+        backgroundClip.start();
+    }
 
-	@Override
-	public void stopMusic() {
-		cancelFade();
-		if (backgroundClip != null) {
-			backgroundClip.stop();
-			backgroundClip.setFramePosition(AUDIOFRAMEINIT);
-		}
-	}
+    @Override
+    public void stopMusic() {
+        cancelFade();
+        if (backgroundClip != null) {
+            backgroundClip.stop();
+            backgroundClip.setFramePosition(AUDIOFRAMEINIT);
+        }
+    }
 
-	@Override
-	public void pauseMusic() {
-		cancelFade();
-		if (backgroundClip != null && backgroundClip.isRunning()) {
-			backgroundClip.stop();
-		}
-	}
+    @Override
+    public void pauseMusic() {
+        cancelFade();
+        if (backgroundClip != null && backgroundClip.isRunning()) {
+            backgroundClip.stop();
+        }
+    }
 
-	@Override
-	public void resumeMusic() {
-		cancelFade();
-		if (backgroundClip != null && !backgroundClip.isRunning()) {
-			backgroundClip.loop(Clip.LOOP_CONTINUOUSLY);
-			backgroundClip.start();
-		}
-	}
+    @Override
+    public void resumeMusic() {
+        cancelFade();
+        if (backgroundClip != null && !backgroundClip.isRunning()) {
+            backgroundClip.loop(Clip.LOOP_CONTINUOUSLY);
+            backgroundClip.start();
+        }
+    }
 
-	@Override
-	public void setVolume(float vol) {
-		if (volumeControl == null) return;
-		float min = volumeControl.getMinimum();
-		float max = volumeControl.getMaximum();
-		float dB = min + (max - min) * vol;
-		volumeControl.setValue(dB);
-	}
+    @Override
+    public void setVolume(float vol) {
+        if (volumeControl == null) return;
+        float min = volumeControl.getMinimum();
+        float max = volumeControl.getMaximum();
+        float dB = min + (max - min) * vol;
+        volumeControl.setValue(dB);
+    }
 
-	@Override
-	public void fadeOut(final float durationSeconds) {
-		if (backgroundClip == null || volumeControl == null) return;
-		cancelFade();
+    @Override
+    public void fadeOut(final float durationSeconds) {
+        if (backgroundClip == null || volumeControl == null) return;
+        cancelFade();
 
-		if (fadeExecutor != null && !fadeExecutor.isShutdown()) {
-			fadeExecutor.shutdownNow();
-		}
-		fadeExecutor = Executors.newSingleThreadScheduledExecutor();
+        if (fadeExecutor != null && !fadeExecutor.isShutdown()) {
+            fadeExecutor.shutdownNow();
+        }
+        fadeExecutor = Executors.newSingleThreadScheduledExecutor();
 
-		final int steps = AUDIOSTEPS;
-		final float initialVolume = volumeControl.getValue();
-		final float finalVolume = volumeControl.getMinimum();
-		final float delta = (initialVolume - finalVolume) / steps;
-		final long stepTimeMillis = (long) (durationSeconds * AUDIOSLEEP / steps);
+        final int steps = AUDIOSTEPS;
+        final float initialVolume = volumeControl.getValue();
+        final float finalVolume = volumeControl.getMinimum();
+        final float delta = (initialVolume - finalVolume) / steps;
+        final long stepTimeMillis = (long) (durationSeconds * AUDIOSLEEP / steps);
 
-		fadeFuture = fadeExecutor.scheduleAtFixedRate(new Runnable() {
-			int currentStep = 0;
+        fadeFuture = fadeExecutor.scheduleAtFixedRate(new Runnable() {
+            int currentStep = 0;
 
-			@Override
-			public void run() {
-				if (currentStep >= steps) {
-					stopMusic();
-					setVolume(defaultVolume);
-					fadeFuture.cancel(false);
-					return;
-				}
-				float newVolume = volumeControl.getValue() - delta;
-				volumeControl.setValue(newVolume);
-				currentStep++;
-			}
+            @Override
+            public void run() {
+                if (currentStep >= steps) {
+                    stopMusic();
+                    setVolume(defaultVolume);
+                    fadeFuture.cancel(false);
+                    return;
+                }
+                float newVolume = volumeControl.getValue() - delta;
+                volumeControl.setValue(newVolume);
+                currentStep++;
+            }
 
-		}, 0, stepTimeMillis, TimeUnit.MILLISECONDS);
-	}
+        }, 0, stepTimeMillis, TimeUnit.MILLISECONDS);
+    }
 
-	private void cancelFade() {
-		if (fadeFuture != null && !fadeFuture.isDone()) {
-			fadeFuture.cancel(true);
-		}
-	}
+    private void cancelFade() {
+        if (fadeFuture != null && !fadeFuture.isDone()) {
+            fadeFuture.cancel(true);
+        }
+    }
 }

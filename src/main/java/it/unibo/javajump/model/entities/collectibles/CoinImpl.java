@@ -8,60 +8,60 @@ import static it.unibo.javajump.utility.Constants.OFFSETINIT;
 
 public class CoinImpl extends GameObjectImpl implements Coin {
 
-	private CoinState state;
-	private Platform attachedPlatform;
-	private float offsetX;
+    private CoinState state;
+    private Platform attachedPlatform;
+    private float offsetX;
 
-	public CoinImpl(float x, float y, float width, float height) {
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
-		this.state = CoinState.IDLE;
-		this.attachedPlatform = null;
-		this.offsetX = OFFSETINIT;
-	}
+    public CoinImpl(float x, float y, float width, float height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.state = CoinState.IDLE;
+        this.attachedPlatform = null;
+        this.offsetX = OFFSETINIT;
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * In this case, if the Coin is attached to a platform, the coin moves with the platform during gameplay.
-	 */
-	@Override
-	public void update(float deltaTime) {
-		if (attachedPlatform != null) {
-			this.x = attachedPlatform.getX() + offsetX;
-		}
-	}
+    /**
+     * {@inheritDoc}
+     * In this case, if the Coin is attached to a platform, the coin moves with the platform during gameplay.
+     */
+    @Override
+    public void update(float deltaTime) {
+        if (attachedPlatform != null) {
+            this.x = attachedPlatform.getX() + offsetX;
+        }
+    }
 
-	@Override
-	public void onCollision(GameObject other) {
-	}
+    @Override
+    public void onCollision(GameObject other) {
+    }
 
-	@Override
-	public CoinState getState() {
-		return this.state;
-	}
+    @Override
+    public CoinState getState() {
+        return this.state;
+    }
 
-	@Override
-	public void collect() {
-		if (this.state == CoinState.IDLE) {
-			this.state = CoinState.COLLECTING;
-		}
-	}
+    @Override
+    public void collect() {
+        if (this.state == CoinState.IDLE) {
+            this.state = CoinState.COLLECTING;
+        }
+    }
 
-	@Override
-	public void markAsDone() {
-		this.state = CoinState.FINISHED;
-	}
+    @Override
+    public void markAsDone() {
+        this.state = CoinState.FINISHED;
+    }
 
-	@Override
-	public Platform getAttachedPlatform() {
-		return attachedPlatform;
-	}
+    @Override
+    public Platform getAttachedPlatform() {
+        return attachedPlatform;
+    }
 
-	@Override
-	public void attachToPlatform(Platform platform) {
-		this.attachedPlatform = platform;
-		this.offsetX = this.x - platform.getX();
-	}
+    @Override
+    public void attachToPlatform(Platform platform) {
+        this.attachedPlatform = platform;
+        this.offsetX = this.x - platform.getX();
+    }
 }

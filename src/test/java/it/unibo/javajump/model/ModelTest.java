@@ -77,7 +77,6 @@ class ModelTest {
     }
 
 
-
     // Inner class to test observer pattern
     private static class TestObserver implements GameModelObserver {
         boolean updated = false;

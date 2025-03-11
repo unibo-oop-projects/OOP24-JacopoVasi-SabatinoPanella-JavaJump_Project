@@ -28,13 +28,13 @@ public class ScoreTest {
         model.getScoreManager().addPoints(MEDIUMMAX);
         model.update(0);
         assertEquals(DifficultyState.MEDIUM, model.getDifficultyManager().getCurrentDifficulty(), "Difficulty should be MEDIUM");
-        model.getScoreManager().addPoints(HARDMAX-MEDIUMMAX);
+        model.getScoreManager().addPoints(HARDMAX - MEDIUMMAX);
         model.update(0);
         assertEquals(DifficultyState.HARD, model.getDifficultyManager().getCurrentDifficulty(), "Difficulty should be HARD");
-        model.getScoreManager().addPoints(VERYHARDMAX-HARDMAX);
+        model.getScoreManager().addPoints(VERYHARDMAX - HARDMAX);
         model.update(0);
         assertEquals(DifficultyState.VERY_HARD, model.getDifficultyManager().getCurrentDifficulty(), "Difficulty should be VERY HARD");
-        model.getScoreManager().addPoints(HELLMAX-VERYHARDMAX);
+        model.getScoreManager().addPoints(HELLMAX - VERYHARDMAX);
         model.update(0);
         assertEquals(DifficultyState.HELL, model.getDifficultyManager().getCurrentDifficulty(), "Difficulty should be HELL");
 

@@ -17,51 +17,51 @@ import java.util.List;
 
 public interface GameModel {
 
-	void setState(GameStateHandler newState);
+    void setState(GameStateHandler newState);
 
-	void handleAction(GameAction action);
+    void handleAction(GameAction action);
 
-	void update(float deltaTime);
+    void update(float deltaTime);
 
-	void startGame();
+    void startGame();
 
-	void addObserver(GameModelObserver obs);
+    void addObserver(GameModelObserver obs);
 
-	void removeObserver(GameModelObserver obs);
+    void removeObserver(GameModelObserver obs);
 
-	void notifyObservers();
+    void notifyObservers();
 
-	int getScore();
+    int getScore();
 
-	void addPointsToScore(int amount);
+    void addPointsToScore(int amount);
 
-	PhysicsManager getPhysicsManager();
+    PhysicsManager getPhysicsManager();
 
-	CollisionManager getCollisionManager();
+    CollisionManager getCollisionManager();
 
-	SpawnManager getSpawnManager();
+    SpawnManager getSpawnManager();
 
-	CameraManager getCameraManager();
+    CameraManager getCameraManager();
 
-	ScoreManager getScoreManager();
+    ScoreManager getScoreManager();
 
-	CleanupManager getCleanupManager();
+    CleanupManager getCleanupManager();
 
-	DifficultyManager getDifficultyManager();
+    DifficultyManager getDifficultyManager();
 
-	GameStateHandler getCurrentState();
+    GameStateHandler getCurrentState();
 
-	List<GameObject> getGameObjects();
+    List<GameObject> getGameObjects();
 
-	Character getPlayer();
+    Character getPlayer();
 
-	int getScreenWidth();
+    int getScreenWidth();
 
-	int getScreenHeight();
+    int getScreenHeight();
 
-	float getDeltaTime();
+    float getDeltaTime();
 
-	boolean isRunning();
+    boolean isRunning();
 
-	void stopGame();
+    void stopGame();
 }

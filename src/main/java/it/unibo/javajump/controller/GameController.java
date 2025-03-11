@@ -5,13 +5,13 @@ package it.unibo.javajump.controller;
  * updates the model and the view using the current delta time.
  */
 public interface GameController {
-	/**
-	 * Starts the game loop, in a thread.
-	 */
-	void startGameLoop();
+    /**
+     * Starts the game loop, in a thread.
+     */
+    void startGameLoop();
 
-	/**
-	 * Stops the game loop thread.
-	 */
-	void stopGameLoop();
+    /**
+     * Stops the game loop thread.
+     */
+    void stopGameLoop();
 }

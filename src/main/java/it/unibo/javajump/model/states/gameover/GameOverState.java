@@ -9,33 +9,33 @@ import it.unibo.javajump.model.states.menu.MenuState;
 import java.util.Objects;
 
 public class GameOverState implements GameStateHandler {
-	private float deltaTime = 0;
-	private final GameState gameState = GameState.GAME_OVER;
+    private float deltaTime = 0;
+    private final GameState gameState = GameState.GAME_OVER;
 
-	@Override
-	public void handleAction(GameModel model, GameAction action) {
+    @Override
+    public void handleAction(GameModel model, GameAction action) {
 
-		if (Objects.requireNonNull(action) == GameAction.CONFIRM_SELECTION) {
-			model.setState(new MenuState());
-		}
-	}
+        if (Objects.requireNonNull(action) == GameAction.CONFIRM_SELECTION) {
+            model.setState(new MenuState());
+        }
+    }
 
-	@Override
-	public void update(GameModel model, float deltaTime) {
-		this.deltaTime = deltaTime;
-		model.notifyObservers();
-	}
+    @Override
+    public void update(GameModel model, float deltaTime) {
+        this.deltaTime = deltaTime;
+        model.notifyObservers();
+    }
 
-	@Override
-	public GameState getGameState() {
-		return gameState;
-	}
+    @Override
+    public GameState getGameState() {
+        return gameState;
+    }
 
-	public int getState() {
-		return 0;
-	}
+    public int getState() {
+        return 0;
+    }
 
-	public float getDeltaTime() {
-		return deltaTime;
-	}
+    public float getDeltaTime() {
+        return deltaTime;
+    }
 }

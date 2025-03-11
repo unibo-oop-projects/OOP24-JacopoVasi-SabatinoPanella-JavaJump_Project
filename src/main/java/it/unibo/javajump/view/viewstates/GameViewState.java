@@ -5,14 +5,13 @@ import it.unibo.javajump.model.GameModel;
 import java.awt.*;
 
 
-
 public interface GameViewState {
 
-	void draw(Graphics g, GameModel model);
+    void draw(Graphics g, GameModel model);
 
-	void startFade();
+    void startFade();
 
-	void update();
+    void update();
 
-	void stopFade();
+    void stopFade();
 }

@@ -10,55 +10,55 @@ import static it.unibo.javajump.utility.Constants.*;
 
 public class SpawnManagerImpl implements SpawnManager {
 
-	private final SpawnStrategy spawnStrategy;
-	private float topPlatformY;
+    private final SpawnStrategy spawnStrategy;
+    private float topPlatformY;
 
 
-	public SpawnManagerImpl(SpawnStrategy spawnStrategy) {
-		this.spawnStrategy = spawnStrategy;
-		this.topPlatformY = TOPPLATFORMY_INIT;
-	}
+    public SpawnManagerImpl(SpawnStrategy spawnStrategy) {
+        this.spawnStrategy = spawnStrategy;
+        this.topPlatformY = TOPPLATFORMY_INIT;
+    }
 
 
-	@Override
-	public void generateInitialLevel(GameModel model) {
-		spawnPlatformBelowPlayer(model, getFactory());
-		float startY = model.getScreenHeight() - INITIALYOFFSET;
-		spawnStrategy.spawnBatch(model, startY, INITIAL_PLATFORMS_NUMBER);
-		this.topPlatformY = spawnStrategy.returnCurrentY();
-	}
+    @Override
+    public void generateInitialLevel(GameModel model) {
+        spawnPlatformBelowPlayer(model, getFactory());
+        float startY = model.getScreenHeight() - INITIALYOFFSET;
+        spawnStrategy.spawnBatch(model, startY, INITIAL_PLATFORMS_NUMBER);
+        this.topPlatformY = spawnStrategy.returnCurrentY();
+    }
 
 
-	@Override
-	public void generateOnTheFly(GameModel model) {
-		float playerY = model.getPlayer().getY();
-		float gap = playerY - topPlatformY;
+    @Override
+    public void generateOnTheFly(GameModel model) {
+        float playerY = model.getPlayer().getY();
+        float gap = playerY - topPlatformY;
 
-		if (gap < SPAWN_THRESHOLD) {
-			spawnStrategy.spawnBatch(model, topPlatformY, PROCEDURAL_PLATFORMS_NUMBER);
-			float newTop = spawnStrategy.returnCurrentY();
+        if (gap < SPAWN_THRESHOLD) {
+            spawnStrategy.spawnBatch(model, topPlatformY, PROCEDURAL_PLATFORMS_NUMBER);
+            float newTop = spawnStrategy.returnCurrentY();
 
-			if (newTop < topPlatformY) {
-				topPlatformY = newTop;
-			}
-		}
-	}
+            if (newTop < topPlatformY) {
+                topPlatformY = newTop;
+            }
+        }
+    }
 
-	@Override
-	public void reset() {
-		this.topPlatformY = TOPPLATFORMY_INIT;
-	}
+    @Override
+    public void reset() {
+        this.topPlatformY = TOPPLATFORMY_INIT;
+    }
 
-	@Override
-	public SpawnStrategy getSpawnStrategy() {
-		return this.spawnStrategy;
-	}
+    @Override
+    public SpawnStrategy getSpawnStrategy() {
+        return this.spawnStrategy;
+    }
 
-	@Override
-	public GameObjectFactory getFactory() {
-		if (spawnStrategy instanceof RandomSpawnStrategy) {
-			return spawnStrategy.getFactory();
-		}
-		return null;
-	}
+    @Override
+    public GameObjectFactory getFactory() {
+        if (spawnStrategy instanceof RandomSpawnStrategy) {
+            return spawnStrategy.getFactory();
+        }
+        return null;
+    }
 }

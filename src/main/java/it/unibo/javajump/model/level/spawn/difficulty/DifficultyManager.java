@@ -1,9 +1,9 @@
 package it.unibo.javajump.model.level.spawn.difficulty;
 
 public interface DifficultyManager {
-	void updateDifficulty(int score);
+    void updateDifficulty(int score);
 
-	DifficultyState getCurrentDifficulty();
+    DifficultyState getCurrentDifficulty();
 
-	void reset();
+    void reset();
 }

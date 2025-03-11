@@ -1,17 +1,17 @@
 package it.unibo.javajump.view.sound.music;
 
 public interface MusicManager {
-	void loadBackgroundMusic(String filePath);
+    void loadBackgroundMusic(String filePath);
 
-	void startMusic();
+    void startMusic();
 
-	void stopMusic();
+    void stopMusic();
 
-	void pauseMusic();
+    void pauseMusic();
 
-	void resumeMusic();
+    void resumeMusic();
 
-	void fadeOut(float durationSeconds);
+    void fadeOut(float durationSeconds);
 
-	void setVolume(float vol);
+    void setVolume(float vol);
 }
