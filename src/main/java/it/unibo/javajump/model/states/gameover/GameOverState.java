@@ -11,7 +11,8 @@ import java.util.Objects;
 /**
  * The type Game over state.
  */
-public class GameOverState implements GameStateHandler {
+public final class GameOverState implements GameStateHandler {
+
     private float deltaTime;
     /**
      * The Game state.

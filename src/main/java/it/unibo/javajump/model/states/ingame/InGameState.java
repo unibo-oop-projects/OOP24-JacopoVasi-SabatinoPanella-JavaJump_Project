@@ -20,7 +20,7 @@ import static it.unibo.javajump.utility.Constants.RIGHT_DIRECTION;
 /**
  * The type In game state.
  */
-public class InGameState implements GameStateHandler {
+public final class InGameState implements GameStateHandler {
 
     /**
      * The Game state.

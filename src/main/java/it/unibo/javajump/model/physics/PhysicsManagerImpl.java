@@ -6,7 +6,7 @@ import it.unibo.javajump.model.entities.character.Character;
 /**
  * The type Physics manager.
  */
-public class PhysicsManagerImpl implements PhysicsManager {
+public final class PhysicsManagerImpl implements PhysicsManager {
     private final float acceleration;
     private final float maxSpeed;
     private final float deceleration;
