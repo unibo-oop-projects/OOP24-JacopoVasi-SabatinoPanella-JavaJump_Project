@@ -16,7 +16,7 @@ import static it.unibo.javajump.utility.Constants.SCREEN_WIDTH;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class CollisionTest {
+ class CollisionTest {
 
 
     private GameModel model;

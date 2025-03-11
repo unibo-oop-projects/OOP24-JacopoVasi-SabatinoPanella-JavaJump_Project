@@ -11,7 +11,7 @@ import static it.unibo.javajump.utility.Constants.SCREEN_WIDTH;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class PlayerTest {
+ class PlayerTest {
     private GameModel model;
 
     @BeforeEach

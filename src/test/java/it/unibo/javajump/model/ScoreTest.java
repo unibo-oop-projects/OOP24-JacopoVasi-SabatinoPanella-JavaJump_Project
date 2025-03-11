@@ -14,7 +14,7 @@ import static it.unibo.javajump.utility.Constants.VERY_HARD_MAX;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class ScoreTest {
+ class ScoreTest {
     private GameModel model;
 
     @BeforeEach

@@ -12,7 +12,7 @@ import static it.unibo.javajump.utility.Constants.SCREEN_HEIGHT;
 import static it.unibo.javajump.utility.Constants.SCREEN_WIDTH;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class GameStateTest {
+ class GameStateTest {
     private GameModel model;
 
     @BeforeEach
