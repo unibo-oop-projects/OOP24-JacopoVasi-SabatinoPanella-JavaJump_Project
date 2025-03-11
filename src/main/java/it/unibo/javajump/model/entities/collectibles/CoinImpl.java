@@ -6,12 +6,33 @@ import it.unibo.javajump.model.entities.platforms.Platform;
 
 import static it.unibo.javajump.utility.Constants.OFFSET_INIT;
 
-public class CoinImpl extends GameObjectImpl implements Coin {
+/**
+ * Coin class, implementing the Coin interface, representing the collectible coin entity.
+ */
+public final class CoinImpl extends GameObjectImpl implements Coin {
 
+    /**
+     * Field representing the state of the coin.
+     */
     private CoinState state;
+    /**
+     * Field to store the platform to which the coin is attached.
+     */
     private Platform attachedPlatform;
+    /**
+     * Field to store the X offset.
+     */
     private float offsetX;
 
+    /**
+     * Constructor for the CoinImpl class.
+     *
+     * @param x the x-coordinate of the coin
+     * @param y the y-coordinate of the coin
+     * @param width the width of the coin
+     * @param height the height of the coin
+     */
+    public CoinImpl(final float x, final float y, final float width, final float height) {
     public CoinImpl(final float x, final float y, final float width, final float height) {
         this.x = x;
         this.y = y;
@@ -27,14 +48,14 @@ public class CoinImpl extends GameObjectImpl implements Coin {
      * In this case, if the Coin is attached to a platform, the coin moves with the platform during gameplay.
      */
     @Override
-    public void update(float deltaTime) {
+    public void update(final float deltaTime) {
         if (attachedPlatform != null) {
             this.x = attachedPlatform.getX() + offsetX;
         }
     }
 
     @Override
-    public void onCollision(GameObject other) {
+    public void onCollision(final GameObject other) {
     }
 
     @Override

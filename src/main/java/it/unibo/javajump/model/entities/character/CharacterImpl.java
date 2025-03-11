@@ -10,7 +10,7 @@ import static it.unibo.javajump.utility.Constants.VELOCITY_INIT;
 /**
  * Implementation of the Character interface.
  */
-public class CharacterImpl extends GameObjectImpl implements Character {
+public final class CharacterImpl extends GameObjectImpl implements Character {
     /**
      * The character's velocity in the X axis.
      */

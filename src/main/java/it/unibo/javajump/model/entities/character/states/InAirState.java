@@ -7,17 +7,17 @@ import it.unibo.javajump.model.entities.character.CharacterState;
  * Class implementation of the CharacterState interface, representing the state when the character is in the air.
  * Useful for future implementations and extensibility.
  */
-public class InAirState implements CharacterState {
+public final class InAirState implements CharacterState {
     @Override
-    public void updateCharacter(Character character, float deltaTime) {
+    public void updateCharacter(final Character character, final float deltaTime) {
     }
 
     @Override
-    public void onEnter(Character character) {
+    public void onEnter(final Character character) {
     }
 
     @Override
-    public void onExit(Character character) {
+    public void onExit(final Character character) {
     }
 
     @Override

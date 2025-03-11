@@ -19,6 +19,8 @@ public interface Coin extends GameObject {
 
     /**
      * Method that attaches the coin to a platform.
+     *
+     * @param platform the platform to which the coin is attached
      */
     void attachToPlatform(Platform platform);
 
