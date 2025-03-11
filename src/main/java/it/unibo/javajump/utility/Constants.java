@@ -1211,8 +1211,11 @@ public final class Constants {
      */
     public static final String IMAGE_IMPORT_ERROR_TEXT = "GameAction Queue is full, cannot add: ";
 
-
+    /**
+     * Serial ID for GameFrame and GameView.
+     */
     public static final long SERIAL_ID = 1L;
+
     /**
      * Private constructor for Constants, to avoid instantiation.
      *

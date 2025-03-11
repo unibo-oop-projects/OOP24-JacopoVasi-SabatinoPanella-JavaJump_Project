@@ -88,6 +88,7 @@ public final class RandomSpawnStrategy implements SpawnStrategy {
                         gap = SpawnUtilsImpl.randomInRange(rand,
                                 minPlatformYSpacing + GAP_EASY_ADDENDUM,
                                 maxPlatformYSpacing);
+                default -> { }
             }
         }
         return gap;
