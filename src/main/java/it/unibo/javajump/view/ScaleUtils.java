@@ -7,10 +7,10 @@ import static it.unibo.javajump.utility.Constants.MAIN_VIEW_DRAW_X_INIT;
 import static it.unibo.javajump.utility.Constants.MAIN_VIEW_DRAW_Y_INIT;
 
 public class ScaleUtils {
-    public static Rectangle computeScaledRectangle(int virtualWidth, int virtualHeight, Dimension panelSize) {
-        float targetAspect = (float) virtualWidth / virtualHeight;
-        float panelAspect = (float) panelSize.width / panelSize.height;
-        int drawWidth, drawHeight, drawX, drawY;
+    public static Rectangle computeScaledRectangle(final int virtualWidth, final int virtualHeight, final Dimension panelSize) {
+        final float targetAspect = (float) virtualWidth / virtualHeight;
+        final float panelAspect = (float) panelSize.width / panelSize.height;
+        final int drawWidth, drawHeight, drawX, drawY;
 
         if (panelAspect > targetAspect) {
             drawHeight = panelSize.height;

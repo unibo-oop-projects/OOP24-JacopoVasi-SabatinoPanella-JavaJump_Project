@@ -68,7 +68,7 @@ public class RendererManagerImpl implements RenderManager {
      * Constructor for the RendererManagerImpl class. Associates the different renderers implementations
      * with their respective fields.
      */
-    public RendererManagerImpl(SoundEffectsManager soundEffectsManager, GameGraphics graphics) {
+    public RendererManagerImpl(final SoundEffectsManager soundEffectsManager, final GameGraphics graphics) {
 
         this.platformRenderer = new PlatformRendererImpl(
                 RENDER_MANAGER_PLATFORM_OUTLINE_THICKNESS,

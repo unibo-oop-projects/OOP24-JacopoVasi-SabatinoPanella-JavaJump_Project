@@ -5,10 +5,10 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 
 public class FontLoaderImpl implements FontLoader {
-    public static Font loadFont(String path, float size) {
+    public static Font loadFont(final String path, final float size) {
         try {
-            InputStream is = new FileInputStream(path);
-            Font font = Font.createFont(Font.TRUETYPE_FONT, is);
+            final InputStream is = new FileInputStream(path);
+            final Font font = Font.createFont(Font.TRUETYPE_FONT, is);
             return font.deriveFont(size);
 
         } catch (Exception e) {
