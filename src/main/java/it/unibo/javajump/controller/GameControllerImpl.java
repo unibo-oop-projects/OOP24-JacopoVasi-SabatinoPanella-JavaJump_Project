@@ -40,8 +40,10 @@ public class GameControllerImpl implements GameController {
      * @param model        The game model
      * @param view         The game view
      * @param inputManager The input manager
+     * @param frame        The game frame
      */
-    public GameControllerImpl(final GameModel model, final MainGameView view, final InputManager inputManager, final GameFrame frame) {
+    public GameControllerImpl(final GameModel model, final MainGameView view,
+                              final InputManager inputManager, final GameFrame frame) {
         this.model = model;
         this.view = view;
         this.running = false;
@@ -82,7 +84,7 @@ public class GameControllerImpl implements GameController {
     }
 
     /**
-     * Stops the GameLoop thread
+     * Stops the GameLoop thread.
      */
     @Override
     public void stopGameLoop() {
@@ -91,7 +93,7 @@ public class GameControllerImpl implements GameController {
     }
 
     /**
-     * Private method to update the model regarding the current pressed direction
+     * Private method to update the model regarding the current pressed direction.
      *
      * @param deltaTime time passed since last update (in seconds)
      */
@@ -112,7 +114,8 @@ public class GameControllerImpl implements GameController {
     }
 
     /**
-     * Private method to process the GameAction(s) stored in the queue, it demands the model to process them accordingly
+     * Private method to process the GameAction(s) stored in the queue,
+     * it demands the model to process them accordingly.
      */
     private void processDiscreteInput() {
         GameAction action = inputManager.getActionQueue().poll();
