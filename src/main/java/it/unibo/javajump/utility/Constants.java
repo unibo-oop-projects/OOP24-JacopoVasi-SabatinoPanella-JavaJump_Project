@@ -712,263 +712,263 @@ public final class Constants {
      * The constant MENUVIEWCENTERDIV.
      */
 // menu view
-    public static final int MENUVIEWCENTERDIV = 2;
+    public static final int MENU_VIEW_CENTER_DIV = 2;
     /**
      * The constant MENUVIEWRECTX.
      */
-    public static final int MENUVIEWRECTX = 0;
+    public static final int MENU_VIEW_RECT_X = 0;
     /**
      * The constant MENUVIEWRECTY.
      */
-    public static final int MENUVIEWRECTY = 0;
+    public static final int MENU_VIEW_RECT_Y = 0;
     /**
      * The constant MENUVIEWIMGWIDTHSCALAR.
      */
-    public static final float MENUVIEWIMGWIDTHSCALAR = 0.03f;
+    public static final float MENU_VIEW_TITLE_IMG_WIDTH_SCALAR = 0.03f;
     /**
      * The constant MENUVIEWIMGHEIGHTSCALAR.
      */
-    public static final int MENUVIEWIMGHEIGHTSCALAR = 5;
+    public static final int MENU_VIEW_TITLE_IMG_HEIGHT_SCALAR = 5;
     /**
      * The constant MENUVIEWTILEWSCALAR.
      */
-    public static final int MENUVIEWTILEWSCALAR = 1;
+    public static final int MENU_VIEW_TILE_W_SCALAR = 1;
     /**
      * The constant MENUVIEWTILEHSCALAR.
      */
-    public static final int MENUVIEWTILEHSCALAR = 1;
+    public static final int MENU_VIEW_TILE_H_SCALAR = 1;
     /**
      * The constant MENUVIEWSTARTTEXT.
      */
-    public static final String MENUVIEWSTARTTEXT = "- Start Game (ENTER)";
+    public static final String MENU_VIEW_START_TEXT = "- Start Game (ENTER)";
     /**
      * The constant MENUVIEWQUITTEXT.
      */
-    public static final String MENUVIEWQUITTEXT = "- Quit (ESC)";
+    public static final String MENU_VIEW_QUIT_TEXT = "- Quit (ESC)";
     /**
      * The constant MENUVIEWXCENTER.
      */
-    public static final int MENUVIEWXCENTER = 4;
+    public static final int MENU_VIEW_TEXT_X_CENTER = 4;
     /**
      * The constant MENUVIEWSTARTYOFFSET.
      */
-    public static final int MENUVIEWSTARTYOFFSET = 30;
+    public static final int MENU_VIEW_START_TEXT_Y_OFFSET = 30;
     /**
      * The constant MENUVIEWQUITYOFFSET.
      */
-    public static final int MENUVIEWQUITYOFFSET = 70;
+    public static final int MENU_VIEW_QUIT_TEXT_Y_OFFSET = 70;
     /**
      * The constant MENUVIEWSTOKEWIDTH.
      */
-    public static final float MENUVIEWSTOKEWIDTH = 2f;
+    public static final float MENU_VIEW_STOKE_WIDTH = 2f;
     /**
      * The constant MENUVIEWSTROKEMITERLIMIT.
      */
-    public static final int MENUVIEWSTROKEMITERLIMIT = 0;
+    public static final int MENU_VIEW_STROKE_MITER_LIMIT = 0;
     /**
      * The constant MENUVIEWSTROKEARRAY.
      */
-    public static final int MENUVIEWSTROKEARRAY = 9;
+    public static final int MENU_VIEW_STROKE_ARRAY = 9;
     /**
      * The constant MENUVIEWSTROKEDASH.
      */
-    public static final int MENUVIEWSTROKEDASH = 0;
+    public static final int MENU_VIEW_STROKE_DASH = 0;
 
     /**
      * The constant MENUVIEWROUNDRECTXDIV.
      */
-    public static final int MENUVIEWROUNDRECTXDIV = 3;
+    public static final int MENU_VIEW_ROUND_RECT_X_DIV = 3;
     /**
      * The constant MENUVIEWROUNDRECTXOFF.
      */
-    public static final int MENUVIEWROUNDRECTXOFF = 20;
+    public static final int MENU_VIEW_ROUND_RECT_X_OFF = 20;
     /**
      * The constant MENUVIEWROUNDRECTYOFF.
      */
-    public static final int MENUVIEWROUNDRECTYOFF = 120;
+    public static final int MENU_VIEW_ROUND_RECT_Y_OFF = 120;
     /**
      * The constant MENUVIEWROUNDRECTWIDTH.
      */
-    public static final int MENUVIEWROUNDRECTWIDTH = 400;
+    public static final int MENU_VIEW_ROUND_RECT_WIDTH = 400;
     /**
      * The constant MENUVIEWROUNDRECTHEIGHT.
      */
-    public static final int MENUVIEWROUNDRECTHEIGHT = 40;
+    public static final int MENU_VIEW_ROUND_RECT_HEIGHT = 40;
     /**
      * The constant MENUVIEWROUNDRECTARCW.
      */
-    public static final int MENUVIEWROUNDRECTARCW = 10;
+    public static final int MENU_VIEW_ROUND_RECT_ARC_W = 10;
     /**
      * The constant MENUVIEWROUNDRECTARCH.
      */
-    public static final int MENUVIEWROUNDRECTARCH = 10;
+    public static final int MENU_VIEW_ROUND_RECT_ARC_H = 10;
 
     /**
      * The constant MENUVIEWBESTSCORETEXT.
      */
-    public static final String MENUVIEWBESTSCORETEXT = "Best Score:   ";
+    public static final String MENU_VIEW_BEST_SCORE_TEXT = "Best Score:   ";
     /**
      * The constant MENUVIEWBESTSCOREXDIV.
      */
-    public static final int MENUVIEWBESTSCOREXDIV = 3;
+    public static final int MENU_VIEW_BEST_SCORE_X_DIV = 3;
     /**
      * The constant MENUVIEWBESTSCOREYOFF.
      */
-    public static final int MENUVIEWBESTSCOREYOFF = 95;
+    public static final int MENU_VIEW_BEST_SCORE_Y_OFF = 95;
 
     /**
      * The constant GAMEOVERALPHAINIT.
      */
 //GAMEOVERVIEW
-    public static final float GAMEOVERALPHAINIT = 0;
+    public static final float GAME_OVER_ALPHA_INIT = 0;
     /**
      * The constant GAMEOVERDURATIONINIT.
      */
-    public static final float GAMEOVERDURATIONINIT = 1;
+    public static final float GAME_OVER_DURATION_INIT = 1;
     /**
      * The constant GAMEOVERTIMEINIT.
      */
-    public static final float GAMEOVERTIMEINIT = 0;
+    public static final float GAME_OVER_TIME_INIT = 0;
     /**
      * The constant GAMEOVERALPHA.
      */
-    public static final float GAMEOVERALPHA = 1;
+    public static final float GAME_OVER_ALPHA = 1;
     /**
      * The constant GAMEOVERCENTERDIV.
      */
-    public static final int GAMEOVERCENTERDIV = 2;
+    public static final int GAME_OVER_CENTER_DIV = 2;
     /**
      * The constant GAMEOVERRECTX.
      */
-    public static final int GAMEOVERRECTX = 0;
+    public static final int GAME_OVER_RECT_X = 0;
     /**
      * The constant GAMEOVERRECTY.
      */
-    public static final int GAMEOVERRECTY = 0;
+    public static final int GAME_OVER_RECT_Y = 0;
     /**
      * The constant GAMEOVERIMGWOFF.
      */
-    public static final float GAMEOVERIMGWOFF = 1.72f;
+    public static final float GAME_OVER_IMG_W_OFF = 1.72f;
     /**
      * The constant GAMEOVERIMGHOFF.
      */
-    public static final float GAMEOVERIMGHOFF = 0.15f;
+    public static final float GAME_OVER_IMG_H_OFF = 0.15f;
     /**
      * The constant GAMEOVERIMGSCALEOFF.
      */
-    public static final float GAMEOVERIMGSCALEOFF = 1.1f;
+    public static final float GAME_OVER_IMG_SCALE_OFF = 1.1f;
     /**
      * The constant GAMEOVERNEWTEXT.
      */
-    public static final String GAMEOVERNEWTEXT = "New Best Score:   ";
+    public static final String GAME_OVER_NEW_TEXT = "New Best Score:   ";
     /**
      * The constant GAMEOVERSCORETEXT.
      */
-    public static final String GAMEOVERSCORETEXT = "Your Score:   ";
+    public static final String GAME_OVER_SCORE_TEXT = "Your Score:   ";
     /**
      * The constant GAMEOVERBESTTEXT.
      */
-    public static final String GAMEOVERBESTTEXT = "Best Score:   ";
+    public static final String GAME_OVER_BEST_TEXT = "Best Score:   ";
     /**
      * The constant GAMEOVERCONTINUETEXT.
      */
-    public static final String GAMEOVERCONTINUETEXT = "Press ENTER to continue...";
+    public static final String GAME_OVER_CONTINUE_TEXT = "Press ENTER to continue...";
     /**
      * The constant GAMEOVERTEXTXOFF.
      */
-    public static final float GAMEOVERTEXTXOFF = 0.65f;
+    public static final float GAME_OVER_TEXT_X_OFF = 0.65f;
     /**
      * The constant GAMEOVERTEXTNEWYOFF.
      */
-    public static final int GAMEOVERTEXTNEWYOFF = 50;
+    public static final int GAME_OVER_TEXT_NEW_Y_OFF = 50;
     /**
      * The constant GAMEOVERTEXTSCOREYOFF.
      */
-    public static final int GAMEOVERTEXTSCOREYOFF = 50;
+    public static final int GAME_OVER_TEXT_SCORE_Y_OFF = 50;
     /**
      * The constant GAMEOVERTEXTBESTYOFF.
      */
-    public static final int GAMEOVERTEXTBESTYOFF = 80;
+    public static final int GAME_OVER_TEXT_BEST_Y_OFF = 80;
     /**
      * The constant GAMEOVERTEXTCONTINUEYOFF.
      */
-    public static final int GAMEOVERTEXTCONTINUEYOFF = 150;
+    public static final int GAME_OVER_TEXT_CONTINUE_Y_OFF = 150;
     /**
      * The constant GAMEOVERNEWTEXTESC.
      */
-    public static final String GAMEOVERNEWTEXTESC = " !!";
+    public static final String GAME_OVER_NEW_TEXT_ESC = " !!";
 
     /**
      * The constant PAUSECONTINUEY.
      */
 // PAUSEVIEW
-    public static final int PAUSECONTINUEY = 70;
+    public static final int PAUSE_CONTINUE_Y = 70;
     /**
      * The constant PAUSEMAINMENUY.
      */
-    public static final int PAUSEMAINMENUY = 100;
+    public static final int PAUSE_MAIN_MENU_Y = 100;
     /**
      * The constant PAUSEQUITY.
      */
-    public static final int PAUSEQUITY = 130;
+    public static final int PAUSE_QUIT_Y = 130;
     /**
      * The constant PAUSESELECTIONX.
      */
-    public static final int PAUSESELECTIONX = 20;
+    public static final int PAUSE_SELECTION_X = 20;
     /**
      * The constant PAUSETEXT.
      */
-    public static final String PAUSETEXT = "PAUSE";
+    public static final String PAUSE_TEXT = "PAUSE";
     /**
      * The constant PAUSECONTINUETEXT.
      */
-    public static final String PAUSECONTINUETEXT = "Continue";
+    public static final String PAUSE_CONTINUE_TEXT = "Continue";
     /**
      * The constant PAUSEMAINMENUTEXT.
      */
-    public static final String PAUSEMAINMENUTEXT = "Main Menu";
+    public static final String PAUSE_MAIN_MENU_TEXT = "Main Menu";
     /**
      * The constant PAUSEQUITTEXT.
      */
-    public static final String PAUSEQUITTEXT = "Quit";
+    public static final String PAUSE_QUIT_TEXT = "Quit";
     /**
      * The constant PAUSESELECTIONTEXT.
      */
-    public static final String PAUSESELECTIONTEXT = "- ";
+    public static final String PAUSE_SELECTION_TEXT = "- ";
     /**
      * The constant PAUSECENTERDIV.
      */
-    public static final int PAUSECENTERDIV = 2;
+    public static final int PAUSE_CENTER_DIV = 2;
     /**
      * The constant PAUSEWIDTHOFF.
      */
-    public static final int PAUSEWIDTHOFF = 50;
+    public static final int PAUSE_WIDTH_OFF = 50;
 
     /**
      * The constant MAINVIEWCENTERDIV.
      */
 //MAIN VIEW
-    public static final int MAINVIEWCENTERDIV = 2;
+    public static final int MAIN_VIEW_CENTER_DIV = 2;
     /**
      * The constant MAINVIEWAUDIOFADE.
      */
-    public static final float MAINVIEWAUDIOFADE = 2f;
+    public static final float MAIN_VIEW_AUDIO_FADE = 2f;
     /**
      * The constant MAINVIEWDRAWXINIT.
      */
-    public static final int MAINVIEWDRAWXINIT = 0;
+    public static final int MAIN_VIEW_DRAW_X_INIT = 0;
     /**
      * The constant MAINVIEWDRAWYINIT.
      */
-    public static final int MAINVIEWDRAWYINIT = 0;
+    public static final int MAIN_VIEW_DRAW_Y_INIT = 0;
     /**
      * The constant MAINVIEWRECTX.
      */
-    public static final int MAINVIEWRECTX = 0;
+    public static final int MAIN_VIEW_RECT_X = 0;
     /**
      * The constant MAINVIEWRECTY.
      */
-    public static final int MAINVIEWRECTY = 0;
+    public static final int MAIN_VIEW_RECT_Y = 0;
 
 
 //COLOR CODING ---------------------------------------------------------------------------------------

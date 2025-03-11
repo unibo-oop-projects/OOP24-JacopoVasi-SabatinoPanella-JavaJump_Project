@@ -9,17 +9,17 @@ import java.awt.*;
 
 import static it.unibo.javajump.utility.Constants.BACKGROUND_DEFAULT_COLOR;
 import static it.unibo.javajump.utility.Constants.GOLD_TEXT_COLOR;
-import static it.unibo.javajump.utility.Constants.PAUSECENTERDIV;
-import static it.unibo.javajump.utility.Constants.PAUSECONTINUETEXT;
-import static it.unibo.javajump.utility.Constants.PAUSECONTINUEY;
-import static it.unibo.javajump.utility.Constants.PAUSEMAINMENUTEXT;
-import static it.unibo.javajump.utility.Constants.PAUSEMAINMENUY;
-import static it.unibo.javajump.utility.Constants.PAUSEQUITTEXT;
-import static it.unibo.javajump.utility.Constants.PAUSEQUITY;
-import static it.unibo.javajump.utility.Constants.PAUSESELECTIONTEXT;
-import static it.unibo.javajump.utility.Constants.PAUSESELECTIONX;
-import static it.unibo.javajump.utility.Constants.PAUSETEXT;
-import static it.unibo.javajump.utility.Constants.PAUSEWIDTHOFF;
+import static it.unibo.javajump.utility.Constants.PAUSE_CENTER_DIV;
+import static it.unibo.javajump.utility.Constants.PAUSE_CONTINUE_TEXT;
+import static it.unibo.javajump.utility.Constants.PAUSE_CONTINUE_Y;
+import static it.unibo.javajump.utility.Constants.PAUSE_MAIN_MENU_TEXT;
+import static it.unibo.javajump.utility.Constants.PAUSE_MAIN_MENU_Y;
+import static it.unibo.javajump.utility.Constants.PAUSE_QUIT_TEXT;
+import static it.unibo.javajump.utility.Constants.PAUSE_QUIT_Y;
+import static it.unibo.javajump.utility.Constants.PAUSE_SELECTION_TEXT;
+import static it.unibo.javajump.utility.Constants.PAUSE_SELECTION_X;
+import static it.unibo.javajump.utility.Constants.PAUSE_TEXT;
+import static it.unibo.javajump.utility.Constants.PAUSE_WIDTH_OFF;
 
 public class PauseView implements GameViewState {
     private final Font font1;
@@ -37,10 +37,10 @@ public class PauseView implements GameViewState {
 
         int selectionYcor;
         switch (selection) {
-            case CONTINUE -> selectionYcor = PAUSECONTINUEY;
-            case MAIN_MENU -> selectionYcor = PAUSEMAINMENUY;
-            case QUIT -> selectionYcor = PAUSEQUITY;
-            default -> selectionYcor = PAUSECONTINUEY;
+            case CONTINUE -> selectionYcor = PAUSE_CONTINUE_Y;
+            case MAIN_MENU -> selectionYcor = PAUSE_MAIN_MENU_Y;
+            case QUIT -> selectionYcor = PAUSE_QUIT_Y;
+            default -> selectionYcor = PAUSE_CONTINUE_Y;
         }
 
         g.setColor(Color.decode(BACKGROUND_DEFAULT_COLOR));
@@ -48,13 +48,13 @@ public class PauseView implements GameViewState {
 
         g.setColor(Color.decode(GOLD_TEXT_COLOR));
         g.setFont(font1);
-        g.drawString(PAUSETEXT, model.getScreenWidth() / PAUSECENTERDIV - PAUSEWIDTHOFF, model.getScreenHeight() / PAUSECENTERDIV);
+        g.drawString(PAUSE_TEXT, model.getScreenWidth() / PAUSE_CENTER_DIV - PAUSE_WIDTH_OFF, model.getScreenHeight() / PAUSE_CENTER_DIV);
         g.setColor(Color.WHITE);
         g.setFont(font2);
-        g.drawString(PAUSECONTINUETEXT, model.getScreenWidth() / PAUSECENTERDIV - PAUSEWIDTHOFF, model.getScreenHeight() / PAUSECENTERDIV + PAUSECONTINUEY);
-        g.drawString(PAUSEMAINMENUTEXT, model.getScreenWidth() / PAUSECENTERDIV - PAUSEWIDTHOFF, model.getScreenHeight() / PAUSECENTERDIV + PAUSEMAINMENUY);
-        g.drawString(PAUSEQUITTEXT, model.getScreenWidth() / PAUSECENTERDIV - PAUSEWIDTHOFF, model.getScreenHeight() / PAUSECENTERDIV + PAUSEQUITY);
-        g.drawString(PAUSESELECTIONTEXT, model.getScreenWidth() / PAUSECENTERDIV - PAUSEWIDTHOFF - PAUSESELECTIONX, model.getScreenHeight() / PAUSECENTERDIV + selectionYcor);
+        g.drawString(PAUSE_CONTINUE_TEXT, model.getScreenWidth() / PAUSE_CENTER_DIV - PAUSE_WIDTH_OFF, model.getScreenHeight() / PAUSE_CENTER_DIV + PAUSE_CONTINUE_Y);
+        g.drawString(PAUSE_MAIN_MENU_TEXT, model.getScreenWidth() / PAUSE_CENTER_DIV - PAUSE_WIDTH_OFF, model.getScreenHeight() / PAUSE_CENTER_DIV + PAUSE_MAIN_MENU_Y);
+        g.drawString(PAUSE_QUIT_TEXT, model.getScreenWidth() / PAUSE_CENTER_DIV - PAUSE_WIDTH_OFF, model.getScreenHeight() / PAUSE_CENTER_DIV + PAUSE_QUIT_Y);
+        g.drawString(PAUSE_SELECTION_TEXT, model.getScreenWidth() / PAUSE_CENTER_DIV - PAUSE_WIDTH_OFF - PAUSE_SELECTION_X, model.getScreenHeight() / PAUSE_CENTER_DIV + selectionYcor);
     }
 
     @Override

@@ -24,9 +24,9 @@ import java.awt.event.ComponentEvent;
 import java.awt.image.BufferedImage;
 
 import static it.unibo.javajump.utility.Constants.BACKGROUND_DEFAULT_COLOR;
-import static it.unibo.javajump.utility.Constants.MAINVIEWAUDIOFADE;
-import static it.unibo.javajump.utility.Constants.MAINVIEWRECTX;
-import static it.unibo.javajump.utility.Constants.MAINVIEWRECTY;
+import static it.unibo.javajump.utility.Constants.MAIN_VIEW_AUDIO_FADE;
+import static it.unibo.javajump.utility.Constants.MAIN_VIEW_RECT_X;
+import static it.unibo.javajump.utility.Constants.MAIN_VIEW_RECT_Y;
 import static it.unibo.javajump.utility.Constants.MUSIC_VOLUME;
 import static it.unibo.javajump.utility.Constants.RESOURCES_MUSIC_1;
 import static it.unibo.javajump.utility.Constants.RESOURCES_PATH;
@@ -101,7 +101,7 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
 
         Rectangle scaledRect = ScaleUtils.computeScaledRectangle(virtualWidth, virtualHeight, getSize());
         g.setColor(Color.decode(BACKGROUND_DEFAULT_COLOR));
-        g.fillRect(MAINVIEWRECTX, MAINVIEWRECTY, getWidth(), getHeight());
+        g.fillRect(MAIN_VIEW_RECT_X, MAIN_VIEW_RECT_Y, getWidth(), getHeight());
         g.drawImage(tempScreen, scaledRect.x, scaledRect.y, scaledRect.width, scaledRect.height, null);
     }
 
@@ -109,7 +109,7 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
     private void drawToTempScreen() {
         Graphics2D g2 = tempScreen.createGraphics();
         g2.setColor(Color.BLACK);
-        g2.fillRect(MAINVIEWRECTX, MAINVIEWRECTY, virtualWidth, virtualHeight);
+        g2.fillRect(MAIN_VIEW_RECT_X, MAIN_VIEW_RECT_Y, virtualWidth, virtualHeight);
 
         GameState currentState = model.getCurrentState().getGameState();
         switch (currentState) {
@@ -143,7 +143,7 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
                 }
                 case PAUSE -> musicManager.pauseMusic();
                 case GAME_OVER -> {
-                    musicManager.fadeOut(MAINVIEWAUDIOFADE);
+                    musicManager.fadeOut(MAIN_VIEW_AUDIO_FADE);
                     gameOverView.startFade();
                 }
                 default -> {
