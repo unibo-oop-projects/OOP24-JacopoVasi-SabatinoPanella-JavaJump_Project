@@ -25,21 +25,17 @@ import java.awt.Rectangle;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.image.BufferedImage;
+import java.io.Serial;
+import java.io.Serializable;
 
-import static it.unibo.javajump.utility.Constants.BACKGROUND_DEFAULT_COLOR;
-import static it.unibo.javajump.utility.Constants.MAIN_VIEW_AUDIO_FADE;
-import static it.unibo.javajump.utility.Constants.MAIN_VIEW_RECT_X;
-import static it.unibo.javajump.utility.Constants.MAIN_VIEW_RECT_Y;
-import static it.unibo.javajump.utility.Constants.MUSIC_VOLUME;
-import static it.unibo.javajump.utility.Constants.RESOURCES_MUSIC_1;
-import static it.unibo.javajump.utility.Constants.RESOURCES_PATH;
-import static it.unibo.javajump.utility.Constants.SOUND_EFFECTS_VOLUME;
+import static it.unibo.javajump.utility.Constants.*;
 
 /**
  * The type Main game view.
  */
-public final class MainGameViewImpl extends JPanel implements MainGameView, GameModelObserver {
-
+public final class MainGameViewImpl extends JPanel implements MainGameView, GameModelObserver, Serializable {
+    @Serial
+    private static final long serialVersionUID = SERIAL_ID;
     private final GameModel model;
 
     private final GameViewState menuView;
@@ -64,6 +60,7 @@ public final class MainGameViewImpl extends JPanel implements MainGameView, Game
     public MainGameViewImpl(final GameModel model) {
         final GameGraphics gameGraphics = new GameGraphicsImpl();
         this.model = model;
+
         this.musicManager = new MusicManagerImpl(RESOURCES_PATH + RESOURCES_MUSIC_1, MUSIC_VOLUME);
         final SoundEffectsManager soundEffectsManager = new SoundEffectsManager(SOUND_EFFECTS_VOLUME);
 
