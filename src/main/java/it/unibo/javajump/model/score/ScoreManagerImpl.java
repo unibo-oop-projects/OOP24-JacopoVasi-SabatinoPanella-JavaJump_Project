@@ -14,7 +14,8 @@ public class ScoreManagerImpl implements ScoreManager {
         this.bestScoreReached = false;
     }
 
-    public void addPoints(int amount) {
+    @Override
+    public void addPoints(final int amount) {
         this.currentScore += amount;
 
         if (this.currentScore > this.bestScore) {
@@ -23,18 +24,22 @@ public class ScoreManagerImpl implements ScoreManager {
         }
     }
 
+    @Override
     public int getCurrentScore() {
         return currentScore;
     }
 
+    @Override
     public int getBestScore() {
         return bestScore;
     }
 
+    @Override
     public boolean isBestScoreReached() {
         return bestScoreReached;
     }
 
+    @Override
     public void reset() {
         this.currentScore = SCORE_INIT;
         this.bestScoreReached = false;

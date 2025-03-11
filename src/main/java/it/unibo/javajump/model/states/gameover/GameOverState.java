@@ -10,10 +10,10 @@ import java.util.Objects;
 
 public class GameOverState implements GameStateHandler {
     private float deltaTime = 0;
-    private final GameState gameState = GameState.GAME_OVER;
+    static final GameState gameState = GameState.GAME_OVER;
 
     @Override
-    public void handleAction(GameModel model, GameAction action) {
+    public void handleAction(final GameModel model, final GameAction action) {
 
         if (Objects.requireNonNull(action) == GameAction.CONFIRM_SELECTION) {
             model.setState(new MenuState());
@@ -21,7 +21,7 @@ public class GameOverState implements GameStateHandler {
     }
 
     @Override
-    public void update(GameModel model, float deltaTime) {
+    public void update(final GameModel model, final float deltaTime) {
         this.deltaTime = deltaTime;
         model.notifyObservers();
     }
@@ -35,6 +35,7 @@ public class GameOverState implements GameStateHandler {
         return 0;
     }
 
+    @Override
     public float getDeltaTime() {
         return deltaTime;
     }

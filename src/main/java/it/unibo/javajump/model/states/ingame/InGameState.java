@@ -19,14 +19,14 @@ import static it.unibo.javajump.utility.Constants.RIGHT_DIRECTION;
 
 public class InGameState implements GameStateHandler {
 
-    private final GameState gameState = GameState.IN_GAME;
+    static final GameState gameState = GameState.IN_GAME;
 
     private int horizontalDirection = NULL_DIRECTION;
     private float deltaTime = 0;
 
 
     @Override
-    public void handleAction(GameModel model, GameAction action) {
+    public void handleAction(final GameModel model, final GameAction action) {
         switch (action) {
             case MOVE_LEFT -> horizontalDirection = LEFT_DIRECTION;
             case MOVE_RIGHT -> horizontalDirection = RIGHT_DIRECTION;
@@ -38,13 +38,13 @@ public class InGameState implements GameStateHandler {
     }
 
     @Override
-    public void update(GameModel model, float deltaTime) {
+    public void update(final GameModel model, final float deltaTime) {
         this.deltaTime = deltaTime;
-        Character player = model.getPlayer();
-        MovementDirection md = convertIntToMovementDirection(horizontalDirection);
+        final Character player = model.getPlayer();
+        final MovementDirection md = convertIntToMovementDirection(horizontalDirection);
         model.getPhysicsManager().updateCharacterMovement(player, deltaTime, md);
 
-        for (GameObject go : model.getGameObjects()) {
+        for (final GameObject go : model.getGameObjects()) {
             go.update(deltaTime);
             if (go instanceof CharacterImpl characterImpl) {
                 applyPacManEffect(characterImpl, model.getScreenWidth());
@@ -75,6 +75,7 @@ public class InGameState implements GameStateHandler {
         return 0;
     }
 
+    @Override
     public float getDeltaTime() {
         return deltaTime;
     }

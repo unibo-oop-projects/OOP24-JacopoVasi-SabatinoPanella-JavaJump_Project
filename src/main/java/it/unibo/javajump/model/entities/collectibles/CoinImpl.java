@@ -33,7 +33,6 @@ public final class CoinImpl extends GameObjectImpl implements Coin {
      * @param height the height of the coin
      */
     public CoinImpl(final float x, final float y, final float width, final float height) {
-    public CoinImpl(final float x, final float y, final float width, final float height) {
         this.x = x;
         this.y = y;
         this.width = width;

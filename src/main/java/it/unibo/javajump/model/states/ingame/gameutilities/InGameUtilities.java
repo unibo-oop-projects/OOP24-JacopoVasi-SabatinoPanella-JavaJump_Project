@@ -26,7 +26,7 @@ public final class InGameUtilities {
      *
      * @param dir -1 = left, 0 = none, +1 = right
      */
-    public static MovementDirection convertIntToMovementDirection(int dir) {
+    public static MovementDirection convertIntToMovementDirection(final int dir) {
         if (dir < NULL_DIRECTION) {
             return MovementDirection.LEFT;
         } else if (dir > NULL_DIRECTION) {
@@ -43,7 +43,7 @@ public final class InGameUtilities {
      * @param player      the character to apply the effect
      * @param screenWidth the width of the screen
      */
-    public static void applyPacManEffect(Character player, int screenWidth) {
+    public static void applyPacManEffect(final Character player, final int screenWidth) {
         if (player.getX() + player.getWidth() < SCREEN_LEFT_MARGIN) {
             player.setX(screenWidth);
         } else if (player.getX() > screenWidth) {
@@ -59,9 +59,9 @@ public final class InGameUtilities {
      *               screen height
      * @param player the character to check
      */
-    public static void checkGameOver(GameModel model, Character player) {
-        float offset = model.getCameraManager().getCurrentOffset();
-        float drawY = player.getY() - offset;
+    public static void checkGameOver(final GameModel model, final Character player) {
+        final float offset = model.getCameraManager().getCurrentOffset();
+        final float drawY = player.getY() - offset;
         if (drawY > model.getScreenHeight()) {
             model.setState(new GameOverState());
         }

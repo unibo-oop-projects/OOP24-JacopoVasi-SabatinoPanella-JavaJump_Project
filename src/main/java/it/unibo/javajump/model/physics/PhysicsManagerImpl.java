@@ -10,7 +10,7 @@ public class PhysicsManagerImpl implements PhysicsManager {
     private final float GRAVITY;
 
 
-    public PhysicsManagerImpl(float gravity, float acceleration, float maxSpeed, float deceleration) {
+    public PhysicsManagerImpl(final float gravity, final float acceleration, final float maxSpeed, final float deceleration) {
         this.GRAVITY = gravity;
         this.ACCELERATION = acceleration;
         this.MAX_SPEED = maxSpeed;
@@ -19,7 +19,7 @@ public class PhysicsManagerImpl implements PhysicsManager {
 
 
     @Override
-    public void updateCharacterMovement(Character character, float deltaTime, MovementDirection direction) {
+    public void updateCharacterMovement(final Character character, final float deltaTime, final MovementDirection direction) {
         float vx = character.getVelocityX();
 
         switch (direction) {
@@ -32,22 +32,23 @@ public class PhysicsManagerImpl implements PhysicsManager {
                 character.setFacingRight(false);
                 break;
             case NONE:
-            default:
-                vx = PhysicsUtilsImpl.decelerate(vx, deltaTime, DECELERATION);
+
+            default: vx = PhysicsUtilsImpl.decelerate(vx, deltaTime, DECELERATION);
                 break;
+
         }
         character.setVelocityX(vx);
         updateCharacterPosition(character, deltaTime);
     }
 
 
-    private void updateCharacterPosition(Character character, float deltaTime) {
+    private void updateCharacterPosition(final Character character, final float deltaTime) {
         character.setOldX(character.getX());
         character.setOldY(character.getY());
 
-        float newX = character.getX() + character.getVelocityX() * deltaTime;
-        float newY = character.getY() + character.getVelocityY() * deltaTime;
-        float newVy = character.getVelocityY() + GRAVITY * deltaTime;
+        final float newX = character.getX() + character.getVelocityX() * deltaTime;
+        final float newY = character.getY() + character.getVelocityY() * deltaTime;
+        final float newVy = character.getVelocityY() + GRAVITY * deltaTime;
 
         character.setX(newX);
         character.setY(newY);
