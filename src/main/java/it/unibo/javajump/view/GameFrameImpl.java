@@ -19,7 +19,7 @@ public class GameFrameImpl extends JFrame implements GameFrame {
     /**
      * Instantiates a new Game frame.
      *
-     * @param title the title
+     *
      */
     public GameFrameImpl() {
 
