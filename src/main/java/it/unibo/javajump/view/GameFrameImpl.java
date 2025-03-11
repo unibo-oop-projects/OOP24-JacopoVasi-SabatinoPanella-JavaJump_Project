@@ -21,9 +21,7 @@ public final class GameFrameImpl extends JFrame implements GameFrame, Serializab
     /**
      * Instantiates a new Game frame.
      */
-    public GameFrameImpl() {
 
-    }
 
     @Override
     public void setUp(final InputManager inputManager, final int height, final int width,
