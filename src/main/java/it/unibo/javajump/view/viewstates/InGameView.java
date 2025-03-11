@@ -6,7 +6,8 @@ import it.unibo.javajump.model.entities.collectibles.Coin;
 import it.unibo.javajump.model.entities.platforms.Platform;
 import it.unibo.javajump.view.renderers.RenderManager;
 
-import java.awt.*;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 import static it.unibo.javajump.utility.Constants.GAMEPLAY_MESSAGE_TIME_TOGGLE;

@@ -2,7 +2,7 @@ package it.unibo.javajump.view.renderers.sub;
 
 import it.unibo.javajump.model.entities.character.Character;
 
-import java.awt.*;
+import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
@@ -50,9 +50,9 @@ public class PlayerRendererImpl implements PlayerRenderer {
     /**
      * Constructor for the PlayerRendererImpl class.
      *
-     * @param sheet          the sprite sheet containing the player's animation frames
-     * @param frameWidth     the width of the player's animation frames
-     * @param frameHeight    the height of the player's animation frames
+     * @param sheet         the sprite sheet containing the player's animation frames
+     * @param frameWidth    the width of the player's animation frames
+     * @param frameHeight   the height of the player's animation frames
      * @param frameDuration the duration of each animation frame
      */
     public PlayerRendererImpl(final BufferedImage sheet, final int frameWidth, final int frameHeight, final float frameDuration) {

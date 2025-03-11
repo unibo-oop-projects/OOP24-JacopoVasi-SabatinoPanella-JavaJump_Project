@@ -5,7 +5,9 @@ import it.unibo.javajump.model.states.pause.PauseOption;
 import it.unibo.javajump.model.states.pause.PauseState;
 import it.unibo.javajump.view.graphics.GameGraphics;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
 
 import static it.unibo.javajump.utility.Constants.BACKGROUND_DEFAULT_COLOR;
 import static it.unibo.javajump.utility.Constants.GOLD_TEXT_COLOR;

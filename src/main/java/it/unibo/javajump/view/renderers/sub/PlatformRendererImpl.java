@@ -7,7 +7,12 @@ import it.unibo.javajump.model.entities.platforms.Platform;
 import it.unibo.javajump.view.sound.sfx.SFXType;
 import it.unibo.javajump.view.sound.sfx.SoundEffectsManager;
 
-import java.awt.*;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics2D;
+import java.awt.Paint;
+import java.awt.Stroke;
 
 import static it.unibo.javajump.utility.Constants.BOUNCE_PLATFORM_COLOR;
 import static it.unibo.javajump.utility.Constants.BREAKABLE_PLATFORM_COLOR;

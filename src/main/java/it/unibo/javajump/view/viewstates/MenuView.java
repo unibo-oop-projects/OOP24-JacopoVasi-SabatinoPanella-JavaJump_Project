@@ -3,7 +3,12 @@ package it.unibo.javajump.view.viewstates;
 import it.unibo.javajump.model.GameModel;
 import it.unibo.javajump.view.graphics.GameGraphics;
 
-import java.awt.*;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Stroke;
 import java.awt.image.BufferedImage;
 
 import static it.unibo.javajump.utility.Constants.*;

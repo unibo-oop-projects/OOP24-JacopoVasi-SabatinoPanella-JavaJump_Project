@@ -1,6 +1,6 @@
 package it.unibo.javajump.view.graphics;
 
-import java.awt.*;
+import java.awt.Font;
 import java.awt.image.BufferedImage;
 
 /**

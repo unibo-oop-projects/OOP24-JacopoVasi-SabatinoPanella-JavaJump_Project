@@ -43,9 +43,10 @@ public class MusicManagerImpl implements MusicManager {
         fadeExecutor = Executors.newSingleThreadScheduledExecutor();
     }
 
-    private void initialize(final String filePath){
+    private void initialize(final String filePath) {
         loadBackgroundMusic(filePath);
     }
+
     @Override
     public void loadBackgroundMusic(final String filePath) {
         try {
@@ -67,8 +68,12 @@ public class MusicManagerImpl implements MusicManager {
     @Override
     public void startMusic() {
         cancelFade();
-        if (backgroundClip == null){ return;}
-        if (backgroundClip.isRunning()) {return;}
+        if (backgroundClip == null) {
+            return;
+        }
+        if (backgroundClip.isRunning()) {
+            return;
+        }
 
         final int totalFrames = backgroundClip.getFrameLength();
         final int loopEnd = (int) (totalFrames * MUSIC_LOOP_END);
@@ -106,7 +111,9 @@ public class MusicManagerImpl implements MusicManager {
 
     @Override
     public void setVolume(final float vol) {
-        if (volumeControl == null) {return;}
+        if (volumeControl == null) {
+            return;
+        }
         final float min = volumeControl.getMinimum();
         final float max = volumeControl.getMaximum();
         final float dB = min + (max - min) * vol;
@@ -115,7 +122,9 @@ public class MusicManagerImpl implements MusicManager {
 
     @Override
     public void fadeOut(final float durationSeconds) {
-        if (backgroundClip == null || volumeControl == null) {return;}
+        if (backgroundClip == null || volumeControl == null) {
+            return;
+        }
         cancelFade();
 
         if (fadeExecutor != null && !fadeExecutor.isShutdown()) {

@@ -1,13 +1,13 @@
 package it.unibo.javajump.view.graphics;
 
-import java.awt.*;
+import java.awt.Font;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
 /**
  * The type Font loader.
  */
-public class FontLoaderImpl implements FontLoader {
+public final class FontLoaderImpl implements FontLoader {
     /**
      * Load font font.
      *
@@ -22,9 +22,17 @@ public class FontLoaderImpl implements FontLoader {
             return font.deriveFont(size);
 
         } catch (Exception e) {
-
             e.printStackTrace();
             return new Font("Arial", Font.PLAIN, (int) size);
         }
+    }
+
+    /**
+     * Private constructor for utility class, it should not be instantiated.
+     *
+     * @throws AssertionError the assertion error if it is instantiated
+     */
+    private FontLoaderImpl() {
+        throw new AssertionError("This is a utility class, it should not be instantiated!");
     }
 }

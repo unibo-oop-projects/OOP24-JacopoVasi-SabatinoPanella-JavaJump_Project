@@ -17,7 +17,7 @@ import it.unibo.javajump.view.renderers.sub.ScoreUIRenderer;
 import it.unibo.javajump.view.renderers.sub.ScoreUIRendererImpl;
 import it.unibo.javajump.view.sound.sfx.SoundEffectsManager;
 
-import java.awt.*;
+import java.awt.Graphics2D;
 
 import static it.unibo.javajump.utility.Constants.RENDER_MANAGER_BACKGROUND_ONE_PARALLAX_MODIFIER;
 import static it.unibo.javajump.utility.Constants.RENDER_MANAGER_BACKGROUND_ONE_X_SPEED;

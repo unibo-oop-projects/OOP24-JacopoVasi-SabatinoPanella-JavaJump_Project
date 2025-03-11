@@ -1,6 +1,7 @@
 package it.unibo.javajump.view;
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Rectangle;
 
 import static it.unibo.javajump.utility.Constants.MAIN_VIEW_CENTER_DIV;
 import static it.unibo.javajump.utility.Constants.MAIN_VIEW_DRAW_X_INIT;

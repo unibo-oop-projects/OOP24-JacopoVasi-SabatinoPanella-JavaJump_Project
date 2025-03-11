@@ -5,7 +5,7 @@ import it.unibo.javajump.model.entities.character.Character;
 import it.unibo.javajump.model.entities.collectibles.Coin;
 import it.unibo.javajump.model.entities.platforms.Platform;
 
-import java.awt.*;
+import java.awt.Graphics2D;
 
 /**
  * The interface Render manager.

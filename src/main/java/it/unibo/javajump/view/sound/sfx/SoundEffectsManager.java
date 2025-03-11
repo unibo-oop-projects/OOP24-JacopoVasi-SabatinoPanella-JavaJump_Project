@@ -55,7 +55,8 @@ public class SoundEffectsManager {
         }
         initialize();
     }
-    private void initialize(){
+
+    private void initialize() {
         setGlobalVolume(defaultVolume);
     }
 
@@ -99,7 +100,9 @@ public class SoundEffectsManager {
      */
     public void playSound(final SFXType type) {
         final Queue<Clip> pool = clipPools.get(type);
-        if (pool == null) {return;}
+        if (pool == null) {
+            return;
+        }
 
         Clip clip = pool.poll();
         if (clip == null) {

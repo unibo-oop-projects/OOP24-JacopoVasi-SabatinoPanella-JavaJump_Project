@@ -1,7 +1,8 @@
 package it.unibo.javajump.view.graphics;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
+import java.awt.Font;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -28,7 +29,7 @@ import static it.unibo.javajump.utility.Constants.SIZE_FONT_3;
 /**
  * The type Game graphics.
  */
-public class GameGraphicsImpl implements GameGraphics {
+public final class GameGraphicsImpl implements GameGraphics {
     private final Font gameFont1;
     private final Font gameFont2;
     private final Font gameFont3;
@@ -98,42 +99,52 @@ public class GameGraphicsImpl implements GameGraphics {
     public BufferedImage getPlayerSheet() {
         return copyImage(playerSheet);
     }
+
     @Override
     public BufferedImage getBackgroundEasy() {
         return copyImage(backgroundEasy);
     }
+
     @Override
     public BufferedImage getCloudsEasy() {
         return copyImage(cloudsEasy);
     }
+
     @Override
     public BufferedImage getBackgroundMedium() {
         return copyImage(backgroundMedium);
     }
+
     @Override
     public BufferedImage getCloudsMedium() {
         return copyImage(cloudsMedium);
     }
+
     @Override
     public BufferedImage getBackgroundDifficult() {
         return copyImage(backgroundDifficult);
     }
+
     @Override
     public BufferedImage getCloudsDifficult() {
         return copyImage(cloudsDifficult);
     }
+
     @Override
     public BufferedImage getCoinSheet() {
         return copyImage(coinSheet);
     }
+
     @Override
     public BufferedImage getGameOver() {
         return copyImage(gameOver);
     }
+
     @Override
     public BufferedImage getTitle() {
         return copyImage(title);
     }
+
     @Override
     public BufferedImage getScoreContainer() {
         return copyImage(scoreContainer);

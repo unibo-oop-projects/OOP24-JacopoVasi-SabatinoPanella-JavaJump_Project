@@ -2,7 +2,7 @@ package it.unibo.javajump.view.renderers.sub;
 
 import it.unibo.javajump.model.entities.collectibles.Coin;
 
-import java.awt.*;
+import java.awt.Graphics2D;
 
 /**
  * Interface for Coin renderers, to be used in the RenderManager.

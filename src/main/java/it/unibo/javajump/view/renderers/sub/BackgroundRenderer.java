@@ -2,7 +2,7 @@ package it.unibo.javajump.view.renderers.sub;
 
 import it.unibo.javajump.model.GameModel;
 
-import java.awt.*;
+import java.awt.Graphics2D;
 
 /**
  * Interface for background renderers, to be used in the renderer manager.

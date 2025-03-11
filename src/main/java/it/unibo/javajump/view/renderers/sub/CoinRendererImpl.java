@@ -5,7 +5,7 @@ import it.unibo.javajump.model.entities.collectibles.CoinState;
 import it.unibo.javajump.view.sound.sfx.SFXType;
 import it.unibo.javajump.view.sound.sfx.SoundEffectsManager;
 
-import java.awt.*;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map;

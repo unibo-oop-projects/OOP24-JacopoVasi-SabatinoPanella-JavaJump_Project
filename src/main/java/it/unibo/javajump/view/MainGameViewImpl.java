@@ -17,8 +17,11 @@ import it.unibo.javajump.view.viewstates.InGameView;
 import it.unibo.javajump.view.viewstates.MenuView;
 import it.unibo.javajump.view.viewstates.PauseView;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.image.BufferedImage;
@@ -82,7 +85,8 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
 
         initialize();
     }
-    private void initialize(){
+
+    private void initialize() {
         setDoubleBuffered(true);
         setBackground(Color.decode(BACKGROUND_DEFAULT_COLOR));
         addComponentListener(new ComponentAdapter() {
