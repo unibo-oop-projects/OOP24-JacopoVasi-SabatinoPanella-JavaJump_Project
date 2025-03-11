@@ -5,7 +5,7 @@ import it.unibo.javajump.model.entities.GameObject;
 /**
  * The type Bounce platform.
  */
-public class BouncePlatformImpl extends PlatformImpl implements BouncePlatform {
+public final class BouncePlatformImpl extends PlatformImpl implements BouncePlatform {
     private final float bounceFactor;
 
     /**
@@ -34,7 +34,6 @@ public class BouncePlatformImpl extends PlatformImpl implements BouncePlatform {
 
     @Override
     public void update(final float deltaTime) {
-
         super.update(deltaTime);
     }
 }

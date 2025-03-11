@@ -5,7 +5,7 @@ import it.unibo.javajump.model.entities.GameObject;
 /**
  * The type Breakable platform.
  */
-public class BreakablePlatformImpl extends PlatformImpl implements BreakablePlatform {
+public final class BreakablePlatformImpl extends PlatformImpl implements BreakablePlatform {
 
     private boolean broken;
     private boolean finished;
@@ -24,12 +24,12 @@ public class BreakablePlatformImpl extends PlatformImpl implements BreakablePlat
         this.finished = false;
     }
 
-
+    @Override
     public void onCollision(final GameObject other) {
         super.onCollision(other);
     }
 
-
+    @Override
     public void update(final float deltaTime) {
         super.update(deltaTime);
     }

@@ -8,7 +8,7 @@ import static it.unibo.javajump.utility.Constants.NULL_PLATFORM_VELOCITY;
 /**
  * The MovingPlatformImpl class, an implementation of a moving platform.
  */
-public class MovingPlatformImpl extends PlatformImpl implements MovingPlatform {
+public final class MovingPlatformImpl extends PlatformImpl implements MovingPlatform {
 
     private final MovementBehaviour movementBehaviour;
 
