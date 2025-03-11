@@ -63,13 +63,13 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
         this.model = model;
         this.musicManager = new MusicManagerImpl(RESOURCES_PATH + RESOURCES_MUSIC_1, MUSIC_VOLUME);
         final SoundEffectsManager soundEffectsManager = new SoundEffectsManager(SOUND_EFFECTS_VOLUME);
-        setDoubleBuffered(true);
+
 
         this.virtualWidth = model.getScreenWidth();
         this.virtualHeight = model.getScreenHeight();
 
         final RenderManager rendererManager = new RendererManagerImpl(soundEffectsManager, gameGraphics);
-        setBackground(Color.decode(BACKGROUND_DEFAULT_COLOR));
+
 
         this.menuView = new MenuView(gameGraphics);
         this.inGameView = new InGameView(rendererManager);
@@ -83,6 +83,8 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
         initialize();
     }
     private void initialize(){
+        setDoubleBuffered(true);
+        setBackground(Color.decode(BACKGROUND_DEFAULT_COLOR));
         addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {

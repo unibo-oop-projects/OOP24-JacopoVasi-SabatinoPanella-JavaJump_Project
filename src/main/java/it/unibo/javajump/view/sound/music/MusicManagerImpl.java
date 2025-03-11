@@ -43,7 +43,7 @@ public class MusicManagerImpl implements MusicManager {
         fadeExecutor = Executors.newSingleThreadScheduledExecutor();
     }
 
-    private void initialize(String filePath){
+    private void initialize(final String filePath){
         loadBackgroundMusic(filePath);
     }
     @Override

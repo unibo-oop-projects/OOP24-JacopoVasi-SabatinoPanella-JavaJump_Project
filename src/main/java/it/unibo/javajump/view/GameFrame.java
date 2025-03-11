@@ -15,7 +15,7 @@ public interface GameFrame {
      * @param width        the width
      * @param view         the view
      */
-    void setUp(InputManager inputManager, int height, int width, MainGameView view);
+    void setUp(InputManager inputManager, int height, int width, MainGameView view, String title);
 
     /**
      * Close game.

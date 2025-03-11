@@ -55,7 +55,7 @@ public class ScoreUIRendererImpl implements ScoreUIRenderer {
         g2.drawImage(scoreContainer, RENDER_UI_SCORE_CONTAINER_X, RENDER_UI_SCORE_CONTAINER_Y, null);
         final int score = model.getScore();
         final int bestScore = model.getScoreManager().getBestScore();
-        boolean isNewHighScoreLocal;
+        final boolean isNewHighScoreLocal;
         if (score < bestScore || score == 0) {
             g2.setColor(Color.WHITE);
             g2.setFont(gameFont2);

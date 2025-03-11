@@ -25,10 +25,7 @@ public final class BreakablePlatformImpl extends PlatformImpl implements Breakab
 
 
 
-    @Override
-    public void update(final float deltaTime) {
-        super.update(deltaTime);
-    }
+
 
     @Override
     public boolean isBroken() {

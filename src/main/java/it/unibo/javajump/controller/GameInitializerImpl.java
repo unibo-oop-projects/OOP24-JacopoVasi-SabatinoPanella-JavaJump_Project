@@ -44,7 +44,7 @@ public class GameInitializerImpl implements GameInitializer {
      */
     public GameInitializerImpl() {
         this.model = new GameModelImpl(SCREEN_WIDTH, SCREEN_HEIGHT);
-        this.frame = new GameFrameImpl(GAME_TITLE);
+        this.frame = new GameFrameImpl();
         this.view = new MainGameViewImpl(model);
         this.inputManager = new InputManagerImpl();
         this.controller = new GameControllerImpl(model, view, inputManager, frame);
@@ -56,7 +56,7 @@ public class GameInitializerImpl implements GameInitializer {
     @Override
     public void initialize() {
         model.addObserver((GameModelObserver) view);
-        frame.setUp(inputManager, SCREEN_HEIGHT, SCREEN_WIDTH, view);
+        frame.setUp(inputManager, SCREEN_HEIGHT, SCREEN_WIDTH, view,GAME_TITLE);
         controller.startGameLoop();
     }
 

@@ -21,13 +21,14 @@ public class GameFrameImpl extends JFrame implements GameFrame {
      *
      * @param title the title
      */
-    public GameFrameImpl(final String title) {
-        this.setTitle(title);
+    public GameFrameImpl() {
+
 
     }
 
     @Override
-    public void setUp(final InputManager inputManager, int height, int width, final MainGameView view) {
+    public void setUp(final InputManager inputManager, int height, int width, final MainGameView view, final String title) {
+        this.setTitle(title);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
         this.addKeyListener(inputManager);

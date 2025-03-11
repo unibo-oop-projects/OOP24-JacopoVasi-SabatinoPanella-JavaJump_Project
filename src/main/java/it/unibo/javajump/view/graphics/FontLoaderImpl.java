@@ -22,6 +22,7 @@ public class FontLoaderImpl implements FontLoader {
             return font.deriveFont(size);
 
         } catch (Exception e) {
+
             e.printStackTrace();
             return new Font("Arial", Font.PLAIN, (int) size);
         }
