@@ -13,6 +13,7 @@ import java.util.List;
 
 import static it.unibo.javajump.utility.Constants.SCREEN_HEIGHT;
 import static it.unibo.javajump.utility.Constants.SCREEN_WIDTH;
+import static it.unibo.javajump.utility.TestConstants.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -32,21 +33,20 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
     @Test
     void testCoin() {
-        final float x = (float) SCREEN_WIDTH / 2;
-        final float y = (float) SCREEN_HEIGHT / 2;
+        final float x = (float) SCREEN_WIDTH / DIV_TO_CENTER;
+        final float y = (float) SCREEN_HEIGHT / DIV_TO_CENTER;
         model.getPlayer().setY(y);
         model.getPlayer().setX(x);
         final Coin coin = model.getSpawnManager().getFactory().createCoin(x, y);
         model.getGameObjects().add(coin);
-        model.update(0);
+        model.update(DELTA_TIME);
 
         assertEquals(CoinState.COLLECTING, coin.getState(), "Coin State should be COLLECTING.");
     }
 
     @Test
     void testPlatform() {
-        int counter = 0;
-        final int maxcount = 200;
+        int counter = COUNTER_START;
         final List<GameObject> toRemove = new ArrayList<>();
         for (final GameObject go : model.getGameObjects()) {
             if (go instanceof Platform c) {
@@ -54,10 +54,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
             }
         }
         model.getGameObjects().removeAll(toRemove);
-        final Platform platform = model.getSpawnManager().getFactory().createStandardPlatform(model.getPlayer().getX(), model.getPlayer().getY() + 100);
+        final Platform platform = model.getSpawnManager().getFactory().createStandardPlatform(model.getPlayer().getX(), model.getPlayer().getY() + PLATFORM_OFFSET);
         model.getGameObjects().add(platform);
-        while (!model.getPlayer().isOnPlatform() && counter < maxcount) {
-            model.update(0.1f);
+        while (!model.getPlayer().isOnPlatform() && counter < MAX_COUNT_PLATFORM) {
+            model.update(DELTA_TIME);
             counter++;
         }
         assertTrue(platform.consumeTouched(), "Platform Should consume touched .");

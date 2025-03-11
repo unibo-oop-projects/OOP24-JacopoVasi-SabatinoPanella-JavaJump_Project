@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import static it.unibo.javajump.utility.Constants.OFFSET_INIT;
 import static it.unibo.javajump.utility.Constants.SCREEN_HEIGHT;
 import static it.unibo.javajump.utility.Constants.SCREEN_WIDTH;
+import static it.unibo.javajump.utility.TestConstants.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -34,10 +35,10 @@ class CameraTest {
         final float initialScore = model.getScoreManager().getCurrentScore();
 
         // Simulate player moving upwards
-        model.getPlayer().setY(initialOffset - 150);
+        model.getPlayer().setY(initialOffset - CAMERA_INCREASING_OFFSET);
 
-        model.update(0);
-        model.getCameraManager().updateCamera(model, 0); // Assume a frame update of ~16ms
+        model.update(DELTA_TIME);
+        model.getCameraManager().updateCamera(model, DELTA_TIME); // Assume a frame update of ~16ms
 
         assertTrue(model.getScoreManager().getCurrentScore() > initialScore, "Score should increase when the camera moves up.");
     }
@@ -46,10 +47,10 @@ class CameraTest {
     void testUpdateCameraDoesNotDecreaseOffset() {
         final float initialOffset = model.getCameraManager().getCurrentOffset();
 
-        // Move the player down (should not affect the offset)
-        model.getPlayer().setY((float) SCREEN_HEIGHT / 2 + 100);
-        model.update(0);
-        model.getCameraManager().updateCamera(model, 0);
+
+        model.getPlayer().setY((float) SCREEN_HEIGHT / DIV_TO_CENTER + CAMERA_DECREASING_OFFSET);
+        model.update(DELTA_TIME);
+        model.getCameraManager().updateCamera(model, DELTA_TIME);
 
         assertEquals(initialOffset, model.getCameraManager().getCurrentOffset(), "Camera offset should not increase when the player moves down.");
     }

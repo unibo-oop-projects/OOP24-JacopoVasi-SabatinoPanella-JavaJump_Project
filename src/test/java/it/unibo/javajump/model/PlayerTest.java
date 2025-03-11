@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import static it.unibo.javajump.utility.Constants.SCREEN_HEIGHT;
 import static it.unibo.javajump.utility.Constants.SCREEN_WIDTH;
+import static it.unibo.javajump.utility.TestConstants.*;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -25,26 +26,24 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
     @Test
     void testJumping() {
-        int counter = 0;
-        final int maxcount = 200;
-        while (!model.getPlayer().isOnPlatform() && counter < maxcount) {
-            model.update(0.1f);
+        int counter = COUNTER_START;
+        while (!model.getPlayer().isOnPlatform() && counter < MAX_COUNT_JUMPING) {
+            model.update(DELTA_TIME);
             counter++;
         }
         assertTrue(model.getPlayer().isOnPlatform(), "The player is not on the platform");
-        model.update(0.1f);
+        model.update(DELTA_TIME);
         assertFalse(model.getPlayer().isOnPlatform(), "Jumping failed");
     }
 
     @Test
     void testPacman() {
-        int counter = 0;
-        final int maxcount = 100;
-        model.getPlayer().setX(0);
+        int counter = COUNTER_START;
+        model.getPlayer().setX(X_LEFT_SIDE_SCREEN);
         model.getPlayer().changeState(new InAirState());
-        while (model.getPlayer().getX() < SCREEN_WIDTH && counter < maxcount) {
+        while (model.getPlayer().getX() < SCREEN_WIDTH && counter < MAX_COUNT_PACMAN) {
             model.handleAction(GameAction.MOVE_LEFT);
-            model.update(0.1f);
+            model.update(DELTA_TIME);
             counter++;
         }
         assertTrue(model.getPlayer().getX() >= SCREEN_WIDTH, "The player is not looping");
@@ -52,22 +51,22 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
     @Test
     void testPhysics() {
-        int counter = 0;
-        final int maxcount = 6;
+        int counter = COUNTER_START;
+        final int maxcount = MAX_COUNT_PHYSICS;
         model.getPlayer().changeState(new InAirState());
         while (counter < maxcount) {
             model.handleAction(GameAction.MOVE_LEFT);
-            model.update(0.1f);
+            model.update(DELTA_TIME);
             counter++;
         }
         final float tempx = model.getPlayer().getX();
         model.handleAction(GameAction.MOVE_RIGHT);
-        model.update(0.1f);
+        model.update(DELTA_TIME);
         assertTrue(model.getPlayer().getX() < tempx, "The player is not decelerating");
-        counter = 0;
+        counter = COUNTER_START;
         while (counter < maxcount) {
             model.handleAction(GameAction.MOVE_RIGHT);
-            model.update(0.1f);
+            model.update(DELTA_TIME);
             counter++;
         }
         assertTrue(model.getPlayer().getX() > tempx, "The player is not accelerating  ");

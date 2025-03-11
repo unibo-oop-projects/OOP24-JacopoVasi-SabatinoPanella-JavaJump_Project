@@ -7,6 +7,7 @@ import it.unibo.javajump.model.states.menu.MenuState;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static it.unibo.javajump.utility.TestConstants.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -17,8 +18,7 @@ class ModelTest {
     private GameModelImpl gameModel;
 
 
-    private static final int SCREEN_WIDTH = 800;
-    private static final int SCREEN_HEIGHT = 600;
+
 
     @BeforeEach
     void setUp() {
@@ -51,7 +51,7 @@ class ModelTest {
 
     @Test
     void testUpdate() {
-        final float deltaTime = 0.016f;
+        final float deltaTime = DELTA_TIME;
         gameModel.update(deltaTime);
         assertEquals(deltaTime, gameModel.getDeltaTime(), "Delta time should be updated correctly");
     }
@@ -62,7 +62,7 @@ class ModelTest {
         final Character player = gameModel.getPlayer();
         assertNotNull(player, "Player should be initialized");
         assertTrue(gameModel.getGameObjects().contains(player), "Player should be part of game objects");
-        assertEquals(0, gameModel.getScore(), "Score should reset to zero");
+        assertEquals(STARTING_SCORE, gameModel.getScore(), "Score should reset to zero");
     }
 
     @Test
@@ -75,8 +75,8 @@ class ModelTest {
 
     @Test
     void testScoreManagement() {
-        gameModel.addPointsToScore(50);
-        assertEquals(50, gameModel.getScore(), "Score should increase correctly");
+        gameModel.addPointsToScore(SCORE_POINTS);
+        assertEquals(SCORE_POINTS, gameModel.getScore(), "Score should increase correctly");
     }
 
 
