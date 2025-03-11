@@ -12,10 +12,10 @@ import static it.unibo.javajump.utility.Constants.SPAWN_Y_OFFSET;
 /**
  * The type Spawn utils.
  */
-public class SpawnUtilsImpl implements SpawnUtils {
+public final class SpawnUtilsImpl implements SpawnUtils {
 
     /**
-     * Returns a random value between min and max
+     * Returns a random value between min and max.
      *
      * @param rand the rand
      * @param min  the min
@@ -37,5 +37,14 @@ public class SpawnUtilsImpl implements SpawnUtils {
         final float py = model.getPlayer().getY() + SPAWN_Y_OFFSET;
         final Platform p = factory.createStandardPlatform(px, py);
         model.getGameObjects().add(p);
+    }
+
+    /**
+     * Private constructor for Constants, to avoid instantiation.
+     *
+     * @throws AssertionError when wrongly called.
+     */
+    private SpawnUtilsImpl() {
+        throw new AssertionError("This is a utility class, it should not be instantiated!");
     }
 }

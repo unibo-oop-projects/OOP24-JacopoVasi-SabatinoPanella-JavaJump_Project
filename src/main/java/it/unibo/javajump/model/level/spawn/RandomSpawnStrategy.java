@@ -21,7 +21,7 @@ import static it.unibo.javajump.utility.Constants.SPAWN_Y_INIT;
 /**
  * The type Random spawn strategy.
  */
-public class RandomSpawnStrategy implements SpawnStrategy {
+public final class RandomSpawnStrategy implements SpawnStrategy {
 
     private final GameObjectFactory factory;
     private final Random rand;
@@ -77,11 +77,18 @@ public class RandomSpawnStrategy implements SpawnStrategy {
         if (null != diff) {
             switch (diff) {
                 case EASY, MEDIUM ->
-                        gap = SpawnUtilsImpl.randomInRange(rand, minPlatformYSpacing - GAP_EASY_ADDENDUM, maxPlatformYSpacing - GAP_HARD_ADDENDUM);
+                        gap = SpawnUtilsImpl.randomInRange(rand,
+                                minPlatformYSpacing - GAP_EASY_ADDENDUM,
+                                maxPlatformYSpacing - GAP_HARD_ADDENDUM);
                 case HARD, VERY_HARD ->
-                        gap = SpawnUtilsImpl.randomInRange(rand, minPlatformYSpacing, maxPlatformYSpacing - GAP_EASY_ADDENDUM);
+                        gap = SpawnUtilsImpl.randomInRange(rand,
+                                minPlatformYSpacing,
+                                maxPlatformYSpacing - GAP_EASY_ADDENDUM);
                 case HELL ->
-                        gap = SpawnUtilsImpl.randomInRange(rand, minPlatformYSpacing + GAP_EASY_ADDENDUM, maxPlatformYSpacing);
+                        gap = SpawnUtilsImpl.randomInRange(rand,
+                                minPlatformYSpacing + GAP_EASY_ADDENDUM,
+                                maxPlatformYSpacing);
+                default -> { }
             }
         }
         return gap;

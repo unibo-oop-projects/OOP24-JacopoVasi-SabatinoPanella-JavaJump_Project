@@ -18,14 +18,14 @@ public interface SpawnStrategy {
     void spawnBatch(GameModel model, float startY, int numberOfPlatforms);
 
     /**
-     * Returns the current Y position, so that SpawnManagerImpl can evaluate whether to spawn a new batch
+     * Returns the current Y position, so that SpawnManagerImpl can evaluate whether to spawn a new batch.
      *
      * @return the float
      */
     float returnCurrentY();
 
     /**
-     * Returns the factory used to create the objects
+     * Returns the factory used to create the objects.
      *
      * @return the factory
      */

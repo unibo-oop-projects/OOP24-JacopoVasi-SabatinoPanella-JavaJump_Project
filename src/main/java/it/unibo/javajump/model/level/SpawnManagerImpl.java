@@ -15,7 +15,7 @@ import static it.unibo.javajump.utility.Constants.TOP_PLATFORM_Y_INIT;
 /**
  * The type Spawn manager.
  */
-public class SpawnManagerImpl implements SpawnManager {
+public final class SpawnManagerImpl implements SpawnManager {
 
     private final SpawnStrategy spawnStrategy;
     private float topPlatformY;
