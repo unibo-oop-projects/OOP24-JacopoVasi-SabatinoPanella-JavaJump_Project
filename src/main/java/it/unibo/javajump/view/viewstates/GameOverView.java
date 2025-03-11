@@ -15,8 +15,8 @@ public class GameOverView implements GameViewState {
 
     private float fadeAlpha = GAME_OVER_ALPHA_INIT;
     private float elapsedTime = GAME_OVER_TIME_INIT;
-    private boolean fading = false;
-    private float deltaTime = 0;
+    private boolean fading;
+    private float deltaTime;
 
     private final Font gameFont2;
     private final Font gameFont3;

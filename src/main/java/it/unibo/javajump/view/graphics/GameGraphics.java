@@ -40,42 +40,42 @@ public interface GameGraphics {
      *
      * @return the background easy
      */
-    BufferedImage getBackground_Easy();
+    BufferedImage getBackgroundEasy();
 
     /**
      * Gets clouds easy.
      *
      * @return the clouds easy
      */
-    BufferedImage getClouds_Easy();
+    BufferedImage getCloudsEasy();
 
     /**
      * Gets background medium.
      *
      * @return the background medium
      */
-    BufferedImage getBackground_Medium();
+    BufferedImage getBackgroundMedium();
 
     /**
      * Gets clouds medium.
      *
      * @return the clouds medium
      */
-    BufferedImage getClouds_Medium();
+    BufferedImage getCloudsMedium();
 
     /**
      * Gets background difficult.
      *
      * @return the background difficult
      */
-    BufferedImage getBackground_Difficult();
+    BufferedImage getBackgroundDifficult();
 
     /**
      * Gets clouds difficult.
      *
      * @return the clouds difficult
      */
-    BufferedImage getClouds_Difficult();
+    BufferedImage getCloudsDifficult();
 
     /**
      * Gets coin sheet.

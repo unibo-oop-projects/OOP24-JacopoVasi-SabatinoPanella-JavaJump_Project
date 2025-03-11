@@ -93,17 +93,17 @@ public class RendererManagerImpl implements RenderManager {
                 RENDER_MANAGER_PLAYER_FRAME_DURATION);
 
         this.backgroundRenderer1 = new BackgroundRendererImpl(
-                graphics.getBackground_Easy(),
-                graphics.getBackground_Medium(),
-                graphics.getBackground_Difficult(),
+                graphics.getBackgroundEasy(),
+                graphics.getBackgroundMedium(),
+                graphics.getBackgroundDifficult(),
                 RENDER_MANAGER_BACKGROUND_ONE_PARALLAX_MODIFIER,
                 RENDER_MANAGER_BACKGROUND_ONE_X_SPEED,
                 TRANSITION_DURATION_1);
 
         this.backgroundRenderer2 = new BackgroundRendererImpl(
-                graphics.getClouds_Easy(),
-                graphics.getClouds_Medium(),
-                graphics.getClouds_Difficult(),
+                graphics.getCloudsEasy(),
+                graphics.getCloudsMedium(),
+                graphics.getCloudsDifficult(),
                 RENDER_MANAGER_BACKGROUND_TWO_PARALLAX_MODIFIER,
                 RENDER_MANAGER_BACKGROUND_TWO_X_SPEED,
                 TRANSITION_DURATION_2);

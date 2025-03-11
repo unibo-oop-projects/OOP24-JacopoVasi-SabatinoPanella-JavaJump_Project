@@ -53,6 +53,9 @@ public class SoundEffectsManager {
             }
             clipPools.put(type, pool);
         }
+        initialize();
+    }
+    private void initialize(){
         setGlobalVolume(defaultVolume);
     }
 

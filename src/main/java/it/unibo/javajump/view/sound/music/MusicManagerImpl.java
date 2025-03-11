@@ -39,10 +39,13 @@ public class MusicManagerImpl implements MusicManager {
      */
     public MusicManagerImpl(final String filePath, final float defaultVolume) {
         this.defaultVolume = defaultVolume;
-        loadBackgroundMusic(filePath);
+        initialize(filePath);
         fadeExecutor = Executors.newSingleThreadScheduledExecutor();
     }
 
+    private void initialize(String filePath){
+        loadBackgroundMusic(filePath);
+    }
     @Override
     public void loadBackgroundMusic(final String filePath) {
         try {
@@ -127,7 +130,7 @@ public class MusicManagerImpl implements MusicManager {
         final long stepTimeMillis = (long) (durationSeconds * AUDIO_SLEEP / steps);
 
         fadeFuture = fadeExecutor.scheduleAtFixedRate(new Runnable() {
-            int currentStep = 0;
+            int currentStep;
 
             @Override
             public void run() {

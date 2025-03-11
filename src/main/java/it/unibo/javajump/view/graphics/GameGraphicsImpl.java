@@ -64,7 +64,7 @@ public class GameGraphicsImpl implements GameGraphics {
             gameFont2 = FontLoaderImpl.loadFont(RESOURCES_PATH + RESOURCES_FONT_2, SIZE_FONT_2);
             gameFont3 = FontLoaderImpl.loadFont(RESOURCES_PATH + RESOURCES_FONT_3, SIZE_FONT_3);
         } catch (IOException ex) {
-            throw new NullPointerException();
+            throw new NullPointerException(ex.getMessage());
         }
     }
 
@@ -99,27 +99,27 @@ public class GameGraphicsImpl implements GameGraphics {
         return copyImage(playerSheet);
     }
     @Override
-    public BufferedImage getBackground_Easy() {
+    public BufferedImage getBackgroundEasy() {
         return copyImage(backgroundEasy);
     }
     @Override
-    public BufferedImage getClouds_Easy() {
+    public BufferedImage getCloudsEasy() {
         return copyImage(cloudsEasy);
     }
     @Override
-    public BufferedImage getBackground_Medium() {
+    public BufferedImage getBackgroundMedium() {
         return copyImage(backgroundMedium);
     }
     @Override
-    public BufferedImage getClouds_Medium() {
+    public BufferedImage getCloudsMedium() {
         return copyImage(cloudsMedium);
     }
     @Override
-    public BufferedImage getBackground_Difficult() {
+    public BufferedImage getBackgroundDifficult() {
         return copyImage(backgroundDifficult);
     }
     @Override
-    public BufferedImage getClouds_Difficult() {
+    public BufferedImage getCloudsDifficult() {
         return copyImage(cloudsDifficult);
     }
     @Override

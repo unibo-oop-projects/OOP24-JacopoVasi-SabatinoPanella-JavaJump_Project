@@ -37,7 +37,7 @@ public class PlayerRendererImpl implements PlayerRenderer {
     /**
      * The duration of each animation frame.
      */
-    private final float FRAME_DURATION;
+    private final float frameDuration;
     /**
      * Value to cycle in the desired frames.
      */
@@ -53,9 +53,9 @@ public class PlayerRendererImpl implements PlayerRenderer {
      * @param sheet          the sprite sheet containing the player's animation frames
      * @param frameWidth     the width of the player's animation frames
      * @param frameHeight    the height of the player's animation frames
-     * @param FRAME_DURATION the duration of each animation frame
+     * @param frameDuration the duration of each animation frame
      */
-    public PlayerRendererImpl(final BufferedImage sheet, final int frameWidth, final int frameHeight, final float FRAME_DURATION) {
+    public PlayerRendererImpl(final BufferedImage sheet, final int frameWidth, final int frameHeight, final float frameDuration) {
         this.playerSheet = new BufferedImage(sheet.getColorModel(),
                 sheet.copyData(null),
                 sheet.isAlphaPremultiplied(),
@@ -64,7 +64,7 @@ public class PlayerRendererImpl implements PlayerRenderer {
         this.frameHeight = frameHeight;
         this.prevOnPlatform = false;
         this.animTimer = RENDER_PLAYER_ANIM_TIMER_INIT;
-        this.FRAME_DURATION = FRAME_DURATION;
+        this.frameDuration = frameDuration;
 
     }
 
@@ -112,11 +112,11 @@ public class PlayerRendererImpl implements PlayerRenderer {
     private int getAnimationFrame(final Character player) {
         final int frameIndex;
         if (player.isOnPlatform()) {
-            final float cycle = FRAME_DURATION * PLAYER_ANIMATION_CYCLE_DURATION; //
+            final float cycle = frameDuration * PLAYER_ANIMATION_CYCLE_DURATION; //
             final float t = animTimer % cycle;
-            frameIndex = (t < FRAME_DURATION) ? PLAYER_LANDING_START_FRAME : PLAYER_LANDING_END_FRAME;
+            frameIndex = (t < frameDuration) ? PLAYER_LANDING_START_FRAME : PLAYER_LANDING_END_FRAME;
         } else {
-            frameIndex = (animTimer < FRAME_DURATION) ? PLAYER_JUMP_START_FRAME : PLAYER_JUMP_END_FRAME;
+            frameIndex = (animTimer < frameDuration) ? PLAYER_JUMP_START_FRAME : PLAYER_JUMP_END_FRAME;
         }
         return frameIndex * frameWidth;
     }

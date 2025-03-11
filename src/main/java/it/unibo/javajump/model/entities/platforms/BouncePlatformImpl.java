@@ -1,7 +1,5 @@
 package it.unibo.javajump.model.entities.platforms;
 
-import it.unibo.javajump.model.entities.GameObject;
-
 /**
  * The type Bounce platform.
  */
@@ -27,13 +25,7 @@ public final class BouncePlatformImpl extends PlatformImpl implements BouncePlat
         return bounceFactor;
     }
 
-    @Override
-    public void onCollision(final GameObject other) {
-        super.onCollision(other);
-    }
 
-    @Override
-    public void update(final float deltaTime) {
-        super.update(deltaTime);
-    }
+
+
 }

@@ -80,6 +80,9 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
 
         tempScreen = new BufferedImage(virtualWidth, virtualHeight, BufferedImage.TYPE_INT_ARGB);
 
+        initialize();
+    }
+    private void initialize(){
         addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {

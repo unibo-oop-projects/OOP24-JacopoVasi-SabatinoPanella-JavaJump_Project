@@ -24,10 +24,7 @@ public final class BreakablePlatformImpl extends PlatformImpl implements Breakab
         this.finished = false;
     }
 
-    @Override
-    public void onCollision(final GameObject other) {
-        super.onCollision(other);
-    }
+
 
     @Override
     public void update(final float deltaTime) {
