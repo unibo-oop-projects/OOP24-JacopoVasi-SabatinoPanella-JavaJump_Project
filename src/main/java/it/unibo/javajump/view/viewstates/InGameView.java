@@ -40,20 +40,6 @@ public class InGameView implements GameViewState {
 
             float cameraOffsetY = model.getCameraManager().getCurrentOffset();
 
-
-            boolean debugMode = false;
-            if (debugMode) {
-                g2.setColor(Color.RED);
-                for (GameObject obj : snapshot) {
-                    float dx = obj.getX();
-                    float dy = obj.getY() - cameraOffsetY;
-                    g2.drawRect((int) dx, (int) dy,
-                            (int) obj.getWidth(),
-                            (int) obj.getHeight());
-                }
-            }
-
-
             for (GameObject obj : snapshot) {
                 if (obj instanceof Coin c) {
                     renderer.drawCoin(g2, c, cameraOffsetY, deltaTime);
