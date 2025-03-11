@@ -38,7 +38,7 @@ import static it.unibo.javajump.utility.Constants.RED_TEXT_COLOR;
 /**
  * The type GameOverView.
  */
-public class GameOverView implements GameViewState {
+public final class GameOverView implements GameViewState {
 
     private float fadeAlpha = GAME_OVER_ALPHA_INIT;
     private float elapsedTime = GAME_OVER_TIME_INIT;

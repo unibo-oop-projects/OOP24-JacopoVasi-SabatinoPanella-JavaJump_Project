@@ -10,7 +10,9 @@ import java.awt.event.WindowEvent;
 import java.io.Serial;
 import java.io.Serializable;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.SCREEN_HEIGHT;
+import static it.unibo.javajump.utility.Constants.SCREEN_WIDTH;
+import static it.unibo.javajump.utility.Constants.SERIAL_ID;
 
 /**
  * The type Game frame.
@@ -18,6 +20,7 @@ import static it.unibo.javajump.utility.Constants.*;
 public final class GameFrameImpl extends JFrame implements GameFrame, Serializable {
     @Serial
     private static final long serialVersionUID = SERIAL_ID;
+
     /**
      * Instantiates a new Game frame.
      */

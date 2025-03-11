@@ -96,7 +96,8 @@ public final class MenuView implements GameViewState {
                     height - MENU_VIEW_ROUND_RECT_Y_OFF, MENU_VIEW_ROUND_RECT_WIDTH, MENU_VIEW_ROUND_RECT_HEIGHT,
                     MENU_VIEW_ROUND_RECT_ARC_W, MENU_VIEW_ROUND_RECT_ARC_H);
             g.setFont(font2);
-            g.drawString(MENU_VIEW_BEST_SCORE_TEXT + bestScore, centerX / MENU_VIEW_BEST_SCORE_X_DIV, height - MENU_VIEW_BEST_SCORE_Y_OFF);
+            g.drawString(MENU_VIEW_BEST_SCORE_TEXT + bestScore, centerX / MENU_VIEW_BEST_SCORE_X_DIV,
+                    height - MENU_VIEW_BEST_SCORE_Y_OFF);
         }
     }
 

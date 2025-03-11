@@ -26,7 +26,7 @@ import static it.unibo.javajump.utility.Constants.PAUSE_WIDTH_OFF;
 /**
  * The type Pause view.
  */
-public class PauseView implements GameViewState {
+public final class PauseView implements GameViewState {
     private final Font font1;
     private final Font font2;
 
@@ -58,13 +58,19 @@ public class PauseView implements GameViewState {
 
         g.setColor(Color.decode(GOLD_TEXT_COLOR));
         g.setFont(font1);
-        g.drawString(PAUSE_TEXT, model.getScreenWidth() / PAUSE_CENTER_DIV - PAUSE_WIDTH_OFF, model.getScreenHeight() / PAUSE_CENTER_DIV);
+        g.drawString(PAUSE_TEXT, model.getScreenWidth() / PAUSE_CENTER_DIV - PAUSE_WIDTH_OFF,
+                model.getScreenHeight() / PAUSE_CENTER_DIV);
         g.setColor(Color.WHITE);
         g.setFont(font2);
-        g.drawString(PAUSE_CONTINUE_TEXT, model.getScreenWidth() / PAUSE_CENTER_DIV - PAUSE_WIDTH_OFF, model.getScreenHeight() / PAUSE_CENTER_DIV + PAUSE_CONTINUE_Y);
-        g.drawString(PAUSE_MAIN_MENU_TEXT, model.getScreenWidth() / PAUSE_CENTER_DIV - PAUSE_WIDTH_OFF, model.getScreenHeight() / PAUSE_CENTER_DIV + PAUSE_MAIN_MENU_Y);
-        g.drawString(PAUSE_QUIT_TEXT, model.getScreenWidth() / PAUSE_CENTER_DIV - PAUSE_WIDTH_OFF, model.getScreenHeight() / PAUSE_CENTER_DIV + PAUSE_QUIT_Y);
-        g.drawString(PAUSE_SELECTION_TEXT, model.getScreenWidth() / PAUSE_CENTER_DIV - PAUSE_WIDTH_OFF - PAUSE_SELECTION_X, model.getScreenHeight() / PAUSE_CENTER_DIV + selectionYcor);
+        g.drawString(PAUSE_CONTINUE_TEXT, model.getScreenWidth() / PAUSE_CENTER_DIV - PAUSE_WIDTH_OFF,
+                model.getScreenHeight() / PAUSE_CENTER_DIV + PAUSE_CONTINUE_Y);
+        g.drawString(PAUSE_MAIN_MENU_TEXT, model.getScreenWidth() / PAUSE_CENTER_DIV - PAUSE_WIDTH_OFF,
+                model.getScreenHeight() / PAUSE_CENTER_DIV + PAUSE_MAIN_MENU_Y);
+        g.drawString(PAUSE_QUIT_TEXT, model.getScreenWidth() / PAUSE_CENTER_DIV - PAUSE_WIDTH_OFF,
+                model.getScreenHeight() / PAUSE_CENTER_DIV + PAUSE_QUIT_Y);
+        g.drawString(PAUSE_SELECTION_TEXT,
+                model.getScreenWidth() / PAUSE_CENTER_DIV - PAUSE_WIDTH_OFF - PAUSE_SELECTION_X,
+                model.getScreenHeight() / PAUSE_CENTER_DIV + selectionYcor);
     }
 
     @Override

@@ -28,7 +28,15 @@ import java.awt.image.BufferedImage;
 import java.io.Serial;
 import java.io.Serializable;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.BACKGROUND_DEFAULT_COLOR;
+import static it.unibo.javajump.utility.Constants.MAIN_VIEW_AUDIO_FADE;
+import static it.unibo.javajump.utility.Constants.MAIN_VIEW_RECT_X;
+import static it.unibo.javajump.utility.Constants.MAIN_VIEW_RECT_Y;
+import static it.unibo.javajump.utility.Constants.MUSIC_VOLUME;
+import static it.unibo.javajump.utility.Constants.RESOURCES_MUSIC_1;
+import static it.unibo.javajump.utility.Constants.RESOURCES_PATH;
+import static it.unibo.javajump.utility.Constants.SERIAL_ID;
+import static it.unibo.javajump.utility.Constants.SOUND_EFFECTS_VOLUME;
 
 /**
  * The type Main game view.
@@ -135,7 +143,8 @@ public final class MainGameViewImpl extends JPanel implements MainGameView, Game
                 inGameView.draw(g2, model);
                 gameOverView.draw(g2, model);
             }
-            default -> { }
+            default -> {
+            }
         }
         g2.dispose();
     }
@@ -160,7 +169,8 @@ public final class MainGameViewImpl extends JPanel implements MainGameView, Game
                     musicManager.fadeOut(MAIN_VIEW_AUDIO_FADE);
                     gameOverView.startFade();
                 }
-                default -> { }
+                default -> {
+                }
             }
         }
         lastState = currentState;
