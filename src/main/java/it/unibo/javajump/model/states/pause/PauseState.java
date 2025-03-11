@@ -27,6 +27,7 @@ public final class PauseState implements GameStateHandler {
                     case CONTINUE -> model.setState(new InGameState());
                     case MAIN_MENU -> model.setState(new MenuState());
                     case QUIT -> model.stopGame();
+                    default -> { }
                 }
             }
             case MOVE_MENU_UP -> {
