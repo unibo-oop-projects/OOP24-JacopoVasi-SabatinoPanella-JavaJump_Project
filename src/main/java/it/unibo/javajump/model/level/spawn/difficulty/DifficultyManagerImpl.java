@@ -38,7 +38,7 @@ public class DifficultyManagerImpl implements DifficultyManager {
 
 
     @Override
-    public void updateDifficulty(int score) {
+    public void updateDifficulty(final int score) {
         this.currentScore = score;
 
         if (currentScore >= thresholdHell) {

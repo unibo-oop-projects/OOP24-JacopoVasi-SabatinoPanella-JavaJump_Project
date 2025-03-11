@@ -18,29 +18,29 @@ public class SpawnManagerImpl implements SpawnManager {
     private float topPlatformY;
 
 
-    public SpawnManagerImpl(SpawnStrategy spawnStrategy) {
+    public SpawnManagerImpl(final SpawnStrategy spawnStrategy) {
         this.spawnStrategy = spawnStrategy;
         this.topPlatformY = TOP_PLATFORM_Y_INIT;
     }
 
 
     @Override
-    public void generateInitialLevel(GameModel model) {
+    public void generateInitialLevel(final GameModel model) {
         spawnPlatformBelowPlayer(model, getFactory());
-        float startY = model.getScreenHeight() - INITIAL_Y_SPAWN_OFFSET;
+        final float startY = model.getScreenHeight() - INITIAL_Y_SPAWN_OFFSET;
         spawnStrategy.spawnBatch(model, startY, INITIAL_PLATFORMS_NUMBER);
         this.topPlatformY = spawnStrategy.returnCurrentY();
     }
 
 
     @Override
-    public void generateOnTheFly(GameModel model) {
-        float playerY = model.getPlayer().getY();
-        float gap = playerY - topPlatformY;
+    public void generateOnTheFly(final GameModel model) {
+        final float playerY = model.getPlayer().getY();
+        final float gap = playerY - topPlatformY;
 
         if (gap < SPAWN_THRESHOLD) {
             spawnStrategy.spawnBatch(model, topPlatformY, PROCEDURAL_PLATFORMS_NUMBER);
-            float newTop = spawnStrategy.returnCurrentY();
+            final float newTop = spawnStrategy.returnCurrentY();
 
             if (newTop < topPlatformY) {
                 topPlatformY = newTop;

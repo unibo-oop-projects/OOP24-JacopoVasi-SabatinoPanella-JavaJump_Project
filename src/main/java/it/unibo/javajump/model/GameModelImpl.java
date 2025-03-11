@@ -67,7 +67,7 @@ public class GameModelImpl implements GameModel {
         this.screenHeight = screenHeight;
         this.difficultyManager = new DifficultyManagerImpl();
         final GameObjectFactory factory = new GameObjectFactoryImpl();
-        final RandomSpawnStrategy strategy = new RandomSpawnStrategy(factory, MIN_SPACING, MAX_SPACING, COIN_CHANCE, difficultyManager);
+        final RandomSpawnStrategy strategy = new RandomSpawnStrategy(factory, MIN_SPACING, MAX_SPACING, COIN_CHANCE);
         this.physicsManager = new PhysicsManagerImpl(GRAVITY, ACCELERATION, MAX_SPEED, DECELERATION);
         this.collisionManager = new CollisionManagerImpl();
         this.spawnManager = new SpawnManagerImpl(strategy);

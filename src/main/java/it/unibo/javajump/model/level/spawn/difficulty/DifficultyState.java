@@ -11,7 +11,7 @@ public enum DifficultyState {
     private final float movingChance;
     private final float bounceChance;
 
-    DifficultyState(float breakableChance, float movingChance, float bounceChance) {
+    DifficultyState(final float breakableChance, final float movingChance, final float bounceChance) {
         this.breakableChance = breakableChance;
         this.movingChance = movingChance;
         this.bounceChance = bounceChance;

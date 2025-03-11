@@ -17,7 +17,6 @@ public class PlatformImpl extends GameObjectImpl implements Platform {
     @Override
     public void triggerTouched() {
         touched = true;
-        System.out.println("Touched");
     }
 
     @Override

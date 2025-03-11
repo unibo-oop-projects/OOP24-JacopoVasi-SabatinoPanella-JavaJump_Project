@@ -14,30 +14,29 @@ import static it.unibo.javajump.utility.Constants.CLEAN_UP_MARGIN_OFFSET;
 public class CleanupManagerImpl implements CleanupManager {
 
     @Override
-    public void cleanupObjects(GameModel model) {
-        List<GameObject> toRemove = new ArrayList<>();
+    public void cleanupObjects(final GameModel model) {
+        final List<GameObject> toRemove = new ArrayList<>();
 
-        float cameraOffset = model.getCameraManager().getCurrentOffset();
-        float screenH = model.getScreenHeight();
-        float margin = CLEAN_UP_MARGIN_OFFSET;
+        final float cameraOffset = model.getCameraManager().getCurrentOffset();
+        final float screenH = model.getScreenHeight();
 
-        for (GameObject go : model.getGameObjects()) {
-            if (go instanceof Coin c) {
-                if (c.getState() == CoinState.FINISHED) {
+        for (final GameObject go : model.getGameObjects()) {
+            if (go instanceof Coin c && c.getState() == CoinState.FINISHED) {
+
                     toRemove.add(c);
                     continue;
-                }
+
             }
 
-            if (go instanceof BreakablePlatform bp) {
-                if (bp.isBroken() && bp.isFinished()) {
+            if (go instanceof BreakablePlatform bp && bp.isBroken() && bp.isFinished()) {
+
                     toRemove.add(bp);
                     continue;
-                }
+
             }
 
-            float drawY = go.getY() - cameraOffset;
-            if (drawY > screenH + margin) {
+            final float drawY = go.getY() - cameraOffset;
+            if (drawY > screenH + CLEAN_UP_MARGIN_OFFSET) {
                 toRemove.add(go);
             }
 

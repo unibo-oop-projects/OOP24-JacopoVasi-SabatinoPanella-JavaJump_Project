@@ -13,21 +13,20 @@ public class PlatformSpawnerImpl implements PlatformSpawner {
     private final GameObjectFactory factory;
     private final Random rand;
 
-    public PlatformSpawnerImpl(GameObjectFactory factory) {
+    public PlatformSpawnerImpl(final GameObjectFactory factory) {
         this.factory = factory;
         this.rand = new Random();
     }
 
     @Override
-    public Platform spawnPlatform(float x, float y, int screenWidth, DifficultyState difficulty) {
-        float chance = rand.nextFloat();
-        float breakableChance = difficulty.getBreakableChance();
-        float movingChance = difficulty.getMovingChance();
-        float bounceChance = difficulty.getBounceChance();
+    public Platform spawnPlatform(final float x, final float y, final int screenWidth, final DifficultyState difficulty) {
+        final float chance = rand.nextFloat();
+        final float breakableChance = difficulty.getBreakableChance();
+        final float movingChance = difficulty.getMovingChance();
 
-        float thresholdBounce = bounceChance;
-        float thresholdBreakable = thresholdBounce + breakableChance;
-        float thresholdMoving = thresholdBreakable + movingChance;
+        final float thresholdBounce = difficulty.getBounceChance();
+        final float thresholdBreakable = thresholdBounce + breakableChance;
+        final float thresholdMoving = thresholdBreakable + movingChance;
 
         if (chance < thresholdBounce) {
             return factory.createBouncePlatform(x, y, randomInRange(rand, 1.5f, 2.2f));

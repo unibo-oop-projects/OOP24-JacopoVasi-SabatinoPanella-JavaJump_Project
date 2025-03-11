@@ -35,7 +35,7 @@ public class CollectiblesSpawnerImpl implements CollectiblesSpawner {
      * @param factory         the factory, used to create the Coin object
      * @param coinSpawnChance the probability to spawn a Coin on a Platform (higher -> more coins overall)
      */
-    public CollectiblesSpawnerImpl(GameObjectFactory factory, float coinSpawnChance) {
+    public CollectiblesSpawnerImpl(final GameObjectFactory factory, final float coinSpawnChance) {
         this.factory = factory;
         this.rand = new Random();
         this.coinSpawnChance = coinSpawnChance;
@@ -49,11 +49,11 @@ public class CollectiblesSpawnerImpl implements CollectiblesSpawner {
      * gets added to the GameObjects in model.
      */
     @Override
-    public void spawnCollectible(GameModel model, float platformX, float platformY, float platformWidth, Platform platform) {
+    public void spawnCollectible(final GameModel model, final float platformX, final float platformY, final float platformWidth, final Platform platform) {
         if (rand.nextFloat() < coinSpawnChance) {
-            float coinX = platformX + (platformWidth / COIN_X_DIV) - (platformWidth * COIN_X_MUL);
-            float coinY = platformY - COIN_OFFSET;
-            Coin coin = factory.createCoin(coinX, coinY);
+            final float coinX = platformX + (platformWidth / COIN_X_DIV) - (platformWidth * COIN_X_MUL);
+            final float coinY = platformY - COIN_OFFSET;
+            final Coin coin = factory.createCoin(coinX, coinY);
 
             if (platform instanceof MovingPlatform) {
                 coin.attachToPlatform(platform);

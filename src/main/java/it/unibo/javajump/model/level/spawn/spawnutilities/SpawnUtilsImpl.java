@@ -14,17 +14,17 @@ public class SpawnUtilsImpl implements SpawnUtils {
     /**
      * Returns a random value between min and max
      */
-    public static float randomInRange(Random rand, float min, float max) {
+    public static float randomInRange(final Random rand, final float min, final float max) {
         return min + rand.nextFloat() * (max - min);
     }
 
     /**
      * Creates and adds to the model a standard platform below the player.
      */
-    public static void spawnPlatformBelowPlayer(GameModel model, GameObjectFactory factory) {
-        float px = model.getPlayer().getX() - SPAWN_X_OFFSET;
-        float py = model.getPlayer().getY() + SPAWN_Y_OFFSET;
-        Platform p = factory.createStandardPlatform(px, py);
+    public static void spawnPlatformBelowPlayer(final GameModel model, final GameObjectFactory factory) {
+        final float px = model.getPlayer().getX() - SPAWN_X_OFFSET;
+        final float py = model.getPlayer().getY() + SPAWN_Y_OFFSET;
+        final Platform p = factory.createStandardPlatform(px, py);
         model.getGameObjects().add(p);
     }
 }

@@ -9,7 +9,7 @@ public class MovingPlatformImpl extends PlatformImpl implements MovingPlatform {
 
     private final MovementBehaviour movementBehaviour;
 
-    public MovingPlatformImpl(float xx, final float y, final float width, final float height,
+    public MovingPlatformImpl(final float xx, final float y, final float width, final float height,
                               final float range, final float screenWidth, final float speed) {
 
         super(xx, y, width, height);
