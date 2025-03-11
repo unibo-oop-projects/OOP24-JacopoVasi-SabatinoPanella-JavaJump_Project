@@ -82,8 +82,10 @@ public class CoinRendererImpl implements CoinRenderer {
 		if (prevState == null || !prevState.equals(coin.getState())) {
 			coinAnimTimers.put(coin, COINANIMTIMERS);
 			coinLastStates.put(coin, coin.getState());
-			soundEffectsManager.playSound(SFXType.COIN);
-			System.out.println("Coin collected");
+
+			if (coin.getState() == CoinState.COLLECTING) {
+				soundEffectsManager.playSound(SFXType.COIN);
+			}
 		}
 
 		float timer = coinAnimTimers.get(coin);

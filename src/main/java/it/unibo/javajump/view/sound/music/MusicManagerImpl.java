@@ -75,6 +75,7 @@ public class MusicManagerImpl implements MusicManager {
 	public void resumeMusic() {
 		cancelFade();
 		if (backgroundClip != null && !backgroundClip.isRunning()) {
+			backgroundClip.loop(Clip.LOOP_CONTINUOUSLY);
 			backgroundClip.start();
 		}
 	}

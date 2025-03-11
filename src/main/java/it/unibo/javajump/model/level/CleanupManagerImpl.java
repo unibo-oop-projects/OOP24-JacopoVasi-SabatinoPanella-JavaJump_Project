@@ -25,7 +25,6 @@ public class CleanupManagerImpl implements CleanupManager {
 		float margin = MARGIN;
 
 		for (GameObject go : model.getGameObjects()) {
-
 			if (go instanceof Coin c) {
 				if (c.getState() == CoinState.FINISHED) {
 					toRemove.add(c);
@@ -34,12 +33,11 @@ public class CleanupManagerImpl implements CleanupManager {
 			}
 
 			if (go instanceof BreakablePlatform bp) {
-				if (bp.isBroken() && bp.readyForRemoval()) {
+				if (bp.isBroken() && bp.isFinished()) {
 					toRemove.add(bp);
 					continue;
 				}
 			}
-
 
 			float drawY = go.getY() - cameraOffset;
 			if (drawY > screenH + margin) {
@@ -47,7 +45,6 @@ public class CleanupManagerImpl implements CleanupManager {
 			}
 
 		}
-
 		model.getGameObjects().removeAll(toRemove);
 	}
 }

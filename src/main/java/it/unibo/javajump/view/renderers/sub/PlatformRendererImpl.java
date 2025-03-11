@@ -68,9 +68,10 @@ public class PlatformRendererImpl implements PlatformRenderer {
 			if (platform instanceof BouncePlatform) {
 				soundEffectsManager.playSound(SFXType.BOUNCE);
 				System.out.println("bounce platform touched");
-			} else if (platform instanceof BreakablePlatform) {
+			} else if (platform instanceof BreakablePlatform bp) {
 				soundEffectsManager.playSound(SFXType.BREAK);
-				System.out.println("breakable platform touched");
+				System.out.println("breakable platform broken");
+				bp.setFinished();
 			} else {
 				soundEffectsManager.playSound(SFXType.DEFAULT);
 				System.out.println("platform touched");

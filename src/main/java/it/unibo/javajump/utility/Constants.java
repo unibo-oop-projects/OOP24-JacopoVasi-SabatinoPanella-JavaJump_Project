@@ -264,7 +264,7 @@ public final class Constants {
 	public static final String RESOURCESGAMEOVER = "GameOver.png";
 	public static final String RESOURCESPLAYER = "Coffee-SheetBIG.png";
 	public static final String RESOURCESCOIN = "Coin-Sheet.png";
-	public static final String RESOURCESBACKGROUNDONE = "Background4.png";
+	public static final String RESOURCESBACKGROUNDONE = "Background_Easy.png";
 	public static final String RESOURCESBACKGROUNDTWO = "Clouds2.png";
 	public static final String RESOURCESSCORECONTAINER = "Score_Underlay_small.png";
 	public static final String RESOURCESMUSIC = "GameMusic.wav";

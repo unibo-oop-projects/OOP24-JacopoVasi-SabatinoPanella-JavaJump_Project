@@ -6,5 +6,7 @@ public interface BreakablePlatform extends Platform {
 
 	void breakPlatform();
 
-	boolean readyForRemoval();
+	void setFinished();
+
+	boolean isFinished();
 }

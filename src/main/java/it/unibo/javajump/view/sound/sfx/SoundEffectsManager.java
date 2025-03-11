@@ -5,21 +5,42 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static it.unibo.javajump.utility.Constants.*;
 
 public class SoundEffectsManager {
-	private FloatControl volumeControl;
 	private final float defaultVolume;
-	private final Map<SFXType, Clip> clips = new HashMap<>();
+	private final Map<SFXType, Queue<Clip>> clipPools = new HashMap<>();
+	private static final int POOL_SIZE = 5;
 
 	public SoundEffectsManager(float defaultVolume) {
 		this.defaultVolume = defaultVolume;
-		clips.put(SFXType.BOUNCE, loadClip(RESOURCESWINDOWSPATH + RESOURCE_BOUNCE_SFX));
-		clips.put(SFXType.BREAK, loadClip(RESOURCESWINDOWSPATH + RESOURCE_BREAK_SFX));
-		clips.put(SFXType.DEFAULT, loadClip(RESOURCESWINDOWSPATH + RESOURCE_DEFAULT_SFX));
-		clips.put(SFXType.COIN, loadClip(RESOURCESWINDOWSPATH + RESOURCE_COIN_SFX));
+
+		for (SFXType type : SFXType.values()) {
+			Queue<Clip> pool = new ConcurrentLinkedQueue<>();
+			for (int i = 0; i < POOL_SIZE; i++) {
+				Clip clip = loadClip(getFilePathForType(type));
+				if (clip != null) {
+					setVolumeForClip(clip, defaultVolume);
+					pool.offer(clip);
+				}
+			}
+			clipPools.put(type, pool);
+		}
 		setGlobalVolume(defaultVolume);
+	}
+
+	private String getFilePathForType(SFXType type) {
+		return switch (type) {
+			case COIN -> RESOURCESWINDOWSPATH + RESOURCE_COIN_SFX;
+			case BOUNCE -> RESOURCESWINDOWSPATH + RESOURCE_BOUNCE_SFX;
+			case BREAK -> RESOURCESWINDOWSPATH + RESOURCE_BREAK_SFX;
+			case DEFAULT -> RESOURCESWINDOWSPATH + RESOURCE_DEFAULT_SFX;
+		};
 	}
 
 	private Clip loadClip(String filePath) {
@@ -30,27 +51,54 @@ public class SoundEffectsManager {
 			clip.open(audioIn);
 			return clip;
 		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-			e.printStackTrace();
+			Logger.getLogger(SoundEffectsManager.class.getName()).log(Level.SEVERE, "Error loading the audio file", e);
 		}
 		return null;
 	}
 
+
+	private void setVolumeForClip(Clip clip, float defaultVolume) {
+		if (clip != null && clip.isControlSupported(FloatControl.Type.MASTER_GAIN)) {
+			FloatControl control = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+			float min = control.getMinimum();
+			float max = control.getMaximum();
+			float dB = min + (max - min) * defaultVolume;
+			control.setValue(dB);
+		}
+	}
+
 	public void playSound(SFXType type) {
-		Clip clip = clips.get(type);
+		Queue<Clip> pool = clipPools.get(type);
+		if (pool == null) return;
+
+		Clip clip = pool.poll();
+		if (clip == null) {
+			clip = loadClip(getFilePathForType(type));
+			if (clip != null) {
+				setVolumeForClip(clip, defaultVolume);
+			}
+		}
+
 		if (clip != null) {
 			clip.setFramePosition(0);
+			Clip finalClip = clip;
+			clip.addLineListener(new LineListener() {
+				@Override
+				public void update(LineEvent event) {
+					if (event.getType() == LineEvent.Type.STOP) {
+						finalClip.removeLineListener(this);
+						pool.offer(finalClip);
+					}
+				}
+			});
 			clip.start();
 		}
 	}
 
 	public void setGlobalVolume(float vol) {
-		for (Clip clip : clips.values()) {
-			if (clip != null && clip.isControlSupported(FloatControl.Type.MASTER_GAIN)) {
-				FloatControl control = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-				float min = control.getMinimum();
-				float max = control.getMaximum();
-				float dB = min + (max - min) * vol;
-				control.setValue(dB);
+		for (Queue<Clip> pool : clipPools.values()) {
+			for (Clip clip : pool) {
+				setVolumeForClip(clip, vol);
 			}
 		}
 	}
