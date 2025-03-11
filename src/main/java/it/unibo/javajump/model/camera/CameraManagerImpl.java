@@ -35,7 +35,7 @@ public class CameraManagerImpl implements CameraManager {
      * @param scoreManager the current score manager
      * @param scoreFactor  a desired game design value to multiply the score, for better game feel
      */
-    public CameraManagerImpl(ScoreManager scoreManager, float scoreFactor) {
+    public CameraManagerImpl(final ScoreManager scoreManager, final float scoreFactor) {
         this.scoreManager = scoreManager;
         this.scoreFactor = scoreFactor;
         this.currentOffset = OFFSET_INIT;
@@ -50,7 +50,7 @@ public class CameraManagerImpl implements CameraManager {
      * @param deltaTime the time passed from the last update (in seconds)
      */
     @Override
-    public void updateCamera(GameModel model, float deltaTime) {
+    public void updateCamera(final GameModel model, final float deltaTime) {
         Character player = model.getPlayer();
         float screenHeight = model.getScreenHeight();
         float desiredOffset = getDesiredOffset(screenHeight, player);
@@ -74,7 +74,7 @@ public class CameraManagerImpl implements CameraManager {
      * @param player       the player character
      * @return the desired offset
      */
-    private float getDesiredOffset(float screenHeight, Character player) {
+    private float getDesiredOffset(final float screenHeight, final Character player) {
         float progressionScreenPoint = screenHeight / HEIGHT_DIV - screenHeight * WIDTH_DIV;
         float desiredOffset = currentOffset;
 

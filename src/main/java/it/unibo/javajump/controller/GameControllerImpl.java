@@ -119,7 +119,7 @@ public class GameControllerImpl implements GameController {
      */
     private void processDiscreteInput() {
         GameAction action = inputManager.getActionQueue().poll();
-        while (action  != null) {
+        while (action != null) {
             model.handleAction(action);
             action = inputManager.getActionQueue().poll();
         }

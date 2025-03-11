@@ -61,7 +61,7 @@ public class GameModelImpl implements GameModel {
 
     public GameModelImpl(
             final int screenWidth,
-            final  int screenHeight
+            final int screenHeight
     ) {
         this.screenWidth = screenWidth;
         this.screenHeight = screenHeight;

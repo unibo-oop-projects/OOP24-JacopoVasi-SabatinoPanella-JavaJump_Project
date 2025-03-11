@@ -7,6 +7,7 @@ package it.unibo.javajump.utility;
 public final class Constants {
     /**
      * Private constructor for Constants, to avoid instantiation.
+     *
      * @throws AssertionError when wrongly called.
      */
     private Constants() {
@@ -943,7 +944,6 @@ public final class Constants {
      * The constant GAME_OVER_NEW_TEXT_ESC: specifies the new best score escape text.
      */
     public static final String GAME_OVER_NEW_TEXT_ESC = " !!";
-
 
 
 // PauseView ------------------------------------------------------------------------------------------

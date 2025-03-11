@@ -26,7 +26,7 @@ public class CollisionManagerImpl implements CollisionManager {
      * @param model the GameModel
      */
     @Override
-    public void checkCollisions(GameModel model) {
+    public void checkCollisions(final GameModel model) {
         Character player = model.getPlayer();
         boolean foundPlatformCollision = false;
         List<GameObject> objects = model.getGameObjects();
@@ -71,7 +71,7 @@ public class CollisionManagerImpl implements CollisionManager {
      * @param b the second GameObject
      * @return true if the two GameObjects are colliding, false otherwise
      */
-    private boolean isColliding(GameObject a, GameObject b) {
+    private boolean isColliding(final GameObject a, final GameObject b) {
         return a.getX() < b.getX() + b.getWidth()
                 && a.getX() + a.getWidth() > b.getX()
                 && a.getY() < b.getY() + b.getHeight()
@@ -85,7 +85,7 @@ public class CollisionManagerImpl implements CollisionManager {
      * @param coin      the coinImpl, GameObject that the player can collect
      * @param model     the GameModel which contains player & coinImpl
      */
-    private void handleCharacterCoinCollision(Character character, Coin coin, GameModel model) {
+    private void handleCharacterCoinCollision(final Character character, final Coin coin, final GameModel model) {
         if (coin.getState() == CoinState.IDLE) {
             coin.collect();
             model.addPointsToScore(COIN_SCORE_VALUE);
@@ -103,7 +103,8 @@ public class CollisionManagerImpl implements CollisionManager {
      * @param model    the GameModel which contains player & platform
      * @return true if the player jumps on the platform, false otherwise.
      */
-    private boolean handleCharacterPlatformCollision(Character player, Platform platform, GameModel model) {
+    private boolean handleCharacterPlatformCollision(final Character player, final Platform platform,
+                                                     final GameModel model) {
         if (player.getVelocityY() > NULL_DIRECTION) {
             float playerOldBottom = player.getOldY() + player.getHeight();
             float platformTop = platform.getY();
