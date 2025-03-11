@@ -1,11 +1,11 @@
 package it.unibo.javajump.model.entities.character;
 
 /**
- * Interface for the Character's states during the game (STATE PATTERN)
+ * Interface for the Character's states during the game (STATE PATTERN).
  */
 public interface CharacterState {
     /**
-     * Updates the Character's state
+     * Updates the Character's state.
      *
      * @param character the characterImpl to update
      * @param deltaTime the time passed from the last frame
@@ -13,14 +13,14 @@ public interface CharacterState {
     void updateCharacter(Character character, float deltaTime);
 
     /**
-     * Method called when the character enters this state
+     * Method called when the character enters this state.
      *
      * @param character the character
      */
     void onEnter(Character character);
 
     /**
-     * Method called when the character exits this state
+     * Method called when the character exits this state.
      *
      * @param character the character
      */
@@ -28,6 +28,8 @@ public interface CharacterState {
 
     /**
      * Signals if, in this current state, the character is on a platform.
+     *
+     * @return true if the character is on a platform
      */
     boolean isOnPlatform();
 }
