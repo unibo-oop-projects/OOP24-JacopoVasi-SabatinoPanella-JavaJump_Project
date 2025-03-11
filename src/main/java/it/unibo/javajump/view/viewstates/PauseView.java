@@ -7,7 +7,19 @@ import it.unibo.javajump.view.graphics.GameGraphics;
 
 import java.awt.*;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.BACKGROUND_DEFAULT_COLOR;
+import static it.unibo.javajump.utility.Constants.GOLD_TEXT_COLOR;
+import static it.unibo.javajump.utility.Constants.PAUSECENTERDIV;
+import static it.unibo.javajump.utility.Constants.PAUSECONTINUETEXT;
+import static it.unibo.javajump.utility.Constants.PAUSECONTINUEY;
+import static it.unibo.javajump.utility.Constants.PAUSEMAINMENUTEXT;
+import static it.unibo.javajump.utility.Constants.PAUSEMAINMENUY;
+import static it.unibo.javajump.utility.Constants.PAUSEQUITTEXT;
+import static it.unibo.javajump.utility.Constants.PAUSEQUITY;
+import static it.unibo.javajump.utility.Constants.PAUSESELECTIONTEXT;
+import static it.unibo.javajump.utility.Constants.PAUSESELECTIONX;
+import static it.unibo.javajump.utility.Constants.PAUSETEXT;
+import static it.unibo.javajump.utility.Constants.PAUSEWIDTHOFF;
 
 public class PauseView implements GameViewState {
     private final Font font1;

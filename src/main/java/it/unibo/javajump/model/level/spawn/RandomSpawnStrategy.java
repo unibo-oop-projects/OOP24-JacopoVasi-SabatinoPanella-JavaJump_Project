@@ -13,7 +13,11 @@ import it.unibo.javajump.model.level.spawn.spawnutilities.SpawnUtilsImpl;
 
 import java.util.Random;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.GAP_EASY_ADDENDUM;
+import static it.unibo.javajump.utility.Constants.GAP_HARD_ADDENDUM;
+import static it.unibo.javajump.utility.Constants.GAP_INIT;
+import static it.unibo.javajump.utility.Constants.MAX_PLATFORM_WIDTH;
+import static it.unibo.javajump.utility.Constants.SPAWN_Y_INIT;
 
 public class RandomSpawnStrategy implements SpawnStrategy {
 

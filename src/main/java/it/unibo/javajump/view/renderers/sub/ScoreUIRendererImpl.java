@@ -5,7 +5,16 @@ import it.unibo.javajump.model.GameModel;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.GOLD_TEXT_COLOR;
+import static it.unibo.javajump.utility.Constants.HIGH_SCORE_RENDER_TEXT;
+import static it.unibo.javajump.utility.Constants.HIGH_SCORE_RENDER_X_POSITION;
+import static it.unibo.javajump.utility.Constants.HIGH_SCORE_RENDER_Y_POSITION;
+import static it.unibo.javajump.utility.Constants.RED_TEXT_COLOR;
+import static it.unibo.javajump.utility.Constants.RENDER_UI_SCORE_CONTAINER_X;
+import static it.unibo.javajump.utility.Constants.RENDER_UI_SCORE_CONTAINER_Y;
+import static it.unibo.javajump.utility.Constants.SCORE_RENDER_TEXT;
+import static it.unibo.javajump.utility.Constants.SCORE_RENDER_X_POSITION;
+import static it.unibo.javajump.utility.Constants.SCORE_RENDER_Y_POSITION;
 
 /**
  * Implementation of the ScoreUIRenderer interface, used for graphical rendering of the score and UI.

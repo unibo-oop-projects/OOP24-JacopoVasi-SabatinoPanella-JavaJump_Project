@@ -26,7 +26,16 @@ import it.unibo.javajump.model.states.menu.MenuState;
 import java.util.ArrayList;
 import java.util.List;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.ACCELERATION;
+import static it.unibo.javajump.utility.Constants.CHARACTER_CREATION_HEIGHT_MUL;
+import static it.unibo.javajump.utility.Constants.CHARACTER_CREATION_WIDTH_DIV;
+import static it.unibo.javajump.utility.Constants.COIN_CHANCE;
+import static it.unibo.javajump.utility.Constants.DECELERATION;
+import static it.unibo.javajump.utility.Constants.GRAVITY;
+import static it.unibo.javajump.utility.Constants.MAX_SPACING;
+import static it.unibo.javajump.utility.Constants.MAX_SPEED;
+import static it.unibo.javajump.utility.Constants.MIN_SPACING;
+import static it.unibo.javajump.utility.Constants.SCORE_FACTOR;
 
 public class GameModelImpl implements GameModel {
 

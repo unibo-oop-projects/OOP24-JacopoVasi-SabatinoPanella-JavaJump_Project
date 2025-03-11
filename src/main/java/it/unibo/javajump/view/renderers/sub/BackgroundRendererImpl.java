@@ -6,7 +6,11 @@ import it.unibo.javajump.model.level.spawn.difficulty.DifficultyState;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.BG_EXTRA_TILES_NUMBER;
+import static it.unibo.javajump.utility.Constants.BG_HORIZONTAL_NULL_SPEED;
+import static it.unibo.javajump.utility.Constants.BG_HORIZONTAL_OFFSET_INIT;
+import static it.unibo.javajump.utility.Constants.BG_TRANSITION_TIMER_INIT;
+import static it.unibo.javajump.utility.Constants.SCREEN_LEFT_MARGIN;
 
 /**
  * Class that implements the BackgroundRenderer interface, used for graphical rendering of

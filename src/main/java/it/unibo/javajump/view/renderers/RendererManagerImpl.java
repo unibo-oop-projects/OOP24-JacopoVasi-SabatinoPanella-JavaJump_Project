@@ -5,12 +5,35 @@ import it.unibo.javajump.model.entities.character.Character;
 import it.unibo.javajump.model.entities.collectibles.Coin;
 import it.unibo.javajump.model.entities.platforms.Platform;
 import it.unibo.javajump.view.graphics.GameGraphics;
-import it.unibo.javajump.view.renderers.sub.*;
+import it.unibo.javajump.view.renderers.sub.BackgroundRenderer;
+import it.unibo.javajump.view.renderers.sub.BackgroundRendererImpl;
+import it.unibo.javajump.view.renderers.sub.CoinRenderer;
+import it.unibo.javajump.view.renderers.sub.CoinRendererImpl;
+import it.unibo.javajump.view.renderers.sub.PlatformRenderer;
+import it.unibo.javajump.view.renderers.sub.PlatformRendererImpl;
+import it.unibo.javajump.view.renderers.sub.PlayerRenderer;
+import it.unibo.javajump.view.renderers.sub.PlayerRendererImpl;
+import it.unibo.javajump.view.renderers.sub.ScoreUIRenderer;
+import it.unibo.javajump.view.renderers.sub.ScoreUIRendererImpl;
 import it.unibo.javajump.view.sound.sfx.SoundEffectsManager;
 
 import java.awt.*;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.RENDER_MANAGER_BACKGROUND_ONE_PARALLAX_MODIFIER;
+import static it.unibo.javajump.utility.Constants.RENDER_MANAGER_BACKGROUND_ONE_X_SPEED;
+import static it.unibo.javajump.utility.Constants.RENDER_MANAGER_BACKGROUND_TWO_PARALLAX_MODIFIER;
+import static it.unibo.javajump.utility.Constants.RENDER_MANAGER_BACKGROUND_TWO_X_SPEED;
+import static it.unibo.javajump.utility.Constants.RENDER_MANAGER_COIN_FRAME_DURATION;
+import static it.unibo.javajump.utility.Constants.RENDER_MANAGER_COIN_HEIGHT;
+import static it.unibo.javajump.utility.Constants.RENDER_MANAGER_COIN_WIDTH;
+import static it.unibo.javajump.utility.Constants.RENDER_MANAGER_PLATFORM_OUTLINE_THICKNESS;
+import static it.unibo.javajump.utility.Constants.RENDER_MANAGER_PLATFORM_ROUND_CORNER_HEIGHT;
+import static it.unibo.javajump.utility.Constants.RENDER_MANAGER_PLATFORM_ROUND_CORNER_WIDTH;
+import static it.unibo.javajump.utility.Constants.RENDER_MANAGER_PLAYER_FRAME_DURATION;
+import static it.unibo.javajump.utility.Constants.RENDER_MANAGER_PLAYER_HEIGHT;
+import static it.unibo.javajump.utility.Constants.RENDER_MANAGER_PLAYER_WIDTH;
+import static it.unibo.javajump.utility.Constants.TRANSITION_DURATION_1;
+import static it.unibo.javajump.utility.Constants.TRANSITION_DURATION_2;
 
 /**
  * Implementation of the RenderManager interface, used for graphical rendering of the elements of the gameplay.

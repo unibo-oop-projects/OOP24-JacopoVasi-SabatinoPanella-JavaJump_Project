@@ -4,7 +4,9 @@ import it.unibo.javajump.model.GameModel;
 import it.unibo.javajump.model.entities.character.Character;
 import it.unibo.javajump.model.score.ScoreManager;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.HEIGHT_DIV;
+import static it.unibo.javajump.utility.Constants.OFFSET_INIT;
+import static it.unibo.javajump.utility.Constants.WIDTH_DIV;
 
 /**
  * Implementation of the CameraManager interface.

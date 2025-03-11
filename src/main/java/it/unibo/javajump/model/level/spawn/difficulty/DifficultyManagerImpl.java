@@ -4,7 +4,15 @@ import it.unibo.javajump.model.level.spawn.spawnutilities.SpawnUtilsImpl;
 
 import java.util.Random;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.HARD_MAX;
+import static it.unibo.javajump.utility.Constants.HARD_MIN;
+import static it.unibo.javajump.utility.Constants.HELL_MAX;
+import static it.unibo.javajump.utility.Constants.HELL_MIN;
+import static it.unibo.javajump.utility.Constants.MEDIUM_MAX;
+import static it.unibo.javajump.utility.Constants.MEDIUM_MIN;
+import static it.unibo.javajump.utility.Constants.SCORE_INIT;
+import static it.unibo.javajump.utility.Constants.VERY_HARD_MAX;
+import static it.unibo.javajump.utility.Constants.VERY_HARD_MIN;
 
 public class DifficultyManagerImpl implements DifficultyManager {
 

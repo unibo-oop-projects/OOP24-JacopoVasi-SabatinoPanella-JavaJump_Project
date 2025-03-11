@@ -6,7 +6,11 @@ import it.unibo.javajump.model.level.spawn.RandomSpawnStrategy;
 import it.unibo.javajump.model.level.spawn.SpawnStrategy;
 
 import static it.unibo.javajump.model.level.spawn.spawnutilities.SpawnUtilsImpl.spawnPlatformBelowPlayer;
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.INITIAL_PLATFORMS_NUMBER;
+import static it.unibo.javajump.utility.Constants.INITIAL_Y_SPAWN_OFFSET;
+import static it.unibo.javajump.utility.Constants.PROCEDURAL_PLATFORMS_NUMBER;
+import static it.unibo.javajump.utility.Constants.SPAWN_THRESHOLD;
+import static it.unibo.javajump.utility.Constants.TOP_PLATFORM_Y_INIT;
 
 public class SpawnManagerImpl implements SpawnManager {
 

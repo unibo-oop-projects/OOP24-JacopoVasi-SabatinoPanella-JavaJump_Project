@@ -10,7 +10,11 @@ import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.COIN_ANIMATION_CYCLE_DURATION;
+import static it.unibo.javajump.utility.Constants.COIN_ANIMATION_INDEX_MAX;
+import static it.unibo.javajump.utility.Constants.COIN_ANIM_TIMER_START;
+import static it.unibo.javajump.utility.Constants.RENDER_COIN_COLLECT_ROW;
+import static it.unibo.javajump.utility.Constants.RENDER_COIN_IDLE_ROW;
 
 /**
  * Class that implements the CoinRenderer interface, used for graphical rendering of the coins (animated).

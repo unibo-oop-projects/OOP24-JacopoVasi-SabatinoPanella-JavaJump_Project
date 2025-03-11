@@ -8,7 +8,9 @@ import it.unibo.javajump.model.factories.GameObjectFactory;
 
 import java.util.Random;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.COIN_OFFSET;
+import static it.unibo.javajump.utility.Constants.COIN_X_DIV;
+import static it.unibo.javajump.utility.Constants.COIN_X_MUL;
 
 /**
  * Class implementation of the CollectiblesSpawner interface
