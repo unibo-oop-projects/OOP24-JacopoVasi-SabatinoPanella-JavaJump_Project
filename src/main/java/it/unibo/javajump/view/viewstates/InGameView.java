@@ -1,19 +1,15 @@
 package it.unibo.javajump.view.viewstates;
 
 import it.unibo.javajump.model.GameModel;
-
-import it.unibo.javajump.model.entities.*;
+import it.unibo.javajump.model.entities.GameObject;
 import it.unibo.javajump.model.entities.collectibles.Coin;
-
 import it.unibo.javajump.model.entities.platforms.Platform;
-
 import it.unibo.javajump.view.renderers.RenderManager;
-
 
 import java.awt.*;
 import java.util.ArrayList;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.GAMEPLAY_MESSAGE_TIME_TOGGLE;
 
 public class InGameView implements GameViewState {
 
@@ -75,7 +71,7 @@ public class InGameView implements GameViewState {
 
 
 		long now = System.currentTimeMillis();
-		if (now - lastToggleTime > INGAMETIMETOGGLE) {
+		if (now - lastToggleTime > GAMEPLAY_MESSAGE_TIME_TOGGLE) {
 			showHighScoreMessage = !showHighScoreMessage;
 			lastToggleTime = now;
 		}

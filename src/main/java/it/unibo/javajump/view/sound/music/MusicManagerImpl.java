@@ -3,7 +3,10 @@ package it.unibo.javajump.view.sound.music;
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.concurrent.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -47,8 +50,8 @@ public class MusicManagerImpl implements MusicManager {
 		if (backgroundClip.isRunning()) return;
 
 		int totalFrames = backgroundClip.getFrameLength();
-		int loopEnd = (int) (totalFrames * AUDIOLOOPEND);
-		backgroundClip.setLoopPoints(AUDIOLOOPSTART, loopEnd);
+		int loopEnd = (int) (totalFrames * MUSIC_LOOP_END);
+		backgroundClip.setLoopPoints(MUSIC_LOOP_START, loopEnd);
 		backgroundClip.loop(Clip.LOOP_CONTINUOUSLY);
 		setVolume(defaultVolume);
 		backgroundClip.start();

@@ -12,8 +12,12 @@ public class GameGraphicsImpl implements GameGraphics {
 	private static Font gameFont2;
 	private static Font gameFont3;
 	private static BufferedImage playerSheet;
-	private static BufferedImage background1;
-	private static BufferedImage background2;
+	private static BufferedImage backgroundEasy;
+	private static BufferedImage cloudsEasy;
+	private static BufferedImage backgroundMedium;
+	private static BufferedImage cloudsMedium;
+	private static BufferedImage backgroundDifficult;
+	private static BufferedImage cloudsDifficult;
 	private static BufferedImage scoreContainer;
 	private static BufferedImage coinSheet;
 	private static BufferedImage gameOver;
@@ -21,16 +25,20 @@ public class GameGraphicsImpl implements GameGraphics {
 
 	static {
 		try {
-			title = ImageIO.read(new File(RESOURCESWINDOWSPATH + RESOURCESTITLE));
-			gameOver = ImageIO.read(new File(RESOURCESWINDOWSPATH + RESOURCESGAMEOVER));
-			playerSheet = ImageIO.read(new File(RESOURCESWINDOWSPATH + RESOURCESPLAYER));
-			coinSheet = ImageIO.read(new File(RESOURCESWINDOWSPATH + RESOURCESCOIN));
-			background1 = ImageIO.read(new File(RESOURCESWINDOWSPATH + RESOURCESBACKGROUNDONE));
-			background2 = ImageIO.read(new File(RESOURCESWINDOWSPATH + RESOURCESBACKGROUNDTWO));
-			scoreContainer = ImageIO.read(new File(RESOURCESWINDOWSPATH + RESOURCESSCORECONTAINER));
-			gameFont1 = FontLoaderImpl.loadFont(RESOURCESWINDOWSPATH + RESOURCESGAMEFONTONE, SIZEGAMEFONTONE);
-			gameFont2 = FontLoaderImpl.loadFont(RESOURCESWINDOWSPATH + RESOURCESGAMEFONTTWO, SIZEGAMEFONTTWO);
-			gameFont3 = FontLoaderImpl.loadFont(RESOURCESWINDOWSPATH + RESOURCESGAMEFONTTHREE, SIZEGAMEFONTTHREE);
+			title = ImageIO.read(new File(RESOURCES_PATH + RESOURCES_TITLE));
+			gameOver = ImageIO.read(new File(RESOURCES_PATH + RESOURCES_GAMEOVER));
+			playerSheet = ImageIO.read(new File(RESOURCES_PATH + RESOURCES_PLAYER));
+			coinSheet = ImageIO.read(new File(RESOURCES_PATH + RESOURCES_COIN));
+			backgroundEasy = ImageIO.read(new File(RESOURCES_PATH + RESOURCES_BACKGROUND_EASY));
+			cloudsEasy = ImageIO.read(new File(RESOURCES_PATH + RESOURCES_CLOUDS_EASY));
+			backgroundMedium = ImageIO.read(new File(RESOURCES_PATH + RESOURCES_BACKGROUND_MEDIUM));
+			cloudsMedium = ImageIO.read(new File(RESOURCES_PATH + RESOURCES_CLOUDS_MEDIUM));
+			backgroundDifficult = ImageIO.read(new File(RESOURCES_PATH + RESOURCES_BACKGROUND_HARD));
+			cloudsDifficult = ImageIO.read(new File(RESOURCES_PATH + RESOURCES_CLOUDS_HARD));
+			scoreContainer = ImageIO.read(new File(RESOURCES_PATH + RESOURCES_SCORE_CONTAINER));
+			gameFont1 = FontLoaderImpl.loadFont(RESOURCES_PATH + RESOURCES_FONT_1, SIZE_FONT_1);
+			gameFont2 = FontLoaderImpl.loadFont(RESOURCES_PATH + RESOURCES_FONT_2, SIZE_FONT_2);
+			gameFont3 = FontLoaderImpl.loadFont(RESOURCES_PATH + RESOURCES_FONT_3, SIZE_FONT_3);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -52,12 +60,28 @@ public class GameGraphicsImpl implements GameGraphics {
 		return playerSheet;
 	}
 
-	public static BufferedImage getBackground1() {
-		return background1;
+	public static BufferedImage getBackground_Easy() {
+		return backgroundEasy;
 	}
 
-	public static BufferedImage getBackground2() {
-		return background2;
+	public static BufferedImage getClouds_Easy() {
+		return cloudsEasy;
+	}
+
+	public static BufferedImage getBackground_Medium() {
+		return backgroundMedium;
+	}
+
+	public static BufferedImage getClouds_Medium() {
+		return cloudsMedium;
+	}
+
+	public static BufferedImage getBackground_Difficult() {
+		return backgroundDifficult;
+	}
+
+	public static BufferedImage getClouds_Difficult() {
+		return cloudsDifficult;
 	}
 
 	public static BufferedImage getCoinSheet() {
@@ -75,5 +99,4 @@ public class GameGraphicsImpl implements GameGraphics {
 	public static BufferedImage getScoreContainer() {
 		return scoreContainer;
 	}
-
 }

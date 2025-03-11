@@ -46,14 +46,43 @@ public class RendererManagerImpl implements RenderManager {
 	 * with their respective fields.
 	 */
 	public RendererManagerImpl(SoundEffectsManager soundEffectsManager) {
-		this.platformRenderer = new PlatformRendererImpl(RENDERMANAGERPLATFORMOUTLINE, RENDERMANAGERPLATFORMARCW,
-				RENDERMANAGERPLATFORMARCH, soundEffectsManager);
-		this.coinRenderer = new CoinRendererImpl(GameGraphicsImpl.getCoinSheet(), RENDERMANAGERCOINWIDTH,
-				RENDERMANAGERCOINHEIGHT, RENDERMANAGERCOINFRAMEDURATION, soundEffectsManager);
-		this.playerRenderer = new PlayerRendererImpl(GameGraphicsImpl.getPlayerSheet(), RENDERMANAGERPLAYERWIDTH, RENDERMANAGERPLAYERHEIGHT, RENDERMANAGERPLAYERFRAMEDURATION);
-		this.backgroundRenderer1 = new BackgroundRendererImpl(GameGraphicsImpl.getBackground1(), RENDERMANAGERBACKGROUNDPARALLAXONE, RENDERMANAGERBACKGROUNDSPEEDXONE);
-		this.backgroundRenderer2 = new BackgroundRendererImpl(GameGraphicsImpl.getBackground2(), RENDERMANAGERBACKGROUNDPARALLAXTWO, RENDERMANAGERBACKGROUNDSPEEDTWO);
-		this.scoreUIRenderer = new ScoreUIRendererImpl(GameGraphicsImpl.getScoreContainer());
+		this.platformRenderer = new PlatformRendererImpl(
+				RENDERMANAGERPLATFORMOUTLINE,
+				RENDERMANAGERPLATFORMARCW,
+				RENDERMANAGERPLATFORMARCH,
+				soundEffectsManager);
+
+		this.coinRenderer = new CoinRendererImpl(
+				GameGraphicsImpl.getCoinSheet(),
+				RENDERMANAGERCOINWIDTH,
+				RENDERMANAGERCOINHEIGHT,
+				RENDERMANAGERCOINFRAMEDURATION,
+				soundEffectsManager);
+
+		this.playerRenderer = new PlayerRendererImpl(
+				GameGraphicsImpl.getPlayerSheet(),
+				RENDERMANAGERPLAYERWIDTH,
+				RENDERMANAGERPLAYERHEIGHT,
+				RENDERMANAGERPLAYERFRAMEDURATION);
+
+		this.backgroundRenderer1 = new BackgroundRendererImpl(
+				GameGraphicsImpl.getBackground_Easy(),
+				GameGraphicsImpl.getBackground_Medium(),
+				GameGraphicsImpl.getBackground_Difficult(),
+				RENDERMANAGERBACKGROUNDPARALLAXONE,
+				RENDERMANAGERBACKGROUNDSPEEDXONE,
+				TRANSITION_DURATION_1);
+
+		this.backgroundRenderer2 = new BackgroundRendererImpl(
+				GameGraphicsImpl.getClouds_Easy(),
+				GameGraphicsImpl.getClouds_Medium(),
+				GameGraphicsImpl.getClouds_Difficult(),
+				RENDERMANAGERBACKGROUNDPARALLAXTWO,
+				RENDERMANAGERBACKGROUNDSPEEDTWO,
+				TRANSITION_DURATION_2);
+
+		this.scoreUIRenderer = new ScoreUIRendererImpl(
+				GameGraphicsImpl.getScoreContainer());
 	}
 
 	/**

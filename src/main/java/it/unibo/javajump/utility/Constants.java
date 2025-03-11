@@ -156,18 +156,25 @@ public final class Constants {
 	public static final float RENDERMANAGERBACKGROUNDPARALLAXTWO = 0.4f;
 	public static final float RENDERMANAGERBACKGROUNDSPEEDXONE = 0;
 	public static final float RENDERMANAGERBACKGROUNDSPEEDTWO = 20;
+	public static final float TRANSITION_DURATION_1 = 0.8f;
+	public static final float TRANSITION_DURATION_2 = 1.2f;
+
 
 	// Audio Manager
-	public static final float AUDIOVOLUME = 0.7f;
-	public static final float AUDIOVOLUMESFX = 0.65f;
-	public static final float AUDIOLOOPEND = 0.885f;
-	public static final int AUDIOLOOPSTART = 0;
+	public static final float MUSIC_VOLUME = 0.7f;
+	public static final float SOUND_EFFECTS_VOLUME = 0.75f;
+
+	public static final int MUSIC_LOOP_START = 0;
+	public static final float MUSIC_LOOP_END = 0.885f;
+
 	public static final int AUDIOFRAMEINIT = 0;
 	public static final int AUDIOSTEPS = 50;
 	public static final int AUDIOSLEEP = 1000;
 
+	public static final int SOUNDS_POOL_SIZE_NUMBER = 5;
+
 	// In game view
-	public static final int INGAMETIMETOGGLE = 1700;
+	public static final int GAMEPLAY_MESSAGE_TIME_TOGGLE = 1700;
 
 	// menu view
 	public static final int MENUVIEWCENTERDIV = 2;
@@ -259,25 +266,36 @@ public final class Constants {
 
 
 	// Resources Path
-	public static final String RESOURCESWINDOWSPATH = "src/main/java/it/unibo/javajump/view/resources/";
-	public static final String RESOURCESTITLE = "JJ_Title.png";
-	public static final String RESOURCESGAMEOVER = "GameOver.png";
-	public static final String RESOURCESPLAYER = "Coffee-SheetBIG.png";
-	public static final String RESOURCESCOIN = "Coin-Sheet.png";
-	public static final String RESOURCESBACKGROUNDONE = "Background_Easy.png";
-	public static final String RESOURCESBACKGROUNDTWO = "Clouds_Easy.png";
-	public static final String RESOURCESSCORECONTAINER = "Score_Underlay_small.png";
-	public static final String RESOURCESMUSIC = "GameMusic.wav";
-	public static final String RESOURCESGAMEFONTONE = "Daydream.ttf";
-	public static final String RESOURCESGAMEFONTTWO = "Daydream.ttf";
-	public static final String RESOURCESGAMEFONTTHREE = "Daydream.ttf";
+	public static final String RESOURCES_PATH = "src/main/java/it/unibo/javajump/view/resources/";
+
+	public static final String RESOURCES_TITLE = "JJ_Title.png";
+	public static final String RESOURCES_SCORE_CONTAINER = "Score_Underlay_small.png";
+	public static final String RESOURCES_GAMEOVER = "GameOver.png";
+	public static final String RESOURCES_PLAYER = "Coffee-SheetBIG.png";
+	public static final String RESOURCES_COIN = "Coin-Sheet.png";
+
+	public static final String RESOURCES_BACKGROUND_EASY = "Background_Easy.png";
+	public static final String RESOURCES_BACKGROUND_MEDIUM = "Background_Med.png";
+	public static final String RESOURCES_BACKGROUND_HARD = "Background_Diff.png";
+
+	public static final String RESOURCES_CLOUDS_EASY = "Clouds_Easy.png";
+	public static final String RESOURCES_CLOUDS_MEDIUM = "Clouds_Med.png";
+	public static final String RESOURCES_CLOUDS_HARD = "Clouds_Diff.png";
+
+	public static final String RESOURCES_FONT_1 = "Daydream.ttf";
+	public static final String RESOURCES_FONT_2 = "Daydream.ttf";
+	public static final String RESOURCES_FONT_3 = "Daydream.ttf";
+
+	public static final int SIZE_FONT_1 = 20;
+	public static final int SIZE_FONT_2 = 15;
+	public static final int SIZE_FONT_3 = 10;
+
+	public static final String RESOURCES_MUSIC_1 = "GameMusic.wav";
+
 	public static final String RESOURCE_BOUNCE_SFX = "Bounce.wav";
 	public static final String RESOURCE_BREAK_SFX = "Break.wav";
 	public static final String RESOURCE_DEFAULT_SFX = "Jump.wav";
 	public static final String RESOURCE_COIN_SFX = "Coin.wav";
-	public static final int SIZEGAMEFONTONE = 20;
-	public static final int SIZEGAMEFONTTWO = 15;
-	public static final int SIZEGAMEFONTTHREE = 10;
 
 
 	private Constants() {

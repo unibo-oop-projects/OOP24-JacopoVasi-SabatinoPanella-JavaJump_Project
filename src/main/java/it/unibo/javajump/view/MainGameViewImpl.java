@@ -39,8 +39,8 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
 
 	public MainGameViewImpl(GameModel model) {
 		this.model = model;
-		this.musicManager = new MusicManagerImpl(RESOURCESWINDOWSPATH + RESOURCESMUSIC, AUDIOVOLUME);
-		SoundEffectsManager soundEffectsManager = new SoundEffectsManager(AUDIOVOLUMESFX);
+		this.musicManager = new MusicManagerImpl(RESOURCES_PATH + RESOURCES_MUSIC_1, MUSIC_VOLUME);
+		SoundEffectsManager soundEffectsManager = new SoundEffectsManager(SOUND_EFFECTS_VOLUME);
 		setDoubleBuffered(true);
 
 		this.virtualWidth = model.getScreenWidth();
@@ -66,7 +66,7 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
 		});
 	}
 
-	
+
 	@Override
 	public void updateView() {
 		GameStateHandler currentHandler = model.getCurrentState();
@@ -91,7 +91,7 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
 		g.drawImage(tempScreen, scaledRect.x, scaledRect.y, scaledRect.width, scaledRect.height, null);
 	}
 
-	
+
 	private void drawToTempScreen() {
 		Graphics2D g2 = tempScreen.createGraphics();
 		g2.setColor(Color.BLACK);

@@ -15,7 +15,7 @@ import static it.unibo.javajump.utility.Constants.*;
 public class SoundEffectsManager {
 	private final float defaultVolume;
 	private final Map<SFXType, Queue<Clip>> clipPools = new HashMap<>();
-	private static final int POOL_SIZE = 5;
+	private static final int POOL_SIZE = SOUNDS_POOL_SIZE_NUMBER;
 
 	public SoundEffectsManager(float defaultVolume) {
 		this.defaultVolume = defaultVolume;
@@ -36,10 +36,10 @@ public class SoundEffectsManager {
 
 	private String getFilePathForType(SFXType type) {
 		return switch (type) {
-			case COIN -> RESOURCESWINDOWSPATH + RESOURCE_COIN_SFX;
-			case BOUNCE -> RESOURCESWINDOWSPATH + RESOURCE_BOUNCE_SFX;
-			case BREAK -> RESOURCESWINDOWSPATH + RESOURCE_BREAK_SFX;
-			case DEFAULT -> RESOURCESWINDOWSPATH + RESOURCE_DEFAULT_SFX;
+			case COIN -> RESOURCES_PATH + RESOURCE_COIN_SFX;
+			case BOUNCE -> RESOURCES_PATH + RESOURCE_BOUNCE_SFX;
+			case BREAK -> RESOURCES_PATH + RESOURCE_BREAK_SFX;
+			case DEFAULT -> RESOURCES_PATH + RESOURCE_DEFAULT_SFX;
 		};
 	}
 
