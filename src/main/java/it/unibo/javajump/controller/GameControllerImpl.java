@@ -6,7 +6,10 @@ import it.unibo.javajump.model.GameModel;
 import it.unibo.javajump.view.GameFrame;
 import it.unibo.javajump.view.MainGameView;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.FPS;
+import static it.unibo.javajump.utility.Constants.NANOSECONDS_PER_SECOND;
+import static it.unibo.javajump.utility.Constants.NULL_DIRECTION;
+import static it.unibo.javajump.utility.Constants.SLEEP_THREAD;
 
 /**
  * Implementation of GameController interface.

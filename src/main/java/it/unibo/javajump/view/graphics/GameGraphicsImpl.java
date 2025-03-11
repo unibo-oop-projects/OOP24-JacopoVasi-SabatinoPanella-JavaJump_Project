@@ -6,7 +6,24 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.RESOURCES_BACKGROUND_EASY;
+import static it.unibo.javajump.utility.Constants.RESOURCES_BACKGROUND_HARD;
+import static it.unibo.javajump.utility.Constants.RESOURCES_BACKGROUND_MEDIUM;
+import static it.unibo.javajump.utility.Constants.RESOURCES_CLOUDS_EASY;
+import static it.unibo.javajump.utility.Constants.RESOURCES_CLOUDS_HARD;
+import static it.unibo.javajump.utility.Constants.RESOURCES_CLOUDS_MEDIUM;
+import static it.unibo.javajump.utility.Constants.RESOURCES_COIN;
+import static it.unibo.javajump.utility.Constants.RESOURCES_FONT_1;
+import static it.unibo.javajump.utility.Constants.RESOURCES_FONT_2;
+import static it.unibo.javajump.utility.Constants.RESOURCES_FONT_3;
+import static it.unibo.javajump.utility.Constants.RESOURCES_GAMEOVER;
+import static it.unibo.javajump.utility.Constants.RESOURCES_PATH;
+import static it.unibo.javajump.utility.Constants.RESOURCES_PLAYER;
+import static it.unibo.javajump.utility.Constants.RESOURCES_SCORE_CONTAINER;
+import static it.unibo.javajump.utility.Constants.RESOURCES_TITLE;
+import static it.unibo.javajump.utility.Constants.SIZE_FONT_1;
+import static it.unibo.javajump.utility.Constants.SIZE_FONT_2;
+import static it.unibo.javajump.utility.Constants.SIZE_FONT_3;
 
 public class GameGraphicsImpl implements GameGraphics {
     private final Font gameFont1;

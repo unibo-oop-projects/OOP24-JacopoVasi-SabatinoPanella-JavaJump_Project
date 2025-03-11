@@ -1,6 +1,11 @@
 package it.unibo.javajump.view.sound.music;
 
-import javax.sound.sampled.*;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.Executors;
@@ -10,7 +15,11 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.AUDIO_FRAME_INIT;
+import static it.unibo.javajump.utility.Constants.AUDIO_SLEEP;
+import static it.unibo.javajump.utility.Constants.AUDIO_STEPS;
+import static it.unibo.javajump.utility.Constants.MUSIC_LOOP_END;
+import static it.unibo.javajump.utility.Constants.MUSIC_LOOP_START;
 
 public class MusicManagerImpl implements MusicManager {
     private Clip backgroundClip;

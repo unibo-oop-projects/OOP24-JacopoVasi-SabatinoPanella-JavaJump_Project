@@ -4,11 +4,36 @@ import it.unibo.javajump.model.entities.character.Character;
 import it.unibo.javajump.model.entities.character.CharacterImpl;
 import it.unibo.javajump.model.entities.collectibles.Coin;
 import it.unibo.javajump.model.entities.collectibles.CoinImpl;
-import it.unibo.javajump.model.entities.platforms.*;
+import it.unibo.javajump.model.entities.platforms.BouncePlatform;
+import it.unibo.javajump.model.entities.platforms.BouncePlatformImpl;
+import it.unibo.javajump.model.entities.platforms.BreakablePlatform;
+import it.unibo.javajump.model.entities.platforms.BreakablePlatformImpl;
+import it.unibo.javajump.model.entities.platforms.MovingPlatform;
+import it.unibo.javajump.model.entities.platforms.MovingPlatformImpl;
+import it.unibo.javajump.model.entities.platforms.Platform;
+import it.unibo.javajump.model.entities.platforms.PlatformImpl;
 
 import java.util.Random;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.BOUNCE_PLATFORM_RNG_FACTOR;
+import static it.unibo.javajump.utility.Constants.BOUNCE_PLATFORM_WIDTH;
+import static it.unibo.javajump.utility.Constants.BREAKABLE_PLATFORM_RNG_FACTOR;
+import static it.unibo.javajump.utility.Constants.BREAKABLE_PLATFORM_WIDTH;
+import static it.unibo.javajump.utility.Constants.CHARACTER_HEIGHT;
+import static it.unibo.javajump.utility.Constants.CHARACTER_JUMP_FORCE;
+import static it.unibo.javajump.utility.Constants.CHARACTER_WIDTH;
+import static it.unibo.javajump.utility.Constants.COIN_HEIGHT;
+import static it.unibo.javajump.utility.Constants.COIN_WIDTH;
+import static it.unibo.javajump.utility.Constants.MOVING_PLATFORM_RANGE;
+import static it.unibo.javajump.utility.Constants.MOVING_PLATFORM_RANGE_RNG_FACTOR;
+import static it.unibo.javajump.utility.Constants.MOVING_PLATFORM_SPEED;
+import static it.unibo.javajump.utility.Constants.MOVING_PLATFORM_SPEED_RNG_FACTOR;
+import static it.unibo.javajump.utility.Constants.MOVING_PLATFORM_WIDTH;
+import static it.unibo.javajump.utility.Constants.MOVING_PLATFORM_WIDTH_RNG_FACTOR;
+import static it.unibo.javajump.utility.Constants.PLATFORM_HEIGHT;
+import static it.unibo.javajump.utility.Constants.RANDOM_PLATFORM_RNG_FACTOR;
+import static it.unibo.javajump.utility.Constants.RANDOM_PLATFORM_WIDTH;
+import static it.unibo.javajump.utility.Constants.STANDARD_PLATFORM_WIDTH;
 
 public class GameObjectFactoryImpl extends AbstractGameObjectFactory {
     private final Random rand = new Random();

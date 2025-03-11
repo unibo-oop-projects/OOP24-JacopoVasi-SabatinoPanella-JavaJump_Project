@@ -2,7 +2,9 @@ package it.unibo.javajump.view;
 
 import java.awt.*;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.MAINVIEWCENTERDIV;
+import static it.unibo.javajump.utility.Constants.MAINVIEWDRAWXINIT;
+import static it.unibo.javajump.utility.Constants.MAINVIEWDRAWYINIT;
 
 public class ScaleUtils {
     public static Rectangle computeScaledRectangle(int virtualWidth, int virtualHeight, Dimension panelSize) {

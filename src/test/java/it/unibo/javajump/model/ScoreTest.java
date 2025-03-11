@@ -5,7 +5,12 @@ import it.unibo.javajump.model.states.ingame.InGameState;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.HARD_MAX;
+import static it.unibo.javajump.utility.Constants.HELL_MAX;
+import static it.unibo.javajump.utility.Constants.MEDIUM_MAX;
+import static it.unibo.javajump.utility.Constants.SCREEN_HEIGHT;
+import static it.unibo.javajump.utility.Constants.SCREEN_WIDTH;
+import static it.unibo.javajump.utility.Constants.VERY_HARD_MAX;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 

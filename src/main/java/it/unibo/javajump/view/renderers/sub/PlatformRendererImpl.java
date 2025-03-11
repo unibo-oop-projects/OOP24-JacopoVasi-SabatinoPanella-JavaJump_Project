@@ -9,7 +9,12 @@ import it.unibo.javajump.view.sound.sfx.SoundEffectsManager;
 
 import java.awt.*;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.BOUNCE_PLATFORM_COLOR;
+import static it.unibo.javajump.utility.Constants.BREAKABLE_PLATFORM_COLOR;
+import static it.unibo.javajump.utility.Constants.MOVING_PLATFORM_COLOR;
+import static it.unibo.javajump.utility.Constants.OUTLINE_COLOR;
+import static it.unibo.javajump.utility.Constants.PLATFORM_HIGHLIGHT_COLOR;
+import static it.unibo.javajump.utility.Constants.STANDARD_PLATFORM_COLOR;
 
 /**
  * Class implementing the PlatformRenderer interface, used to draw a platform.

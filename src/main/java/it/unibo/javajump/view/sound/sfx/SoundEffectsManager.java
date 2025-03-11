@@ -1,6 +1,13 @@
 package it.unibo.javajump.view.sound.sfx;
 
-import javax.sound.sampled.*;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
+import javax.sound.sampled.LineEvent;
+import javax.sound.sampled.LineListener;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -10,7 +17,12 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.RESOURCES_PATH;
+import static it.unibo.javajump.utility.Constants.RESOURCE_BOUNCE_SFX;
+import static it.unibo.javajump.utility.Constants.RESOURCE_BREAK_SFX;
+import static it.unibo.javajump.utility.Constants.RESOURCE_COIN_SFX;
+import static it.unibo.javajump.utility.Constants.RESOURCE_DEFAULT_SFX;
+import static it.unibo.javajump.utility.Constants.SOUNDS_POOL_SIZE_NUMBER;
 
 public class SoundEffectsManager {
     private final float defaultVolume;

@@ -10,7 +10,9 @@ import it.unibo.javajump.view.GameFrameImpl;
 import it.unibo.javajump.view.MainGameView;
 import it.unibo.javajump.view.MainGameViewImpl;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.GAME_TITLE;
+import static it.unibo.javajump.utility.Constants.SCREEN_HEIGHT;
+import static it.unibo.javajump.utility.Constants.SCREEN_WIDTH;
 
 /**
  * Class implementation of the GameInitializer interface, for setting-up the managers and starting the game loop.

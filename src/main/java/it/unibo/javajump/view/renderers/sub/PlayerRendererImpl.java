@@ -6,7 +6,17 @@ import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.FLIP_MAX;
+import static it.unibo.javajump.utility.Constants.FLIP_MIN;
+import static it.unibo.javajump.utility.Constants.PLAYER_ANIMATION_CYCLE_DURATION;
+import static it.unibo.javajump.utility.Constants.PLAYER_JUMP_END_FRAME;
+import static it.unibo.javajump.utility.Constants.PLAYER_JUMP_START_FRAME;
+import static it.unibo.javajump.utility.Constants.PLAYER_LANDING_END_FRAME;
+import static it.unibo.javajump.utility.Constants.PLAYER_LANDING_START_FRAME;
+import static it.unibo.javajump.utility.Constants.RENDER_PLAYER_ANIM_TIMER_INIT;
+import static it.unibo.javajump.utility.Constants.RENDER_PLAYER_FRAME_GET_IMG_Y;
+import static it.unibo.javajump.utility.Constants.RENDER_PLAYER_FRAME_X;
+import static it.unibo.javajump.utility.Constants.RENDER_PLAYER_FRAME_Y;
 
 /**
  * Implementation of the PlayerRenderer interface, used for graphical rendering of the player (animated).

@@ -11,7 +11,11 @@ import it.unibo.javajump.view.renderers.RendererManagerImpl;
 import it.unibo.javajump.view.sound.music.MusicManager;
 import it.unibo.javajump.view.sound.music.MusicManagerImpl;
 import it.unibo.javajump.view.sound.sfx.SoundEffectsManager;
-import it.unibo.javajump.view.viewstates.*;
+import it.unibo.javajump.view.viewstates.GameOverView;
+import it.unibo.javajump.view.viewstates.GameViewState;
+import it.unibo.javajump.view.viewstates.InGameView;
+import it.unibo.javajump.view.viewstates.MenuView;
+import it.unibo.javajump.view.viewstates.PauseView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +23,14 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.image.BufferedImage;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.BACKGROUND_DEFAULT_COLOR;
+import static it.unibo.javajump.utility.Constants.MAINVIEWAUDIOFADE;
+import static it.unibo.javajump.utility.Constants.MAINVIEWRECTX;
+import static it.unibo.javajump.utility.Constants.MAINVIEWRECTY;
+import static it.unibo.javajump.utility.Constants.MUSIC_VOLUME;
+import static it.unibo.javajump.utility.Constants.RESOURCES_MUSIC_1;
+import static it.unibo.javajump.utility.Constants.RESOURCES_PATH;
+import static it.unibo.javajump.utility.Constants.SOUND_EFFECTS_VOLUME;
 
 public class MainGameViewImpl extends JPanel implements MainGameView, GameModelObserver {
 
