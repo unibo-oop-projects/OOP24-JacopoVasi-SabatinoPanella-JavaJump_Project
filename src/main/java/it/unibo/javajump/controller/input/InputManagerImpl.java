@@ -13,17 +13,17 @@ import static it.unibo.javajump.utility.Constants.IMAGE_IMPORT_ERROR_TEXT;
  */
 public class InputManagerImpl implements InputManager {
     /**
-     * Flag to check if the user is pressing the left arrow key
+     * Flag to check if the user is pressing the left arrow key.
      */
     private boolean pressingLeft;
 
     /**
-     * Flag to check if the user is pressing the right arrow key
+     * Flag to check if the user is pressing the right arrow key.
      */
     private boolean pressingRight;
 
     /**
-     * Queue to store the actions of the user
+     * Queue to store the actions of the user.
      */
     private final Queue<GameAction> actionQueue = new ConcurrentLinkedQueue<>();
 
@@ -79,7 +79,7 @@ public class InputManagerImpl implements InputManager {
      * {@inheritDoc}
      */
     @Override
-    public void keyTyped(KeyEvent e) {
+    public void keyTyped(final KeyEvent e) {
         // Not used
     }
 
