@@ -55,7 +55,7 @@ public class PlayerRendererImpl implements PlayerRenderer {
      * @param frameHeight    the height of the player's animation frames
      * @param FRAME_DURATION the duration of each animation frame
      */
-    public PlayerRendererImpl(BufferedImage sheet, int frameWidth, int frameHeight, float FRAME_DURATION) {
+    public PlayerRendererImpl(final BufferedImage sheet, final int frameWidth, final int frameHeight, final float FRAME_DURATION) {
         this.playerSheet = new BufferedImage(sheet.getColorModel(),
                 sheet.copyData(null),
                 sheet.isAlphaPremultiplied(),
@@ -87,11 +87,11 @@ public class PlayerRendererImpl implements PlayerRenderer {
             animTimer += deltaTime;
         }
 
-        int sx = getAnimationFrame(player);
-        BufferedImage frame = playerSheet.getSubimage(sx, RENDER_PLAYER_FRAME_GET_IMG_Y, frameWidth, frameHeight);
+        final int sx = getAnimationFrame(player);
+        final BufferedImage frame = playerSheet.getSubimage(sx, RENDER_PLAYER_FRAME_GET_IMG_Y, frameWidth, frameHeight);
 
-        float drawX = player.getX();
-        float drawY = player.getY() - offsetY;
+        final float drawX = player.getX();
+        final float drawY = player.getY() - offsetY;
 
         flipSheet(g2, player, drawX, drawY, frame);
     }
@@ -109,11 +109,11 @@ public class PlayerRendererImpl implements PlayerRenderer {
      * @param player the player to check
      * @return the right frame to draw
      */
-    private int getAnimationFrame(Character player) {
-        int frameIndex;
+    private int getAnimationFrame(final Character player) {
+        final int frameIndex;
         if (player.isOnPlatform()) {
-            float cycle = FRAME_DURATION * PLAYER_ANIMATION_CYCLE_DURATION; //
-            float t = animTimer % cycle;
+            final float cycle = FRAME_DURATION * PLAYER_ANIMATION_CYCLE_DURATION; //
+            final float t = animTimer % cycle;
             frameIndex = (t < FRAME_DURATION) ? PLAYER_LANDING_START_FRAME : PLAYER_LANDING_END_FRAME;
         } else {
             frameIndex = (animTimer < FRAME_DURATION) ? PLAYER_JUMP_START_FRAME : PLAYER_JUMP_END_FRAME;
@@ -130,8 +130,8 @@ public class PlayerRendererImpl implements PlayerRenderer {
      * @param drawY  the y position to draw
      * @param frame  the frame to draw
      */
-    private void flipSheet(Graphics2D g2, Character player, float drawX, float drawY, BufferedImage frame) {
-        AffineTransform old = g2.getTransform();
+    private void flipSheet(final Graphics2D g2, final Character player, final float drawX, final float drawY, final BufferedImage frame) {
+        final AffineTransform old = g2.getTransform();
         if (!player.isFacingRight()) {
             g2.translate(drawX + frameWidth, drawY);
             g2.scale(FLIP_MIN, FLIP_MAX);

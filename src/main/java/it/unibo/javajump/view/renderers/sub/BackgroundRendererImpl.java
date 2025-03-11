@@ -54,8 +54,8 @@ public class BackgroundRendererImpl implements BackgroundRenderer {
      * @param horizontalSpeed    the speed for horizontal auto-scrolling effect.                        If set to 0, the background will not scroll horizontally.
      * @param transitionDuration the transition duration
      */
-    public BackgroundRendererImpl(BufferedImage bgTileEasy, BufferedImage bgTileMedium, BufferedImage bgTileHard,
-                                  float parallaxFactor, float horizontalSpeed, float transitionDuration) {
+    public BackgroundRendererImpl(final BufferedImage bgTileEasy, final BufferedImage bgTileMedium, final BufferedImage bgTileHard,
+                                  final float parallaxFactor, final float horizontalSpeed, final float transitionDuration) {
         this.bgTileEasy = bgTileEasy;
         this.bgTileMedium = bgTileMedium;
         this.bgTileHard = bgTileHard;
@@ -70,7 +70,7 @@ public class BackgroundRendererImpl implements BackgroundRenderer {
         this.transitionTimer = BG_TRANSITION_TIMER_INIT;
     }
 
-    private BufferedImage selectBackground(DifficultyState diff) {
+    private BufferedImage selectBackground(final DifficultyState diff) {
         return switch (diff) {
             case EASY, MEDIUM -> bgTileEasy;
             case HARD, VERY_HARD -> bgTileMedium;
@@ -78,9 +78,9 @@ public class BackgroundRendererImpl implements BackgroundRenderer {
         };
     }
 
-    private void updateTransition(DifficultyState currentDiff) {
-        BufferedImage newBg = selectBackground(currentDiff);
-        if (newBg != currentBg && !inTransition) {
+    private void updateTransition(final DifficultyState currentDiff) {
+        final BufferedImage newBg = selectBackground(currentDiff);
+        if (!newBg.equals(currentBg) && !inTransition) {
             targetBg = newBg;
             inTransition = true;
             transitionTimer = 0;
@@ -97,10 +97,10 @@ public class BackgroundRendererImpl implements BackgroundRenderer {
      *
      * @param deltaTime time passed since the last update (in seconds)
      */
-    private void updateHorizontalOffset(float deltaTime) {
+    private void updateHorizontalOffset(final float deltaTime) {
         if (horizontalSpeed != BG_HORIZONTAL_NULL_SPEED) {
             horizontalOffset += horizontalSpeed * deltaTime;
-            int tileW = currentBg.getWidth();
+            final int tileW = currentBg.getWidth();
             if (horizontalOffset >= tileW) {
                 horizontalOffset -= tileW;
             } else if (horizontalOffset < BG_HORIZONTAL_OFFSET_INIT) {
@@ -117,47 +117,47 @@ public class BackgroundRendererImpl implements BackgroundRenderer {
      * of the bgTile image, and drawing each tile in the correct position, applying offsets.
      */
     @Override
-    public void drawBackground(Graphics2D g2, GameModel model, float deltaTime) {
+    public void drawBackground(final Graphics2D g2, final GameModel model, final float deltaTime) {
         updateHorizontalOffset(deltaTime);
         updateTransition(model.getDifficultyManager().getCurrentDifficulty());
 
-        int screenW = model.getScreenWidth();
-        int screenH = model.getScreenHeight();
-        float cameraOffset = model.getCameraManager().getCurrentOffset();
-        float verticalOffset = cameraOffset * parallaxFactor;
+        final int screenW = model.getScreenWidth();
+        final int screenH = model.getScreenHeight();
+        final float cameraOffset = model.getCameraManager().getCurrentOffset();
+        final float verticalOffset = cameraOffset * parallaxFactor;
 
-        int tileW = currentBg.getWidth();
-        int tileH = currentBg.getHeight();
+        final int tileW = currentBg.getWidth();
+        final int tileH = currentBg.getHeight();
 
-        int shiftY = (int) (verticalOffset) % tileH;
+        int shiftY = (int) verticalOffset % tileH;
         if (shiftY < SCREEN_LEFT_MARGIN) {
             shiftY += tileH;
         }
-        int shiftX = (int) horizontalOffset;
+        final int shiftX = (int) horizontalOffset;
 
-        int verticalTiles = (screenH / tileH) + BG_EXTRA_TILES_NUMBER;
-        int horizontalTiles = (screenW / tileW) + BG_EXTRA_TILES_NUMBER;
+        final int verticalTiles = (screenH / tileH) + BG_EXTRA_TILES_NUMBER;
+        final int horizontalTiles = (screenW / tileW) + BG_EXTRA_TILES_NUMBER;
 
         if (inTransition) {
             transitionTimer += deltaTime;
-            float alpha = Math.min(transitionTimer / transitionDuration, 1.0f);
+            final float alpha = Math.min(transitionTimer / transitionDuration, 1.0f);
 
-            Composite originalComposite = g2.getComposite();
+            final Composite originalComposite = g2.getComposite();
 
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1 - alpha));
             for (int i = 0; i < verticalTiles; i++) {
-                int drawY = -shiftY + i * tileH;
+                final int drawY = -shiftY + i * tileH;
                 for (int j = 0; j < horizontalTiles; j++) {
-                    int drawX = -shiftX + j * tileW;
+                    final int drawX = -shiftX + j * tileW;
                     g2.drawImage(currentBg, drawX, drawY, null);
                 }
             }
 
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
             for (int i = 0; i < verticalTiles; i++) {
-                int drawY = -shiftY + i * tileH;
+                final int drawY = -shiftY + i * tileH;
                 for (int j = 0; j < horizontalTiles; j++) {
-                    int drawX = -shiftX + j * tileW;
+                    final int drawX = -shiftX + j * tileW;
                     g2.drawImage(targetBg, drawX, drawY, null);
                 }
             }
@@ -170,9 +170,9 @@ public class BackgroundRendererImpl implements BackgroundRenderer {
             }
         } else {
             for (int i = 0; i < verticalTiles; i++) {
-                int drawY = -shiftY + i * tileH;
+                final int drawY = -shiftY + i * tileH;
                 for (int j = 0; j < horizontalTiles; j++) {
-                    int drawX = -shiftX + j * tileW;
+                    final int drawX = -shiftX + j * tileW;
                     g2.drawImage(currentBg, drawX, drawY, null);
                 }
             }

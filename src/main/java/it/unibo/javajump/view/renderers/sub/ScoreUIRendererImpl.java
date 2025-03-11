@@ -28,6 +28,7 @@ public class ScoreUIRendererImpl implements ScoreUIRenderer {
     private final Font gameFont2;
     private final Font gameFont3;
 
+
     /**
      * Constructor of the ScoreUIRendererImpl class.
      *
@@ -36,7 +37,7 @@ public class ScoreUIRendererImpl implements ScoreUIRenderer {
      * @param font2     the font 2
      * @param font3     the font 3
      */
-    public ScoreUIRendererImpl(BufferedImage container, Font font1, Font font2, Font font3) {
+    public ScoreUIRendererImpl(final BufferedImage container, final Font font1, final Font font2, final Font font3) {
         this.scoreContainer = container;
         this.gameFont1 = font1;
         this.gameFont2 = font2;
@@ -50,24 +51,24 @@ public class ScoreUIRendererImpl implements ScoreUIRenderer {
      * It also shows a message if the score is a new high score.
      */
     @Override
-    public void drawScoreAndUI(Graphics2D g2, GameModel model, boolean isNewHighScore, boolean showHighScoreMessage) {
+    public void drawScoreAndUI(final Graphics2D g2, final GameModel model, boolean isNewHighScore, final boolean showHighScoreMessage) {
         g2.drawImage(scoreContainer, RENDER_UI_SCORE_CONTAINER_X, RENDER_UI_SCORE_CONTAINER_Y, null);
-        int score = model.getScore();
-        int bestScore = model.getScoreManager().getBestScore();
-
+        final int score = model.getScore();
+        final int bestScore = model.getScoreManager().getBestScore();
+        boolean isNewHighScoreLocal;
         if (score < bestScore || score == 0) {
             g2.setColor(Color.WHITE);
             g2.setFont(gameFont2);
             g2.drawString(SCORE_RENDER_TEXT + score, SCORE_RENDER_X_POSITION, SCORE_RENDER_Y_POSITION);
-            isNewHighScore = false;
+            isNewHighScoreLocal = false;
         } else {
             g2.setColor(Color.decode(GOLD_TEXT_COLOR));
             g2.setFont(gameFont2);
             g2.drawString(SCORE_RENDER_TEXT + score, SCORE_RENDER_X_POSITION, SCORE_RENDER_Y_POSITION);
-            isNewHighScore = true;
+            isNewHighScoreLocal = true;
         }
 
-        if (isNewHighScore && showHighScoreMessage) {
+        if (isNewHighScoreLocal && showHighScoreMessage) {
             g2.setColor(Color.decode(RED_TEXT_COLOR));
             g2.setFont(gameFont3);
             g2.drawString(HIGH_SCORE_RENDER_TEXT, HIGH_SCORE_RENDER_X_POSITION, HIGH_SCORE_RENDER_Y_POSITION);
