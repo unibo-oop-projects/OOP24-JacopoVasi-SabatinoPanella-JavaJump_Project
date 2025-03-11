@@ -46,12 +46,16 @@ public class PlayerRendererImpl implements PlayerRenderer {
      * @param FRAME_DURATION the duration of each animation frame
      */
     public PlayerRendererImpl(BufferedImage sheet, int frameWidth, int frameHeight, float FRAME_DURATION) {
-        this.playerSheet = sheet;
+        this.playerSheet = new BufferedImage(sheet.getColorModel(),
+                sheet.copyData(null),
+                sheet.isAlphaPremultiplied(),
+                null);
         this.frameWidth = frameWidth;
         this.frameHeight = frameHeight;
         this.prevOnPlatform = false;
         this.animTimer = RENDER_PLAYER_ANIM_TIMER_INIT;
         this.FRAME_DURATION = FRAME_DURATION;
+
     }
 
     /**

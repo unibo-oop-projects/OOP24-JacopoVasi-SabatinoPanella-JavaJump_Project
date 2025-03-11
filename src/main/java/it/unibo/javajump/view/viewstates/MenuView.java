@@ -43,12 +43,12 @@ public class MenuView implements GameViewState {
 
         g.setColor(Color.decode(GOLD_TEXT_COLOR));
         Stroke dashed = new BasicStroke(MENUVIEWSTOKEWIDTH, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, MENUVIEWSTROKEMITERLIMIT, new float[]{MENUVIEWSTROKEARRAY}, MENUVIEWSTROKEDASH);
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.setStroke(dashed);
-        g2d.drawRoundRect((centerX / MENUVIEWROUNDRECTXDIV) - MENUVIEWROUNDRECTXOFF, height - MENUVIEWROUNDRECTYOFF, MENUVIEWROUNDRECTWIDTH, MENUVIEWROUNDRECTHEIGHT, MENUVIEWROUNDRECTARCW, MENUVIEWROUNDRECTARCH);
-        g.setFont(font2);
-        g.drawString(MENUVIEWBESTSCORETEXT + bestScore, centerX / MENUVIEWBESTSCOREXDIV, height - MENUVIEWBESTSCOREYOFF);
-
+        if (g instanceof Graphics2D g2d) {
+            g2d.setStroke(dashed);
+            g2d.drawRoundRect((centerX / MENUVIEWROUNDRECTXDIV) - MENUVIEWROUNDRECTXOFF, height - MENUVIEWROUNDRECTYOFF, MENUVIEWROUNDRECTWIDTH, MENUVIEWROUNDRECTHEIGHT, MENUVIEWROUNDRECTARCW, MENUVIEWROUNDRECTARCH);
+            g.setFont(font2);
+            g.drawString(MENUVIEWBESTSCORETEXT + bestScore, centerX / MENUVIEWBESTSCOREXDIV, height - MENUVIEWBESTSCOREYOFF);
+        }
     }
 
     @Override

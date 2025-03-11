@@ -1,7 +1,7 @@
 package it.unibo.javajump.utility;
 
 
-public final class Constants {
+public final class   Constants {
 
     //MAIN
     public static final int SCREEN_WIDTH = 600;

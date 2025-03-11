@@ -33,10 +33,28 @@ public class InputManagerImpl implements InputManager {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_LEFT -> pressingLeft = true;
             case KeyEvent.VK_RIGHT -> pressingRight = true;
-            case KeyEvent.VK_ENTER -> actionQueue.offer(GameAction.CONFIRM_SELECTION);
-            case KeyEvent.VK_UP -> actionQueue.offer(GameAction.MOVE_MENU_UP);
-            case KeyEvent.VK_DOWN -> actionQueue.offer(GameAction.MOVE_MENU_DOWN);
-            case KeyEvent.VK_ESCAPE -> actionQueue.offer(GameAction.PAUSE_GAME);
+            case KeyEvent.VK_ENTER -> {
+                if (!actionQueue.offer(GameAction.CONFIRM_SELECTION)) {
+                    throw new IllegalStateException("GameAction Queue is full, cannot add: " + GameAction.CONFIRM_SELECTION);
+                }
+
+            }
+
+            case KeyEvent.VK_UP -> {
+                if (!actionQueue.offer(GameAction.MOVE_MENU_UP)) {
+                    throw new IllegalStateException("GameAction Queue is full, cannot add: " + GameAction.MOVE_MENU_UP);
+                }
+            }
+            case KeyEvent.VK_DOWN -> {
+                if (!actionQueue.offer(GameAction.MOVE_MENU_DOWN)) {
+                    throw new IllegalStateException("GameAction Queue is full, cannot add: " + GameAction.MOVE_MENU_DOWN);
+                }
+            }
+            case KeyEvent.VK_ESCAPE -> {
+                if (!actionQueue.offer(GameAction.PAUSE_GAME)) {
+                    throw new IllegalStateException("GameAction Queue is full, cannot add: " + GameAction.PAUSE_GAME);
+                }
+            }
             default -> {
             }
         }

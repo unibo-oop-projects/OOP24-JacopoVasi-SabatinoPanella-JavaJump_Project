@@ -1,5 +1,7 @@
 package it.unibo.javajump.view.sound.sfx;
 
+import it.unibo.javajump.controller.input.GameAction;
+
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
@@ -26,7 +28,9 @@ public class SoundEffectsManager {
                 Clip clip = loadClip(getFilePathForType(type));
                 if (clip != null) {
                     setVolumeForClip(clip, defaultVolume);
-                    pool.offer(clip);
+                    if (!pool.offer(clip)) {
+                        throw new IllegalStateException("GameAction Queue is full, cannot add: " + clip);
+                    }
                 }
             }
             clipPools.put(type, pool);
@@ -87,7 +91,10 @@ public class SoundEffectsManager {
                 public void update(LineEvent event) {
                     if (event.getType() == LineEvent.Type.STOP) {
                         finalClip.removeLineListener(this);
-                        pool.offer(finalClip);
+
+                        if (!pool.offer(finalClip)) {
+                            throw new IllegalStateException("GameAction Queue is full, cannot add: " + finalClip);
+                        }
                     }
                 }
             });

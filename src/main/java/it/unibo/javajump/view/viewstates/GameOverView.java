@@ -53,44 +53,45 @@ public class GameOverView implements GameViewState {
     @Override
     public void draw(Graphics g, GameModel model) {
         this.deltaTime = model.getDeltaTime();
-        Graphics2D g2 = (Graphics2D) g;
-        Composite oldComposite = g2.getComposite();
+        if (g instanceof Graphics2D g2) {
+            Composite oldComposite = g2.getComposite();
 
-        int w = model.getScreenWidth();
-        int h = model.getScreenHeight();
+            int w = model.getScreenWidth();
+            int h = model.getScreenHeight();
 
-        int centerX = w / GAMEOVERCENTERDIV;
-        int centerY = h / GAMEOVERCENTERDIV;
+            int centerX = w / GAMEOVERCENTERDIV;
+            int centerY = h / GAMEOVERCENTERDIV;
 
-        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, fadeAlpha));
-        g2.setColor(Color.decode(BACKGROUND_DEFAULT_COLOR));
-        g2.fillRect(GAMEOVERRECTX, GAMEOVERRECTY, w, h);
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, fadeAlpha));
+            g2.setColor(Color.decode(BACKGROUND_DEFAULT_COLOR));
+            g2.fillRect(GAMEOVERRECTX, GAMEOVERRECTY, w, h);
 
-        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, GAMEOVERALPHA));
-        g2.drawImage(gameoverImage, (int) (centerX - gameoverImage.getWidth() / GAMEOVERIMGWOFF), (int) (centerY - h * GAMEOVERIMGHOFF), (int) (gameoverImage.getWidth() * GAMEOVERIMGSCALEOFF), (int) (gameoverImage.getHeight() * GAMEOVERIMGSCALEOFF), null);
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, GAMEOVERALPHA));
+            g2.drawImage(gameoverImage, (int) (centerX - gameoverImage.getWidth() / GAMEOVERIMGWOFF), (int) (centerY - h * GAMEOVERIMGHOFF), (int) (gameoverImage.getWidth() * GAMEOVERIMGSCALEOFF), (int) (gameoverImage.getHeight() * GAMEOVERIMGSCALEOFF), null);
 
-        if (fadeAlpha >= GAMEOVERALPHA) {
-            if (model.getScoreManager().isBestScoreReached()) {
-                g.setColor(Color.decode(GOLD_TEXT_COLOR));
-                g.setFont(gameFont2);
-                g.drawString(GAMEOVERNEWTEXT + model.getScoreManager().getBestScore() + GAMEOVERNEWTEXTESC, (int) (centerX * GAMEOVERTEXTXOFF), centerY + GAMEOVERTEXTNEWYOFF);
-            } else {
-                g.setColor(Color.WHITE);
-                g.setFont(gameFont2);
-                g.drawString(GAMEOVERSCORETEXT + model.getScore(), (int) (centerX * GAMEOVERTEXTXOFF), centerY + GAMEOVERTEXTSCOREYOFF);
+            if (fadeAlpha >= GAMEOVERALPHA) {
+                if (model.getScoreManager().isBestScoreReached()) {
+                    g.setColor(Color.decode(GOLD_TEXT_COLOR));
+                    g.setFont(gameFont2);
+                    g.drawString(GAMEOVERNEWTEXT + model.getScoreManager().getBestScore() + GAMEOVERNEWTEXTESC, (int) (centerX * GAMEOVERTEXTXOFF), centerY + GAMEOVERTEXTNEWYOFF);
+                } else {
+                    g.setColor(Color.WHITE);
+                    g.setFont(gameFont2);
+                    g.drawString(GAMEOVERSCORETEXT + model.getScore(), (int) (centerX * GAMEOVERTEXTXOFF), centerY + GAMEOVERTEXTSCOREYOFF);
 
-                g.setColor(Color.decode(RED_TEXT_COLOR));
-                g.setFont(gameFont3);
-                g.drawString(GAMEOVERBESTTEXT + model.getScoreManager().getBestScore(), (int) (centerX * GAMEOVERTEXTXOFF), centerY + GAMEOVERTEXTBESTYOFF);
+                    g.setColor(Color.decode(RED_TEXT_COLOR));
+                    g.setFont(gameFont3);
+                    g.drawString(GAMEOVERBESTTEXT + model.getScoreManager().getBestScore(), (int) (centerX * GAMEOVERTEXTXOFF), centerY + GAMEOVERTEXTBESTYOFF);
+                }
+
+                g2.setColor(Color.decode(RED_TEXT_COLOR));
+                g2.setFont(gameFont3);
+                g2.drawString(GAMEOVERCONTINUETEXT, (int) (centerX * GAMEOVERTEXTXOFF), centerY + GAMEOVERTEXTCONTINUEYOFF);
+
             }
 
-            g2.setColor(Color.decode(RED_TEXT_COLOR));
-            g2.setFont(gameFont3);
-            g2.drawString(GAMEOVERCONTINUETEXT, (int) (centerX * GAMEOVERTEXTXOFF), centerY + GAMEOVERTEXTCONTINUEYOFF);
 
+            g2.setComposite(oldComposite);
         }
-
-
-        g2.setComposite(oldComposite);
     }
 }
