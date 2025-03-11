@@ -171,7 +171,8 @@ public class RendererManagerImpl implements RenderManager {
      * to draw the score and UI elements.
      */
     @Override
-    public void drawScoreUI(final Graphics2D g2, final GameModel model, final boolean isNewHighScore, final boolean showHighScoreMessage) {
+    public void drawScoreUI(final Graphics2D g2, final GameModel model,
+                            final boolean isNewHighScore, final boolean showHighScoreMessage) {
         scoreUIRenderer.drawScoreAndUI(g2, model, isNewHighScore, showHighScoreMessage);
     }
 }

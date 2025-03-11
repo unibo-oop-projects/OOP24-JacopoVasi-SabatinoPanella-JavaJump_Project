@@ -20,21 +20,21 @@ import static it.unibo.javajump.utility.Constants.SCREEN_LEFT_MARGIN;
  */
 public class BackgroundRendererImpl implements BackgroundRenderer {
     /**
-     * Image tile of the background
+     * Image tile of the background.
      */
     private final BufferedImage bgTileEasy;
     private final BufferedImage bgTileMedium;
     private final BufferedImage bgTileHard;
     /**
-     * Factor for vertical parallax effect
+     * Factor for vertical parallax effect.
      */
     private final float parallaxFactor;
     /**
-     * Factor for horizontal auto-scrolling effect velocity
+     * Factor for horizontal auto-scrolling effect velocity.
      */
     private final float horizontalSpeed;
     /**
-     * Current horizontal offset, used for auto-scrolling
+     * Current horizontal offset, used for auto-scrolling.
      */
     private float horizontalOffset;
 
@@ -51,11 +51,13 @@ public class BackgroundRendererImpl implements BackgroundRenderer {
      * @param bgTileMedium       the bg tile medium
      * @param bgTileHard         the bg tile hard
      * @param parallaxFactor     the factor for vertical parallax effect
-     * @param horizontalSpeed    the speed for horizontal auto-scrolling effect.                        If set to 0, the background will not scroll horizontally.
+     * @param horizontalSpeed    the speed for horizontal auto-scrolling effect.
+     *                          If set to 0, the background will not scroll horizontally.
      * @param transitionDuration the transition duration
      */
-    public BackgroundRendererImpl(final BufferedImage bgTileEasy, final BufferedImage bgTileMedium, final BufferedImage bgTileHard,
-                                  final float parallaxFactor, final float horizontalSpeed, final float transitionDuration) {
+    public BackgroundRendererImpl(final BufferedImage bgTileEasy, final BufferedImage bgTileMedium,
+                                  final BufferedImage bgTileHard, final float parallaxFactor,
+                                  final float horizontalSpeed, final float transitionDuration) {
         this.bgTileEasy = bgTileEasy;
         this.bgTileMedium = bgTileMedium;
         this.bgTileHard = bgTileHard;
