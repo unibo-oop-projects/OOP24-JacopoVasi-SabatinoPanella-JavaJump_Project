@@ -1,7 +1,5 @@
 package it.unibo.javajump.view.sound.sfx;
 
-import it.unibo.javajump.controller.input.GameAction;
-
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;

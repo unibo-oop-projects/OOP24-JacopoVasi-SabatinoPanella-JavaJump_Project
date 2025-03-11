@@ -15,9 +15,6 @@ public class InGameView implements GameViewState {
 
     private final RenderManager renderer;
 
-    private boolean debugMode = false;
-
-    private boolean isNewHighScore = false;
     private boolean showHighScoreMessage = true;
     private long lastToggleTime = System.currentTimeMillis();
 
@@ -44,6 +41,7 @@ public class InGameView implements GameViewState {
             float cameraOffsetY = model.getCameraManager().getCurrentOffset();
 
 
+            boolean debugMode = false;
             if (debugMode) {
                 g2.setColor(Color.RED);
                 for (GameObject obj : snapshot) {
@@ -74,6 +72,7 @@ public class InGameView implements GameViewState {
                 showHighScoreMessage = !showHighScoreMessage;
                 lastToggleTime = now;
             }
+            boolean isNewHighScore = false;
             renderer.drawScoreUI(g2, model, isNewHighScore, showHighScoreMessage);
         }
     }
