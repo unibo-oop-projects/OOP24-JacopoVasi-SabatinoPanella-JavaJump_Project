@@ -55,7 +55,7 @@ public final class Constants {
     /**
      * The constant DECELERATION: specifies the deceleration applied to the player.
      */
-    public static final float DECELERATION = 15000;
+    public static final float DECELERATION = 15_000;
 
 
     //Controller ----------------------------------------------------------------------------
@@ -73,7 +73,7 @@ public final class Constants {
     /**
      * The constant NANOSECONDS_PER_SECOND: specifies the number of nanoseconds in a second.
      */
-    public static final double NANOSECONDS_PER_SECOND = 1000000000;
+    public static final double NANOSECONDS_PER_SECOND = 1_000_000_000;
 
     /**
      * The constant NULL_DIRECTION.
@@ -362,12 +362,12 @@ public final class Constants {
     /**
      * The constant HELL_MIN: specifies the minimum score for the hell difficulty setting.
      */
-    public static final int HELL_MIN = 16000;
+    public static final int HELL_MIN = 16_000;
 
     /**
      * The constant HELL_MAX: specifies the maximum score for the hell difficulty setting.
      */
-    public static final int HELL_MAX = 25000;
+    public static final int HELL_MAX = 25_000;
 
     /**
      * The constant VERY_HARD_MIN: specifies the minimum score for the very hard difficulty setting.
@@ -377,12 +377,12 @@ public final class Constants {
     /**
      * The constant VERY_HARD_MAX: specifies the maximum score for the very hard difficulty setting.
      */
-    public static final int VERY_HARD_MAX = 10000;
+    public static final int VERY_HARD_MAX = 10_000;
 
     /**
      * The constant HARD_MIN: specifies the minimum score for the hard difficulty setting.
      */
-    public static final int HARD_MIN = 4000;
+    public static final int HARD_MIN = 4_000;
 
     /**
      * The constant HARD_MAX: specifies the maximum score for the hard difficulty setting.

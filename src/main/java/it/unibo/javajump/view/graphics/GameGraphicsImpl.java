@@ -62,69 +62,73 @@ public class GameGraphicsImpl implements GameGraphics {
         }
     }
 
-    private BufferedImage copyImage(BufferedImage source) {
+    private BufferedImage copyImage(final BufferedImage source) {
         if (source == null) {
             return null;
         }
-        BufferedImage copy = new BufferedImage(source.getWidth(), source.getHeight(), source.getType());
-        Graphics2D g2d = copy.createGraphics();
+        final BufferedImage copy = new BufferedImage(source.getWidth(), source.getHeight(), source.getType());
+        final Graphics2D g2d = copy.createGraphics();
         g2d.drawImage(source, 0, 0, null);
         g2d.dispose();
         return copy;
     }
 
+    @Override
     public Font getGameFont1() {
         return gameFont1;
     }
 
+    @Override
     public Font getGameFont2() {
         return gameFont2;
     }
 
+    @Override
     public Font getGameFont3() {
         return gameFont3;
     }
 
+    @Override
     public BufferedImage getPlayerSheet() {
         return copyImage(playerSheet);
     }
-
+    @Override
     public BufferedImage getBackground_Easy() {
         return copyImage(backgroundEasy);
     }
-
+    @Override
     public BufferedImage getClouds_Easy() {
         return copyImage(cloudsEasy);
     }
-
+    @Override
     public BufferedImage getBackground_Medium() {
         return copyImage(backgroundMedium);
     }
-
+    @Override
     public BufferedImage getClouds_Medium() {
         return copyImage(cloudsMedium);
     }
-
+    @Override
     public BufferedImage getBackground_Difficult() {
         return copyImage(backgroundDifficult);
     }
-
+    @Override
     public BufferedImage getClouds_Difficult() {
         return copyImage(cloudsDifficult);
     }
-
+    @Override
     public BufferedImage getCoinSheet() {
         return copyImage(coinSheet);
     }
-
+    @Override
     public BufferedImage getGameOver() {
         return copyImage(gameOver);
     }
-
+    @Override
     public BufferedImage getTitle() {
         return copyImage(title);
     }
-
+    @Override
     public BufferedImage getScoreContainer() {
         return copyImage(scoreContainer);
     }

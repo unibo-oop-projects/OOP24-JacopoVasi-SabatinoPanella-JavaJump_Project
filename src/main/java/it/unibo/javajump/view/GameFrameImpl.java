@@ -13,26 +13,28 @@ import static it.unibo.javajump.utility.Constants.SCREEN_WIDTH;
 
 public class GameFrameImpl extends JFrame implements GameFrame {
 
-    public GameFrameImpl(String title) {
+    public GameFrameImpl(final String title) {
         this.setTitle(title);
         this.addComponentListener(new ComponentAdapter() {
             @Override
-            public void componentResized(ComponentEvent e) {
+            public void componentResized(final ComponentEvent e) {
                 GameFrameImpl.this.setPreferredSize(e.getComponent().getSize());
                 GameFrameImpl.this.pack();
             }
         });
     }
 
-    public void setUp(InputManager inputManager, int height, int width, MainGameView view) {
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    @Override
+    public void setUp(final InputManager inputManager, int height, int width, final MainGameView view) {
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
         this.addKeyListener(inputManager);
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.setExtendedState(MAXIMIZED_BOTH);
         this.add((Component) view);
         this.setVisible(true);
     }
 
+    @Override
     public void closeGame() {
         this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
     }

@@ -50,17 +50,17 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
 
     private final MusicManager musicManager;
 
-    public MainGameViewImpl(GameModel model) {
-        GameGraphics gameGraphics = new GameGraphicsImpl();
+    public MainGameViewImpl(final GameModel model) {
+        final GameGraphics gameGraphics = new GameGraphicsImpl();
         this.model = model;
         this.musicManager = new MusicManagerImpl(RESOURCES_PATH + RESOURCES_MUSIC_1, MUSIC_VOLUME);
-        SoundEffectsManager soundEffectsManager = new SoundEffectsManager(SOUND_EFFECTS_VOLUME);
+        final SoundEffectsManager soundEffectsManager = new SoundEffectsManager(SOUND_EFFECTS_VOLUME);
         setDoubleBuffered(true);
 
         this.virtualWidth = model.getScreenWidth();
         this.virtualHeight = model.getScreenHeight();
 
-        RenderManager rendererManager = new RendererManagerImpl(soundEffectsManager, gameGraphics);
+        final RenderManager rendererManager = new RendererManagerImpl(soundEffectsManager, gameGraphics);
         setBackground(Color.decode(BACKGROUND_DEFAULT_COLOR));
 
         this.menuView = new MenuView(gameGraphics);
@@ -83,8 +83,8 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
 
     @Override
     public void updateView() {
-        GameStateHandler currentHandler = model.getCurrentState();
-        GameState gs = currentHandler.getGameState();
+        final GameStateHandler currentHandler = model.getCurrentState();
+        final GameState gs = currentHandler.getGameState();
         if (gs == GameState.GAME_OVER) {
             gameOverView.update();
         } else {
@@ -95,11 +95,11 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
 
 
     @Override
-    protected void paintComponent(Graphics g) {
+    protected void paintComponent(final Graphics g) {
         super.paintComponent(g);
         drawToTempScreen();
 
-        Rectangle scaledRect = ScaleUtils.computeScaledRectangle(virtualWidth, virtualHeight, getSize());
+        final Rectangle scaledRect = ScaleUtils.computeScaledRectangle(virtualWidth, virtualHeight, getSize());
         g.setColor(Color.decode(BACKGROUND_DEFAULT_COLOR));
         g.fillRect(MAIN_VIEW_RECT_X, MAIN_VIEW_RECT_Y, getWidth(), getHeight());
         g.drawImage(tempScreen, scaledRect.x, scaledRect.y, scaledRect.width, scaledRect.height, null);
@@ -107,11 +107,11 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
 
 
     private void drawToTempScreen() {
-        Graphics2D g2 = tempScreen.createGraphics();
+        final Graphics2D g2 = tempScreen.createGraphics();
         g2.setColor(Color.BLACK);
         g2.fillRect(MAIN_VIEW_RECT_X, MAIN_VIEW_RECT_Y, virtualWidth, virtualHeight);
 
-        GameState currentState = model.getCurrentState().getGameState();
+        final GameState currentState = model.getCurrentState().getGameState();
         switch (currentState) {
             case MENU -> menuView.draw(g2, model);
             case IN_GAME -> inGameView.draw(g2, model);
@@ -120,15 +120,14 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
                 inGameView.draw(g2, model);
                 gameOverView.draw(g2, model);
             }
-            default -> {
-            }
+
         }
         g2.dispose();
     }
 
     @Override
-    public void onModelUpdate(GameModel model) {
-        GameState currentState = model.getCurrentState().getGameState();
+    public void onModelUpdate(final GameModel model) {
+        final GameState currentState = model.getCurrentState().getGameState();
 
         if (currentState != lastState) {
             switch (currentState) {
@@ -146,8 +145,7 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
                     musicManager.fadeOut(MAIN_VIEW_AUDIO_FADE);
                     gameOverView.startFade();
                 }
-                default -> {
-                }
+
             }
         }
         lastState = currentState;
