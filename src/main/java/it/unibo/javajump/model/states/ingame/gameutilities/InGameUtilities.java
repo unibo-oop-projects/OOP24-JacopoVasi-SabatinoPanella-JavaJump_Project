@@ -1,11 +1,12 @@
 package it.unibo.javajump.model.states.ingame.gameutilities;
 
 import it.unibo.javajump.model.GameModel;
-import it.unibo.javajump.model.physics.MovementDirection;
 import it.unibo.javajump.model.entities.character.Character;
+import it.unibo.javajump.model.physics.MovementDirection;
 import it.unibo.javajump.model.states.gameover.GameOverState;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.NULLDIRECTION;
+import static it.unibo.javajump.utility.Constants.SCREENLEFTMARGIN;
 
 /**
  * utility class for the InGameState, specifies some useful static methods

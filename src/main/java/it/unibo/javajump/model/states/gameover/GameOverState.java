@@ -6,7 +6,6 @@ import it.unibo.javajump.model.states.GameState;
 import it.unibo.javajump.model.states.GameStateHandler;
 import it.unibo.javajump.model.states.menu.MenuState;
 
-
 import java.util.Objects;
 
 public class GameOverState implements GameStateHandler {

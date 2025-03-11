@@ -3,11 +3,7 @@ package it.unibo.javajump.view.renderers;
 import it.unibo.javajump.model.GameModel;
 import it.unibo.javajump.model.entities.character.Character;
 import it.unibo.javajump.model.entities.collectibles.Coin;
-import it.unibo.javajump.model.entities.platforms.BouncePlatform;
-import it.unibo.javajump.model.entities.platforms.BreakablePlatform;
 import it.unibo.javajump.model.entities.platforms.Platform;
-import it.unibo.javajump.view.sound.sfx.SFXType;
-import it.unibo.javajump.view.sound.sfx.SoundEffectsManager;
 
 import java.awt.*;
 

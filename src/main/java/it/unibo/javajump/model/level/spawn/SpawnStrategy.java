@@ -1,8 +1,6 @@
 package it.unibo.javajump.model.level.spawn;
 
 import it.unibo.javajump.model.GameModel;
-import it.unibo.javajump.model.GameModelImpl;
-import it.unibo.javajump.model.factories.AbstractGameObjectFactory;
 import it.unibo.javajump.model.factories.GameObjectFactory;
 
 public interface SpawnStrategy {

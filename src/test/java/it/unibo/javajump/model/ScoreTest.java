@@ -1,7 +1,6 @@
 package it.unibo.javajump.model;
 
 import it.unibo.javajump.model.level.spawn.difficulty.DifficultyState;
-
 import it.unibo.javajump.model.states.ingame.InGameState;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

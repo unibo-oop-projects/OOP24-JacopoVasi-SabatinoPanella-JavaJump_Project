@@ -1,7 +1,6 @@
 package it.unibo.javajump.view.viewstates;
 
 import it.unibo.javajump.model.GameModel;
-
 import it.unibo.javajump.view.graphics.GameGraphics;
 
 import java.awt.*;

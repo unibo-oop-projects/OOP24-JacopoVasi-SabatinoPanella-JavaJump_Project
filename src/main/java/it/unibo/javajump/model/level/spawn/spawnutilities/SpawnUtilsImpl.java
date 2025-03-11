@@ -1,16 +1,13 @@
 package it.unibo.javajump.model.level.spawn.spawnutilities;
 
 import it.unibo.javajump.model.GameModel;
-import it.unibo.javajump.model.GameModelImpl;
-import it.unibo.javajump.model.entities.GameObjectImpl;
 import it.unibo.javajump.model.entities.platforms.Platform;
-import it.unibo.javajump.model.entities.platforms.PlatformImpl;
-import it.unibo.javajump.model.factories.AbstractGameObjectFactory;
 import it.unibo.javajump.model.factories.GameObjectFactory;
 
 import java.util.Random;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.XOFFSET;
+import static it.unibo.javajump.utility.Constants.YOFFSET;
 
 public class SpawnUtilsImpl implements SpawnUtils {
 

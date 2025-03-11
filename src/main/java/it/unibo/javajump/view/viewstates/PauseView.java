@@ -5,7 +5,6 @@ import it.unibo.javajump.model.states.pause.PauseOption;
 import it.unibo.javajump.model.states.pause.PauseState;
 import it.unibo.javajump.view.graphics.GameGraphics;
 
-
 import java.awt.*;
 
 import static it.unibo.javajump.utility.Constants.*;

@@ -1,6 +1,6 @@
 package it.unibo.javajump.model.score;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.SCOREINIT;
 
 public class ScoreManagerImpl implements ScoreManager {
 

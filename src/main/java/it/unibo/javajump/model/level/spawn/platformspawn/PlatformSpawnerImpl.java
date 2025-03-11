@@ -1,8 +1,6 @@
 package it.unibo.javajump.model.level.spawn.platformspawn;
 
 import it.unibo.javajump.model.entities.platforms.Platform;
-import it.unibo.javajump.model.entities.platforms.PlatformImpl;
-import it.unibo.javajump.model.factories.AbstractGameObjectFactory;
 import it.unibo.javajump.model.factories.GameObjectFactory;
 import it.unibo.javajump.model.level.spawn.difficulty.DifficultyState;
 

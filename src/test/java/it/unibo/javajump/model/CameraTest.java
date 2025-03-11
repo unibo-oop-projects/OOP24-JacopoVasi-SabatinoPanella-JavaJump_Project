@@ -1,12 +1,12 @@
 package it.unibo.javajump.model;
 
 import it.unibo.javajump.model.states.ingame.InGameState;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static it.unibo.javajump.utility.Constants.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CameraTest {
 

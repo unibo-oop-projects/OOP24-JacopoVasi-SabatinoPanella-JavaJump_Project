@@ -1,7 +1,6 @@
 package it.unibo.javajump.model;
 
 import it.unibo.javajump.controller.input.GameAction;
-
 import it.unibo.javajump.model.states.gameover.GameOverState;
 import it.unibo.javajump.model.states.ingame.InGameState;
 import it.unibo.javajump.model.states.menu.MenuState;
@@ -9,7 +8,8 @@ import it.unibo.javajump.model.states.pause.PauseState;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.SCREENHEIGHT;
+import static it.unibo.javajump.utility.Constants.SCREENWIDTH;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GameStateTest {

@@ -2,10 +2,8 @@ package it.unibo.javajump.model;
 
 import it.unibo.javajump.model.entities.GameObject;
 import it.unibo.javajump.model.entities.collectibles.Coin;
-
 import it.unibo.javajump.model.entities.collectibles.CoinState;
 import it.unibo.javajump.model.entities.platforms.Platform;
-
 import it.unibo.javajump.model.states.ingame.InGameState;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,8 +11,10 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static it.unibo.javajump.utility.Constants.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static it.unibo.javajump.utility.Constants.SCREENHEIGHT;
+import static it.unibo.javajump.utility.Constants.SCREENWIDTH;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CollisionTest {
 

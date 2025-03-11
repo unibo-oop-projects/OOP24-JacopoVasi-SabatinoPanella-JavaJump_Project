@@ -1,7 +1,11 @@
 package it.unibo.javajump.view.renderers.sub;
 
-import it.unibo.javajump.model.entities.platforms.*;
-import it.unibo.javajump.view.sound.sfx.*;
+import it.unibo.javajump.model.entities.platforms.BouncePlatform;
+import it.unibo.javajump.model.entities.platforms.BreakablePlatform;
+import it.unibo.javajump.model.entities.platforms.MovingPlatform;
+import it.unibo.javajump.model.entities.platforms.Platform;
+import it.unibo.javajump.view.sound.sfx.SFXType;
+import it.unibo.javajump.view.sound.sfx.SoundEffectsManager;
 
 import java.awt.*;
 

@@ -2,9 +2,7 @@ package it.unibo.javajump.model.states.ingame;
 
 import it.unibo.javajump.controller.input.GameAction;
 import it.unibo.javajump.model.GameModel;
-
 import it.unibo.javajump.model.entities.GameObject;
-
 import it.unibo.javajump.model.entities.character.Character;
 import it.unibo.javajump.model.entities.character.CharacterImpl;
 import it.unibo.javajump.model.physics.MovementDirection;
@@ -12,10 +10,8 @@ import it.unibo.javajump.model.states.GameState;
 import it.unibo.javajump.model.states.GameStateHandler;
 import it.unibo.javajump.model.states.pause.PauseState;
 
+import static it.unibo.javajump.model.states.ingame.gameutilities.InGameUtilities.*;
 import static it.unibo.javajump.utility.Constants.*;
-import static it.unibo.javajump.model.states.ingame.gameutilities.InGameUtilities.applyPacManEffect;
-import static it.unibo.javajump.model.states.ingame.gameutilities.InGameUtilities.convertIntToMovementDirection;
-import static it.unibo.javajump.model.states.ingame.gameutilities.InGameUtilities.checkGameOver;
 
 public class InGameState implements GameStateHandler {
 

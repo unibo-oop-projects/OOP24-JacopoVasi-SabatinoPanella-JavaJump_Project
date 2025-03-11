@@ -5,8 +5,8 @@ import it.unibo.javajump.model.factories.GameObjectFactory;
 import it.unibo.javajump.model.level.spawn.RandomSpawnStrategy;
 import it.unibo.javajump.model.level.spawn.SpawnStrategy;
 
-import static it.unibo.javajump.utility.Constants.*;
 import static it.unibo.javajump.model.level.spawn.spawnutilities.SpawnUtilsImpl.spawnPlatformBelowPlayer;
+import static it.unibo.javajump.utility.Constants.*;
 
 public class SpawnManagerImpl implements SpawnManager {
 

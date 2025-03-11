@@ -5,8 +5,6 @@ import it.unibo.javajump.model.entities.character.CharacterImpl;
 import it.unibo.javajump.model.entities.collectibles.Coin;
 import it.unibo.javajump.model.entities.collectibles.CoinImpl;
 import it.unibo.javajump.model.entities.platforms.*;
-import it.unibo.javajump.model.entities.platforms.MovingPlatformImpl;
-import it.unibo.javajump.model.entities.platforms.PlatformImpl;
 
 import java.util.Random;
 

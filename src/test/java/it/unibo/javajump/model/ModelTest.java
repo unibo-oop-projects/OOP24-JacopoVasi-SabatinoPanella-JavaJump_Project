@@ -1,13 +1,11 @@
 package it.unibo.javajump.model;
 
 import it.unibo.javajump.controller.input.GameAction;
-
 import it.unibo.javajump.model.entities.character.Character;
 import it.unibo.javajump.model.states.GameStateHandler;
 import it.unibo.javajump.model.states.menu.MenuState;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 
 import static org.junit.jupiter.api.Assertions.*;
 

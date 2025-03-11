@@ -3,10 +3,8 @@ package it.unibo.javajump.controller;
 import it.unibo.javajump.controller.input.GameAction;
 import it.unibo.javajump.controller.input.InputManager;
 import it.unibo.javajump.model.GameModel;
-
 import it.unibo.javajump.view.GameFrame;
 import it.unibo.javajump.view.MainGameView;
-
 
 import static it.unibo.javajump.utility.Constants.*;
 

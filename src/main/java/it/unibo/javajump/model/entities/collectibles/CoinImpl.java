@@ -3,9 +3,8 @@ package it.unibo.javajump.model.entities.collectibles;
 import it.unibo.javajump.model.entities.GameObject;
 import it.unibo.javajump.model.entities.GameObjectImpl;
 import it.unibo.javajump.model.entities.platforms.Platform;
-import it.unibo.javajump.model.entities.platforms.PlatformImpl;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.OFFSETINIT;
 
 public class CoinImpl extends GameObjectImpl implements Coin {
 

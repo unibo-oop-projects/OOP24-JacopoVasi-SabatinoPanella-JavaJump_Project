@@ -3,7 +3,7 @@ package it.unibo.javajump.model.entities.platforms;
 import it.unibo.javajump.model.entities.objectstrategies.HorizontalOscillationMovement;
 import it.unibo.javajump.model.entities.objectstrategies.MovementBehaviour;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.NULLPLATFORMVELOCITY;
 
 public class MovingPlatformImpl extends PlatformImpl implements MovingPlatform {
 

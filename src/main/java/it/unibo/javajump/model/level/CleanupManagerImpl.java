@@ -1,18 +1,15 @@
 package it.unibo.javajump.model.level;
 
 import it.unibo.javajump.model.GameModel;
-import it.unibo.javajump.model.GameModelImpl;
 import it.unibo.javajump.model.entities.GameObject;
 import it.unibo.javajump.model.entities.collectibles.Coin;
 import it.unibo.javajump.model.entities.collectibles.CoinState;
 import it.unibo.javajump.model.entities.platforms.BreakablePlatform;
-import it.unibo.javajump.model.entities.platforms.BreakablePlatformImpl;
-import it.unibo.javajump.model.entities.collectibles.CoinImpl;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.MARGIN;
 
 public class CleanupManagerImpl implements CleanupManager {
 

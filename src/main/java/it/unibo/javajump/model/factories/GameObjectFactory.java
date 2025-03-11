@@ -1,8 +1,8 @@
 package it.unibo.javajump.model.factories;
 
+import it.unibo.javajump.model.entities.character.Character;
 import it.unibo.javajump.model.entities.collectibles.Coin;
 import it.unibo.javajump.model.entities.platforms.Platform;
-import it.unibo.javajump.model.entities.character.Character;
 
 public interface GameObjectFactory {
 	Character createCharacter(float x, float y);

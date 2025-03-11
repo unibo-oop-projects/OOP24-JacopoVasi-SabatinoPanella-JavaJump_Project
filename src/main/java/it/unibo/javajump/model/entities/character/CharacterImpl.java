@@ -5,7 +5,7 @@ import it.unibo.javajump.model.entities.GameObjectImpl;
 import it.unibo.javajump.model.entities.character.states.InAirState;
 import it.unibo.javajump.model.entities.character.states.OnPlatformState;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.VELOCITYINIT;
 
 /**
  * Implementation of the Character interface.

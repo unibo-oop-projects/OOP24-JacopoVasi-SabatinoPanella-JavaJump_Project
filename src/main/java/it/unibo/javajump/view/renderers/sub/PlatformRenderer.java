@@ -1,6 +1,6 @@
 package it.unibo.javajump.view.renderers.sub;
 
-import it.unibo.javajump.model.entities.platforms.*;
+import it.unibo.javajump.model.entities.platforms.Platform;
 
 import java.awt.*;
 

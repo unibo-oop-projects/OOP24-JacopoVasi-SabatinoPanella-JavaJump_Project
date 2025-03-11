@@ -1,6 +1,6 @@
 package it.unibo.javajump.model.physics;
 
-import static it.unibo.javajump.utility.Constants.*;
+import static it.unibo.javajump.utility.Constants.NULLVELOCITY;
 
 public class PhysicsUtilsImpl implements PhysicsUtils {
 
