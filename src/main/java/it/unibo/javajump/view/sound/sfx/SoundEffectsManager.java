@@ -37,10 +37,10 @@ public class SoundEffectsManager {
      *
      * @param defaultVolume the default volume
      */
-    public SoundEffectsManager(float defaultVolume) {
+    public SoundEffectsManager(final float defaultVolume) {
         this.defaultVolume = defaultVolume;
 
-        for (SFXType type : SFXType.values()) {
+        for (final SFXType type : SFXType.values()) {
             Queue<Clip> pool = new ConcurrentLinkedQueue<>();
             for (int i = 0; i < POOL_SIZE; i++) {
                 Clip clip = loadClip(getFilePathForType(type));

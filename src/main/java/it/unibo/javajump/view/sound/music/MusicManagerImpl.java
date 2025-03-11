@@ -46,8 +46,8 @@ public class MusicManagerImpl implements MusicManager {
     @Override
     public void loadBackgroundMusic(String filePath) {
         try {
-            File audioFile = new File(filePath);
-            AudioInputStream audioIn = AudioSystem.getAudioInputStream(audioFile);
+            final File audioFile = new File(filePath);
+            final AudioInputStream audioIn = AudioSystem.getAudioInputStream(audioFile);
             backgroundClip = AudioSystem.getClip();
             backgroundClip.open(audioIn);
 
@@ -64,11 +64,11 @@ public class MusicManagerImpl implements MusicManager {
     @Override
     public void startMusic() {
         cancelFade();
-        if (backgroundClip == null) return;
-        if (backgroundClip.isRunning()) return;
+        if (backgroundClip == null){ return;}
+        if (backgroundClip.isRunning()) {return;}
 
-        int totalFrames = backgroundClip.getFrameLength();
-        int loopEnd = (int) (totalFrames * MUSIC_LOOP_END);
+        final int totalFrames = backgroundClip.getFrameLength();
+        final int loopEnd = (int) (totalFrames * MUSIC_LOOP_END);
         backgroundClip.setLoopPoints(MUSIC_LOOP_START, loopEnd);
         backgroundClip.loop(Clip.LOOP_CONTINUOUSLY);
         setVolume(defaultVolume);
@@ -102,17 +102,17 @@ public class MusicManagerImpl implements MusicManager {
     }
 
     @Override
-    public void setVolume(float vol) {
-        if (volumeControl == null) return;
-        float min = volumeControl.getMinimum();
-        float max = volumeControl.getMaximum();
-        float dB = min + (max - min) * vol;
+    public void setVolume(final float vol) {
+        if (volumeControl == null) {return;}
+        final float min = volumeControl.getMinimum();
+        final float max = volumeControl.getMaximum();
+        final float dB = min + (max - min) * vol;
         volumeControl.setValue(dB);
     }
 
     @Override
     public void fadeOut(final float durationSeconds) {
-        if (backgroundClip == null || volumeControl == null) return;
+        if (backgroundClip == null || volumeControl == null) {return;}
         cancelFade();
 
         if (fadeExecutor != null && !fadeExecutor.isShutdown()) {
@@ -137,7 +137,7 @@ public class MusicManagerImpl implements MusicManager {
                     fadeFuture.cancel(false);
                     return;
                 }
-                float newVolume = volumeControl.getValue() - delta;
+                final float newVolume = volumeControl.getValue() - delta;
                 volumeControl.setValue(newVolume);
                 currentStep++;
             }
