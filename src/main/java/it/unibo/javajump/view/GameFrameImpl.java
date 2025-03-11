@@ -2,8 +2,8 @@ package it.unibo.javajump.view;
 
 import it.unibo.javajump.controller.input.InputManager;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
+import java.awt.Component;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.WindowEvent;
@@ -14,20 +14,18 @@ import static it.unibo.javajump.utility.Constants.SCREEN_WIDTH;
 /**
  * The type Game frame.
  */
-public class GameFrameImpl extends JFrame implements GameFrame {
+public final class GameFrameImpl extends JFrame implements GameFrame {
 
     /**
      * Instantiates a new Game frame.
-     *
-     *
      */
     public GameFrameImpl() {
-
 
     }
 
     @Override
-    public void setUp(final InputManager inputManager, int height, int width, final MainGameView view, final String title) {
+    public void setUp(final InputManager inputManager, final int height, final int width,
+                      final MainGameView view, final String title) {
         this.setTitle(title);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
