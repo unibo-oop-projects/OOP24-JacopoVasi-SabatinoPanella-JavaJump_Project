@@ -7,7 +7,7 @@ import it.unibo.javajump.model.entities.GameObjectImpl;
  * The type Platform, implements Platform.
  */
 public class PlatformImpl extends GameObjectImpl implements Platform {
-    private boolean touched ;
+    private boolean touched;
 
     /**
      * Instantiates a new Platform.
@@ -26,12 +26,12 @@ public class PlatformImpl extends GameObjectImpl implements Platform {
     }
 
     @Override
-    public void triggerTouched() {
+    public final void triggerTouched() {
         touched = true;
     }
 
     @Override
-    public boolean consumeTouched() {
+    public final boolean consumeTouched() {
         if (touched) {
             touched = false;
             return true;
@@ -40,11 +40,11 @@ public class PlatformImpl extends GameObjectImpl implements Platform {
     }
 
     @Override
-    public void update(float deltaTime) {
+    public void update(final float deltaTime) {
     }
 
     @Override
-    public void onCollision(GameObject other) {
+    public void onCollision(final GameObject other) {
     }
 
 }
