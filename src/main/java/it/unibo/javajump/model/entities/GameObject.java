@@ -1,5 +1,8 @@
 package it.unibo.javajump.model.entities;
 
+/**
+ * Interface that represents a GameObject in the game.
+ */
 public interface GameObject {
     /**
      * Method that updates the GameObject based on the given deltaTime.
