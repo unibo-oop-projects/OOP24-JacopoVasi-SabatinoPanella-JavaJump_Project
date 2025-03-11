@@ -45,6 +45,17 @@ public class GameGraphicsImpl implements GameGraphics {
 		}
 	}
 
+	private BufferedImage copyImage(BufferedImage source) {
+		if (source == null) {
+			return null;
+		}
+		BufferedImage copy = new BufferedImage(source.getWidth(), source.getHeight(), source.getType());
+		Graphics2D g2d = copy.createGraphics();
+		g2d.drawImage(source, 0, 0, null);
+		g2d.dispose();
+		return copy;
+	}
+
 	public Font getGameFont1() {
 		return gameFont1;
 	}
@@ -58,46 +69,46 @@ public class GameGraphicsImpl implements GameGraphics {
 	}
 
 	public BufferedImage getPlayerSheet() {
-		return playerSheet;
+		return copyImage(playerSheet);
 	}
 
 	public BufferedImage getBackground_Easy() {
-		return backgroundEasy;
+		return copyImage(backgroundEasy);
 	}
 
 	public BufferedImage getClouds_Easy() {
-		return cloudsEasy;
+		return copyImage(cloudsEasy);
 	}
 
 	public BufferedImage getBackground_Medium() {
-		return backgroundMedium;
+		return copyImage(backgroundMedium);
 	}
 
 	public BufferedImage getClouds_Medium() {
-		return cloudsMedium;
+		return copyImage(cloudsMedium);
 	}
 
 	public BufferedImage getBackground_Difficult() {
-		return backgroundDifficult;
+		return copyImage(backgroundDifficult);
 	}
 
 	public BufferedImage getClouds_Difficult() {
-		return cloudsDifficult;
+		return copyImage(cloudsDifficult);
 	}
 
 	public BufferedImage getCoinSheet() {
-		return coinSheet;
+		return copyImage(coinSheet);
 	}
 
 	public BufferedImage getGameOver() {
-		return gameOver;
+		return copyImage(gameOver);
 	}
 
 	public BufferedImage getTitle() {
-		return title;
+		return copyImage(title);
 	}
 
 	public BufferedImage getScoreContainer() {
-		return scoreContainer;
+		return copyImage(scoreContainer);
 	}
 }

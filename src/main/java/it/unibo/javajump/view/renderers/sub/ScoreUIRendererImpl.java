@@ -45,7 +45,7 @@ public class ScoreUIRendererImpl implements ScoreUIRenderer {
 
 		if (score < bestScore || score == 0) {
 			g2.setColor(Color.WHITE);
-			g2.setFont(gameFont1);
+			g2.setFont(gameFont2);
 			g2.drawString(SCORERENDERTEXT + score, SCORERENDERX, SCORERENDERY);
 			isNewHighScore = false;
 		} else {
