@@ -54,7 +54,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
             }
         }
         model.getGameObjects().removeAll(toRemove);
-        final Platform platform = model.getSpawnManager().getFactory().createStandardPlatform(model.getPlayer().getX(), model.getPlayer().getY() + PLATFORM_OFFSET);
+        final Platform platform = model.getSpawnManager().getFactory().createStandardPlatform(model.getPlayer().getX(),
+                model.getPlayer().getY() + PLATFORM_OFFSET);
         model.getGameObjects().add(platform);
         while (!model.getPlayer().isOnPlatform() && counter < MAX_COUNT_PLATFORM) {
             model.update(DELTA_TIME);

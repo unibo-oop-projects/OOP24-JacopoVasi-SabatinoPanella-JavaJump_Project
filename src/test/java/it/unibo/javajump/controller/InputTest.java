@@ -6,7 +6,7 @@ import it.unibo.javajump.utility.Constants;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import javax.swing.*;
+import javax.swing.JTextField;
 import java.awt.event.KeyEvent;
 import java.util.Queue;
 
@@ -27,7 +27,8 @@ class InputTest {
 
     @Test
     void testPressingLeftKeySetsPressingLeftFlag() {
-        final KeyEvent event = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), KEY_EVENT_MODIFIER, KeyEvent.VK_LEFT, ' ');
+        final KeyEvent event = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED,
+                System.currentTimeMillis(), KEY_EVENT_MODIFIER, KeyEvent.VK_LEFT, ' ');
         inputManager.keyPressed(event);
 
         assertEquals(Constants.LEFT_DIRECTION, inputManager.getHorizontalDirection());
@@ -35,7 +36,8 @@ class InputTest {
 
     @Test
     void testPressingRightKeySetsPressingRightFlag() {
-        final KeyEvent event = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), KEY_EVENT_MODIFIER, KeyEvent.VK_RIGHT, ' ');
+        final KeyEvent event = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED,
+                System.currentTimeMillis(), KEY_EVENT_MODIFIER, KeyEvent.VK_RIGHT, ' ');
         inputManager.keyPressed(event);
 
         assertEquals(Constants.RIGHT_DIRECTION, inputManager.getHorizontalDirection());
@@ -43,8 +45,10 @@ class InputTest {
 
     @Test
     void testReleasingLeftKeyResetsPressingLeftFlag() {
-        final KeyEvent pressEvent = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), KEY_EVENT_MODIFIER, KeyEvent.VK_LEFT, ' ');
-        final KeyEvent releaseEvent = new KeyEvent(testComponent, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), KEY_EVENT_MODIFIER, KeyEvent.VK_LEFT, ' ');
+        final KeyEvent pressEvent = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED,
+                System.currentTimeMillis(), KEY_EVENT_MODIFIER, KeyEvent.VK_LEFT, ' ');
+        final KeyEvent releaseEvent = new KeyEvent(testComponent, KeyEvent.KEY_RELEASED,
+                System.currentTimeMillis(), KEY_EVENT_MODIFIER, KeyEvent.VK_LEFT, ' ');
 
         inputManager.keyPressed(pressEvent);
         inputManager.keyReleased(releaseEvent);
@@ -54,8 +58,10 @@ class InputTest {
 
     @Test
     void testSimultaneousLeftAndRightKeyPressResultsInNullDirection() {
-        final KeyEvent leftEvent = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), KEY_EVENT_MODIFIER, KeyEvent.VK_LEFT, ' ');
-        final KeyEvent rightEvent = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), KEY_EVENT_MODIFIER, KeyEvent.VK_RIGHT, ' ');
+        final KeyEvent leftEvent = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED,
+                System.currentTimeMillis(), KEY_EVENT_MODIFIER, KeyEvent.VK_LEFT, ' ');
+        final KeyEvent rightEvent = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED,
+                System.currentTimeMillis(), KEY_EVENT_MODIFIER, KeyEvent.VK_RIGHT, ' ');
 
         inputManager.keyPressed(leftEvent);
         inputManager.keyPressed(rightEvent);
@@ -65,7 +71,8 @@ class InputTest {
 
     @Test
     void testActionQueueWhenEnterKeyIsPressed() {
-        final KeyEvent event = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), KEY_EVENT_MODIFIER, KeyEvent.VK_ENTER, ' ');
+        final KeyEvent event = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED,
+                System.currentTimeMillis(), KEY_EVENT_MODIFIER, KeyEvent.VK_ENTER, ' ');
         inputManager.keyPressed(event);
 
         final Queue<GameAction> actionQueue = inputManager.getActionQueue();
@@ -75,7 +82,8 @@ class InputTest {
 
     @Test
     void testActionQueueWhenUpKeyIsPressed() {
-        final KeyEvent event = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), KEY_EVENT_MODIFIER, KeyEvent.VK_UP, ' ');
+        final KeyEvent event = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED,
+                System.currentTimeMillis(), KEY_EVENT_MODIFIER, KeyEvent.VK_UP, ' ');
         inputManager.keyPressed(event);
 
         final Queue<GameAction> actionQueue = inputManager.getActionQueue();
@@ -85,7 +93,8 @@ class InputTest {
 
     @Test
     void testActionQueueWhenDownKeyIsPressed() {
-        final KeyEvent event = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), KEY_EVENT_MODIFIER, KeyEvent.VK_DOWN, ' ');
+        final KeyEvent event = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED,
+                System.currentTimeMillis(), KEY_EVENT_MODIFIER, KeyEvent.VK_DOWN, ' ');
         inputManager.keyPressed(event);
 
         final Queue<GameAction> actionQueue = inputManager.getActionQueue();
@@ -96,7 +105,8 @@ class InputTest {
     @Test
     void testActionQueueWhenEscapeKeyIsPressed() {
 
-        final KeyEvent event = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), KEY_EVENT_MODIFIER, KeyEvent.VK_ESCAPE, ' ');
+        final KeyEvent event = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED,
+                System.currentTimeMillis(), KEY_EVENT_MODIFIER, KeyEvent.VK_ESCAPE, ' ');
         inputManager.keyPressed(event);
 
         final Queue<GameAction> actionQueue = inputManager.getActionQueue();

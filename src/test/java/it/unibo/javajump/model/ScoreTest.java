@@ -39,7 +39,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals(DifficultyState.HARD, model.getDifficultyManager().getCurrentDifficulty(), "Difficulty should be HARD");
         model.getScoreManager().addPoints(VERY_HARD_MAX - HARD_MAX);
         model.update(DELTA_TIME);
-        assertEquals(DifficultyState.VERY_HARD, model.getDifficultyManager().getCurrentDifficulty(), "Difficulty should be VERY HARD");
+        assertEquals(DifficultyState.VERY_HARD,
+                model.getDifficultyManager().getCurrentDifficulty(), "Difficulty should be VERY HARD");
         model.getScoreManager().addPoints(HELL_MAX - VERY_HARD_MAX);
         model.update(DELTA_TIME);
         assertEquals(DifficultyState.HELL, model.getDifficultyManager().getCurrentDifficulty(), "Difficulty should be HELL");

@@ -7,7 +7,11 @@ import it.unibo.javajump.model.states.menu.MenuState;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static it.unibo.javajump.utility.TestConstants.*;
+import static it.unibo.javajump.utility.TestConstants.DELTA_TIME;
+import static it.unibo.javajump.utility.TestConstants.SCORE_POINTS;
+import static it.unibo.javajump.utility.TestConstants.SCREEN_HEIGHT;
+import static it.unibo.javajump.utility.TestConstants.SCREEN_WIDTH;
+import static it.unibo.javajump.utility.TestConstants.STARTING_SCORE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertNotNull;

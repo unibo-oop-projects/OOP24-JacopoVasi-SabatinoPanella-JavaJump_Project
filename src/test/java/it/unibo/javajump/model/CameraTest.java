@@ -7,7 +7,10 @@ import org.junit.jupiter.api.Test;
 import static it.unibo.javajump.utility.Constants.OFFSET_INIT;
 import static it.unibo.javajump.utility.Constants.SCREEN_HEIGHT;
 import static it.unibo.javajump.utility.Constants.SCREEN_WIDTH;
-import static it.unibo.javajump.utility.TestConstants.*;
+import static it.unibo.javajump.utility.TestConstants.CAMERA_DECREASING_OFFSET;
+import static it.unibo.javajump.utility.TestConstants.CAMERA_INCREASING_OFFSET;
+import static it.unibo.javajump.utility.TestConstants.DELTA_TIME;
+import static it.unibo.javajump.utility.TestConstants.DIV_TO_CENTER;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -52,7 +55,8 @@ class CameraTest {
         model.update(DELTA_TIME);
         model.getCameraManager().updateCamera(model, DELTA_TIME);
 
-        assertEquals(initialOffset, model.getCameraManager().getCurrentOffset(), "Camera offset should not increase when the player moves down.");
+        assertEquals(initialOffset, model.getCameraManager().getCurrentOffset(),
+                "Camera offset should not increase when the player moves down.");
     }
 
     @Test

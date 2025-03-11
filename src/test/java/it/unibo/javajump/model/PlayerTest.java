@@ -6,9 +6,14 @@ import it.unibo.javajump.model.states.ingame.InGameState;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static it.unibo.javajump.utility.Constants.SCREEN_HEIGHT;
-import static it.unibo.javajump.utility.Constants.SCREEN_WIDTH;
-import static it.unibo.javajump.utility.TestConstants.*;
+import static it.unibo.javajump.utility.TestConstants.SCREEN_HEIGHT;
+import static it.unibo.javajump.utility.TestConstants.SCREEN_WIDTH;
+import static it.unibo.javajump.utility.TestConstants.COUNTER_START;
+import static it.unibo.javajump.utility.TestConstants.DELTA_TIME;
+import static it.unibo.javajump.utility.TestConstants.MAX_COUNT_JUMPING;
+import static it.unibo.javajump.utility.TestConstants.MAX_COUNT_PACMAN;
+import static it.unibo.javajump.utility.TestConstants.MAX_COUNT_PHYSICS;
+import static it.unibo.javajump.utility.TestConstants.X_LEFT_SIDE_SCREEN;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
