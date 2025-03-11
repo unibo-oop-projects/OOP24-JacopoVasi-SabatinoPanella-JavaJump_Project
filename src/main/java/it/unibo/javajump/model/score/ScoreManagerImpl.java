@@ -2,12 +2,18 @@ package it.unibo.javajump.model.score;
 
 import static it.unibo.javajump.utility.Constants.SCORE_INIT;
 
+/**
+ * The type Score manager.
+ */
 public class ScoreManagerImpl implements ScoreManager {
 
     private int currentScore;
     private int bestScore;
     private boolean bestScoreReached;
 
+    /**
+     * Instantiates a new Score manager.
+     */
     public ScoreManagerImpl() {
         this.currentScore = SCORE_INIT;
         this.bestScore = SCORE_INIT;

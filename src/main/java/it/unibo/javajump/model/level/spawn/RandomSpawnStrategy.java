@@ -18,6 +18,9 @@ import static it.unibo.javajump.utility.Constants.GAP_INIT;
 import static it.unibo.javajump.utility.Constants.MAX_PLATFORM_WIDTH;
 import static it.unibo.javajump.utility.Constants.SPAWN_Y_INIT;
 
+/**
+ * The type Random spawn strategy.
+ */
 public class RandomSpawnStrategy implements SpawnStrategy {
 
     private final GameObjectFactory factory;
@@ -28,6 +31,14 @@ public class RandomSpawnStrategy implements SpawnStrategy {
     private final CollectiblesSpawner collectiblesSpawner;
     private final PlatformSpawner platformSpawner;
 
+    /**
+     * Instantiates a new Random spawn strategy.
+     *
+     * @param factory    the factory
+     * @param minSpacing the min spacing
+     * @param maxSpacing the max spacing
+     * @param coinChance the coin chance
+     */
     public RandomSpawnStrategy(final GameObjectFactory factory,
                                final float minSpacing,
                                final float maxSpacing,

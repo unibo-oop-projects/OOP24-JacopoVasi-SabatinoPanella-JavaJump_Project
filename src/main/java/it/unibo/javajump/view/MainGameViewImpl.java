@@ -32,6 +32,9 @@ import static it.unibo.javajump.utility.Constants.RESOURCES_MUSIC_1;
 import static it.unibo.javajump.utility.Constants.RESOURCES_PATH;
 import static it.unibo.javajump.utility.Constants.SOUND_EFFECTS_VOLUME;
 
+/**
+ * The type Main game view.
+ */
 public class MainGameViewImpl extends JPanel implements MainGameView, GameModelObserver {
 
     private final GameModel model;
@@ -50,6 +53,11 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
 
     private final MusicManager musicManager;
 
+    /**
+     * Instantiates a new Main game view.
+     *
+     * @param model the model
+     */
     public MainGameViewImpl(final GameModel model) {
         final GameGraphics gameGraphics = new GameGraphicsImpl();
         this.model = model;

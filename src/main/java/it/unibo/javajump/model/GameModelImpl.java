@@ -37,6 +37,9 @@ import static it.unibo.javajump.utility.Constants.MAX_SPEED;
 import static it.unibo.javajump.utility.Constants.MIN_SPACING;
 import static it.unibo.javajump.utility.Constants.SCORE_FACTOR;
 
+/**
+ * The type Game model.
+ */
 public class GameModelImpl implements GameModel {
 
 
@@ -59,6 +62,12 @@ public class GameModelImpl implements GameModel {
 
     private final List<GameModelObserver> observers;
 
+    /**
+     * Instantiates a new Game model.
+     *
+     * @param screenWidth  the screen width
+     * @param screenHeight the screen height
+     */
     public GameModelImpl(
             final int screenWidth,
             final int screenHeight

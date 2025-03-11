@@ -8,8 +8,14 @@ import it.unibo.javajump.model.states.menu.MenuState;
 
 import java.util.Objects;
 
+/**
+ * The type Game over state.
+ */
 public class GameOverState implements GameStateHandler {
     private float deltaTime = 0;
+    /**
+     * The Game state.
+     */
     static final GameState gameState = GameState.GAME_OVER;
 
     @Override
@@ -31,6 +37,11 @@ public class GameOverState implements GameStateHandler {
         return gameState;
     }
 
+    /**
+     * Gets state.
+     *
+     * @return the state
+     */
     public int getState() {
         return 0;
     }

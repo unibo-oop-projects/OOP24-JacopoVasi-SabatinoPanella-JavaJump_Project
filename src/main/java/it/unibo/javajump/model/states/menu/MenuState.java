@@ -7,7 +7,13 @@ import it.unibo.javajump.model.states.GameStateHandler;
 import it.unibo.javajump.model.states.ingame.InGameState;
 
 
+/**
+ * The type Menu state.
+ */
 public class MenuState implements GameStateHandler {
+    /**
+     * The Game state.
+     */
     static final GameState gameState = GameState.MENU;
     private float deltaTime = 0;
 
@@ -37,6 +43,11 @@ public class MenuState implements GameStateHandler {
         return gameState;
     }
 
+    /**
+     * Gets state.
+     *
+     * @return the state
+     */
     public int getState() {
         return 0;
     }

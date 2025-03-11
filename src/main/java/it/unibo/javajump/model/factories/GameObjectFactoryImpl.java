@@ -35,6 +35,9 @@ import static it.unibo.javajump.utility.Constants.RANDOM_PLATFORM_RNG_FACTOR;
 import static it.unibo.javajump.utility.Constants.RANDOM_PLATFORM_WIDTH;
 import static it.unibo.javajump.utility.Constants.STANDARD_PLATFORM_WIDTH;
 
+/**
+ * The type Game object factory.
+ */
 public class GameObjectFactoryImpl extends AbstractGameObjectFactory {
     private final Random rand = new Random();
 

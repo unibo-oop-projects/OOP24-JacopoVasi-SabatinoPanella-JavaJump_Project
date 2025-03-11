@@ -3,6 +3,9 @@ package it.unibo.javajump.model.physics;
 import it.unibo.javajump.model.entities.character.Character;
 
 
+/**
+ * The type Physics manager.
+ */
 public class PhysicsManagerImpl implements PhysicsManager {
     private final float ACCELERATION;
     private final float MAX_SPEED;
@@ -10,6 +13,14 @@ public class PhysicsManagerImpl implements PhysicsManager {
     private final float GRAVITY;
 
 
+    /**
+     * Instantiates a new Physics manager.
+     *
+     * @param gravity      the gravity
+     * @param acceleration the acceleration
+     * @param maxSpeed     the max speed
+     * @param deceleration the deceleration
+     */
     public PhysicsManagerImpl(final float gravity, final float acceleration, final float maxSpeed, final float deceleration) {
         this.GRAVITY = gravity;
         this.ACCELERATION = acceleration;

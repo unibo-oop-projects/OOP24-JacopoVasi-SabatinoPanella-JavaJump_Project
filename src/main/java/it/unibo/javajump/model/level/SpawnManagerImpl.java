@@ -12,12 +12,20 @@ import static it.unibo.javajump.utility.Constants.PROCEDURAL_PLATFORMS_NUMBER;
 import static it.unibo.javajump.utility.Constants.SPAWN_THRESHOLD;
 import static it.unibo.javajump.utility.Constants.TOP_PLATFORM_Y_INIT;
 
+/**
+ * The type Spawn manager.
+ */
 public class SpawnManagerImpl implements SpawnManager {
 
     private final SpawnStrategy spawnStrategy;
     private float topPlatformY;
 
 
+    /**
+     * Instantiates a new Spawn manager.
+     *
+     * @param spawnStrategy the spawn strategy
+     */
     public SpawnManagerImpl(final SpawnStrategy spawnStrategy) {
         this.spawnStrategy = spawnStrategy;
         this.topPlatformY = TOP_PLATFORM_Y_INIT;

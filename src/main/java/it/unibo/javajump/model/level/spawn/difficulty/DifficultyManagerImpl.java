@@ -14,6 +14,9 @@ import static it.unibo.javajump.utility.Constants.SCORE_INIT;
 import static it.unibo.javajump.utility.Constants.VERY_HARD_MAX;
 import static it.unibo.javajump.utility.Constants.VERY_HARD_MIN;
 
+/**
+ * The type Difficulty manager.
+ */
 public class DifficultyManagerImpl implements DifficultyManager {
 
     private int currentScore;
@@ -24,6 +27,9 @@ public class DifficultyManagerImpl implements DifficultyManager {
     private final float thresholdVeryHard;
     private final float thresholdHell;
 
+    /**
+     * Instantiates a new Difficulty manager.
+     */
     public DifficultyManagerImpl() {
         this.currentScore = SCORE_INIT;
         this.currentDifficulty = DifficultyState.EASY;

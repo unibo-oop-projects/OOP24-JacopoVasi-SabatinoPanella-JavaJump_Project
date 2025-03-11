@@ -67,6 +67,9 @@ public class RendererManagerImpl implements RenderManager {
     /**
      * Constructor for the RendererManagerImpl class. Associates the different renderers implementations
      * with their respective fields.
+     *
+     * @param soundEffectsManager the sound effects manager
+     * @param graphics            the graphics
      */
     public RendererManagerImpl(final SoundEffectsManager soundEffectsManager, final GameGraphics graphics) {
 

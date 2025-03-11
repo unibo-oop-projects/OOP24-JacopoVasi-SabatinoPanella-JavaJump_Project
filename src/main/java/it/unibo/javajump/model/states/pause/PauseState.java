@@ -8,9 +8,15 @@ import it.unibo.javajump.model.states.ingame.InGameState;
 import it.unibo.javajump.model.states.menu.MenuState;
 
 
+/**
+ * The type Pause state.
+ */
 public class PauseState implements GameStateHandler {
     private float deltaTime = 0;
     private PauseOption selection = PauseOption.CONTINUE;
+    /**
+     * The Game state.
+     */
     static final GameState gameState = GameState.PAUSE;
 
     @Override
@@ -57,6 +63,11 @@ public class PauseState implements GameStateHandler {
         return gameState;
     }
 
+    /**
+     * Gets selection.
+     *
+     * @return the selection
+     */
     public PauseOption getSelection() {
         return selection;
     }

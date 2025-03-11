@@ -8,6 +8,9 @@ import java.awt.image.BufferedImage;
 
 import static it.unibo.javajump.utility.Constants.*;
 
+/**
+ * The type Game over view.
+ */
 public class GameOverView implements GameViewState {
 
     private float fadeAlpha = GAME_OVER_ALPHA_INIT;
@@ -19,6 +22,11 @@ public class GameOverView implements GameViewState {
     private final Font gameFont3;
     private final BufferedImage gameoverImage;
 
+    /**
+     * Instantiates a new Game over view.
+     *
+     * @param gameGraphics the game graphics
+     */
     public GameOverView(GameGraphics gameGraphics) {
         gameFont2 = gameGraphics.getGameFont2();
         gameFont3 = gameGraphics.getGameFont3();

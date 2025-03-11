@@ -143,7 +143,6 @@ public final class Constants {
     /**
      * The constant NULL_PLATFORM_VELOCITY specifies the null platform velocity.
      */
-
     public static final int NULL_PLATFORM_VELOCITY = 0;
 
 

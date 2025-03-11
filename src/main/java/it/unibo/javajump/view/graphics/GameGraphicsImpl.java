@@ -25,6 +25,9 @@ import static it.unibo.javajump.utility.Constants.SIZE_FONT_1;
 import static it.unibo.javajump.utility.Constants.SIZE_FONT_2;
 import static it.unibo.javajump.utility.Constants.SIZE_FONT_3;
 
+/**
+ * The type Game graphics.
+ */
 public class GameGraphicsImpl implements GameGraphics {
     private final Font gameFont1;
     private final Font gameFont2;
@@ -41,6 +44,9 @@ public class GameGraphicsImpl implements GameGraphics {
     private final BufferedImage gameOver;
     private final BufferedImage title;
 
+    /**
+     * Instantiates a new Game graphics.
+     */
     public GameGraphicsImpl() {
         try {
             title = ImageIO.read(new File(RESOURCES_PATH + RESOURCES_TITLE));

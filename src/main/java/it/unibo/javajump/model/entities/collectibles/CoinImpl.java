@@ -27,9 +27,9 @@ public final class CoinImpl extends GameObjectImpl implements Coin {
     /**
      * Constructor for the CoinImpl class.
      *
-     * @param x the x-coordinate of the coin
-     * @param y the y-coordinate of the coin
-     * @param width the width of the coin
+     * @param x      the x-coordinate of the coin
+     * @param y      the y-coordinate of the coin
+     * @param width  the width of the coin
      * @param height the height of the coin
      */
     public CoinImpl(final float x, final float y, final float width, final float height) {

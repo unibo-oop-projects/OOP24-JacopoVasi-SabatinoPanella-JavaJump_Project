@@ -7,6 +7,9 @@ import it.unibo.javajump.model.entities.platforms.Platform;
 
 import java.awt.*;
 
+/**
+ * The interface Render manager.
+ */
 public interface RenderManager {
     /**
      * Draws the first background on the screen during gameplay.

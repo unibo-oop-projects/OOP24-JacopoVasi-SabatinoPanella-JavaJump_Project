@@ -21,10 +21,18 @@ import static it.unibo.javajump.utility.Constants.PAUSE_SELECTION_X;
 import static it.unibo.javajump.utility.Constants.PAUSE_TEXT;
 import static it.unibo.javajump.utility.Constants.PAUSE_WIDTH_OFF;
 
+/**
+ * The type Pause view.
+ */
 public class PauseView implements GameViewState {
     private final Font font1;
     private final Font font2;
 
+    /**
+     * Instantiates a new Pause view.
+     *
+     * @param graphics the graphics
+     */
     public PauseView(GameGraphics graphics) {
         font1 = graphics.getGameFont1();
         font2 = graphics.getGameFont2();

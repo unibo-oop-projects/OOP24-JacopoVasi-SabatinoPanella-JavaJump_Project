@@ -9,10 +9,18 @@ import java.util.Random;
 import static it.unibo.javajump.utility.Constants.SPAWN_X_OFFSET;
 import static it.unibo.javajump.utility.Constants.SPAWN_Y_OFFSET;
 
+/**
+ * The type Spawn utils.
+ */
 public class SpawnUtilsImpl implements SpawnUtils {
 
     /**
      * Returns a random value between min and max
+     *
+     * @param rand the rand
+     * @param min  the min
+     * @param max  the max
+     * @return the float
      */
     public static float randomInRange(final Random rand, final float min, final float max) {
         return min + rand.nextFloat() * (max - min);
@@ -20,6 +28,9 @@ public class SpawnUtilsImpl implements SpawnUtils {
 
     /**
      * Creates and adds to the model a standard platform below the player.
+     *
+     * @param model   the model
+     * @param factory the factory
      */
     public static void spawnPlatformBelowPlayer(final GameModel model, final GameObjectFactory factory) {
         final float px = model.getPlayer().getX() - SPAWN_X_OFFSET;

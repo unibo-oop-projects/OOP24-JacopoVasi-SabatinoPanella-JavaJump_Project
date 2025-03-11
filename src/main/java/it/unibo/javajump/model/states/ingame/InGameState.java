@@ -17,8 +17,14 @@ import static it.unibo.javajump.utility.Constants.LEFT_DIRECTION;
 import static it.unibo.javajump.utility.Constants.NULL_DIRECTION;
 import static it.unibo.javajump.utility.Constants.RIGHT_DIRECTION;
 
+/**
+ * The type In game state.
+ */
 public class InGameState implements GameStateHandler {
 
+    /**
+     * The Game state.
+     */
     static final GameState gameState = GameState.IN_GAME;
 
     private int horizontalDirection = NULL_DIRECTION;
@@ -71,6 +77,11 @@ public class InGameState implements GameStateHandler {
         return gameState;
     }
 
+    /**
+     * Gets state.
+     *
+     * @return the state
+     */
     public int getState() {
         return 0;
     }

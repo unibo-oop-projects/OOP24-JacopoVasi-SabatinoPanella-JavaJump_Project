@@ -21,6 +21,9 @@ import static it.unibo.javajump.utility.Constants.AUDIO_STEPS;
 import static it.unibo.javajump.utility.Constants.MUSIC_LOOP_END;
 import static it.unibo.javajump.utility.Constants.MUSIC_LOOP_START;
 
+/**
+ * The type Music manager.
+ */
 public class MusicManagerImpl implements MusicManager {
     private Clip backgroundClip;
     private FloatControl volumeControl;
@@ -28,6 +31,12 @@ public class MusicManagerImpl implements MusicManager {
     private ScheduledFuture<?> fadeFuture;
     private final float defaultVolume;
 
+    /**
+     * Instantiates a new Music manager.
+     *
+     * @param filePath      the file path
+     * @param defaultVolume the default volume
+     */
     public MusicManagerImpl(String filePath, float defaultVolume) {
         this.defaultVolume = defaultVolume;
         loadBackgroundMusic(filePath);

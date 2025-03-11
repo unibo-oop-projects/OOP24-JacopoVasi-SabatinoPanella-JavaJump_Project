@@ -8,11 +8,19 @@ import java.util.Random;
 
 import static it.unibo.javajump.model.level.spawn.spawnutilities.SpawnUtilsImpl.randomInRange;
 
+/**
+ * The type Platform spawner.
+ */
 public class PlatformSpawnerImpl implements PlatformSpawner {
 
     private final GameObjectFactory factory;
     private final Random rand;
 
+    /**
+     * Instantiates a new Platform spawner.
+     *
+     * @param factory the factory
+     */
     public PlatformSpawnerImpl(final GameObjectFactory factory) {
         this.factory = factory;
         this.rand = new Random();

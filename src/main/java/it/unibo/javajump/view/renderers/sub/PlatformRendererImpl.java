@@ -38,9 +38,10 @@ public class PlatformRendererImpl implements PlatformRenderer {
     /**
      * Class constructor for the PlatformRendererImpl, that initializes the fields for Platform rendering.
      *
-     * @param outlineStrokeWidth the width of the outline stroke
-     * @param arcW               the width of the rounded corners
-     * @param arcH               the height of the rounded corners
+     * @param outlineStrokeWidth  the width of the outline stroke
+     * @param arcW                the width of the rounded corners
+     * @param arcH                the height of the rounded corners
+     * @param soundEffectsManager the sound effects manager
      */
     public PlatformRendererImpl(float outlineStrokeWidth, int arcW, int arcH, SoundEffectsManager soundEffectsManager) {
         this.outlineStrokeWidth = outlineStrokeWidth;

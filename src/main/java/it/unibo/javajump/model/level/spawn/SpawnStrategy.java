@@ -3,6 +3,9 @@ package it.unibo.javajump.model.level.spawn;
 import it.unibo.javajump.model.GameModel;
 import it.unibo.javajump.model.factories.GameObjectFactory;
 
+/**
+ * The interface Spawn strategy.
+ */
 public interface SpawnStrategy {
     /**
      * Creates "numberOfPlatforms" platforms (and relative coin)
@@ -16,11 +19,15 @@ public interface SpawnStrategy {
 
     /**
      * Returns the current Y position, so that SpawnManagerImpl can evaluate whether to spawn a new batch
+     *
+     * @return the float
      */
     float returnCurrentY();
 
     /**
      * Returns the factory used to create the objects
+     *
+     * @return the factory
      */
     GameObjectFactory getFactory();
 }

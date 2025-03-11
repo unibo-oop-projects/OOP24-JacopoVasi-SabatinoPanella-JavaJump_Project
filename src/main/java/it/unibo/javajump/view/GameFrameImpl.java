@@ -11,8 +11,16 @@ import java.awt.event.WindowEvent;
 import static it.unibo.javajump.utility.Constants.SCREEN_HEIGHT;
 import static it.unibo.javajump.utility.Constants.SCREEN_WIDTH;
 
+/**
+ * The type Game frame.
+ */
 public class GameFrameImpl extends JFrame implements GameFrame {
 
+    /**
+     * Instantiates a new Game frame.
+     *
+     * @param title the title
+     */
     public GameFrameImpl(final String title) {
         this.setTitle(title);
         this.addComponentListener(new ComponentAdapter() {

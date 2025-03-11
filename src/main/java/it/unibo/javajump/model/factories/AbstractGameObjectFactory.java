@@ -8,6 +8,9 @@ import it.unibo.javajump.model.entities.platforms.MovingPlatform;
 import it.unibo.javajump.model.entities.platforms.Platform;
 
 
+/**
+ * The type Abstract game object factory.
+ */
 public abstract class AbstractGameObjectFactory implements GameObjectFactory {
 
     @Override

@@ -8,11 +8,19 @@ import java.awt.image.BufferedImage;
 
 import static it.unibo.javajump.utility.Constants.*;
 
+/**
+ * The type Menu view.
+ */
 public class MenuView implements GameViewState {
     private final Font font1;
     private final Font font2;
     private final BufferedImage title;
 
+    /**
+     * Instantiates a new Menu view.
+     *
+     * @param graphics the graphics
+     */
     public MenuView(GameGraphics graphics) {
         font1 = graphics.getGameFont1();
         font2 = graphics.getGameFont2();

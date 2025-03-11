@@ -25,6 +25,7 @@ public final class InGameUtilities {
      * Converts an integer (-1, 0, +1) in a MovementDirection.
      *
      * @param dir -1 = left, 0 = none, +1 = right
+     * @return the movement direction
      */
     public static MovementDirection convertIntToMovementDirection(final int dir) {
         if (dir < NULL_DIRECTION) {
@@ -55,8 +56,7 @@ public final class InGameUtilities {
      * Verifies if the game has to be set to GameOverState, with the condition
      * for losing being that the character goes below the bottom of the screen
      *
-     * @param model  the game model, used to get the current offset and the
-     *               screen height
+     * @param model  the game model, used to get the current offset and the               screen height
      * @param player the character to check
      */
     public static void checkGameOver(final GameModel model, final Character player) {

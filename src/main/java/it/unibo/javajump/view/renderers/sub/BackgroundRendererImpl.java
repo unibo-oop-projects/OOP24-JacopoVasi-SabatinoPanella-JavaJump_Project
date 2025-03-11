@@ -47,10 +47,12 @@ public class BackgroundRendererImpl implements BackgroundRenderer {
     /**
      * Constructor of the BackgroundRendererImpl class.
      *
-     * @param bgTileEasy      background image tile
-     * @param parallaxFactor  the factor for vertical parallax effect
-     * @param horizontalSpeed the speed for horizontal auto-scrolling effect.
-     *                        If set to 0, the background will not scroll horizontally.
+     * @param bgTileEasy         background image tile
+     * @param bgTileMedium       the bg tile medium
+     * @param bgTileHard         the bg tile hard
+     * @param parallaxFactor     the factor for vertical parallax effect
+     * @param horizontalSpeed    the speed for horizontal auto-scrolling effect.                        If set to 0, the background will not scroll horizontally.
+     * @param transitionDuration the transition duration
      */
     public BackgroundRendererImpl(BufferedImage bgTileEasy, BufferedImage bgTileMedium, BufferedImage bgTileHard,
                                   float parallaxFactor, float horizontalSpeed, float transitionDuration) {

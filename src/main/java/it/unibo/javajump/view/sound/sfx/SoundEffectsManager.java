@@ -24,11 +24,19 @@ import static it.unibo.javajump.utility.Constants.RESOURCE_COIN_SFX;
 import static it.unibo.javajump.utility.Constants.RESOURCE_DEFAULT_SFX;
 import static it.unibo.javajump.utility.Constants.SOUNDS_POOL_SIZE_NUMBER;
 
+/**
+ * The type Sound effects manager.
+ */
 public class SoundEffectsManager {
     private final float defaultVolume;
     private final Map<SFXType, Queue<Clip>> clipPools = new HashMap<>();
     private static final int POOL_SIZE = SOUNDS_POOL_SIZE_NUMBER;
 
+    /**
+     * Instantiates a new Sound effects manager.
+     *
+     * @param defaultVolume the default volume
+     */
     public SoundEffectsManager(float defaultVolume) {
         this.defaultVolume = defaultVolume;
 
@@ -81,6 +89,11 @@ public class SoundEffectsManager {
         }
     }
 
+    /**
+     * Play sound.
+     *
+     * @param type the type
+     */
     public void playSound(SFXType type) {
         Queue<Clip> pool = clipPools.get(type);
         if (pool == null) return;
@@ -112,6 +125,11 @@ public class SoundEffectsManager {
         }
     }
 
+    /**
+     * Sets global volume.
+     *
+     * @param vol the vol
+     */
     public void setGlobalVolume(float vol) {
         for (Queue<Clip> pool : clipPools.values()) {
             for (Clip clip : pool) {

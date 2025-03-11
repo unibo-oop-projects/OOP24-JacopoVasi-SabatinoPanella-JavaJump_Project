@@ -52,10 +52,11 @@ public class CoinRendererImpl implements CoinRenderer {
     /**
      * Constructor for the CoinRendererImpl class.
      *
-     * @param sheet         the coin sprite sheet
-     * @param frameWidth    the width of each frame
-     * @param frameHeight   the height of each frame
-     * @param frameDuration the standard duration of a frame of animation
+     * @param sheet               the coin sprite sheet
+     * @param frameWidth          the width of each frame
+     * @param frameHeight         the height of each frame
+     * @param frameDuration       the standard duration of a frame of animation
+     * @param soundEffectsManager the sound effects manager
      */
     public CoinRendererImpl(BufferedImage sheet, int frameWidth, int frameHeight, float frameDuration, SoundEffectsManager soundEffectsManager) {
         this.coinSheet = sheet;

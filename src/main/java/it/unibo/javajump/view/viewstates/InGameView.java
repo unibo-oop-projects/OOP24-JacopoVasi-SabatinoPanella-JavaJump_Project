@@ -11,6 +11,9 @@ import java.util.ArrayList;
 
 import static it.unibo.javajump.utility.Constants.GAMEPLAY_MESSAGE_TIME_TOGGLE;
 
+/**
+ * The type In game view.
+ */
 public class InGameView implements GameViewState {
 
     private final RenderManager renderer;
@@ -18,6 +21,11 @@ public class InGameView implements GameViewState {
     private boolean showHighScoreMessage = true;
     private long lastToggleTime = System.currentTimeMillis();
 
+    /**
+     * Instantiates a new In game view.
+     *
+     * @param renderer the renderer
+     */
     public InGameView(RenderManager renderer) {
         this.renderer = renderer;
     }
