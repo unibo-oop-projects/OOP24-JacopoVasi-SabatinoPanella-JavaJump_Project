@@ -465,6 +465,16 @@ public final class Constants {
      */
     public static final float SPAWN_THRESHOLD = 400f;
 
+    /**
+     * The constant BOUNCE_FACTOR_MIN: specifies the minimum bounce factor possible.
+     */
+    public static final float BOUNCE_FACTOR_MIN = 1.5f;
+
+    /**
+     * The constant BOUNCE_FACTOR_MAX: specifies the maximum bounce factor possible.
+     */
+    public static final float BOUNCE_FACTOR_MAX = 2.4f;
+
 
 // Game Model -------------------------------------------------------------------------------
 

@@ -14,7 +14,7 @@ import static it.unibo.javajump.utility.Constants.CLEAN_UP_MARGIN_OFFSET;
 /**
  * The type Cleanup manager.
  */
-public class CleanupManagerImpl implements CleanupManager {
+public final class CleanupManagerImpl implements CleanupManager {
 
     @Override
     public void cleanupObjects(final GameModel model) {

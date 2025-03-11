@@ -40,7 +40,7 @@ import static it.unibo.javajump.utility.Constants.SCORE_FACTOR;
 /**
  * The type Game model.
  */
-public class GameModelImpl implements GameModel {
+public final class GameModelImpl implements GameModel {
 
 
     private GameStateHandler currentState;
