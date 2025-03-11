@@ -48,7 +48,7 @@ public class GameModelImpl implements GameModel {
     private final ScoreManager scoreManager;
     private final CleanupManager cleanupManager;
     private final DifficultyManager difficultyManager;
-    private float deltaTime = 0;
+    private float deltaTime;
     private final List<GameObject> gameObject;
     private Character player;
 
@@ -60,14 +60,14 @@ public class GameModelImpl implements GameModel {
     private final List<GameModelObserver> observers;
 
     public GameModelImpl(
-            int screenWidth,
-            int screenHeight
+            final int screenWidth,
+            final  int screenHeight
     ) {
         this.screenWidth = screenWidth;
         this.screenHeight = screenHeight;
         this.difficultyManager = new DifficultyManagerImpl();
-        GameObjectFactory factory = new GameObjectFactoryImpl();
-        RandomSpawnStrategy strategy = new RandomSpawnStrategy(factory, MIN_SPACING, MAX_SPACING, COIN_CHANCE, difficultyManager);
+        final GameObjectFactory factory = new GameObjectFactoryImpl();
+        final RandomSpawnStrategy strategy = new RandomSpawnStrategy(factory, MIN_SPACING, MAX_SPACING, COIN_CHANCE, difficultyManager);
         this.physicsManager = new PhysicsManagerImpl(GRAVITY, ACCELERATION, MAX_SPEED, DECELERATION);
         this.collisionManager = new CollisionManagerImpl();
         this.spawnManager = new SpawnManagerImpl(strategy);
@@ -87,19 +87,19 @@ public class GameModelImpl implements GameModel {
 
 
     @Override
-    public void setState(GameStateHandler newState) {
+    public void setState(final GameStateHandler newState) {
         this.currentState.onExit(this);
         this.currentState = newState;
         this.currentState.onEnter(this);
     }
 
     @Override
-    public void handleAction(GameAction action) {
+    public void handleAction(final GameAction action) {
         this.currentState.handleAction(this, action);
     }
 
     @Override
-    public void update(float deltaTime) {
+    public void update(final float deltaTime) {
         this.deltaTime = deltaTime;
         this.currentState.update(this, deltaTime);
     }
@@ -119,18 +119,18 @@ public class GameModelImpl implements GameModel {
     }
 
     @Override
-    public void addObserver(GameModelObserver obs) {
+    public void addObserver(final GameModelObserver obs) {
         observers.add(obs);
     }
 
     @Override
-    public void removeObserver(GameModelObserver obs) {
+    public void removeObserver(final GameModelObserver obs) {
         observers.remove(obs);
     }
 
     @Override
     public void notifyObservers() {
-        for (GameModelObserver obs : observers) {
+        for (final GameModelObserver obs : observers) {
             obs.onModelUpdate(this);
         }
     }
@@ -141,7 +141,7 @@ public class GameModelImpl implements GameModel {
     }
 
     @Override
-    public void addPointsToScore(int amount) {
+    public void addPointsToScore(final int amount) {
         scoreManager.addPoints(amount);
     }
 
@@ -205,14 +205,17 @@ public class GameModelImpl implements GameModel {
         return screenHeight;
     }
 
+    @Override
     public float getDeltaTime() {
         return deltaTime;
     }
 
+    @Override
     public boolean isRunning() {
         return isRunning;
     }
 
+    @Override
     public void stopGame() {
         isRunning = false;
     }

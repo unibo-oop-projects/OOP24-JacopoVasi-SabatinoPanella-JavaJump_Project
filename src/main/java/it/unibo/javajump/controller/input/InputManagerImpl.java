@@ -15,12 +15,12 @@ public class InputManagerImpl implements InputManager {
     /**
      * Flag to check if the user is pressing the left arrow key
      */
-    private boolean pressingLeft = false;
+    private boolean pressingLeft;
 
     /**
      * Flag to check if the user is pressing the right arrow key
      */
-    private boolean pressingRight = false;
+    private boolean pressingRight;
 
     /**
      * Queue to store the actions of the user
@@ -66,7 +66,7 @@ public class InputManagerImpl implements InputManager {
      * {@inheritDoc}
      */
     @Override
-    public void keyReleased(KeyEvent e) {
+    public void keyReleased(final KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_LEFT -> pressingLeft = false;
             case KeyEvent.VK_RIGHT -> pressingRight = false;
