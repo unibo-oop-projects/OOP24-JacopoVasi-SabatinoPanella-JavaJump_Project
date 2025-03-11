@@ -1,20 +1,23 @@
 package it.unibo.javajump.model.entities;
 
+/**
+ * Class implementation of the GameObject interface, representing the base class for all GameObjects in the game.
+ */
 public abstract class GameObjectImpl implements GameObject {
     /**
-     * the x coordinate of the GameObject
+     * the x coordinate of the GameObject.
      */
     protected float x;
     /**
-     * the y coordinate of the GameObject
+     * the y coordinate of the GameObject.
      */
     protected float y;
     /**
-     * the width of the GameObject
+     * the width of the GameObject.
      */
     protected float width;
     /**
-     * the height of the GameObject
+     * the height of the GameObject.
      */
     protected float height;
 

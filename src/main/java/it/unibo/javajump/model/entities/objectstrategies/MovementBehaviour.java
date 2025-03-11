@@ -2,6 +2,9 @@ package it.unibo.javajump.model.entities.objectstrategies;
 
 import it.unibo.javajump.model.entities.GameObject;
 
+/**
+ * The interface Movement behaviour.
+ */
 public interface MovementBehaviour {
     /**
      * Updates the position of a GameObjectImpl based on deltaTime.
