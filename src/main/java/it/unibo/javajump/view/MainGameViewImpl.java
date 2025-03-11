@@ -38,7 +38,7 @@ import static it.unibo.javajump.utility.Constants.SOUND_EFFECTS_VOLUME;
 /**
  * The type Main game view.
  */
-public class MainGameViewImpl extends JPanel implements MainGameView, GameModelObserver {
+public final class MainGameViewImpl extends JPanel implements MainGameView, GameModelObserver {
 
     private final GameModel model;
 
@@ -67,12 +67,10 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
         this.musicManager = new MusicManagerImpl(RESOURCES_PATH + RESOURCES_MUSIC_1, MUSIC_VOLUME);
         final SoundEffectsManager soundEffectsManager = new SoundEffectsManager(SOUND_EFFECTS_VOLUME);
 
-
         this.virtualWidth = model.getScreenWidth();
         this.virtualHeight = model.getScreenHeight();
 
         final RenderManager rendererManager = new RendererManagerImpl(soundEffectsManager, gameGraphics);
-
 
         this.menuView = new MenuView(gameGraphics);
         this.inGameView = new InGameView(rendererManager);
@@ -86,12 +84,15 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
         initialize();
     }
 
+    /**
+     * Private method to initialize the main game view.
+     */
     private void initialize() {
         setDoubleBuffered(true);
         setBackground(Color.decode(BACKGROUND_DEFAULT_COLOR));
         addComponentListener(new ComponentAdapter() {
             @Override
-            public void componentResized(ComponentEvent e) {
+            public void componentResized(final ComponentEvent e) {
                 repaint();
             }
         });
@@ -137,6 +138,7 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
                 inGameView.draw(g2, model);
                 gameOverView.draw(g2, model);
             }
+            default -> { }
 
         }
         g2.dispose();
@@ -162,7 +164,7 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
                     musicManager.fadeOut(MAIN_VIEW_AUDIO_FADE);
                     gameOverView.startFade();
                 }
-
+                default -> { }
             }
         }
         lastState = currentState;
