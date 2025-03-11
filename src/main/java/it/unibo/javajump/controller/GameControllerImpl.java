@@ -63,7 +63,7 @@ public class GameControllerImpl implements GameController {
                 final long currentTime = System.nanoTime();
                 final double elapsedNs = currentTime - previousTime;
                 if (elapsedNs >= nsPerFrame) {
-                    float deltaTime = (float) (elapsedNs / NANOSECONDS_PER_SECOND);
+                    final float deltaTime = (float) (elapsedNs / NANOSECONDS_PER_SECOND);
                     processDiscreteInput();
                     updateModel(deltaTime);
                     view.updateView();
@@ -95,9 +95,9 @@ public class GameControllerImpl implements GameController {
      *
      * @param deltaTime time passed since last update (in seconds)
      */
-    private void updateModel(float deltaTime) {
+    private void updateModel(final float deltaTime) {
         if (model.isRunning()) {
-            int horizontalDirection = inputManager.getHorizontalDirection();
+            final int horizontalDirection = inputManager.getHorizontalDirection();
             if (horizontalDirection < NULL_DIRECTION) {
                 model.handleAction(GameAction.MOVE_LEFT);
             } else if (horizontalDirection > NULL_DIRECTION) {
@@ -115,9 +115,10 @@ public class GameControllerImpl implements GameController {
      * Private method to process the GameAction(s) stored in the queue, it demands the model to process them accordingly
      */
     private void processDiscreteInput() {
-        GameAction action;
-        while ((action = inputManager.getActionQueue().poll()) != null) {
+        GameAction action = inputManager.getActionQueue().poll();
+        while (action  != null) {
             model.handleAction(action);
+            action = inputManager.getActionQueue().poll();
         }
     }
 

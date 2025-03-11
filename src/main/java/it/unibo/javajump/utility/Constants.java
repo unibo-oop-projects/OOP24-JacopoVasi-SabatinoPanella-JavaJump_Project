@@ -1140,4 +1140,6 @@ public final class Constants {
      * The constant RESOURCE_COIN_SFX: specifies the coin sound file name.
      */
     public static final String RESOURCE_COIN_SFX = "Coin.wav";
+
+    public static final String IMAGE_IMPORT_ERROR_TEXT = "GameAction Queue is full, cannot add: ";
 }

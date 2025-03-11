@@ -6,6 +6,8 @@ import java.awt.event.KeyEvent;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import static it.unibo.javajump.utility.Constants.IMAGE_IMPORT_ERROR_TEXT;
+
 /**
  * Implementation of the InputManager interface, this class is used to manage the input of the user.
  */
@@ -29,30 +31,30 @@ public class InputManagerImpl implements InputManager {
      * {@inheritDoc}
      */
     @Override
-    public void keyPressed(KeyEvent e) {
+    public void keyPressed(final KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_LEFT -> pressingLeft = true;
             case KeyEvent.VK_RIGHT -> pressingRight = true;
             case KeyEvent.VK_ENTER -> {
                 if (!actionQueue.offer(GameAction.CONFIRM_SELECTION)) {
-                    throw new IllegalStateException("GameAction Queue is full, cannot add: " + GameAction.CONFIRM_SELECTION);
+                    throw new IllegalStateException(IMAGE_IMPORT_ERROR_TEXT + GameAction.CONFIRM_SELECTION);
                 }
 
             }
 
             case KeyEvent.VK_UP -> {
                 if (!actionQueue.offer(GameAction.MOVE_MENU_UP)) {
-                    throw new IllegalStateException("GameAction Queue is full, cannot add: " + GameAction.MOVE_MENU_UP);
+                    throw new IllegalStateException(IMAGE_IMPORT_ERROR_TEXT + GameAction.MOVE_MENU_UP);
                 }
             }
             case KeyEvent.VK_DOWN -> {
                 if (!actionQueue.offer(GameAction.MOVE_MENU_DOWN)) {
-                    throw new IllegalStateException("GameAction Queue is full, cannot add: " + GameAction.MOVE_MENU_DOWN);
+                    throw new IllegalStateException(IMAGE_IMPORT_ERROR_TEXT + GameAction.MOVE_MENU_DOWN);
                 }
             }
             case KeyEvent.VK_ESCAPE -> {
                 if (!actionQueue.offer(GameAction.PAUSE_GAME)) {
-                    throw new IllegalStateException("GameAction Queue is full, cannot add: " + GameAction.PAUSE_GAME);
+                    throw new IllegalStateException(IMAGE_IMPORT_ERROR_TEXT + GameAction.PAUSE_GAME);
                 }
             }
             default -> {

@@ -53,6 +53,7 @@ public class GameInitializerImpl implements GameInitializer {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void initialize() {
         model.addObserver((GameModelObserver) view);
         frame.setUp(inputManager, SCREEN_HEIGHT, SCREEN_WIDTH, view);

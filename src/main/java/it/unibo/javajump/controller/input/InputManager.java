@@ -11,16 +11,19 @@ public interface InputManager extends KeyListener {
     /**
      * {@inheritDoc}
      */
+    @Override
     void keyPressed(KeyEvent e);
 
     /**
      * {@inheritDoc}
      */
+    @Override
     void keyReleased(KeyEvent e);
 
     /**
      * {@inheritDoc}
      */
+    @Override
     void keyTyped(KeyEvent e);
 
     /**
