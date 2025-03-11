@@ -1205,5 +1205,8 @@ public final class Constants {
      */
     public static final String RESOURCE_COIN_SFX = "Coin.wav";
 
+    /**
+     * The constant IMAGE_IMPORT_ERROR_TEXT: specifies the text to be displayed when an image cannot be imported.
+     */
     public static final String IMAGE_IMPORT_ERROR_TEXT = "GameAction Queue is full, cannot add: ";
 }
