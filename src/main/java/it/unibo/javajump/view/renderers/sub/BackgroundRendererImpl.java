@@ -6,8 +6,7 @@ import it.unibo.javajump.model.level.spawn.difficulty.DifficultyState;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import static it.unibo.javajump.utility.Constants.EXTRATILES;
-import static it.unibo.javajump.utility.Constants.ZERO;
+import static it.unibo.javajump.utility.Constants.*;
 
 /**
  * Class that implements the BackgroundRenderer interface, used for graphical rendering of
@@ -56,13 +55,13 @@ public class BackgroundRendererImpl implements BackgroundRenderer {
 		this.bgTileHard = bgTileHard;
 		this.parallaxFactor = parallaxFactor;
 		this.horizontalSpeed = horizontalSpeed;
-		this.horizontalOffset = ZERO;
+		this.horizontalOffset = BGHORIZONTALOFFSETINIT;
 		this.currentDifficulty = DifficultyState.EASY;
 		this.transitionDuration = transitionDuration;
 		this.currentBg = bgTileEasy;
 		this.targetBg = bgTileEasy;
 		this.inTransition = false;
-		this.transitionTimer = ZERO;
+		this.transitionTimer = BGTRANSITIONTIMERINIT;
 	}
 
 	private BufferedImage selectBackground(DifficultyState diff) {
@@ -93,12 +92,12 @@ public class BackgroundRendererImpl implements BackgroundRenderer {
 	 * @param deltaTime time passed since the last update (in seconds)
 	 */
 	private void updateHorizontalOffset(float deltaTime) {
-		if (horizontalSpeed != ZERO) {
+		if (horizontalSpeed != BGHORIZONTALNULLSPEED) {
 			horizontalOffset += horizontalSpeed * deltaTime;
 			int tileW = currentBg.getWidth();
 			if (horizontalOffset >= tileW) {
 				horizontalOffset -= tileW;
-			} else if (horizontalOffset < ZERO) {
+			} else if (horizontalOffset < BGHORIZONTALOFFSETINIT) {
 				horizontalOffset += tileW;
 			}
 		}
@@ -125,7 +124,7 @@ public class BackgroundRendererImpl implements BackgroundRenderer {
 		int tileH = currentBg.getHeight();
 
 		int shiftY = (int) (verticalOffset) % tileH;
-		if (shiftY < ZERO) {
+		if (shiftY < SCREENLEFTMARGIN) {
 			shiftY += tileH;
 		}
 		int shiftX = (int) horizontalOffset;

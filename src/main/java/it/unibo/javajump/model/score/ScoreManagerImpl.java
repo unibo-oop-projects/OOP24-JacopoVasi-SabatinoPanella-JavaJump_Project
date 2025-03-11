@@ -9,8 +9,8 @@ public class ScoreManagerImpl implements ScoreManager {
 	private boolean bestScoreReached;
 
 	public ScoreManagerImpl() {
-		this.currentScore = ZERO;
-		this.bestScore = ZERO;
+		this.currentScore = SCOREINIT;
+		this.bestScore = SCOREINIT;
 		this.bestScoreReached = false;
 	}
 
@@ -36,7 +36,7 @@ public class ScoreManagerImpl implements ScoreManager {
 	}
 
 	public void reset() {
-		this.currentScore = ZERO;
+		this.currentScore = SCOREINIT;
 		this.bestScoreReached = false;
 	}
 

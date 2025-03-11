@@ -34,7 +34,7 @@ public class ScoreUIRendererImpl implements ScoreUIRenderer {
 	 */
 	@Override
 	public void drawScoreAndUI(Graphics2D g2, GameModel model, boolean isNewHighScore, boolean showHighScoreMessage) {
-		g2.drawImage(scoreContainer, ZERO, ZERO, null);
+		g2.drawImage(scoreContainer, RENDERUISCORECONTAINERX, RENDERUISCORECONTAINERY, null);
 		int score = model.getScore();
 		int bestScore = model.getScoreManager().getBestScore();
 

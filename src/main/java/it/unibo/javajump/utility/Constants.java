@@ -52,10 +52,33 @@ public final class Constants {
 	//CharacterImpl
 	public static final int VELOCITYINIT = 0;
 
+
+	//Physics
+	public static final int NULLVELOCITY = 0;
+
+	//Moving Platform
+	public static final int NULLPLATFORMVELOCITY = 0;
+
+	//Platform
+	public static final int TOPPLATFORMY_INIT = 0;
+
+	//Strategy
+	public static final int SPAWNY_INIT = 0;
+
 	//Generic Numbers
-	public static final int ZERO = 0;
-	public static final int ONE = 1;
-	public static final int MINUSONE = -1;
+	public static final int FLIPMAX = 1;
+	public static final int FLIPMIN = -1;
+	public static final int SCREENLEFTMARGIN = 0;
+	public static final int BGHORIZONTALOFFSETINIT = 0;
+	public static final int BGTRANSITIONTIMERINIT = 0;
+	public static final int BGHORIZONTALNULLSPEED = 0;
+	public static final int RENDERCOINROWINIT = 0;
+	public static final int RENDERPLAYERANIMTIMERINIT = 0;
+	public static final int RENDERPLAYERFRAMEGETIMGY = 0;
+	public static final int RENDERPLAYERFRAMEY = 0;
+	public static final int RENDERPLAYERFRAMEX = 0;
+	public static final int RENDERUISCORECONTAINERX = 0;
+	public static final int RENDERUISCORECONTAINERY = 0;
 	//Object Factory
 
 	public static final float CHARACTERWIDTH = 48;

@@ -9,23 +9,23 @@ public class PhysicsUtilsImpl implements PhysicsUtils {
 		return Math.min(vx, maxSpeed);
 	}
 
-	
+
 	public static float accelerateToLeft(float vx, float deltaTime, float acceleration, float maxSpeed) {
 		vx -= acceleration * deltaTime;
 		return Math.max(vx, -maxSpeed);
 	}
 
-	
+
 	public static float decelerate(float vx, float deltaTime, float deceleration) {
-		if (vx > ZERO) {
+		if (vx > NULLVELOCITY) {
 			vx -= deceleration * deltaTime;
-			if (vx < ZERO) {
-				vx = ZERO;
+			if (vx < NULLVELOCITY) {
+				vx = NULLVELOCITY;
 			}
-		} else if (vx < ZERO) {
+		} else if (vx < NULLVELOCITY) {
 			vx += deceleration * deltaTime;
-			if (vx > ZERO) {
-				vx = ZERO;
+			if (vx > NULLVELOCITY) {
+				vx = NULLVELOCITY;
 			}
 		}
 		return vx;

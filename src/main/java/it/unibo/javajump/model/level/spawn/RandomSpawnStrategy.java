@@ -34,7 +34,7 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 		this.rand = new Random();
 		this.minPlatformYSpacing = minSpacing;
 		this.maxPlatformYSpacing = maxSpacing;
-		this.currentY = ZERO;
+		this.currentY = SPAWNY_INIT;
 		this.collectiblesSpawner = new CollectiblesSpawnerImpl(factory, coinChance);
 		this.platformSpawner = new PlatformSpawnerImpl(factory);
 	}
@@ -45,7 +45,6 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 		currentY = startY;
 
 		for (int i = 0; i < numberOfPlatforms; i++) {
-
 			float gap = setSpawnGap(diff);
 			currentY -= gap;
 
@@ -55,7 +54,6 @@ public class RandomSpawnStrategy implements SpawnStrategy {
 			model.getGameObjects().add(p);
 
 			float platformWidth = p.getWidth();
-
 			collectiblesSpawner.spawnCollectible(model, x, currentY, platformWidth, p);
 		}
 	}

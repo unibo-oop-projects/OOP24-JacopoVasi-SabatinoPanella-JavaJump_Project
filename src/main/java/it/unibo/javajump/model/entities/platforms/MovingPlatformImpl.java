@@ -13,8 +13,8 @@ public class MovingPlatformImpl extends PlatformImpl implements MovingPlatform {
 							  float range, float screenWidth, float speed) {
 		super(x, y, width, height);
 
-		if (x < ZERO) {
-			x = ZERO;
+		if (x < NULLPLATFORMVELOCITY) {
+			x = NULLPLATFORMVELOCITY;
 		}
 		if (x > screenWidth - width) {
 			x = screenWidth - width;
@@ -24,8 +24,8 @@ public class MovingPlatformImpl extends PlatformImpl implements MovingPlatform {
 
 		float potentialMin = x - range;
 		float potentialMax = x + range;
-		if (potentialMin < ZERO) {
-			potentialMin = ZERO;
+		if (potentialMin < NULLPLATFORMVELOCITY) {
+			potentialMin = NULLPLATFORMVELOCITY;
 		}
 		if (potentialMax > screenWidth - width) {
 			potentialMax = screenWidth - width;

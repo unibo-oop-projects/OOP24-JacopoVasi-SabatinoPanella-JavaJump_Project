@@ -43,7 +43,7 @@ public final class InGameUtilities {
 	 * @param screenWidth the width of the screen
 	 */
 	public static void applyPacManEffect(Character player, int screenWidth) {
-		if (player.getX() + player.getWidth() < ZERO) {
+		if (player.getX() + player.getWidth() < SCREENLEFTMARGIN) {
 			player.setX(screenWidth);
 		} else if (player.getX() > screenWidth) {
 			player.setX(-player.getWidth());

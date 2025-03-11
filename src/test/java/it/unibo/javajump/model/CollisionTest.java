@@ -1,5 +1,6 @@
 package it.unibo.javajump.model;
 
+import it.unibo.javajump.model.entities.GameObject;
 import it.unibo.javajump.model.entities.collectibles.Coin;
 
 import it.unibo.javajump.model.entities.collectibles.CoinState;
@@ -9,9 +10,11 @@ import it.unibo.javajump.model.states.ingame.InGameState;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static it.unibo.javajump.utility.Constants.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CollisionTest {
 
@@ -41,14 +44,21 @@ public class CollisionTest {
     }
     @Test
     void testPlatform() {
-        float x = (float) SCREENWIDTH / 2;
-        float y = (float) SCREENHEIGHT / 2 ;
-        model.getPlayer().setY(y-CHARACTERHEIGHT);
-        model.getPlayer().setX(x);
-        Platform platform = model.getSpawnManager().getFactory().createStandardPlatform(x,y);
+        int counter = 0;
+        int maxcount = 200;
+        List<GameObject> toRemove = new ArrayList<>();
+        for (GameObject go : model.getGameObjects()) {
+            if (go instanceof Platform c) {
+                    toRemove.add(c);
+                }
+            }
+        model.getGameObjects().removeAll(toRemove);
+        Platform platform = model.getSpawnManager().getFactory().createStandardPlatform(model.getPlayer().getX(),model.getPlayer().getY()+100);
         model.getGameObjects().add(platform);
-        model.update(0);
-        model.update(0);
+        while(!model.getPlayer().isOnPlatform() && counter<maxcount){
+            model.update(0.1f);
+            counter++;
+        }
         assertTrue(platform.consumeTouched(), "Platform Should consume touched .");
     }
 

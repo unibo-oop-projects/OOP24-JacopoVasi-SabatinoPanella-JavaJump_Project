@@ -98,7 +98,7 @@ public class CoinRendererImpl implements CoinRenderer {
 			float cycle = frameDuration * COINCYCLEDURATION;
 			float t = timer % cycle;
 			frameIndex = (int) (t / frameDuration);
-			row = ZERO;
+			row = RENDERCOINROWINIT;
 		} else {
 			int idx = (int) (timer / frameDuration);
 			if (idx >= COINIDXMAX) {
