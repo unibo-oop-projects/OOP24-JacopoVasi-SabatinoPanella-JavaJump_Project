@@ -18,7 +18,6 @@ public class DifficultyManagerImpl implements DifficultyManager {
 
     private int currentScore;
     private DifficultyState currentDifficulty;
-    private final Random rand;
 
     private final float thresholdMedium;
     private final float thresholdHard;
@@ -28,7 +27,7 @@ public class DifficultyManagerImpl implements DifficultyManager {
     public DifficultyManagerImpl() {
         this.currentScore = SCORE_INIT;
         this.currentDifficulty = DifficultyState.EASY;
-        this.rand = new Random();
+        final Random rand = new Random();
 
         this.thresholdMedium = SpawnUtilsImpl.randomInRange(rand, MEDIUM_MIN, MEDIUM_MAX);
         this.thresholdHard = SpawnUtilsImpl.randomInRange(rand, HARD_MIN, HARD_MAX);
