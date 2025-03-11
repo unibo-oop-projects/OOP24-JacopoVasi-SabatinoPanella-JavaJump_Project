@@ -41,9 +41,9 @@ public class SoundEffectsManager {
         this.defaultVolume = defaultVolume;
 
         for (final SFXType type : SFXType.values()) {
-            Queue<Clip> pool = new ConcurrentLinkedQueue<>();
+            final Queue<Clip> pool = new ConcurrentLinkedQueue<>();
             for (int i = 0; i < POOL_SIZE; i++) {
-                Clip clip = loadClip(getFilePathForType(type));
+                final Clip clip = loadClip(getFilePathForType(type));
                 if (clip != null) {
                     setVolumeForClip(clip, defaultVolume);
                     if (!pool.offer(clip)) {
@@ -56,7 +56,7 @@ public class SoundEffectsManager {
         setGlobalVolume(defaultVolume);
     }
 
-    private String getFilePathForType(SFXType type) {
+    private String getFilePathForType(final SFXType type) {
         return switch (type) {
             case COIN -> RESOURCES_PATH + RESOURCE_COIN_SFX;
             case BOUNCE -> RESOURCES_PATH + RESOURCE_BOUNCE_SFX;
@@ -65,11 +65,11 @@ public class SoundEffectsManager {
         };
     }
 
-    private Clip loadClip(String filePath) {
+    private Clip loadClip(final String filePath) {
         try {
-            File audioFile = new File(filePath);
-            AudioInputStream audioIn = AudioSystem.getAudioInputStream(audioFile);
-            Clip clip = AudioSystem.getClip();
+            final File audioFile = new File(filePath);
+            final AudioInputStream audioIn = AudioSystem.getAudioInputStream(audioFile);
+            final Clip clip = AudioSystem.getClip();
             clip.open(audioIn);
             return clip;
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
@@ -79,12 +79,12 @@ public class SoundEffectsManager {
     }
 
 
-    private void setVolumeForClip(Clip clip, float defaultVolume) {
+    private void setVolumeForClip(final Clip clip, final float defaultVolume) {
         if (clip != null && clip.isControlSupported(FloatControl.Type.MASTER_GAIN)) {
-            FloatControl control = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            float min = control.getMinimum();
-            float max = control.getMaximum();
-            float dB = min + (max - min) * defaultVolume;
+            final FloatControl control = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            final float min = control.getMinimum();
+            final float max = control.getMaximum();
+            final float dB = min + (max - min) * defaultVolume;
             control.setValue(dB);
         }
     }
@@ -94,9 +94,9 @@ public class SoundEffectsManager {
      *
      * @param type the type
      */
-    public void playSound(SFXType type) {
-        Queue<Clip> pool = clipPools.get(type);
-        if (pool == null) return;
+    public void playSound(final SFXType type) {
+        final Queue<Clip> pool = clipPools.get(type);
+        if (pool == null) {return;}
 
         Clip clip = pool.poll();
         if (clip == null) {
@@ -108,10 +108,10 @@ public class SoundEffectsManager {
 
         if (clip != null) {
             clip.setFramePosition(0);
-            Clip finalClip = clip;
+            final Clip finalClip = clip;
             clip.addLineListener(new LineListener() {
                 @Override
-                public void update(LineEvent event) {
+                public void update(final LineEvent event) {
                     if (event.getType() == LineEvent.Type.STOP) {
                         finalClip.removeLineListener(this);
 
@@ -130,9 +130,9 @@ public class SoundEffectsManager {
      *
      * @param vol the vol
      */
-    public void setGlobalVolume(float vol) {
-        for (Queue<Clip> pool : clipPools.values()) {
-            for (Clip clip : pool) {
+    public void setGlobalVolume(final float vol) {
+        for (final Queue<Clip> pool : clipPools.values()) {
+            for (final Clip clip : pool) {
                 setVolumeForClip(clip, vol);
             }
         }

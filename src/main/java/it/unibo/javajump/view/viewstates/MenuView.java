@@ -21,28 +21,28 @@ public class MenuView implements GameViewState {
      *
      * @param graphics the graphics
      */
-    public MenuView(GameGraphics graphics) {
+    public MenuView(final GameGraphics graphics) {
         font1 = graphics.getGameFont1();
         font2 = graphics.getGameFont2();
         title = graphics.getTitle();
     }
 
     @Override
-    public void draw(Graphics g, GameModel model) {
+    public void draw(final Graphics g, final GameModel model) {
 
-        int width = model.getScreenWidth();
-        int height = model.getScreenHeight();
+        final int width = model.getScreenWidth();
+        final int height = model.getScreenHeight();
 
-        int centerX = width / MENU_VIEW_CENTER_DIV;
-        int centerY = height / MENU_VIEW_CENTER_DIV;
+        final int centerX = width / MENU_VIEW_CENTER_DIV;
+        final int centerY = height / MENU_VIEW_CENTER_DIV;
 
-        int bestScore = model.getScoreManager().getBestScore();
+        final int bestScore = model.getScoreManager().getBestScore();
 
         g.setColor(Color.decode(BACKGROUND_DEFAULT_COLOR));
         g.fillRect(MENU_VIEW_RECT_X, MENU_VIEW_RECT_Y, width, height);
 
 
-        g.drawImage(title, (int) (width * MENU_VIEW_TITLE_IMG_WIDTH_SCALAR), height / MENU_VIEW_TITLE_IMG_HEIGHT_SCALAR, (title.getWidth() * MENU_VIEW_TILE_W_SCALAR), (title.getHeight() * MENU_VIEW_TILE_H_SCALAR), null);
+        g.drawImage(title, (int) (width * MENU_VIEW_TITLE_IMG_WIDTH_SCALAR), height / MENU_VIEW_TITLE_IMG_HEIGHT_SCALAR, title.getWidth() * MENU_VIEW_TILE_W_SCALAR, title.getHeight() * MENU_VIEW_TILE_H_SCALAR, null);
 
         g.setColor(Color.WHITE);
         g.setFont(font1);
@@ -50,7 +50,7 @@ public class MenuView implements GameViewState {
         g.drawString(MENU_VIEW_QUIT_TEXT, centerX / MENU_VIEW_TEXT_X_CENTER, centerY + MENU_VIEW_QUIT_TEXT_Y_OFFSET);
 
         g.setColor(Color.decode(GOLD_TEXT_COLOR));
-        Stroke dashed = new BasicStroke(MENU_VIEW_STOKE_WIDTH, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, MENU_VIEW_STROKE_MITER_LIMIT, new float[]{MENU_VIEW_STROKE_ARRAY}, MENU_VIEW_STROKE_DASH);
+        final Stroke dashed = new BasicStroke(MENU_VIEW_STOKE_WIDTH, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, MENU_VIEW_STROKE_MITER_LIMIT, new float[]{MENU_VIEW_STROKE_ARRAY}, MENU_VIEW_STROKE_DASH);
         if (g instanceof Graphics2D g2d) {
             g2d.setStroke(dashed);
             g2d.drawRoundRect((centerX / MENU_VIEW_ROUND_RECT_X_DIV) - MENU_VIEW_ROUND_RECT_X_OFF, height - MENU_VIEW_ROUND_RECT_Y_OFF, MENU_VIEW_ROUND_RECT_WIDTH, MENU_VIEW_ROUND_RECT_HEIGHT, MENU_VIEW_ROUND_RECT_ARC_W, MENU_VIEW_ROUND_RECT_ARC_H);

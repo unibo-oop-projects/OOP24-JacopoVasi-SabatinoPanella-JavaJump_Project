@@ -79,7 +79,7 @@ public class PlayerRendererImpl implements PlayerRenderer {
      * @param deltaTime the time passed since the last frame (used for animation)
      */
     @Override
-    public void drawPlayer(Graphics2D g2, Character player, float offsetY, float deltaTime) {
+    public void drawPlayer(final Graphics2D g2, final Character player, final float offsetY, final float deltaTime) {
         if (player.isOnPlatform() != prevOnPlatform) {
             animTimer = RENDER_PLAYER_ANIM_TIMER_INIT;
             prevOnPlatform = player.isOnPlatform();

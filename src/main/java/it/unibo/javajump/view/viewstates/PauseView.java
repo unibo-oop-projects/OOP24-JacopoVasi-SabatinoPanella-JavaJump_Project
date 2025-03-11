@@ -33,7 +33,7 @@ public class PauseView implements GameViewState {
      *
      * @param graphics the graphics
      */
-    public PauseView(GameGraphics graphics) {
+    public PauseView(final GameGraphics graphics) {
         font1 = graphics.getGameFont1();
         font2 = graphics.getGameFont2();
     }

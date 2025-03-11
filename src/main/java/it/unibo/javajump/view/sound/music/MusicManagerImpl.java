@@ -37,14 +37,14 @@ public class MusicManagerImpl implements MusicManager {
      * @param filePath      the file path
      * @param defaultVolume the default volume
      */
-    public MusicManagerImpl(String filePath, float defaultVolume) {
+    public MusicManagerImpl(final String filePath, final float defaultVolume) {
         this.defaultVolume = defaultVolume;
         loadBackgroundMusic(filePath);
         fadeExecutor = Executors.newSingleThreadScheduledExecutor();
     }
 
     @Override
-    public void loadBackgroundMusic(String filePath) {
+    public void loadBackgroundMusic(final String filePath) {
         try {
             final File audioFile = new File(filePath);
             final AudioInputStream audioIn = AudioSystem.getAudioInputStream(audioFile);

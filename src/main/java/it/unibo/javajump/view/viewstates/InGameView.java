@@ -26,29 +26,29 @@ public class InGameView implements GameViewState {
      *
      * @param renderer the renderer
      */
-    public InGameView(RenderManager renderer) {
+    public InGameView(final RenderManager renderer) {
         this.renderer = renderer;
     }
 
     @Override
-    public void draw(Graphics g, GameModel model) {
+    public void draw(final Graphics g, final GameModel model) {
 
         ArrayList<GameObject> snapshot;
         synchronized (model.getGameObjects()) {
             snapshot = new ArrayList<>(model.getGameObjects());
-            System.out.println(snapshot.size());
+
         }
         if (g instanceof Graphics2D g2) {
 
 
-            float deltaTime = model.getDeltaTime();
+            final float deltaTime = model.getDeltaTime();
 
             renderer.drawBackground1(g2, model, deltaTime);
             renderer.drawBackground2(g2, model, deltaTime);
 
-            float cameraOffsetY = model.getCameraManager().getCurrentOffset();
+            final float cameraOffsetY = model.getCameraManager().getCurrentOffset();
 
-            for (GameObject obj : snapshot) {
+            for (final GameObject obj : snapshot) {
                 if (obj instanceof Coin c) {
                     renderer.drawCoin(g2, c, cameraOffsetY, deltaTime);
                 } else if (obj instanceof Platform p) {
@@ -61,7 +61,7 @@ public class InGameView implements GameViewState {
             renderer.drawPlayer(g2, model.getPlayer(), cameraOffsetY, deltaTime);
 
 
-            long now = System.currentTimeMillis();
+            final long now = System.currentTimeMillis();
             if (now - lastToggleTime > GAMEPLAY_MESSAGE_TIME_TOGGLE) {
                 showHighScoreMessage = !showHighScoreMessage;
                 lastToggleTime = now;

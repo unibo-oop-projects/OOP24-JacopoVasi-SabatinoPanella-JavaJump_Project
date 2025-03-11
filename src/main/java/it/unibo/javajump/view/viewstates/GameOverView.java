@@ -27,26 +27,26 @@ public class GameOverView implements GameViewState {
      *
      * @param gameGraphics the game graphics
      */
-    public GameOverView(GameGraphics gameGraphics) {
+    public GameOverView(final GameGraphics gameGraphics) {
         gameFont2 = gameGraphics.getGameFont2();
         gameFont3 = gameGraphics.getGameFont3();
         gameoverImage = gameGraphics.getGameOver();
     }
 
-
+    @Override
     public void startFade() {
         this.fadeAlpha = GAME_OVER_ALPHA_INIT;
         this.elapsedTime = GAME_OVER_TIME_INIT;
         this.fading = true;
     }
 
-
+    @Override
     public void stopFade() {
         this.fadeAlpha = GAME_OVER_ALPHA;
         this.fading = false;
     }
 
-
+    @Override
     public void update() {
         if (fading) {
             elapsedTime += deltaTime;
@@ -59,16 +59,16 @@ public class GameOverView implements GameViewState {
 
 
     @Override
-    public void draw(Graphics g, GameModel model) {
+    public void draw(final Graphics g, final GameModel model) {
         this.deltaTime = model.getDeltaTime();
         if (g instanceof Graphics2D g2) {
-            Composite oldComposite = g2.getComposite();
+            final Composite oldComposite = g2.getComposite();
 
-            int w = model.getScreenWidth();
-            int h = model.getScreenHeight();
+            final int w = model.getScreenWidth();
+            final int h = model.getScreenHeight();
 
-            int centerX = w / GAME_OVER_CENTER_DIV;
-            int centerY = h / GAME_OVER_CENTER_DIV;
+            final int centerX = w / GAME_OVER_CENTER_DIV;
+            final int centerY = h / GAME_OVER_CENTER_DIV;
 
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, fadeAlpha));
             g2.setColor(Color.decode(BACKGROUND_DEFAULT_COLOR));

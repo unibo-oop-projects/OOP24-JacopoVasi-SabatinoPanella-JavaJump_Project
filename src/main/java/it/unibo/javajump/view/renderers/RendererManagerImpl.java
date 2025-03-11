@@ -121,7 +121,7 @@ public class RendererManagerImpl implements RenderManager {
      * to draw the first background.
      */
     @Override
-    public void drawBackground1(Graphics2D g2, GameModel model, float deltaTime) {
+    public void drawBackground1(final Graphics2D g2, final GameModel model, final float deltaTime) {
         backgroundRenderer1.drawBackground(g2, model, deltaTime);
     }
 
@@ -131,7 +131,7 @@ public class RendererManagerImpl implements RenderManager {
      * to draw the second background.
      */
     @Override
-    public void drawBackground2(Graphics2D g2, GameModel model, float deltaTime) {
+    public void drawBackground2(final Graphics2D g2, final GameModel model, final float deltaTime) {
         backgroundRenderer2.drawBackground(g2, model, deltaTime);
     }
 
@@ -141,7 +141,7 @@ public class RendererManagerImpl implements RenderManager {
      * to draw the playable character.
      */
     @Override
-    public void drawPlayer(Graphics2D g2, Character player, float offsetY, float deltaTime) {
+    public void drawPlayer(final Graphics2D g2, final Character player, final float offsetY, final float deltaTime) {
         playerRenderer.drawPlayer(g2, player, offsetY, deltaTime);
     }
 
@@ -151,7 +151,7 @@ public class RendererManagerImpl implements RenderManager {
      * to draw a coin.
      */
     @Override
-    public void drawCoin(Graphics2D g2, Coin coinImpl, float offsetY, float deltaTime) {
+    public void drawCoin(final Graphics2D g2, final Coin coinImpl, final float offsetY, final float deltaTime) {
         coinRenderer.drawCoin(g2, coinImpl, offsetY, deltaTime);
     }
 
@@ -161,7 +161,7 @@ public class RendererManagerImpl implements RenderManager {
      * to draw a platform.
      */
     @Override
-    public void drawPlatform(Graphics2D g2, Platform platformImpl, float offsetY) {
+    public void drawPlatform(final Graphics2D g2, final Platform platformImpl, final float offsetY) {
         platformRenderer.drawPlatform(g2, platformImpl, offsetY);
     }
 
@@ -171,7 +171,7 @@ public class RendererManagerImpl implements RenderManager {
      * to draw the score and UI elements.
      */
     @Override
-    public void drawScoreUI(Graphics2D g2, GameModel model, boolean isNewHighScore, boolean showHighScoreMessage) {
+    public void drawScoreUI(final Graphics2D g2, final GameModel model, final boolean isNewHighScore, final boolean showHighScoreMessage) {
         scoreUIRenderer.drawScoreAndUI(g2, model, isNewHighScore, showHighScoreMessage);
     }
 }

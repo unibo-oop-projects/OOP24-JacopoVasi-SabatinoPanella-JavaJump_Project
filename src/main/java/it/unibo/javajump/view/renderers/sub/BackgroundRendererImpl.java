@@ -36,8 +36,6 @@ public class BackgroundRendererImpl implements BackgroundRenderer {
      */
     private float horizontalOffset;
 
-    private final DifficultyState currentDifficulty;
-
     private BufferedImage currentBg;
     private BufferedImage targetBg;
     private boolean inTransition;
@@ -62,7 +60,7 @@ public class BackgroundRendererImpl implements BackgroundRenderer {
         this.parallaxFactor = parallaxFactor;
         this.horizontalSpeed = horizontalSpeed;
         this.horizontalOffset = BG_HORIZONTAL_OFFSET_INIT;
-        this.currentDifficulty = DifficultyState.EASY;
+        final DifficultyState currentDifficulty = DifficultyState.EASY;
         this.transitionDuration = transitionDuration;
         this.currentBg = bgTileEasy;
         this.targetBg = bgTileEasy;
