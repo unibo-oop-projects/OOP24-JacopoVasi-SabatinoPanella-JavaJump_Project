@@ -93,6 +93,7 @@ class InputTest {
 
     @Test
     void testActionQueueWhenEscapeKeyIsPressed() {
+
         KeyEvent event = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_ESCAPE, ' ');
         inputManager.keyPressed(event);
 

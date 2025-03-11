@@ -1,64 +1,31 @@
 package it.unibo.javajump.model;
 
 import it.unibo.javajump.controller.input.GameAction;
-import it.unibo.javajump.model.camera.CameraManager;
-import it.unibo.javajump.model.camera.CameraManagerImpl;
-import it.unibo.javajump.model.collision.CollisionManager;
-import it.unibo.javajump.model.collision.CollisionManagerImpl;
+
 import it.unibo.javajump.model.entities.character.Character;
-import it.unibo.javajump.model.factories.GameObjectFactory;
-import it.unibo.javajump.model.factories.GameObjectFactoryImpl;
-import it.unibo.javajump.model.level.CleanupManager;
-import it.unibo.javajump.model.level.CleanupManagerImpl;
-import it.unibo.javajump.model.level.SpawnManager;
-import it.unibo.javajump.model.level.SpawnManagerImpl;
-import it.unibo.javajump.model.level.spawn.RandomSpawnStrategy;
-import it.unibo.javajump.model.level.spawn.difficulty.DifficultyManager;
-import it.unibo.javajump.model.level.spawn.difficulty.DifficultyManagerImpl;
-import it.unibo.javajump.model.physics.PhysicsManager;
-import it.unibo.javajump.model.physics.PhysicsManagerImpl;
-import it.unibo.javajump.model.score.ScoreManager;
-import it.unibo.javajump.model.score.ScoreManagerImpl;
 import it.unibo.javajump.model.states.GameStateHandler;
 import it.unibo.javajump.model.states.menu.MenuState;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
-import static it.unibo.javajump.utility.Constants.*;
-import static it.unibo.javajump.utility.Constants.DECELERATION;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ModelTest {
 
     private GameModelImpl gameModel;
-    private PhysicsManager physicsManager;
-    private CollisionManager collisionManager;
-    private SpawnManager spawnManager;
-    private CameraManager cameraManager;
-    private ScoreManager scoreManager;
-    private CleanupManager cleanupManager;
-    private DifficultyManager difficultyManager;
+
+
     private static final int SCREEN_WIDTH = 800;
     private static final int SCREEN_HEIGHT = 600;
 
     @BeforeEach
     void setUp() {
         // Instantiate real implementations of the dependencies
-        GameObjectFactory factory = new GameObjectFactoryImpl();
-         difficultyManager = new DifficultyManagerImpl();
-        RandomSpawnStrategy strategy = new RandomSpawnStrategy(factory, MINSPACING, MAXSPACING, COINCHANCE, difficultyManager);
-         collisionManager = new CollisionManagerImpl();
-         spawnManager = new SpawnManagerImpl(strategy);
-         scoreManager = new ScoreManagerImpl();
-         cameraManager = new CameraManagerImpl(scoreManager, SCOREFACTOR);
-         physicsManager = new PhysicsManagerImpl(GRAVITY, ACCELERATION, MAXSPEED, DECELERATION);
-         cleanupManager = new CleanupManagerImpl();
 
         // Create the GameModelImpl instance
         gameModel = new GameModelImpl(
-                SCREEN_WIDTH, SCREEN_HEIGHT, physicsManager, collisionManager, spawnManager,
-                cameraManager, scoreManager, cleanupManager, difficultyManager
+                SCREEN_WIDTH, SCREEN_HEIGHT
         );
     }
 
@@ -111,18 +78,7 @@ class ModelTest {
         assertEquals(50, gameModel.getScore(), "Score should increase correctly");
     }
 
-    @Test
-    void testGetters() {
-        assertEquals(SCREEN_WIDTH, gameModel.getScreenWidth());
-        assertEquals(SCREEN_HEIGHT, gameModel.getScreenHeight());
-        assertEquals(physicsManager, gameModel.getPhysicsManager());
-        assertEquals(collisionManager, gameModel.getCollisionManager());
-        assertEquals(spawnManager, gameModel.getSpawnManager());
-        assertEquals(cameraManager, gameModel.getCameraManager());
-        assertEquals(scoreManager, gameModel.getScoreManager());
-        assertEquals(cleanupManager, gameModel.getCleanupManager());
-        assertEquals(difficultyManager, gameModel.getDifficultyManager());
-    }
+
 
     // Inner class to test observer pattern
     private static class TestObserver implements GameModelObserver {

@@ -2,14 +2,24 @@ package it.unibo.javajump.model;
 
 import it.unibo.javajump.controller.input.GameAction;
 import it.unibo.javajump.model.camera.CameraManager;
+import it.unibo.javajump.model.camera.CameraManagerImpl;
 import it.unibo.javajump.model.collision.CollisionManager;
+import it.unibo.javajump.model.collision.CollisionManagerImpl;
 import it.unibo.javajump.model.entities.GameObject;
 import it.unibo.javajump.model.entities.character.Character;
+import it.unibo.javajump.model.factories.GameObjectFactory;
+import it.unibo.javajump.model.factories.GameObjectFactoryImpl;
 import it.unibo.javajump.model.level.CleanupManager;
+import it.unibo.javajump.model.level.CleanupManagerImpl;
 import it.unibo.javajump.model.level.SpawnManager;
+import it.unibo.javajump.model.level.SpawnManagerImpl;
+import it.unibo.javajump.model.level.spawn.RandomSpawnStrategy;
 import it.unibo.javajump.model.level.spawn.difficulty.DifficultyManager;
+import it.unibo.javajump.model.level.spawn.difficulty.DifficultyManagerImpl;
 import it.unibo.javajump.model.physics.PhysicsManager;
+import it.unibo.javajump.model.physics.PhysicsManagerImpl;
 import it.unibo.javajump.model.score.ScoreManager;
+import it.unibo.javajump.model.score.ScoreManagerImpl;
 import it.unibo.javajump.model.states.GameStateHandler;
 import it.unibo.javajump.model.states.menu.MenuState;
 
@@ -41,29 +51,24 @@ public class GameModelImpl implements GameModel {
 
 	public GameModelImpl(
 			int screenWidth,
-			int screenHeight,
-			PhysicsManager physicsManager,
-			CollisionManager collisionManager,
-			SpawnManager spawnManager,
-			CameraManager cameraManager,
-			ScoreManager scoreManager,
-			CleanupManager cleanupManager,
-			DifficultyManager difficultyManager
+			int screenHeight
 	) {
 		this.screenWidth = screenWidth;
 		this.screenHeight = screenHeight;
+		this.difficultyManager = new DifficultyManagerImpl();
+		GameObjectFactory factory = new GameObjectFactoryImpl();
+		RandomSpawnStrategy strategy = new RandomSpawnStrategy(factory, MINSPACING, MAXSPACING, COINCHANCE, difficultyManager);
+		this.physicsManager = new PhysicsManagerImpl(GRAVITY, ACCELERATION, MAXSPEED, DECELERATION);
+		this.collisionManager = new CollisionManagerImpl();
+		this.spawnManager = new SpawnManagerImpl(strategy);
+		this.scoreManager = new ScoreManagerImpl();
+		this.cameraManager = new CameraManagerImpl(scoreManager, SCOREFACTOR);
 
-		this.physicsManager = physicsManager;
-		this.collisionManager = collisionManager;
-		this.spawnManager = spawnManager;
-		this.cameraManager = cameraManager;
-		this.scoreManager = scoreManager;
-		this.difficultyManager = difficultyManager;
 
 		this.gameObject = new ArrayList<>();
 		this.observers = new ArrayList<>();
 
-		this.cleanupManager = cleanupManager;
+		this.cleanupManager = new CleanupManagerImpl();
 
 		this.currentState = new MenuState();
 		this.currentState.onEnter(this);
