@@ -15,7 +15,7 @@ import static it.unibo.javajump.utility.Constants.GAMEPLAY_MESSAGE_TIME_TOGGLE;
 /**
  * The type In game view.
  */
-public class InGameView implements GameViewState {
+public final class InGameView implements GameViewState {
 
     private final RenderManager renderer;
 

@@ -24,7 +24,7 @@ import static it.unibo.javajump.utility.Constants.MUSIC_LOOP_START;
 /**
  * The type Music manager.
  */
-public class MusicManagerImpl implements MusicManager {
+public final class MusicManagerImpl implements MusicManager {
     private Clip backgroundClip;
     private FloatControl volumeControl;
     private ScheduledExecutorService fadeExecutor;

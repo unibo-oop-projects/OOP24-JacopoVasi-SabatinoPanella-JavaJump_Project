@@ -52,7 +52,7 @@ public class BackgroundRendererImpl implements BackgroundRenderer {
      * @param bgTileHard         the bg tile hard
      * @param parallaxFactor     the factor for vertical parallax effect
      * @param horizontalSpeed    the speed for horizontal auto-scrolling effect.
-     *                          If set to 0, the background will not scroll horizontally.
+     *                           If set to 0, the background will not scroll horizontally.
      * @param transitionDuration the transition duration
      */
     public BackgroundRendererImpl(final BufferedImage bgTileEasy, final BufferedImage bgTileMedium,
