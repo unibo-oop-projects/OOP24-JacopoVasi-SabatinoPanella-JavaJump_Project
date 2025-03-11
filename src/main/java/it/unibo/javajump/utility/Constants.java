@@ -5,14 +5,6 @@ package it.unibo.javajump.utility;
  * The class Constants, which contains all the constants used in the game.
  */
 public final class Constants {
-    /**
-     * Private constructor for Constants, to avoid instantiation.
-     *
-     * @throws AssertionError when wrongly called.
-     */
-    private Constants() {
-        throw new AssertionError("This is a utility class, it should not be instantiated!");
-    }
 
     //Game Model -----------------------------------------------------------------------------
     /**
@@ -1209,4 +1201,14 @@ public final class Constants {
      * The constant IMAGE_IMPORT_ERROR_TEXT: specifies the text to be displayed when an image cannot be imported.
      */
     public static final String IMAGE_IMPORT_ERROR_TEXT = "GameAction Queue is full, cannot add: ";
+
+    /**
+     * Private constructor for Constants, to avoid instantiation.
+     *
+     * @throws AssertionError when wrongly called.
+     */
+    private Constants() {
+        throw new AssertionError("This is a utility class, it should not be instantiated!");
+    }
+
 }

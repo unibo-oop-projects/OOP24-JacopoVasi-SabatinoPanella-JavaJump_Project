@@ -11,10 +11,10 @@ import it.unibo.javajump.model.states.menu.MenuState;
 public class PauseState implements GameStateHandler {
     private float deltaTime = 0;
     private PauseOption selection = PauseOption.CONTINUE;
-    private final GameState gameState = GameState.PAUSE;
+    static final GameState gameState = GameState.PAUSE;
 
     @Override
-    public void handleAction(GameModel model, GameAction action) {
+    public void handleAction(final GameModel model, final GameAction action) {
         switch (action) {
             case CONFIRM_SELECTION -> {
                 switch (selection) {
@@ -47,7 +47,7 @@ public class PauseState implements GameStateHandler {
     }
 
     @Override
-    public void update(GameModel model, float deltaTime) {
+    public void update(final GameModel model, final float deltaTime) {
         this.deltaTime = deltaTime;
         model.notifyObservers();
     }
@@ -61,6 +61,7 @@ public class PauseState implements GameStateHandler {
         return selection;
     }
 
+    @Override
     public float getDeltaTime() {
         return deltaTime;
     }
