@@ -4,6 +4,8 @@ import it.unibo.javajump.model.GameModel;
 import it.unibo.javajump.model.GameModelObserver;
 import it.unibo.javajump.model.states.GameState;
 import it.unibo.javajump.model.states.GameStateHandler;
+import it.unibo.javajump.view.graphics.GameGraphics;
+import it.unibo.javajump.view.graphics.GameGraphicsImpl;
 import it.unibo.javajump.view.renderers.RenderManager;
 import it.unibo.javajump.view.renderers.RendererManagerImpl;
 import it.unibo.javajump.view.sound.music.MusicManager;
@@ -38,6 +40,7 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
 	private final MusicManager musicManager;
 
 	public MainGameViewImpl(GameModel model) {
+		GameGraphics gameGraphics = new GameGraphicsImpl();
 		this.model = model;
 		this.musicManager = new MusicManagerImpl(RESOURCES_PATH + RESOURCES_MUSIC_1, MUSIC_VOLUME);
 		SoundEffectsManager soundEffectsManager = new SoundEffectsManager(SOUND_EFFECTS_VOLUME);
@@ -46,13 +49,13 @@ public class MainGameViewImpl extends JPanel implements MainGameView, GameModelO
 		this.virtualWidth = model.getScreenWidth();
 		this.virtualHeight = model.getScreenHeight();
 
-		RenderManager rendererManager = new RendererManagerImpl(soundEffectsManager);
+		RenderManager rendererManager = new RendererManagerImpl(soundEffectsManager, gameGraphics);
 		setBackground(Color.decode(BACKGROUND_DEFAULT_COLOR));
 
-		this.menuView = new MenuView();
+		this.menuView = new MenuView(gameGraphics);
 		this.inGameView = new InGameView(rendererManager);
-		this.pauseView = new PauseView();
-		this.gameOverView = new GameOverView();
+		this.pauseView = new PauseView(gameGraphics);
+		this.gameOverView = new GameOverView(gameGraphics);
 
 		this.lastState = model.getCurrentState().getGameState();
 

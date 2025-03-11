@@ -1,7 +1,6 @@
 package it.unibo.javajump.view.renderers.sub;
 
 import it.unibo.javajump.model.GameModel;
-import it.unibo.javajump.view.graphics.GameGraphicsImpl;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -16,14 +15,20 @@ public class ScoreUIRendererImpl implements ScoreUIRenderer {
 	 * Image of the score container, used to contain the score during gameplay.
 	 */
 	private final BufferedImage scoreContainer;
+	private final Font gameFont1;
+	private final Font gameFont2;
+	private final Font gameFont3;
 
 	/**
 	 * Constructor of the ScoreUIRendererImpl class.
 	 *
 	 * @param container the image of the score container
 	 */
-	public ScoreUIRendererImpl(BufferedImage container) {
+	public ScoreUIRendererImpl(BufferedImage container, Font font1, Font font2, Font font3) {
 		this.scoreContainer = container;
+		this.gameFont1 = font1;
+		this.gameFont2 = font2;
+		this.gameFont3 = font3;
 	}
 
 	/**
@@ -40,19 +45,19 @@ public class ScoreUIRendererImpl implements ScoreUIRenderer {
 
 		if (score < bestScore || score == 0) {
 			g2.setColor(Color.WHITE);
-			g2.setFont(GameGraphicsImpl.getGameFont2());
+			g2.setFont(gameFont1);
 			g2.drawString(SCORERENDERTEXT + score, SCORERENDERX, SCORERENDERY);
 			isNewHighScore = false;
 		} else {
 			g2.setColor(Color.decode(GOLD_TEXT_COLOR));
-			g2.setFont(GameGraphicsImpl.getGameFont2());
+			g2.setFont(gameFont2);
 			g2.drawString(SCORERENDERTEXT + score, SCORERENDERX, SCORERENDERY);
 			isNewHighScore = true;
 		}
 
 		if (isNewHighScore && showHighScoreMessage) {
 			g2.setColor(Color.decode(RED_TEXT_COLOR));
-			g2.setFont(GameGraphicsImpl.getGameFont3());
+			g2.setFont(gameFont3);
 			g2.drawString(HIGHSCORERENDERTEXT, HIGHSCORERENDERX, HIGHSCORERENDERY);
 		}
 	}

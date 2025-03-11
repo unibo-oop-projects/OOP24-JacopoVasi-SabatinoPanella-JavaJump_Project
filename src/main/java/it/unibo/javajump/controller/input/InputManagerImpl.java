@@ -37,7 +37,8 @@ public class InputManagerImpl implements InputManager {
 			case KeyEvent.VK_UP -> actionQueue.offer(GameAction.MOVE_MENU_UP);
 			case KeyEvent.VK_DOWN -> actionQueue.offer(GameAction.MOVE_MENU_DOWN);
 			case KeyEvent.VK_ESCAPE -> actionQueue.offer(GameAction.PAUSE_GAME);
-		}
+            default -> {}
+        }
 	}
 
 	/**
@@ -48,6 +49,7 @@ public class InputManagerImpl implements InputManager {
 		switch (e.getKeyCode()) {
 			case KeyEvent.VK_LEFT -> pressingLeft = false;
 			case KeyEvent.VK_RIGHT -> pressingRight = false;
+			default -> {}
 		}
 	}
 

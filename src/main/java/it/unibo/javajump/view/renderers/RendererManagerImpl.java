@@ -4,7 +4,7 @@ import it.unibo.javajump.model.GameModel;
 import it.unibo.javajump.model.entities.character.Character;
 import it.unibo.javajump.model.entities.collectibles.Coin;
 import it.unibo.javajump.model.entities.platforms.Platform;
-import it.unibo.javajump.view.graphics.GameGraphicsImpl;
+import it.unibo.javajump.view.graphics.GameGraphics;
 import it.unibo.javajump.view.renderers.sub.*;
 import it.unibo.javajump.view.sound.sfx.SoundEffectsManager;
 
@@ -45,7 +45,8 @@ public class RendererManagerImpl implements RenderManager {
 	 * Constructor for the RendererManagerImpl class. Associates the different renderers implementations
 	 * with their respective fields.
 	 */
-	public RendererManagerImpl(SoundEffectsManager soundEffectsManager) {
+	public RendererManagerImpl(SoundEffectsManager soundEffectsManager, GameGraphics graphics) {
+
 		this.platformRenderer = new PlatformRendererImpl(
 				RENDERMANAGERPLATFORMOUTLINE,
 				RENDERMANAGERPLATFORMARCW,
@@ -53,36 +54,39 @@ public class RendererManagerImpl implements RenderManager {
 				soundEffectsManager);
 
 		this.coinRenderer = new CoinRendererImpl(
-				GameGraphicsImpl.getCoinSheet(),
+				graphics.getCoinSheet(),
 				RENDERMANAGERCOINWIDTH,
 				RENDERMANAGERCOINHEIGHT,
 				RENDERMANAGERCOINFRAMEDURATION,
 				soundEffectsManager);
 
 		this.playerRenderer = new PlayerRendererImpl(
-				GameGraphicsImpl.getPlayerSheet(),
+				graphics.getPlayerSheet(),
 				RENDERMANAGERPLAYERWIDTH,
 				RENDERMANAGERPLAYERHEIGHT,
 				RENDERMANAGERPLAYERFRAMEDURATION);
 
 		this.backgroundRenderer1 = new BackgroundRendererImpl(
-				GameGraphicsImpl.getBackground_Easy(),
-				GameGraphicsImpl.getBackground_Medium(),
-				GameGraphicsImpl.getBackground_Difficult(),
+				graphics.getBackground_Easy(),
+				graphics.getBackground_Medium(),
+				graphics.getBackground_Difficult(),
 				RENDERMANAGERBACKGROUNDPARALLAXONE,
 				RENDERMANAGERBACKGROUNDSPEEDXONE,
 				TRANSITION_DURATION_1);
 
 		this.backgroundRenderer2 = new BackgroundRendererImpl(
-				GameGraphicsImpl.getClouds_Easy(),
-				GameGraphicsImpl.getClouds_Medium(),
-				GameGraphicsImpl.getClouds_Difficult(),
+				graphics.getClouds_Easy(),
+				graphics.getClouds_Medium(),
+				graphics.getClouds_Difficult(),
 				RENDERMANAGERBACKGROUNDPARALLAXTWO,
 				RENDERMANAGERBACKGROUNDSPEEDTWO,
 				TRANSITION_DURATION_2);
 
 		this.scoreUIRenderer = new ScoreUIRendererImpl(
-				GameGraphicsImpl.getScoreContainer());
+				graphics.getScoreContainer(),
+				graphics.getGameFont1(),
+				graphics.getGameFont2(),
+				graphics.getGameFont3());
 	}
 
 	/**

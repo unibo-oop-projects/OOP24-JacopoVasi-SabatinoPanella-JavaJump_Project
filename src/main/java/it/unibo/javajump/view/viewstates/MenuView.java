@@ -2,7 +2,7 @@ package it.unibo.javajump.view.viewstates;
 
 import it.unibo.javajump.model.GameModel;
 
-import it.unibo.javajump.view.graphics.GameGraphicsImpl;
+import it.unibo.javajump.view.graphics.GameGraphics;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -10,6 +10,15 @@ import java.awt.image.BufferedImage;
 import static it.unibo.javajump.utility.Constants.*;
 
 public class MenuView implements GameViewState {
+	private final Font font1;
+	private final Font font2;
+	private final BufferedImage title;
+
+	public MenuView(GameGraphics graphics) {
+		font1 = graphics.getGameFont1();
+		font2 = graphics.getGameFont2();
+		title = graphics.getTitle();
+	}
 
 	@Override
 	public void draw(Graphics g, GameModel model) {
@@ -25,11 +34,11 @@ public class MenuView implements GameViewState {
 		g.setColor(Color.decode(BACKGROUND_DEFAULT_COLOR));
 		g.fillRect(MENUVIEWRECTX, MENUVIEWRECTY, width, height);
 
-		BufferedImage title = GameGraphicsImpl.getTitle();
+
 		g.drawImage(title, (int) (width * MENUVIEWIMGWIDTHSCALAR), height / MENUVIEWIMGHEIGHTSCALAR, (title.getWidth() * MENUVIEWTILEWSCALAR), (title.getHeight() * MENUVIEWTILEHSCALAR), null);
 
 		g.setColor(Color.WHITE);
-		g.setFont(GameGraphicsImpl.getGameFont1());
+		g.setFont(font1);
 		g.drawString(MENUVIEWSTARTTEXT, centerX / MENUVIEWXCENTER, centerY + MENUVIEWSTARTYOFFSET);
 		g.drawString(MENUVIEWQUITTEXT, centerX / MENUVIEWXCENTER, centerY + MENUVIEWQUITYOFFSET);
 
@@ -38,7 +47,7 @@ public class MenuView implements GameViewState {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setStroke(dashed);
 		g2d.drawRoundRect((centerX / MENUVIEWROUNDRECTXDIV) - MENUVIEWROUNDRECTXOFF, height - MENUVIEWROUNDRECTYOFF, MENUVIEWROUNDRECTWIDTH, MENUVIEWROUNDRECTHEIGHT, MENUVIEWROUNDRECTARCW, MENUVIEWROUNDRECTARCH);
-		g.setFont(GameGraphicsImpl.getGameFont2());
+		g.setFont(font2);
 		g.drawString(MENUVIEWBESTSCORETEXT + bestScore, centerX / MENUVIEWBESTSCOREXDIV, height - MENUVIEWBESTSCOREYOFF);
 
 	}
