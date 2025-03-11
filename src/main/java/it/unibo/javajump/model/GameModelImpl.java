@@ -46,6 +46,7 @@ public class GameModelImpl implements GameModel {
 	private final int screenWidth;
 	private final int screenHeight;
 
+	private boolean isRunning;
 
 	private final List<GameModelObserver> observers;
 
@@ -64,6 +65,7 @@ public class GameModelImpl implements GameModel {
 		this.scoreManager = new ScoreManagerImpl();
 		this.cameraManager = new CameraManagerImpl(scoreManager, SCOREFACTOR);
 
+		this.isRunning = true;
 
 		this.gameObject = new ArrayList<>();
 		this.observers = new ArrayList<>();
@@ -196,5 +198,13 @@ public class GameModelImpl implements GameModel {
 
 	public float getDeltaTime() {
 		return deltaTime;
+	}
+
+	public boolean isRunning() {
+		return isRunning;
+	}
+
+	public void stopGame() {
+		isRunning = false;
 	}
 }

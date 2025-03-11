@@ -15,13 +15,11 @@ public class MenuState implements GameStateHandler {
 	public void handleAction(GameModel model, GameAction action) {
 		switch (action) {
 			case CONFIRM_SELECTION:
-
 				model.startGame();
 				model.setState(new InGameState());
 				break;
 			case PAUSE_GAME:
-
-				System.exit(0);
+				model.stopGame();
 				break;
 			default:
 				break;

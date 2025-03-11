@@ -24,7 +24,7 @@ public class PlayerTest {
     @Test
     void testJumping() {
         int counter = 0;
-        int maxcount = 200;
+        final int maxcount = 200;
         while(!model.getPlayer().isOnPlatform() && counter<maxcount){
             model.update(0.1f);
             counter++;
@@ -37,7 +37,7 @@ public class PlayerTest {
     @Test
     void testPacman() {
         int counter = 0;
-        int maxcount = 100;
+        final int maxcount = 100;
         model.getPlayer().setX(0);
         model.getPlayer().changeState(new InAirState());
         while(model.getPlayer().getX()<SCREENWIDTH && counter<maxcount){
@@ -51,14 +51,14 @@ public class PlayerTest {
     @Test
     void testPhysics() {
         int counter = 0;
-        int maxcount = 6;
+        final int maxcount = 6;
         model.getPlayer().changeState(new InAirState());
         while( counter<maxcount){
             model.handleAction(GameAction.MOVE_LEFT);
             model.update(0.1f);
             counter++;
         }
-        float tempx = model.getPlayer().getX();
+        final float tempx = model.getPlayer().getX();
         model.handleAction(GameAction.MOVE_RIGHT);
         model.update(0.1f);
         assertTrue(model.getPlayer().getX()<tempx, "The player is not decelerating");

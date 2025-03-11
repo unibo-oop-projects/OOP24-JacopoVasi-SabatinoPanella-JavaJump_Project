@@ -8,8 +8,6 @@ import it.unibo.javajump.model.states.ingame.InGameState;
 import it.unibo.javajump.model.states.menu.MenuState;
 
 
-import static it.unibo.javajump.utility.Constants.*;
-
 public class PauseState implements GameStateHandler {
 	private float deltaTime = 0;
 	private PauseOption selection = PauseOption.CONTINUE;
@@ -22,7 +20,7 @@ public class PauseState implements GameStateHandler {
 				switch (selection) {
 					case CONTINUE -> model.setState(new InGameState());
 					case MAIN_MENU -> model.setState(new MenuState());
-					case QUIT -> System.exit(0);
+					case QUIT -> model.stopGame();
 				}
 			}
 			case MOVE_MENU_UP -> {

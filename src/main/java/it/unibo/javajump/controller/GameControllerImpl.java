@@ -3,7 +3,10 @@ package it.unibo.javajump.controller;
 import it.unibo.javajump.controller.input.GameAction;
 import it.unibo.javajump.controller.input.InputManager;
 import it.unibo.javajump.model.GameModel;
+
+import it.unibo.javajump.view.GameFrame;
 import it.unibo.javajump.view.MainGameView;
+
 
 import static it.unibo.javajump.utility.Constants.*;
 
@@ -28,6 +31,8 @@ public class GameControllerImpl implements GameController {
 	 */
 	private final InputManager inputManager;
 
+	private final GameFrame frame;
+
 	/**
 	 * Constructor for the GameControllerImpl class.
 	 *
@@ -35,11 +40,12 @@ public class GameControllerImpl implements GameController {
 	 * @param view         The game view
 	 * @param inputManager The input manager
 	 */
-	public GameControllerImpl(GameModel model, MainGameView view, InputManager inputManager) {
+	public GameControllerImpl(GameModel model, MainGameView view, InputManager inputManager, GameFrame frame) {
 		this.model = model;
 		this.view = view;
 		this.running = false;
 		this.inputManager = inputManager;
+		this.frame = frame;
 	}
 
 	/**
@@ -69,6 +75,7 @@ public class GameControllerImpl implements GameController {
 					Thread.currentThread().interrupt();
 				}
 			}
+			Thread.currentThread().interrupt();
 		});
 		loopThread.start();
 	}
@@ -79,6 +86,7 @@ public class GameControllerImpl implements GameController {
 	@Override
 	public void stopGameLoop() {
 		running = false;
+		frame.closeGame();
 	}
 
 	/**
@@ -87,15 +95,19 @@ public class GameControllerImpl implements GameController {
 	 * @param deltaTime time passed since last update (in seconds)
 	 */
 	private void updateModel(float deltaTime) {
-		int horizontalDirection = inputManager.getHorizontalDirection();
-		if (horizontalDirection < NULLDIRECTION) {
-			model.handleAction(GameAction.MOVE_LEFT);
-		} else if (horizontalDirection > NULLDIRECTION) {
-			model.handleAction(GameAction.MOVE_RIGHT);
+		if (model.isRunning()) {
+			int horizontalDirection = inputManager.getHorizontalDirection();
+			if (horizontalDirection < NULLDIRECTION) {
+				model.handleAction(GameAction.MOVE_LEFT);
+			} else if (horizontalDirection > NULLDIRECTION) {
+				model.handleAction(GameAction.MOVE_RIGHT);
+			} else {
+				model.handleAction(GameAction.STOP_HORIZONTAL);
+			}
+			model.update(deltaTime);
 		} else {
-			model.handleAction(GameAction.STOP_HORIZONTAL);
+			stopGameLoop();
 		}
-		model.update(deltaTime);
 	}
 
 	/**

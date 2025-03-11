@@ -60,4 +60,8 @@ public interface GameModel {
 	int getScreenHeight();
 
 	float getDeltaTime();
+
+	boolean isRunning();
+
+	void stopGame();
 }
