@@ -1,6 +1,5 @@
 package it.unibo.javajump.model.entities.platforms;
 
-import it.unibo.javajump.model.entities.GameObject;
 
 /**
  * The type Breakable platform.
