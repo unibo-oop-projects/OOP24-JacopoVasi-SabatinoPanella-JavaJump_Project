@@ -55,13 +55,13 @@ public class BackgroundRendererImpl implements BackgroundRenderer {
         this.bgTileHard = bgTileHard;
         this.parallaxFactor = parallaxFactor;
         this.horizontalSpeed = horizontalSpeed;
-        this.horizontalOffset = BGHORIZONTALOFFSETINIT;
+        this.horizontalOffset = BG_HORIZONTAL_OFFSET_INIT;
         this.currentDifficulty = DifficultyState.EASY;
         this.transitionDuration = transitionDuration;
         this.currentBg = bgTileEasy;
         this.targetBg = bgTileEasy;
         this.inTransition = false;
-        this.transitionTimer = BGTRANSITIONTIMERINIT;
+        this.transitionTimer = BG_TRANSITION_TIMER_INIT;
     }
 
     private BufferedImage selectBackground(DifficultyState diff) {
@@ -92,12 +92,12 @@ public class BackgroundRendererImpl implements BackgroundRenderer {
      * @param deltaTime time passed since the last update (in seconds)
      */
     private void updateHorizontalOffset(float deltaTime) {
-        if (horizontalSpeed != BGHORIZONTALNULLSPEED) {
+        if (horizontalSpeed != BG_HORIZONTAL_NULL_SPEED) {
             horizontalOffset += horizontalSpeed * deltaTime;
             int tileW = currentBg.getWidth();
             if (horizontalOffset >= tileW) {
                 horizontalOffset -= tileW;
-            } else if (horizontalOffset < BGHORIZONTALOFFSETINIT) {
+            } else if (horizontalOffset < BG_HORIZONTAL_OFFSET_INIT) {
                 horizontalOffset += tileW;
             }
         }
@@ -124,13 +124,13 @@ public class BackgroundRendererImpl implements BackgroundRenderer {
         int tileH = currentBg.getHeight();
 
         int shiftY = (int) (verticalOffset) % tileH;
-        if (shiftY < SCREENLEFTMARGIN) {
+        if (shiftY < SCREEN_LEFT_MARGIN) {
             shiftY += tileH;
         }
         int shiftX = (int) horizontalOffset;
 
-        int verticalTiles = (screenH / tileH) + EXTRATILES;
-        int horizontalTiles = (screenW / tileW) + EXTRATILES;
+        int verticalTiles = (screenH / tileH) + BG_EXTRA_TILES_NUMBER;
+        int horizontalTiles = (screenW / tileW) + BG_EXTRA_TILES_NUMBER;
 
         if (inTransition) {
             transitionTimer += deltaTime;

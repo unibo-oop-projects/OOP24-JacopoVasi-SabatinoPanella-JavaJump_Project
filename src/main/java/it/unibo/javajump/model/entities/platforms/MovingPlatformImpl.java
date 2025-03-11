@@ -3,7 +3,7 @@ package it.unibo.javajump.model.entities.platforms;
 import it.unibo.javajump.model.entities.objectstrategies.HorizontalOscillationMovement;
 import it.unibo.javajump.model.entities.objectstrategies.MovementBehaviour;
 
-import static it.unibo.javajump.utility.Constants.NULLPLATFORMVELOCITY;
+import static it.unibo.javajump.utility.Constants.NULL_PLATFORM_VELOCITY;
 
 public class MovingPlatformImpl extends PlatformImpl implements MovingPlatform {
 
@@ -13,8 +13,8 @@ public class MovingPlatformImpl extends PlatformImpl implements MovingPlatform {
                               float range, float screenWidth, float speed) {
         super(x, y, width, height);
 
-        if (x < NULLPLATFORMVELOCITY) {
-            x = NULLPLATFORMVELOCITY;
+        if (x < NULL_PLATFORM_VELOCITY) {
+            x = NULL_PLATFORM_VELOCITY;
         }
         if (x > screenWidth - width) {
             x = screenWidth - width;
@@ -24,8 +24,8 @@ public class MovingPlatformImpl extends PlatformImpl implements MovingPlatform {
 
         float potentialMin = x - range;
         float potentialMax = x + range;
-        if (potentialMin < NULLPLATFORMVELOCITY) {
-            potentialMin = NULLPLATFORMVELOCITY;
+        if (potentialMin < NULL_PLATFORM_VELOCITY) {
+            potentialMin = NULL_PLATFORM_VELOCITY;
         }
         if (potentialMax > screenWidth - width) {
             potentialMax = screenWidth - width;

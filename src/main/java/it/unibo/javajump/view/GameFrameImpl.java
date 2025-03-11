@@ -8,8 +8,8 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.WindowEvent;
 
-import static it.unibo.javajump.utility.Constants.SCREENHEIGHT;
-import static it.unibo.javajump.utility.Constants.SCREENWIDTH;
+import static it.unibo.javajump.utility.Constants.SCREEN_HEIGHT;
+import static it.unibo.javajump.utility.Constants.SCREEN_WIDTH;
 
 public class GameFrameImpl extends JFrame implements GameFrame {
 
@@ -26,7 +26,7 @@ public class GameFrameImpl extends JFrame implements GameFrame {
 
     public void setUp(InputManager inputManager, int height, int width, MainGameView view) {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(SCREENWIDTH, SCREENHEIGHT);
+        this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
         this.addKeyListener(inputManager);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.add((Component) view);

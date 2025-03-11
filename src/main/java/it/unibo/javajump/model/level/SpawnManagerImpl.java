@@ -16,14 +16,14 @@ public class SpawnManagerImpl implements SpawnManager {
 
     public SpawnManagerImpl(SpawnStrategy spawnStrategy) {
         this.spawnStrategy = spawnStrategy;
-        this.topPlatformY = TOPPLATFORMY_INIT;
+        this.topPlatformY = TOP_PLATFORM_Y_INIT;
     }
 
 
     @Override
     public void generateInitialLevel(GameModel model) {
         spawnPlatformBelowPlayer(model, getFactory());
-        float startY = model.getScreenHeight() - INITIALYOFFSET;
+        float startY = model.getScreenHeight() - INITIAL_Y_SPAWN_OFFSET;
         spawnStrategy.spawnBatch(model, startY, INITIAL_PLATFORMS_NUMBER);
         this.topPlatformY = spawnStrategy.returnCurrentY();
     }
@@ -46,7 +46,7 @@ public class SpawnManagerImpl implements SpawnManager {
 
     @Override
     public void reset() {
-        this.topPlatformY = TOPPLATFORMY_INIT;
+        this.topPlatformY = TOP_PLATFORM_Y_INIT;
     }
 
     @Override

@@ -11,8 +11,8 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static it.unibo.javajump.utility.Constants.SCREENHEIGHT;
-import static it.unibo.javajump.utility.Constants.SCREENWIDTH;
+import static it.unibo.javajump.utility.Constants.SCREEN_HEIGHT;
+import static it.unibo.javajump.utility.Constants.SCREEN_WIDTH;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -24,7 +24,7 @@ public class CollisionTest {
     @BeforeEach
     void setUp() {
 
-        model = new GameModelImpl(SCREENWIDTH, SCREENHEIGHT);
+        model = new GameModelImpl(SCREEN_WIDTH, SCREEN_HEIGHT);
         model.startGame();
         model.setState(new InGameState());
 
@@ -32,8 +32,8 @@ public class CollisionTest {
 
     @Test
     void testCoin() {
-        float x = (float) SCREENWIDTH / 2;
-        float y = (float) SCREENHEIGHT / 2;
+        float x = (float) SCREEN_WIDTH / 2;
+        float y = (float) SCREEN_HEIGHT / 2;
         model.getPlayer().setY(y);
         model.getPlayer().setX(x);
         Coin coin = model.getSpawnManager().getFactory().createCoin(x, y);

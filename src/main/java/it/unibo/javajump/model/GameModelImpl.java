@@ -58,12 +58,12 @@ public class GameModelImpl implements GameModel {
         this.screenHeight = screenHeight;
         this.difficultyManager = new DifficultyManagerImpl();
         GameObjectFactory factory = new GameObjectFactoryImpl();
-        RandomSpawnStrategy strategy = new RandomSpawnStrategy(factory, MINSPACING, MAXSPACING, COINCHANCE, difficultyManager);
-        this.physicsManager = new PhysicsManagerImpl(GRAVITY, ACCELERATION, MAXSPEED, DECELERATION);
+        RandomSpawnStrategy strategy = new RandomSpawnStrategy(factory, MIN_SPACING, MAX_SPACING, COIN_CHANCE, difficultyManager);
+        this.physicsManager = new PhysicsManagerImpl(GRAVITY, ACCELERATION, MAX_SPEED, DECELERATION);
         this.collisionManager = new CollisionManagerImpl();
         this.spawnManager = new SpawnManagerImpl(strategy);
         this.scoreManager = new ScoreManagerImpl();
-        this.cameraManager = new CameraManagerImpl(scoreManager, SCOREFACTOR);
+        this.cameraManager = new CameraManagerImpl(scoreManager, SCORE_FACTOR);
 
         this.isRunning = true;
 
@@ -104,7 +104,7 @@ public class GameModelImpl implements GameModel {
         difficultyManager.reset();
 
         this.player = spawnManager.getFactory()
-                .createCharacter(screenWidth / CHARACTERCREATIONWIDTHDIV, screenHeight * CHARACTERCREATIONHEIGHTMUL);
+                .createCharacter(screenWidth / CHARACTER_CREATION_WIDTH_DIV, screenHeight * CHARACTER_CREATION_HEIGHT_MUL);
         gameObject.add(player);
         spawnManager.generateInitialLevel(this);
     }

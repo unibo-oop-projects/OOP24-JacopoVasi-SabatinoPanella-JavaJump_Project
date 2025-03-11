@@ -69,13 +69,13 @@ public class InputManagerImpl implements InputManager {
     @Override
     public int getHorizontalDirection() {
         if (pressingLeft && pressingRight) {
-            return Constants.NULLDIRECTION;
+            return Constants.NULL_DIRECTION;
         } else if (pressingLeft) {
-            return Constants.LEFTDIRECTION;
+            return Constants.LEFT_DIRECTION;
         } else if (pressingRight) {
-            return Constants.RIGHTDIRECTION;
+            return Constants.RIGHT_DIRECTION;
         }
-        return Constants.NULLDIRECTION;
+        return Constants.NULL_DIRECTION;
     }
 
     /**

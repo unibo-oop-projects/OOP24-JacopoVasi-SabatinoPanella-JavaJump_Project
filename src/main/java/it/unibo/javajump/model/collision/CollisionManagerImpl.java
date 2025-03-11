@@ -11,8 +11,8 @@ import it.unibo.javajump.model.entities.platforms.Platform;
 
 import java.util.List;
 
-import static it.unibo.javajump.utility.Constants.COINSCOREVALUE;
-import static it.unibo.javajump.utility.Constants.NULLDIRECTION;
+import static it.unibo.javajump.utility.Constants.COIN_SCORE_VALUE;
+import static it.unibo.javajump.utility.Constants.NULL_DIRECTION;
 
 /**
  * Implementation of the CollisionManager interface.
@@ -88,7 +88,7 @@ public class CollisionManagerImpl implements CollisionManager {
     private void handleCharacterCoinCollision(Character character, Coin coin, GameModel model) {
         if (coin.getState() == CoinState.IDLE) {
             coin.collect();
-            model.addPointsToScore(COINSCOREVALUE);
+            model.addPointsToScore(COIN_SCORE_VALUE);
         }
     }
 
@@ -104,7 +104,7 @@ public class CollisionManagerImpl implements CollisionManager {
      * @return true if the player jumps on the platform, false otherwise.
      */
     private boolean handleCharacterPlatformCollision(Character player, Platform platform, GameModel model) {
-        if (player.getVelocityY() > NULLDIRECTION) {
+        if (player.getVelocityY() > NULL_DIRECTION) {
             float playerOldBottom = player.getOldY() + player.getHeight();
             float platformTop = platform.getY();
 

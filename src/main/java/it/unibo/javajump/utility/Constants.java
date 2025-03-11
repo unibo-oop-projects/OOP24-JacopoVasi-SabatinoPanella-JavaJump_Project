@@ -4,181 +4,180 @@ package it.unibo.javajump.utility;
 public final class Constants {
 
     //MAIN
-    public static final int SCREENWIDTH = 600;
+    public static final int SCREEN_WIDTH = 600;
 
-    public static final int SCREENHEIGHT = 800;
+    public static final int SCREEN_HEIGHT = 800;
 
-    public static final int MINSPACING = 50;
+    public static final int MIN_SPACING = 50;
 
-    public static final int MAXSPACING = 150;
+    public static final int MAX_SPACING = 150;
 
-    public static final float COINCHANCE = 0.3f;
+    public static final float COIN_CHANCE = 0.3f;
 
-    public static final float SCOREFACTOR = 0.5f;
+    public static final float SCORE_FACTOR = 0.5f;
 
     public static final float GRAVITY = 1350;
 
     public static final float ACCELERATION = 3000;
 
-    public static final float MAXSPEED = 400;
+    public static final float MAX_SPEED = 400;
 
     public static final float DECELERATION = 15000;
 
-    public static final String GAMETITLE = "JAVA JUMP";
+    public static final String GAME_TITLE = "JAVA JUMP";
 
     //Controller
     public static final double FPS = 60;
 
     public static final double NANOSECONDS_PER_SECOND = 1000000000;
 
-    public static final int NULLDIRECTION = 0;
+    public static final int NULL_DIRECTION = 0;
 
-    public static final int LEFTDIRECTION = -1;
+    public static final int LEFT_DIRECTION = -1;
 
-    public static final int RIGHTDIRECTION = 1;
+    public static final int RIGHT_DIRECTION = 1;
 
-    public static final int SLEEPTHREAD = 1;
+    public static final int SLEEP_THREAD = 1;
 
     //Camera
-    public static final int OFFSETINIT = 0;
+    public static final int OFFSET_INIT = 0;
 
-    public static final float HEIGHTDIV = 2;
+    public static final float HEIGHT_DIV = 2;
 
-    public static final float WIDTHDIV = 0.05f;
+    public static final float WIDTH_DIV = 0.05f;
 
     //Collision Manager
-    public static final int COINSCOREVALUE = 50;
+    public static final int COIN_SCORE_VALUE = 50;
 
     //CharacterImpl
-    public static final int VELOCITYINIT = 0;
+    public static final int VELOCITY_INIT = 0;
 
 
     //Physics
-    public static final int NULLVELOCITY = 0;
+    public static final int NULL_VELOCITY = 0;
 
     //Moving Platform
-    public static final int NULLPLATFORMVELOCITY = 0;
+    public static final int NULL_PLATFORM_VELOCITY = 0;
 
     //Platform
-    public static final int TOPPLATFORMY_INIT = 0;
+    public static final int TOP_PLATFORM_Y_INIT = 0;
 
     //Strategy
-    public static final int SPAWNY_INIT = 0;
+    public static final int SPAWN_Y_INIT = 0;
 
     //Generic Numbers
-    public static final int FLIPMAX = 1;
-    public static final int FLIPMIN = -1;
-    public static final int SCREENLEFTMARGIN = 0;
-    public static final int BGHORIZONTALOFFSETINIT = 0;
-    public static final int BGTRANSITIONTIMERINIT = 0;
-    public static final int BGHORIZONTALNULLSPEED = 0;
-    public static final int RENDERCOINROWINIT = 0;
-    public static final int RENDERPLAYERANIMTIMERINIT = 0;
-    public static final int RENDERPLAYERFRAMEGETIMGY = 0;
-    public static final int RENDERPLAYERFRAMEY = 0;
-    public static final int RENDERPLAYERFRAMEX = 0;
-    public static final int RENDERUISCORECONTAINERX = 0;
-    public static final int RENDERUISCORECONTAINERY = 0;
-    //Object Factory
+    public static final int FLIP_MAX = 1;
+    public static final int FLIP_MIN = -1;
+    public static final int SCREEN_LEFT_MARGIN = 0;
+    public static final int BG_HORIZONTAL_OFFSET_INIT = 0;
+    public static final int BG_TRANSITION_TIMER_INIT = 0;
+    public static final int BG_HORIZONTAL_NULL_SPEED = 0;
+    public static final int RENDER_COIN_IDLE_ROW = 0;
+    public static final int RENDER_COIN_COLLECT_ROW = 1;
+    public static final int RENDER_PLAYER_ANIM_TIMER_INIT = 0;
+    public static final int RENDER_PLAYER_FRAME_GET_IMG_Y = 0;
+    public static final int RENDER_PLAYER_FRAME_Y = 0;
+    public static final int RENDER_PLAYER_FRAME_X = 0;
+    public static final int RENDER_UI_SCORE_CONTAINER_X = 0;
+    public static final int RENDER_UI_SCORE_CONTAINER_Y = 0;
 
-    public static final float CHARACTERWIDTH = 48;
-    public static final float CHARACTERHEIGHT = 50;
-    public static final float CHARACTERJUMPFORCE = 700;
-    public static final float STANDARDPLATFORMWIDTH = 100;
-    public static final float PLATFORMHEIGHT = 10;
-    public static final float RANDOMPLATFORMWIDTH = 80;
-    public static final int RANDOMPLATFORMRNGFACTOR = 41;
-    public static final float MOVINGPLATFORMWIDTH = 70;
-    public static final float MOVINGPLATFORMRANGE = 50;
-    public static final float MOVINGPLATFORMSPEED = 30;
-    public static final int MOVINGPLATFORMWIDTHRNGFACTOR = 45;
-    public static final float MOVINGPLATFORMRANGERNGFACTOR = 100;
-    public static final int MOVINGPLATFORMSPEEDRNGFACTOR = 50;
-    public static final float BREAKABLEPLATFORMWIDTH = 80;
-    public static final int BREAKABLEPLATFORMRNGFACTOR = 25;
-    public static final float BOUNCEPLATFORMWIDTH = 80;
-    public static final int BOUNCEPLATFORMRNGFACTOR = 25;
-    public static final float COINWIDTH = 44;
-    public static final float COINHEIGHT = 52;
+    //Object Factory
+    public static final float CHARACTER_WIDTH = 48;
+    public static final float CHARACTER_HEIGHT = 50;
+    public static final float CHARACTER_JUMP_FORCE = 700;
+    public static final float STANDARD_PLATFORM_WIDTH = 100;
+    public static final float PLATFORM_HEIGHT = 10;
+    public static final float RANDOM_PLATFORM_WIDTH = 80;
+    public static final int RANDOM_PLATFORM_RNG_FACTOR = 41;
+    public static final float MOVING_PLATFORM_WIDTH = 70;
+    public static final float MOVING_PLATFORM_RANGE = 50;
+    public static final float MOVING_PLATFORM_SPEED = 30;
+    public static final int MOVING_PLATFORM_WIDTH_RNG_FACTOR = 45;
+    public static final float MOVING_PLATFORM_RANGE_RNG_FACTOR = 100;
+    public static final int MOVING_PLATFORM_SPEED_RNG_FACTOR = 50;
+    public static final float BREAKABLE_PLATFORM_WIDTH = 80;
+    public static final int BREAKABLE_PLATFORM_RNG_FACTOR = 25;
+    public static final float BOUNCE_PLATFORM_WIDTH = 80;
+    public static final int BOUNCE_PLATFORM_RNG_FACTOR = 25;
+    public static final float COIN_WIDTH = 44;
+    public static final float COIN_HEIGHT = 52;
 
     // Collectibles Spawner
-    public static final float COINXDIV = 2;
-    public static final float COINXMUL = 0.2f;
-    public static final float COINOFFSET = 50;
+    public static final float COIN_X_DIV = 2;
+    public static final float COIN_X_MUL = 0.2f;
+    public static final float COIN_OFFSET = 50;
 
     //Difficulty
-    public static final int SCOREINIT = 0;
-    public static final String SCORETEXT = "Score: ";
-    public static final int HELLMIN = 16000;
-    public static final int HELLMAX = 25000;
-    public static final int VERYHARDMIN = 8000;
-    public static final int VERYHARDMAX = 10000;
-    public static final int HARDMIN = 4000;
-    public static final int HARDMAX = 6000;
-    public static final int MEDIUMMIN = 1500;
-    public static final int MEDIUMMAX = 3000;
+    public static final int SCORE_INIT = 0;
+    public static final int HELL_MIN = 16000;
+    public static final int HELL_MAX = 25000;
+    public static final int VERY_HARD_MIN = 8000;
+    public static final int VERY_HARD_MAX = 10000;
+    public static final int HARD_MIN = 4000;
+    public static final int HARD_MAX = 6000;
+    public static final int MEDIUM_MIN = 1500;
+    public static final int MEDIUM_MAX = 3000;
 
     //Spawn Utils
-    public static final int XOFFSET = 40;
-    public static final int YOFFSET = 60;
+    public static final int SPAWN_X_OFFSET = 40;
+    public static final int SPAWN_Y_OFFSET = 60;
 
-    // Random Spaen Strategy
-    public static final int MAXPLATFORMWIDTH = 120;
-    public static final int GAPOFFSETTEN = 10;
-    public static final int GAPOFFSETTHIRTY = 30;
-    public static final int GAPINIT = 0;
-    public static final String DIFFICULTYTEXT = "Difficulty: ";
+    // Random Spawn Strategy
+    public static final int MAX_PLATFORM_WIDTH = 120;
+    public static final int GAP_EASY_ADDENDUM = 10;
+    public static final int GAP_HARD_ADDENDUM = 30;
+    public static final int GAP_INIT = 0;
 
     // CLean up manager
-    public static final float MARGIN = 50;
+    public static final float CLEAN_UP_MARGIN_OFFSET = 50;
 
     // Spawn Manager
-    public static final int INITIALYOFFSET = 150;
+    public static final int INITIAL_Y_SPAWN_OFFSET = 150;
     public static final int INITIAL_PLATFORMS_NUMBER = 10;
     public static final int PROCEDURAL_PLATFORMS_NUMBER = 10;
     public static final float SPAWN_THRESHOLD = 400f;
 
     // Game Model
-    public static final float CHARACTERCREATIONWIDTHDIV = 2;
-    public static final float CHARACTERCREATIONHEIGHTMUL = 0.8f;
+    public static final float CHARACTER_CREATION_WIDTH_DIV = 2;
+    public static final float CHARACTER_CREATION_HEIGHT_MUL = 0.8f;
 
     // Background
-    public static final int EXTRATILES = 2;
+    public static final int BG_EXTRA_TILES_NUMBER = 2;
 
     // CoinImpl Render
-    public static final float COINANIMTIMERS = 0;
-    public static final int COINCYCLEDURATION = 6;
-    public static final int COINIDXMAX = 7;
+    public static final float COIN_ANIM_TIMER_START = 0;
+    public static final int COIN_ANIMATION_CYCLE_DURATION = 6;
+    public static final int COIN_ANIMATION_INDEX_MAX = 7;
 
     // Player Render
-    public static final int PLAYERCYCLEDURATION = 2;
-    public static final int PLAYERFIRSTFRAME = 0;
-    public static final int PLAYERSECONDFRAME = 1;
-    public static final int PLAYERTHIRDFRAME = 2;
-    public static final int PLAYERFOURTHFRAME = 3;
+    public static final int PLAYER_ANIMATION_CYCLE_DURATION = 2;
+    public static final int PLAYER_LANDING_START_FRAME = 0;
+    public static final int PLAYER_LANDING_END_FRAME = 1;
+    public static final int PLAYER_JUMP_START_FRAME = 2;
+    public static final int PLAYER_JUMP_END_FRAME = 3;
 
     // Score Render
-    public static final int SCORERENDERX = 10;
-    public static final int SCORERENDERY = 20;
-    public static final int HIGHSCORERENDERY = 45;
-    public static final int HIGHSCORERENDERX = 10;
-    public static final String SCORERENDERTEXT = "Score:   ";
-    public static final String HIGHSCORERENDERTEXT = "New High Score !!";
+    public static final int SCORE_RENDER_X_POSITION = 10;
+    public static final int SCORE_RENDER_Y_POSITION = 20;
+    public static final int HIGH_SCORE_RENDER_Y_POSITION = 45;
+    public static final int HIGH_SCORE_RENDER_X_POSITION = 10;
+    public static final String SCORE_RENDER_TEXT = "Score:   ";
+    public static final String HIGH_SCORE_RENDER_TEXT = "New High Score !!";
 
     // Render Manager
-    public static final float RENDERMANAGERPLATFORMOUTLINE = 2;
-    public static final int RENDERMANAGERPLATFORMARCW = 10;
-    public static final int RENDERMANAGERPLATFORMARCH = 10;
-    public static final int RENDERMANAGERCOINWIDTH = 44;
-    public static final int RENDERMANAGERCOINHEIGHT = 52;
-    public static final float RENDERMANAGERCOINFRAMEDURATION = 0.05f;
-    public static final int RENDERMANAGERPLAYERWIDTH = 48;
-    public static final int RENDERMANAGERPLAYERHEIGHT = 50;
-    public static final float RENDERMANAGERPLAYERFRAMEDURATION = 0.2f;
-    public static final float RENDERMANAGERBACKGROUNDPARALLAXONE = 0.2f;
-    public static final float RENDERMANAGERBACKGROUNDPARALLAXTWO = 0.4f;
-    public static final float RENDERMANAGERBACKGROUNDSPEEDXONE = 0;
-    public static final float RENDERMANAGERBACKGROUNDSPEEDTWO = 20;
+    public static final float RENDER_MANAGER_PLATFORM_OUTLINE_THICKNESS = 2;
+    public static final int RENDER_MANAGER_PLATFORM_ROUND_CORNER_WIDTH = 10;
+    public static final int RENDER_MANAGER_PLATFORM_ROUND_CORNER_HEIGHT = 10;
+    public static final int RENDER_MANAGER_COIN_WIDTH = 44;
+    public static final int RENDER_MANAGER_COIN_HEIGHT = 52;
+    public static final float RENDER_MANAGER_COIN_FRAME_DURATION = 0.05f;
+    public static final int RENDER_MANAGER_PLAYER_WIDTH = 48;
+    public static final int RENDER_MANAGER_PLAYER_HEIGHT = 50;
+    public static final float RENDER_MANAGER_PLAYER_FRAME_DURATION = 0.2f;
+    public static final float RENDER_MANAGER_BACKGROUND_ONE_PARALLAX_MODIFIER = 0.2f;
+    public static final float RENDER_MANAGER_BACKGROUND_TWO_PARALLAX_MODIFIER = 0.4f;
+    public static final float RENDER_MANAGER_BACKGROUND_ONE_X_SPEED = 0;
+    public static final float RENDER_MANAGER_BACKGROUND_TWO_X_SPEED = 20;
     public static final float TRANSITION_DURATION_1 = 0.8f;
     public static final float TRANSITION_DURATION_2 = 1.2f;
 
@@ -190,9 +189,9 @@ public final class Constants {
     public static final int MUSIC_LOOP_START = 0;
     public static final float MUSIC_LOOP_END = 0.885f;
 
-    public static final int AUDIOFRAMEINIT = 0;
-    public static final int AUDIOSTEPS = 50;
-    public static final int AUDIOSLEEP = 1000;
+    public static final int AUDIO_FRAME_INIT = 0;
+    public static final int AUDIO_STEPS = 50;
+    public static final int AUDIO_SLEEP = 1000;
 
     public static final int SOUNDS_POOL_SIZE_NUMBER = 5;
 

@@ -34,7 +34,7 @@ public class RandomSpawnStrategy implements SpawnStrategy {
         this.rand = new Random();
         this.minPlatformYSpacing = minSpacing;
         this.maxPlatformYSpacing = maxSpacing;
-        this.currentY = SPAWNY_INIT;
+        this.currentY = SPAWN_Y_INIT;
         this.collectiblesSpawner = new CollectiblesSpawnerImpl(factory, coinChance);
         this.platformSpawner = new PlatformSpawnerImpl(factory);
     }
@@ -48,7 +48,7 @@ public class RandomSpawnStrategy implements SpawnStrategy {
             float gap = setSpawnGap(diff);
             currentY -= gap;
 
-            float x = rand.nextFloat() * (model.getScreenWidth() - (float) MAXPLATFORMWIDTH);
+            float x = rand.nextFloat() * (model.getScreenWidth() - (float) MAX_PLATFORM_WIDTH);
 
             Platform p = platformSpawner.spawnPlatform(x, currentY, model.getScreenWidth(), diff);
             model.getGameObjects().add(p);
@@ -59,15 +59,15 @@ public class RandomSpawnStrategy implements SpawnStrategy {
     }
 
     private float setSpawnGap(DifficultyState diff) {
-        float gap = GAPINIT;
+        float gap = GAP_INIT;
         if (null != diff) {
             switch (diff) {
                 case EASY, MEDIUM ->
-                        gap = SpawnUtilsImpl.randomInRange(rand, minPlatformYSpacing - GAPOFFSETTEN, maxPlatformYSpacing - GAPOFFSETTHIRTY);
+                        gap = SpawnUtilsImpl.randomInRange(rand, minPlatformYSpacing - GAP_EASY_ADDENDUM, maxPlatformYSpacing - GAP_HARD_ADDENDUM);
                 case HARD, VERY_HARD ->
-                        gap = SpawnUtilsImpl.randomInRange(rand, minPlatformYSpacing, maxPlatformYSpacing - GAPOFFSETTEN);
+                        gap = SpawnUtilsImpl.randomInRange(rand, minPlatformYSpacing, maxPlatformYSpacing - GAP_EASY_ADDENDUM);
                 case HELL ->
-                        gap = SpawnUtilsImpl.randomInRange(rand, minPlatformYSpacing + GAPOFFSETTEN, maxPlatformYSpacing);
+                        gap = SpawnUtilsImpl.randomInRange(rand, minPlatformYSpacing + GAP_EASY_ADDENDUM, maxPlatformYSpacing);
                 default -> {
                 }
             }

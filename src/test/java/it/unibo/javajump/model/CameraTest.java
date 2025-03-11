@@ -15,7 +15,7 @@ class CameraTest {
     @BeforeEach
     void setUp() {
 
-        model = new GameModelImpl(SCREENWIDTH, SCREENHEIGHT);
+        model = new GameModelImpl(SCREEN_WIDTH, SCREEN_HEIGHT);
         model.startGame();
         model.setState(new InGameState());
 
@@ -23,7 +23,7 @@ class CameraTest {
 
     @Test
     void testInitialOffset() {
-        assertEquals(OFFSETINIT, model.getCameraManager().getCurrentOffset(), "Initial offset should be equal to OFFSETINIT.");
+        assertEquals(OFFSET_INIT, model.getCameraManager().getCurrentOffset(), "Initial offset should be equal to OFFSET_INIT.");
     }
 
     @Test
@@ -45,7 +45,7 @@ class CameraTest {
         float initialOffset = model.getCameraManager().getCurrentOffset();
 
         // Move the player down (should not affect the offset)
-        model.getPlayer().setY((float) SCREENHEIGHT / 2 + 100);
+        model.getPlayer().setY((float) SCREEN_HEIGHT / 2 + 100);
         model.update(0);
         model.getCameraManager().updateCamera(model, 0);
 
@@ -55,6 +55,6 @@ class CameraTest {
     @Test
     void testResetCamera() {
         model.getCameraManager().resetCamera();
-        assertEquals(OFFSETINIT, model.getCameraManager().getCurrentOffset(), "Camera offset should be reset to OFFSETINIT.");
+        assertEquals(OFFSET_INIT, model.getCameraManager().getCurrentOffset(), "Camera offset should be reset to OFFSET_INIT.");
     }
 }

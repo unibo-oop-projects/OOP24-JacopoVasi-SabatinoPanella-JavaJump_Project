@@ -17,16 +17,16 @@ public class InGameState implements GameStateHandler {
 
     private final GameState gameState = GameState.IN_GAME;
 
-    private int horizontalDirection = NULLDIRECTION;
+    private int horizontalDirection = NULL_DIRECTION;
     private float deltaTime = 0;
 
 
     @Override
     public void handleAction(GameModel model, GameAction action) {
         switch (action) {
-            case MOVE_LEFT -> horizontalDirection = LEFTDIRECTION;
-            case MOVE_RIGHT -> horizontalDirection = RIGHTDIRECTION;
-            case STOP_HORIZONTAL -> horizontalDirection = NULLDIRECTION;
+            case MOVE_LEFT -> horizontalDirection = LEFT_DIRECTION;
+            case MOVE_RIGHT -> horizontalDirection = RIGHT_DIRECTION;
+            case STOP_HORIZONTAL -> horizontalDirection = NULL_DIRECTION;
             case PAUSE_GAME -> model.setState(new PauseState());
             default -> {
             }

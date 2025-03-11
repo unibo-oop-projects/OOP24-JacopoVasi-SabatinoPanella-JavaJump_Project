@@ -36,8 +36,8 @@ public class CameraManagerImpl implements CameraManager {
     public CameraManagerImpl(ScoreManager scoreManager, float scoreFactor) {
         this.scoreManager = scoreManager;
         this.scoreFactor = scoreFactor;
-        this.currentOffset = OFFSETINIT;
-        this.previousOffset = OFFSETINIT;
+        this.currentOffset = OFFSET_INIT;
+        this.previousOffset = OFFSET_INIT;
     }
 
     /**
@@ -73,7 +73,7 @@ public class CameraManagerImpl implements CameraManager {
      * @return the desired offset
      */
     private float getDesiredOffset(float screenHeight, Character player) {
-        float progressionScreenPoint = screenHeight / HEIGHTDIV - screenHeight * WIDTHDIV;
+        float progressionScreenPoint = screenHeight / HEIGHT_DIV - screenHeight * WIDTH_DIV;
         float desiredOffset = currentOffset;
 
         if (player.getY() < progressionScreenPoint - currentOffset) {
@@ -91,8 +91,8 @@ public class CameraManagerImpl implements CameraManager {
      */
     @Override
     public void resetCamera() {
-        this.currentOffset = OFFSETINIT;
-        this.previousOffset = OFFSETINIT;
+        this.currentOffset = OFFSET_INIT;
+        this.previousOffset = OFFSET_INIT;
     }
 
     /**

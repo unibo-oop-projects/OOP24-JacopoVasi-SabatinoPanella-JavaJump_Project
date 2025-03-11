@@ -1,6 +1,6 @@
 package it.unibo.javajump.model.physics;
 
-import static it.unibo.javajump.utility.Constants.NULLVELOCITY;
+import static it.unibo.javajump.utility.Constants.NULL_VELOCITY;
 
 public class PhysicsUtilsImpl implements PhysicsUtils {
 
@@ -17,15 +17,15 @@ public class PhysicsUtilsImpl implements PhysicsUtils {
 
 
     public static float decelerate(float vx, float deltaTime, float deceleration) {
-        if (vx > NULLVELOCITY) {
+        if (vx > NULL_VELOCITY) {
             vx -= deceleration * deltaTime;
-            if (vx < NULLVELOCITY) {
-                vx = NULLVELOCITY;
+            if (vx < NULL_VELOCITY) {
+                vx = NULL_VELOCITY;
             }
-        } else if (vx < NULLVELOCITY) {
+        } else if (vx < NULL_VELOCITY) {
             vx += deceleration * deltaTime;
-            if (vx > NULLVELOCITY) {
-                vx = NULLVELOCITY;
+            if (vx > NULL_VELOCITY) {
+                vx = NULL_VELOCITY;
             }
         }
         return vx;

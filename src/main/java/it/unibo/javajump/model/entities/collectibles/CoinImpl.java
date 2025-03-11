@@ -4,7 +4,7 @@ import it.unibo.javajump.model.entities.GameObject;
 import it.unibo.javajump.model.entities.GameObjectImpl;
 import it.unibo.javajump.model.entities.platforms.Platform;
 
-import static it.unibo.javajump.utility.Constants.OFFSETINIT;
+import static it.unibo.javajump.utility.Constants.OFFSET_INIT;
 
 public class CoinImpl extends GameObjectImpl implements Coin {
 
@@ -19,7 +19,7 @@ public class CoinImpl extends GameObjectImpl implements Coin {
         this.height = height;
         this.state = CoinState.IDLE;
         this.attachedPlatform = null;
-        this.offsetX = OFFSETINIT;
+        this.offsetX = OFFSET_INIT;
     }
 
     /**

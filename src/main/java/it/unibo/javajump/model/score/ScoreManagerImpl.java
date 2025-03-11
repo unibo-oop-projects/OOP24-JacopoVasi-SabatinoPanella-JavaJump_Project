@@ -1,6 +1,6 @@
 package it.unibo.javajump.model.score;
 
-import static it.unibo.javajump.utility.Constants.SCOREINIT;
+import static it.unibo.javajump.utility.Constants.SCORE_INIT;
 
 public class ScoreManagerImpl implements ScoreManager {
 
@@ -9,8 +9,8 @@ public class ScoreManagerImpl implements ScoreManager {
     private boolean bestScoreReached;
 
     public ScoreManagerImpl() {
-        this.currentScore = SCOREINIT;
-        this.bestScore = SCOREINIT;
+        this.currentScore = SCORE_INIT;
+        this.bestScore = SCORE_INIT;
         this.bestScoreReached = false;
     }
 
@@ -36,7 +36,7 @@ public class ScoreManagerImpl implements ScoreManager {
     }
 
     public void reset() {
-        this.currentScore = SCOREINIT;
+        this.currentScore = SCORE_INIT;
         this.bestScoreReached = false;
     }
 

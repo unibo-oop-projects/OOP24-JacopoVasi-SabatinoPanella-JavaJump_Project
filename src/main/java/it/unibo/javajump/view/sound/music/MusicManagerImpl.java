@@ -62,7 +62,7 @@ public class MusicManagerImpl implements MusicManager {
         cancelFade();
         if (backgroundClip != null) {
             backgroundClip.stop();
-            backgroundClip.setFramePosition(AUDIOFRAMEINIT);
+            backgroundClip.setFramePosition(AUDIO_FRAME_INIT);
         }
     }
 
@@ -102,11 +102,11 @@ public class MusicManagerImpl implements MusicManager {
         }
         fadeExecutor = Executors.newSingleThreadScheduledExecutor();
 
-        final int steps = AUDIOSTEPS;
+        final int steps = AUDIO_STEPS;
         final float initialVolume = volumeControl.getValue();
         final float finalVolume = volumeControl.getMinimum();
         final float delta = (initialVolume - finalVolume) / steps;
-        final long stepTimeMillis = (long) (durationSeconds * AUDIOSLEEP / steps);
+        final long stepTimeMillis = (long) (durationSeconds * AUDIO_SLEEP / steps);
 
         fadeFuture = fadeExecutor.scheduleAtFixedRate(new Runnable() {
             int currentStep = 0;

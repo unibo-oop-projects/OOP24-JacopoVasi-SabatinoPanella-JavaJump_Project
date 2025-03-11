@@ -6,8 +6,8 @@ import it.unibo.javajump.model.states.ingame.InGameState;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static it.unibo.javajump.utility.Constants.SCREENHEIGHT;
-import static it.unibo.javajump.utility.Constants.SCREENWIDTH;
+import static it.unibo.javajump.utility.Constants.SCREEN_HEIGHT;
+import static it.unibo.javajump.utility.Constants.SCREEN_WIDTH;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -17,7 +17,7 @@ public class PlayerTest {
     @BeforeEach
     void setUp() {
 
-        model = new GameModelImpl(SCREENWIDTH, SCREENHEIGHT);
+        model = new GameModelImpl(SCREEN_WIDTH, SCREEN_HEIGHT);
 
         model.startGame();
         model.setState(new InGameState());
@@ -42,12 +42,12 @@ public class PlayerTest {
         final int maxcount = 100;
         model.getPlayer().setX(0);
         model.getPlayer().changeState(new InAirState());
-        while (model.getPlayer().getX() < SCREENWIDTH && counter < maxcount) {
+        while (model.getPlayer().getX() < SCREEN_WIDTH && counter < maxcount) {
             model.handleAction(GameAction.MOVE_LEFT);
             model.update(0.1f);
             counter++;
         }
-        assertTrue(model.getPlayer().getX() >= SCREENWIDTH, "The player is not looping");
+        assertTrue(model.getPlayer().getX() >= SCREEN_WIDTH, "The player is not looping");
     }
 
     @Test

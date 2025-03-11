@@ -9,7 +9,7 @@ import it.unibo.javajump.model.entities.platforms.BreakablePlatform;
 import java.util.ArrayList;
 import java.util.List;
 
-import static it.unibo.javajump.utility.Constants.MARGIN;
+import static it.unibo.javajump.utility.Constants.CLEAN_UP_MARGIN_OFFSET;
 
 public class CleanupManagerImpl implements CleanupManager {
 
@@ -19,7 +19,7 @@ public class CleanupManagerImpl implements CleanupManager {
 
         float cameraOffset = model.getCameraManager().getCurrentOffset();
         float screenH = model.getScreenHeight();
-        float margin = MARGIN;
+        float margin = CLEAN_UP_MARGIN_OFFSET;
 
         for (GameObject go : model.getGameObjects()) {
             if (go instanceof Coin c) {

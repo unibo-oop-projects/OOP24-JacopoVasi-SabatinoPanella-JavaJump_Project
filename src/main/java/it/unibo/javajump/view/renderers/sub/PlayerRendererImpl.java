@@ -50,7 +50,7 @@ public class PlayerRendererImpl implements PlayerRenderer {
         this.frameWidth = frameWidth;
         this.frameHeight = frameHeight;
         this.prevOnPlatform = false;
-        this.animTimer = RENDERPLAYERANIMTIMERINIT;
+        this.animTimer = RENDER_PLAYER_ANIM_TIMER_INIT;
         this.FRAME_DURATION = FRAME_DURATION;
     }
 
@@ -67,14 +67,14 @@ public class PlayerRendererImpl implements PlayerRenderer {
     @Override
     public void drawPlayer(Graphics2D g2, Character player, float offsetY, float deltaTime) {
         if (player.isOnPlatform() != prevOnPlatform) {
-            animTimer = RENDERPLAYERANIMTIMERINIT;
+            animTimer = RENDER_PLAYER_ANIM_TIMER_INIT;
             prevOnPlatform = player.isOnPlatform();
         } else {
             animTimer += deltaTime;
         }
 
         int sx = getAnimationFrame(player);
-        BufferedImage frame = playerSheet.getSubimage(sx, RENDERPLAYERFRAMEGETIMGY, frameWidth, frameHeight);
+        BufferedImage frame = playerSheet.getSubimage(sx, RENDER_PLAYER_FRAME_GET_IMG_Y, frameWidth, frameHeight);
 
         float drawX = player.getX();
         float drawY = player.getY() - offsetY;
@@ -98,11 +98,11 @@ public class PlayerRendererImpl implements PlayerRenderer {
     private int getAnimationFrame(Character player) {
         int frameIndex;
         if (player.isOnPlatform()) {
-            float cycle = FRAME_DURATION * PLAYERCYCLEDURATION; //
+            float cycle = FRAME_DURATION * PLAYER_ANIMATION_CYCLE_DURATION; //
             float t = animTimer % cycle;
-            frameIndex = (t < FRAME_DURATION) ? PLAYERFIRSTFRAME : PLAYERSECONDFRAME;
+            frameIndex = (t < FRAME_DURATION) ? PLAYER_LANDING_START_FRAME : PLAYER_LANDING_END_FRAME;
         } else {
-            frameIndex = (animTimer < FRAME_DURATION) ? PLAYERTHIRDFRAME : PLAYERFOURTHFRAME;
+            frameIndex = (animTimer < FRAME_DURATION) ? PLAYER_JUMP_START_FRAME : PLAYER_JUMP_END_FRAME;
         }
         return frameIndex * frameWidth;
     }
@@ -120,8 +120,8 @@ public class PlayerRendererImpl implements PlayerRenderer {
         AffineTransform old = g2.getTransform();
         if (!player.isFacingRight()) {
             g2.translate(drawX + frameWidth, drawY);
-            g2.scale(FLIPMIN, FLIPMAX);
-            g2.drawImage(frame, RENDERPLAYERFRAMEX, RENDERPLAYERFRAMEY, null);
+            g2.scale(FLIP_MIN, FLIP_MAX);
+            g2.drawImage(frame, RENDER_PLAYER_FRAME_X, RENDER_PLAYER_FRAME_Y, null);
         } else {
             g2.drawImage(frame, (int) drawX, (int) drawY, null);
         }

@@ -6,8 +6,8 @@ import it.unibo.javajump.model.factories.GameObjectFactory;
 
 import java.util.Random;
 
-import static it.unibo.javajump.utility.Constants.XOFFSET;
-import static it.unibo.javajump.utility.Constants.YOFFSET;
+import static it.unibo.javajump.utility.Constants.SPAWN_X_OFFSET;
+import static it.unibo.javajump.utility.Constants.SPAWN_Y_OFFSET;
 
 public class SpawnUtilsImpl implements SpawnUtils {
 
@@ -22,8 +22,8 @@ public class SpawnUtilsImpl implements SpawnUtils {
      * Creates and adds to the model a standard platform below the player.
      */
     public static void spawnPlatformBelowPlayer(GameModel model, GameObjectFactory factory) {
-        float px = model.getPlayer().getX() - XOFFSET;
-        float py = model.getPlayer().getY() + YOFFSET;
+        float px = model.getPlayer().getX() - SPAWN_X_OFFSET;
+        float py = model.getPlayer().getY() + SPAWN_Y_OFFSET;
         Platform p = factory.createStandardPlatform(px, py);
         model.getGameObjects().add(p);
     }

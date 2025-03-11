@@ -29,7 +29,7 @@ class InputTest {
         KeyEvent event = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_LEFT, ' ');
         inputManager.keyPressed(event);
 
-        assertEquals(Constants.LEFTDIRECTION, inputManager.getHorizontalDirection());
+        assertEquals(Constants.LEFT_DIRECTION, inputManager.getHorizontalDirection());
     }
 
     @Test
@@ -37,7 +37,7 @@ class InputTest {
         KeyEvent event = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_RIGHT, ' ');
         inputManager.keyPressed(event);
 
-        assertEquals(Constants.RIGHTDIRECTION, inputManager.getHorizontalDirection());
+        assertEquals(Constants.RIGHT_DIRECTION, inputManager.getHorizontalDirection());
     }
 
     @Test
@@ -48,7 +48,7 @@ class InputTest {
         inputManager.keyPressed(pressEvent);
         inputManager.keyReleased(releaseEvent);
 
-        assertEquals(Constants.NULLDIRECTION, inputManager.getHorizontalDirection());
+        assertEquals(Constants.NULL_DIRECTION, inputManager.getHorizontalDirection());
     }
 
     @Test
@@ -59,7 +59,7 @@ class InputTest {
         inputManager.keyPressed(leftEvent);
         inputManager.keyPressed(rightEvent);
 
-        assertEquals(Constants.NULLDIRECTION, inputManager.getHorizontalDirection());
+        assertEquals(Constants.NULL_DIRECTION, inputManager.getHorizontalDirection());
     }
 
     @Test

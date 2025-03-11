@@ -80,7 +80,7 @@ public class CoinRendererImpl implements CoinRenderer {
 
         CoinState prevState = coinLastStates.get(coin);
         if (prevState == null || !prevState.equals(coin.getState())) {
-            coinAnimTimers.put(coin, COINANIMTIMERS);
+            coinAnimTimers.put(coin, COIN_ANIM_TIMER_START);
             coinLastStates.put(coin, coin.getState());
 
             if (coin.getState() == CoinState.COLLECTING) {
@@ -95,20 +95,20 @@ public class CoinRendererImpl implements CoinRenderer {
         int frameIndex;
         int row;
         if (coin.getState() == CoinState.IDLE) {
-            float cycle = frameDuration * COINCYCLEDURATION;
+            float cycle = frameDuration * COIN_ANIMATION_CYCLE_DURATION;
             float t = timer % cycle;
             frameIndex = (int) (t / frameDuration);
-            row = RENDERCOINROWINIT;
+            row = RENDER_COIN_IDLE_ROW;
         } else {
             int idx = (int) (timer / frameDuration);
-            if (idx >= COINIDXMAX) {
-                frameIndex = COINCYCLEDURATION;
+            if (idx >= COIN_ANIMATION_INDEX_MAX) {
+                frameIndex = COIN_ANIMATION_CYCLE_DURATION;
                 coin.markAsDone();
                 removeCoin(coin);
             } else {
                 frameIndex = idx;
             }
-            row = 1;
+            row = RENDER_COIN_COLLECT_ROW;
         }
 
         int sx = frameIndex * frameWidth;

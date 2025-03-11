@@ -5,8 +5,8 @@ import it.unibo.javajump.model.entities.character.Character;
 import it.unibo.javajump.model.physics.MovementDirection;
 import it.unibo.javajump.model.states.gameover.GameOverState;
 
-import static it.unibo.javajump.utility.Constants.NULLDIRECTION;
-import static it.unibo.javajump.utility.Constants.SCREENLEFTMARGIN;
+import static it.unibo.javajump.utility.Constants.NULL_DIRECTION;
+import static it.unibo.javajump.utility.Constants.SCREEN_LEFT_MARGIN;
 
 /**
  * utility class for the InGameState, specifies some useful static methods
@@ -27,9 +27,9 @@ public final class InGameUtilities {
      * @param dir -1 = left, 0 = none, +1 = right
      */
     public static MovementDirection convertIntToMovementDirection(int dir) {
-        if (dir < NULLDIRECTION) {
+        if (dir < NULL_DIRECTION) {
             return MovementDirection.LEFT;
-        } else if (dir > NULLDIRECTION) {
+        } else if (dir > NULL_DIRECTION) {
             return MovementDirection.RIGHT;
         } else {
             return MovementDirection.NONE;
@@ -44,7 +44,7 @@ public final class InGameUtilities {
      * @param screenWidth the width of the screen
      */
     public static void applyPacManEffect(Character player, int screenWidth) {
-        if (player.getX() + player.getWidth() < SCREENLEFTMARGIN) {
+        if (player.getX() + player.getWidth() < SCREEN_LEFT_MARGIN) {
             player.setX(screenWidth);
         } else if (player.getX() > screenWidth) {
             player.setX(-player.getWidth());

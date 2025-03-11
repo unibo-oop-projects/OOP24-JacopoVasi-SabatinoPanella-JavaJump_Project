@@ -39,26 +39,26 @@ public class ScoreUIRendererImpl implements ScoreUIRenderer {
      */
     @Override
     public void drawScoreAndUI(Graphics2D g2, GameModel model, boolean isNewHighScore, boolean showHighScoreMessage) {
-        g2.drawImage(scoreContainer, RENDERUISCORECONTAINERX, RENDERUISCORECONTAINERY, null);
+        g2.drawImage(scoreContainer, RENDER_UI_SCORE_CONTAINER_X, RENDER_UI_SCORE_CONTAINER_Y, null);
         int score = model.getScore();
         int bestScore = model.getScoreManager().getBestScore();
 
         if (score < bestScore || score == 0) {
             g2.setColor(Color.WHITE);
             g2.setFont(gameFont2);
-            g2.drawString(SCORERENDERTEXT + score, SCORERENDERX, SCORERENDERY);
+            g2.drawString(SCORE_RENDER_TEXT + score, SCORE_RENDER_X_POSITION, SCORE_RENDER_Y_POSITION);
             isNewHighScore = false;
         } else {
             g2.setColor(Color.decode(GOLD_TEXT_COLOR));
             g2.setFont(gameFont2);
-            g2.drawString(SCORERENDERTEXT + score, SCORERENDERX, SCORERENDERY);
+            g2.drawString(SCORE_RENDER_TEXT + score, SCORE_RENDER_X_POSITION, SCORE_RENDER_Y_POSITION);
             isNewHighScore = true;
         }
 
         if (isNewHighScore && showHighScoreMessage) {
             g2.setColor(Color.decode(RED_TEXT_COLOR));
             g2.setFont(gameFont3);
-            g2.drawString(HIGHSCORERENDERTEXT, HIGHSCORERENDERX, HIGHSCORERENDERY);
+            g2.drawString(HIGH_SCORE_RENDER_TEXT, HIGH_SCORE_RENDER_X_POSITION, HIGH_SCORE_RENDER_Y_POSITION);
         }
     }
 }

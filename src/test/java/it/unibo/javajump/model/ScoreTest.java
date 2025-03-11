@@ -15,7 +15,7 @@ public class ScoreTest {
     @BeforeEach
     void setUp() {
 
-        model = new GameModelImpl(SCREENWIDTH, SCREENHEIGHT);
+        model = new GameModelImpl(SCREEN_WIDTH, SCREEN_HEIGHT);
 
         model.startGame();
         model.setState(new InGameState());
@@ -25,16 +25,16 @@ public class ScoreTest {
     void testDifficulty() {
         model.update(0);
         assertEquals(DifficultyState.EASY, model.getDifficultyManager().getCurrentDifficulty(), "Difficulty should be EASY.");
-        model.getScoreManager().addPoints(MEDIUMMAX);
+        model.getScoreManager().addPoints(MEDIUM_MAX);
         model.update(0);
         assertEquals(DifficultyState.MEDIUM, model.getDifficultyManager().getCurrentDifficulty(), "Difficulty should be MEDIUM");
-        model.getScoreManager().addPoints(HARDMAX - MEDIUMMAX);
+        model.getScoreManager().addPoints(HARD_MAX - MEDIUM_MAX);
         model.update(0);
         assertEquals(DifficultyState.HARD, model.getDifficultyManager().getCurrentDifficulty(), "Difficulty should be HARD");
-        model.getScoreManager().addPoints(VERYHARDMAX - HARDMAX);
+        model.getScoreManager().addPoints(VERY_HARD_MAX - HARD_MAX);
         model.update(0);
         assertEquals(DifficultyState.VERY_HARD, model.getDifficultyManager().getCurrentDifficulty(), "Difficulty should be VERY HARD");
-        model.getScoreManager().addPoints(HELLMAX - VERYHARDMAX);
+        model.getScoreManager().addPoints(HELL_MAX - VERY_HARD_MAX);
         model.update(0);
         assertEquals(DifficultyState.HELL, model.getDifficultyManager().getCurrentDifficulty(), "Difficulty should be HELL");
 

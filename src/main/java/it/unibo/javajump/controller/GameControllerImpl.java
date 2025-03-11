@@ -68,7 +68,7 @@ public class GameControllerImpl implements GameController {
                 }
 
                 try {
-                    Thread.sleep(SLEEPTHREAD);
+                    Thread.sleep(SLEEP_THREAD);
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }
@@ -95,9 +95,9 @@ public class GameControllerImpl implements GameController {
     private void updateModel(float deltaTime) {
         if (model.isRunning()) {
             int horizontalDirection = inputManager.getHorizontalDirection();
-            if (horizontalDirection < NULLDIRECTION) {
+            if (horizontalDirection < NULL_DIRECTION) {
                 model.handleAction(GameAction.MOVE_LEFT);
-            } else if (horizontalDirection > NULLDIRECTION) {
+            } else if (horizontalDirection > NULL_DIRECTION) {
                 model.handleAction(GameAction.MOVE_RIGHT);
             } else {
                 model.handleAction(GameAction.STOP_HORIZONTAL);

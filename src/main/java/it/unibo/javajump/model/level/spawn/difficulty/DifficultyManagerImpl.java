@@ -18,14 +18,14 @@ public class DifficultyManagerImpl implements DifficultyManager {
     private final float thresholdHell;
 
     public DifficultyManagerImpl() {
-        this.currentScore = SCOREINIT;
+        this.currentScore = SCORE_INIT;
         this.currentDifficulty = DifficultyState.EASY;
         this.rand = new Random();
 
-        this.thresholdMedium = SpawnUtilsImpl.randomInRange(rand, MEDIUMMIN, MEDIUMMAX);
-        this.thresholdHard = SpawnUtilsImpl.randomInRange(rand, HARDMIN, HARDMAX);
-        this.thresholdVeryHard = SpawnUtilsImpl.randomInRange(rand, VERYHARDMIN, VERYHARDMAX);
-        this.thresholdHell = SpawnUtilsImpl.randomInRange(rand, HELLMIN, HELLMAX);
+        this.thresholdMedium = SpawnUtilsImpl.randomInRange(rand, MEDIUM_MIN, MEDIUM_MAX);
+        this.thresholdHard = SpawnUtilsImpl.randomInRange(rand, HARD_MIN, HARD_MAX);
+        this.thresholdVeryHard = SpawnUtilsImpl.randomInRange(rand, VERY_HARD_MIN, VERY_HARD_MAX);
+        this.thresholdHell = SpawnUtilsImpl.randomInRange(rand, HELL_MIN, HELL_MAX);
     }
 
 

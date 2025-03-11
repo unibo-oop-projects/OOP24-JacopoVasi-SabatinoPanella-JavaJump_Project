@@ -5,7 +5,7 @@ import it.unibo.javajump.model.entities.GameObjectImpl;
 import it.unibo.javajump.model.entities.character.states.InAirState;
 import it.unibo.javajump.model.entities.character.states.OnPlatformState;
 
-import static it.unibo.javajump.utility.Constants.VELOCITYINIT;
+import static it.unibo.javajump.utility.Constants.VELOCITY_INIT;
 
 /**
  * Implementation of the Character interface.
@@ -56,8 +56,8 @@ public class CharacterImpl extends GameObjectImpl implements Character {
         this.width = width;
         this.height = height;
         this.jumpForce = jumpForce;
-        this.velocityX = VELOCITYINIT;
-        this.velocityY = VELOCITYINIT;
+        this.velocityX = VELOCITY_INIT;
+        this.velocityY = VELOCITY_INIT;
         this.oldX = x;
         this.oldY = y;
         this.currentState = new InAirState();

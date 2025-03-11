@@ -48,38 +48,38 @@ public class RendererManagerImpl implements RenderManager {
     public RendererManagerImpl(SoundEffectsManager soundEffectsManager, GameGraphics graphics) {
 
         this.platformRenderer = new PlatformRendererImpl(
-                RENDERMANAGERPLATFORMOUTLINE,
-                RENDERMANAGERPLATFORMARCW,
-                RENDERMANAGERPLATFORMARCH,
+                RENDER_MANAGER_PLATFORM_OUTLINE_THICKNESS,
+                RENDER_MANAGER_PLATFORM_ROUND_CORNER_WIDTH,
+                RENDER_MANAGER_PLATFORM_ROUND_CORNER_HEIGHT,
                 soundEffectsManager);
 
         this.coinRenderer = new CoinRendererImpl(
                 graphics.getCoinSheet(),
-                RENDERMANAGERCOINWIDTH,
-                RENDERMANAGERCOINHEIGHT,
-                RENDERMANAGERCOINFRAMEDURATION,
+                RENDER_MANAGER_COIN_WIDTH,
+                RENDER_MANAGER_COIN_HEIGHT,
+                RENDER_MANAGER_COIN_FRAME_DURATION,
                 soundEffectsManager);
 
         this.playerRenderer = new PlayerRendererImpl(
                 graphics.getPlayerSheet(),
-                RENDERMANAGERPLAYERWIDTH,
-                RENDERMANAGERPLAYERHEIGHT,
-                RENDERMANAGERPLAYERFRAMEDURATION);
+                RENDER_MANAGER_PLAYER_WIDTH,
+                RENDER_MANAGER_PLAYER_HEIGHT,
+                RENDER_MANAGER_PLAYER_FRAME_DURATION);
 
         this.backgroundRenderer1 = new BackgroundRendererImpl(
                 graphics.getBackground_Easy(),
                 graphics.getBackground_Medium(),
                 graphics.getBackground_Difficult(),
-                RENDERMANAGERBACKGROUNDPARALLAXONE,
-                RENDERMANAGERBACKGROUNDSPEEDXONE,
+                RENDER_MANAGER_BACKGROUND_ONE_PARALLAX_MODIFIER,
+                RENDER_MANAGER_BACKGROUND_ONE_X_SPEED,
                 TRANSITION_DURATION_1);
 
         this.backgroundRenderer2 = new BackgroundRendererImpl(
                 graphics.getClouds_Easy(),
                 graphics.getClouds_Medium(),
                 graphics.getClouds_Difficult(),
-                RENDERMANAGERBACKGROUNDPARALLAXTWO,
-                RENDERMANAGERBACKGROUNDSPEEDTWO,
+                RENDER_MANAGER_BACKGROUND_TWO_PARALLAX_MODIFIER,
+                RENDER_MANAGER_BACKGROUND_TWO_X_SPEED,
                 TRANSITION_DURATION_2);
 
         this.scoreUIRenderer = new ScoreUIRendererImpl(

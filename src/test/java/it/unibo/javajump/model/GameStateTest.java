@@ -8,8 +8,8 @@ import it.unibo.javajump.model.states.pause.PauseState;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static it.unibo.javajump.utility.Constants.SCREENHEIGHT;
-import static it.unibo.javajump.utility.Constants.SCREENWIDTH;
+import static it.unibo.javajump.utility.Constants.SCREEN_HEIGHT;
+import static it.unibo.javajump.utility.Constants.SCREEN_WIDTH;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GameStateTest {
@@ -18,7 +18,7 @@ public class GameStateTest {
     @BeforeEach
     void setUp() {
 
-        model = new GameModelImpl(SCREENWIDTH, SCREENHEIGHT);
+        model = new GameModelImpl(SCREEN_WIDTH, SCREEN_HEIGHT);
         model.startGame();
 
 
@@ -38,7 +38,7 @@ public class GameStateTest {
         model.getCurrentState().handleAction(model, GameAction.CONFIRM_SELECTION);
         assertEquals(InGameState.class, model.getCurrentState().getClass(), "State should be equal to InGameState.");
 
-        model.getPlayer().setY(SCREENHEIGHT * 2);
+        model.getPlayer().setY(SCREEN_HEIGHT * 2);
         model.update(0);
         assertEquals(GameOverState.class, model.getCurrentState().getClass(), "State should be equal to GameOverState.");
 

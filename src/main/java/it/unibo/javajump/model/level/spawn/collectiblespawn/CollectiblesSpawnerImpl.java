@@ -49,8 +49,8 @@ public class CollectiblesSpawnerImpl implements CollectiblesSpawner {
     @Override
     public void spawnCollectible(GameModel model, float platformX, float platformY, float platformWidth, Platform platform) {
         if (rand.nextFloat() < coinSpawnChance) {
-            float coinX = platformX + (platformWidth / COINXDIV) - (platformWidth * COINXMUL);
-            float coinY = platformY - COINOFFSET;
+            float coinX = platformX + (platformWidth / COIN_X_DIV) - (platformWidth * COIN_X_MUL);
+            float coinY = platformY - COIN_OFFSET;
             Coin coin = factory.createCoin(coinX, coinY);
 
             if (platform instanceof MovingPlatform) {
