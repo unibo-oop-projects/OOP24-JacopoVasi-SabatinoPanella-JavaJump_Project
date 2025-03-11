@@ -13,7 +13,7 @@ import static it.unibo.javajump.utility.Constants.COIN_X_DIV;
 import static it.unibo.javajump.utility.Constants.COIN_X_MUL;
 
 /**
- * Class implementation of the CollectiblesSpawner interface
+ * Class implementation of the CollectiblesSpawner interface.
  */
 public class CollectiblesSpawnerImpl implements CollectiblesSpawner {
     /**
@@ -49,7 +49,8 @@ public class CollectiblesSpawnerImpl implements CollectiblesSpawner {
      * gets added to the GameObjects in model.
      */
     @Override
-    public void spawnCollectible(final GameModel model, final float platformX, final float platformY, final float platformWidth, final Platform platform) {
+    public void spawnCollectible(final GameModel model, final float platformX, final float platformY,
+                                 final float platformWidth, final Platform platform) {
         if (rand.nextFloat() < coinSpawnChance) {
             final float coinX = platformX + (platformWidth / COIN_X_DIV) - (platformWidth * COIN_X_MUL);
             final float coinY = platformY - COIN_OFFSET;

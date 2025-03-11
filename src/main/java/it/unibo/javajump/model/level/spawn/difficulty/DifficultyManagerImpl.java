@@ -17,7 +17,7 @@ import static it.unibo.javajump.utility.Constants.VERY_HARD_MIN;
 /**
  * The type Difficulty manager.
  */
-public class DifficultyManagerImpl implements DifficultyManager {
+public final class DifficultyManagerImpl implements DifficultyManager {
 
     private int currentScore;
     private DifficultyState currentDifficulty;

@@ -7,11 +7,13 @@ import it.unibo.javajump.model.level.spawn.difficulty.DifficultyState;
 import java.util.Random;
 
 import static it.unibo.javajump.model.level.spawn.spawnutilities.SpawnUtilsImpl.randomInRange;
+import static it.unibo.javajump.utility.Constants.BOUNCE_FACTOR_MAX;
+import static it.unibo.javajump.utility.Constants.BOUNCE_FACTOR_MIN;
 
 /**
  * The type Platform spawner.
  */
-public class PlatformSpawnerImpl implements PlatformSpawner {
+public final class PlatformSpawnerImpl implements PlatformSpawner {
 
     private final GameObjectFactory factory;
     private final Random rand;
@@ -37,13 +39,12 @@ public class PlatformSpawnerImpl implements PlatformSpawner {
         final float thresholdMoving = thresholdBreakable + movingChance;
 
         if (chance < thresholdBounce) {
-            return factory.createBouncePlatform(x, y, randomInRange(rand, 1.5f, 2.2f));
+            return factory.createBouncePlatform(x, y, randomInRange(rand, BOUNCE_FACTOR_MIN, BOUNCE_FACTOR_MAX));
         } else if (chance < thresholdBreakable) {
             return factory.createBreakablePlatform(x, y);
         } else if (chance < thresholdMoving) {
             return factory.createMovingPlatform(x, y, screenWidth);
         } else {
-
             return factory.createRandomPlatform(x, y);
         }
     }
