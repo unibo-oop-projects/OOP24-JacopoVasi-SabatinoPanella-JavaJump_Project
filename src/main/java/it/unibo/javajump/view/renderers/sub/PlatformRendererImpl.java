@@ -30,11 +30,11 @@ public class PlatformRendererImpl implements PlatformRenderer {
      */
     private final float outlineStrokeWidth;
     /**
-     * the width of the rounded corners
+     * the width of the rounded corners.
      */
     private final int roundArcW;
     /**
-     * the height of the rounded corners
+     * the height of the rounded corners.
      */
     private final int roundArcH;
 
@@ -48,7 +48,8 @@ public class PlatformRendererImpl implements PlatformRenderer {
      * @param arcH                the height of the rounded corners
      * @param soundEffectsManager the sound effects manager
      */
-    public PlatformRendererImpl(final float outlineStrokeWidth, final int arcW, final int arcH, final SoundEffectsManager soundEffectsManager) {
+    public PlatformRendererImpl(final float outlineStrokeWidth, final int arcW, final int arcH,
+                                final SoundEffectsManager soundEffectsManager) {
         this.outlineStrokeWidth = outlineStrokeWidth;
         this.roundArcW = arcW;
         this.roundArcH = arcH;
@@ -106,7 +107,8 @@ public class PlatformRendererImpl implements PlatformRenderer {
      * @param startColor the starting color for the gradient
      * @param endColor   the ending color for the gradient
      */
-    private void drawPlatformCommon(final Graphics2D g2, final float x, final float y, final float w, final float h, final Color startColor, final Color endColor) {
+    private void drawPlatformCommon(final Graphics2D g2, final float x, final float y, final float w,
+                                    final float h, final Color startColor, final Color endColor) {
         final Paint oldPaint = g2.getPaint();
         final Stroke oldStroke = g2.getStroke();
 
