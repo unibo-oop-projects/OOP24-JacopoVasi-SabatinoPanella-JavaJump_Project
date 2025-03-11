@@ -18,8 +18,7 @@ public final class InGameUtilities {
      * @throws AssertionError if the constructor is called
      */
     private InGameUtilities() {
-        throw new AssertionError
-                ("This is a utility class, it should not be instantiated!");
+        throw new AssertionError("This is a utility class, it should not be instantiated!");
     }
 
     /**

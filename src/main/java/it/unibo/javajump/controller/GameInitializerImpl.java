@@ -56,7 +56,7 @@ public class GameInitializerImpl implements GameInitializer {
     @Override
     public void initialize() {
         model.addObserver((GameModelObserver) view);
-        frame.setUp(inputManager, SCREEN_HEIGHT, SCREEN_WIDTH, view,GAME_TITLE);
+        frame.setUp(inputManager, SCREEN_HEIGHT, SCREEN_WIDTH, view, GAME_TITLE);
         controller.startGameLoop();
     }
 
