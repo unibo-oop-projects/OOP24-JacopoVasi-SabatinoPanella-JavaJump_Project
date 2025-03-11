@@ -5,10 +5,24 @@ import it.unibo.javajump.model.entities.objectstrategies.MovementBehaviour;
 
 import static it.unibo.javajump.utility.Constants.NULL_PLATFORM_VELOCITY;
 
+/**
+ * The MovingPlatformImpl class, an implementation of a moving platform.
+ */
 public class MovingPlatformImpl extends PlatformImpl implements MovingPlatform {
 
     private final MovementBehaviour movementBehaviour;
 
+    /**
+     * Instantiates a new Moving platform.
+     *
+     * @param xx          the xx
+     * @param y           the y
+     * @param width       the width
+     * @param height      the height
+     * @param range       the range
+     * @param screenWidth the screen width
+     * @param speed       the speed
+     */
     public MovingPlatformImpl(final float xx, final float y, final float width, final float height,
                               final float range, final float screenWidth, final float speed) {
 
@@ -21,7 +35,6 @@ public class MovingPlatformImpl extends PlatformImpl implements MovingPlatform {
             x = screenWidth - width;
         }
         this.x = x;
-
 
         float potentialMin = x - range;
         float potentialMax = x + range;

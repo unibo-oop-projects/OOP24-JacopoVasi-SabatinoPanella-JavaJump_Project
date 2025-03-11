@@ -2,13 +2,24 @@ package it.unibo.javajump.model.entities.objectstrategies;
 
 import it.unibo.javajump.model.entities.GameObject;
 
-public class HorizontalOscillationMovement implements MovementBehaviour {
+/**
+ * The type Horizontal oscillation movement, implements the movement behaviour
+ * for an object that oscillates horizontally.
+ */
+public final class HorizontalOscillationMovement implements MovementBehaviour {
 
     private final float minX;
     private final float maxX;
     private final float speed;
     private boolean goingRight;
 
+    /**
+     * Instantiates a new Horizontal oscillation movement.
+     *
+     * @param minX  the min x
+     * @param maxX  the max x
+     * @param speed the speed
+     */
     public HorizontalOscillationMovement(final float minX, final float maxX, final float speed) {
         this.minX = minX;
         this.maxX = maxX;
