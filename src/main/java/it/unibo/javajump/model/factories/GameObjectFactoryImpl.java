@@ -38,7 +38,7 @@ import static it.unibo.javajump.utility.Constants.STANDARD_PLATFORM_WIDTH;
 /**
  * The type Game object factory.
  */
-public class GameObjectFactoryImpl extends AbstractGameObjectFactory {
+public final class GameObjectFactoryImpl extends AbstractGameObjectFactory {
     private final Random rand = new Random();
 
     @Override
