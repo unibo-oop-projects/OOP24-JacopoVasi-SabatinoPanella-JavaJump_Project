@@ -12,7 +12,7 @@ public class CoinImpl extends GameObjectImpl implements Coin {
     private Platform attachedPlatform;
     private float offsetX;
 
-    public CoinImpl(float x, float y, float width, float height) {
+    public CoinImpl(final float x, final float y, final float width, final float height) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -60,7 +60,7 @@ public class CoinImpl extends GameObjectImpl implements Coin {
     }
 
     @Override
-    public void attachToPlatform(Platform platform) {
+    public void attachToPlatform(final Platform platform) {
         this.attachedPlatform = platform;
         this.offsetX = this.x - platform.getX();
     }

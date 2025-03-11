@@ -9,10 +9,11 @@ public class MovingPlatformImpl extends PlatformImpl implements MovingPlatform {
 
     private final MovementBehaviour movementBehaviour;
 
-    public MovingPlatformImpl(float x, float y, float width, float height,
-                              float range, float screenWidth, float speed) {
-        super(x, y, width, height);
+    public MovingPlatformImpl(float xx, final float y, final float width, final float height,
+                              final float range, final float screenWidth, final float speed) {
 
+        super(xx, y, width, height);
+        float x = xx;
         if (x < NULL_PLATFORM_VELOCITY) {
             x = NULL_PLATFORM_VELOCITY;
         }
@@ -35,7 +36,7 @@ public class MovingPlatformImpl extends PlatformImpl implements MovingPlatform {
     }
 
     @Override
-    public void update(float deltaTime) {
+    public void update(final float deltaTime) {
         super.update(deltaTime);
 
         movementBehaviour.update(this, deltaTime);

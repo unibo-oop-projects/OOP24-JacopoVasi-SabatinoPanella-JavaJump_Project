@@ -9,7 +9,7 @@ public class HorizontalOscillationMovement implements MovementBehaviour {
     private final float speed;
     private boolean goingRight;
 
-    public HorizontalOscillationMovement(float minX, float maxX, float speed) {
+    public HorizontalOscillationMovement(final float minX, final float maxX, final float speed) {
         this.minX = minX;
         this.maxX = maxX;
         this.speed = speed;
@@ -17,7 +17,7 @@ public class HorizontalOscillationMovement implements MovementBehaviour {
     }
 
     @Override
-    public void update(GameObject obj, float deltaTime) {
+    public void update(final GameObject obj, final float deltaTime) {
         float currentX = obj.getX();
         if (goingRight) {
             currentX += speed * deltaTime;

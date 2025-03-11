@@ -37,21 +37,21 @@ class ModelTest {
 
     @Test
     void testSetStateChangesState() {
-        GameStateHandler newState = new MenuState();
+        final GameStateHandler newState = new MenuState();
         gameModel.setState(newState);
         assertEquals(newState, gameModel.getCurrentState(), "State should change correctly");
     }
 
     @Test
     void testHandleAction() {
-        GameAction action = GameAction.CONFIRM_SELECTION; // Provide an empty implementation
+        final GameAction action = GameAction.CONFIRM_SELECTION; // Provide an empty implementation
         gameModel.handleAction(action);
         assertNotNull(gameModel.getCurrentState(), "Action should be handled without errors");
     }
 
     @Test
     void testUpdate() {
-        float deltaTime = 0.016f;
+        final float deltaTime = 0.016f;
         gameModel.update(deltaTime);
         assertEquals(deltaTime, gameModel.getDeltaTime(), "Delta time should be updated correctly");
     }
@@ -59,7 +59,7 @@ class ModelTest {
     @Test
     void testStartGameInitializesEntities() {
         gameModel.startGame();
-        Character player = gameModel.getPlayer();
+        final Character player = gameModel.getPlayer();
         assertNotNull(player, "Player should be initialized");
         assertTrue(gameModel.getGameObjects().contains(player), "Player should be part of game objects");
         assertEquals(0, gameModel.getScore(), "Score should reset to zero");
@@ -67,7 +67,7 @@ class ModelTest {
 
     @Test
     void testObserverNotification() {
-        TestObserver observer = new TestObserver();
+        final TestObserver observer = new TestObserver();
         gameModel.addObserver(observer);
         gameModel.notifyObservers();
         assertTrue(observer.updated, "Observer should be notified");
@@ -81,8 +81,8 @@ class ModelTest {
 
 
     // Inner class to test observer pattern
-    private static class TestObserver implements GameModelObserver {
-        boolean updated = false;
+    final private static class TestObserver implements GameModelObserver {
+        boolean updated;
 
         @Override
         public void onModelUpdate(GameModel model) {

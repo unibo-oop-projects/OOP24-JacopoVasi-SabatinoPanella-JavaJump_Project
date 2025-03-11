@@ -50,7 +50,7 @@ public class CharacterImpl extends GameObjectImpl implements Character {
      * @param height    the height of the character
      * @param jumpForce the jump force of the character
      */
-    public CharacterImpl(float x, float y, float width, float height, float jumpForce) {
+    public CharacterImpl(final float x, final float y, final float width, final float height, final float jumpForce) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -68,7 +68,7 @@ public class CharacterImpl extends GameObjectImpl implements Character {
      * In this method, the current state of the character is updated.
      */
     @Override
-    public void update(float deltaTime) {
+    public void update(final float deltaTime) {
         currentState.updateCharacter(this, deltaTime);
     }
 
@@ -77,7 +77,7 @@ public class CharacterImpl extends GameObjectImpl implements Character {
     }
 
     @Override
-    public void changeState(CharacterState newState) {
+    public void changeState(final CharacterState newState) {
         currentState.onExit(this);
         this.currentState = newState;
         currentState.onEnter(this);
@@ -104,7 +104,7 @@ public class CharacterImpl extends GameObjectImpl implements Character {
     }
 
     @Override
-    public void setVelocityX(float velocityX) {
+    public void setVelocityX(final float velocityX) {
         this.velocityX = velocityX;
     }
 
@@ -114,7 +114,7 @@ public class CharacterImpl extends GameObjectImpl implements Character {
     }
 
     @Override
-    public void setVelocityY(float velocityY) {
+    public void setVelocityY(final float velocityY) {
         this.velocityY = velocityY;
     }
 
@@ -124,7 +124,7 @@ public class CharacterImpl extends GameObjectImpl implements Character {
     }
 
     @Override
-    public void setJumpForce(float jumpForce) {
+    public void setJumpForce(final float jumpForce) {
         this.jumpForce = jumpForce;
     }
 
@@ -134,7 +134,7 @@ public class CharacterImpl extends GameObjectImpl implements Character {
     }
 
     @Override
-    public void setOldX(float oldX) {
+    public void setOldX(final float oldX) {
         this.oldX = oldX;
     }
 
@@ -144,7 +144,7 @@ public class CharacterImpl extends GameObjectImpl implements Character {
     }
 
     @Override
-    public void setOldY(float oldY) {
+    public void setOldY(final float oldY) {
         this.oldY = oldY;
     }
 
@@ -154,7 +154,7 @@ public class CharacterImpl extends GameObjectImpl implements Character {
     }
 
     @Override
-    public void setFacingRight(boolean facingRight) {
+    public void setFacingRight(final boolean facingRight) {
         this.facingRight = facingRight;
     }
 }

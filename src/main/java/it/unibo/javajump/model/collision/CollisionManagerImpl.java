@@ -26,34 +26,34 @@ public class CollisionManagerImpl implements CollisionManager {
      * @param model the GameModel
      */
     @Override
-    public void checkCollisions(GameModel model) {
-        Character player = model.getPlayer();
+    public void checkCollisions(final GameModel model) {
+        final Character player = model.getPlayer();
         boolean foundPlatformCollision = false;
-        List<GameObject> objects = model.getGameObjects();
+        final List<GameObject> objects = model.getGameObjects();
 
         for (int i = 0; i < objects.size(); i++) {
-            GameObject a = objects.get(i);
+            final GameObject a = objects.get(i);
             for (int j = i + 1; j < objects.size(); j++) {
 
-                GameObject b = objects.get(j);
+                final GameObject b = objects.get(j);
                 if (isColliding(a, b)) {
                     a.onCollision(b);
                     b.onCollision(a);
 
                     if (a instanceof Character && b instanceof Coin) {
-                        handleCharacterCoinCollision((Character) a, (Coin) b, model);
+                        handleCharacterCoinCollision((Coin) b, model);
                     } else if (b instanceof Character && a instanceof Coin) {
-                        handleCharacterCoinCollision((Character) b, (Coin) a, model);
+                        handleCharacterCoinCollision( (Coin) a, model);
                     }
 
                     if (a instanceof Character && b instanceof Platform) {
-                        if (handleCharacterPlatformCollision((Character) a, (Platform) b, model)) {
+                        if (handleCharacterPlatformCollision((Character) a, (Platform) b)) {
                             foundPlatformCollision = true;
                         }
-                    } else if (b instanceof Character && a instanceof Platform) {
-                        if (handleCharacterPlatformCollision((Character) b, (Platform) a, model)) {
+                    } else if (b instanceof Character && a instanceof Platform && handleCharacterPlatformCollision((Character) b, (Platform) a)) {
+
                             foundPlatformCollision = true;
-                        }
+
                     }
                 }
             }
@@ -71,7 +71,7 @@ public class CollisionManagerImpl implements CollisionManager {
      * @param b the second GameObject
      * @return true if the two GameObjects are colliding, false otherwise
      */
-    private boolean isColliding(GameObject a, GameObject b) {
+    private boolean isColliding(final GameObject a, final GameObject b) {
         return a.getX() < b.getX() + b.getWidth()
                 && a.getX() + a.getWidth() > b.getX()
                 && a.getY() < b.getY() + b.getHeight()
@@ -81,11 +81,11 @@ public class CollisionManagerImpl implements CollisionManager {
     /**
      * Private method that specifies how to handle character-coin collisions.
      *
-     * @param character the character, GameObject controlled by the player
+     *
      * @param coin      the coinImpl, GameObject that the player can collect
      * @param model     the GameModel which contains player & coinImpl
      */
-    private void handleCharacterCoinCollision(Character character, Coin coin, GameModel model) {
+    private void handleCharacterCoinCollision(final Coin coin, final GameModel model) {
         if (coin.getState() == CoinState.IDLE) {
             coin.collect();
             model.addPointsToScore(COIN_SCORE_VALUE);
@@ -100,13 +100,12 @@ public class CollisionManagerImpl implements CollisionManager {
      *
      * @param player   the Character, GameObject controlled by the player
      * @param platform the Platform, GameObject that the player can jump on
-     * @param model    the GameModel which contains player & platform
      * @return true if the player jumps on the platform, false otherwise.
      */
-    private boolean handleCharacterPlatformCollision(Character player, Platform platform, GameModel model) {
+    private boolean handleCharacterPlatformCollision(final Character player, final Platform platform) {
         if (player.getVelocityY() > NULL_DIRECTION) {
-            float playerOldBottom = player.getOldY() + player.getHeight();
-            float platformTop = platform.getY();
+            final float playerOldBottom = player.getOldY() + player.getHeight();
+            final float platformTop = platform.getY();
 
             if (playerOldBottom <= platformTop) {
                 float jumpForce = player.getJumpForce();

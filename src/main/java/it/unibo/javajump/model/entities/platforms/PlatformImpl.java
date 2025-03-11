@@ -4,13 +4,14 @@ import it.unibo.javajump.model.entities.GameObject;
 import it.unibo.javajump.model.entities.GameObjectImpl;
 
 public class PlatformImpl extends GameObjectImpl implements Platform {
-    private boolean touched = false;
+    private boolean touched ;
 
-    public PlatformImpl(float x, float y, float width, float height) {
+    public PlatformImpl(final float x, final float y, final float width, final float height) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+        this.touched = false;
     }
 
     @Override

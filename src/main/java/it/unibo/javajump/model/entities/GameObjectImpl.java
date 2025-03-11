@@ -30,7 +30,7 @@ public abstract class GameObjectImpl implements GameObject {
      * {@inheritDoc}
      */
     @Override
-    public void setX(float x) {
+    public void setX(final float x) {
         this.x = x;
     }
 
@@ -46,7 +46,7 @@ public abstract class GameObjectImpl implements GameObject {
      * {@inheritDoc}
      */
     @Override
-    public void setY(float y) {
+    public void setY(final float y) {
         this.y = y;
     }
 

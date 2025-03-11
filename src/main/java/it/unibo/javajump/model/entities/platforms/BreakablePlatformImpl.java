@@ -7,19 +7,19 @@ public class BreakablePlatformImpl extends PlatformImpl implements BreakablePlat
     private boolean broken;
     private boolean finished;
 
-    public BreakablePlatformImpl(float x, float y, float width, float height) {
+    public BreakablePlatformImpl(final float x, final float y, final float width, final float height) {
         super(x, y, width, height);
         this.broken = false;
         this.finished = false;
     }
 
-    @Override
-    public void onCollision(GameObject other) {
+
+    public void onCollision(final GameObject other) {
         super.onCollision(other);
     }
 
-    @Override
-    public void update(float deltaTime) {
+
+    public void update(final float deltaTime) {
         super.update(deltaTime);
     }
 

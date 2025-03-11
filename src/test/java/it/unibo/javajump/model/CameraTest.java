@@ -30,8 +30,8 @@ class CameraTest {
 
     @Test
     void testUpdateCameraIncreasesScoreWhenMovingUp() {
-        float initialOffset = model.getCameraManager().getCurrentOffset();
-        float initialScore = model.getScoreManager().getCurrentScore();
+        final float initialOffset = model.getCameraManager().getCurrentOffset();
+        final float initialScore = model.getScoreManager().getCurrentScore();
 
         // Simulate player moving upwards
         model.getPlayer().setY(initialOffset - 150);
@@ -44,7 +44,7 @@ class CameraTest {
 
     @Test
     void testUpdateCameraDoesNotDecreaseOffset() {
-        float initialOffset = model.getCameraManager().getCurrentOffset();
+        final float initialOffset = model.getCameraManager().getCurrentOffset();
 
         // Move the player down (should not affect the offset)
         model.getPlayer().setY((float) SCREEN_HEIGHT / 2 + 100);

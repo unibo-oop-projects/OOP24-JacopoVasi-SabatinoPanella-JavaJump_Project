@@ -32,11 +32,11 @@ public class CollisionTest {
 
     @Test
     void testCoin() {
-        float x = (float) SCREEN_WIDTH / 2;
-        float y = (float) SCREEN_HEIGHT / 2;
+        final float x = (float) SCREEN_WIDTH / 2;
+        final float y = (float) SCREEN_HEIGHT / 2;
         model.getPlayer().setY(y);
         model.getPlayer().setX(x);
-        Coin coin = model.getSpawnManager().getFactory().createCoin(x, y);
+        final Coin coin = model.getSpawnManager().getFactory().createCoin(x, y);
         model.getGameObjects().add(coin);
         model.update(0);
 
@@ -46,15 +46,15 @@ public class CollisionTest {
     @Test
     void testPlatform() {
         int counter = 0;
-        int maxcount = 200;
-        List<GameObject> toRemove = new ArrayList<>();
-        for (GameObject go : model.getGameObjects()) {
+        final int maxcount = 200;
+        final List<GameObject> toRemove = new ArrayList<>();
+        for (final GameObject go : model.getGameObjects()) {
             if (go instanceof Platform c) {
                 toRemove.add(c);
             }
         }
         model.getGameObjects().removeAll(toRemove);
-        Platform platform = model.getSpawnManager().getFactory().createStandardPlatform(model.getPlayer().getX(), model.getPlayer().getY() + 100);
+        final Platform platform = model.getSpawnManager().getFactory().createStandardPlatform(model.getPlayer().getX(), model.getPlayer().getY() + 100);
         model.getGameObjects().add(platform);
         while (!model.getPlayer().isOnPlatform() && counter < maxcount) {
             model.update(0.1f);

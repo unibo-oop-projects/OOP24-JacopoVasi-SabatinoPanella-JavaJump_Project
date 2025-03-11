@@ -26,7 +26,7 @@ class InputTest {
 
     @Test
     void testPressingLeftKeySetsPressingLeftFlag() {
-        KeyEvent event = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_LEFT, ' ');
+        final KeyEvent event = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_LEFT, ' ');
         inputManager.keyPressed(event);
 
         assertEquals(Constants.LEFT_DIRECTION, inputManager.getHorizontalDirection());
@@ -34,7 +34,7 @@ class InputTest {
 
     @Test
     void testPressingRightKeySetsPressingRightFlag() {
-        KeyEvent event = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_RIGHT, ' ');
+        final KeyEvent event = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_RIGHT, ' ');
         inputManager.keyPressed(event);
 
         assertEquals(Constants.RIGHT_DIRECTION, inputManager.getHorizontalDirection());
@@ -42,8 +42,8 @@ class InputTest {
 
     @Test
     void testReleasingLeftKeyResetsPressingLeftFlag() {
-        KeyEvent pressEvent = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_LEFT, ' ');
-        KeyEvent releaseEvent = new KeyEvent(testComponent, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_LEFT, ' ');
+        final KeyEvent pressEvent = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_LEFT, ' ');
+        final KeyEvent releaseEvent = new KeyEvent(testComponent, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_LEFT, ' ');
 
         inputManager.keyPressed(pressEvent);
         inputManager.keyReleased(releaseEvent);
@@ -53,8 +53,8 @@ class InputTest {
 
     @Test
     void testSimultaneousLeftAndRightKeyPressResultsInNullDirection() {
-        KeyEvent leftEvent = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_LEFT, ' ');
-        KeyEvent rightEvent = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_RIGHT, ' ');
+        final KeyEvent leftEvent = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_LEFT, ' ');
+        final KeyEvent rightEvent = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_RIGHT, ' ');
 
         inputManager.keyPressed(leftEvent);
         inputManager.keyPressed(rightEvent);
@@ -64,30 +64,30 @@ class InputTest {
 
     @Test
     void testActionQueueWhenEnterKeyIsPressed() {
-        KeyEvent event = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_ENTER, ' ');
+        final KeyEvent event = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_ENTER, ' ');
         inputManager.keyPressed(event);
 
-        Queue<GameAction> actionQueue = inputManager.getActionQueue();
+        final Queue<GameAction> actionQueue = inputManager.getActionQueue();
         assertFalse(actionQueue.isEmpty());
         assertEquals(GameAction.CONFIRM_SELECTION, actionQueue.poll());
     }
 
     @Test
     void testActionQueueWhenUpKeyIsPressed() {
-        KeyEvent event = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_UP, ' ');
+        final KeyEvent event = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_UP, ' ');
         inputManager.keyPressed(event);
 
-        Queue<GameAction> actionQueue = inputManager.getActionQueue();
+        final Queue<GameAction> actionQueue = inputManager.getActionQueue();
         assertFalse(actionQueue.isEmpty());
         assertEquals(GameAction.MOVE_MENU_UP, actionQueue.poll());
     }
 
     @Test
     void testActionQueueWhenDownKeyIsPressed() {
-        KeyEvent event = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_DOWN, ' ');
+        final KeyEvent event = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_DOWN, ' ');
         inputManager.keyPressed(event);
 
-        Queue<GameAction> actionQueue = inputManager.getActionQueue();
+        final Queue<GameAction> actionQueue = inputManager.getActionQueue();
         assertFalse(actionQueue.isEmpty());
         assertEquals(GameAction.MOVE_MENU_DOWN, actionQueue.poll());
     }
@@ -95,10 +95,10 @@ class InputTest {
     @Test
     void testActionQueueWhenEscapeKeyIsPressed() {
 
-        KeyEvent event = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_ESCAPE, ' ');
+        final KeyEvent event = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_ESCAPE, ' ');
         inputManager.keyPressed(event);
 
-        Queue<GameAction> actionQueue = inputManager.getActionQueue();
+        final Queue<GameAction> actionQueue = inputManager.getActionQueue();
         assertFalse(actionQueue.isEmpty());
         assertEquals(GameAction.PAUSE_GAME, actionQueue.poll());
     }

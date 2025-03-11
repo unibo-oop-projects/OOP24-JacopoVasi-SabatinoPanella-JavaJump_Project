@@ -35,7 +35,7 @@ public class CameraManagerImpl implements CameraManager {
      * @param scoreManager the current score manager
      * @param scoreFactor  a desired game design value to multiply the score, for better game feel
      */
-    public CameraManagerImpl(ScoreManager scoreManager, float scoreFactor) {
+    public CameraManagerImpl(final ScoreManager scoreManager, final float scoreFactor) {
         this.scoreManager = scoreManager;
         this.scoreFactor = scoreFactor;
         this.currentOffset = OFFSET_INIT;
@@ -50,14 +50,14 @@ public class CameraManagerImpl implements CameraManager {
      * @param deltaTime the time passed from the last update (in seconds)
      */
     @Override
-    public void updateCamera(GameModel model, float deltaTime) {
-        Character player = model.getPlayer();
-        float screenHeight = model.getScreenHeight();
-        float desiredOffset = getDesiredOffset(screenHeight, player);
+    public void updateCamera(final GameModel model, float deltaTime) {
+        final Character player = model.getPlayer();
+        final float screenHeight = model.getScreenHeight();
+        final float desiredOffset = getDesiredOffset(screenHeight, player);
 
         if (currentOffset < previousOffset) {
-            float deltaOffset = previousOffset - currentOffset;
-            int points = (int) (deltaOffset * scoreFactor);
+            final float deltaOffset = previousOffset - currentOffset;
+            final int points = (int) (deltaOffset * scoreFactor);
             scoreManager.addPoints(points);
         }
         previousOffset = currentOffset;
@@ -74,8 +74,8 @@ public class CameraManagerImpl implements CameraManager {
      * @param player       the player character
      * @return the desired offset
      */
-    private float getDesiredOffset(float screenHeight, Character player) {
-        float progressionScreenPoint = screenHeight / HEIGHT_DIV - screenHeight * WIDTH_DIV;
+    private float getDesiredOffset(final float screenHeight, final Character player) {
+        final float progressionScreenPoint = screenHeight / HEIGHT_DIV - screenHeight * WIDTH_DIV;
         float desiredOffset = currentOffset;
 
         if (player.getY() < progressionScreenPoint - currentOffset) {
