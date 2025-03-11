@@ -9,7 +9,6 @@ import it.unibo.javajump.model.entities.character.Character;
 public class PhysicsManagerImpl implements PhysicsManager {
     private final float acceleration;
     private final float maxSpeed;
-    private final float deceleration;
     private final float gravity;
 
 
@@ -25,7 +24,6 @@ public class PhysicsManagerImpl implements PhysicsManager {
         this.gravity = gravity;
         this.acceleration = acceleration;
         this.maxSpeed = maxSpeed;
-        this.deceleration = deceleration;
     }
 
 
