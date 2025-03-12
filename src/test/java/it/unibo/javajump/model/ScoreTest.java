@@ -15,9 +15,15 @@ import static it.unibo.javajump.utility.TestConstants.DELTA_TIME;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
- class ScoreTest {
+/**
+ * The type Score test.
+ */
+class ScoreTest {
     private GameModel model;
 
+    /**
+     * Sets up.
+     */
     @BeforeEach
     void setUp() {
 
@@ -27,6 +33,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         model.setState(new InGameState());
     }
 
+    /**
+     * Test difficulty.
+     */
     @Test
     void testDifficulty() {
         model.update(DELTA_TIME);

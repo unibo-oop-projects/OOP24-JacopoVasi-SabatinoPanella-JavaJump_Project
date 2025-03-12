@@ -14,9 +14,15 @@ import static it.unibo.javajump.utility.TestConstants.DELTA_TIME;
 import static it.unibo.javajump.utility.TestConstants.HEIGHT_OFF_MULTIPLIER;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
- class GameStateTest {
+/**
+ * The type Game state test.
+ */
+class GameStateTest {
     private GameModel model;
 
+    /**
+     * Sets up.
+     */
     @BeforeEach
     void setUp() {
 
@@ -26,6 +32,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
     }
 
+    /**
+     * Test states.
+     */
     @Test
     void testStates() {
         model.setState(new MenuState());
