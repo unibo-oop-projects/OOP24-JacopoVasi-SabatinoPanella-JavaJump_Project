@@ -21,11 +21,16 @@ import static it.unibo.javajump.utility.TestConstants.PLATFORM_OFFSET;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
- class CollisionTest {
-
+/**
+ * The Collision test.
+ */
+class CollisionTest {
 
     private GameModel model;
 
+    /**
+     * Sets up the environment before each test.
+     */
     @BeforeEach
     void setUp() {
 
@@ -35,6 +40,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
     }
 
+    /**
+     * Tests the collisions with the Coin game object.
+     */
     @Test
     void testCoin() {
         final float x = (float) SCREEN_WIDTH / DIV_TO_CENTER;
@@ -48,6 +56,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         assertEquals(CoinState.COLLECTING, coin.getState(), "Coin State should be COLLECTING.");
     }
 
+    /**
+     * Tests the collisions with the Platform game object.
+     */
     @Test
     void testPlatform() {
         int counter = COUNTER_START;

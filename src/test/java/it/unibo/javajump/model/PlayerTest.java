@@ -17,9 +17,15 @@ import static it.unibo.javajump.utility.TestConstants.X_LEFT_SIDE_SCREEN;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
- class PlayerTest {
+/**
+ * The type Player test.
+ */
+class PlayerTest {
     private GameModel model;
 
+    /**
+     * Sets up.
+     */
     @BeforeEach
     void setUp() {
 
@@ -29,6 +35,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         model.setState(new InGameState());
     }
 
+    /**
+     * Test jumping.
+     */
     @Test
     void testJumping() {
         int counter = COUNTER_START;
@@ -41,6 +50,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         assertFalse(model.getPlayer().isOnPlatform(), "Jumping failed");
     }
 
+    /**
+     * Test pacman.
+     */
     @Test
     void testPacman() {
         int counter = COUNTER_START;
@@ -54,6 +66,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         assertTrue(model.getPlayer().getX() >= SCREEN_WIDTH, "The player is not looping");
     }
 
+    /**
+     * Test physics.
+     */
     @Test
     void testPhysics() {
         int counter = COUNTER_START;
