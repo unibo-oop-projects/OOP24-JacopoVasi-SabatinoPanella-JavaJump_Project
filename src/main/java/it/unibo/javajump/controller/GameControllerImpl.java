@@ -16,9 +16,6 @@ import static it.unibo.javajump.utility.Constants.SLEEP_THREAD;
  */
 public class GameControllerImpl implements GameController {
     /**
-     * Private field to access the model.
-     */
-    /**
      * Private field to access the view.
      */
     private final MainGameView view;
