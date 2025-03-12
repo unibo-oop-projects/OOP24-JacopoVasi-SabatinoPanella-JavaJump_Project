@@ -40,7 +40,7 @@ import static it.unibo.javajump.utility.Constants.SERIAL_ID;
 import static it.unibo.javajump.utility.Constants.SOUND_EFFECTS_VOLUME;
 
 /**
- * The type Main game view.
+ * The implementation of the MainGameView interface.
  */
 public final class MainGameViewImpl extends JPanel implements MainGameView, GameModelObserver, Serializable {
     @Serial
@@ -104,7 +104,9 @@ public final class MainGameViewImpl extends JPanel implements MainGameView, Game
         });
     }
 
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void updateView() {
         final GameStateHandler currentHandler = model.getCurrentState();
@@ -117,7 +119,9 @@ public final class MainGameViewImpl extends JPanel implements MainGameView, Game
         repaint();
     }
 
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void paintComponent(final Graphics g) {
         super.paintComponent(g);
@@ -150,7 +154,10 @@ public final class MainGameViewImpl extends JPanel implements MainGameView, Game
         // CHECKSTYLE: MissingSwitchDefault ON
         g2.dispose();
     }
-
+    /**
+     * {@inheritDoc} In this case, based on Model notification, the method performs fade outs and music settings,
+     * according to the correct Game State in model.
+     */
     @Override
     public void onModelUpdate(final GameModel model) {
         final GameState currentState = model.getCurrentState().getGameState();

@@ -1,23 +1,23 @@
 package it.unibo.javajump.view.sound.sfx;
 
 /**
- * The enum Sfx type.
+ * The enum that specifies all Sfx types.
  */
 public enum SFXType {
     /**
-     * Default sfx type.
+     * Default sfx type for standard jumps.
      */
     DEFAULT,
     /**
-     * Bounce sfx type.
+     * Bounce sfx type, for bounce platforms.
      */
     BOUNCE,
     /**
-     * Break sfx type.
+     * Break sfx type, for break platforms.
      */
     BREAK,
     /**
-     * Coin sfx type.
+     * Coin sfx type, for coin collecting.
      */
     COIN
 }

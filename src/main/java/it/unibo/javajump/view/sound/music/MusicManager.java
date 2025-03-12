@@ -1,7 +1,7 @@
 package it.unibo.javajump.view.sound.music;
 
 /**
- * The interface Music manager.
+ * The interface that describes a Music manager.
  */
 public interface MusicManager {
     /**
@@ -32,9 +32,9 @@ public interface MusicManager {
     void resumeMusic();
 
     /**
-     * Fade out.
+     * Method to Fade out music.
      *
-     * @param durationSeconds the duration seconds
+     * @param durationSeconds the duration seconds of the fadeout
      */
     void fadeOut(float durationSeconds);
 

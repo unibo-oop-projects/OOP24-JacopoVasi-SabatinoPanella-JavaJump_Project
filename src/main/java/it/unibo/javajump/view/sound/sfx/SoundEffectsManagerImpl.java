@@ -25,7 +25,7 @@ import static it.unibo.javajump.utility.Constants.RESOURCE_DEFAULT_SFX;
 import static it.unibo.javajump.utility.Constants.SOUNDS_POOL_SIZE_NUMBER;
 
 /**
- * The type Sound effects manager.
+ * The implementation of SoundEffectsManager interface.
  */
 public class SoundEffectsManagerImpl implements SoundEffectsManager {
     private final float defaultVolume;

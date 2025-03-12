@@ -8,7 +8,7 @@ import it.unibo.javajump.model.states.ingame.InGameState;
 
 
 /**
- * The type Menu state.
+ * The class that implements the menu state.
  */
 public final class MenuState implements GameStateHandler {
     /**
@@ -17,6 +17,10 @@ public final class MenuState implements GameStateHandler {
     static final GameState GAME_STATE = GameState.MENU;
     private float deltaTime;
 
+    /**
+     * {@inheritDoc} The implemented method checks the action: if it corresponds to "Confirm", a new game is started,
+     * else if the action corresponds to the "Pause" action, the game closes.
+     */
     @Override
     public void handleAction(final GameModel model, final GameAction action) {
         switch (action) {
@@ -32,26 +36,26 @@ public final class MenuState implements GameStateHandler {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void update(final GameModel model, final float deltaTime) {
         this.deltaTime = deltaTime;
         model.notifyObservers();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public GameState getGameState() {
         return GAME_STATE;
     }
 
     /**
-     * Gets state.
-     *
-     * @return the state
+     * {@inheritDoc}
      */
-    public int getState() {
-        return 0;
-    }
-
     @Override
     public float getDeltaTime() {
         return deltaTime;

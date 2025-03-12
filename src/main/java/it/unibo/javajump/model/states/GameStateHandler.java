@@ -4,7 +4,7 @@ import it.unibo.javajump.controller.input.GameAction;
 import it.unibo.javajump.model.GameModel;
 
 /**
- * The interface Game state handler.
+ * The interface Game state handler, that specifies what each GameState should implement.
  */
 public interface GameStateHandler {
     /**
@@ -15,7 +15,6 @@ public interface GameStateHandler {
     default void onEnter(GameModel model) {
     }
 
-
     /**
      * On exit.
      *
@@ -23,7 +22,6 @@ public interface GameStateHandler {
      */
     default void onExit(GameModel model) {
     }
-
 
     /**
      * Handle action.
@@ -33,9 +31,8 @@ public interface GameStateHandler {
      */
     void handleAction(GameModel model, GameAction action);
 
-
     /**
-     * Update.
+     * Update the state, according to delta time.
      *
      * @param model     the model
      * @param deltaTime the delta time
@@ -43,14 +40,14 @@ public interface GameStateHandler {
     void update(GameModel model, float deltaTime);
 
     /**
-     * Gets game state.
+     * Gets the game state.
      *
      * @return the game state
      */
     GameState getGameState();
 
     /**
-     * Gets delta time.
+     * Gets the delta time.
      *
      * @return the delta time
      */

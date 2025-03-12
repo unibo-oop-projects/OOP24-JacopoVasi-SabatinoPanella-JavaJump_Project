@@ -38,10 +38,9 @@ import static it.unibo.javajump.utility.Constants.MIN_SPACING;
 import static it.unibo.javajump.utility.Constants.SCORE_FACTOR;
 
 /**
- * The type Game model.
+ * The implementation of GameModel interfaces, used to handle all parts of game-core data and systems.
  */
 public final class GameModelImpl implements GameModel {
-
 
     private GameStateHandler currentState;
     private final PhysicsManager physicsManager;
@@ -94,7 +93,9 @@ public final class GameModelImpl implements GameModel {
         this.currentState.onEnter(this);
     }
 
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setState(final GameStateHandler newState) {
         this.currentState.onExit(this);
@@ -102,17 +103,26 @@ public final class GameModelImpl implements GameModel {
         this.currentState.onEnter(this);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void handleAction(final GameAction action) {
         this.currentState.handleAction(this, action);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void update(final float deltaTime) {
         this.deltaTime = deltaTime;
         this.currentState.update(this, deltaTime);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void startGame() {
         gameObject.clear();
@@ -127,16 +137,25 @@ public final class GameModelImpl implements GameModel {
         spawnManager.generateInitialLevel(this);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void addObserver(final GameModelObserver obs) {
         observers.add(obs);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void removeObserver(final GameModelObserver obs) {
         observers.remove(obs);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void notifyObservers() {
         for (final GameModelObserver obs : observers) {
@@ -144,86 +163,137 @@ public final class GameModelImpl implements GameModel {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getScore() {
         return scoreManager.getCurrentScore();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void addPointsToScore(final int amount) {
         scoreManager.addPoints(amount);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public PhysicsManager getPhysicsManager() {
         return physicsManager;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public CollisionManager getCollisionManager() {
         return collisionManager;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public SpawnManager getSpawnManager() {
         return spawnManager;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public CameraManager getCameraManager() {
         return cameraManager;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public ScoreManager getScoreManager() {
         return scoreManager;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public CleanupManager getCleanupManager() {
         return cleanupManager;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public DifficultyManager getDifficultyManager() {
         return difficultyManager;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public GameStateHandler getCurrentState() {
         return currentState;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<GameObject> getGameObjects() {
         return this.gameObject;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Character getPlayer() {
         return player;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getScreenWidth() {
         return screenWidth;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getScreenHeight() {
         return screenHeight;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public float getDeltaTime() {
         return deltaTime;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean isRunning() {
         return isRunning;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void stopGame() {
         isRunning = false;

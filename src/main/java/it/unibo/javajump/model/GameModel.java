@@ -16,64 +16,64 @@ import java.util.List;
 
 
 /**
- * The interface Game model.
+ * The interface that describes the Game Model.
  */
 public interface GameModel {
 
     /**
-     * Sets state.
+     * Sets the game state.
      *
      * @param newState the new state
      */
     void setState(GameStateHandler newState);
 
     /**
-     * Handle action.
+     * Method to handle an action.
      *
      * @param action the action
      */
     void handleAction(GameAction action);
 
     /**
-     * Update.
+     * Method to update the model at runtime.
      *
      * @param deltaTime the delta time
      */
     void update(float deltaTime);
 
     /**
-     * Start game.
+     * Method to start the game.
      */
     void startGame();
 
     /**
-     * Add observer.
+     * Method to add an observer.
      *
      * @param obs the obs
      */
     void addObserver(GameModelObserver obs);
 
     /**
-     * Remove observer.
+     * Method to remove an observer.
      *
      * @param obs the obs
      */
     void removeObserver(GameModelObserver obs);
 
     /**
-     * Notify observers.
+     * Method to notify all observers.
      */
     void notifyObservers();
 
     /**
-     * Gets score.
+     * Method to get the current score.
      *
      * @return the score
      */
     int getScore();
 
     /**
-     * Add points to score.
+     * Method to add points to score.
      *
      * @param amount the amount
      */
@@ -171,14 +171,14 @@ public interface GameModel {
     float getDeltaTime();
 
     /**
-     * Is running boolean.
+     * Method to check the flag running.
      *
-     * @return the boolean
+     * @return the boolean flag
      */
     boolean isRunning();
 
     /**
-     * Stop game.
+     * Method to stop the game.
      */
     void stopGame();
 }

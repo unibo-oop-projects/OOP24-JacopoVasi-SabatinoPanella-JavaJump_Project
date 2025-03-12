@@ -9,17 +9,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * The type Font loader.
+ * The implementation of FontLoader interface, which handles the loading of custom fonts.
  */
 public final class FontLoaderImpl implements FontLoader {
 
     private static final Logger LOGGER = Logger.getLogger(FontLoaderImpl.class.getName());
 
     /**
-     * Load font font.
+     * Method to load a custom font.
      *
      * @param path the path
      * @param size the size
+     *
      * @return the font
      */
     public static Font loadFont(final String path, final float size) {
