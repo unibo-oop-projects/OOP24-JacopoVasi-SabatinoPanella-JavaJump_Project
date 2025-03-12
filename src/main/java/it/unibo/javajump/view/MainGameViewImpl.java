@@ -136,8 +136,6 @@ public final class MainGameViewImpl extends JPanel implements MainGameView, Game
 
     private void drawToTempScreen() {
         final Graphics2D g2 = tempScreen.createGraphics();
-        g2.setColor(Color.BLACK);
-        g2.fillRect(MAIN_VIEW_RECT_X, MAIN_VIEW_RECT_Y, virtualWidth, virtualHeight);
 
         final GameState currentState = model.getCurrentState().getGameState();
         // CHECKSTYLE: MissingSwitchDefault OFF
