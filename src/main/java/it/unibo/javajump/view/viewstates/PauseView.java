@@ -45,12 +45,11 @@ public final class PauseView implements GameViewState {
         final PauseState pauseState = (PauseState) model.getCurrentState();
         final PauseOption selection = pauseState.getSelection();
 
-        final int selectionYcor;
+        int selectionYcor= PAUSE_CONTINUE_Y;
         switch (selection) {
             case CONTINUE -> selectionYcor = PAUSE_CONTINUE_Y;
             case MAIN_MENU -> selectionYcor = PAUSE_MAIN_MENU_Y;
             case QUIT -> selectionYcor = PAUSE_QUIT_Y;
-            default -> selectionYcor = PAUSE_CONTINUE_Y;
         }
 
         g.setColor(Color.decode(BACKGROUND_DEFAULT_COLOR));

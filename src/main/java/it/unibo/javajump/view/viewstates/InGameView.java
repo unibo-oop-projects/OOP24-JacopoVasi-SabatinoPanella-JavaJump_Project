@@ -9,6 +9,7 @@ import it.unibo.javajump.view.renderers.RenderManager;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import java.util.List;
 
 import static it.unibo.javajump.utility.Constants.GAMEPLAY_MESSAGE_TIME_TOGGLE;
 
@@ -34,7 +35,7 @@ public final class InGameView implements GameViewState {
     @Override
     public void draw(final Graphics g, final GameModel model) {
 
-        final ArrayList<GameObject> snapshot;
+        final List<GameObject> snapshot;
         synchronized (model.getGameObjects()) {
             snapshot = new ArrayList<>(model.getGameObjects());
 

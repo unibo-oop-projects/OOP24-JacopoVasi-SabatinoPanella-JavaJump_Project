@@ -10,7 +10,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -29,7 +29,7 @@ import static it.unibo.javajump.utility.Constants.SOUNDS_POOL_SIZE_NUMBER;
  */
 public class SoundEffectsManagerImpl implements SoundEffectsManager {
     private final float defaultVolume;
-    private final Map<SFXType, Queue<Clip>> clipPools = new HashMap<>();
+    private final Map<SFXType, Queue<Clip>> clipPools = new EnumMap<>(SFXType.class);
     private static final int POOL_SIZE = SOUNDS_POOL_SIZE_NUMBER;
 
     /**

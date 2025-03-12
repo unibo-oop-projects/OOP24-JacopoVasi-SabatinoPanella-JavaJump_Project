@@ -79,7 +79,7 @@ public class GameControllerImpl implements GameController {
     /**
      * Stops the GameLoop thread.
      */
-    private void stopGameLoop(GameFrame frame) {
+    private void stopGameLoop(final GameFrame frame) {
         running = false;
         frame.closeGame();
     }
@@ -89,7 +89,7 @@ public class GameControllerImpl implements GameController {
      *
      * @param deltaTime time passed since last update (in seconds)
      */
-    private void updateModel(final float deltaTime, final GameModel model, GameFrame frame) {
+    private void updateModel(final float deltaTime, final GameModel model, final GameFrame frame) {
         if (model.isRunning()) {
             final int horizontalDirection = inputManager.getHorizontalDirection();
             if (horizontalDirection < NULL_DIRECTION) {
@@ -110,10 +110,10 @@ public class GameControllerImpl implements GameController {
      * it demands the model to process them accordingly.
      */
     private void processDiscreteInput(final GameModel model) {
-        GameAction action = inputManager.getActionQueue().poll();
+        GameAction action = inputManager.getAction();
         while (action != null) {
             model.handleAction(action);
-            action = inputManager.getActionQueue().poll();
+            action = inputManager.getAction();
         }
     }
 

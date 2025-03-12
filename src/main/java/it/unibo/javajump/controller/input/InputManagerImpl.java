@@ -102,7 +102,7 @@ public class InputManagerImpl implements InputManager {
      * {@inheritDoc}
      */
     @Override
-    public Queue<GameAction> getActionQueue() {
-        return actionQueue;
+    public GameAction getAction() {
+        return actionQueue.poll();
     }
 }

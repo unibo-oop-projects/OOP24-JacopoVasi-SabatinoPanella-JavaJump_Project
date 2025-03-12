@@ -2,7 +2,6 @@ package it.unibo.javajump.controller.input;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Queue;
 
 /**
  * Interface for the input manager, that will manage the input of the user and pass it to the game model.
@@ -31,7 +30,7 @@ public interface InputManager extends KeyListener {
      *
      * @return the queue of actions to be processed
      */
-    Queue<GameAction> getActionQueue();
+    GameAction getAction();
 
     /**
      * Getter for the horizontal direction of the player.

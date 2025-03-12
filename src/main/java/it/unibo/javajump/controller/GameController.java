@@ -11,7 +11,7 @@ public interface GameController {
     /**
      * Starts the game loop, in a thread.
      */
-    void startGameLoop(final GameModel model, final GameFrame frame);
+    void startGameLoop( GameModel model,  GameFrame frame);
 
 
 }
