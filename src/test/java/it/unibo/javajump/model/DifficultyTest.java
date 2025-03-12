@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * The Score test.
  */
-class ScoreTest {
+class DifficultyTest {
     private GameModel model;
 
     /**
