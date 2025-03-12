@@ -215,7 +215,7 @@ public final class GameModelImpl implements GameModel {
     /**
      * {@inheritDoc}
      */
-    @SuppressFBWarnings("EI_EXPOSE_REP")
+    @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "scoreManager is used as a getter to read and update")
     @Override
     public ScoreManager getScoreManager() {
         return scoreManager;
@@ -248,7 +248,7 @@ public final class GameModelImpl implements GameModel {
     /**
      * {@inheritDoc}
      */
-    @SuppressFBWarnings("EI_EXPOSE_REP")
+    @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "gameObject is used as a getter to read and update")
     @Override
     public List<GameObject> getGameObjects() {
         return this.gameObject;
@@ -259,7 +259,7 @@ public final class GameModelImpl implements GameModel {
      */
 
     @Override
-    @SuppressFBWarnings("EI_EXPOSE_REP")
+    @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "player is used as a getter to read and update")
     public Character getPlayer() {
         return player;
     }

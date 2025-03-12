@@ -67,7 +67,7 @@ public final class MainGameViewImpl extends JPanel implements MainGameView, Game
      *
      * @param model the model
      */
-    @SuppressFBWarnings("EI_EXPOSE_REP2")
+    @SuppressFBWarnings(value = "EI_EXPOSE_REP2", justification = "model is used inside paintComponent method")
     public MainGameViewImpl(final GameModel model) {
         final GameGraphics gameGraphics = new GameGraphicsImpl();
         this.model = model;
