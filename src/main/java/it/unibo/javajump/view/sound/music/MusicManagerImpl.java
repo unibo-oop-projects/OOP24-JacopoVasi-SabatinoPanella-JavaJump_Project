@@ -139,7 +139,7 @@ public final class MusicManagerImpl implements MusicManager {
         final long stepTimeMillis = (long) (durationSeconds * AUDIO_SLEEP / steps);
 
         fadeFuture = fadeExecutor.scheduleAtFixedRate(new Runnable() {
-            int currentStep;
+            private int currentStep;
 
             @Override
             public void run() {

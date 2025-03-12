@@ -4,6 +4,12 @@ package it.unibo.javajump.model.entities;
  * Class implementation of the GameObject interface, representing the base class for all GameObjects in the game.
  */
 public abstract class GameObjectImpl implements GameObject {
+    // CHECKSTYLE: VisibilityModifier OFF
+    // Rule disabled due to implementation design decision: The GameObjectImpl class is the base class
+    // for all GameObjects in the game, and the properties x, y, width, and height are protected to help
+    // with flexibility in effective GameObjects that extend this class. Making them protected ensures
+    // that they can be accessed by subclasses without exposing them to external classes, but also
+    // allows for easier subclass creation, as these base properties are available to the subclasses.
     /**
      * the x coordinate of the GameObject.
      */
@@ -20,7 +26,7 @@ public abstract class GameObjectImpl implements GameObject {
      * the height of the GameObject.
      */
     protected float height;
-
+    // CHECKSTYLE: VisibilityModifier ON
     /**
      * {@inheritDoc}
      */
