@@ -23,11 +23,14 @@ public final class PauseState implements GameStateHandler {
     public void handleAction(final GameModel model, final GameAction action) {
         switch (action) {
             case CONFIRM_SELECTION -> {
+                // CHECKSTYLE: MissingSwitchDefault OFF
+                // switch does not need a default case
                 switch (selection) {
                     case CONTINUE -> model.setState(new InGameState());
                     case MAIN_MENU -> model.setState(new MenuState());
                     case QUIT -> model.stopGame();
                 }
+                // CHECKSTYLE: MissingSwitchDefault ON
             }
             case MOVE_MENU_UP -> {
                 if (selection == PauseOption.CONTINUE) {
