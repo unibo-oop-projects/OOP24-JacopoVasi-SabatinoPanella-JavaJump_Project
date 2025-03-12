@@ -214,6 +214,7 @@ public final class GameModelImpl implements GameModel {
     /**
      * {@inheritDoc}
      */
+
     @Override
     public ScoreManager getScoreManager() {
         return scoreManager;
@@ -246,6 +247,7 @@ public final class GameModelImpl implements GameModel {
     /**
      * {@inheritDoc}
      */
+
     @Override
     public List<GameObject> getGameObjects() {
         return this.gameObject;
@@ -254,6 +256,7 @@ public final class GameModelImpl implements GameModel {
     /**
      * {@inheritDoc}
      */
+
     @Override
     public Character getPlayer() {
         return player;

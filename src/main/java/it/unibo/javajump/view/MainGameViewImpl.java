@@ -66,6 +66,7 @@ public final class MainGameViewImpl extends JPanel implements MainGameView, Game
      *
      * @param model the model
      */
+
     public MainGameViewImpl(final GameModel model) {
         final GameGraphics gameGraphics = new GameGraphicsImpl();
         this.model = model;
