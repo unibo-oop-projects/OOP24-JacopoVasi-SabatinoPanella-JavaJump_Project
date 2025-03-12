@@ -23,15 +23,17 @@ public final class BreakablePlatformImpl extends PlatformImpl implements Breakab
         this.finished = false;
     }
 
-
-
-
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean isBroken() {
         return broken;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void breakPlatform() {
         if (!broken) {
@@ -39,11 +41,17 @@ public final class BreakablePlatformImpl extends PlatformImpl implements Breakab
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean isFinished() {
         return finished;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setFinished() {
         if (!finished) {

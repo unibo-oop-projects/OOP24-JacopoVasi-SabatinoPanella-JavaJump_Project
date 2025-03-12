@@ -20,6 +20,9 @@ public final class BouncePlatformImpl extends PlatformImpl implements BouncePlat
         this.bounceFactor = bounceFactor;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public float getBounceFactor() {
         return bounceFactor;

@@ -4,7 +4,7 @@ import it.unibo.javajump.model.entities.GameObject;
 import it.unibo.javajump.model.entities.GameObjectImpl;
 
 /**
- * The type Platform, implements Platform.
+ * The implementation PlatformImpl, implements Platform interface.
  */
 public class PlatformImpl extends GameObjectImpl implements Platform {
     private boolean touched;
@@ -12,8 +12,8 @@ public class PlatformImpl extends GameObjectImpl implements Platform {
     /**
      * Instantiates a new Platform.
      *
-     * @param x      the x
-     * @param y      the y
+     * @param x      the x position
+     * @param y      the y position
      * @param width  the width
      * @param height the height
      */
@@ -25,11 +25,17 @@ public class PlatformImpl extends GameObjectImpl implements Platform {
         this.touched = false;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public final void triggerTouched() {
         touched = true;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public final boolean consumeTouched() {
         if (touched) {
@@ -39,10 +45,16 @@ public class PlatformImpl extends GameObjectImpl implements Platform {
         return false;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void update(final float deltaTime) {
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void onCollision(final GameObject other) {
     }

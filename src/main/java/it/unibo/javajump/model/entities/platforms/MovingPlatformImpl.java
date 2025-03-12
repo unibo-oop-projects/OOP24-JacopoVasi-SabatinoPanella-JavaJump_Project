@@ -13,15 +13,16 @@ public final class MovingPlatformImpl extends PlatformImpl implements MovingPlat
     private final MovementBehaviour movementBehaviour;
 
     /**
-     * Instantiates a new Moving platform.
+     * Instantiates a new Moving platform. If the platform is out of bounds, it stops and changes direction,
+     * oscillating according to the MovementBehaviour.
      *
-     * @param xx          the xx
-     * @param y           the y
-     * @param width       the width
-     * @param height      the height
-     * @param range       the range
-     * @param screenWidth the screen width
-     * @param speed       the speed
+     * @param xx          the xx position
+     * @param y           the y position
+     * @param width       the width of the platform
+     * @param height      the height of the platform
+     * @param range       the range in which the platform oscillates
+     * @param screenWidth the screen width, to keep the platform in bounds
+     * @param speed       the movement speed
      */
     public MovingPlatformImpl(final float xx, final float y, final float width, final float height,
                               final float range, final float screenWidth, final float speed) {
@@ -48,6 +49,9 @@ public final class MovingPlatformImpl extends PlatformImpl implements MovingPlat
         this.movementBehaviour = new HorizontalOscillationMovement(potentialMin, potentialMax, speed);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void update(final float deltaTime) {
         super.update(deltaTime);

@@ -6,7 +6,7 @@ package it.unibo.javajump.model.entities.platforms;
 public interface BreakablePlatform extends Platform {
 
     /**
-     * Is broken boolean.
+     * Flag to check if the platform is broken.
      *
      * @return true if is broken, false otherwise
      */
@@ -18,12 +18,12 @@ public interface BreakablePlatform extends Platform {
     void breakPlatform();
 
     /**
-     * Sets finished.
+     * Sets the breaking of the platform as finished.
      */
     void setFinished();
 
     /**
-     * Is finished boolean.
+     * Flag to check if the platform is finished.
      *
      * @return true if is finished, false otherwise
      */

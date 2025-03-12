@@ -27,6 +27,10 @@ public final class HorizontalOscillationMovement implements MovementBehaviour {
         this.goingRight = true;
     }
 
+    /**
+     * {@inheritDoc} In the implementation of this method, the current X is updated in a direction
+     * that oscillates between min and max X, while specifying if it is going right or left.
+     */
     @Override
     public void update(final GameObject obj, final float deltaTime) {
         float currentX = obj.getX();
