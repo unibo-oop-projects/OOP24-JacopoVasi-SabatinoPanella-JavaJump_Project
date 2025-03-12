@@ -9,7 +9,7 @@ import it.unibo.javajump.model.states.menu.MenuState;
 import java.util.Objects;
 
 /**
- * The type Game over state.
+ * The class that implements the Game over state.
  */
 public final class GameOverState implements GameStateHandler {
 
@@ -19,6 +19,9 @@ public final class GameOverState implements GameStateHandler {
      */
     static final GameState GAME_STATE = GameState.GAME_OVER;
 
+    /**
+     * {@inheritDoc} If the action corresponds to "Confirm", goes back to menu.
+     */
     @Override
     public void handleAction(final GameModel model, final GameAction action) {
 
@@ -27,26 +30,26 @@ public final class GameOverState implements GameStateHandler {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void update(final GameModel model, final float deltaTime) {
         this.deltaTime = deltaTime;
         model.notifyObservers();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public GameState getGameState() {
         return GAME_STATE;
     }
 
     /**
-     * Gets state.
-     *
-     * @return the state
+     * {@inheritDoc}
      */
-    public int getState() {
-        return 0;
-    }
-
     @Override
     public float getDeltaTime() {
         return deltaTime;

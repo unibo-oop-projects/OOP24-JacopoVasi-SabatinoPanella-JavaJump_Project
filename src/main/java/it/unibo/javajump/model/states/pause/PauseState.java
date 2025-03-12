@@ -9,7 +9,7 @@ import it.unibo.javajump.model.states.menu.MenuState;
 
 
 /**
- * The type Pause state.
+ * The class that implements Pause state.
  */
 public final class PauseState implements GameStateHandler {
     private float deltaTime;
@@ -19,6 +19,10 @@ public final class PauseState implements GameStateHandler {
      */
     static final GameState GAME_STATE = GameState.PAUSE;
 
+    /**
+     * {@inheritDoc} The implemented method checks the current selector and, when "Confirm" action is pressed,
+     * the corresponding state is performed.
+     */
     @Override
     public void handleAction(final GameModel model, final GameAction action) {
         switch (action) {
@@ -54,12 +58,18 @@ public final class PauseState implements GameStateHandler {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void update(final GameModel model, final float deltaTime) {
         this.deltaTime = deltaTime;
         model.notifyObservers();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public GameState getGameState() {
         return GAME_STATE;

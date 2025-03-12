@@ -27,7 +27,7 @@ import static it.unibo.javajump.utility.Constants.SIZE_FONT_2;
 import static it.unibo.javajump.utility.Constants.SIZE_FONT_3;
 
 /**
- * The type Game graphics.
+ * The implementation of the GameGraphics interface.
  */
 public final class GameGraphicsImpl implements GameGraphics {
     private final Font gameFont1;
@@ -80,71 +80,113 @@ public final class GameGraphicsImpl implements GameGraphics {
         return copy;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Font getGameFont1() {
         return gameFont1;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Font getGameFont2() {
         return gameFont2;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Font getGameFont3() {
         return gameFont3;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public BufferedImage getPlayerSheet() {
         return copyImage(playerSheet);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public BufferedImage getBackgroundEasy() {
         return copyImage(backgroundEasy);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public BufferedImage getCloudsEasy() {
         return copyImage(cloudsEasy);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public BufferedImage getBackgroundMedium() {
         return copyImage(backgroundMedium);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public BufferedImage getCloudsMedium() {
         return copyImage(cloudsMedium);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public BufferedImage getBackgroundDifficult() {
         return copyImage(backgroundDifficult);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public BufferedImage getCloudsDifficult() {
         return copyImage(cloudsDifficult);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public BufferedImage getCoinSheet() {
         return copyImage(coinSheet);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public BufferedImage getGameOver() {
         return copyImage(gameOver);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public BufferedImage getTitle() {
         return copyImage(title);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public BufferedImage getScoreContainer() {
         return copyImage(scoreContainer);

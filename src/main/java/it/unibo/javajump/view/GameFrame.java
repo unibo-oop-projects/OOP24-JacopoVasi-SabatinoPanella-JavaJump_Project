@@ -4,11 +4,11 @@ import it.unibo.javajump.controller.input.InputManager;
 
 
 /**
- * The interface Game frame.
+ * The interface that describes a Game frame.
  */
 public interface GameFrame {
     /**
-     * Sets up.
+     * Sets up the game frame with the necessary information and dependencies.
      *
      * @param inputManager the input manager
      * @param height       the height
@@ -19,7 +19,7 @@ public interface GameFrame {
     void setUp(InputManager inputManager, int height, int width, MainGameView view, String title);
 
     /**
-     * Close game.
+     * Closes the game safely.
      */
     void closeGame();
 }

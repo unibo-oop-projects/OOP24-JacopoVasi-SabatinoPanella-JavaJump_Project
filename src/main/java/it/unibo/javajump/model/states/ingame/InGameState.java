@@ -18,7 +18,7 @@ import static it.unibo.javajump.utility.Constants.NULL_DIRECTION;
 import static it.unibo.javajump.utility.Constants.RIGHT_DIRECTION;
 
 /**
- * The type In game state.
+ * The class that implements the in game state.
  */
 public final class InGameState implements GameStateHandler {
 
@@ -30,7 +30,10 @@ public final class InGameState implements GameStateHandler {
     private int horizontalDirection = NULL_DIRECTION;
     private float deltaTime;
 
-
+    /**
+     * {@inheritDoc} If the action corresponds to a directional key, the direction changes. If the action corresponds
+     * to Pause, pauses the game.
+     */
     @Override
     public void handleAction(final GameModel model, final GameAction action) {
         switch (action) {
@@ -38,11 +41,15 @@ public final class InGameState implements GameStateHandler {
             case MOVE_RIGHT -> horizontalDirection = RIGHT_DIRECTION;
             case STOP_HORIZONTAL -> horizontalDirection = NULL_DIRECTION;
             case PAUSE_GAME -> model.setState(new PauseState());
-            default -> {
-            }
+            default -> { }
         }
     }
 
+    /**
+     * {@inheritDoc} The implementation updates all Game Objects, and applies Pac-Man effect to the playable character.
+     * Then, in real-time, it checks the various managers, and keeps generating the level. In update is also checked
+     * the game-over condition.
+     */
     @Override
     public void update(final GameModel model, final float deltaTime) {
         this.deltaTime = deltaTime;
@@ -72,20 +79,17 @@ public final class InGameState implements GameStateHandler {
         model.notifyObservers();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public GameState getGameState() {
         return GAME_STATE;
     }
 
     /**
-     * Gets state.
-     *
-     * @return the state
+     * {@inheritDoc}
      */
-    public int getState() {
-        return 0;
-    }
-
     @Override
     public float getDeltaTime() {
         return deltaTime;

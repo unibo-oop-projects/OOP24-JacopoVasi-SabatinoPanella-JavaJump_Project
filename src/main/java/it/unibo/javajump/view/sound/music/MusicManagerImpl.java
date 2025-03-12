@@ -22,7 +22,7 @@ import static it.unibo.javajump.utility.Constants.MUSIC_LOOP_END;
 import static it.unibo.javajump.utility.Constants.MUSIC_LOOP_START;
 
 /**
- * The type Music manager.
+ * The implementation of MusicManager interface.
  */
 public final class MusicManagerImpl implements MusicManager {
     private Clip backgroundClip;
@@ -47,6 +47,9 @@ public final class MusicManagerImpl implements MusicManager {
         loadBackgroundMusic(filePath);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void loadBackgroundMusic(final String filePath) {
         try {
@@ -65,6 +68,9 @@ public final class MusicManagerImpl implements MusicManager {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void startMusic() {
         cancelFade();
@@ -83,6 +89,9 @@ public final class MusicManagerImpl implements MusicManager {
         backgroundClip.start();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void stopMusic() {
         cancelFade();
@@ -92,6 +101,9 @@ public final class MusicManagerImpl implements MusicManager {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void pauseMusic() {
         cancelFade();
@@ -100,6 +112,9 @@ public final class MusicManagerImpl implements MusicManager {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void resumeMusic() {
         cancelFade();
@@ -109,6 +124,9 @@ public final class MusicManagerImpl implements MusicManager {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void setVolume(final float vol) {
         if (volumeControl == null) {
@@ -120,6 +138,9 @@ public final class MusicManagerImpl implements MusicManager {
         volumeControl.setValue(dB);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void fadeOut(final float durationSeconds) {
         if (backgroundClip == null || volumeControl == null) {

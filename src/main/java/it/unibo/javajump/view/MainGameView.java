@@ -1,12 +1,12 @@
 package it.unibo.javajump.view;
 
 /**
- * The interface Main game view.
+ * The interface that describes the Main game view.
  */
 public interface MainGameView {
 
     /**
-     * Update view.
+     * Method to update the view.
      */
     void updateView();
 }

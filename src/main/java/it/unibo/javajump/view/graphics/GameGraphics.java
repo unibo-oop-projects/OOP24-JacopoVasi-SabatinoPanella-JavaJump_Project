@@ -4,7 +4,7 @@ import java.awt.Font;
 import java.awt.image.BufferedImage;
 
 /**
- * The interface Game graphics.
+ * The interface that describes Game graphics operations.
  */
 public interface GameGraphics {
     /**
@@ -36,44 +36,44 @@ public interface GameGraphics {
     BufferedImage getPlayerSheet();
 
     /**
-     * Gets background easy.
+     * Gets "background easy" image.
      *
-     * @return the background easy
+     * @return the image
      */
     BufferedImage getBackgroundEasy();
 
     /**
-     * Gets clouds easy.
+     * Gets "clouds easy" image.
      *
-     * @return the clouds easy
+     * @return the image
      */
     BufferedImage getCloudsEasy();
 
     /**
-     * Gets background medium.
+     * Gets "background medium" image.
      *
-     * @return the background medium
+     * @return the image
      */
     BufferedImage getBackgroundMedium();
 
     /**
-     * Gets clouds medium.
+     * Gets "clouds medium" image.
      *
-     * @return the clouds medium
+     * @return the image
      */
     BufferedImage getCloudsMedium();
 
     /**
-     * Gets background difficult.
+     * Gets "background difficult" image.
      *
-     * @return the background difficult
+     * @return the image
      */
     BufferedImage getBackgroundDifficult();
 
     /**
-     * Gets clouds difficult.
+     * Gets "clouds difficult" image.
      *
-     * @return the clouds difficult
+     * @return the image
      */
     BufferedImage getCloudsDifficult();
 
@@ -85,23 +85,23 @@ public interface GameGraphics {
     BufferedImage getCoinSheet();
 
     /**
-     * Gets game over.
+     * Gets "game over" image.
      *
-     * @return the game over
+     * @return the image
      */
     BufferedImage getGameOver();
 
     /**
-     * Gets title.
+     * Gets title image.
      *
-     * @return the title
+     * @return the image
      */
     BufferedImage getTitle();
 
     /**
      * Gets score container.
      *
-     * @return the score container
+     * @return the score container image
      */
     BufferedImage getScoreContainer();
 }

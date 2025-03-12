@@ -15,17 +15,15 @@ import static it.unibo.javajump.utility.Constants.SCREEN_WIDTH;
 import static it.unibo.javajump.utility.Constants.SERIAL_ID;
 
 /**
- * The type Game frame.
+ * The implementation of the GameFrame interface.
  */
 public final class GameFrameImpl extends JFrame implements GameFrame, Serializable {
     @Serial
     private static final long serialVersionUID = SERIAL_ID;
 
     /**
-     * Instantiates a new Game frame.
+     * {@inheritDoc}
      */
-
-
     @Override
     public void setUp(final InputManager inputManager, final int height, final int width,
                       final MainGameView view, final String title) {
@@ -45,6 +43,9 @@ public final class GameFrameImpl extends JFrame implements GameFrame, Serializab
         this.setVisible(true);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void closeGame() {
         this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));

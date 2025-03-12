@@ -4,7 +4,7 @@ import it.unibo.javajump.controller.GameInitializer;
 import it.unibo.javajump.controller.GameInitializerImpl;
 
 /**
- * The type Main.
+ * The Main class of the application, containing the entry point.
  */
 public final class Main {
 

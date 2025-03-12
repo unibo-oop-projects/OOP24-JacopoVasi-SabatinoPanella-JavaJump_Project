@@ -3,7 +3,7 @@ package it.unibo.javajump.model.score;
 import static it.unibo.javajump.utility.Constants.SCORE_INIT;
 
 /**
- * The type Score manager.
+ * The implementation of the ScoreManager interface.
  */
 public final class ScoreManagerImpl implements ScoreManager {
 
@@ -20,6 +20,9 @@ public final class ScoreManagerImpl implements ScoreManager {
         this.bestScoreReached = false;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void addPoints(final int amount) {
         this.currentScore += amount;
@@ -30,26 +33,36 @@ public final class ScoreManagerImpl implements ScoreManager {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getCurrentScore() {
         return currentScore;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int getBestScore() {
         return bestScore;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean isBestScoreReached() {
         return bestScoreReached;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void reset() {
         this.currentScore = SCORE_INIT;
         this.bestScoreReached = false;
     }
-
-
 }

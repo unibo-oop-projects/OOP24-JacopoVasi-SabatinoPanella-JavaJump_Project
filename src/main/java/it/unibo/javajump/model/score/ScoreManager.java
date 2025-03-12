@@ -1,13 +1,13 @@
 package it.unibo.javajump.model.score;
 
 /**
- * The interface Score manager.
+ * The interface that describes the Score manager, that handles the score system.
  */
 public interface ScoreManager {
     /**
-     * Add points.
+     * Method to add points.
      *
-     * @param amount the amount
+     * @param amount the amount of points to add
      */
     void addPoints(int amount);
 
@@ -26,14 +26,14 @@ public interface ScoreManager {
     int getBestScore();
 
     /**
-     * Is best score reached boolean.
+     * Flag to check if the best score is reached and overwritten.
      *
      * @return the boolean
      */
     boolean isBestScoreReached();
 
     /**
-     * Reset.
+     * Method to reset the ScoreManager.
      */
     void reset();
 }

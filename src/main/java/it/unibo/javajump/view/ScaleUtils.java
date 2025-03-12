@@ -8,16 +8,17 @@ import static it.unibo.javajump.utility.Constants.MAIN_VIEW_DRAW_X_INIT;
 import static it.unibo.javajump.utility.Constants.MAIN_VIEW_DRAW_Y_INIT;
 
 /**
- * The type Scale utils.
+ * The class Scale utils, used for scaling the view elements accordingly.
  */
 public final class ScaleUtils {
     /**
-     * Compute scaled rectangle rectangle.
+     * Compute a scaled rectangle.
      *
      * @param virtualWidth  the virtual width
      * @param virtualHeight the virtual height
      * @param panelSize     the panel size
-     * @return the rectangle
+     *
+     * @return the scaled rectangle
      */
     public static Rectangle computeScaledRectangle(final int virtualWidth, final int virtualHeight, final Dimension panelSize) {
         final float targetAspect = (float) virtualWidth / virtualHeight;
