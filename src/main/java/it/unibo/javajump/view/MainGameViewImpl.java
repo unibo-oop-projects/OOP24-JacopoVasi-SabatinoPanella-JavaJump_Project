@@ -44,21 +44,21 @@ import static it.unibo.javajump.utility.Constants.SOUND_EFFECTS_VOLUME;
 public final class MainGameViewImpl extends JPanel implements MainGameView, GameModelObserver, Serializable {
     @Serial
     private static final long serialVersionUID = SERIAL_ID;
-    private final GameModel model;
+    private final transient GameModel model;
 
-    private final GameViewState menuView;
-    private final GameViewState inGameView;
-    private final GameViewState pauseView;
-    private final GameViewState gameOverView;
+    private final transient GameViewState menuView;
+    private final transient GameViewState inGameView;
+    private final transient GameViewState pauseView;
+    private final transient GameViewState gameOverView;
 
     private final int virtualWidth;
     private final int virtualHeight;
 
-    private final BufferedImage tempScreen;
+    private final transient BufferedImage tempScreen;
 
     private GameState lastState;
 
-    private final MusicManager musicManager;
+    private final transient MusicManager musicManager;
 
     /**
      * Instantiates a new Main game view.

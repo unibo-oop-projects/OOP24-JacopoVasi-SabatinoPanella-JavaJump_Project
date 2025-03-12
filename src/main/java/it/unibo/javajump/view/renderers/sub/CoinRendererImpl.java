@@ -67,6 +67,8 @@ public class CoinRendererImpl implements CoinRenderer {
         this.soundEffectsManager = soundEffectsManager;
     }
 
+
+
     /**
      * {@inheritDoc}
      * The implementation checks the state of the Coin (in model) and updates the animation timer

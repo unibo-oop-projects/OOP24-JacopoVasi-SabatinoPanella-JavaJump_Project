@@ -58,15 +58,15 @@ public class BackgroundRendererImpl implements BackgroundRenderer {
     public BackgroundRendererImpl(final BufferedImage bgTileEasy, final BufferedImage bgTileMedium,
                                   final BufferedImage bgTileHard, final float parallaxFactor,
                                   final float horizontalSpeed, final float transitionDuration) {
-        this.bgTileEasy = bgTileEasy;
-        this.bgTileMedium = bgTileMedium;
-        this.bgTileHard = bgTileHard;
+        this.bgTileEasy = copyBufferedImage(bgTileEasy);
+        this.bgTileMedium = copyBufferedImage(bgTileMedium);
+        this.bgTileHard = copyBufferedImage(bgTileHard);
         this.parallaxFactor = parallaxFactor;
         this.horizontalSpeed = horizontalSpeed;
         this.horizontalOffset = BG_HORIZONTAL_OFFSET_INIT;
         this.transitionDuration = transitionDuration;
-        this.currentBg = bgTileEasy;
-        this.targetBg = bgTileEasy;
+        this.currentBg = copyBufferedImage(bgTileEasy);
+        this.targetBg = copyBufferedImage(bgTileEasy);
         this.inTransition = false;
         this.transitionTimer = BG_TRANSITION_TIMER_INIT;
     }
@@ -77,6 +77,15 @@ public class BackgroundRendererImpl implements BackgroundRenderer {
             case HARD, VERY_HARD -> bgTileMedium;
             case HELL -> bgTileHard;
         };
+    }
+
+    private BufferedImage copyBufferedImage(final BufferedImage source) {
+        if (source == null) {
+            return null;
+        }
+        final BufferedImage copy = new BufferedImage(source.getWidth(), source.getHeight(), source.getType());
+        copy.getGraphics().drawImage(source, 0, 0, null);
+        return copy;
     }
 
     private void updateTransition(final DifficultyState currentDiff) {

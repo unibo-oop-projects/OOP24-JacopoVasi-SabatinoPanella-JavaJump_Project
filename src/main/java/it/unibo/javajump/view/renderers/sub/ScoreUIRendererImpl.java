@@ -39,11 +39,19 @@ public class ScoreUIRendererImpl implements ScoreUIRenderer {
      * @param font3     the font 3
      */
     public ScoreUIRendererImpl(final BufferedImage container, final Font font2, final Font font3) {
-        this.scoreContainer = container;
+        this.scoreContainer = copyBufferedImage(container);
         this.gameFont2 = font2;
         this.gameFont3 = font3;
     }
 
+    private BufferedImage copyBufferedImage(final BufferedImage source) {
+        if (source == null) {
+            return null;
+        }
+        final BufferedImage copy = new BufferedImage(source.getWidth(), source.getHeight(), source.getType());
+        copy.getGraphics().drawImage(source, 0, 0, null);
+        return copy;
+    }
     /**
      * {@inheritDoc}
      * The method draws the container, then checks the score and best score from the GameModel (ScoreManager).
