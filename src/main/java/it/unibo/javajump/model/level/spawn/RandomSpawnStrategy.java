@@ -75,6 +75,8 @@ public final class RandomSpawnStrategy implements SpawnStrategy {
     private float updateSpawnGap(final DifficultyState diff) {
         float gap = GAP_INIT;
         if (null != diff) {
+            // CHECKSTYLE: MissingSwitchDefault OFF
+            // switch does not need a default case
             switch (diff) {
                 case EASY, MEDIUM ->
                         gap = SpawnUtilsImpl.randomInRange(rand,
@@ -89,6 +91,7 @@ public final class RandomSpawnStrategy implements SpawnStrategy {
                                 minPlatformYSpacing + GAP_EASY_ADDENDUM,
                                 maxPlatformYSpacing);
             }
+            // CHECKSTYLE: MissingSwitchDefault ON
         }
         return gap;
     }

@@ -135,6 +135,8 @@ public final class MainGameViewImpl extends JPanel implements MainGameView, Game
         g2.fillRect(MAIN_VIEW_RECT_X, MAIN_VIEW_RECT_Y, virtualWidth, virtualHeight);
 
         final GameState currentState = model.getCurrentState().getGameState();
+        // CHECKSTYLE: MissingSwitchDefault OFF
+        // switch does not need a default case
         switch (currentState) {
             case MENU -> menuView.draw(g2, model);
             case IN_GAME -> inGameView.draw(g2, model);
@@ -143,8 +145,8 @@ public final class MainGameViewImpl extends JPanel implements MainGameView, Game
                 inGameView.draw(g2, model);
                 gameOverView.draw(g2, model);
             }
-
         }
+        // CHECKSTYLE: MissingSwitchDefault ON
         g2.dispose();
     }
 
@@ -153,6 +155,8 @@ public final class MainGameViewImpl extends JPanel implements MainGameView, Game
         final GameState currentState = model.getCurrentState().getGameState();
 
         if (currentState != lastState) {
+            // CHECKSTYLE: MissingSwitchDefault OFF
+            // switch does not need a default case
             switch (currentState) {
                 case MENU -> musicManager.stopMusic();
                 case IN_GAME -> {
@@ -168,8 +172,8 @@ public final class MainGameViewImpl extends JPanel implements MainGameView, Game
                     musicManager.fadeOut(MAIN_VIEW_AUDIO_FADE);
                     gameOverView.startFade();
                 }
-
             }
+            // CHECKSTYLE: MissingSwitchDefault OFF
         }
         lastState = currentState;
         repaint();
