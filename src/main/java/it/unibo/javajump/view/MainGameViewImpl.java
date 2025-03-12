@@ -1,5 +1,6 @@
 package it.unibo.javajump.view;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import it.unibo.javajump.model.GameModel;
 import it.unibo.javajump.model.GameModelObserver;
 import it.unibo.javajump.model.states.GameState;
@@ -66,7 +67,7 @@ public final class MainGameViewImpl extends JPanel implements MainGameView, Game
      *
      * @param model the model
      */
-
+    @SuppressFBWarnings("EI_EXPOSE_REP2")
     public MainGameViewImpl(final GameModel model) {
         final GameGraphics gameGraphics = new GameGraphicsImpl();
         this.model = model;

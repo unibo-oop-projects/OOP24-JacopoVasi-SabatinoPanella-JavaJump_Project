@@ -1,5 +1,6 @@
 package it.unibo.javajump.model;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import it.unibo.javajump.controller.input.GameAction;
 import it.unibo.javajump.model.camera.CameraManager;
 import it.unibo.javajump.model.camera.CameraManagerImpl;
@@ -214,7 +215,7 @@ public final class GameModelImpl implements GameModel {
     /**
      * {@inheritDoc}
      */
-
+    @SuppressFBWarnings("EI_EXPOSE_REP")
     @Override
     public ScoreManager getScoreManager() {
         return scoreManager;
@@ -247,7 +248,7 @@ public final class GameModelImpl implements GameModel {
     /**
      * {@inheritDoc}
      */
-
+    @SuppressFBWarnings("EI_EXPOSE_REP")
     @Override
     public List<GameObject> getGameObjects() {
         return this.gameObject;
@@ -258,6 +259,7 @@ public final class GameModelImpl implements GameModel {
      */
 
     @Override
+    @SuppressFBWarnings("EI_EXPOSE_REP")
     public Character getPlayer() {
         return player;
     }
