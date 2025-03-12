@@ -14,10 +14,9 @@ import static it.unibo.javajump.utility.Constants.VERY_HARD_MAX;
 import static it.unibo.javajump.utility.Constants.VERY_HARD_MIN;
 
 /**
- * The type Difficulty manager.
+ * The implementation of DifficultyManager interface.
  */
 public final class DifficultyManagerImpl implements DifficultyManager {
-
 
     private DifficultyState currentDifficulty;
 
@@ -27,7 +26,7 @@ public final class DifficultyManagerImpl implements DifficultyManager {
     private final float thresholdHell;
 
     /**
-     * Instantiates a new Difficulty manager.
+     * Instantiates a new Difficulty manager. It generates a random threshold (based on a range) for each difficulty.
      */
     public DifficultyManagerImpl() {
         this.currentDifficulty = DifficultyState.EASY;
@@ -39,7 +38,9 @@ public final class DifficultyManagerImpl implements DifficultyManager {
         this.thresholdHell = SpawnUtilsImpl.randomInRange(rand, HELL_MIN, HELL_MAX);
     }
 
-
+    /**
+     * {@inheritDoc} The difficulty is updated if the score reaches the pre-determined score thresholds
+     */
     @Override
     public void updateDifficulty(final int score) {
 
@@ -56,11 +57,17 @@ public final class DifficultyManagerImpl implements DifficultyManager {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public DifficultyState getCurrentDifficulty() {
         return currentDifficulty;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void reset() {
         this.currentDifficulty = DifficultyState.EASY;

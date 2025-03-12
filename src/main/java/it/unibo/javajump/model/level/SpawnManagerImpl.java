@@ -13,25 +13,28 @@ import static it.unibo.javajump.utility.Constants.SPAWN_THRESHOLD;
 import static it.unibo.javajump.utility.Constants.TOP_PLATFORM_Y_INIT;
 
 /**
- * The type Spawn manager.
+ * The implementation of SpawnManager interface.
  */
 public final class SpawnManagerImpl implements SpawnManager {
 
     private final SpawnStrategy spawnStrategy;
     private float topPlatformY;
 
-
     /**
      * Instantiates a new Spawn manager.
      *
-     * @param spawnStrategy the spawn strategy
+     * @param spawnStrategy the spawn strategy currently used by the level generation
      */
     public SpawnManagerImpl(final SpawnStrategy spawnStrategy) {
         this.spawnStrategy = spawnStrategy;
         this.topPlatformY = TOP_PLATFORM_Y_INIT;
     }
 
-
+    /**
+     * {@inheritDoc} The implemented method first generates a platform below the player,
+     * then calls the spawnBatch method in spawn strategy to generate the initial level objects.
+     * TopPlatformY is then updated.
+     */
     @Override
     public void generateInitialLevel(final GameModel model) {
         spawnPlatformBelowPlayer(model, getFactory());
@@ -40,7 +43,10 @@ public final class SpawnManagerImpl implements SpawnManager {
         this.topPlatformY = spawnStrategy.returnCurrentY();
     }
 
-
+    /**
+     * {@inheritDoc} The generation is done by calling the spawnBatch method in spawn strategy, checking the current
+     * distance between the Player and the TopPlatformY. If the threshold is reached, a new batch is generated.
+     */
     @Override
     public void generateOnTheFly(final GameModel model) {
         final float playerY = model.getPlayer().getY();
@@ -55,17 +61,25 @@ public final class SpawnManagerImpl implements SpawnManager {
             }
         }
     }
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void reset() {
         this.topPlatformY = TOP_PLATFORM_Y_INIT;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public SpawnStrategy getSpawnStrategy() {
         return this.spawnStrategy;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public GameObjectFactory getFactory() {
         if (spawnStrategy instanceof RandomSpawnStrategy) {

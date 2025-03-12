@@ -11,7 +11,7 @@ import static it.unibo.javajump.utility.Constants.BOUNCE_FACTOR_MAX;
 import static it.unibo.javajump.utility.Constants.BOUNCE_FACTOR_MIN;
 
 /**
- * The type Platform spawner.
+ * The implementation of the PlatformSpawner interface, used to spawn platforms.
  */
 public final class PlatformSpawnerImpl implements PlatformSpawner {
 
@@ -21,13 +21,17 @@ public final class PlatformSpawnerImpl implements PlatformSpawner {
     /**
      * Instantiates a new Platform spawner.
      *
-     * @param factory the factory
+     * @param factory the factory used to create the platforms
      */
     public PlatformSpawnerImpl(final GameObjectFactory factory) {
         this.factory = factory;
         this.rand = new Random();
     }
 
+    /**
+     * {@inheritDoc} The platform generation is based on the cumulative probabilities of each platform spawn chances,
+     * according to the difficulty level.
+     */
     @Override
     public Platform spawnPlatform(final float x, final float y, final int screenWidth, final DifficultyState difficulty) {
         final float chance = rand.nextFloat();

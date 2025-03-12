@@ -5,37 +5,37 @@ import it.unibo.javajump.model.factories.GameObjectFactory;
 import it.unibo.javajump.model.level.spawn.SpawnStrategy;
 
 /**
- * The interface Spawn manager.
+ * The interface that describes a Spawn manager, that handles level generation.
  */
 public interface SpawnManager {
     /**
-     * Generate initial level.
+     * Generates the initial base level.
      *
-     * @param model the model
+     * @param model the GameModel to add objects to
      */
     void generateInitialLevel(GameModel model);
 
     /**
-     * Generate on the fly.
+     * Generates the level procedurally, on the fly.
      *
-     * @param model the model
+     * @param model the GameModel to add objects to
      */
     void generateOnTheFly(GameModel model);
 
     /**
-     * Reset.
+     * Resets the SpawnManager.
      */
     void reset();
 
     /**
-     * Gets spawn strategy.
+     * Gets the currently used spawn strategy.
      *
-     * @return the spawn strategy
+     * @return the current spawn strategy
      */
     SpawnStrategy getSpawnStrategy();
 
     /**
-     * Gets factory.
+     * Gets the factory used to create the objects.
      *
      * @return the factory
      */

@@ -3,18 +3,19 @@ package it.unibo.javajump.model.physics;
 import static it.unibo.javajump.utility.Constants.NULL_VELOCITY;
 
 /**
- * The type Physics utils.
+ * The implementation of PhysicsUtils, implements useful static physics methods.
  */
 public final class PhysicsUtilsImpl implements PhysicsUtils {
 
     /**
-     * Accelerate to right float.
+     * Method to calculate acceleration to right.
      *
-     * @param vx           the vx
+     * @param vx           the current changing velocity
      * @param deltaTime    the delta time
-     * @param acceleration the acceleration
-     * @param maxSpeed     the max speed
-     * @return the float
+     * @param acceleration the acceleration factor
+     * @param maxSpeed     the max speed reachable
+     *
+     * @return the accelerated velocity
      */
     public static float accelerateToRight(final float vx, final float deltaTime, final float acceleration, final float maxSpeed) {
         final float vxx = vx + acceleration * deltaTime;
@@ -23,13 +24,14 @@ public final class PhysicsUtilsImpl implements PhysicsUtils {
 
 
     /**
-     * Accelerate to left float.
+     * Method to calculate acceleration to right.
      *
-     * @param vx           the vx
+     * @param vx           the current changing velocity
      * @param deltaTime    the delta time
-     * @param acceleration the acceleration
-     * @param maxSpeed     the max speed
-     * @return the float
+     * @param acceleration the acceleration factor
+     * @param maxSpeed     the max speed reachable
+     *
+     * @return the accelerated velocity
      */
     public static float accelerateToLeft(final float vx, final float deltaTime, final float acceleration, final float maxSpeed) {
         final float vxx = vx - acceleration * deltaTime;
