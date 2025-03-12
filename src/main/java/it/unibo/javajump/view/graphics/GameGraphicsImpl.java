@@ -65,7 +65,7 @@ public final class GameGraphicsImpl implements GameGraphics {
             gameFont2 = FontLoaderImpl.loadFont(RESOURCES_PATH + RESOURCES_FONT_2, SIZE_FONT_2);
             gameFont3 = FontLoaderImpl.loadFont(RESOURCES_PATH + RESOURCES_FONT_3, SIZE_FONT_3);
         } catch (IOException ex) {
-            throw new RuntimeException("Error loading game resources", ex);
+            throw new IllegalStateException("Error loading game resources", ex);
         }
     }
 

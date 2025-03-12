@@ -69,7 +69,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         model.update(DELTA_TIME);
         assertTrue(model.getPlayer().getX() < tempx, "The player is not decelerating");
         counter = COUNTER_START;
-        while (counter < maxcount) {
+        while (counter < maxcount+maxcount) {
             model.handleAction(GameAction.MOVE_RIGHT);
             model.update(DELTA_TIME);
             counter++;
