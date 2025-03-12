@@ -143,8 +143,7 @@ public final class MainGameViewImpl extends JPanel implements MainGameView, Game
                 inGameView.draw(g2, model);
                 gameOverView.draw(g2, model);
             }
-            default -> {
-            }
+
         }
         g2.dispose();
     }
@@ -169,8 +168,7 @@ public final class MainGameViewImpl extends JPanel implements MainGameView, Game
                     musicManager.fadeOut(MAIN_VIEW_AUDIO_FADE);
                     gameOverView.startFade();
                 }
-                default -> {
-                }
+
             }
         }
         lastState = currentState;

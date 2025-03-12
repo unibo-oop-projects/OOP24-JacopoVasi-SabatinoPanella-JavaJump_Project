@@ -110,7 +110,6 @@ public class RendererManagerImpl implements RenderManager {
 
         this.scoreUIRenderer = new ScoreUIRendererImpl(
                 graphics.getScoreContainer(),
-                graphics.getGameFont1(),
                 graphics.getGameFont2(),
                 graphics.getGameFont3());
     }

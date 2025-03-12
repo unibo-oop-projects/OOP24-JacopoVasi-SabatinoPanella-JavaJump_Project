@@ -26,7 +26,6 @@ public class ScoreUIRendererImpl implements ScoreUIRenderer {
      * Image of the score container, used to contain the score during gameplay.
      */
     private final BufferedImage scoreContainer;
-    private final Font gameFont1;
     private final Font gameFont2;
     private final Font gameFont3;
 
@@ -39,9 +38,8 @@ public class ScoreUIRendererImpl implements ScoreUIRenderer {
      * @param font2     the font 2
      * @param font3     the font 3
      */
-    public ScoreUIRendererImpl(final BufferedImage container, final Font font1, final Font font2, final Font font3) {
+    public ScoreUIRendererImpl(final BufferedImage container, final Font font2, final Font font3) {
         this.scoreContainer = container;
-        this.gameFont1 = font1;
         this.gameFont2 = font2;
         this.gameFont3 = font3;
     }

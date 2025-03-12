@@ -10,7 +10,6 @@ import static it.unibo.javajump.utility.Constants.HELL_MAX;
 import static it.unibo.javajump.utility.Constants.HELL_MIN;
 import static it.unibo.javajump.utility.Constants.MEDIUM_MAX;
 import static it.unibo.javajump.utility.Constants.MEDIUM_MIN;
-import static it.unibo.javajump.utility.Constants.SCORE_INIT;
 import static it.unibo.javajump.utility.Constants.VERY_HARD_MAX;
 import static it.unibo.javajump.utility.Constants.VERY_HARD_MIN;
 
@@ -19,7 +18,7 @@ import static it.unibo.javajump.utility.Constants.VERY_HARD_MIN;
  */
 public final class DifficultyManagerImpl implements DifficultyManager {
 
-    private int currentScore;
+
     private DifficultyState currentDifficulty;
 
     private final float thresholdMedium;
@@ -31,7 +30,6 @@ public final class DifficultyManagerImpl implements DifficultyManager {
      * Instantiates a new Difficulty manager.
      */
     public DifficultyManagerImpl() {
-        this.currentScore = SCORE_INIT;
         this.currentDifficulty = DifficultyState.EASY;
         final Random rand = new Random();
 
@@ -44,15 +42,14 @@ public final class DifficultyManagerImpl implements DifficultyManager {
 
     @Override
     public void updateDifficulty(final int score) {
-        this.currentScore = score;
 
-        if (currentScore >= thresholdHell) {
+        if (score >= thresholdHell) {
             currentDifficulty = DifficultyState.HELL;
-        } else if (currentScore >= thresholdVeryHard) {
+        } else if (score >= thresholdVeryHard) {
             currentDifficulty = DifficultyState.VERY_HARD;
-        } else if (currentScore >= thresholdHard) {
+        } else if (score >= thresholdHard) {
             currentDifficulty = DifficultyState.HARD;
-        } else if (currentScore >= thresholdMedium) {
+        } else if (score >= thresholdMedium) {
             currentDifficulty = DifficultyState.MEDIUM;
         } else {
             currentDifficulty = DifficultyState.EASY;
@@ -66,7 +63,6 @@ public final class DifficultyManagerImpl implements DifficultyManager {
 
     @Override
     public void reset() {
-        this.currentScore = 0;
         this.currentDifficulty = DifficultyState.EASY;
     }
 }
