@@ -11,6 +11,7 @@ import it.unibo.javajump.view.renderers.RendererManagerImpl;
 import it.unibo.javajump.view.sound.music.MusicManager;
 import it.unibo.javajump.view.sound.music.MusicManagerImpl;
 import it.unibo.javajump.view.sound.sfx.SoundEffectsManager;
+import it.unibo.javajump.view.sound.sfx.SoundEffectsManagerImpl;
 import it.unibo.javajump.view.viewstates.GameOverView;
 import it.unibo.javajump.view.viewstates.GameViewState;
 import it.unibo.javajump.view.viewstates.InGameView;
@@ -70,7 +71,7 @@ public final class MainGameViewImpl extends JPanel implements MainGameView, Game
         this.model = model;
 
         this.musicManager = new MusicManagerImpl(RESOURCES_PATH + RESOURCES_MUSIC_1, MUSIC_VOLUME);
-        final SoundEffectsManager soundEffectsManager = new SoundEffectsManager(SOUND_EFFECTS_VOLUME);
+        SoundEffectsManager soundEffectsManager = new SoundEffectsManagerImpl(SOUND_EFFECTS_VOLUME);
 
         this.virtualWidth = model.getScreenWidth();
         this.virtualHeight = model.getScreenHeight();
