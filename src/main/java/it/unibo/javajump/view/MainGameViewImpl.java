@@ -71,7 +71,7 @@ public final class MainGameViewImpl extends JPanel implements MainGameView, Game
         this.model = model;
 
         this.musicManager = new MusicManagerImpl(RESOURCES_PATH + RESOURCES_MUSIC_1, MUSIC_VOLUME);
-        SoundEffectsManager soundEffectsManager = new SoundEffectsManagerImpl(SOUND_EFFECTS_VOLUME);
+        final SoundEffectsManager soundEffectsManager = new SoundEffectsManagerImpl(SOUND_EFFECTS_VOLUME);
 
         this.virtualWidth = model.getScreenWidth();
         this.virtualHeight = model.getScreenHeight();

@@ -10,7 +10,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -29,7 +29,7 @@ import static it.unibo.javajump.utility.Constants.SOUNDS_POOL_SIZE_NUMBER;
  */
 public class SoundEffectsManagerImpl implements SoundEffectsManager {
     private final float defaultVolume;
-    private final Map<SFXType, Queue<Clip>> clipPools = new HashMap<>();
+    private final Map<SFXType, Queue<Clip>> clipPools = new EnumMap<>(SFXType.class);
     private static final int POOL_SIZE = SOUNDS_POOL_SIZE_NUMBER;
 
     /**
@@ -53,12 +53,13 @@ public class SoundEffectsManagerImpl implements SoundEffectsManager {
             }
             clipPools.put(type, pool);
         }
-        initialize();
+        for (final Queue<Clip> pool : clipPools.values()) {
+            for (final Clip clip : pool) {
+                setVolumeForClip(clip, defaultVolume);
+            }
+        }
     }
 
-    private void initialize() {
-        setGlobalVolume(defaultVolume);
-    }
 
     private String getFilePathForType(final SFXType type) {
         return switch (type) {
@@ -131,15 +132,5 @@ public class SoundEffectsManagerImpl implements SoundEffectsManager {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void setGlobalVolume(final float vol) {
-        for (final Queue<Clip> pool : clipPools.values()) {
-            for (final Clip clip : pool) {
-                setVolumeForClip(clip, vol);
-            }
-        }
-    }
+
 }

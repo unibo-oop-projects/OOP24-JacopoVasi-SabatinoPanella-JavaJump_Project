@@ -60,14 +60,21 @@ public class CoinRendererImpl implements CoinRenderer {
      */
     public CoinRendererImpl(final BufferedImage sheet, final int frameWidth, final int frameHeight,
                             final float frameDuration, final SoundEffectsManager soundEffectsManager) {
-        this.coinSheet = sheet;
+        this.coinSheet = copyBufferedImage(sheet);
         this.frameWidth = frameWidth;
         this.frameHeight = frameHeight;
         this.frameDuration = frameDuration;
         this.soundEffectsManager = soundEffectsManager;
     }
 
-
+    private BufferedImage copyBufferedImage(final BufferedImage source) {
+        if (source == null) {
+            return null;
+        }
+        final BufferedImage copy = new BufferedImage(source.getWidth(), source.getHeight(), source.getType());
+        copy.getGraphics().drawImage(source, 0, 0, null);
+        return copy;
+    }
 
     /**
      * {@inheritDoc}

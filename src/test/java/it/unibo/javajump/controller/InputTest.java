@@ -8,11 +8,9 @@ import org.junit.jupiter.api.Test;
 
 import javax.swing.JTextField;
 import java.awt.event.KeyEvent;
-import java.util.Queue;
 
 import static it.unibo.javajump.utility.TestConstants.KEY_EVENT_MODIFIER;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class InputTest {
 
@@ -75,9 +73,8 @@ class InputTest {
                 System.currentTimeMillis(), KEY_EVENT_MODIFIER, KeyEvent.VK_ENTER, ' ');
         inputManager.keyPressed(event);
 
-        final Queue<GameAction> actionQueue = inputManager.getActionQueue();
-        assertFalse(actionQueue.isEmpty());
-        assertEquals(GameAction.CONFIRM_SELECTION, actionQueue.poll());
+        final GameAction action = inputManager.getAction();
+        assertEquals(GameAction.CONFIRM_SELECTION, action);
     }
 
     @Test
@@ -86,9 +83,8 @@ class InputTest {
                 System.currentTimeMillis(), KEY_EVENT_MODIFIER, KeyEvent.VK_UP, ' ');
         inputManager.keyPressed(event);
 
-        final Queue<GameAction> actionQueue = inputManager.getActionQueue();
-        assertFalse(actionQueue.isEmpty());
-        assertEquals(GameAction.MOVE_MENU_UP, actionQueue.poll());
+        final GameAction action = inputManager.getAction();
+        assertEquals(GameAction.MOVE_MENU_UP, action);
     }
 
     @Test
@@ -97,9 +93,8 @@ class InputTest {
                 System.currentTimeMillis(), KEY_EVENT_MODIFIER, KeyEvent.VK_DOWN, ' ');
         inputManager.keyPressed(event);
 
-        final Queue<GameAction> actionQueue = inputManager.getActionQueue();
-        assertFalse(actionQueue.isEmpty());
-        assertEquals(GameAction.MOVE_MENU_DOWN, actionQueue.poll());
+        final GameAction action = inputManager.getAction();
+        assertEquals(GameAction.MOVE_MENU_DOWN, action);
     }
 
     @Test
@@ -109,8 +104,7 @@ class InputTest {
                 System.currentTimeMillis(), KEY_EVENT_MODIFIER, KeyEvent.VK_ESCAPE, ' ');
         inputManager.keyPressed(event);
 
-        final Queue<GameAction> actionQueue = inputManager.getActionQueue();
-        assertFalse(actionQueue.isEmpty());
-        assertEquals(GameAction.PAUSE_GAME, actionQueue.poll());
+        final GameAction action = inputManager.getAction();
+        assertEquals(GameAction.PAUSE_GAME, action);
     }
 }

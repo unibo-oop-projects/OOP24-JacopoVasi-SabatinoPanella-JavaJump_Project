@@ -44,9 +44,7 @@ public final class PhysicsManagerImpl implements PhysicsManager {
                 vx = PhysicsUtilsImpl.accelerateToLeft(vx, deltaTime, acceleration, maxSpeed);
                 character.setFacingRight(false);
                 break;
-            case NONE:
-
-            default: vx = PhysicsUtilsImpl.decelerate(vx, deltaTime, deceleration);
+            case NONE:vx = PhysicsUtilsImpl.decelerate(vx, deltaTime, deceleration);
                 break;
 
         }

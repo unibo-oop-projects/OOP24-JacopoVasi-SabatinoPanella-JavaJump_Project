@@ -81,7 +81,7 @@ public final class GameModelImpl implements GameModel {
         this.collisionManager = new CollisionManagerImpl();
         this.spawnManager = new SpawnManagerImpl(strategy);
         this.scoreManager = new ScoreManagerImpl();
-        this.cameraManager = new CameraManagerImpl(scoreManager, SCORE_FACTOR);
+        this.cameraManager = new CameraManagerImpl(SCORE_FACTOR);
 
         this.isRunning = true;
 
