@@ -53,15 +53,24 @@ public final class CoinImpl extends GameObjectImpl implements Coin {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void onCollision(final GameObject other) {
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public CoinState getState() {
         return this.state;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void collect() {
         if (this.state == CoinState.IDLE) {
@@ -69,16 +78,25 @@ public final class CoinImpl extends GameObjectImpl implements Coin {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void markAsDone() {
         this.state = CoinState.FINISHED;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Platform getAttachedPlatform() {
         return attachedPlatform;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void attachToPlatform(final Platform platform) {
         this.attachedPlatform = platform;

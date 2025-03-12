@@ -8,14 +8,14 @@ import it.unibo.javajump.model.entities.GameObject;
 public interface Platform extends GameObject {
 
     /**
-     * Triggers touched.
+     * Triggers touched flag.
      */
     void triggerTouched();
 
     /**
-     * Consume touched boolean.
+     * Consume the touched flag.
      *
-     * @return the boolean
+     * @return the flag
      */
     boolean consumeTouched();
 }

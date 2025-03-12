@@ -7,7 +7,7 @@ import it.unibo.javajump.model.entities.GameObject;
  */
 public interface MovementBehaviour {
     /**
-     * Updates the position of a GameObjectImpl based on deltaTime.
+     * Updates the position of a GameObject based on deltaTime.
      *
      * @param obj       the GameObject to update
      * @param deltaTime the time passed from the last update
