@@ -16,13 +16,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 /**
- * The type Score test.
+ * The Score test.
  */
 class ScoreTest {
     private GameModel model;
 
     /**
-     * Sets up.
+     * Sets up the environment before each test.
      */
     @BeforeEach
     void setUp() {
@@ -34,7 +34,7 @@ class ScoreTest {
     }
 
     /**
-     * Test difficulty.
+     * Tests the difficulty setting.
      */
     @Test
     void testDifficulty() {

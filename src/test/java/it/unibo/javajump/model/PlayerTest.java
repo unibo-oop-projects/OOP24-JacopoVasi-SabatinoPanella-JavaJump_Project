@@ -18,13 +18,13 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * The type Player test.
+ * The Player test.
  */
 class PlayerTest {
     private GameModel model;
 
     /**
-     * Sets up.
+     * Sets up the environment before each test.
      */
     @BeforeEach
     void setUp() {
@@ -36,7 +36,7 @@ class PlayerTest {
     }
 
     /**
-     * Test jumping.
+     * Tests the correct player jumping.
      */
     @Test
     void testJumping() {
@@ -51,7 +51,7 @@ class PlayerTest {
     }
 
     /**
-     * Test pacman.
+     * Tests the pacman-effect.
      */
     @Test
     void testPacman() {
@@ -67,7 +67,7 @@ class PlayerTest {
     }
 
     /**
-     * Test physics.
+     * Tests if physics are handled correctly.
      */
     @Test
     void testPhysics() {
