@@ -53,12 +53,13 @@ public class SoundEffectsManagerImpl implements SoundEffectsManager {
             }
             clipPools.put(type, pool);
         }
-        initialize();
+        for (final Queue<Clip> pool : clipPools.values()) {
+            for (final Clip clip : pool) {
+                setVolumeForClip(clip, defaultVolume);
+            }
+        }
     }
 
-    private void initialize() {
-        setGlobalVolume(defaultVolume);
-    }
 
     private String getFilePathForType(final SFXType type) {
         return switch (type) {
@@ -131,15 +132,5 @@ public class SoundEffectsManagerImpl implements SoundEffectsManager {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void setGlobalVolume(final float vol) {
-        for (final Queue<Clip> pool : clipPools.values()) {
-            for (final Clip clip : pool) {
-                setVolumeForClip(clip, vol);
-            }
-        }
-    }
+
 }

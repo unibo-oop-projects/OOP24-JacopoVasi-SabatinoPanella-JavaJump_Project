@@ -11,10 +11,4 @@ public interface SoundEffectsManager {
      */
     void playSound(SFXType type);
 
-    /**
-     * Sets global volume.
-     *
-     * @param vol the desired global volume
-     */
-    void setGlobalVolume(float vol);
 }

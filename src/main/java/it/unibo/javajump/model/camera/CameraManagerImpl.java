@@ -2,7 +2,6 @@ package it.unibo.javajump.model.camera;
 
 import it.unibo.javajump.model.GameModel;
 import it.unibo.javajump.model.entities.character.Character;
-import it.unibo.javajump.model.score.ScoreManager;
 
 import static it.unibo.javajump.utility.Constants.HEIGHT_DIV;
 import static it.unibo.javajump.utility.Constants.OFFSET_INIT;
@@ -20,10 +19,7 @@ public class CameraManagerImpl implements CameraManager {
      * Field used to store the previous offset reached by the camera during gameplay.
      */
     private float previousOffset;
-    /**
-     * Field to inject the ScoreManager, used to update the score based on how much the camera has risen.
-     */
-    private final ScoreManager scoreManager;
+
     /**
      * Field to determine by how much should the points increase per pixel "scrolled".
      */
@@ -31,12 +27,10 @@ public class CameraManagerImpl implements CameraManager {
 
     /**
      * Constructor for the effective camera manager.
-     *
-     * @param scoreManager the current score manager
+     *  the current score manager
      * @param scoreFactor  a desired game design value to multiply the score, for better game feel
      */
-    public CameraManagerImpl(final ScoreManager scoreManager, final float scoreFactor) {
-        this.scoreManager = scoreManager;
+    public CameraManagerImpl(final float scoreFactor) {
         this.scoreFactor = scoreFactor;
         this.currentOffset = OFFSET_INIT;
         this.previousOffset = OFFSET_INIT;
@@ -58,7 +52,7 @@ public class CameraManagerImpl implements CameraManager {
         if (currentOffset < previousOffset) {
             final float deltaOffset = previousOffset - currentOffset;
             final int points = (int) (deltaOffset * scoreFactor);
-            scoreManager.addPoints(points);
+            model.getScoreManager().addPoints(points);
         }
         previousOffset = currentOffset;
         currentOffset = desiredOffset;

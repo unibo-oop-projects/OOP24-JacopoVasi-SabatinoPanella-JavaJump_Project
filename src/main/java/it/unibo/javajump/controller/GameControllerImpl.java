@@ -18,7 +18,6 @@ public class GameControllerImpl implements GameController {
     /**
      * Private field to access the model.
      */
-    private final GameModel model;
     /**
      * Private field to access the view.
      */
@@ -32,30 +31,27 @@ public class GameControllerImpl implements GameController {
      */
     private final InputManager inputManager;
 
-    private final GameFrame frame;
-
     /**
      * Constructor for the GameControllerImpl class.
      *
-     * @param model        The game model
+     *
      * @param view         The game view
      * @param inputManager The input manager
-     * @param frame        The game frame
+     *
      */
-    public GameControllerImpl(final GameModel model, final MainGameView view,
-                              final InputManager inputManager, final GameFrame frame) {
-        this.model = model;
+    public GameControllerImpl( final MainGameView view,
+                              final InputManager inputManager) {
+
         this.view = view;
         this.running = false;
         this.inputManager = inputManager;
-        this.frame = frame;
     }
 
     /**
      * Starts the GameLoop in a separate thread (~60 FPS).
      */
     @Override
-    public void startGameLoop() {
+    public void startGameLoop(final GameModel model, final GameFrame frame) {
         running = true;
         final Thread loopThread = new Thread(() -> {
             long previousTime = System.nanoTime();
@@ -66,8 +62,8 @@ public class GameControllerImpl implements GameController {
                 final double elapsedNs = currentTime - previousTime;
                 if (elapsedNs >= nsPerFrame) {
                     final float deltaTime = (float) (elapsedNs / NANOSECONDS_PER_SECOND);
-                    processDiscreteInput();
-                    updateModel(deltaTime);
+                    processDiscreteInput(model);
+                    updateModel(deltaTime, model, frame);
                     view.updateView();
                     previousTime = currentTime;
                 }
@@ -86,8 +82,7 @@ public class GameControllerImpl implements GameController {
     /**
      * Stops the GameLoop thread.
      */
-    @Override
-    public void stopGameLoop() {
+    private void stopGameLoop(GameFrame frame) {
         running = false;
         frame.closeGame();
     }
@@ -97,7 +92,7 @@ public class GameControllerImpl implements GameController {
      *
      * @param deltaTime time passed since last update (in seconds)
      */
-    private void updateModel(final float deltaTime) {
+    private void updateModel(final float deltaTime, final GameModel model, GameFrame frame) {
         if (model.isRunning()) {
             final int horizontalDirection = inputManager.getHorizontalDirection();
             if (horizontalDirection < NULL_DIRECTION) {
@@ -109,7 +104,7 @@ public class GameControllerImpl implements GameController {
             }
             model.update(deltaTime);
         } else {
-            stopGameLoop();
+            stopGameLoop(frame);
         }
     }
 
@@ -117,7 +112,7 @@ public class GameControllerImpl implements GameController {
      * Private method to process the GameAction(s) stored in the queue,
      * it demands the model to process them accordingly.
      */
-    private void processDiscreteInput() {
+    private void processDiscreteInput(final GameModel model) {
         GameAction action = inputManager.getActionQueue().poll();
         while (action != null) {
             model.handleAction(action);

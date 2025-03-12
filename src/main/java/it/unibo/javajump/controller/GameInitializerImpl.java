@@ -47,7 +47,7 @@ public class GameInitializerImpl implements GameInitializer {
         this.frame = new GameFrameImpl();
         this.view = new MainGameViewImpl(model);
         this.inputManager = new InputManagerImpl();
-        this.controller = new GameControllerImpl(model, view, inputManager, frame);
+        this.controller = new GameControllerImpl(view, inputManager);
     }
 
     /**
@@ -57,7 +57,7 @@ public class GameInitializerImpl implements GameInitializer {
     public void initialize() {
         model.addObserver((GameModelObserver) view);
         frame.setUp(inputManager, SCREEN_HEIGHT, SCREEN_WIDTH, view, GAME_TITLE);
-        controller.startGameLoop();
+        controller.startGameLoop(model, frame);
     }
 
 }
