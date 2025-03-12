@@ -13,7 +13,11 @@ import java.util.List;
 
 import static it.unibo.javajump.utility.Constants.SCREEN_HEIGHT;
 import static it.unibo.javajump.utility.Constants.SCREEN_WIDTH;
-import static it.unibo.javajump.utility.TestConstants.*;
+import static it.unibo.javajump.utility.TestConstants.COUNTER_START;
+import static it.unibo.javajump.utility.TestConstants.DELTA_TIME;
+import static it.unibo.javajump.utility.TestConstants.DIV_TO_CENTER;
+import static it.unibo.javajump.utility.TestConstants.MAX_COUNT_PLATFORM;
+import static it.unibo.javajump.utility.TestConstants.PLATFORM_OFFSET;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

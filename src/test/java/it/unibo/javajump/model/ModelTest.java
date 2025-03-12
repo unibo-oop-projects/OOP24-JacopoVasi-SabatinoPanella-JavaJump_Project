@@ -85,11 +85,11 @@ class ModelTest {
 
 
     // Inner class to test observer pattern
-    final private static class TestObserver implements GameModelObserver {
+    final static class TestObserver implements GameModelObserver {
         boolean updated;
 
         @Override
-        public void onModelUpdate(GameModel model) {
+        public void onModelUpdate(final GameModel model) {
             updated = true;
         }
     }
