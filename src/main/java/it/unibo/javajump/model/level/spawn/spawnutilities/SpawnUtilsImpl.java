@@ -10,7 +10,7 @@ import static it.unibo.javajump.utility.Constants.SPAWN_X_OFFSET;
 import static it.unibo.javajump.utility.Constants.SPAWN_Y_OFFSET;
 
 /**
- * The type Spawn utils.
+ * The implementation of SpawnUtils interface.
  */
 public final class SpawnUtilsImpl implements SpawnUtils {
 

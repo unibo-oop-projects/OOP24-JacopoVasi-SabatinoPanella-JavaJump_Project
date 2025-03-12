@@ -1,7 +1,7 @@
 package it.unibo.javajump.model.physics;
 
 /**
- * The interface Physics utils.
+ * The interface for Physics utilities.
  */
 public interface PhysicsUtils {
 }

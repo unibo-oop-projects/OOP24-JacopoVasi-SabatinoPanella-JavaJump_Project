@@ -4,7 +4,7 @@ import it.unibo.javajump.model.entities.character.Character;
 
 
 /**
- * The type Physics manager.
+ * The implementation of PhysicsManager interface.
  */
 public final class PhysicsManagerImpl implements PhysicsManager {
     private final float acceleration;
@@ -16,10 +16,10 @@ public final class PhysicsManagerImpl implements PhysicsManager {
     /**
      * Instantiates a new Physics manager.
      *
-     * @param gravity      the gravity
-     * @param acceleration the acceleration
-     * @param maxSpeed     the max speed
-     * @param deceleration the deceleration
+     * @param gravity      the desired gravity applied on the character
+     * @param acceleration the acceleration of movements
+     * @param maxSpeed     the max speed reachable by the player
+     * @param deceleration the deceleration when the player stops moving or changes direction
      */
     public PhysicsManagerImpl(final float gravity, final float acceleration, final float maxSpeed, final float deceleration) {
         this.gravity = gravity;
@@ -28,7 +28,9 @@ public final class PhysicsManagerImpl implements PhysicsManager {
         this.deceleration = deceleration;
     }
 
-
+    /**
+     * {@inheritDoc} The character moves in the desired direction, based on MovementDirection parameter
+     */
     @Override
     public void updateCharacterMovement(final Character character, final float deltaTime, final MovementDirection direction) {
         float vx = character.getVelocityX();
@@ -52,7 +54,12 @@ public final class PhysicsManagerImpl implements PhysicsManager {
         updateCharacterPosition(character, deltaTime);
     }
 
-
+    /**
+     * Private method to update character position, applying velocity and gravity
+     *
+     * @param character to update
+     * @param deltaTime the time passed from the last update
+     */
     private void updateCharacterPosition(final Character character, final float deltaTime) {
         character.setOldX(character.getX());
         character.setOldY(character.getY());

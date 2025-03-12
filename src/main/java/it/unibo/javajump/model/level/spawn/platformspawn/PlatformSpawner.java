@@ -4,17 +4,18 @@ import it.unibo.javajump.model.entities.platforms.Platform;
 import it.unibo.javajump.model.level.spawn.difficulty.DifficultyState;
 
 /**
- * The interface Platform spawner.
+ * The interface that describes the Platform spawner.
  */
 public interface PlatformSpawner {
 
     /**
-     * Spawn platform platform.
+     * Method to Spawn a general platform.
      *
-     * @param x           the x
-     * @param y           the y
+     * @param x           the x of the platform
+     * @param y           the y of the platform
      * @param screenWidth the screen width
      * @param difficulty  the difficulty
+     *
      * @return the platform
      */
     Platform spawnPlatform(float x, float y, int screenWidth, DifficultyState difficulty);

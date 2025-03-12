@@ -1,27 +1,27 @@
 package it.unibo.javajump.model.level.spawn.difficulty;
 
 /**
- * The enum Difficulty state.
+ * The enum that represents the Difficulty states, with their relative generation chances.
  */
 public enum DifficultyState {
     /**
-     * Easy difficulty state.
+     * Easy difficulty state: more normal platforms, to accommodate nwe players.
      */
     EASY(0.03f, 0.10f, 0.015f),
     /**
-     * Medium difficulty state.
+     * Medium difficulty state: introduces more difficult platform types.
      */
     MEDIUM(0.07f, 0.20f, 0.05f),
     /**
-     * Hard difficulty state.
+     * Hard difficulty state: the normal platforms will be spawned less.
      */
     HARD(0.15f, 0.35f, 0.085f),
     /**
-     * Very hard difficulty state.
+     * Very hard difficulty state: the normal platforms will be spawned even less.
      */
     VERY_HARD(0.30f, 0.40f, 0.1f),
     /**
-     * Hell difficulty state.
+     * Hell difficulty state: the normal platforms will not be present in generations.
      */
     HELL(0.40f, 0.47f, 0.13f);
 
@@ -36,7 +36,7 @@ public enum DifficultyState {
     }
 
     /**
-     * Gets breakable chance.
+     * Gets the breakable chance.
      *
      * @return the breakable chance
      */
@@ -45,7 +45,7 @@ public enum DifficultyState {
     }
 
     /**
-     * Gets moving chance.
+     * Gets the moving chance.
      *
      * @return the moving chance
      */
@@ -54,7 +54,7 @@ public enum DifficultyState {
     }
 
     /**
-     * Gets bounce chance.
+     * Gets the bounce chance.
      *
      * @return the bounce chance
      */
