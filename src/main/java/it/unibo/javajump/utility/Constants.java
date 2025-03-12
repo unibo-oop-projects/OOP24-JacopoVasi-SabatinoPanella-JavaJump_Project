@@ -1094,7 +1094,7 @@ public final class Constants {
     /**
      * The constant RESOURCES_PATH: specifies the default path to the resources.
      */
-    public static final String RESOURCES_PATH = "src/main/java/it/unibo/javajump/view/resources/";
+    public static final String RESOURCES_PATH = "src/main/resources/";
 
     /**
      * The constant RESOURCES_TITLE: specifies the title image file name.
