@@ -34,7 +34,7 @@ public class ScoreUIRendererImpl implements ScoreUIRenderer {
      * Constructor of the ScoreUIRendererImpl class.
      *
      * @param container the image of the score container
-     * @param font1     the font 1
+     *
      * @param font2     the font 2
      * @param font3     the font 3
      */
