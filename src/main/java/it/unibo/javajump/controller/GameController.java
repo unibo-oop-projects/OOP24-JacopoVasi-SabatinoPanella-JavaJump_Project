@@ -10,8 +10,10 @@ import it.unibo.javajump.view.GameFrame;
 public interface GameController {
     /**
      * Starts the game loop, in a thread.
+     *
+     * @param model the game model
+     * @param frame the game frame
      */
-    void startGameLoop( GameModel model,  GameFrame frame);
-
+    void startGameLoop(GameModel model,  GameFrame frame);
 
 }

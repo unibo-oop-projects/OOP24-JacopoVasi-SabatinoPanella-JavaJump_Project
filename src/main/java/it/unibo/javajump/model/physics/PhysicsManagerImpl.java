@@ -35,6 +35,8 @@ public final class PhysicsManagerImpl implements PhysicsManager {
     public void updateCharacterMovement(final Character character, final float deltaTime, final MovementDirection direction) {
         float vx = character.getVelocityX();
 
+        // CHECKSTYLE: MissingSwitchDefault OFF
+        // the switch is exhaustive even without default case
         switch (direction) {
             case RIGHT:
                 vx = PhysicsUtilsImpl.accelerateToRight(vx, deltaTime, acceleration, maxSpeed);
@@ -46,14 +48,14 @@ public final class PhysicsManagerImpl implements PhysicsManager {
                 break;
             case NONE:vx = PhysicsUtilsImpl.decelerate(vx, deltaTime, deceleration);
                 break;
-
         }
+        // CHECKSTYLE: MissingSwitchDefault ON
         character.setVelocityX(vx);
         updateCharacterPosition(character, deltaTime);
     }
 
     /**
-     * Private method to update character position, applying velocity and gravity
+     * Private method to update character position, applying velocity and gravity.
      *
      * @param character to update
      * @param deltaTime the time passed from the last update
