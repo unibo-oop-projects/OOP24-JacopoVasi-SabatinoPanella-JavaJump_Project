@@ -45,12 +45,15 @@ public final class PauseView implements GameViewState {
         final PauseState pauseState = (PauseState) model.getCurrentState();
         final PauseOption selection = pauseState.getSelection();
 
-        int selectionYcor= PAUSE_CONTINUE_Y;
+        int selectionYcor = PAUSE_CONTINUE_Y;
+        // CHECKSTYLE: MissingSwitchDefault OFF
+        // the switch is exhaustive without a default case
         switch (selection) {
             case CONTINUE -> selectionYcor = PAUSE_CONTINUE_Y;
             case MAIN_MENU -> selectionYcor = PAUSE_MAIN_MENU_Y;
             case QUIT -> selectionYcor = PAUSE_QUIT_Y;
         }
+        // CHECKSTYLE: MissingSwitchDefault ON
 
         g.setColor(Color.decode(BACKGROUND_DEFAULT_COLOR));
         g.fillRect(0, 0, model.getScreenWidth(), model.getScreenHeight());
