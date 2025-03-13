@@ -16,8 +16,8 @@ Il protagonista Coffee dovrà scalare quanto più possibile le mura della casa i
 - Più si gioca, più il gioco diventa difficile;
 - La generazione dei livelli è infinita;
 - La camera segue adeguatamente il Protagonista, scorrendo secondo i canoni del genere di videogioco;
-- La grafica evolve secondo la difficoltà.
-- Visualità e Sonorità Piacevoli
+- La grafica evolve secondo la difficoltà;
+- Visualità e Sonorità Piacevoli.
 
 # How-To-Play
 Quando ci si trova nel Main-Menu:
