@@ -1,6 +1,6 @@
 # Java Jump
 
-Progetto per il corso di Programmazione ad Oggetti (OOP) A.A. 2023-2024
+Progetto per il corso di Programmazione ad Oggetti (OOP) A.A. 2024
 
 ## E-mail dei componenti:
 - sabatino.panella@studio.unibo.it
