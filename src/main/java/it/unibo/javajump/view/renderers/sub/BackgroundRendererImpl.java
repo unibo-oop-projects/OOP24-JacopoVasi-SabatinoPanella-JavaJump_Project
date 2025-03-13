@@ -120,6 +120,30 @@ public class BackgroundRendererImpl implements BackgroundRenderer {
     }
 
     /**
+     * Draws the specified image in a grid to cover the entire screen.
+     *
+     * @param g2           the Graphics2D context
+     * @param img          the image to draw
+     * @param verticalTiles the number of rows of tiles
+     * @param horizontalTiles the number of columns of tiles
+     * @param shiftX       the horizontal shift
+     * @param shiftY       the vertical shift
+     * @param tileW        the width of each tile
+     * @param tileH        the height of each tile
+     */
+    private void drawTileGrid(final Graphics2D g2, final BufferedImage img, final int verticalTiles,
+                              final int horizontalTiles, final int shiftX, final int shiftY,
+                              final int tileW, final int tileH) {
+        for (int i = 0; i < verticalTiles; i++) {
+            final int drawY = -shiftY + i * tileH;
+            for (int j = 0; j < horizontalTiles; j++) {
+                final int drawX = -shiftX + j * tileW;
+                g2.drawImage(img, drawX, drawY, null);
+            }
+        }
+    }
+
+    /**
      * {@inheritDoc}
      * The implementation uses camera offset (from model) and parallaxFactor to calculate the vertical
      * offset and then uses the updateHorizontalOffset method to update the horizontal
@@ -151,26 +175,13 @@ public class BackgroundRendererImpl implements BackgroundRenderer {
         if (inTransition) {
             transitionTimer += deltaTime;
             final float alpha = Math.min(transitionTimer / transitionDuration, 1.0f);
-
             final Composite originalComposite = g2.getComposite();
 
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1 - alpha));
-            for (int i = 0; i < verticalTiles; i++) {
-                final int drawY = -shiftY + i * tileH;
-                for (int j = 0; j < horizontalTiles; j++) {
-                    final int drawX = -shiftX + j * tileW;
-                    g2.drawImage(currentBg, drawX, drawY, null);
-                }
-            }
+            drawTileGrid(g2, currentBg, verticalTiles, horizontalTiles, shiftX, shiftY, tileW, tileH);
 
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
-            for (int i = 0; i < verticalTiles; i++) {
-                final int drawY = -shiftY + i * tileH;
-                for (int j = 0; j < horizontalTiles; j++) {
-                    final int drawX = -shiftX + j * tileW;
-                    g2.drawImage(targetBg, drawX, drawY, null);
-                }
-            }
+            drawTileGrid(g2, targetBg, verticalTiles, horizontalTiles, shiftX, shiftY, tileW, tileH);
 
             g2.setComposite(originalComposite);
 
@@ -179,13 +190,7 @@ public class BackgroundRendererImpl implements BackgroundRenderer {
                 inTransition = false;
             }
         } else {
-            for (int i = 0; i < verticalTiles; i++) {
-                final int drawY = -shiftY + i * tileH;
-                for (int j = 0; j < horizontalTiles; j++) {
-                    final int drawX = -shiftX + j * tileW;
-                    g2.drawImage(currentBg, drawX, drawY, null);
-                }
-            }
+            drawTileGrid(g2, currentBg, verticalTiles, horizontalTiles, shiftX, shiftY, tileW, tileH);
         }
     }
 }

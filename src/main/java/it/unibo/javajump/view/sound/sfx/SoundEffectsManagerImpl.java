@@ -8,8 +8,9 @@ import javax.sound.sampled.LineEvent;
 import javax.sound.sampled.LineListener;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.File;
+import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.EnumMap;
 import java.util.Map;
 import java.util.Queue;
@@ -17,7 +18,6 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static it.unibo.javajump.utility.Constants.RESOURCES_PATH;
 import static it.unibo.javajump.utility.Constants.RESOURCE_BOUNCE_SFX;
 import static it.unibo.javajump.utility.Constants.RESOURCE_BREAK_SFX;
 import static it.unibo.javajump.utility.Constants.RESOURCE_COIN_SFX;
@@ -27,7 +27,7 @@ import static it.unibo.javajump.utility.Constants.SOUNDS_POOL_SIZE_NUMBER;
 /**
  * The implementation of SoundEffectsManager interface.
  */
-public class SoundEffectsManagerImpl implements SoundEffectsManager {
+public final class SoundEffectsManagerImpl implements SoundEffectsManager {
     private final float defaultVolume;
     private final Map<SFXType, Queue<Clip>> clipPools = new EnumMap<>(SFXType.class);
     private static final int POOL_SIZE = SOUNDS_POOL_SIZE_NUMBER;
@@ -60,29 +60,33 @@ public class SoundEffectsManagerImpl implements SoundEffectsManager {
         }
     }
 
-
     private String getFilePathForType(final SFXType type) {
         return switch (type) {
-            case COIN -> RESOURCES_PATH + RESOURCE_COIN_SFX;
-            case BOUNCE -> RESOURCES_PATH + RESOURCE_BOUNCE_SFX;
-            case BREAK -> RESOURCES_PATH + RESOURCE_BREAK_SFX;
-            case DEFAULT -> RESOURCES_PATH + RESOURCE_DEFAULT_SFX;
+            case COIN -> RESOURCE_COIN_SFX;
+            case BOUNCE -> RESOURCE_BOUNCE_SFX;
+            case BREAK -> RESOURCE_BREAK_SFX;
+            case DEFAULT -> RESOURCE_DEFAULT_SFX;
         };
     }
 
     private Clip loadClip(final String filePath) {
-        try {
-            final File audioFile = new File(filePath);
-            final AudioInputStream audioIn = AudioSystem.getAudioInputStream(audioFile);
+        final InputStream is = getClass().getResourceAsStream(filePath);
+        if (is == null) {
+            Logger.getLogger(SoundEffectsManagerImpl.class.getName())
+                    .log(Level.SEVERE, "Resource not found: " + filePath);
+            return null;
+        }
+        try (BufferedInputStream bis = new BufferedInputStream(is)) {
+            final AudioInputStream audioIn = AudioSystem.getAudioInputStream(bis);
             final Clip clip = AudioSystem.getClip();
             clip.open(audioIn);
             return clip;
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-            Logger.getLogger(SoundEffectsManagerImpl.class.getName()).log(Level.SEVERE, "Error loading the audio file", e);
+            Logger.getLogger(SoundEffectsManagerImpl.class.getName())
+                    .log(Level.SEVERE, "Error loading the audio file: " + filePath, e);
         }
         return null;
     }
-
 
     private void setVolumeForClip(final Clip clip, final float defaultVolume) {
         if (clip != null && clip.isControlSupported(FloatControl.Type.MASTER_GAIN)) {
@@ -131,6 +135,4 @@ public class SoundEffectsManagerImpl implements SoundEffectsManager {
             clip.start();
         }
     }
-
-
 }

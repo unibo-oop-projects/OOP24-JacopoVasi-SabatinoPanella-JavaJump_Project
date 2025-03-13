@@ -6,8 +6,9 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.File;
+import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
@@ -52,9 +53,14 @@ public final class MusicManagerImpl implements MusicManager {
      */
     @Override
     public void loadBackgroundMusic(final String filePath) {
-        try {
-            final File audioFile = new File(filePath);
-            final AudioInputStream audioIn = AudioSystem.getAudioInputStream(audioFile);
+        final InputStream is = getClass().getResourceAsStream(filePath);
+        if (is == null) {
+            Logger.getLogger(MusicManagerImpl.class.getName())
+                    .log(Level.SEVERE, "Resource not found: " + filePath);
+            return;
+        }
+        try (BufferedInputStream bis = new BufferedInputStream(is)) {
+            final AudioInputStream audioIn = AudioSystem.getAudioInputStream(bis);
             backgroundClip = AudioSystem.getClip();
             backgroundClip.open(audioIn);
 
@@ -63,8 +69,9 @@ public final class MusicManagerImpl implements MusicManager {
             } else {
                 volumeControl = null;
             }
-        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
-            Logger.getLogger(MusicManagerImpl.class.getName()).log(Level.SEVERE, "Error loading the audio file", e);
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            Logger.getLogger(MusicManagerImpl.class.getName())
+                    .log(Level.SEVERE, "Error loading audio file: " + filePath, e);
         }
     }
 

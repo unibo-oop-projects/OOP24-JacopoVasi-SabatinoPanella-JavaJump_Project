@@ -36,7 +36,6 @@ import static it.unibo.javajump.utility.Constants.MAIN_VIEW_RECT_X;
 import static it.unibo.javajump.utility.Constants.MAIN_VIEW_RECT_Y;
 import static it.unibo.javajump.utility.Constants.MUSIC_VOLUME;
 import static it.unibo.javajump.utility.Constants.RESOURCES_MUSIC_1;
-import static it.unibo.javajump.utility.Constants.RESOURCES_PATH;
 import static it.unibo.javajump.utility.Constants.SERIAL_ID;
 import static it.unibo.javajump.utility.Constants.SOUND_EFFECTS_VOLUME;
 
@@ -72,7 +71,7 @@ public final class MainGameViewImpl extends JPanel implements MainGameView, Game
         final GameGraphics gameGraphics = new GameGraphicsImpl();
         this.model = model;
 
-        this.musicManager = new MusicManagerImpl(RESOURCES_PATH + RESOURCES_MUSIC_1, MUSIC_VOLUME);
+        this.musicManager = new MusicManagerImpl(RESOURCES_MUSIC_1, MUSIC_VOLUME);
         final SoundEffectsManager soundEffectsManager = new SoundEffectsManagerImpl(SOUND_EFFECTS_VOLUME);
 
         this.virtualWidth = model.getScreenWidth();

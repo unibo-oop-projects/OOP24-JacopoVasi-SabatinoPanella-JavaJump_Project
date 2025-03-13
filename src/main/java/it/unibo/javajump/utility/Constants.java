@@ -919,7 +919,7 @@ public final class Constants {
     /**
      * The constant GAME_OVER_TEXT_X_OFF: specifies the x offset of the game over text.
      */
-    public static final float GAME_OVER_TEXT_X_OFF = 0.65f;
+    public static final float GAME_OVER_TEXT_X_OFF = 0.45f;
 
     /**
      * The constant GAME_OVER_TEXT_NEW_Y_OFF: specifies the y offset of the game over new text.
@@ -1091,80 +1091,78 @@ public final class Constants {
 
 // Resources Paths ------------------------------------------------------------------------------------------
 
-    /**
-     * The constant RESOURCES_PATH: specifies the default path to the resources.
-     */
-    public static final String RESOURCES_PATH = "src/main/resources/";
+    // static path
+    //public static final String RESOURCES_PATH = "src/main/resources/";
 
     /**
      * The constant RESOURCES_TITLE: specifies the title image file name.
      */
-    public static final String RESOURCES_TITLE = "JJ_Title.png";
+    public static final String RESOURCES_TITLE = "/JJ_Title.png";
 
     /**
      * The constant RESOURCES_SCORE_CONTAINER: specifies the score container image file name.
      */
-    public static final String RESOURCES_SCORE_CONTAINER = "Score_Underlay_small.png";
+    public static final String RESOURCES_SCORE_CONTAINER = "/Score_Underlay_small.png";
 
     /**
      * The constant RESOURCES_GAMEOVER: specifies the game over image file name.
      */
-    public static final String RESOURCES_GAMEOVER = "GameOver.png";
+    public static final String RESOURCES_GAMEOVER = "/GameOver.png";
 
     /**
      * The constant RESOURCES_PLAYER: specifies the player image file name.
      */
-    public static final String RESOURCES_PLAYER = "Coffee-SheetBIG.png";
+    public static final String RESOURCES_PLAYER = "/Coffee-SheetBIG.png";
 
     /**
      * The constant RESOURCES_COIN: specifies the coin image file name.
      */
-    public static final String RESOURCES_COIN = "Coin-Sheet.png";
+    public static final String RESOURCES_COIN = "/Coin-Sheet.png";
 
     /**
      * The constant RESOURCES_BACKGROUND_EASY: specifies the easy background image file name.
      */
-    public static final String RESOURCES_BACKGROUND_EASY = "Background_Easy.png";
+    public static final String RESOURCES_BACKGROUND_EASY = "/Background_Easy.png";
 
     /**
      * The constant RESOURCES_BACKGROUND_MEDIUM: specifies the medium background image file name.
      */
-    public static final String RESOURCES_BACKGROUND_MEDIUM = "Background_Med.png";
+    public static final String RESOURCES_BACKGROUND_MEDIUM = "/Background_Med.png";
 
     /**
      * The constant RESOURCES_BACKGROUND_HARD: specifies the hard background image file name.
      */
-    public static final String RESOURCES_BACKGROUND_HARD = "Background_Diff.png";
+    public static final String RESOURCES_BACKGROUND_HARD = "/Background_Diff.png";
 
     /**
      * The constant RESOURCES_CLOUDS_EASY: specifies the easy clouds image file name.
      */
-    public static final String RESOURCES_CLOUDS_EASY = "Clouds_Easy.png";
+    public static final String RESOURCES_CLOUDS_EASY = "/Clouds_Easy.png";
 
     /**
      * The constant RESOURCES_CLOUDS_MEDIUM: specifies the medium clouds image file name.
      */
-    public static final String RESOURCES_CLOUDS_MEDIUM = "Clouds_Med.png";
+    public static final String RESOURCES_CLOUDS_MEDIUM = "/Clouds_Med.png";
 
     /**
      * The constant RESOURCES_CLOUDS_HARD: specifies the hard clouds image file name.
      */
-    public static final String RESOURCES_CLOUDS_HARD = "Clouds_Diff.png";
+    public static final String RESOURCES_CLOUDS_HARD = "/Clouds_Diff.png";
 
     /**
      * The constant RESOURCES_FONT_1: specifies the first font file name.
      */
-    public static final String RESOURCES_FONT_1 = "Daydream.ttf";
+    public static final String RESOURCES_FONT_1 = "/Daydream.ttf";
 
     /**
      * The constant RESOURCES_FONT_2: specifies the second font file name.
      */
-    public static final String RESOURCES_FONT_2 = "Daydream.ttf";
+    public static final String RESOURCES_FONT_2 = "/Daydream.ttf";
 
     /**
      * The constant RESOURCES_FONT_3: specifies the third font file name.
      */
-    public static final String RESOURCES_FONT_3 = "Daydream.ttf";
+    public static final String RESOURCES_FONT_3 = "/Daydream.ttf";
 
     /**
      * The constant SIZE_FONT_1: specifies the size of the first font.
@@ -1184,27 +1182,27 @@ public final class Constants {
     /**
      * The constant RESOURCES_MUSIC_1: specifies the music #1 file name.
      */
-    public static final String RESOURCES_MUSIC_1 = "GameMusic.wav";
+    public static final String RESOURCES_MUSIC_1 = "/GameMusic.wav";
 
     /**
      * The constant RESOURCE_BOUNCE_SFX: specifies the bounce sound file name.
      */
-    public static final String RESOURCE_BOUNCE_SFX = "Bounce.wav";
+    public static final String RESOURCE_BOUNCE_SFX = "/Bounce.wav";
 
     /**
      * The constant RESOURCE_BREAK_SFX: specifies the break sound file name.
      */
-    public static final String RESOURCE_BREAK_SFX = "Break.wav";
+    public static final String RESOURCE_BREAK_SFX = "/Break.wav";
 
     /**
      * The constant RESOURCE_DEFAULT_SFX: specifies the default sound file name.
      */
-    public static final String RESOURCE_DEFAULT_SFX = "Jump.wav";
+    public static final String RESOURCE_DEFAULT_SFX = "/Jump.wav";
 
     /**
      * The constant RESOURCE_COIN_SFX: specifies the coin sound file name.
      */
-    public static final String RESOURCE_COIN_SFX = "Coin.wav";
+    public static final String RESOURCE_COIN_SFX = "/Coin.wav";
 
     /**
      * The constant IMAGE_IMPORT_ERROR_TEXT: specifies the text to be displayed when an image cannot be imported.
