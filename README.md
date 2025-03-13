@@ -7,7 +7,7 @@ Progetto per il corso di Programmazione ad Oggetti (OOP) A.A. 2023-2024
 - jacopo.vasi@studio.unibo.it
 
 Il gruppo si è posto come obiettivo la creazione di un Endless-Platformer 2D a Scorrimento Verticale, ispirato a "Doodle Jump".
-Il protagonista Coffee dovrà scalare quanto più possibile le mura della casa in cui si trova, collezionando tutto il Caffà perduto.
+Il protagonista Coffee dovrà scalare quanto più possibile le mura della casa in cui si trova, collezionando tutto il Caffè perduto.
 
 # Features
 - Il Caffè funge da "Coin" che aumenta lo score;
